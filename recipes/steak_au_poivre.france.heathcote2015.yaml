@@ -28,6 +28,7 @@ recipe:
   extracted_by: [codex, kimi, grokbot]
   changelog:
     - {version: "1.0", date: 2026-11-20, change: "P1 第 2 批：依 Heathcote 原文建檔；Codex 主抽、Kimi 交叉核對、Grok Bot 對原文抽查", by: grokbot}
+    - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變", by: grokbot}
 
 ingredients:
   - {id: p_steak, concept: ing/beef_fillet, label: 牛菲力排（2 塊，每塊 150 g）, role: 主料,

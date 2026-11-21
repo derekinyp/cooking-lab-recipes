@@ -1,6 +1,6 @@
 # 麻婆豆腐（四川傳統，地方標準版）— 正式檔，規格 v1.0
 # 數值全部來自 DB51/T 1728-2014 附錄 D.8 與表 4 第 8 列；來源沒寫的一律 null＋status: missing。
-# 爐口（家庭安排，非原文）：全程最多同時 2 口（豆腐保溫浸泡的湯鍋＋炒鍋），符合振達家兩口瓦斯爐。
+# 爐口（家庭安排，非原文）：全程最多同時用兩口爐（豆腐保溫浸泡的湯鍋＋炒鍋）。湯鍋為主；沒有湯鍋時可用平底鍋代替（家庭改法）。
 schema_version: "1.0"
 recipe:
   id: mapo_doufu.sichuan.db51t1728
@@ -30,6 +30,7 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-20, change: "P1 第 1 批：依 DB51/T 1728 D.8 建檔；Kimi 主抽、Grok Bot 對原文抽查；Codex 交叉核對因 ChatGPT 用量上限未完成", by: grokbot}
     - {version: "1.0", date: 2026-11-20, change: "依 Codex 複核修正：蒜苗不寫固定毫米、修正 m2 註記誤植與同鍋順序約束、食用油分配說明、移除非原文的持續翻炒／大小一致／檢測方法、移除溫度計方法、蒜苗出鍋前加入改用 timing；升為兩邊比對過", by: grokbot}
+    - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變；鍋具改以湯鍋為主、平底鍋為替代", by: grokbot}
 
 ingredients:
   - {id: m_tofu, concept: ing/tofu_gypsum, label: 豆腐（石膏豆腐）, role: 主料,
@@ -151,7 +152,7 @@ actions:
     params:
       temperature: {target: oil, min_c: 100, max_c: 100, raw: "锅中放油烧至 100℃", evidence: S1}
       heat: {level: null, raw: 標準未寫火力檔位}
-    completion: [{observe: 油溫, target: 100°C, method: null, evidence: S1, note: "家裡沒有溫度計；不用溫度計時怎麼判斷 100°C，原文沒寫，待振達試做校準（不換算成幾成熱）"}]
+    completion: [{observe: 油溫, target: 100°C, method: null, evidence: S1, note: "不用溫度計版；不用溫度計時怎麼判斷 100°C，原文沒寫，待試做校準（不換算成幾成熱）"}]
     must_finish_before: [m7]
     requires_state: [s_beef_cooked]
     constraint: "家庭安排（非原文）：與牛肉臊子共用同一只炒鍋，牛肉臊子炒好盛起後才開始這一步"
@@ -200,11 +201,11 @@ actions:
 
 serving:
   completion:
-    - {observe: 菜品中心溫度, target: "70°C 以上", method: null, evidence: S1, note: "家裡沒有溫度計；原文沒寫感官判斷法，推論：出鍋即上桌、仍冒熱氣"}
+    - {observe: 菜品中心溫度, target: "70°C 以上", method: null, evidence: S1, note: "不用溫度計版；原文沒寫感官判斷法，推論：出鍋即上桌、仍冒熱氣"}
     - {observe: 出鍋至食用, target: "≤10 分鐘為宜", evidence: S1}
   sensory_target: {color: 色澤紅亮, taste: 麻、辣、鹹、鮮、燙，味道濃厚, texture: 酥、嫩，形整不爛}
 
 notes:
   cross_check: "兩邊比對過（2026-11-20）：Kimi 主抽＋獨立複核；Codex 交叉核對 19:51 補跑成功（codex-X1-mapo-retry.md（1 分 56 秒））；不一致逐項以原文裁決，紀錄見 research/p1/核對紀錄-麻婆豆腐.md"
   burners: "家庭安排（非原文）：最多同時 2 口：豆腐保溫浸泡（湯鍋）＋炒鍋；牛肉臊子先炒好盛起，再用同一只炒鍋燒油做主菜"
-  household: "（推論，家庭分食建議）花椒粉可不下鍋，出鍋後只撒在振達那份（麻分開最後加）；但辣味來自郫縣豆瓣與辣椒粉炒的紅油底，是本菜主體，標準版做不出不辣的一份，太太版要另做不辣變體（待定，不在本檔補數字）"
+  household: "（推論，家庭分食建議）花椒粉可不下鍋，出鍋後只撒在要麻的那份（麻分開最後加）；但辣味來自郫縣豆瓣與辣椒粉炒的紅油底，是本菜主體，標準版做不出不辣的一份，不辣版分開做（另做不辣變體，待定，不在本檔補數字）"

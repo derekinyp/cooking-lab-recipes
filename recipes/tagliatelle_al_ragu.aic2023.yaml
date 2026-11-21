@@ -24,6 +24,7 @@ recipe:
   extracted_by: [codex, grokbot]
   changelog:
     - {version: "1.0", date: 2026-11-20, change: "由 examples/tagliatelle-ragu-bolognese.yaml（v0.2 草案）轉為規格 v1.0 正式檔", by: grokbot}
+    - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變；肉醬鍋具由厚底鍋改為湯鍋為主、炒鍋為替代（家庭改法）", by: grokbot}
 
 ingredients:
   - {id: t_pasta, concept: ing/tagliatelle, label: 寬麵（購買品）, role: 主料, product: true,
@@ -80,25 +81,25 @@ components:
                  can_overlap: [f1], constraint: "不可用食物調理機（原文明示）",
                  completion: [{observe: 蔬菜, target: 細碎, method: 目測, evidence: R1}]}
               - {id: f3, technique: tech/render, term: 豬腹肉加油煸化, inputs: [fs_pancetta_minced, f_oil], outputs: [fs_fat],
-                 tool: tool/heavy_pot, note: "鍋徑 24–26 cm（原文）",
+                 tool: tool/stock_pot, note: "原文用厚底鍋，鍋徑 24–26 cm；本版改以湯鍋為主，炒鍋為替代做法（家庭改法，不是原文）",
                  completion: [{observe: 豬腹肉, target: 油脂化出, method: 目測}]}
-              - {id: f4, technique: tech/sweat, term: 小火慢炒蔬菜至軟, inputs: [fs_fat, fs_battuto], outputs: [s_soffritto], tool: tool/heavy_pot,
+              - {id: f4, technique: tech/sweat, term: 小火慢炒蔬菜至軟, inputs: [fs_fat, fs_battuto], outputs: [s_soffritto], tool: tool/stock_pot,
                  params: {heat: {level: heat/medium_low, raw: "calore medio basso", evidence: R1}, agitation: {mode: 木勺持續攪拌, continuous: true}},
                  completion: [{observe: 洋蔥, target: 軟化、絕不可有焦味, method: 目測與嗅覺, evidence: R1}]}
       actions:
-        - {id: r1, technique: tech/brown, term: 轉大火下絞肉拌炒, inputs: [s_soffritto, r_beef], outputs: [rs_browned], tool: tool/heavy_pot,
+        - {id: r1, technique: tech/brown, term: 轉大火下絞肉拌炒, inputs: [s_soffritto, r_beef], outputs: [rs_browned], tool: tool/stock_pot,
            params: {heat: {level: null, raw: "Alzare il calore（提高火力）", evidence: R1}, duration: {min_s: 600, max_s: 600, raw: "per una decina di minuti", is_guide: true, evidence: R1, status: sourced}},
            completion: [{observe: 聲音, target: "發出滋滋聲（sfrigola）", method: 聽覺, evidence: R1}]}
-        - {id: r2, technique: tech/deglaze_reduce, term: 下酒收乾, inputs: [rs_browned, r_wine], outputs: [rs_deglazed], tool: tool/heavy_pot,
+        - {id: r2, technique: tech/deglaze_reduce, term: 下酒收乾, inputs: [rs_browned, r_wine], outputs: [rs_deglazed], tool: tool/stock_pot,
            completion: [{observe: 氣味, target: 聞不到酒味, method: 嗅覺, evidence: R1}]}
-        - {id: r3, technique: tech/combine, term: 加番茄膏與番茄泥, inputs: [rs_deglazed, r_paste, r_passata], outputs: [rs_tomato], tool: tool/heavy_pot}
-        - {id: r4, technique: tech/simmer_covered, term: 加熱高湯加蓋慢燉, inputs: [rs_tomato, r_broth], outputs: [rs_simmered], tool: tool/heavy_pot,
+        - {id: r3, technique: tech/combine, term: 加番茄膏與番茄泥, inputs: [rs_deglazed, r_paste, r_passata], outputs: [rs_tomato], tool: tool/stock_pot}
+        - {id: r4, technique: tech/simmer_covered, term: 加熱高湯加蓋慢燉, inputs: [rs_tomato, r_broth], outputs: [rs_simmered], tool: tool/stock_pot,
            params: {heat: {level: heat/low, raw: "cuocere piano, a recipiente coperto", evidence: R1},
                     duration: {min_s: 7200, max_s: 10800, raw: "per circa 2 ore (anche 3 ore)", is_guide: true, evidence: R1, status: sourced}},
            control: "持續：按需添加熱高湯（觀察→補加→續燉，單一複合動作內的迴圈）",
            optional_branch: {at: 燉煮中段, input: r_milk, action: 加牛奶並收乾, evidence: R1},
            completion: [{observe: 湯汁, target: 不乾鍋；乾了就補熱高湯, method: 目測, evidence: R1}]}
-        - {id: r5, technique: tech/season, term: 以鹽與胡椒調味, inputs: [rs_simmered, r_salt_pepper, r_milk], outputs: [s_ragu], tool: tool/heavy_pot,
+        - {id: r5, technique: tech/season, term: 以鹽與胡椒調味, inputs: [rs_simmered, r_salt_pepper, r_milk], outputs: [s_ragu], tool: tool/stock_pot,
            note: "r_milk 為可省略的分支材料，實際在 r4 燉煮中段加入（見 r4.optional_branch）；此處列入只為讓材料有去處",
            completion: [{observe: 外觀, target: "深橘色、包覆感、綿滑（arancione scuro, avvolgente e cremoso）", method: 目測, evidence: R1}]}
 
@@ -114,5 +115,5 @@ actions:
      timing: {phase: "肉醬完成前約 10 分鐘開始", status: inferred},
      completion: [{observe: 麵, target: 依包裝時間煮好, method: 試吃, note: 原文未給}]}
   - {id: t3, technique: tech/toss, term: 拌麵, inputs: [s_pasta_cooked, s_ragu], outputs: [s_final],
-     note: "麵醬比例原文未給，待振達試做後填入",
+     note: "麵醬比例原文未給，待試做後填入",
      completion: [{observe: 麵, target: 每條都裹上肉醬, method: 目測, note: 自擬，原文未寫}]}

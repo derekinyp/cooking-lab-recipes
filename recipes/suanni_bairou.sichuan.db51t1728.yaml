@@ -1,7 +1,7 @@
 # 蒜泥白肉（四川傳統，地方標準版）— 正式檔，規格 v1.0。三層遞迴：複製醬油 → 蒜泥味汁 → 蒜泥白肉（辣椒油用市售成品）
 # 數值全部來自 DB51/T 1728-2014 附錄 A.1、表 1 第 1 列與表 1 注 a（複製醬油製法有克數）。
-# 辣椒油：振達 2026-11-20 決定直接用市售辣椒油（紅油），不再有自製紅油子食譜；用量 35 g 依表 A.1。
-# 爐口（家庭安排，非原文）：複製醬油可前一天做（1 口）；當天只有煮肉 1 口。任何時刻不超過 2 口。
+# 辣椒油：2026-11-20 決定直接用市售辣椒油（紅油），不再有自製紅油子食譜；用量 35 g 依表 A.1。
+# 爐口（家庭安排，非原文）：複製醬油可前一天做（1 口）；當天只有煮肉 1 口。最多同時用兩口爐。鍋具以湯鍋為主；沒有湯鍋時可用炒鍋代替（家庭改法）。
 schema_version: "1.0"
 recipe:
   id: suanni_bairou.sichuan.db51t1728
@@ -30,8 +30,9 @@ recipe:
   extracted_by: [kimi, grokbot]
   changelog:
     - {version: "1.0", date: 2026-11-20, change: "P1 第 1 批：依 DB51/T 1728 A.1 建檔；Kimi 主抽、Grok Bot 對原文抽查；Codex 交叉核對因用量上限未完成", by: grokbot}
-    - {version: "1.0", date: 2026-11-20, change: "振達決定紅油用市售辣椒油：移除自製辣椒油子食譜（油量、辣椒量、油溫、產量等原文沒寫項目一併移除），改為蒜泥味汁的市售材料 35 g（表 A.1）", by: grokbot}
+    - {version: "1.0", date: 2026-11-20, change: "決定紅油用市售辣椒油：移除自製辣椒油子食譜（油量、辣椒量、油溫、產量等原文沒寫項目一併移除），改為蒜泥味汁的市售材料 35 g（表 A.1）", by: grokbot}
     - {version: "1.0", date: 2026-11-20, change: "依 Codex 複核修正：白糖溶化獨立成完成條件並標未確定、肉片 size_mm 留空以原文為準、移除判熟與溫熱的方法背書、更正「右列全部調料」、誤差只適用表 A.1、燒沸改 tech/boil_water；升為兩邊比對過", by: grokbot}
+    - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變；鍋具改以湯鍋為主、炒鍋為替代", by: grokbot}
 
 ingredients:
   - {id: w_pork, concept: ing/pork_hind_leg_skin_on, label: 豬肉（帶皮二刀肉）, form: 整塊, role: 主料,
@@ -61,7 +62,7 @@ components:
            qty: {value: 2, unit: g, raw_text: "芝麻油 2", evidence: S1, status: sourced}}
         - {id: v_hongyou, concept: ing/chili_oil, label: 辣椒油（紅油，用市售成品）, form: 市售成品, role: 調料,
            qty: {value: 35, unit: g, raw_text: "辣椒油 35", evidence: S1, status: sourced},
-           note: "振達 2026-11-20 決定：紅油直接用市售辣椒油，不自製；35 g 是表 A.1 本菜用量。DB51/T 1728 只引用產品標準 DB51/T 492《辣椒油》，品牌不指定"}
+           note: "2026-11-20 決定：紅油直接用市售辣椒油，不自製；35 g 是表 A.1 本菜用量。DB51/T 1728 只引用產品標準 DB51/T 492《辣椒油》，品牌不指定"}
         - {id: v_msg, concept: ing/msg, label: 味精, role: 調料, optional: true,
            qty: {value: 0.5, unit: g, raw_text: "（味精） 0.5", evidence: S1, status: sourced}}
       components:
@@ -197,7 +198,7 @@ serving:
   sensory_target: {color: 色澤紅亮, taste: 鹹、鮮、辣、微甜，蒜味濃厚, texture: 肉片厚薄均勻、肉質軟嫩}
 
 notes:
-  hongyou: "振達 2026-11-20 決定：紅油直接用市售辣椒油，不自製（原自製子食譜的油量、辣椒量、油溫、產量都是原文沒寫，已移除）。用量 35 g 依 DB51/T 1728 表 A.1。之前 Kimi 提的下廚房 C 級配方（https://www.xiachufang.com/recipe/100526289/）不採用"
+  hongyou: "2026-11-20 決定：紅油直接用市售辣椒油，不自製（原自製子食譜的油量、辣椒量、油溫、產量都是原文沒寫，已移除）。用量 35 g 依 DB51/T 1728 表 A.1。之前 Kimi 提的下廚房 C 級配方（https://www.xiachufang.com/recipe/100526289/）不採用"
   burners: "複製醬油前一天做；辣椒油用市售；當天只有煮肉 1 口爐"
   cross_check: "兩邊比對過（2026-11-20）：Kimi 主抽＋獨立複核；Codex 交叉核對 19:51 補跑成功（codex-X1-suanni-retry.md（1 分 55 秒））；不一致逐項以原文裁決，紀錄見 research/p1/核對紀錄-蒜泥白肉.md"
-  household: "（推論，家庭分食建議）太太不吃辣：蒜泥味汁可先用複製醬油、芝麻油、蒜泥拌出一份不辣的，市售辣椒油最後只加在振達那份；本菜沒有花椒粉類的麻味配料（複製醬油裡的花椒 1 g 是熬醬用香料）"
+  household: "（推論，家庭分食建議）不辣版分開做：蒜泥味汁可先用複製醬油、芝麻油、蒜泥拌出一份不辣的，市售辣椒油最後只加在要辣的那份；本菜沒有花椒粉類的麻味配料（複製醬油裡的花椒 1 g 是熬醬用香料）"

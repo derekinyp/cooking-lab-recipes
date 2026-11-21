@@ -44,6 +44,7 @@ recipe:
     - {version: "1.0", date: 2026-11-20, change: "起始草稿：主體依 S1 楊桃文化《手切滷肉飯》，滷肉與油蔥酥各為子食譜", by: kimi}
     - {version: "1.0", date: 2026-11-20, change: "P3 批次三：Grok Bot 重抓 S1 原頁逐句核對定量材料與四段計時一致；修正 schema 錯誤（params.note）、移除 continuous 與自擬完成條件、炒肉加 requires_state（用炸蔥酥餘油）；status 升為檢查通過", by: grokbot}
     - {version: "1.0", date: 2026-11-20, change: "交叉核對（Codex）：刪自行加總的肉料合計與自擬判熟；更正 S2 市售油蔥酥、S1 全部定量、瓦斯爐與頁面分類等不精確敘述；標明爐口與續煮火力為推論；升為兩邊比對過", by: grokbot}
+    - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變", by: grokbot}
 
 ingredients:
   - {id: i_rice, concept: ing/steamed_rice, label: 白飯, role: 主料,
@@ -246,10 +247,10 @@ serving:
 
 notes:
   weekday: "假日菜：S1 僅燉煮段就 40 分鐘再續煮 20 分鐘，加前置與炒料遠超 20 分鐘，平日（≤20 分鐘）不可從頭現做。滷好可常備、平日只盛飯澆滷是另行安排（inferred），保存天數與回溫流程原文沒寫"
-  burners: "家庭排程（推論）：建議單口依序——炒鍋完成汆燙→同鍋炸蔥酥→炒料→加蓋小火燉；任一時刻 ≤2 口。第 2 口爐可同時煮飯、燙青菜（推論）。S1 只寫鍋與火力，未指定能源，瓦斯爐來自家庭設備。若想騰爐口，燉煮段可改放電鍋（inferred；S3 的電鍋法在其出版書 p.169，未取得原文，不引用外鍋杯數）"
-  spicy_split: "S1/S2/S3 材料表均未另列辣椒、花椒，無需改造主鍋。振達要吃微辣一點麻：盛碗後個別加辣椒油、花椒粉（一鍋兩吃，依 preference 檔，inferred，無來源數字）。五香粉組成未載，不能保證成品完全不含花椒成分"
-  equipment: "S1 只寫『鍋中』未指定鍋具，以振達現有炒鍋對應；S2 用砂鍋（振達無），以炒鍋替代（inferred）"
+  burners: "家庭排程（推論）：建議單口依序——炒鍋完成汆燙→同鍋炸蔥酥→炒料→加蓋小火燉；最多同時用兩口爐。第 2 口爐可同時煮飯、燙青菜（推論）。S1 只寫鍋與火力，未指定能源。若想騰爐口，燉煮段可改放電鍋（inferred；S3 的電鍋法在其出版書 p.169，未取得原文，不引用外鍋杯數）"
+  spicy_split: "S1/S2/S3 材料表均未另列辣椒、花椒，無需改造主鍋。要辣要麻的那份：盛碗後個別加辣椒油、花椒粉（一鍋兩吃，inferred，無來源數字）。五香粉組成未載，不能保證成品完全不含花椒成分"
+  equipment: "S1 只寫『鍋中』未指定鍋具，本版以炒鍋對應；S2 用砂鍋（本版不用砂鍋），以炒鍋替代（inferred）"
   schema_seconds: "凡 duration.min_s/max_s 皆為 schema 只收秒的單位正規化，權威數字以 raw 的原文分鐘為準，不是原文寫的秒數"
   oil_reuse: "炸紅蔥頭的餘油直接續炒五花（S1 作法 5），炸蔥酥排在炒肉前最順"
   variants: "S3：手切口感最好，也可請攤販絞最粗；想加料可滷蛋（S3 用電鍋蒸蛋加入）。S1 版本可加滷蛋同滷（inferred）"
-  cross_sources: "與 S2、S3 的逐點差異見 research/p3/kimi-P3-luroufan.md 的 STDOUT（Kimi 起草時的比較表）。份量大（S1 分列五花肉 1200 g、豬皮 300 g，原文沒有合計）可依比例縮小（inferred，比例換算待振達試做）"
+  cross_sources: "與 S2、S3 的逐點差異見 research/p3/kimi-P3-luroufan.md 的 STDOUT（Kimi 起草時的比較表）。份量大（S1 分列五花肉 1200 g、豬皮 300 g，原文沒有合計）可依比例縮小（inferred，比例換算待試做）"

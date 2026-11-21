@@ -1,7 +1,7 @@
 # 味型／醬汁範本 v1.0（初版 12 個：10 個中式味型＋2 個台式醬汁範本）
 # 每個範本：主味（main）、必要調料（required）、常見調料（common）、投料要點（order）、比例（ratios）。
 # 規則：ratios 每一筆都必須附 source 與證據等級；目前多數只有 C 級網路說法，標 disputed 時表示說法互相矛盾。
-# 沒有可靠比例的，ratios 留空——等金標準菜試做後由振達的回饋升級。
+# 沒有可靠比例的，ratios 留空——等金標準菜試做後依回饋升級。
 scheme: flavor
 version: "1.0"
 templates:
@@ -63,7 +63,7 @@ templates:
     example_dishes: [宮保雞丁]
     ratios:
       - {what: "糖:醋（宮保雞丁單菜）", value: "8:6", level: A, source: "DB51/T 1728-2014 附錄 B.3", note: "單一菜餚的標準配方，不等於整個味型"}
-      - {what: "糖:醋", value: "1:1.2–1.5（醋略重於糖）", level: C, source: "K2 網路整理（微博、新浪、360doc）", disputed: true, note: "與 DB51 的糖略多於醋相反，留給振達試做判斷"}
+      - {what: "糖:醋", value: "1:1.2–1.5（醋略重於糖）", level: C, source: "K2 網路整理（微博、新浪、360doc）", disputed: true, note: "與 DB51 的糖略多於醋相反，留給試做判斷"}
     source: DB51
   - id: flavor/tangcu
     zh: 糖醋味

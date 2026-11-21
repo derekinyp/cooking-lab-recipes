@@ -29,6 +29,7 @@ recipe:
   extracted_by: [kimi, grokbot]
   changelog:
     - {version: "1.0", date: 2026-11-20, change: "由 examples/gongbao-jiding.yaml（v0.2 草案）轉為規格 v1.0 正式檔", by: grokbot}
+    - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變", by: grokbot}
 
 ingredients:
   - {id: i_chicken, concept: ing/chicken_thigh_breast, label: 雞肉（仔公雞腿肉與脯肉）, role: 主料,
@@ -185,4 +186,4 @@ serving:
 
 notes:
   variants: "京派（先過油取出再回鍋合炒、偏甜）、黔派（糍粑辣椒）、魯式醬爆雞丁另立變體；來源僅 C 級，未進主體"
-  cross_check: "網路流傳『醋略重於糖，糖:醋≈1:1.2–1.5』（K2，C 級）與本標準 8:6 相反；以標準為主，差異留給振達試做判斷"
+  cross_check: "網路流傳『醋略重於糖，糖:醋≈1:1.2–1.5』（K2，C 級）與本標準 8:6 相反；以標準為主，差異留給試做判斷"

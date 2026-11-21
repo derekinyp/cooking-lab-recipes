@@ -196,6 +196,8 @@ def qty_html(ing, m):
 
 def step_tool(a, m=None):
     t = a.get('tool') or ''
+    so = ((m or {}).get('ov', {}).get('steps') or {}).get(a.get('id')) or {} if m else {}
+    if so.get('tool'): return so['tool']
     if m and t in (m['ov'].get('tools') or {}): return m['ov']['tools'][t]
     return VZH.get(t, '')
 
@@ -329,7 +331,7 @@ def flow_svg(m):
     return '\n'.join(o), W
 
 # ------------------------------------------------------------------ 步驟
-NO_THERMO = '家裡沒有溫度計：原文沒寫不用溫度計怎麼判斷，請先看「好了的樣子」，試做後再補上。'
+NO_THERMO = '不用溫度計版：原文沒寫不用溫度計怎麼判斷，請先看「好了的樣子」，試做後再補上。'
 def fact(label, val, cls=''):
     if not val: return f'<div class="fact {cls}"><dt>{label}</dt><dd><span class="na">原文沒寫</span></dd></div>'
     if cls != 'fact-done' and re.search(r'沒寫|未寫|未註明|未給', val) and len(val) < 40: return f'<div class="fact {cls}"><dt>{label}</dt><dd><span class="na">{val}</span></dd></div>'
@@ -404,13 +406,15 @@ def steps_html(m, step_lane, over):
         par = f'<span class="badge badge-par">可和第 {"、".join(map(str, ov_))} 步同時做</span>' if ov_ else ''
         sub = f'<span class="badge badge-sub">{E(a["_comp"]["name"])}</span>' if a['_comp'] else ''
         tool = step_tool(a, m)
+        alt = '' if o.get('tool') else ((m['ov'].get('tool_alts') or {}).get(a.get('tool') or '') or '')
+        tool_h = E(tool) + (f'<br><span class="zd-small tool-alt">替代做法：{E(alt)}</span>' if alt else '')
         out.append(f'''<li class="step{' step-sub' if a['_comp'] else ''}" id="s{n}">
   <label class="step-check"><input type="checkbox" data-step="{n}"><span class="box" aria-hidden="true"></span><span class="zd-visually-hidden">完成第 {n} 步</span></label>
   <div class="step-body">
     <h3 class="step-h"><span class="step-no">{n}</span><span>{E(title)}</span></h3>
     <p class="step-badges">{lane_badge(step_lane[i])}{sub}{par}</p>
     {('<ul class="ing-list step-ins">' + ''.join(ins) + '</ul>') if ins else ''}
-    <dl class="facts">{fact('用什麼', E(tool)) if tool else ''}{fact('火候', heat) if (heat or is_heat_step(a)) else ''}{fact('時間', dur) if (dur or is_heat_step(a) or p.get('duration')) else ''}{fact('溫度', E(temp)) if temp else ''}{fact('好了的樣子', done_html, 'fact-done')}</dl>
+    <dl class="facts">{fact('用什麼', tool_h) if tool else ''}{fact('火候', heat) if (heat or is_heat_step(a)) else ''}{fact('時間', dur) if (dur or is_heat_step(a) or p.get('duration')) else ''}{fact('溫度', E(temp)) if temp else ''}{fact('好了的樣子', done_html, 'fact-done')}</dl>
     {''.join(f'<p class="tip">{E(t)}</p>' for t in tips)}
   </div>
 </li>''')
@@ -445,7 +449,7 @@ def timeline_html(m, step_lane, maxc, over):
     body = ''.join(f'<li class="tl-phase"><div class="tl-h"><span class="tl-name">{E(a)}</span><span class="tl-sub">{E(b)}</span></div><ul class="tl-chips">{c}</ul></li>' for a, b, c in ph)
     burn = m['ov'].get('burners')
     cooker = any(v[0] == 'cooker' for v in step_lane.values())
-    summ = f'這道菜同時最多用 <b>{maxc} 口爐</b>' + ('，電鍋不佔爐口' if cooker else '') + '。' if maxc else '這道菜不用開瓦斯爐。'
+    summ = f'這道菜同時最多用 <b>{maxc} 口爐</b>' + ('，電鍋不佔爐口' if cooker else '') + '。' if maxc else '這道菜不用開火。'
     return f'<p class="burner-sum">{summ}{(" " + E(burn)) if burn else ""}</p><ol class="timeline">{body}</ol>'
 
 # ------------------------------------------------------------------ 材料與購物清單
@@ -499,7 +503,7 @@ def shopping_html(m):
         out.append(f'<div class="shop-g"><h3 class="ing-h">{g}</h3><ul class="shop-list">{"".join(lis)}</ul></div>')
     return ('<div class="card shop">' + ''.join(out) +
             '<div class="shop-actions"><button type="button" class="zd-btn zd-btn--secondary copy-shop">複製清單</button><span class="shop-msg" role="status" aria-live="polite"></span></div>'
-            '<p class="zd-small">同一樣材料在不同步驟用到的量已經加總；份數按鈕也會一起換算。肉、魚請攤商或看包裝上的重量，家裡不用秤。</p></div>')
+            '<p class="zd-small">同一樣材料在不同步驟用到的量已經加總；份數按鈕也會一起換算。肉、魚請攤商或看包裝上的重量，不用秤。</p></div>')
 
 # ------------------------------------------------------------------ 辣與麻
 def spice_html(m):
@@ -508,8 +512,8 @@ def spice_html(m):
     head = {'addon': '一鍋兩吃，最後分開加', 'separate': '要分開做', 'none': '本來就不辣不麻'}[mode]
     cls = {'addon': 'ok', 'separate': 'off', 'none': 'na'}[mode]
     cols = ''
-    if sp.get('wife') or sp.get('yours'):
-        cols = (f'<div class="vs"><div class="vs-a"><p class="vs-h">太太那份：不辣不麻</p><ul>{"".join(f"<li>{E(x)}</li>" for x in sp.get("wife") or [])}</ul></div>'
+    if sp.get('mild') or sp.get('yours'):
+        cols = (f'<div class="vs"><div class="vs-a"><p class="vs-h">不辣那份：不辣不麻</p><ul>{"".join(f"<li>{E(x)}</li>" for x in sp.get("mild") or [])}</ul></div>'
                 f'<div class="vs-b"><p class="vs-h">你那份：微辣、微麻</p><ul>{"".join(f"<li>{E(x)}</li>" for x in sp.get("yours") or [])}</ul></div></div>')
     return (f'<section class="block" aria-labelledby="spice-h"><div class="card spice spice-{cls}"><h2 class="h2" id="spice-h">辣與麻：{head}</h2>'
             f'<p>{E(sp.get("text", ""))}</p>{cols}</div></section>')
@@ -554,7 +558,7 @@ def serving_html(m):
         for c in sv.get('completion') or []:
             t = m['clean'](c.get('target'))
             if t and not re.search(r'[A-Za-z]{3,}', t):
-                lis.append(f'{m["clean"](c["observe"])}：{t}' + ('（家裡沒有溫度計，參考就好）' if '°C' in t else ''))
+                lis.append(f'{m["clean"](c["observe"])}：{t}' + ('（不用溫度計版，參考就好）' if '°C' in t else ''))
     st = sv.get('sensory_target') or {}
     for k, lab in (('color', '顏色'), ('taste', '味道'), ('texture', '口感')):
         if st.get(k):
@@ -683,7 +687,7 @@ def conversions_page():
     body = f'''{topbar('')}
 <main class="wrap">
 <header class="hero card"><p class="zd-kicker">換算值怎麼來的</p><h1 class="dish-name">湯匙與目測換算表</h1>
-<p class="intro">家裡沒有秤，所以食譜頁會在克數旁邊加一行「換算值」，告訴你大約幾大匙、幾瓣、幾片。這些換算值只用下面兩個公開出處算出來，<b>不會寫回食譜</b>；食譜本身的數字還是以原文的克數為準。</p></header>
+<p class="intro">這是無秤版：食譜頁會在克數旁邊加一行「換算值」，告訴你大約幾大匙、幾瓣、幾片。這些換算值只用下面兩個公開出處算出來，<b>不會寫回食譜</b>；食譜本身的數字還是以原文的克數為準。</p></header>
 <section class="block"><h2 class="h2">換算規則</h2><ul class="card plain-list">
 <li>1 大匙＝3 小匙＝15 毫升；1 杯（量杯）＝16 大匙＝240 毫升（出處②）。</li>
 <li>每樣材料 1 大匙或 1 個有多重，用出處①的「常用份量」重量。</li>

@@ -1,6 +1,6 @@
 # 菜脯蛋（台式家常版）— 起始檔，規格 v1.0
 # 主來源 B1＝《快樂廚房雜誌》第 123 期〈古早味菜脯蛋〉（楊桃美食網轉載）：份量、用油、火力、翻面、完成狀態只用 B1 的數字，不混拼。
-# 為什麼不用 Kimi 選的《楊桃中餐丙級證照書》〈蘿蔔乾煎蛋〉（B2）當主來源：B2 要「中火燒至油溫 140℃」（家裡沒有溫度計），
+# 為什麼不用 Kimi 選的《楊桃中餐丙級證照書》〈蘿蔔乾煎蛋〉（B2）當主來源：B2 要「中火燒至油溫 140℃」（本版是不用溫度計版），
 #   完成狀態只有「煎成圓形狀」、沒有寫翻面與上色；B1 不靠溫度、有翻面，第一面『微金黃』、翻面後『煎約1分鐘至金黃』，煎蛋用油 2 大匙（B2 此步 4 大匙，全程總油量不明）。B2、C1 只作對照。
 # 爐口（家庭安排，推論）：全程 1 口、1 只平底鍋。
 schema_version: "1.0"
@@ -42,8 +42,9 @@ recipe:
       note: "對照。本機存檔 sources/c-icook-455626.*；菜脯泡水 20 分鐘換水 1-2 次、乾鍋不放油炒乾至表面微焦、5 顆蛋打入空氣、中火、蓋鍋蓋定型、用盤子翻面、煎至金黃；油未量化"
   extracted_by: [kimi, grokbot]
   changelog:
-    - {version: "1.0", date: 2026-11-20, change: "P3 批次三起始檔：Kimi 搜尋 3 份來源並以 B2 起草；Grok Bot 重抓三頁核對，因家無溫度計改以 B1 當主來源重寫；B2、C1 只作對照", by: grokbot}
+    - {version: "1.0", date: 2026-11-20, change: "P3 批次三起始檔：Kimi 搜尋 3 份來源並以 B2 起草；Grok Bot 重抓三頁核對，因本版不用溫度計，改以 B1 當主來源重寫；B2、C1 只作對照", by: grokbot}
     - {version: "1.0", date: 2026-11-20, change: "交叉核對（Codex）：刪『推論可在20分鐘內』；修正兩面金黃與熱鍋表述；拆開中火／小火階段；清洗改 tech/rinse；雜誌來源等級改 C；升為兩邊比對過", by: grokbot}
+    - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變", by: grokbot}
 
 ingredients:
   - {id: i_caipu, concept: ing/caipu, label: 碎蘿蔔乾（菜脯）, form: 碎, role: 輔料,
@@ -51,7 +52,7 @@ ingredients:
   - {id: i_egg, concept: ing/egg, label: 雞蛋, role: 主料,
      qty: {value: 3, unit: piece, raw_text: "雞蛋 3顆", evidence: B1, status: sourced}}
   - {id: i_scallion, concept: ing/scallion, label: 蔥花, form: 蔥花, role: 輔料,
-     qty: {value: 20, unit: g, raw_text: "蔥花 20公克", evidence: B1, status: sourced}, note: "家裡沒有秤：20 g 蔥花目測換算原文沒寫（B2 寫蔥 1 支、C1 寫蔥 3 支，份量體系不同，不混用）"}
+     qty: {value: 20, unit: g, raw_text: "蔥花 20公克", evidence: B1, status: sourced}, note: "無秤版（用米杯／湯匙）：20 g 蔥花目測換算原文沒寫（B2 寫蔥 1 支、C1 寫蔥 3 支，份量體系不同，不混用）"}
   - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
      qty: {value: 0.1667, unit: tsp, raw_text: "鹽 1/6茶匙", evidence: B1, status: sourced, note: "權威數字是原文『1/6茶匙』；value 0.1667 是 schema 只收小數的近似表示"}}
   - {id: i_pepper, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 調料,
@@ -106,7 +107,7 @@ actions:
       duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
     completion:
       - {observe: 蛋液, target: 拌至略凝固, method: 目測, evidence: B1}
-    note: "B1 明寫『另熱鍋』；熱鍋時間、熱鍋完成條件及油溫原文沒寫，不用溫度計。平底鍋是家庭選用（推論）"
+    note: "B1 明寫『另熱鍋』；熱鍋時間、熱鍋完成條件及油溫原文沒寫，本版不用溫度計。平底鍋是家庭選用（推論）"
   - id: a4b
     technique: tech/pan_fry
     term: 關小火煎定型，煎至一面微金黃
@@ -139,6 +140,6 @@ serving:
 notes:
   weekday: "平日門檻為使用者條件；B1 原文沒寫總時間，是否符合待試做計時確認。B2 頁面標籤『30 分鐘內』、C1 標 15 分鐘（與『泡水20分鐘』並存，計時範圍原文沒交代），都不能用來推定 B1 的總時間"
   burners: "家庭安排（推論）：全程 1 口爐、1 只平底鍋，先乾炒菜脯取出，再煎蛋。B1 只有『下鍋』『另熱鍋』，爐口數、鍋數、同鍋都不能當成原文規定"
-  spicy_split: "三份來源都沒有辣椒、花椒，主體太太可吃。振達要辣／麻時，盛盤後在他那份另加（推論，無來源數字）"
+  spicy_split: "三份來源都沒有辣椒、花椒，主體就是不辣版。要辣／麻的那份，盛盤後另加（推論，無來源數字）"
   compare: "B2《丙級證照書》：蘿蔔乾 75 g 切細丁泡水、下鍋炒香後瀝油；蛋 4 粒、蔥 1 支；鹽、胡椒粉各 1/8 茶匙；潤鍋後 4 大匙沙拉油中火燒至 140℃ 倒蛋液、轉小火煎成圓形狀（未寫翻面，不是明令不翻）。C1 鍋寶：4 人份，菜脯 55 g 泡水 20 分鐘換水 1-2 次、乾鍋不放油炒乾至表面微焦，續加油及蔥花炒至香；5 顆蛋打入空氣微發泡；鹽 1/4 小匙、白胡椒粉 1/4 匙；中火倒入蛋液後先不要翻動，周邊稍凝固後往中間集中、蓋鍋蓋定型；利用盤子翻面、煎至金黃；油未量化。C1 頁面時間『15 分鐘』與泡水 20 分鐘並存，計時範圍原文沒交代"
   missing: "原文沒寫：份數、乾炒時間、第一面煎的時間、翻面方法、上桌溫度"

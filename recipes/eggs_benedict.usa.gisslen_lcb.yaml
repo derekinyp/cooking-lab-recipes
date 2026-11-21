@@ -1,7 +1,8 @@
 # 班尼迪克蛋 — 正式檔，規格 v1.0。跨來源組合版：組裝與水波蛋依 Gisslen《Professional Cooking》，荷蘭醬依 Le Cordon Bleu。
 # 三層：澄清奶油 → 荷蘭醬；水波蛋；→ 組裝。
-# Gisslen 原本引用自家 p.200 的荷蘭醬；改用 LCB 是振達的決定（P1 任務指示）。Gisslen 荷蘭醬只拿來對照與保溫安全規則。
-# 爐口（家庭版順序）：先做荷蘭醬（1 口），離火保溫；再同時水波蛋（1 口）＋熱火腿（1 口）＝ 2 口。烤瑪芬用烤麵包機或烤箱，不佔爐口。
+# Gisslen 原本引用自家 p.200 的荷蘭醬；改用 LCB 是版本選擇（P1 任務指示）。Gisslen 荷蘭醬只拿來對照與保溫安全規則。
+# 爐口（家庭版順序）：先做荷蘭醬（1 口），離火保溫；再同時水波蛋（1 口）＋熱火腿（1 口），最多同時用兩口爐。
+# 家庭改法（定稿，不是原文）：瑪芬用平底鍋乾烙；卡宴辣椒粉不辣版分開做，最後只撒在要辣的那份。
 schema_version: "1.0"
 recipe:
   id: eggs_benedict.usa.gisslen_lcb
@@ -42,6 +43,7 @@ recipe:
   extracted_by: [codex, kimi, grokbot]
   changelog:
     - {version: "1.0", date: 2026-11-20, change: "P1 第 2 批：依 Gisslen 與 LCB 原文建檔；Codex 主抽、Kimi 交叉核對、Grok Bot 對原文抽查", by: grokbot}
+    - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變；瑪芬平底鍋乾烙與辣椒粉分開加兩項家庭改法定稿（不是原文）", by: grokbot}
 
 ingredients:
   - {id: b_muffin, concept: ing/english_muffin, label: 英式瑪芬（半個）, role: 主料, product: true,
@@ -214,8 +216,8 @@ actions:
     term: 烤半個瑪芬
     inputs: [b_muffin]
     outputs: [s_toasted]
-    tool: null
-    completion: [{observe: 瑪芬, target: 烤好（toast）, method: 目測, note: "用什麼烤、烤到什麼顏色原文沒寫；家庭版建議用烤麵包機或烤箱，不佔爐口（推論）"}]
+    tool: tool/frying_pan
+    completion: [{observe: 瑪芬, target: 烤好（toast）, method: 目測, note: "原文只寫 toast，沒寫用什麼烤、烤到什麼顏色；用平底鍋乾烙是家庭改法（定稿，不是原文）"}]
     can_overlap: [e1, e2]
   - id: b2
     technique: tech/spread
@@ -261,9 +263,9 @@ serving:
   sensory_target: {color: null, taste: 檸檬奶油味, texture: "水波蛋蛋白結實軟嫩、蛋黃溫熱流動；荷蘭醬濃稠可倒"}
 
 notes:
-  combination: "跨來源組合版：Gisslen 的 Eggs Benedict 原引用自家 p.200 荷蘭醬（Hollandaise I/II，產量 720 mL）；本檔依振達決定改用 LCB 四人份。兩者比例對照：LCB 奶油 250 g／蛋黃 4 顆／水 60 mL；Gisslen II 奶油 600 g／蛋黃 6 顆／冷水 30 mL／檸檬汁 45 mL"
-  burners: "家庭版順序（兩口爐）：①澄清奶油與荷蘭醬（爐口 A）→ 離火保溫 ②水波蛋（爐口 A）與熱火腿（爐口 B）同時 ③瑪芬用烤麵包機或烤箱。G1 原文只規定『蛋在煮的同時熱火腿』，沒有說荷蘭醬何時做；把荷蘭醬排在最前面是為了不超過兩口爐（推論）"
+  combination: "跨來源組合版：Gisslen 的 Eggs Benedict 原引用自家 p.200 荷蘭醬（Hollandaise I/II，產量 720 mL）；本檔依版本選擇改用 LCB 四人份。兩者比例對照：LCB 奶油 250 g／蛋黃 4 顆／水 60 mL；Gisslen II 奶油 600 g／蛋黃 6 顆／冷水 30 mL／檸檬汁 45 mL"
+  burners: "家庭版順序（最多同時用兩口爐）：①澄清奶油與荷蘭醬（爐口 A）→ 離火保溫 ②水波蛋（爐口 A）與熱火腿（爐口 B）同時 ③瑪芬用平底鍋乾烙（家庭改法，不是原文）。G1 原文只規定『蛋在煮的同時熱火腿』，沒有說荷蘭醬何時做；把荷蘭醬排在最前面是為了最多同時用兩口爐（推論）"
   lcb_time: "L1 準備時間 15 分鐘（Preparation time: 15 minutes）"
   hollandaise_reference: "G2 準則：用圓底不鏽鋼碗；標準比例 6 顆蛋黃對 450 g（1 lb）澄清奶油；加醋讓蛋白凝固較快、形狀較好（G1）"
-  hollandaise_holding_home: "G2 要求約 63°C 保溫；家庭離火後怎麼維持這個溫度原文沒寫，待振達試做"
+  hollandaise_holding_home: "G2 要求約 63°C 保溫；不用溫度計版；離火後怎麼維持這個溫度原文沒寫，待試做"
   cross_check: "Codex 主抽、Kimi 交叉核對；不一致與裁決見 research/p1/核對紀錄-班尼迪克蛋.md"
