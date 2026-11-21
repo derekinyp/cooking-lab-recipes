@@ -9,7 +9,7 @@
 schema_version: "1.0"
 recipe:
   id: pasta_bianca.home
-  version: "2.0"
+  version: "2.1"
   kind: dish
   dish_concept: dish/pasta_bianca
   name: {zh_hant: 白醬義大利麵, en: White sauce pasta with chicken and mushroom}
@@ -29,13 +29,14 @@ recipe:
     - {id: T2, title: "食力 foodNEXT〈水、鹽巴量加多少？義大利麵到底要怎麼煮？〉（摘自安東尼奧．卡路奇歐《PASTA義大利麵料理全書》，2022-09-16）", url: "https://www.foodnext.net/life/culture/paper/5234741503", level: C, type: web, accessed: 2026-11-21,
        note: "建議值旁證：『1公升水量要搭配100公克的麵條；1公升的水要配10公克的鹽巴』；『正常份量…每個人約是70至80克乾燥麵』、大份量『每個人使用100至110克乾燥麵』；並說濾水後『不要再額外用水沖洗麵條』（與 M 泡冷水不同，見 notes.compare）。本機 sources/c-foodnext-5234741503.*"}
     - {id: T3, title: "西西烹飪筆記〈白醬蒜味奶油雞肉蘑菇義大利麵〉（2018-10-13）", url: "https://www.sisicooking.com/2018/10/blog-post_22.html", level: C, type: web, accessed: 2026-11-21,
-       note: "建議值依據（雞胸肉、蒜、油）：『(一人份) 雞胸肉 75g 蒜頭 2瓣 … 橄欖油 1大匙』；橄欖油用在醃雞與煎雞。白醬做法不同（鮮奶油），不進主體。本機 sources/c-sisicooking-chicken-mushroom.*"}
+       note: "依據（雞胸肉已確認量、蒜與油的建議值）：『(一人份) 雞胸肉 75g 蒜頭 2瓣 … 橄欖油 1大匙』；橄欖油用在醃雞與煎雞。白醬做法不同（鮮奶油），不進主體。本機 sources/c-sisicooking-chicken-mushroom.*"}
     - {id: T4, title: "小磨坊〈白醬蘑菇雞肉義大利麵〉（愛料理，食譜 282394，2019-01-17）", url: "https://icook.tw/recipes/282394", level: C, type: web, accessed: 2026-11-21,
        note: "對照（兩人份）：『2 人份』、雞胸肉 400g、義大利麵(螺旋) 1/2包、蘑菇 5朵、洋蔥 1/2顆。白醬用濃湯粉，不進主體。本機 sources/c-icook-282394.*"}
     - {id: T5, title: "桑尼閒煮〈［超簡單］白醬蘑菇（雞肉）義大利麵〉（愛料理，食譜 380183）", url: "https://icook.tw/recipes/380183", level: C, type: web, accessed: 2026-11-21,
        note: "對照（4 人份）：義大利麵 400克、雞胸肉 200克、蒜頭 2瓣。白醬用鮮奶油，不進主體。本機 sources/c-icook-380183.*"}
   extracted_by: [grokbot]
   changelog:
+    - {version: "2.1", date: 2026-11-21, change: "雞胸肉兩人份由建議值改為已確認 150 公克（依據 T3 每人 75g 保留）；數字不變", by: grokbot}
     - {version: "2.0", date: 2026-11-21, change: "改用 B 版：主來源換成愛料理 159170 雞肉香菇白醬麵（3 人份）。M 有寫的數字照抄；目測詞保留原文；沒寫的標 missing；兩人份換算與建議值（T1–T5）只放 note 與 notes.two_serving。Dassana 版 v1.0（已兩邊比對過）存於 research/p2/dassana-版存檔/。狀態回到 machine_checked，第二輪比對另排", by: grokbot}
 
 ingredients:
@@ -49,7 +50,7 @@ ingredients:
            note: "M 沒寫克數。建議值：每 1 公升水 10 公克鹽，兩人份 2 公升水配 20 公克（T1、T2 同一比例）"}}
   - {id: p_chicken, concept: ing/chicken_breast, label: 雞胸肉, form: 小塊, role: 主料,
      qty: {value: null, unit: null, qualitative: 一大塊, raw_text: "雞胸肉 ㄧ大塊", evidence: M, status: sourced,
-           note: "M 沒寫克數。建議值：每人 75 公克，兩人 150 公克（T3 一人份『雞胸肉 75g』）。其他食譜差很多：T4 兩人份用 400g，T5 四人份用 200克"}}
+           note: "M 沒寫克數。兩人份已確認 150 公克（2026-11-21 選定）；依據 T3 一人份『雞胸肉 75g』（每人 75 公克）。其他食譜差很多：T4 兩人份用 400g，T5 四人份用 200克"}}
   - {id: p_babycorn, concept: ing/baby_corn, label: 玉米筍, form: 小塊, role: 輔料,
      qty: {value: 4, unit: stalk, raw_text: "玉米筍 4根", evidence: M, status: sourced, note: "M 原量（3 人份）。兩人份照比例約 3 根（4 × ⅔ ≈ 2.7）"}}
   - {id: p_shiitake, concept: ing/shiitake_fresh, label: 香菇, form: 片, role: 輔料,
@@ -238,7 +239,7 @@ serving:
 
 notes:
   main_source: "主來源只有 M。主體數字只照抄 M；T1–T3 只提供 M 沒寫的項目的建議值，T4、T5 只作對照，都不混進主體"
-  two_serving: "兩人份（M 是 3 人份）。照 M 比例 ×⅔：奶油約 33 公克、中筋麵粉約 33 公克、牛奶 400 毫升、玉米筍約 3 根、香菇約 3 至 4 朵、洋蔥約 ⅓ 顆。建議值（有出處）：義大利麵 200 公克（T1 每人 100g）、雞胸肉 150 公克（T3 每人 75g）、煮麵水 2 公升與鹽 20 公克（T1／T2 每 100g 麵 1 公升水、每 1 公升水 10g 鹽）、蒜頭 2 瓣（T5／T3）、炒料油 2 大匙（T3 每人 1 大匙）。原文沒寫也沒有建議值：調味鹽（試味）、各步驟火力與時間（除煮麵 6–7 分鐘）"
+  two_serving: "兩人份（M 是 3 人份）。已確認（2026-11-21 選定）：雞胸肉 150 公克（依據 T3 每人 75g）。照 M 比例 ×⅔：奶油約 33 公克、中筋麵粉約 33 公克、牛奶 400 毫升、玉米筍約 3 根、香菇約 3 至 4 朵、洋蔥約 ⅓ 顆。建議值（有出處）：義大利麵 200 公克（T1 每人 100g）、煮麵水 2 公升與鹽 20 公克（T1／T2 每 100g 麵 1 公升水、每 1 公升水 10g 鹽）、蒜頭 2 瓣（T5／T3）、炒料油 2 大匙（T3 每人 1 大匙）。原文沒寫也沒有建議值：調味鹽（試味）、各步驟火力與時間（除煮麵 6–7 分鐘）"
   burners: "兩口爐：可以先做白醬（平底鍋，1 口爐），同時另一口爐燒煮麵水（湯鍋）；煮麵時另一口爐炒料（炒鍋）。白醬做好離火放旁邊，不佔爐口。原文沒寫要幾口爐，這是推論"
   no_bake: "M 的焗烤是「另外想做成焗烤的話」的選做，本檔不做（起司量、烤溫、烤多久原文都沒寫）"
   compare: "M 煮好的麵撈起放入冷水備用；T2 說濾水後不要再用冷水或熱水沖麵，會沖掉太多澱粉。本檔照 M。另外 T3、T4、T5 的白醬分別用鮮奶油或濃湯粉，做法不同，不混用"

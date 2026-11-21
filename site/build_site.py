@@ -189,7 +189,9 @@ def range_html(q, label):
 
 def sug_html(iid, m):
     """白話說明檔給的「建議值」：原文沒寫或只寫目測詞時，附上有出處的參考量，和原文數字分開標示。"""
-    t = ((m['ov'].get('ing') or {}).get(iid) or {}).get('suggest')
+    o = (m['ov'].get('ing') or {}).get(iid) or {}
+    if o.get('confirmed'): return f'<span class="cfm"><b>已確認</b>{E(o["confirmed"])}</span>'
+    t = o.get('suggest')
     return f'<span class="sug"><b>建議值</b>{E(t)}</span>' if t else ''
 
 def qty_html(ing, m):
@@ -609,7 +611,7 @@ def notes_html(m):
 def two_html(m):
     t = m['ov'].get('two_serving')
     if not t: return ''
-    KIND = {'src': ('ok', '來源數字'), 'calc': ('ok', '照原文比例'), 'sug': ('watch', '建議值'), 'na': ('na', '原文沒寫')}
+    KIND = {'src': ('ok', '來源數字'), 'calc': ('ok', '照原文比例'), 'sug': ('watch', '建議值'), 'ok': ('ok', '已確認'), 'na': ('na', '原文沒寫')}
     rows = []
     for r in t['rows']:
         k = KIND[r['kind']]
