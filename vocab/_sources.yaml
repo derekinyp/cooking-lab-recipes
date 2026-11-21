@@ -1,0 +1,15 @@
+# 受控詞彙共用來源表。詞條以 source: <ID> 引用。
+WDA_C: {title: "勞動部技能檢定中心《技術士技能檢定中餐烹調（葷食項）丙級術科測試參考資料》附錄3 烹調法定義及食材處理手法釋義（104-06-17 審定版，鏡像）", url: "https://onlinetest.tw/btest/collection/07602/07602%E8%A1%93%E7%A7%91.pdf", level: A, note: "官方檢定文件；本機存檔 sources/wda-07602-shuke-mirror.pdf。現行版本需再到 wdasec.gov.tw 核對是否修訂"}
+WDA_CUT: {title: "勞動部《中餐烹調職類（葷食項）丙級 刀工作品規格卡》301–302 題組", url: "https://ws.wda.gov.tw/Download.ashx?n=5Lit6aSQ5LiZ57SaKOiRtykt6K236LKd56ys5LiA6ZqO5q615ris6Kmm6YGO56iL5YiA5bel5L2c5ZOB6KaP5qC85Y2hLnBkZg%3D%3D&u=LzAwMS9VcGxvYWQvMzMxL3JlbGZpbGUvOTc3OC8xMDYxNTAvZTIzNmJkMzctMDQzMC00ZmFhLWI2Y2UtZjQwNDBhNDUxZDZmLnBkZg%3D%3D", level: A, note: "尺寸是檢定題目的規格（單位公分，本詞彙換成毫米），不是通用定義；本機存檔 sources/wda-c-chinese-301-302.pdf"}
+DB51: {title: "DB51/T 1728-2014《中國川菜經典菜餚製作工藝規範》", url: "https://dbba.sacinfo.org.cn/portal/download/16132ff757ea958e03976e65675614f1", level: A}
+AIC23: {title: "Accademia Italiana della Cucina, Ragù alla bolognese ricetta aggiornata (2023-04-20)", url: "https://www.accademia1953.it/sites/default/files/Rag%C3%B9%20alla%20bolognese%20-%20ricetta%20aggiornata%2020%20aprile%202023.pdf", level: A}
+CCAS18: {title: "中國烹飪協會《中國菜——全國省籍地域經典名菜、主題名宴名錄》（2018-09-10）", url: "https://www.ccas.com.cn/site/content/101707.html", level: A}
+K1: {title: "本專案研究 K1（Kimi）菜系分類與技法整理", url: null, level: C, note: "research/kimi-K1-cuisine-technique-taxonomy.md；轉引教材，待逐條核對原書"}
+K2: {title: "本專案研究 K2（Kimi）味型體系", url: null, level: C, note: "research/kimi-K2-flavor-profiles.md"}
+K6: {title: "本專案研究 K6（Kimi）刀工、火候、技法詞彙", url: null, level: C, note: "research/p0/kimi-K6-vocab-cut-heat-tech.md"}
+SELF: {title: "本專案自擬（尚無外部來源）", url: null, level: C, note: "只作分類用，不帶任何數字"}
+# ── P1 新增（2026-11-20）──
+GBC_HEATHCOTE: {title: "Paul Heathcote, Heathcotes' steak au Poivre（Great British Chefs, first published 2015）", url: "https://www.greatbritishchefs.com/recipes/heathcotes-steak-au-poivre-recipe", level: B, note: "具名主廚出版食譜；本機存檔 sources/gbc-heathcote-steak-au-poivre.html"}
+GISSLEN: {title: "Wayne Gisslen《Professional Cooking》第 9 章 Sauces、第 25 章 Breakfast Preparation（Escoffier 學校公開 PDF，未標版次）", url: "https://resources.escoffier.edu/textbooks/gisslen/professional_cooking_25.pdf", level: A, note: "餐飲教科書；本機存檔 sources/gisslen-professional-cooking-ch09.pdf、ch25.pdf"}
+LCB: {title: "Le Cordon Bleu, Technique: Hollandaise sauce", url: "https://www.cordonbleu.edu/news/technique-video-hollandaise-sauce/en", level: A, note: "烹飪學校官方頁；本機存檔 sources/lcb-hollandaise.html"}
+WDA_301: {title: "勞動部中餐烹調（葷食項）丙級術科 301-1 題組（乾煸四季豆）材料明細與烹調規定", url: "https://onlinetest.tw/btest/collection/07602/07602%E8%A1%93%E7%A7%91.pdf", level: A, note: "與 WDA_C 同一份文件（104-06-17 審定版鏡像）"}

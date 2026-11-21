@@ -1,0 +1,188 @@
+# 宮保雞丁（四川傳統，地方標準版）— 正式檔，規格 v1.0
+# 數值全部來自 DB51/T 1728-2014 附錄 B.3 與表 2；來源沒寫的一律 null＋status: missing。
+schema_version: "1.0"
+recipe:
+  id: gongbao_jiding.sichuan.db51t1728
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/gongbao_jiding
+  name: {zh_hant: 宮保雞丁, zh_hans: 宫保鸡丁, en: Kung Pao chicken}
+  variant: 四川傳統（地方標準版）
+  summary: 雞丁滑嫩、花生香脆，鹹鮮麻辣帶一點甜酸，顏色棕紅。
+  cuisine:
+    - {id: cuisine/chuan, basis: "DB51/T 1728-2014 列為川菜禽肉類經典菜餚", claim: primary, evidence: S1}
+    - {id: region/sichuan, basis: "四川省地方標準", claim: primary, evidence: S1}
+    - {id: region/guizhou, basis: "丁寶楨任職貴州的起源說（K1，C 級）", claim: origin_claim}
+  flavor_template: {ref: flavor/hulat_sweet_sour, basis: "DB51/T 1728-2014 表 2：煳辣味型略帶甜酸", evidence: S1}
+  servings: {value: null, status: missing, note: "標準未標份數；主料雞肉 200 g"}
+  status: machine_checked
+  catalog:
+    - {list: 中國烹飪協會2018地域經典名菜, region: 四川, listed: null, note: "待 K4 名錄核對"}
+  sources:
+    - id: S1
+      title: "DB51/T 1728-2014《中國川菜經典菜餚製作工藝規範》附錄 B.3、表 2"
+      url: https://dbba.sacinfo.org.cn/portal/download/16132ff757ea958e03976e65675614f1
+      level: A
+      type: standard
+      accessed: 2026-11-20
+      note: "配方允許誤差 ≤10%；水澱粉＝澱粉:水 1:1（標準總則註）"
+  extracted_by: [kimi, grokbot]
+  changelog:
+    - {version: "1.0", date: 2026-11-20, change: "由 examples/gongbao-jiding.yaml（v0.2 草案）轉為規格 v1.0 正式檔", by: grokbot}
+
+ingredients:
+  - {id: i_chicken, concept: ing/chicken_thigh_breast, label: 雞肉（仔公雞腿肉與脯肉）, role: 主料,
+     qty: {value: 200, unit: g, raw_text: "雞肉 200", evidence: S1, status: sourced}}
+  - {id: i_peanut, concept: ing/peanut_fried, label: 酥花生, role: 輔料,
+     qty: {value: 50, unit: g, raw_text: "酥花生 50", evidence: S1, status: sourced},
+     made_by: {ref: recipe/su_huasheng, status: 未建, note: "標準視為備妥食材"}}
+  - {id: i_chili, concept: ing/dried_chili, label: 乾辣椒, role: 香料,
+     qty: {value: 8, unit: g, raw_text: "乾辣椒 8", evidence: S1, status: sourced}}
+  - {id: i_pepper, concept: ing/sichuan_pepper, label: 花椒, role: 香料,
+     qty: {value: 1.6, unit: g, raw_text: "花椒 1.6", evidence: S1, status: sourced}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 輔料,
+     qty: {value: 10, unit: g, raw_text: "薑片 10", evidence: S1, status: sourced}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜片, form: 片, role: 輔料,
+     qty: {value: 20, unit: g, raw_text: "蒜片 20", evidence: S1, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥丁, form: 丁, role: 輔料,
+     qty: {value: 40, unit: g, raw_text: "蔥丁 40", evidence: S1, status: sourced}}
+  - {id: i_salt_m, concept: ing/salt, label: 食鹽（碼味）, role: 調料,
+     qty: {value: 1, unit: g, raw_text: "食鹽 1.5（碼味 1、調味 0.5）", evidence: S1, status: sourced}}
+  - {id: i_wine_m, concept: ing/cooking_wine, label: 料酒（碼味）, role: 調料,
+     qty: {value: 3, unit: g, raw_text: "料酒 6（碼味 3、調味 3）", evidence: S1, status: sourced}}
+  - {id: i_starch_m, concept: ing/starch_slurry_1to1, label: 水澱粉（碼味）, role: 芡粉,
+     qty: {value: 20, unit: g, raw_text: "水澱粉 30（碼味 20、調味 10）", evidence: S1, status: sourced}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂,
+     qty: {value: 50, unit: g, raw_text: "食用油 50", evidence: S1, status: sourced}}
+
+components:
+  - id: c_sauce
+    call: {ref: recipe/gongbao_sauce.db51t1728, version: "1.0", scale: 1.0}
+    output_as: s_sauce
+    make_ahead: true
+    note: 可先兌好
+    definition:
+      recipe:
+        id: gongbao_sauce.db51t1728
+        version: "1.0"
+        kind: sauce
+        name: {zh_hant: 宮保芡汁（兌碗芡）}
+        flavor_template: {ref: flavor/hulat_sweet_sour, evidence: S1}
+        status: machine_checked
+      ingredients:
+        - {id: j_salt, concept: ing/salt, label: 食鹽（調味）, role: 調料, qty: {value: 0.5, unit: g, evidence: S1, status: sourced}}
+        - {id: j_sugar, concept: ing/white_sugar, label: 白糖, role: 調料, qty: {value: 8, unit: g, evidence: S1, status: sourced}}
+        - {id: j_soy, concept: ing/soy_sauce, label: 醬油, role: 調料, qty: {value: 5, unit: g, evidence: S1, status: sourced}}
+        - {id: j_vinegar, concept: ing/vinegar, label: 醋, role: 調料, qty: {value: 6, unit: g, evidence: S1, status: sourced}}
+        - {id: j_wine, concept: ing/cooking_wine, label: 料酒（調味）, role: 調料, qty: {value: 3, unit: g, evidence: S1, status: sourced}}
+        - {id: j_starch, concept: ing/starch_slurry_1to1, label: 水澱粉（調味）, role: 芡粉, qty: {value: 10, unit: g, evidence: S1, status: sourced}}
+        - {id: j_stock, concept: ing/stock_light, label: 鮮湯, role: 液體, qty: {value: 25, unit: g, evidence: S1, status: sourced}}
+        - {id: j_msg, concept: ing/msg, label: 味精, role: 調料, optional: true, qty: {value: 1, unit: g, evidence: S1, status: sourced}}
+      actions:
+        - id: ja1
+          technique: tech/combine
+          term: 入碗調成芡汁
+          inputs: [j_salt, j_sugar, j_soy, j_vinegar, j_wine, j_starch, j_stock, j_msg]
+          outputs: [s_sauce]
+          tool: tool/bowl
+          completion: [{observe: 調料, target: 糖鹽溶解、澱粉懸浮均勻, method: 目測}]
+          note: "表 2：應控制好白糖和醋的用量與比例，以呈現出略帶甜酸的味道為宜"
+
+states:
+  - {id: s_diced, label: 雞肉中丁}
+  - {id: s_marinated, label: 碼味上漿雞丁}
+  - {id: s_chili_seg, label: 乾辣椒節（2 cm）}
+  - {id: s_hot_oil, label: 150°C 熱油}
+  - {id: s_aromatic, label: 煳辣香油底}
+  - {id: s_chicken_cooked, label: 斷生雞丁}
+  - {id: s_fragrant, label: 雞丁＋薑蒜蔥炒香}
+  - {id: s_coated, label: 包芡雞丁}
+  - {id: s_final, label: 宮保雞丁, role: final}
+
+actions:
+  - id: a1
+    technique: tech/cut
+    term: 切中丁
+    inputs: [i_chicken]
+    outputs: [s_diced]
+    tool: tool/knife
+    params: {cut: {shape: cut/ding_medium, size_mm: {min: null, max: null}, raw: 中丁, evidence: S1, note: "標準未給毫米；網路常見 15 mm（C 級，未採用）"}}
+    completion: [{observe: 雞丁, target: 大小一致的中丁, method: 目測}]
+    can_overlap: [a3]
+  - id: a2
+    technique: tech/marinate_coat
+    term: 碼味上漿
+    inputs: [s_diced, i_salt_m, i_wine_m, i_starch_m]
+    outputs: [s_marinated]
+    params: {duration: {min_s: null, max_s: null, raw: 標準未註明, status: missing}, agitation: {mode: 拌勻}}
+    completion: [{observe: 雞丁, target: 均勻裹漿, method: 目測／手感}]
+  - id: a3
+    technique: tech/cut
+    term: 切節
+    inputs: [i_chili]
+    outputs: [s_chili_seg]
+    tool: tool/knife
+    params: {cut: {shape: cut/segment, size_mm: {min: 20, max: 20}, raw: "長 2cm 的節", evidence: S1}}
+    completion: [{observe: 辣椒, target: 長 2 cm 的節, method: 目測, evidence: S1}]
+  - id: a4
+    technique: tech/heat_oil
+    term: 燒油
+    inputs: [i_oil]
+    outputs: [s_hot_oil]
+    tool: tool/wok
+    params:
+      temperature: {target: oil, min_c: 150, max_c: 150, raw: "油燒至 150℃", evidence: S1}
+      heat: {level: null, raw: 標準未寫火力檔位}
+    completion: [{observe: 油溫, target: 150°C, method: 溫度計或經驗, evidence: S1}]
+  - id: a5
+    technique: tech/qiang
+    term: 炒香（熗辣椒花椒）
+    inputs: [s_hot_oil, s_chili_seg, i_pepper]
+    outputs: [s_aromatic]
+    tool: tool/wok
+    params: {agitation: {mode: 翻炒, continuous: true}}
+    completion: [{observe: 辣椒花椒色澤, target: 棕紅、出香、勿焦, method: 目測與嗅覺, evidence: S1}]
+    risk: 最易失敗步驟：過火即焦苦
+  - id: a6
+    technique: tech/stir_fry_slide
+    term: 入雞丁炒斷生
+    inputs: [s_aromatic, s_marinated]
+    outputs: [s_chicken_cooked]
+    tool: tool/wok
+    params: {agitation: {mode: 翻炒／炒散, continuous: true}}
+    completion: [{observe: 雞丁熟度, target: 剛熟（斷生）, method: 目測（變白、無血色）, evidence: S1}]
+  - id: a7
+    technique: tech/stir_fry
+    term: 入薑蒜蔥炒香
+    inputs: [s_chicken_cooked, i_ginger, i_garlic, i_scallion]
+    outputs: [s_fragrant]
+    tool: tool/wok
+    completion: [{observe: 香氣, target: 出香, method: 嗅覺}]
+  - id: a8
+    technique: tech/pour_sauce_thicken
+    term: 倒芡汁收汁
+    inputs: [s_fragrant, s_sauce]
+    outputs: [s_coated]
+    tool: tool/wok
+    params: {thickening: {type: 包芡, starch_ref: j_starch}}
+    completion:
+      - {observe: 芡汁, target: 濃稠包裹、亮油, method: 目測, evidence: S1}
+      - {observe: 澱粉糊化後, target: 及時起鍋、不宜久炒, method: 目測, evidence: S1}
+  - id: a9
+    technique: tech/toss_in
+    term: 下酥花生炒勻
+    inputs: [s_coated, i_peanut]
+    outputs: [s_final]
+    tool: tool/wok
+    completion: [{observe: 花生, target: 香脆不返軟, method: 口感, evidence: S1}]
+    timing: {phase: 起鍋前, evidence: S1, status: sourced}
+
+serving:
+  completion:
+    - {observe: 菜品中心溫度, target: "≥70°C", method: 溫度計, evidence: S1}
+    - {observe: 出鍋至食用, target: "≤10 分鐘", evidence: S1}
+  sensory_target: {color: 棕紅, taste: 鹹鮮麻辣略帶甜酸, texture: 雞肉滑嫩、花生香脆}
+
+notes:
+  variants: "京派（先過油取出再回鍋合炒、偏甜）、黔派（糍粑辣椒）、魯式醬爆雞丁另立變體；來源僅 C 級，未進主體"
+  cross_check: "網路流傳『醋略重於糖，糖:醋≈1:1.2–1.5』（K2，C 級）與本標準 8:6 相反；以標準為主，差異留給振達試做判斷"

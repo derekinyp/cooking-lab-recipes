@@ -1,0 +1,27 @@
+# 湯匙／目測換算表（只給網頁顯示用，不寫回食譜檔）
+# 每一筆都來自下列出處的原始數字；網頁上一律標「換算值」並連到出處。
+# 找不到可靠對應的食材一律不換算（例：花椒、郫縣豆瓣、豆豉、醬油膏、冰糖、紅糖、水澱粉、味精）。
+sources:
+  usda:
+    title: "美國農業部 FoodData Central（SR Legacy，2018 年 4 月版）各食材「常用份量」重量"
+    url: https://fdc.nal.usda.gov/download-datasets/
+  nist:
+    title: "美國國家標準與技術研究院（NIST）〈Metric Kitchen: Cooking Measurement Equivalencies〉：1 大匙＝3 小匙＝15 毫升、1 液量盎司＝2 大匙、1 杯＝16 大匙＝240 毫升"
+    url: https://www.nist.gov/pml/owm/metric-si/metric-kitchen/metric-kitchen-cooking-measurement-equivalencies
+items:
+  # g_per_tbsp：每 1 大匙幾克；g_per_piece：每 1 個目測單位幾克。basis 寫原始數字，方便核對。
+  - {concepts: [ing/salt], name: 鹽, fdc: 173468, usda_name: "Salt, table", g_per_tbsp: 18, basis: "1 tbsp = 18 g；1 tsp = 6 g"}
+  - {concepts: [ing/white_sugar], name: 白糖（砂糖）, fdc: 169655, usda_name: "Sugars, granulated", g_per_tbsp: 12.6, basis: "1 tsp = 4.2 g；1 大匙＝3 小匙（NIST）"}
+  - {concepts: [ing/soy_sauce], name: 醬油, fdc: 174277, usda_name: "Soy sauce made from soy and wheat (shoyu)", g_per_tbsp: 16, basis: "1 tbsp = 16 g；1 cup = 255 g"}
+  - {concepts: [ing/cooking_oil], name: 食用油（以大豆油計）, fdc: 172370, usda_name: "Oil, vegetable, soybean, refined", g_per_tbsp: 13.6, basis: "1 tablespoon = 13.6 g"}
+  - {concepts: [ing/chili_oil], name: 辣椒油（以植物油計）, fdc: 172370, usda_name: "Oil, vegetable, soybean, refined", g_per_tbsp: 13.6, basis: "1 tablespoon = 13.6 g（市售辣椒油含辣椒渣，實際會略有不同）"}
+  - {concepts: [ing/sesame_oil], name: 芝麻油（香油）, fdc: 171016, usda_name: "Oil, sesame, salad or cooking", g_per_tbsp: 13.6, basis: "1 tablespoon = 13.6 g"}
+  - {concepts: [ing/vinegar], name: 醋（以白醋計）, fdc: 172237, usda_name: "Vinegar, distilled", g_per_tbsp: 14.9, basis: "1 tbsp = 14.9 g"}
+  - {concepts: [ing/cooking_wine], name: 料酒、米酒（以米酒計）, fdc: 167723, usda_name: "Alcoholic beverage, rice (sake)", g_per_tbsp: 14.55, basis: "1 fl oz = 29.1 g；1 液量盎司＝2 大匙（NIST）"}
+  - {concepts: [ing/stock_light], name: 鮮湯（以雞高湯計）, fdc: 172884, usda_name: "Soup, stock, chicken, home-prepared", g_per_tbsp: 15, basis: "1 cup = 240 g；1 杯＝16 大匙（NIST）"}
+  - {concepts: [ing/butter], name: 奶油, fdc: 173410, usda_name: "Butter, salted", g_per_tbsp: 14.2, basis: "1 tbsp = 14.2 g"}
+  - {concepts: [ing/chili_powder], name: 辣椒粉（以紅辣椒粉計）, fdc: 170932, usda_name: "Spices, pepper, red or cayenne", g_per_tbsp: 5.3, basis: "1 tbsp = 5.3 g；1 tsp = 1.8 g"}
+  - {concepts: [ing/garlic], name: 蒜, fdc: 169230, usda_name: "Garlic, raw", g_per_piece: 3, piece: 瓣, basis: "1 clove = 3 g"}
+  - {concepts: [ing/ginger], name: 薑片, fdc: 169231, usda_name: "Ginger root, raw", g_per_piece: 2.2, piece: 片（直徑約 2.5 公分）, basis: "5 slices (1\" dia) = 11 g"}
+  - {concepts: [ing/scallion], name: 蔥花、蔥丁, fdc: 170005, usda_name: "Onions, spring or scallions (includes tops and bulb), raw", g_per_tbsp: 6, basis: "1 tbsp chopped = 6 g（切碎後鬆鬆裝滿）", only_labels: [蔥花, 蔥丁]}
+  - {concepts: [ing/peanut_fried], name: 酥花生, fdc: 174261, usda_name: "Peanuts, all types, oil-roasted, with salt", g_per_piece: 0.886, piece: 顆, basis: "1 oz shelled (32 nuts) = 28.35 g"}

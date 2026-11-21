@@ -1,0 +1,77 @@
+# 菜系雙軸 v1.0
+# 軸一 tradition（cuisine/…）：傳統菜系與流派。八大菜系是通行說法（教學與出版公約，非法定）；台菜、京、滬等另列。
+# 軸二 region（region/…）：地理行政區。中國部分對齊中國烹飪協會 2018《中國菜》名錄的 34 個省級地域（CCAS18）；
+#       其他國家用 國家.地區 的階層 id。
+# 一道菜可同時掛兩軸、多個值；每個掛法都要寫 basis（依據）。
+version: "1.0"
+tradition:
+  scheme: cuisine
+  concepts:
+    - {id: cuisine/chuan, zh: 川菜, alt: [四川菜], en: Sichuan cuisine, group: 八大菜系, source: K1}
+    - {id: cuisine/lu, zh: 魯菜, alt: [山東菜], en: Shandong cuisine, group: 八大菜系, source: K1}
+    - {id: cuisine/yue, zh: 粵菜, alt: [廣東菜], en: Cantonese cuisine, group: 八大菜系, source: K1}
+    - {id: cuisine/yue.chaozhou, zh: 潮州菜, alt: [潮汕菜], en: Teochew cuisine, broader: cuisine/yue, note: "常被視為獨立菜系；邊界有爭議", source: K1}
+    - {id: cuisine/yue.hakka, zh: 東江菜, alt: [廣東客家菜], en: Dongjiang (Hakka) cuisine, broader: cuisine/yue, source: K1}
+    - {id: cuisine/su, zh: 蘇菜, alt: [淮揚菜, 江蘇菜], en: Jiangsu / Huaiyang cuisine, group: 八大菜系, source: K1}
+    - {id: cuisine/zhe, zh: 浙菜, alt: [浙江菜], en: Zhejiang cuisine, group: 八大菜系, source: K1}
+    - {id: cuisine/min, zh: 閩菜, alt: [福建菜], en: Fujian cuisine, group: 八大菜系, source: K1}
+    - {id: cuisine/xiang, zh: 湘菜, alt: [湖南菜], en: Hunan cuisine, group: 八大菜系, source: K1}
+    - {id: cuisine/hui, zh: 徽菜, alt: [安徽菜], en: Anhui cuisine, group: 八大菜系, source: K1}
+    - {id: cuisine/jing, zh: 京菜, alt: [北京菜], en: Beijing cuisine, group: 十大菜系增列, source: K1}
+    - {id: cuisine/hu, zh: 本幫菜, alt: [上海菜, 滬菜], en: Shanghai cuisine, group: 十大菜系增列, source: K1}
+    - {id: cuisine/taiwanese, zh: 台菜, alt: [台灣菜], en: Taiwanese cuisine, group: 台灣, source: SELF}
+    - {id: cuisine/taiwanese.hakka, zh: 台灣客家菜, alt: [客家菜], en: Taiwanese Hakka cuisine, broader: cuisine/taiwanese, source: SELF}
+    - {id: cuisine/taiwanese.home, zh: 台式家常, alt: [家常菜], en: Taiwanese home cooking, broader: cuisine/taiwanese, source: SELF}
+    - {id: cuisine/italian, zh: 義大利菜, alt: [], en: Italian cuisine, group: 西菜, source: SELF}
+    - {id: cuisine/french, zh: 法國菜, alt: [法式], en: French cuisine, group: 西菜, source: SELF}
+    - {id: cuisine/spanish, zh: 西班牙菜, alt: [], en: Spanish cuisine, group: 西菜, source: SELF}
+    - {id: cuisine/japanese, zh: 日本料理, alt: [日式], en: Japanese cuisine, group: 其他, source: SELF}
+    - {id: cuisine/american, zh: 美國菜, alt: [美式], en: American cuisine, group: 西菜, source: SELF, note: "P1 新增：班尼迪克蛋（GISSLEN 早餐章）"}
+region:
+  scheme: region
+  ccas2018_note: "34 個省級地域（含港澳台），對齊 CCAS18；各地入選名菜清單見 catalogs/ccas2018（待 K4 補齊）"
+  concepts:
+    - {id: region/beijing, zh: 北京}
+    - {id: region/tianjin, zh: 天津}
+    - {id: region/hebei, zh: 河北}
+    - {id: region/shanxi, zh: 山西}
+    - {id: region/neimenggu, zh: 內蒙古}
+    - {id: region/liaoning, zh: 遼寧}
+    - {id: region/jilin, zh: 吉林}
+    - {id: region/heilongjiang, zh: 黑龍江}
+    - {id: region/shanghai, zh: 上海}
+    - {id: region/jiangsu, zh: 江蘇}
+    - {id: region/zhejiang, zh: 浙江}
+    - {id: region/anhui, zh: 安徽}
+    - {id: region/fujian, zh: 福建}
+    - {id: region/jiangxi, zh: 江西}
+    - {id: region/shandong, zh: 山東}
+    - {id: region/henan, zh: 河南}
+    - {id: region/hubei, zh: 湖北}
+    - {id: region/hunan, zh: 湖南}
+    - {id: region/guangdong, zh: 廣東}
+    - {id: region/guangxi, zh: 廣西}
+    - {id: region/hainan, zh: 海南}
+    - {id: region/chongqing, zh: 重慶}
+    - {id: region/sichuan, zh: 四川}
+    - {id: region/guizhou, zh: 貴州}
+    - {id: region/yunnan, zh: 雲南}
+    - {id: region/xizang, zh: 西藏}
+    - {id: region/shaanxi, zh: 陝西}
+    - {id: region/gansu, zh: 甘肅}
+    - {id: region/qinghai, zh: 青海}
+    - {id: region/ningxia, zh: 寧夏}
+    - {id: region/xinjiang, zh: 新疆}
+    - {id: region/hongkong, zh: 香港}
+    - {id: region/macau, zh: 澳門}
+    - {id: region/taiwan, zh: 台灣}
+    - {id: region/italy, zh: 義大利}
+    - {id: region/italy.emilia_romagna, zh: 艾米利亞—羅馬涅, broader: region/italy}
+    - {id: region/italy.emilia_romagna.bologna, zh: 波隆那, broader: region/italy.emilia_romagna}
+    - {id: region/italy.lazio, zh: 拉齊奧（羅馬）, broader: region/italy}
+    - {id: region/italy.liguria, zh: 利古里亞（熱那亞）, broader: region/italy}
+    - {id: region/france, zh: 法國}
+    - {id: region/france.burgundy, zh: 勃艮第, broader: region/france}
+    - {id: region/spain, zh: 西班牙}
+    - {id: region/spain.valencia, zh: 瓦倫西亞, broader: region/spain}
+    - {id: region/usa, zh: 美國, note: "P1 新增：班尼迪克蛋"}

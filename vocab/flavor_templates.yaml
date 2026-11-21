@@ -1,0 +1,147 @@
+# 味型／醬汁範本 v1.0（初版 12 個：10 個中式味型＋2 個台式醬汁範本）
+# 每個範本：主味（main）、必要調料（required）、常見調料（common）、投料要點（order）、比例（ratios）。
+# 規則：ratios 每一筆都必須附 source 與證據等級；目前多數只有 C 級網路說法，標 disputed 時表示說法互相矛盾。
+# 沒有可靠比例的，ratios 留空——等金標準菜試做後由振達的回饋升級。
+scheme: flavor
+version: "1.0"
+templates:
+  - id: flavor/xian_xian
+    zh: 鹹鮮味
+    kind: 味型
+    cuisines: [cuisine/chuan, cuisine/lu, cuisine/su, cuisine/yue]
+    main: [鹹, 鮮]
+    required: [鹽或醬油]
+    common: [胡椒, 料酒, 蔥, 薑, 味精]
+    order: "突出主料本味，調料不搶味"
+    example_dishes: [清燉類, 白灼蝦, 蔥油雞]
+    ratios: []
+    source: K2
+  - id: flavor/jiachang
+    zh: 家常味
+    kind: 味型
+    cuisines: [cuisine/chuan]
+    main: [鹹, 鮮, 微辣]
+    required: [郫縣豆瓣]
+    common: [醬油, 蔥, 薑, 蒜, 糖（回甜）]
+    order: "豆瓣炒出紅油與香氣再下主料"
+    example_dishes: [回鍋肉, 家常豆腐]
+    ratios: []
+    source: K2
+  - id: flavor/yuxiang
+    zh: 魚香味
+    kind: 味型
+    cuisines: [cuisine/chuan]
+    main: [鹹, 甜, 酸, 辣, 蔥薑蒜香]
+    required: [泡辣椒, 蔥, 薑, 蒜, 糖, 醋, 醬油]
+    common: [郫縣豆瓣（部分流派）, 水澱粉]
+    order: "泡辣椒、薑蒜炒香，起鍋前烹入兌好的魚香汁"
+    example_dishes: [魚香肉絲, 魚香茄子]
+    ratios:
+      - {what: "醬油:醋:糖", value: "2:2:1", level: C, source: "百度百科《魚香汁》", disputed: true}
+      - {what: "糖:醋:生抽", value: "1:1.5:1", level: C, source: "新浪美食", disputed: true}
+    source: K2
+  - id: flavor/mala
+    zh: 麻辣味
+    kind: 味型
+    cuisines: [cuisine/chuan]
+    main: [麻, 辣, 鹹, 鮮]
+    required: [辣椒（豆瓣或乾辣椒或辣椒粉）, 花椒]
+    common: [醬油, 料酒, 蒜]
+    order: "花椒粉多在起鍋前或裝盤後撒"
+    example_dishes: [麻婆豆腐, 水煮牛肉]
+    ratios: []
+    source: K2
+  - id: flavor/hulat_sweet_sour
+    zh: 煳辣荔枝味
+    alt: [煳辣味（略帶甜酸）, 宮保味]
+    kind: 味型
+    cuisines: [cuisine/chuan]
+    main: [煳辣香, 麻, 鹹鮮, 甜酸]
+    required: [乾辣椒, 花椒, 糖, 醋, 醬油]
+    common: [蔥, 薑, 蒜, 料酒, 水澱粉]
+    order: "乾辣椒、花椒入油熗至棕紅出香，勿焦；起鍋前烹入碗芡"
+    example_dishes: [宮保雞丁]
+    ratios:
+      - {what: "糖:醋（宮保雞丁單菜）", value: "8:6", level: A, source: "DB51/T 1728-2014 附錄 B.3", note: "單一菜餚的標準配方，不等於整個味型"}
+      - {what: "糖:醋", value: "1:1.2–1.5（醋略重於糖）", level: C, source: "K2 網路整理（微博、新浪、360doc）", disputed: true, note: "與 DB51 的糖略多於醋相反，留給振達試做判斷"}
+    source: DB51
+  - id: flavor/tangcu
+    zh: 糖醋味
+    kind: 味型
+    cuisines: [cuisine/chuan, cuisine/su, cuisine/lu, cuisine/taiwanese]
+    main: [甜, 酸, 鹹（輕）]
+    required: [糖, 醋]
+    common: [鹽, 醬油, 番茄醬（台式常見）, 水澱粉]
+    order: "糖醋汁多在最後烹入或勾芡包裹"
+    example_dishes: [糖醋排骨, 糖醋里肌, 糖醋魚]
+    ratios:
+      - {what: "料酒:醬油:糖:醋:水（「12345」口訣）", value: "1:2:3:4:5", level: C, source: "家庭口訣（K2）", disputed: true, note: "有糖醋位置互換的另一版本"}
+      - {what: "糖醋汁", value: "5:4:3:2:1", level: C, source: "mingchucaipu 糖醋汁條目（K2）", disputed: true}
+    source: K2
+  - id: flavor/hongyou
+    zh: 紅油味
+    kind: 味型
+    cuisines: [cuisine/chuan]
+    main: [鹹, 鮮, 辣, 香]
+    required: [紅油（辣椒油）]
+    common: [醬油, 糖, 味精, 芝麻, 蔥]
+    order: "多用於涼菜，調味汁拌入"
+    example_dishes: [紅油耳片, 紅油抄手]
+    ratios: []
+    source: K2
+  - id: flavor/suanni
+    zh: 蒜泥味
+    kind: 味型
+    cuisines: [cuisine/chuan, cuisine/taiwanese]
+    main: [蒜香, 鹹, 鮮]
+    required: [蒜泥]
+    common: [醬油（或複製甜醬油）, 紅油, 香油, 醬油膏（台式）]
+    order: "蒜泥現搗；多用於涼菜或白肉"
+    example_dishes: [蒜泥白肉, 台式蒜泥白肉]
+    ratios: []
+    source: K2
+  - id: flavor/suanla
+    zh: 酸辣味
+    kind: 味型
+    cuisines: [cuisine/chuan, cuisine/jing, cuisine/taiwanese]
+    main: [酸, 辣, 鹹]
+    required: [醋, 胡椒或辣椒]
+    common: [醬油, 蔥, 薑, 水澱粉]
+    order: "醋易揮發，多在起鍋前加"
+    example_dishes: [酸辣湯, 酸辣土豆絲]
+    ratios: []
+    source: K2
+  - id: flavor/wuxiang
+    zh: 五香味
+    kind: 味型
+    cuisines: [cuisine/chuan, cuisine/taiwanese, cuisine/min]
+    main: [香料香, 鹹]
+    required: [五香料（八角、桂皮、小茴香、花椒、丁香等組合）]
+    common: [醬油, 料酒, 糖, 蔥, 薑]
+    order: "滷、燉、醃時長時間浸出香氣"
+    example_dishes: [五香牛肉, 滷肉, 五香豆乾]
+    ratios: []
+    source: K2
+  - id: flavor/sanbei
+    zh: 三杯
+    kind: 醬汁範本
+    cuisines: [cuisine/taiwanese]
+    main: [醬香, 甜鹹, 麻油香, 九層塔香]
+    required: [麻油, 米酒, 醬油, 九層塔, 薑, 蒜]
+    common: [糖, 辣椒]
+    order: "麻油煸薑至捲曲，最後下九層塔"
+    example_dishes: [三杯雞, 三杯中卷]
+    ratios: []
+    note: "名稱來自「各一杯」的傳說，實際比例各家不同；待找教材或官方出版"
+    source: SELF
+  - id: flavor/wuwei
+    zh: 五味醬
+    kind: 醬汁範本
+    cuisines: [cuisine/taiwanese]
+    main: [酸, 甜, 鹹, 辣, 蔥薑蒜香]
+    required: [番茄醬, 醬油膏, 糖, 醋, 蔥, 薑, 蒜, 辣椒]
+    common: [香油]
+    order: "生料拌勻，作沾醬（海鮮、白灼）"
+    example_dishes: [五味中卷, 五味透抽]
+    ratios: []
+    source: K2

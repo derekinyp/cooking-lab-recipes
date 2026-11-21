@@ -1,0 +1,176 @@
+# 乾煸四季豆（少油家庭版）— 正式檔，規格 v1.0
+# 振達決定：主版本是少油家庭版；官方過油版（DB51/T 1728 D.11：四季豆入 150°C 油炸，食用油 1000 g 約耗 50 g）只當參照，不另建檔。
+# 份量（四季豆、豬肉、芽菜、調味料）全部沿用 DB51 D.11；煸豆的用油量、火力、翻炒方式改用公開少油食譜（C 級，C2，屬改編），入鍋前擦乾依 C1／C2。
+# 「不過油、直接煸到皺縮」有官方依據：勞動部丙級 301-1 烹調規定第 2 條「或以煸炒法煸至乾扁脫水皺縮呈黃綠而不焦黑」。
+# 爐口（家庭安排，推論）：全程 1 口、1 只平底鍋，依序做：先炒肉臊盛起，再煸豆、合炒（官方與 C1、C2 都是先豆後肉，本檔對調）。
+schema_version: "1.0"
+recipe:
+  id: ganbian_sijidou.sichuan.db51t1728_lowoil
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/ganbian_sijidou
+  name: {zh_hant: 乾煸四季豆, zh_hans: 干煸四季豆, en: Dry-fried green beans}
+  variant: 少油家庭版（平底鍋少油煸，不過油）
+  summary: 四季豆用平底鍋少油煸到表皮起皺，再和酥香肉末、芽菜一起煸炒入味，鹹鮮乾香。
+  cuisine:
+    - {id: cuisine/chuan, basis: "DB51/T 1728-2014 列為川菜蔬果類經典菜餚（表 4 第 11 列）", claim: primary, evidence: S1}
+    - {id: region/sichuan, basis: "四川省地方標準", claim: primary, evidence: S1}
+    - {id: region/taiwan, basis: "勞動部中餐烹調丙級術科 301-1 題組考題", claim: secondary, evidence: W1}
+  flavor_template: {ref: flavor/xian_xian, basis: "DB51/T 1728-2014 表 4 第 11 列：鹹鮮味型（原文沒有辣椒、花椒）", evidence: S1}
+  servings: {value: null, status: missing, note: "標準未標份數；主料四季豆 250 g"}
+  status: cross_checked
+  catalog:
+    - {list: 中國烹飪協會2018地域經典名菜, region: 四川, listed: false, note: "catalogs/ccas2018-340.md 四川 10 道未列"}
+  sources:
+    - id: S1
+      title: "DB51/T 1728-2014《中國川菜經典菜餚製作工藝規範》附錄 D.11、表 4 第 11 列"
+      url: https://dbba.sacinfo.org.cn/portal/download/16132ff757ea958e03976e65675614f1
+      level: A
+      type: standard
+      accessed: 2026-11-20
+      note: "本機存檔 sources/db51t1728-2014.pdf；配方允許誤差 ≤10%；官方為過油版，本檔只沿用份量、調味與完成狀態"
+    - id: W1
+      title: "勞動部《中餐烹調（葷食項）丙級技術士技能檢定術科測試參考資料》301-1 題組：乾煸四季豆（104-06-17 審定版，鏡像）"
+      url: "https://onlinetest.tw/btest/collection/07602/07602%E8%A1%93%E7%A7%91.pdf"
+      level: A
+      type: official
+      accessed: 2026-11-20
+      note: "本機存檔 sources/wda-07602-shuke-mirror.pdf；調味料『自選合宜地使用』，無定量"
+    - id: C2
+      title: "十分鐘小廚〈干煸四季豆（少油快手版）：虎皮起皺、外干里嫩〉（old-6.com）"
+      url: https://www.old-6.com/zh/deep/03eac4eb-9166-401b-89d2-707d1bbf04ef
+      level: C
+      type: web
+      accessed: 2026-11-20
+      note: "本機存檔 sources/c-old6-ganbian-sijidou.html；本檔採用它的煸豆用油量、火力與『鋪平少翻、一面起皺再翻面』的翻炒方式。C2 原配方是『四季豆 350–400g』配『炒锅入油 1 汤匙』（全菜『食用油 1.5 汤匙』），本檔把 1 湯匙移用到 S1 的 250 g 四季豆，屬跨配方改編。C2 另有入鍋前按乾、撒鹽靜置 1 分鐘再按乾、分次煸、先煸豆再炒肉、料汁收汁等，本檔未採"
+    - id: C1
+      title: "蛋蛋愛吃抹茶〈干煸四季豆〉（新浪新聞轉載微博，2026-06-18）"
+      url: https://www.sina.cn/news/detail/5311056353431776.html
+      level: C
+      type: web
+      accessed: 2026-11-20
+      note: "本機存檔 sources/c-sina-ganbian-sijidou.html；中小火慢煸 5–7 分鐘的另一種做法，只作對照"
+  extracted_by: [kimi, grokbot]
+  changelog:
+    - {version: "1.0", date: 2026-11-20, change: "P1 第 1 批：少油家庭版；份量依 DB51 D.11，煸法依 WDA 301-1 第 2 條與 C2；Kimi 主抽、Grok Bot 對原文抽查；Codex 交叉核對因 ChatGPT 用量上限未完成", by: grokbot}
+    - {version: "1.0", date: 2026-11-20, change: "依 Codex／Kimi 複核修正：煸豆時長改 missing、標明平底鍋與先肉後豆為推論、揭露 C2 改編背景、補擦乾步驟（C1/C2）、移除試吃與溫度計方法背書；升為兩邊比對過", by: grokbot}
+
+ingredients:
+  - {id: g_beans, concept: ing/green_bean, label: 四季豆, role: 主料,
+     qty: {value: 250, unit: g, raw_text: "四季豆 250", evidence: S1, status: sourced}, note: "表 4：應選用質嫩、筋少的四季豆"}
+  - {id: g_yacai, concept: ing/yacai, label: 碎米芽菜, role: 輔料, product: true,
+     qty: {value: 15, unit: g, raw_text: "碎米芽菜 15", evidence: S1, status: sourced}, note: "前處理（沖洗、擠乾與否）原文沒寫"}
+  - {id: g_oil_beans, concept: ing/cooking_oil, label: 食用油（煸四季豆）, role: 油脂,
+     qty: {value: 1, unit: tbsp, raw_text: "炒锅入油 1 汤匙", evidence: C2, status: sourced,
+           note: "C 級；這是煸豆投入量，不是全菜總油量（炒肉油量原文沒寫）。C2 的 1 湯匙原本配 350–400 g 四季豆，本檔移用到 250 g（改編）。中式湯匙對到 tbsp，容量不換算。官方過油版是 1000 g 油（約耗 50 g）"}}
+  - {id: g_salt, concept: ing/salt, label: 食鹽（烹製）, role: 調料,
+     qty: {value: 2, unit: g, raw_text: "食盐 2.5（炒肉末 0.5、烹制 2）", evidence: S1, status: sourced}}
+  - {id: g_soy, concept: ing/soy_sauce, label: 醬油（烹製）, role: 調料,
+     qty: {value: 2, unit: g, raw_text: "酱油 4（炒肉末 2、烹制 2）", evidence: S1, status: sourced}}
+  - {id: g_sesame, concept: ing/sesame_oil, label: 芝麻油, role: 調料,
+     qty: {value: 3, unit: g, raw_text: "芝麻油 3", evidence: S1, status: sourced}}
+  - {id: g_msg, concept: ing/msg, label: 味精, role: 調料, optional: true,
+     qty: {value: 1, unit: g, raw_text: "（味精）1", evidence: S1, status: sourced, note: "注：味精可選用，或不選用"}}
+
+components:
+  - id: c_pork
+    call: {ref: recipe/pork_crumble.db51t1728, version: "1.0", scale: 1.0}
+    output_as: s_pork_crumble
+    make_ahead: true
+    note: "D.11.2.1(2) 預處理。原文沒寫『盛起』；本檔先炒好盛起、再用同一只鍋煸四季豆是家庭一鍋安排（推論），官方順序是先豆後肉"
+    definition:
+      recipe:
+        id: pork_crumble.db51t1728
+        version: "1.0"
+        kind: base
+        name: {zh_hant: 肉臊（豬肉末炒酥香）}
+        status: cross_checked
+      ingredients:
+        - {id: g_pork, concept: ing/pork, label: 豬肉（剁碎）, form: 碎, role: 輔料,
+           qty: {value: 50, unit: g, raw_text: "猪肉 50", evidence: S1, status: sourced}, note: "部位原文沒寫；WDA 版用五花絞肉"}
+        - {id: g_salt_pork, concept: ing/salt, label: 食鹽（炒肉末）, role: 調料,
+           qty: {value: 0.5, unit: g, raw_text: "食盐 2.5（炒肉末 0.5、烹制 2）", evidence: S1, status: sourced}}
+        - {id: g_soy_pork, concept: ing/soy_sauce, label: 醬油（炒肉末）, role: 調料,
+           qty: {value: 2, unit: g, raw_text: "酱油 4（炒肉末 2、烹制 2）", evidence: S1, status: sourced}}
+        - {id: g_wine, concept: ing/cooking_wine, label: 料酒（炒肉末）, role: 調料,
+           qty: {value: 3, unit: g, raw_text: "料酒 3", evidence: S1, status: sourced}}
+        - {id: g_oil_pork, concept: ing/cooking_oil, label: 食用油（炒肉末）, role: 油脂,
+           qty: {value: null, unit: g, raw_text: null, status: missing, note: "D.11.2.1(2) 只寫『猪肉剁碎，入锅』，炒肉末用不用油、用多少原文沒寫"}}
+      actions:
+        - id: g2
+          technique: tech/mince
+          term: 豬肉剁碎
+          inputs: [g_pork]
+          outputs: [gs_pork_minced]
+          tool: tool/knife
+          params: {cut: {shape: cut/mo, raw: "猪肉剁碎", evidence: S1, note: "粗細原文沒寫"}}
+          completion: [{observe: 豬肉, target: 剁碎, method: 目測, evidence: S1}]
+        - id: g3
+          technique: tech/stir_fry
+          term: 入鍋，加食鹽、料酒、醬油炒至酥香
+          inputs: [gs_pork_minced, g_oil_pork, g_salt_pork, g_wine, g_soy_pork]
+          outputs: [s_pork_crumble]
+          tool: tool/frying_pan
+          params: {heat: {level: null, raw: "原文沒寫火力"}, duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}}
+          completion: [{observe: 肉末, target: 炒至酥香, method: null, evidence: S1, note: "檢測方法原文沒寫（推論：目測與聞香）"}]
+
+states:
+  - {id: s_beans_cut, label: 去筋切段的四季豆}
+  - {id: s_beans_wrinkled, label: 少油煸到皺縮的四季豆}
+  - {id: s_final, label: 乾煸四季豆, role: final}
+
+actions:
+  - id: g1
+    technique: tech/cut
+    term: 四季豆去筋，切成段
+    inputs: [g_beans]
+    outputs: [s_beans_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/duan, size_mm: {min: null, max: null}, raw: "去筋，切成段", evidence: S1, note: "段長原文沒寫；C1 寫掰成 5 cm（C 級，未採用）"}}
+    completion:
+      - {observe: 四季豆, target: 去筋、成段, method: 目測, evidence: S1}
+      - {observe: 四季豆表面, target: 洗淨後吸乾全部水分（帶水下鍋會出水、不焦香）, method: 目測, evidence: C1, note: "S1 沒寫；C1『洗净后厨房纸吸干全部水分』、C2『甩干/厨房纸按干』都要求，本檔採用"}
+  - id: g4
+    technique: tech/dry_fry
+    term: 平底鍋少油，把四季豆鋪平煸到表皮皺縮（取代官方的 150°C 過油）
+    requires_state: [s_pork_crumble]
+    constraint: "家庭安排（推論）：與肉臊共用同一只平底鍋，肉臊炒好盛起後才開始這一步"
+    inputs: [s_beans_cut, g_oil_beans]
+    outputs: [s_beans_wrinkled]
+    tool: tool/frying_pan
+    params:
+      heat: {level: heat/medium_high, raw: "中大火把四季豆铺平，保持“滋滋”声少翻动", evidence: C2}
+      duration: {min_s: null, max_s: null, raw: "C2 時間軸區段『2’–5’ 少油干煸起“虎皮”』（是時間軸，不是時長）", is_guide: true, status: missing}
+      agitation: {mode: 鋪平少翻，一面起皺微焦再翻面, continuous: false}
+    completion:
+      - {observe: 四季豆, target: 煸至乾扁脫水皺縮，呈黃綠而不焦黑, method: 目測, evidence: W1}
+      - {observe: 焦斑, target: 焦黑部份不得超過總量之 1/4（W1 評分容許上限，不是目標；理想是不焦黑）, method: 目測, evidence: W1}
+      - {observe: 熟度, target: 斷生、熟透（官方要求既要熟透又不能焦）, method: null, evidence: S1, note: "判熟方法原文沒寫（推論：試吃確認無生豆味）"}
+    risk: "四季豆沒熟透會中毒（C1 警語）；火太大容易外焦裡生（C1）"
+    note: "時長原文沒寫（C2 只有時間軸 2’–5’；C1 另一做法中小火 5–7 分鐘見 notes），以完成狀態為準。平底鍋是本版工具選擇（推論；C2 原文是炒鍋、S1 是鍋）。技法用 tech/dry_fry 作菜式分類；詞表定義是『少油慢火持續翻炒』，C2 這步是中大火、少翻動，動作上較接近煎（tech/pan_fry），列為詞表不足。C2 是分次煸，本檔不補批數。煸好後豆子留在鍋裡直接進下一步是本檔的安排（推論）；C2 是先盛出再『同锅留约 1 茶匙油』炒料"
+  - id: g5
+    technique: tech/dry_fry
+    term: 下芽菜、肉臊炒出香味，入食鹽、（味精）、醬油、芝麻油煸炒入味，裝盤
+    inputs: [s_beans_wrinkled, g_yacai, s_pork_crumble, g_salt, g_msg, g_soy, g_sesame]
+    outputs: [s_final]
+    tool: tool/frying_pan
+    params:
+      heat: {level: heat/medium, raw: "表 4：煸炒四季豆时应用中火，并控制好油温，以免炒焦", evidence: S1}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+    completion:
+      - {observe: 香氣, target: 四季豆、芽菜、肉臊炒出香味, method: 嗅覺, evidence: S1}
+      - {observe: 成品, target: 不得出油而油膩, method: 目測, evidence: W1}
+    note: "官方這一步是『锅中放油烧至 120°C』再下料；少油版不另加油，用鍋裡剩下的油（推論）。不量油溫"
+
+serving:
+  completion:
+    - {observe: 菜品中心溫度, target: "70°C 以上", method: null, evidence: S1, note: "家裡沒有溫度計；原文沒寫感官判斷法，推論：出鍋即上桌"}
+    - {observe: 出鍋至食用, target: "≤10 分鐘為宜", evidence: S1}
+  sensory_target: {color: "黃綠帶少許焦斑（少油版，W1）；官方過油版為色澤碧綠（S1）", taste: 味道鹹鮮, texture: 乾香軟嫩}
+
+notes:
+  diff_from_official: "與官方過油版（S1）逐點比較：①熟化：官方 150°C 油炸到皮皺、斷生、色綠撈出；本版平底鍋 1 湯匙油中大火煸到皺縮（C2；W1 第 2 條允許）。②用油：官方 1000 g（約耗 50 g）＋合炒時再放油燒至 120°C；本版 1 湯匙，合炒不另加油（推論）。③顏色：官方碧綠；本版黃綠帶焦斑（W1 的標準）。④油溫：官方兩個油溫數字本版都不用，改看完成狀態。⑤調味料份量、合炒時的下料與調味次序、合炒用中火、上桌溫度與時間：照官方。⑥預處理順序：官方先炸豆再炒肉；本版先炒肉臊盛起、再煸豆（一鍋安排，推論）。⑦豆子煸好後留鍋直接合炒（官方是撈出再放入）。⑧入鍋前擦乾四季豆（C1、C2）。"
+  wda_comparison: "WDA 301-1 版材料與 DB51 不同：四季豆 200 g（每支 14 cm 以上）、蝦米 10 g、冬菜 10 g、蔥（須含蔥花）、中薑、蒜頭 10 g（4–5 瓣）、五花絞肉 50 g；調味料自選、不定量。本檔主體依 DB51，WDA 只採『可不過油』的規定與完成標準"
+  lowoil_alternatives: "C1：鍋燒熱放『比炒菜多一點油』、撒一點鹽，中小火慢煸 5–7 分鐘、勤翻動，至表皮起皺、布滿淺褐虎皮、整體變軟；回鍋時『開最大火快速翻炒30秒』。與 C2 火力相反，待振達試做比較"
+  burners: "全程 1 口爐（家庭安排，推論）：先炒肉臊盛起，再用同一只平底鍋煸豆、合炒；這個先肉後豆的順序是本檔對調，原文都是先豆後肉"
+  cross_check: "兩邊比對過（2026-11-20）：Kimi 主抽＋獨立複核；Codex 交叉核對 19:51 補跑成功（codex-X1-ganbian-retry.md（3 分 31 秒）與 kimi-X1b-ganbian-retry.md（10 分 34 秒））；不一致逐項以原文裁決，紀錄見 research/p1/核對紀錄-乾煸四季豆.md"

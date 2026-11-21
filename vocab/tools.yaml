@@ -1,0 +1,28 @@
+# 工具詞彙 v1.0（家庭廚房為主）
+scheme: tool
+version: "1.0"
+concepts:
+  - {id: tool/wok, zh: 炒鍋, alt: [中華鍋, 鑊], en: wok}
+  - {id: tool/frying_pan, zh: 平底鍋, alt: [煎鍋], en: frying pan}
+  - {id: tool/heavy_pot, zh: 厚底鍋, alt: [燉鍋], en: heavy-bottomed pot, note: "尺寸寫在 action.note，如 24–26 cm"}
+  - {id: tool/dutch_oven, zh: 鑄鐵鍋, alt: [荷蘭鍋], en: dutch oven, broader: tool/heavy_pot}
+  - {id: tool/stock_pot, zh: 湯鍋, alt: [煮鍋], en: stock pot}
+  - {id: tool/clay_pot, zh: 砂鍋, alt: [陶鍋], en: clay pot}
+  - {id: tool/steamer, zh: 蒸籠, alt: [蒸架, 蒸鍋], en: steamer}
+  - {id: tool/electric_cooker, zh: 電鍋, alt: [大同電鍋], en: electric rice cooker (steam type), note: "台灣家庭常用，可蒸、燉"}
+  - {id: tool/oven, zh: 烤箱, alt: [], en: oven}
+  - {id: tool/knife, zh: 菜刀, alt: [刀], en: knife}
+  - {id: tool/cutting_board, zh: 砧板, alt: [], en: cutting board}
+  - {id: tool/bowl, zh: 碗, alt: [調理碗], en: bowl}
+  - {id: tool/spatula, zh: 鍋鏟, alt: [], en: spatula}
+  - {id: tool/wooden_spoon, zh: 木勺, alt: [木鏟], en: wooden spoon}
+  - {id: tool/strainer, zh: 漏勺, alt: [瀝網], en: spider strainer}
+  - {id: tool/colander, zh: 濾盆, alt: [瀝水籃], en: colander}
+  - {id: tool/thermometer, zh: 溫度計, alt: [油溫計, 探針溫度計], en: thermometer}
+  - {id: tool/scale, zh: 電子秤, alt: [], en: kitchen scale}
+  # ── P1 新增（2026-11-20）──
+  - {id: tool/bain_marie, zh: 隔水加熱鍋, alt: [隔水鍋, 水浴, bain-marie], en: bain-marie, note: "LCB、GISSLEN；家庭可用小鍋微滾水＋不鏽鋼碗"}
+  - {id: tool/whisk, zh: 打蛋器, alt: [打蛋球, 攪拌器], en: whisk, note: "LCB 原文 whisk"}
+  - {id: tool/mortar_pestle, zh: 研缽, alt: [擂缽, 杵臼], en: pestle and mortar, note: "GBC_HEATHCOTE；原文也允許用厚底鍋壓碎"}
+  - {id: tool/saucepan, zh: 單柄小鍋, alt: [醬汁鍋, 牛奶鍋], en: saucepan, note: "GISSLEN 水波蛋用的淺鍋"}
+  - {id: tool/spice_bag, zh: 香料包, alt: [滷包袋, 紗布袋], en: spice bag, note: "DB51 表 1 注 a『香料包』"}

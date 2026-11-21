@@ -1,0 +1,4 @@
+/* 字型：Noto Sans TC、Figtree（SIL Open Font License 1.1），只收本站用到的字；由 site/build_site.py --fonts 產生 */
+@font-face{font-family:"Noto Sans TC";font-style:normal;font-weight:400;font-display:swap;src:url("noto-sans-tc-400-site.woff2") format("woff2")}
+@font-face{font-family:"Noto Sans TC";font-style:normal;font-weight:700;font-display:swap;src:url("noto-sans-tc-700-site.woff2") format("woff2")}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:300 900;font-display:swap;src:url("figtree-var-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+2190-2193,U+2212}

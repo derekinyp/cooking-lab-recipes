@@ -1,0 +1,210 @@
+# 麻婆豆腐（四川傳統，地方標準版）— 正式檔，規格 v1.0
+# 數值全部來自 DB51/T 1728-2014 附錄 D.8 與表 4 第 8 列；來源沒寫的一律 null＋status: missing。
+# 爐口（家庭安排，非原文）：全程最多同時 2 口（豆腐保溫浸泡的湯鍋＋炒鍋），符合振達家兩口瓦斯爐。
+schema_version: "1.0"
+recipe:
+  id: mapo_doufu.sichuan.db51t1728
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/mapo_doufu
+  name: {zh_hant: 麻婆豆腐, zh_hans: 麻婆豆腐, en: Mapo tofu}
+  variant: 四川傳統（地方標準版，牛肉末）
+  summary: 豆腐嫩而不碎，牛肉末酥香，湯汁紅亮濃稠，麻、辣、鹹、鮮、燙。
+  cuisine:
+    - {id: cuisine/chuan, basis: "DB51/T 1728-2014 列為川菜蔬果類經典菜餚（表 4 第 8 列）", claim: primary, evidence: S1}
+    - {id: region/sichuan, basis: "四川省地方標準（名錄歸屬見 catalog）", claim: primary, evidence: S1}
+  flavor_template: {ref: flavor/mala, basis: "DB51/T 1728-2014 表 4：麻辣味型", evidence: S1}
+  servings: {value: null, status: missing, note: "標準未標份數；主料豆腐 400 g"}
+  status: cross_checked
+  catalog:
+    - {list: 中國烹飪協會2018地域經典名菜, region: 四川, listed: true, note: "catalogs/ccas2018-340.md 四川第 7 道"}
+  sources:
+    - id: S1
+      title: "DB51/T 1728-2014《中國川菜經典菜餚製作工藝規範》附錄 D.8、表 4 第 8 列、表 1 注 b／注 c"
+      url: https://dbba.sacinfo.org.cn/portal/download/16132ff757ea958e03976e65675614f1
+      level: A
+      type: standard
+      accessed: 2026-11-20
+      note: "本機存檔 sources/db51t1728-2014.pdf；表 D.8 配方允許誤差 ≤10%（只適用配方重量，不延伸到工藝參數）；水澱粉＝淀粉加水調勻而成，重量比 淀粉：水=1：1（表 1 注 c，全標準通用）"
+  extracted_by: [kimi, grokbot]
+  changelog:
+    - {version: "1.0", date: 2026-11-20, change: "P1 第 1 批：依 DB51/T 1728 D.8 建檔；Kimi 主抽、Grok Bot 對原文抽查；Codex 交叉核對因 ChatGPT 用量上限未完成", by: grokbot}
+    - {version: "1.0", date: 2026-11-20, change: "依 Codex 複核修正：蒜苗不寫固定毫米、修正 m2 註記誤植與同鍋順序約束、食用油分配說明、移除非原文的持續翻炒／大小一致／檢測方法、移除溫度計方法、蒜苗出鍋前加入改用 timing；升為兩邊比對過", by: grokbot}
+
+ingredients:
+  - {id: m_tofu, concept: ing/tofu_gypsum, label: 豆腐（石膏豆腐）, role: 主料,
+     qty: {value: 400, unit: g, raw_text: "豆腐 400", evidence: S1, status: sourced}, note: "表 4：豆腐應選用石膏製作成的豆腐"}
+  - {id: m_garlic_sprout, concept: ing/garlic_sprout, label: 蒜苗, role: 輔料,
+     qty: {value: 30, unit: g, raw_text: "蒜苗 30", evidence: S1, status: sourced}}
+  - {id: m_douban, concept: ing/pixian_doubanjiang, label: 郫縣豆瓣, role: 調料, product: true,
+     qty: {value: 40, unit: g, raw_text: "郫县豆瓣 40", evidence: S1, status: sourced},
+     note: "表 1 注 b：應先剁細再炒香、油呈紅色；應依豆瓣含鹽量調整食鹽用量"}
+  - {id: m_garlic, concept: ing/garlic, label: 蒜米, form: 粒, role: 輔料,
+     qty: {value: 20, unit: g, raw_text: "蒜米 20", evidence: S1, status: sourced}, note: "表 4 主要食材寫『大蒜』，表 D.8 寫『蒜米』；粒的大小原文沒寫"}
+  - {id: m_douchi, concept: ing/douchi, label: 豆豉, role: 調料,
+     qty: {value: 6, unit: g, raw_text: "豆豉 6", evidence: S1, status: sourced}}
+  - {id: m_salt_soak, concept: ing/salt, label: 食鹽（浸泡豆腐用）, role: 調料,
+     qty: {value: 10, unit: g, raw_text: "食盐 11（浸泡 10、牛肉臊子 1）", evidence: S1, status: sourced}}
+  - {id: m_water_soak, concept: ing/water, label: 浸泡豆腐的沸水, role: 液體,
+     qty: {value: null, unit: g, raw_text: null, status: missing, note: "原文只寫『放入有食鹽的沸水中浸泡』，水量原文沒寫"}}
+  - {id: m_chili_powder, concept: ing/chili_powder, label: 辣椒粉, role: 香料,
+     qty: {value: 7, unit: g, raw_text: "辣椒粉 7", evidence: S1, status: sourced}}
+  - {id: m_pepper_powder, concept: ing/sichuan_pepper_powder, label: 花椒粉, role: 香料,
+     qty: {value: 1, unit: g, raw_text: "花椒粉 1", evidence: S1, status: sourced}}
+  - {id: m_soy, concept: ing/soy_sauce, label: 醬油, role: 調料,
+     qty: {value: 10, unit: g, raw_text: "酱油 10", evidence: S1, status: sourced}}
+  - {id: m_stock, concept: ing/stock_light, label: 鮮湯, role: 液體,
+     qty: {value: 200, unit: g, raw_text: "鲜汤 200", evidence: S1, status: sourced}}
+  - {id: m_starch, concept: ing/starch_slurry_1to1, label: 水澱粉, role: 芡粉,
+     qty: {value: 30, unit: g, raw_text: "水淀粉 30", evidence: S1, status: sourced},
+     note: "30 g 是水澱粉（已調好）的重量；表 1 注 c：水淀粉系淀粉加水調勻而成，重量比 淀粉：水=1：1"}
+  - {id: m_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂,
+     qty: {value: 70, unit: g, raw_text: "食用油 70", evidence: S1, status: sourced},
+     note: "70 g 是表 D.8 的總量；D.8.2.2 只寫『鍋中放油』，D.8.2.1 炒牛肉末沒寫用不用油。總量在兩步之間怎麼分配原文沒寫，不另補油量"}
+  - {id: m_msg, concept: ing/msg, label: 味精, role: 調料, optional: true,
+     qty: {value: null, unit: g, raw_text: "（味精）", status: missing, note: "D.8.2.2 步驟寫『入蒜苗、（味精）』，但表 D.8 配方沒有列味精，也沒有克數"}}
+
+components:
+  - id: c_beef
+    call: {ref: recipe/beef_suozi.db51t1728, version: "1.0", scale: 1.0}
+    output_as: s_beef_cooked
+    make_ahead: true
+    note: "D.8.2.1(2) 預處理。家庭安排（非原文）：先炒好盛起，再用同一只炒鍋做主菜"
+    definition:
+      recipe:
+        id: beef_suozi.db51t1728
+        version: "1.0"
+        kind: base
+        name: {zh_hant: 牛肉臊子（牛肉末炒酥香）}
+        status: cross_checked
+      ingredients:
+        - {id: m_beef, concept: ing/beef_lean, label: 牛肉（淨瘦肉）, role: 主料,
+           qty: {value: 50, unit: g, raw_text: "牛肉 50", evidence: S1, status: sourced}, note: "表 4：牛肉應選用淨瘦肉"}
+        - {id: m_salt_beef, concept: ing/salt, label: 食鹽（牛肉臊子用）, role: 調料,
+           qty: {value: 1, unit: g, raw_text: "食盐 11（浸泡 10、牛肉臊子 1）", evidence: S1, status: sourced}}
+        - {id: m_wine, concept: ing/cooking_wine, label: 料酒, role: 調料,
+           qty: {value: 5, unit: g, raw_text: "料酒 5", evidence: S1, status: sourced}, note: "D.8.2.1 只在炒牛肉末時出現"}
+      actions:
+        - id: m3
+          technique: tech/mince
+          term: 牛肉加工成末
+          inputs: [m_beef]
+          outputs: [s_beef_mince]
+          tool: tool/knife
+          params: {cut: {shape: cut/mo, raw: "牛肉加工成末", evidence: S1, note: "末的大小原文沒寫"}}
+          completion: [{observe: 牛肉, target: 成末, method: 目測, evidence: S1}]
+        - id: m4
+          technique: tech/stir_fry
+          term: 牛肉末入鍋炒散，入食鹽、料酒炒酥香
+          inputs: [s_beef_mince, m_salt_beef, m_wine]
+          outputs: [s_beef_cooked]
+          tool: tool/wok
+          params: {agitation: {mode: 炒散}, heat: {level: null, raw: "原文沒寫火力"}}
+          completion: [{observe: 牛肉末, target: 炒散、炒酥香, method: null, evidence: S1, note: "檢測方法原文沒寫（推論：目測與聞香）"}]
+          note: "原文沒寫這一步用不用油；表 D.8 食用油 70 g 是總量，分配原文沒寫"
+
+states:
+  - {id: s_tofu_cut, label: 豆腐大丁}
+  - {id: s_tofu_soaked, label: 鹽水浸泡中的豆腐}
+  - {id: s_garlic_sprout_cut, label: 蒜苗段（馬耳朵形或長約 3 cm 的節）}
+  - {id: s_oil_100, label: 100°C 油}
+  - {id: s_red_oil_base, label: 豆瓣紅油底}
+  - {id: s_braised, label: 燒熟的豆腐}
+  - {id: s_thickened, label: 收成干二流芡的麻婆豆腐}
+  - {id: s_final, label: 麻婆豆腐, role: final}
+
+actions:
+  - id: m1
+    technique: tech/cut
+    term: 豆腐切大丁
+    inputs: [m_tofu]
+    outputs: [s_tofu_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/ding_large, size_mm: {min: null, max: null}, raw: "豆腐切成大丁", evidence: S1, note: "標準未給毫米"}}
+    completion: [{observe: 豆腐, target: 切成大丁, method: null, evidence: S1}]
+  - id: m2
+    technique: tech/wash_soak
+    term: 放入有食鹽的沸水中浸泡
+    inputs: [s_tofu_cut, m_salt_soak, m_water_soak]
+    outputs: [s_tofu_soaked]
+    tool: tool/stock_pot
+    params:
+      duration: {min_s: null, max_s: null, raw: "原文沒寫浸泡多久", status: missing}
+      temperature: {target: liquid, min_c: null, max_c: null, raw: "表 4：保持一定的溫度（未給度數）", evidence: S1}
+    completion: [{observe: 豆腐, target: 在有食鹽的沸水中浸泡，且保持一定的溫度, method: null, evidence: S1, note: "表 4 說目的是『以便去除豆腥味』；浸泡多久、怎麼判斷完成原文沒寫"}]
+    can_overlap: [m3, m4, m5, m6, m7]
+    note: "家庭安排（非原文，原文沒規定爐口數與保溫方法）：這一鍋保溫浸泡佔 1 口，炒鍋佔 1 口，合計 2 口。同一只炒鍋依序用：先炒牛肉臊子（m4）盛起，之後才開始 m6 燒油、m7 炒香"
+  - id: m5
+    technique: tech/cut
+    term: 蒜苗切馬耳朵形或長約 3 cm 的節
+    inputs: [m_garlic_sprout]
+    outputs: [s_garlic_sprout_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/segment, size_mm: {min: null, max: null}, raw: "切成马耳朵形或长约 3cm 的节", evidence: S1, note: "原文是『長約 3cm』的近似值，不寫成固定毫米上下限；另一選項馬耳朵形（cut/ma_er_duo）原文未給尺寸"}}
+    completion: [{observe: 蒜苗, target: 馬耳朵形或約 3 cm 的節, method: 目測, evidence: S1}]
+  - id: m6
+    technique: tech/heat_oil
+    term: 鍋中放油燒至 100°C
+    inputs: [m_oil]
+    outputs: [s_oil_100]
+    tool: tool/wok
+    params:
+      temperature: {target: oil, min_c: 100, max_c: 100, raw: "锅中放油烧至 100℃", evidence: S1}
+      heat: {level: null, raw: 標準未寫火力檔位}
+    completion: [{observe: 油溫, target: 100°C, method: null, evidence: S1, note: "家裡沒有溫度計；不用溫度計時怎麼判斷 100°C，原文沒寫，待振達試做校準（不換算成幾成熱）"}]
+    must_finish_before: [m7]
+    requires_state: [s_beef_cooked]
+    constraint: "家庭安排（非原文）：與牛肉臊子共用同一只炒鍋，牛肉臊子炒好盛起後才開始這一步"
+  - id: m7
+    technique: tech/aromatics
+    term: 放郫縣豆瓣、辣椒粉、蒜米、豆豉炒香
+    inputs: [s_oil_100, m_douban, m_chili_powder, m_garlic, m_douchi]
+    outputs: [s_red_oil_base]
+    tool: tool/wok
+    params: {agitation: {mode: 翻炒}}
+    completion:
+      - {observe: 香氣, target: 炒香, method: 嗅覺, evidence: S1}
+      - {observe: 油色, target: 油呈紅色, method: 目測, evidence: S1}
+    risk: "豆瓣與辣椒粉易焦（料理提醒，非原文）"
+    constraint: "表 1 注 b：郫縣豆瓣應先剁細，再入鍋炒香且油呈紅色；應依豆瓣含鹽量調整食鹽用量"
+    note: "剁細併在此說明，不另立步驟"
+  - id: m8
+    technique: tech/shao
+    term: 摻入鮮湯，入醬油、豆腐、牛肉末燒至成熟
+    inputs: [s_red_oil_base, m_stock, m_soy, s_tofu_soaked, s_beef_cooked]
+    outputs: [s_braised]
+    tool: tool/wok
+    params: {duration: {min_s: null, max_s: null, raw: "燒至成熟（原文沒寫時間）", status: missing}, heat: {level: null, raw: "原文沒寫火力"}}
+    completion: [{observe: 豆腐, target: 燒至成熟、形整不爛, method: 目測, evidence: S1}]
+    note: "豆腐從浸泡的鹽水中撈出的方式與是否瀝水，原文沒寫"
+  - id: m9
+    technique: tech/thicken
+    term: 入蒜苗、（味精）、花椒粉、水澱粉，收汁濃稠呈干二流芡
+    inputs: [s_braised, s_garlic_sprout_cut, m_msg, m_pepper_powder, m_starch]
+    outputs: [s_thickened]
+    tool: tool/wok
+    params: {thickening: {starch_ref: m_starch}, loading: {batches: null, note: "表 4：水澱粉應分 2～3 次加入，以免豆腐吐水芡稀"}}
+    completion:
+      - {observe: 滋汁, target: 收汁濃稠，呈干二流芡（芡汁包裹食材表面、呈糊漿狀，見標準 3.5）, method: 目測, evidence: S1}
+      - {observe: 表面, target: 亮油, method: 目測, evidence: S1}
+      - {observe: 蒜苗, target: 保持翠綠, method: 目測, evidence: S1}
+    timing: {phase: 出鍋前加入蒜苗（表 4：蒜苗應在出鍋前加入）, evidence: S1, status: sourced}
+    note: "規格的 thickening.type 列舉沒有『干二流芡』，所以只寫在完成條件；水澱粉分次數只能寫 2～3 次的原文，batches 是單一整數"
+  - id: m10
+    technique: tech/plate
+    term: 裝碗
+    inputs: [s_thickened]
+    outputs: [s_final]
+    tool: tool/bowl
+    completion: [{observe: 成品, target: 裝碗, method: 目測, evidence: S1}]
+
+serving:
+  completion:
+    - {observe: 菜品中心溫度, target: "70°C 以上", method: null, evidence: S1, note: "家裡沒有溫度計；原文沒寫感官判斷法，推論：出鍋即上桌、仍冒熱氣"}
+    - {observe: 出鍋至食用, target: "≤10 分鐘為宜", evidence: S1}
+  sensory_target: {color: 色澤紅亮, taste: 麻、辣、鹹、鮮、燙，味道濃厚, texture: 酥、嫩，形整不爛}
+
+notes:
+  cross_check: "兩邊比對過（2026-11-20）：Kimi 主抽＋獨立複核；Codex 交叉核對 19:51 補跑成功（codex-X1-mapo-retry.md（1 分 56 秒））；不一致逐項以原文裁決，紀錄見 research/p1/核對紀錄-麻婆豆腐.md"
+  burners: "家庭安排（非原文）：最多同時 2 口：豆腐保溫浸泡（湯鍋）＋炒鍋；牛肉臊子先炒好盛起，再用同一只炒鍋燒油做主菜"
+  household: "（推論，家庭分食建議）花椒粉可不下鍋，出鍋後只撒在振達那份（麻分開最後加）；但辣味來自郫縣豆瓣與辣椒粉炒的紅油底，是本菜主體，標準版做不出不辣的一份，太太版要另做不辣變體（待定，不在本檔補數字）"

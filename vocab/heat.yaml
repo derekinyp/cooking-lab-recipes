@@ -1,0 +1,43 @@
+# 火力檔位與油溫成數 v1.0
+# 原則：火力只存檔位詞，不換算成溫度；等振達用自家爐具校準後，另存一筆個人校準（不放在這裡）。
+# 油溫「成數」各教材換算互相矛盾，這裡只列各家說法（readings），食譜中不得自動換算。
+scheme: heat
+version: "1.0"
+levels:
+  - {id: heat/high, zh: 旺火, alt: [大火, 猛火, 武火], en: high heat, order: 5, source: K1}
+  - {id: heat/medium_high, zh: 中大火, alt: [], en: medium-high heat, order: 4, source: SELF}
+  - {id: heat/medium, zh: 中火, alt: [], en: medium heat, order: 3, source: K1}
+  - {id: heat/medium_low, zh: 中小火, alt: [calore medio basso], en: medium-low heat, order: 2, source: AIC23}
+  - {id: heat/low, zh: 小火, alt: [文火, 慢火], en: low heat, order: 1, source: K1}
+  - {id: heat/very_low, zh: 微火, alt: [], en: very low heat, order: 0, source: K1}
+oil_levels:
+  # 各家說法互相矛盾（K6 整理，原始來源見 research/p0/kimi-K6-vocab-cut-heat-tech.md §2.2）。
+  # readings 只供顯示「各家怎麼說」，檢查器禁止把成數自動換算成單一溫度。
+  - id: oiltemp/low
+    zh: 三四成熱
+    alt: [溫油, 低油溫]
+    en: low oil temperature
+    readings:
+      - {min_c: 85, max_c: 100, source: "百度百科「油溫」（一成≈25℃）", level: C}
+      - {min_c: 150, max_c: 150, source: "高等教育出版社教材書摘（一成≈35℃）", level: B}
+      - {min_c: 70, max_c: 110, source: "王其勝《一吃就上癮的人氣小炒》書摘", level: B}
+      - {min_c: 90, max_c: 120, source: "網路科普彙編", level: C}
+    note: "四說差距達 80°C；WDA_C 只分低、中、高油溫，未給溫度"
+  - id: oiltemp/medium
+    zh: 五六成熱
+    alt: [溫熱油, 中油溫]
+    en: medium oil temperature
+    readings:
+      - {min_c: 130, max_c: 150, source: "百度百科「油溫」", level: C}
+      - {min_c: 180, max_c: 180, source: "高等教育出版社教材書摘", level: B}
+      - {min_c: 110, max_c: 170, source: "王其勝書摘", level: B}
+      - {min_c: 110, max_c: 150, source: "高雄餐旅大學教學 PDF（五分熱約 110℃、六分熱約 150℃）", level: B}
+      - {min_c: 150, max_c: 180, source: "網路科普彙編", level: C}
+  - id: oiltemp/high
+    zh: 七八成熱
+    alt: [熱油, 旺油, 高油溫]
+    en: high oil temperature
+    readings:
+      - {min_c: 220, max_c: 220, source: "高等教育出版社教材書摘", level: B}
+      - {min_c: 180, max_c: 220, source: "王其勝書摘", level: B}
+      - {min_c: 200, max_c: 240, source: "網路科普彙編", level: C}

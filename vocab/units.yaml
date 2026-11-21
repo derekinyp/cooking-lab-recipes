@@ -1,0 +1,23 @@
+# 單位 v1.0。conv 只給國際單位制內的確定換算；杯、匙因各國容量不同不換算（原文單位照存）。
+scheme: unit
+version: "1.0"
+units:
+  - {id: g, zh: 公克, dim: mass, conv: {g: 1}}
+  - {id: kg, zh: 公斤, dim: mass, conv: {g: 1000}}
+  - {id: ml, zh: 毫升, dim: volume, conv: {ml: 1}}
+  - {id: l, zh: 公升, dim: volume, conv: {ml: 1000}}
+  - {id: piece, zh: 個／顆／根, dim: count}
+  - {id: clove, zh: 瓣, dim: count}
+  - {id: slice, zh: 片, dim: count}
+  - {id: stalk, zh: 根／支, dim: count}
+  - {id: bicchiere, zh: 杯（義式原文）, dim: volume, conv: null, note: "原文未定義容量，不換算"}
+  - {id: cucchiaio, zh: 匙（義式原文）, dim: volume, conv: null, note: "原文未定義容量，不換算"}
+  - {id: tbsp, zh: 大匙, dim: volume, conv: null, note: "台灣、美國、澳洲容量不同；依來源另註"}
+  - {id: tsp, zh: 小匙, dim: volume, conv: null}
+  - {id: cup, zh: 杯, dim: volume, conv: null}
+  - {id: mm, zh: 毫米, dim: length}
+  - {id: cm, zh: 公分, dim: length}
+  - {id: c, zh: 攝氏度, dim: temperature}
+  - {id: s, zh: 秒, dim: time}
+  - {id: min, zh: 分鐘, dim: time}
+  - {id: pack, zh: 包, dim: count, note: "包裝單位；每包重量若原文沒寫則標 missing。P3 三杯雞"}

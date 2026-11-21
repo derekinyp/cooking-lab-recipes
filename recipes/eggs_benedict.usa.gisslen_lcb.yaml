@@ -1,0 +1,269 @@
+# 班尼迪克蛋 — 正式檔，規格 v1.0。跨來源組合版：組裝與水波蛋依 Gisslen《Professional Cooking》，荷蘭醬依 Le Cordon Bleu。
+# 三層：澄清奶油 → 荷蘭醬；水波蛋；→ 組裝。
+# Gisslen 原本引用自家 p.200 的荷蘭醬；改用 LCB 是振達的決定（P1 任務指示）。Gisslen 荷蘭醬只拿來對照與保溫安全規則。
+# 爐口（家庭版順序）：先做荷蘭醬（1 口），離火保溫；再同時水波蛋（1 口）＋熱火腿（1 口）＝ 2 口。烤瑪芬用烤麵包機或烤箱，不佔爐口。
+schema_version: "1.0"
+recipe:
+  id: eggs_benedict.usa.gisslen_lcb
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/eggs_benedict
+  name: {zh_hant: 班尼迪克蛋, en: Eggs Benedict}
+  variant: 跨來源組合版（Gisslen 組裝＋LCB 荷蘭醬）
+  summary: 烤過的英式瑪芬上放熱火腿和半熟水波蛋，淋上檸檬奶油味的荷蘭醬，立刻吃。
+  cuisine:
+    - {id: cuisine/american, basis: "Gisslen《Professional Cooking》早餐章收錄（美式餐飲教材）", claim: primary, evidence: G1}
+    - {id: region/usa, basis: "Gisslen 美式教材早餐章收錄；常見的紐約起源說未核實、不作依據", claim: primary}
+  flavor_template: null
+  servings: {value: 1, status: sourced, evidence: G1, note: "Gisslen YIELD: 1 PORTION；荷蘭醬 LCB 配方是 4 人份"}
+  status: cross_checked
+  sources:
+    - id: G1
+      title: "Wayne Gisslen《Professional Cooking》第 25 章 Breakfast Preparation：Eggs Benedict、PROCEDURE for Poaching Eggs、Standards of Quality for Poached Eggs"
+      url: https://resources.escoffier.edu/textbooks/gisslen/professional_cooking_25.pdf
+      level: A
+      type: textbook
+      accessed: 2026-11-20
+      note: "Escoffier 學校公開 PDF，未標版次（頁碼 779）；本機存檔 sources/gisslen-professional-cooking-ch25.pdf"
+    - id: G2
+      title: "Wayne Gisslen《Professional Cooking》第 9 章 Sauces：Holding Hollandaise Sauce、Guidelines、Hollandaise Sauce II"
+      url: https://resources.escoffier.edu/textbooks/gisslen/professional_cooking_09.pdf
+      level: A
+      type: textbook
+      accessed: 2026-11-20
+      note: "只作荷蘭醬的對照與保溫安全規則，不取代 L1 份量；本機存檔 sources/gisslen-professional-cooking-ch09.pdf"
+    - id: L1
+      title: "Le Cordon Bleu, Technique: Hollandaise sauce"
+      url: https://www.cordonbleu.edu/news/technique-video-hollandaise-sauce/en
+      level: A
+      type: official
+      accessed: 2026-11-20
+      note: "Serves 4；本機存檔 sources/lcb-hollandaise.html／.txt"
+  extracted_by: [codex, kimi, grokbot]
+  changelog:
+    - {version: "1.0", date: 2026-11-20, change: "P1 第 2 批：依 Gisslen 與 LCB 原文建檔；Codex 主抽、Kimi 交叉核對、Grok Bot 對原文抽查", by: grokbot}
+
+ingredients:
+  - {id: b_muffin, concept: ing/english_muffin, label: 英式瑪芬（半個）, role: 主料, product: true,
+     qty: {value: 0.5, unit: piece, raw_text: "½ English muffin", evidence: G1, status: sourced}}
+  - {id: b_butter, concept: ing/butter, label: 奶油（抹瑪芬）, role: 油脂,
+     qty: {qualitative: 適量, raw_text: "as needed Butter", evidence: G1, status: sourced}}
+  - {id: b_ham, concept: ing/canadian_bacon_or_ham, label: 加拿大培根或熟火腿（1 片，約 60 g）, role: 主料,
+     qty: {value: 1, unit: slice, raw_text: "1 slice Canadian bacon or ham, cooked (about 2 oz/60 g per slice)", evidence: G1, status: sourced, note: "每片約 60 g"}}
+
+components:
+  - id: c_hollandaise
+    call: {ref: recipe/hollandaise.lcb, version: "1.0"}
+    output_as: s_hollandaise
+    make_ahead: true
+    shelf_life: "保溫不超過 2 小時，剩下的丟棄、不可與新批混合；不可放在鋁製容器，用不鏽鋼；器具要完全乾淨（G2）"
+    note: "本菜每份用 50 mL（G1：1½ fl oz／50 mL）。LCB 四人份的總產量原文沒寫，所以 scale 無法計算、不填；規格的 call 沒有『用量』欄，只能寫在這裡"
+    definition:
+      recipe:
+        id: hollandaise.lcb
+        version: "1.0"
+        kind: sauce
+        name: {zh_hant: 荷蘭醬, fr: sauce hollandaise, en: Hollandaise sauce}
+        servings: {value: 4, status: sourced, evidence: L1}
+        status: cross_checked
+      ingredients:
+        - {id: h_eggs, concept: ing/egg, label: 雞蛋（4 顆，只取蛋黃）, role: 主料,
+           qty: {value: 4, unit: piece, raw_text: "4 eggs", evidence: L1, status: sourced},
+           note: "G2 建議為安全起見用巴氏殺菌蛋（對照，非 L1 要求）"}
+        - {id: h_water, concept: ing/water, label: 水, role: 液體,
+           qty: {value: 60, unit: ml, raw_text: "60 ml water", evidence: L1, status: sourced}}
+        - {id: h_lemon, concept: ing/lemon, label: 檸檬（¼ 顆，取汁）, role: 調料,
+           qty: {value: 0.25, unit: piece, raw_text: "¼ lemon", evidence: L1, status: sourced, note: "步驟寫 lemon juice to taste；擠汁量原文沒寫"}}
+        - {id: h_cayenne, concept: ing/cayenne, label: 卡宴辣椒粉, role: 香料,
+           qty: {qualitative: 一撮, raw_text: "pinch cayenne pepper", evidence: L1, status: sourced}}
+        - {id: h_salt, concept: ing/salt, label: 鹽, role: 調料,
+           qty: {qualitative: 一撮, raw_text: "pinch salt", evidence: L1, status: sourced}}
+        - {id: h_bath_water, concept: ing/water, label: 隔水加熱用的水, role: 液體,
+           qty: {value: null, unit: ml, raw_text: null, status: missing, note: "水量原文沒寫"}}
+      components:
+        - id: c_clarified
+          call: {ref: recipe/clarified_butter.lcb, version: "1.0", scale: 1.0}
+          output_as: s_clarified
+          make_ahead: true
+          definition:
+            recipe:
+              id: clarified_butter.lcb
+              version: "1.0"
+              kind: base
+              name: {zh_hant: 澄清奶油, en: clarified butter}
+              status: cross_checked
+            ingredients:
+              - {id: k_butter, concept: ing/butter, label: 奶油, role: 油脂,
+                 qty: {value: 250, unit: g, raw_text: "250 g butter", evidence: L1, status: sourced}}
+              - {id: k_water, concept: ing/water, label: 隔水加熱用的水, role: 液體,
+                 qty: {value: null, unit: ml, raw_text: null, status: missing, note: "原文沒寫"}}
+            actions:
+              - id: k1
+                technique: tech/clarify_butter
+                term: 隔水融化奶油，去除乳固形物，留下乳脂，放一旁
+                inputs: [k_butter, k_water]
+                outputs: [s_clarified]
+                tool: tool/bain_marie
+                completion:
+                  - {observe: 奶油, target: 完全融化，乳固形物已去除，只剩乳脂, method: 目測, evidence: L1}
+                  - {observe: 溫度, target: 溫而不燙（warm but not hot）, method: 手感, evidence: G2, note: "G2 準則第 5 條；L1 只寫放一旁"}
+                note: "去除乳固形物的方法（撇除浮沫、倒出清油）原文沒細寫；G2：600 g 奶油約得 480 mL 澄清奶油（對照）"
+      actions:
+        - id: h1
+          technique: tech/separate_eggs
+          term: 分出蛋黃
+          inputs: [h_eggs]
+          outputs: [hs_yolks]
+          tool: tool/bowl
+          completion: [{observe: 蛋黃, target: 與蛋白分開、蛋黃完整, method: 目測, note: "完成狀態為推論；蛋白原文沒說用途，可留作他用"}]
+        - id: h2
+          technique: tech/sabayon
+          term: 蛋黃加水，隔著微滾的水攪打到顏色變淺、蓬鬆
+          inputs: [hs_yolks, h_water, h_bath_water]
+          outputs: [hs_sabayon]
+          tool: tool/bain_marie
+          params:
+            heat: {level: null, raw: "the water in the bain marie is simmering, not boiling", evidence: L1}
+            temperature: {target: liquid, min_c: null, max_c: null, raw: "微滾、不可大滾（原文沒給度數）", evidence: L1}
+            agitation: {mode: 用打蛋器持續攪打, continuous: true}
+          completion:
+            - {observe: 蛋黃糊, target: 顏色變淺、蓬鬆（pale and fluffy）, method: 目測, evidence: L1}
+            - {observe: 水浴, target: 微滾不大滾，否則蛋會炒熟結塊, method: 目測, evidence: L1}
+          risk: 水太熱會把蛋黃煮成炒蛋
+        - id: h3
+          technique: tech/emulsify
+          term: 慢慢倒入澄清奶油，邊倒邊打到開始變稠
+          inputs: [hs_sabayon, s_clarified]
+          outputs: [hs_emulsion]
+          tool: tool/bain_marie
+          params: {agitation: {mode: 持續攪打、奶油慢慢倒入, continuous: true}}
+          completion:
+            - {observe: 醬, target: 開始變稠（begins to thicken）, method: 目測, evidence: L1}
+            - {observe: 溫度, target: 若覺得太熱，繼續攪打但把鍋子移離水浴, method: 手感, evidence: L1}
+          risk: "奶油加太快或太熱會油水分離；G2 救法：先加 5 mL 冷水用力打，不行就另取蛋黃重來，把分離的醬當奶油慢慢加入（對照）"
+        - id: h4
+          technique: tech/season
+          term: 變稠後離火，加鹽、卡宴辣椒粉、檸檬汁調味
+          inputs: [hs_emulsion, h_salt, h_cayenne, h_lemon]
+          outputs: [s_hollandaise]
+          tool: tool/bowl
+          completion:
+            - {observe: 味道, target: 依口味調整（to taste）, method: 試吃, evidence: L1}
+            - {observe: 稠度, target: 濃稠但可倒（thick but pourable）, method: 目測, evidence: G2, note: "G2 圖 9.8(e) 的描述，L1 沒寫"}
+  - id: c_poached
+    call: {ref: recipe/poached_egg.gisslen, version: "1.0", scale: 1.0}
+    output_as: s_poached
+    note: "G1 註：大量製作時可預先水煮、冰水冷卻、冷藏，上桌時放入微滾水回熱 30–60 秒"
+    definition:
+      recipe:
+        id: poached_egg.gisslen
+        version: "1.0"
+        kind: other_component
+        name: {zh_hant: 水波蛋, en: poached egg}
+        servings: {value: 1, status: sourced, evidence: G1, note: "Eggs Benedict 每份 1 顆"}
+        status: cross_checked
+      ingredients:
+        - {id: e_egg, concept: ing/egg, label: 雞蛋（盡量用最新鮮的 AA 級）, role: 主料,
+           qty: {value: 1, unit: piece, raw_text: "1 Egg, fresh Grade AA", evidence: G1, status: sourced}}
+        - {id: e_water, concept: ing/water, label: 水, role: 液體,
+           qty: {value: null, unit: ml, raw_text: null, status: missing, note: "水量與鍋中水深原文沒寫"}}
+        - {id: e_salt, concept: ing/salt, label: 鹽（蛋不夠新鮮時才加）, role: 調料, optional: true,
+           qty: {qualitative: "每公升水 5 mL（1 tsp per quart）", raw_text: "add 1 teaspoon salt ... per quart of water (5 mL salt ... per L)", evidence: G1, status: sourced,
+                 note: "規格不足：沒有『每公升水』的比例份量欄，只能寫成文字；蛋很新鮮就不加"}}
+        - {id: e_vinegar, concept: ing/distilled_vinegar, label: 白醋（蛋不夠新鮮時才加）, role: 調料, optional: true,
+           qty: {qualitative: "每公升水 15 mL（1 tbsp per quart）", raw_text: "1 tablespoon distilled vinegar per quart of water (... 15 mL vinegar per L)", evidence: G1, status: sourced,
+                 note: "蛋很新鮮就不加，因為加醋會讓蛋白較硬、較不亮（G1）"}}
+      actions:
+        - id: e1
+          technique: tech/simmer
+          term: 水燒到微滾
+          inputs: [e_water, e_salt, e_vinegar]
+          outputs: [es_simmer]
+          tool: tool/saucepan
+          completion: [{observe: 水, target: 微滾（不可大滾：大滾會讓蛋變老、被水流沖散；不夠熱蛋會散開）, method: 目測, evidence: G1}]
+        - id: e2
+          technique: tech/poach
+          term: 蛋先打進小碟，沿鍋邊滑入微滾水中，煮 3–5 分鐘
+          inputs: [es_simmer, e_egg]
+          outputs: [es_poached]
+          tool: tool/saucepan
+          params: {duration: {min_s: 180, max_s: 300, raw: "Simmer 3–5 minutes", is_guide: true, evidence: G1, status: sourced}}
+          completion:
+            - {observe: 蛋白, target: 凝固、結實但軟嫩, method: 目測, evidence: G1}
+            - {observe: 蛋黃, target: 仍軟、溫熱流動, method: 目測／輕按, evidence: G1}
+            - {observe: 外形, target: 圓而緊實、不攤平, method: 目測, evidence: G1}
+        - id: e3
+          technique: tech/drain
+          term: 用漏勺撈出，充分瀝乾，修掉不整齊的蛋白邊
+          inputs: [es_poached]
+          outputs: [s_poached]
+          tool: tool/strainer
+          completion: [{observe: 水波蛋, target: 瀝得很乾、表面光亮；邊緣修整齊, method: 目測, evidence: G1}]
+
+states:
+  - {id: s_toasted, label: 烤好的半個瑪芬}
+  - {id: s_buttered, label: 抹好奶油放在盤上的瑪芬}
+  - {id: s_ham_hot, label: 熱好的火腿}
+  - {id: s_base, label: 瑪芬＋火腿}
+  - {id: s_stacked, label: 瑪芬＋火腿＋水波蛋}
+  - {id: s_final, label: 班尼迪克蛋, role: final}
+
+actions:
+  - id: b1
+    technique: tech/toast
+    term: 烤半個瑪芬
+    inputs: [b_muffin]
+    outputs: [s_toasted]
+    tool: null
+    completion: [{observe: 瑪芬, target: 烤好（toast）, method: 目測, note: "用什麼烤、烤到什麼顏色原文沒寫；家庭版建議用烤麵包機或烤箱，不佔爐口（推論）"}]
+    can_overlap: [e1, e2]
+  - id: b2
+    technique: tech/spread
+    term: 抹奶油，放到餐盤上
+    inputs: [s_toasted, b_butter]
+    outputs: [s_buttered]
+    completion: [{observe: 瑪芬, target: 抹好奶油、放在盤上, method: 目測, evidence: G1}]
+  - id: b3
+    technique: tech/reheat
+    term: 蛋在煮的同時，把火腿放在熱煎台或煎鍋上熱 1 分鐘
+    inputs: [b_ham]
+    outputs: [s_ham_hot]
+    tool: tool/frying_pan
+    params:
+      heat: {level: null, raw: "on a hot griddle or in a sauté pan（熱鍋，未給檔位）", evidence: G1}
+      duration: {min_s: 60, max_s: 60, raw: "for 1 minute", is_guide: true, evidence: G1, status: sourced}
+    can_overlap: [e2]
+    completion: [{observe: 火腿, target: 熱透, method: 目測／手感, note: "原文只給時間，熱透為推論"}]
+  - id: b4
+    technique: tech/assemble
+    term: 火腿放在瑪芬上
+    inputs: [s_buttered, s_ham_hot]
+    outputs: [s_base]
+    completion: [{observe: 組裝, target: 火腿放在烤好的瑪芬上, method: 目測, evidence: G1}]
+  - id: b5
+    technique: tech/assemble
+    term: 瀝乾的水波蛋放在火腿上
+    inputs: [s_base, s_poached]
+    outputs: [s_stacked]
+    completion: [{observe: 組裝, target: 水波蛋放在火腿上, method: 目測, evidence: G1}]
+  - id: b6
+    technique: tech/plate
+    term: 舀荷蘭醬淋在最上面，立刻上桌
+    inputs: [s_stacked, s_hollandaise]
+    outputs: [s_final]
+    params: {raw: "Hollandaise Sauce 1½ fl oz／50 mL（每份用量）"}
+    completion: [{observe: 荷蘭醬, target: 每份 50 mL 淋在蛋上；立刻上桌, method: 目測, evidence: G1}]
+
+serving:
+  completion:
+    - {observe: 出餐, target: 立刻上桌（Serve immediately）, evidence: G1}
+    - {observe: 荷蘭醬保溫, target: "63°C（145°F）保溫、不可再熱太多，最多 2 小時；不可用鋁製容器，用不鏽鋼", method: 溫度計, evidence: G2}
+  sensory_target: {color: null, taste: 檸檬奶油味, texture: "水波蛋蛋白結實軟嫩、蛋黃溫熱流動；荷蘭醬濃稠可倒"}
+
+notes:
+  combination: "跨來源組合版：Gisslen 的 Eggs Benedict 原引用自家 p.200 荷蘭醬（Hollandaise I/II，產量 720 mL）；本檔依振達決定改用 LCB 四人份。兩者比例對照：LCB 奶油 250 g／蛋黃 4 顆／水 60 mL；Gisslen II 奶油 600 g／蛋黃 6 顆／冷水 30 mL／檸檬汁 45 mL"
+  burners: "家庭版順序（兩口爐）：①澄清奶油與荷蘭醬（爐口 A）→ 離火保溫 ②水波蛋（爐口 A）與熱火腿（爐口 B）同時 ③瑪芬用烤麵包機或烤箱。G1 原文只規定『蛋在煮的同時熱火腿』，沒有說荷蘭醬何時做；把荷蘭醬排在最前面是為了不超過兩口爐（推論）"
+  lcb_time: "L1 準備時間 15 分鐘（Preparation time: 15 minutes）"
+  hollandaise_reference: "G2 準則：用圓底不鏽鋼碗；標準比例 6 顆蛋黃對 450 g（1 lb）澄清奶油；加醋讓蛋白凝固較快、形狀較好（G1）"
+  hollandaise_holding_home: "G2 要求約 63°C 保溫；家庭離火後怎麼維持這個溫度原文沒寫，待振達試做"
+  cross_check: "Codex 主抽、Kimi 交叉核對；不一致與裁決見 research/p1/核對紀錄-班尼迪克蛋.md"

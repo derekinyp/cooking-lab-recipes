@@ -1,0 +1,185 @@
+# 三杯雞（台式家常版）— 起始檔，規格 v1.0
+# 主來源 C1＝鍋寶好食光〈三杯雞｜少油少鹽家庭版〉（愛料理 461698）：用炒鍋、不用砂鍋，標 20 分鐘、有火力與完成狀態，最合振達家條件。
+#   份量與醬汁只用 C1，不混拼。Kimi 起草時選的阿基師版（C2，新浪轉載）要預熱砂鍋（家裡沒有）、沒寫火力與時間，改列對照。
+# 辣椒：C1 在兩個步驟加辣椒片；家庭版改為最後只加在振達那份（推論）。
+# 爐口：全程 1 口、1 只炒鍋。
+schema_version: "1.0"
+recipe:
+  id: sanbei_ji.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/sanbei_ji
+  name: {zh_hant: 三杯雞, zh_hans: 三杯鸡, en: Three-cup chicken}
+  variant: 台式家常版（少油少鹽，炒鍋）
+  summary: 薑片乾鍋煸香、蒜頭炒至金黃，雞腿塊皮朝下煎兩面金黃，加三杯醬汁燜 5 分鐘再大火收乾，最後下九層塔、鍋邊淋米酒麻油。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "C1 台灣食譜平台家常版；C2 焦桐：台式三杯雞舍酒釀取米酒、易豬油為麻油並加九層塔，已異於江西傳統", claim: primary, evidence: C1}
+    - {id: region/taiwan, basis: "C2 焦桐文：九層塔是三杯雞的台灣風味", claim: primary, evidence: C2}
+    - {id: region/jiangxi, basis: "C2 焦桐文記載三杯雞起源傳說在江西（赣南、万载）", claim: origin_claim, evidence: C2}
+  flavor_template: {ref: flavor/sanbei, basis: "麻油、醬油、米酒為基底的三杯醬汁；C1 先乾炒薑再下香油，偏離詞表『麻油煸薑』順序", evidence: C1, deviation_note: "C1 定量表不是 1:1:1：醬汁裡醬油 1 大匙、米酒 2 大匙，另有麻油 1 大匙＋香油 1 大匙、醬油膏 2 大匙、水 60cc；最後鍋邊淋酒量原文沒寫，不能算進已知總酒量"}
+  servings: {value: 4, status: sourced, evidence: C1, note: "C1 標 4 人份、20 分鐘"}
+  status: cross_checked
+  sources:
+    - id: C1
+      title: "鍋寶好食光〈三杯雞｜少油少鹽家庭版 色香味樣樣俱全〉（愛料理 461698）"
+      url: https://icook.tw/recipes/461698
+      level: C
+      type: web
+      accessed: 2026-11-20
+      note: "主來源。本機存檔 sources/c-icook-461698.html／.txt；Grok Bot 2026-11-20 抓取逐句核對"
+    - id: C2
+      title: "三杯雞——焦桐散文＋《型男大主廚》阿基師三杯雞做法（新浪新聞轉載，2021-12-13）"
+      url: https://www.sina.cn/news/detail/4713949184134908.html
+      level: C
+      type: media
+      accessed: 2026-11-20
+      note: "對照（Kimi 起草時的主來源）。本機存檔 sources/c-sina-sanbei.*"
+    - id: C3
+      title: "《詹姆士的廚房》三杯雞（動靜貴州網轉載，2019-09-04）"
+      url: https://movement.gzstv.com/news/detail/4xAo4/
+      level: C
+      type: media
+      accessed: 2026-11-20
+      note: "對照；調味份量幾乎都寫『適量』。起始檔寫 2019-09-16，交叉核對時 Codex 開啟公開頁，JSON-LD datePublished 為 2019-09-04T04:05:00+00:00（頁面下方 2019-09-16 是另一篇推薦文章的日期）"
+  extracted_by: [kimi, grokbot]
+  changelog:
+    - {version: "1.0", date: 2026-11-20, change: "P3 批次三起始檔：Kimi 搜尋 3 份來源並以阿基師版起草；Grok Bot 重抓核對後，因家無砂鍋、需平日可做，改以鍋寶家庭版（炒鍋、20 分鐘）為主來源重寫", by: grokbot}
+    - {version: "1.0", date: 2026-11-20, change: "交叉核對（Codex）：雞腿單位改 pack；拆開燜煮與收汁；補最後淋麻油關聯；修正 C3 日期與『三家都不是 1:1:1』；摘要改『炒至金黃』；升為兩邊比對過", by: grokbot}
+
+ingredients:
+  - {id: i_chicken, concept: ing/chicken_leg_bone_in, label: 帶骨雞腿塊, role: 主料,
+     qty: {value: 2, unit: pack, raw_text: "帶骨雞腿塊 2包", evidence: C1, status: sourced, note: "原文單位是『包』，一包多重原文沒寫"}}
+  - {id: i_ginger, concept: ing/ginger, label: 老薑片, form: 片, role: 輔料, qty: {value: 40, unit: g, raw_text: "老薑片 40g", evidence: C1, status: sourced}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜頭, role: 輔料, qty: {value: 40, unit: g, raw_text: "蒜頭 40g", evidence: C1, status: sourced}}
+  - {id: i_basil, concept: ing/thai_basil, label: 九層塔, role: 香料, qty: {value: 40, unit: g, raw_text: "九層塔 40g", evidence: C1, status: sourced}}
+  - {id: i_sesame, concept: ing/sesame_oil, label: 香油, role: 油脂, qty: {value: 1, unit: tbsp, raw_text: "香油 1大匙", evidence: C1, status: sourced}}
+  - {id: i_mayou, concept: ing/black_sesame_oil, label: 麻油, role: 油脂, qty: {value: 1, unit: tbsp, raw_text: "麻油 1大匙", evidence: C1, status: sourced, note: "C1 在『翻炒拌勻』與『最後鍋邊淋上』兩處用麻油，分配原文沒寫"}}
+  - {id: i_soypaste, concept: ing/soy_paste, label: 醬油膏, role: 調料, qty: {value: 2, unit: tbsp, raw_text: "醬油膏 2大匙", evidence: C1, status: sourced}}
+  - {id: i_wine_finish, concept: ing/rice_wine, label: 米酒（鍋邊淋）, role: 調料,
+     qty: {value: null, unit: null, raw_text: "最後鍋邊淋上米酒、麻油即可上桌", status: missing, note: "食材表的米酒 2 大匙在三杯醬汁裡；最後淋的米酒量原文沒寫"}}
+
+components:
+  - id: c_sauce
+    call: {ref: recipe/sanbei_sauce.icook461698, version: "1.0"}
+    output_as: s_sauce
+    make_ahead: true
+    note: "C1 步驟 1：先將三杯醬汁混合均勻後備用"
+    definition:
+      recipe:
+        id: sanbei_sauce.icook461698
+        version: "1.0"
+        kind: sauce
+        name: {zh_hant: 三杯醬汁}
+        status: machine_checked
+      ingredients:
+        - {id: j_soy, concept: ing/soy_sauce, label: 醬油, role: 調料, qty: {value: 1, unit: tbsp, raw_text: "醬油 1大匙", evidence: C1, status: sourced}}
+        - {id: j_sugar, concept: ing/rock_sugar, label: 冰糖, role: 調料, qty: {value: 1, unit: tbsp, raw_text: "冰糖 1大匙", evidence: C1, status: sourced}}
+        - {id: j_wine, concept: ing/rice_wine, label: 米酒, role: 調料, qty: {value: 2, unit: tbsp, raw_text: "米酒 2大匙", evidence: C1, status: sourced}}
+        - {id: j_water, concept: ing/water, label: 水, role: 液體, qty: {value: 60, unit: ml, raw_text: "水 60cc", evidence: C1, status: sourced}}
+      actions:
+        - id: j1
+          technique: tech/combine
+          term: 三杯醬汁混合均勻
+          inputs: [j_soy, j_sugar, j_wine, j_water]
+          outputs: [s_sauce]
+          tool: tool/bowl
+          completion: [{observe: 醬汁, target: 混合均勻, method: 目測, evidence: C1}]
+          note: "C1 只說混合備用，未明寫碗；tool/bowl 是家庭選用（推論）"
+
+states:
+  - {id: s_ginger_dry, label: 乾鍋炒到微乾出香的薑片}
+  - {id: s_ginger_oil, label: 加香油拌炒的薑片}
+  - {id: s_aromatics, label: 撈起的乾煸薑片與金黃蒜頭（鍋裡留香油）}
+  - {id: s_chicken_seared, label: 皮朝下煎到兩面金黃的雞塊}
+  - {id: s_mixed, label: 雞塊與薑蒜、醬油膏、麻油拌勻}
+  - {id: s_menned, label: 加三杯醬汁燜煮 5 分鐘的雞}
+  - {id: s_braised, label: 大火收乾醬汁的雞}
+  - {id: s_final, label: 三杯雞, role: final}
+
+actions:
+  - id: a1
+    technique: tech/dry_fry
+    term: 乾鍋先炒薑，至薑片微乾聞到香氣
+    inputs: [i_ginger]
+    outputs: [s_ginger_dry]
+    tool: tool/wok
+    params: {heat: {level: null, raw: "C1 沒寫火力"}}
+    completion: [{observe: 薑片, target: 微乾、聞到香氣, method: 目測與嗅覺, evidence: C1}]
+    note: "C1 小撇步：乾鍋炒薑逼出水氣，釋放薑片香氣。tech/dry_fry 詞表定義含少油慢火，不能據此補成慢火或加油，原文乾鍋條件優先"
+  - id: a2
+    technique: tech/stir_fry
+    term: 下香油拌炒
+    inputs: [s_ginger_dry, i_sesame]
+    outputs: [s_ginger_oil]
+    tool: tool/wok
+    params: {heat: {level: null, raw: "C1 沒寫火力"}}
+    completion: [{observe: 薑片, target: 與香油拌炒（C1 沒寫炒到什麼程度）, method: 目測, evidence: C1}]
+  - id: a3
+    technique: tech/dry_fry
+    term: 放入蒜頭，炒至薑乾煸、蒜頭金黃後撈起備用
+    inputs: [s_ginger_oil, i_garlic]
+    outputs: [s_aromatics]
+    tool: tool/wok
+    params: {heat: {level: null, raw: "C1 沒寫火力"}}
+    completion: [{observe: 薑與蒜, target: 薑乾煸、蒜頭金黃, method: 目測, evidence: C1}]
+    note: "撈起後鍋裡留油，下一步直接用（C1『利用炒過薑的油鍋』）"
+  - id: a4
+    technique: tech/pan_fry
+    term: 利用炒過薑的油鍋，雞塊皮朝下煎至兩面金黃
+    inputs: [i_chicken]
+    outputs: [s_chicken_seared]
+    tool: tool/wok
+    requires_state: [s_aromatics]
+    completion: [{observe: 雞塊, target: 兩面金黃, method: 目測, evidence: C1}]
+    params: {heat: {level: null, raw: "C1 沒寫火力"}, duration: {min_s: null, max_s: null, raw: "C1 沒寫時間", status: missing}}
+  - id: a5
+    technique: tech/stir_fry
+    term: 放入蒜頭、薑片、醬油膏、麻油翻炒拌勻（辣椒片家庭版改到最後）
+    inputs: [s_chicken_seared, s_aromatics, i_soypaste, i_mayou]
+    outputs: [s_mixed]
+    tool: tool/wok
+    completion: [{observe: 雞塊, target: 翻炒拌勻, method: 目測, evidence: C1}]
+    note: "C1 這步同時下辣椒片；本檔移到最後只加振達那份。C1 小撇步：麻油不耐高溫，過早放入易產生苦味"
+  - id: a6
+    technique: tech/men
+    term: 倒入三杯醬汁，待醬汁滾沸轉中小火加蓋燜煮 5 分鐘（中途可開蓋翻拌）
+    inputs: [s_mixed, s_sauce]
+    outputs: [s_menned]
+    tool: tool/wok
+    params:
+      heat: {level: heat/medium_low, raw: "待醬汁滾沸轉中小火加蓋燜煮5分鐘", evidence: C1}
+      duration: {min_s: 300, max_s: 300, raw: "加蓋燜煮5分鐘", is_guide: true, evidence: C1, status: sourced}
+    completion:
+      - {observe: 醬汁, target: 先滾沸再轉中小火, method: 目測, evidence: C1}
+    note: "duration.min_s/max_s 是 schema 只收秒的單位正規化，權威數字以 raw 原文『5分鐘』為準"
+  - id: a6b
+    technique: tech/reduce
+    term: 開蓋轉大火收汁，待醬汁收乾
+    inputs: [s_menned]
+    outputs: [s_braised]
+    tool: tool/wok
+    params:
+      heat: {level: heat/high, raw: "5分鐘後，開蓋轉大火收汁", evidence: C1}
+      duration: {min_s: null, max_s: null, raw: "C1 沒寫收汁時間", status: missing}
+    completion:
+      - {observe: 醬汁, target: 大火收乾, method: 目測, evidence: C1}
+  - id: a7
+    technique: tech/stir_fry
+    term: 醬汁收乾後下九層塔翻炒，最後鍋邊淋上米酒、麻油即可上桌
+    inputs: [s_braised, i_basil, i_wine_finish, i_mayou]
+    outputs: [s_final]
+    tool: tool/wok
+    completion: [{observe: 九層塔, target: 翻炒（C1 沒寫炒到什麼程度）, method: 目測, evidence: C1}]
+    note: "C1 這步也下辣椒片，本檔移到盛盤後只加振達那份。麻油在 a5 與這步兩處用，inputs 都指向同一份 i_mayou，各步分配原文沒寫。C1 小撇步：九層塔可與醬汁混合讓其不易變黑（來源提醒，不是必須提早投入燜煮）"
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
+  sensory_target: {color: 原文沒寫（C2 焦桐：色澤金黃）, taste: 醬香、麻油香、肉香（C1）, texture: 軟嫩多汁、外層裹附醬汁（C1）}
+
+notes:
+  spicy_split: "C1 辣椒片在燜煮前（與醬油膏、麻油）和收汁後（與九層塔）各下一次。家庭版：主鍋不放辣椒，全部做好先盛太太那份，振達那份另加辣椒片（推論；C1 食材表是「辣椒(片) 2根」，那是全鍋用量，振達那份加多少原文沒寫、不另編數字）。本菜沒有花椒"
+  weekday: "C1 標 20 分鐘（4 人份），平日（≤20 分鐘）勉強可做，待試做計時；不能宣稱已驗證。C1：『料理過程節奏快，建議食材與醬汁都先前置準備好。』備料時間是否已含在這 20 分鐘裡，原文沒寫。雞腿塊若買已切好的更省時（推論）"
+  burners: "家庭安排（推論，非原文）：全程 1 口爐、1 只炒鍋依序做。C1 寫『利用炒過薑的油鍋』及連續操作，沒有明寫器具數；碗、盛放薑蒜的容器及鍋蓋不另占爐口"
+  compare: "C2 阿基師（型男大主廚）：去骨雞腿肉 1 支、紅蔥頭 3 顆、老薑 1 塊、冰糖 1 大匙（步驟只用 1/2 大匙）、辣椒 1 根、蔥 1 支、九層塔 10 克（另有 1/2 量與剩餘分次使用）、蒜苗 1 根；黑麻油 1 大匙、醬油 1 大匙、米酒 4 大匙（步驟 3 大匙＋鍋邊淋，剩餘量不可自行推算）；紅蔥頭炸酥、雞腿皮朝下煸出油再切塊，最後倒入預熱砂鍋；沒寫火力與時間。同頁焦桐文：阿基師比例是『八匙米酒、四匙醬油、二匙糖和少許麻油』（與文末配方不一致）、不宜加水、成品鍋底乾爽。C3 詹姆士：份量多為『適量』，砂鍋底鋪羅勒，清酒灑在鍋蓋上。C1、C2 定量表都不是等量三杯；C3 導言用各一杯介紹，實作未給可核算比例，無法判定是不是 1:1:1。不能把『無法證明等量』寫成『已證明不等量』"
+  missing: "原文沒寫：雞腿一包多重、炒薑與煎雞的火力、煎雞時間、收汁時間、鍋邊淋米酒的量、麻油兩處分配、上桌溫度"

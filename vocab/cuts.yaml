@@ -1,0 +1,31 @@
+# 刀工成形詞彙 v1.0。size_mm 取自勞動部丙級檢定刀工規格（WDA_CUT，原文公分→毫米），
+# 那是「檢定題目的規格」，不同材料略有差異；食譜裡實際尺寸以該食譜來源為準，寫在 action.params.cut.size_mm。
+# size_mm 為 null＝尚無官方數字，不自行填。
+scheme: cut
+version: "1.0"
+concepts:
+  - {id: cut/si, zh: 絲, alt: [粗絲], en: {term: julienne, match: close}, size_mm: {width: [2, 4], thick: [2, 4], length: [40, 60]}, example: "青椒絲、里肌肉絲", source: WDA_CUT}
+  - {id: cut/si_fine, zh: 細絲, alt: [], en: {term: fine julienne, match: close}, broader: cut/si, size_mm: {width: [null, 3], thick: [null, 3], length: [40, 60]}, example: "薑絲、紅辣椒絲", source: WDA_CUT}
+  - {id: cut/pian, zh: 片, alt: [], en: {term: slice, match: close}, size_mm: {length: [40, 60], width: [20, 40], thick: [2, 4]}, example: "小黃瓜片；里肌肉片厚 4–6、魚片厚 8–15", source: WDA_CUT}
+  - {id: cut/pian_diamond, zh: 菱形片, alt: [], en: {term: diamond slice, match: exact}, broader: cut/pian, size_mm: {length: [30, 50], width: [20, 40]}, example: "青椒片", source: WDA_CUT}
+  - {id: cut/ding, zh: 丁, alt: [], en: {term: dice, match: close}, size_mm: {each: [8, 12]}, example: "青椒丁、紅蘿蔔丁", source: WDA_CUT}
+  - {id: cut/ding_large, zh: 大丁, alt: [], en: {term: large dice, match: close}, broader: cut/ding, size_mm: null, note: "官方檢定未給；待教材核實", source: SELF}
+  - {id: cut/ding_medium, zh: 中丁, alt: [], en: {term: medium dice, match: close}, broader: cut/ding, size_mm: null, note: "DB51/T 1728 宮保雞丁用『中丁』但未給毫米", source: DB51}
+  - {id: cut/ding_small, zh: 小丁, alt: [], en: {term: small dice, match: close}, broader: cut/ding, size_mm: null, source: SELF}
+  - {id: cut/li, zh: 粒, alt: [], en: {term: small dice, match: close}, size_mm: {each: [4, 8]}, example: "豆乾粒、紅蘿蔔粒", source: WDA_CUT}
+  - {id: cut/mo, zh: 末, alt: [碎末], en: {term: mince, match: exact}, size_mm: {diameter: [null, 3]}, example: "薑末、蒜末", source: WDA_CUT}
+  - {id: cut/rong, zh: 茸, alt: [泥], en: {term: paste, match: close}, size_mm: {diameter: [null, 2]}, example: "雞茸", source: WDA_CUT}
+  - {id: cut/cong_hua, zh: 蔥花, alt: [], en: {term: sliced scallion, match: close}, size_mm: {each: [2, 4]}, source: WDA_CUT}
+  - {id: cut/tiao, zh: 條, alt: [], en: {term: batonnet, match: close}, size_mm: {width: [8, 12], thick: [8, 12], length: [40, 60]}, example: "魚條、里肌肉條；蔬菜條寬 5–10", source: WDA_CUT}
+  - {id: cut/kuai, zh: 塊, alt: [], en: {term: chunk, match: close}, size_mm: null, source: SELF}
+  - {id: cut/gun_dao, zh: 滾刀塊, alt: [], en: {term: roll cut, match: exact}, broader: cut/kuai, size_mm: {edge: [20, 40]}, example: "筍塊", source: WDA_CUT}
+  - {id: cut/duan, zh: 段, alt: [], en: {term: section, match: close}, size_mm: {length: [30, 50]}, example: "蔥段（直段或斜段）", source: WDA_CUT}
+  - {id: cut/segment, zh: 節, alt: [], en: {term: segment, match: close}, broader: cut/duan, size_mm: null, note: "宮保雞丁乾辣椒『長 2 cm 的節』屬單一食譜數字", source: DB51}
+  - {id: cut/score_chrysanthemum, zh: 菊花花刀, alt: [剞菊花], en: {term: chrysanthemum cut, match: exact}, size_mm: {spacing: [5, 10]}, example: "魚球、雞球", source: WDA_CUT}
+  - {id: cut/score_comb, zh: 梳子花刀, alt: [], en: {term: comb cut, match: close}, size_mm: {spacing: [null, 5]}, example: "花枝片", source: WDA_CUT}
+  - {id: cut/smashed, zh: 拍碎, alt: [拍], en: {term: smashed, match: exact}, size_mm: null, source: SELF}
+  - {id: cut/fine_mince, zh: 細剁, alt: [battuto], en: {term: finely chopped, match: close}, broader: cut/mo, size_mm: null, note: "義式 soffritto『在砧板上剁細』，原文未給尺寸", source: AIC23}
+  - {id: cut/whole, zh: 整隻／原形, alt: [不切], en: {term: whole, match: exact}, size_mm: null, source: SELF}
+  # ── P1 新增（2026-11-20）──
+  - {id: cut/ma_er_duo, zh: 馬耳朵形, alt: [馬耳朵, 斜刀段], en: {term: diagonal cut, match: close}, broader: cut/duan, size_mm: null, note: "DB51 D.8 蒜苗『切成馬耳朵形』，未給尺寸", source: DB51}
+  - {id: cut/pian_thin_skin_on, zh: 皮肉相連薄片, alt: [連皮薄片], en: {term: thin skin-on slice, match: close}, broader: cut/pian, size_mm: null, note: "DB51 A.1 蒜泥白肉『長約 10cm、寬約 5cm、厚約 0.15cm』屬單一食譜數字，寫在食譜裡", source: DB51}

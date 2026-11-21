@@ -1,0 +1,111 @@
+# 食材概念 v1.0（初版只收兩道範例與候選菜會用到的基本項；之後對齊台灣食品營養成分資料庫、FoodOn）
+# 檢查器對不在這裡的 ing/ 只發警告，不擋。
+scheme: ing
+version: "1.0"
+concepts:
+  - {id: ing/chicken_thigh_breast, zh: 雞肉（腿肉與胸肉）}
+  - {id: ing/peanut_fried, zh: 酥花生, alt: [油酥花生]}
+  - {id: ing/dried_chili, zh: 乾辣椒}
+  - {id: ing/sichuan_pepper, zh: 花椒}
+  - {id: ing/ginger, zh: 薑}
+  - {id: ing/garlic, zh: 蒜}
+  - {id: ing/scallion, zh: 蔥}
+  - {id: ing/salt, zh: 鹽}
+  - {id: ing/cooking_wine, zh: 料酒, alt: [米酒, 紹興酒]}
+  - {id: ing/starch_slurry_1to1, zh: 水澱粉（澱粉:水 1:1）}
+  - {id: ing/cooking_oil, zh: 食用油}
+  - {id: ing/white_sugar, zh: 白糖}
+  - {id: ing/soy_sauce, zh: 醬油}
+  - {id: ing/vinegar, zh: 醋}
+  - {id: ing/stock_light, zh: 鮮湯, alt: [高湯]}
+  - {id: ing/msg, zh: 味精}
+  - {id: ing/tagliatelle, zh: 義大利寬麵}
+  - {id: ing/water, zh: 水}
+  - {id: ing/beef_minced_coarse, zh: 粗絞牛肉}
+  - {id: ing/wine_red_or_white, zh: 葡萄酒（紅或白）}
+  - {id: ing/tomato_passata, zh: 番茄泥}
+  - {id: ing/tomato_paste_double, zh: 雙倍濃縮番茄膏}
+  - {id: ing/whole_milk, zh: 全脂牛奶}
+  - {id: ing/meat_or_veg_broth_light, zh: 清淡肉湯或蔬菜湯}
+  - {id: ing/black_pepper, zh: 黑胡椒}
+  - {id: ing/pancetta_fresh, zh: 新鮮豬腹肉（非煙燻）}
+  - {id: ing/onion, zh: 洋蔥}
+  - {id: ing/carrot, zh: 胡蘿蔔}
+  - {id: ing/celery, zh: 芹菜}
+  - {id: ing/evoo, zh: 特級初榨橄欖油}
+  # ── P1 新增（2026-11-20）：依據寫在 note；中菜依 DB51/T 1728（DB51）、西菜依各自來源 ──
+  - {id: ing/tofu_gypsum, zh: 石膏豆腐, alt: [豆腐], note: "DB51 表 4：豆腐應選用石膏製作成的豆腐"}
+  - {id: ing/beef_lean, zh: 淨瘦牛肉, alt: [牛肉], note: "DB51 表 4 麻婆豆腐：牛肉應選用淨瘦肉"}
+  - {id: ing/garlic_sprout, zh: 蒜苗, alt: [青蒜, 蒜苗葉], note: DB51}
+  - {id: ing/pixian_doubanjiang, zh: 郫縣豆瓣, alt: [豆瓣醬, 辣豆瓣], note: "DB51；產品標準 DB51/T 391"}
+  - {id: ing/chili_powder, zh: 辣椒粉, alt: [辣椒麵], note: DB51}
+  - {id: ing/sichuan_pepper_powder, zh: 花椒粉, alt: [花椒麵], note: DB51}
+  - {id: ing/douchi, zh: 豆豉, alt: [], note: DB51}
+  - {id: ing/pork_hind_leg_skin_on, zh: 帶皮二刀肉, alt: [豬後腿二刀肉], note: "DB51 表 1：猪肉应选用带皮二刀肉"}
+  - {id: ing/pork, zh: 豬肉, alt: [], note: "DB51 D.11 只寫『猪肉』；WDA 301-1 用五花絞肉"}
+  - {id: ing/chili_oil, zh: 辣椒油, alt: [紅油], note: "DB51；產品標準 DB51/T 492"}
+  - {id: ing/sesame_oil, zh: 芝麻油, alt: [香油, 麻油], note: DB51}
+  - {id: ing/star_anise, zh: 八角, alt: [大茴香], note: "DB51 表 1 注 a"}
+  - {id: ing/caoguo, zh: 草果, alt: [], note: "DB51 表 1 注 a"}
+  - {id: ing/sannai, zh: 山柰, alt: [三奈, 沙薑], note: "DB51 表 1 注 a 寫『三奈』"}
+  - {id: ing/cassia_bark, zh: 桂皮, alt: [肉桂皮], note: "DB51 表 1 注 a"}
+  - {id: ing/brown_sugar, zh: 紅糖, alt: [黑糖], note: "DB51 表 1 注 a"}
+  - {id: ing/green_bean, zh: 四季豆, alt: [敏豆, 菜豆], note: "DB51 D.11；WDA 301-1"}
+  - {id: ing/yacai, zh: 碎米芽菜, alt: [芽菜, 宜賓芽菜], note: DB51}
+  - {id: ing/dried_shrimp, zh: 蝦米, alt: [], note: "WDA 301-1（只列在參照的 WDA 版）"}
+  - {id: ing/dongcai, zh: 冬菜, alt: [], note: "WDA 301-1（只列在參照的 WDA 版）"}
+  - {id: ing/beef_fillet, zh: 牛菲力, alt: [牛腰內肉, beef fillet], note: GBC_HEATHCOTE}
+  - {id: ing/green_peppercorn, zh: 綠胡椒粒, alt: [green peppercorns], note: "GBC_HEATHCOTE；原文未說明是鹽漬或乾燥"}
+  - {id: ing/white_peppercorn, zh: 白胡椒粒, alt: [], note: GBC_HEATHCOTE}
+  - {id: ing/black_peppercorn, zh: 黑胡椒粒, alt: [], broader: ing/black_pepper, note: GBC_HEATHCOTE}
+  - {id: ing/butter, zh: 奶油, alt: [butter], note: "GBC_HEATHCOTE、LCB、GISSLEN"}
+  - {id: ing/shallot, zh: 紅蔥頭, alt: [紅蔥, shallot], note: GBC_HEATHCOTE}
+  - {id: ing/red_wine, zh: 紅酒, alt: [紅葡萄酒], broader: ing/wine_red_or_white, note: GBC_HEATHCOTE}
+  - {id: ing/double_cream, zh: 高脂鮮奶油, alt: [double cream], note: "GBC_HEATHCOTE；英國 double cream，乳脂含量原文未寫"}
+  - {id: ing/brandy, zh: 白蘭地, alt: [], note: GBC_HEATHCOTE}
+  - {id: ing/sea_salt, zh: 海鹽, alt: [], broader: ing/salt, note: GBC_HEATHCOTE}
+  - {id: ing/english_muffin, zh: 英式瑪芬, alt: [English muffin], note: GISSLEN}
+  - {id: ing/egg, zh: 雞蛋, alt: [蛋], note: "GISSLEN、LCB"}
+  - {id: ing/egg_yolk, zh: 蛋黃, alt: [], note: LCB}
+  - {id: ing/canadian_bacon_or_ham, zh: 加拿大培根或火腿（熟）, alt: [Canadian bacon], note: GISSLEN}
+  - {id: ing/cayenne, zh: 卡宴辣椒粉, alt: [cayenne pepper], note: LCB}
+  - {id: ing/lemon, zh: 檸檬, alt: [檸檬汁], note: LCB}
+  - {id: ing/distilled_vinegar, zh: 白醋（蒸餾醋）, alt: [distilled vinegar], broader: ing/vinegar, note: GISSLEN}
+  - {id: ing/pan_fond, zh: 鍋底（煎肉後留在鍋中的油脂與焦香）, alt: [fond, 鍋底焦香], note: "GBC_HEATHCOTE 第 4 步沿用煎牛排的同一只鍋；用於鍋底醬子食譜"}
+  - {id: ing/cucumber, zh: 黃瓜, alt: [小黃瓜], note: "DB51 表 1 蒜泥白肉：可選用蔥、黃瓜、青筍等蔬菜墊底"}
+  - {id: ing/celtuce_stem, zh: 青筍, alt: [萵筍, 萵苣莖], note: "DB51 表 1 蒜泥白肉墊底蔬菜"}
+  # ── P3 批次三（2026-11-20）新增：台式家常菜用料 ──
+  - {id: ing/bell_pepper, zh: 甜椒, alt: [彩椒, 黃甜椒, 紅甜椒], note: "P3 糖醋排骨（Cookpad Ritas）"}
+  - {id: ing/green_pepper, zh: 青椒, alt: [], note: "P3 糖醋排骨；WDA 302-2"}
+  - {id: ing/tomato, zh: 番茄, alt: [蕃茄], note: "P3 糖醋排骨"}
+  - {id: ing/ketchup, zh: 番茄醬, alt: [蕃茄醬], note: "P3 糖醋排骨"}
+  - {id: ing/starch, zh: 太白粉／玉米粉, alt: [太白粉, 玉米粉, 澱粉], note: "P3 糖醋排骨醃料；水澱粉另見 ing/starch_slurry_1to1"}
+  - {id: ing/pork_spare_rib, zh: 小排骨, alt: [排骨, 豬小排], broader: ing/pork, note: "P3 糖醋排骨；WDA 302-2"}
+  - {id: ing/pork_belly, zh: 五花肉, alt: [三層肉], broader: ing/pork, note: "P3 滷肉飯"}
+  - {id: ing/pork_skin, zh: 豬皮, alt: [], broader: ing/pork, note: "P3 滷肉飯"}
+  - {id: ing/soy_paste, zh: 醬油膏, alt: [], broader: ing/soy_sauce, note: "P3 滷肉飯、三杯雞"}
+  - {id: ing/rock_sugar, zh: 冰糖, alt: [], note: "P3 滷肉飯、三杯雞"}
+  - {id: ing/rice_wine, zh: 米酒, alt: [台灣米酒], broader: ing/cooking_wine, note: "P3 三杯雞"}
+  - {id: ing/five_spice_powder, zh: 五香粉, alt: [], note: "P3 滷肉飯"}
+  - {id: ing/cinnamon_powder, zh: 肉桂粉, alt: [], note: "P3 滷肉飯"}
+  - {id: ing/white_pepper_powder, zh: 白胡椒粉, alt: [胡椒粉], note: "P3 滷肉飯、菜脯蛋"}
+  - {id: ing/steamed_rice, zh: 白飯, alt: [米飯], note: "P3 滷肉飯"}
+  - {id: ing/fish_whole, zh: 鮮魚（整尾或魚片）, alt: [], note: "P3 清蒸魚；魚種未指定"}
+  - {id: ing/caipu, zh: 菜脯, alt: [蘿蔔乾, 碎蘿蔔乾], note: "P3 菜脯蛋"}
+  - {id: ing/chicken_leg_bone_in, zh: 帶骨雞腿塊, alt: [], broader: ing/chicken_thigh_breast, note: "P3 三杯雞"}
+  - {id: ing/thai_basil, zh: 九層塔, alt: [羅勒], note: "P3 三杯雞"}
+  - {id: ing/chili_fresh, zh: 新鮮辣椒, alt: [紅辣椒, 辣椒片], note: "P3 三杯雞；家庭版最後另加"}
+  - {id: ing/black_sesame_oil, zh: 麻油（黑麻油）, alt: [黑麻油, 胡麻油], note: "P3 三杯雞；與芝麻香油 ing/sesame_oil 區分"}
+
+  # ── P2 新增 2026-11-21 ──
+  - {id: ing/pork_salted, zh: 鹹肉, alt: [鹹腿肉, 腌肉], broader: ing/pork, note: "P2 新增 2026-11-21；醃篤鮮主來源《食品與生活》楊周彝文作『咸腿肉』"}
+  - {id: ing/bamboo_shoot_spring, zh: 春筍, alt: [竹筍, 雷筍], note: "P2 新增 2026-11-21；醃篤鮮主來源寫春筍，並提醒不要用冬筍或筍乾代替"}
+  - {id: ing/baiyejie, zh: 百葉結, alt: [百頁結, 千張結, 豆腐皮結], note: "P2 新增 2026-11-21；豆皮／薄百葉摺疊打結。主來源寫百葉結"}
+  - {id: ing/penne, zh: 筆管麵, alt: [通心粉], note: "P2 新增 2026-11-21；白醬義大利麵主來源 penne pasta"}
+  - {id: ing/all_purpose_flour, zh: 中筋麵粉, alt: [all-purpose flour, 中筋, 麵粉], note: "P2 新增 2026-11-21；白醬義大利麵主來源 all-purpose flour（maida）選項"}
+  - {id: ing/nutmeg, zh: 肉豆蔻, alt: [nutmeg], note: "P2 新增 2026-11-21；白醬義大利麵主來源 nutmeg powder"}
+  - {id: ing/dried_oregano, zh: 乾奧勒岡, alt: [dried oregano], note: "P2 新增 2026-11-21"}
+  - {id: ing/dried_basil, zh: 乾羅勒, alt: [dried basil], note: "P2 新增 2026-11-21；與新鮮九層塔 ing/thai_basil 區分"}
+  - {id: ing/dried_thyme, zh: 乾百里香, alt: [dried thyme], note: "P2 新增 2026-11-21"}
+  - {id: ing/cheddar, zh: 切達起司, alt: [cheddar cheese], note: "P2 新增 2026-11-21；白醬義大利麵主來源可選配料，本檔主體未採用"}
+

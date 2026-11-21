@@ -1,0 +1,163 @@
+# 法式胡椒牛排 — 正式檔，規格 v1.0。兩層：鍋底醬（子食譜）→ 牛排
+# 份量依 Paul Heathcote（Great British Chefs, 2015）；原文是具名主廚出版食譜（B 級），不是官方標準。
+# 「一點（dash）」「一撮（pinch）」照原文保留，不換算；rare 的中心溫度、靜置時間原文沒寫。
+# 爐口：全程 1 口（同一只平底鍋）。
+schema_version: "1.0"
+recipe:
+  id: steak_au_poivre.france.heathcote2015
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/steak_au_poivre
+  name: {zh_hant: 法式胡椒牛排, fr: Steak au poivre, en: Steak au poivre}
+  variant: Paul Heathcote 版（菲力、三色胡椒、紅酒鮮奶油鍋底醬）
+  summary: 菲力牛排抹上壓碎的黑白胡椒煎到 rare（很生的熟度），用同一只鍋以白蘭地、紅酒、鮮奶油做胡椒醬。
+  cuisine:
+    - {id: cuisine/french, basis: "菜名 steak au poivre 為法式經典；GBC 歸在 French 食譜集", claim: primary, evidence: H1}
+    - {id: region/france, basis: "法式菜名與分類", claim: primary}
+  flavor_template: null
+  servings: {value: 2, status: sourced, evidence: H1, note: "頁面份數 2（yieldTextOverride \"2\"）；總時間 40 分鐘（totalTime PT40M）"}
+  status: cross_checked
+  sources:
+    - id: H1
+      title: "Paul Heathcote, Heathcotes' steak au Poivre（Great British Chefs, first published 2015）"
+      url: https://www.greatbritishchefs.com/recipes/heathcotes-steak-au-poivre-recipe
+      level: B
+      type: web
+      accessed: 2026-11-20
+      note: "具名主廚（米其林二星）於美食媒體發表的食譜；本機存檔 sources/gbc-heathcote-steak-au-poivre.html／.txt"
+  extracted_by: [codex, kimi, grokbot]
+  changelog:
+    - {version: "1.0", date: 2026-11-20, change: "P1 第 2 批：依 Heathcote 原文建檔；Codex 主抽、Kimi 交叉核對、Grok Bot 對原文抽查", by: grokbot}
+
+ingredients:
+  - {id: p_steak, concept: ing/beef_fillet, label: 牛菲力排（2 塊，每塊 150 g）, role: 主料,
+     qty: {value: 2, unit: piece, raw_text: "2 fillet steaks, each weighing 150g", evidence: H1, status: sourced, note: "每塊 150 g"}}
+  - {id: p_black, concept: ing/black_peppercorn, label: 黑胡椒粒, role: 香料,
+     qty: {value: 8, unit: piece, raw_text: "8 black peppercorns", evidence: H1, status: sourced}}
+  - {id: p_white, concept: ing/white_peppercorn, label: 白胡椒粒, role: 香料,
+     qty: {value: 8, unit: piece, raw_text: "8 white peppercorns", evidence: H1, status: sourced}}
+  - {id: p_salt, concept: ing/sea_salt, label: 海鹽, role: 調料,
+     qty: {qualitative: 一撮, raw_text: "1 pinch of sea salt", evidence: H1, status: sourced, note: "材料表只列 1 pinch；第 2 步調味牛排、第 7 步調味醬汁都用海鹽，原文沒分配"}}
+  - {id: p_oil, concept: ing/cooking_oil, label: 油, role: 油脂,
+     qty: {qualitative: 一點, raw_text: "a dash of oil", evidence: H1, status: sourced, note: "材料表沒有列，第 2 步才出現；油的種類原文沒寫"}}
+
+components:
+  - id: c_sauce
+    call: {ref: recipe/poivre_pan_sauce.heathcote2015, version: "1.0", scale: 1.0}
+    output_as: s_sauce
+    note: "必須在 p4 牛排離鍋後，用同一只鍋（鍋底留有煎牛排的油與焦香）接著做；規格無法讓子食譜直接吃父層的『鍋底』，以 requires_state 與 note 表達"
+    definition:
+      recipe:
+        id: poivre_pan_sauce.heathcote2015
+        version: "1.0"
+        kind: sauce
+        name: {zh_hant: 胡椒紅酒鮮奶油鍋底醬, fr: sauce au poivre}
+        status: cross_checked
+      ingredients:
+        - {id: q_fond, concept: ing/pan_fond, label: 鍋底（煎牛排後同一只鍋裡的油與焦香）, role: 油脂,
+           qty: {qualitative: 煎完牛排的鍋底, status: inferred, note: "原文第 4 步『Turn down the heat』直接接在同一只鍋；量原文沒寫。規格不足：子食譜無法以父層步驟產出當輸入"}}
+        - {id: q_butter, concept: ing/butter, label: 奶油, role: 油脂,
+           qty: {value: 25, unit: g, raw_text: "25g of butter", evidence: H1, status: sourced}}
+        - {id: q_shallot, concept: ing/shallot, label: 紅蔥頭（1 顆，切細丁）, form: 細丁, role: 輔料,
+           qty: {value: 1, unit: piece, raw_text: "1 shallot, finely diced", evidence: H1, status: sourced, note: "材料表寫 finely diced，第 4 步寫 finely chopped；尺寸原文沒寫"}}
+        - {id: q_brandy, concept: ing/brandy, label: 白蘭地, role: 液體,
+           qty: {qualitative: 一點, raw_text: "1 dash of brandy", evidence: H1, status: sourced}}
+        - {id: q_wine, concept: ing/red_wine, label: 紅酒, role: 液體,
+           qty: {value: 75, unit: ml, raw_text: "75ml of red wine", evidence: H1, status: sourced}}
+        - {id: q_cream, concept: ing/double_cream, label: 高脂鮮奶油（double cream）, role: 液體,
+           qty: {value: 100, unit: ml, raw_text: "100ml of double cream", evidence: H1, status: sourced}}
+        - {id: q_green, concept: ing/green_peppercorn, label: 綠胡椒粒, role: 香料,
+           qty: {value: 1, unit: tbsp, raw_text: "1 tbsp of green peppercorns", evidence: H1, status: sourced, note: "英式大匙；不換算毫升。鹽漬或乾燥原文沒寫"}}
+        - {id: q_salt, concept: ing/sea_salt, label: 海鹽（調醬）, role: 調料,
+           qty: {qualitative: 適量, raw_text: "Season the sauce with sea salt", evidence: H1, status: sourced, note: "材料表只有 1 pinch 共用，醬汁用多少原文沒寫"}}
+      actions:
+        - id: q1
+          technique: tech/sweat
+          term: 轉小火，下奶油與紅蔥頭細丁，不上色地炒 15–20 秒
+          inputs: [q_fond, q_butter, q_shallot]
+          outputs: [qs_shallot]
+          tool: tool/frying_pan
+          requires_state: ["父層 p4 完成：牛排已離鍋，鍋仍熱、留有鍋底"]
+          params:
+            heat: {level: null, raw: "Turn down the heat（調降火力，未給檔位）", evidence: H1}
+            duration: {min_s: 15, max_s: 20, raw: "fry without colour for about 15-20 seconds", is_guide: true, evidence: H1, status: sourced}
+          completion: [{observe: 紅蔥頭, target: 不上色（without colour）, method: 目測, evidence: H1}]
+        - id: q2
+          technique: tech/deglaze_reduce
+          term: 先加白蘭地，再加紅酒，煮滾收到剩一半
+          inputs: [qs_shallot, q_brandy, q_wine]
+          outputs: [qs_reduced]
+          tool: tool/frying_pan
+          params: {heat: {level: null, raw: "boil（煮滾，未給檔位）", evidence: H1}, duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}}
+          completion: [{observe: 液體量, target: 收到剩一半（reduces by half）, method: 目測, evidence: H1}]
+          note: "原文沒寫點火燒酒（flambé）"
+        - id: q3
+          technique: tech/combine
+          term: 加入鮮奶油
+          inputs: [qs_reduced, q_cream]
+          outputs: [qs_cream]
+          tool: tool/frying_pan
+          completion: [{observe: 醬汁, target: 鮮奶油與酒汁混勻, method: 目測, note: "原文沒寫加鮮奶油後要煮多久、煮到多稠"}]
+        - id: q4
+          technique: tech/season
+          term: 以海鹽調味並加入綠胡椒粒
+          inputs: [qs_cream, q_salt, q_green]
+          outputs: [s_sauce]
+          tool: tool/frying_pan
+          completion: [{observe: 味道, target: 已調味, method: null, note: "原文只寫 season，完成狀態原文沒寫"}]
+          note: "原文第 6 步（牛排不夠熟就放回鍋中與湯汁再煮）在第 5 步之後、本步之前，記在父層 p5.optional_branch"
+
+states:
+  - {id: s_crushed, label: 壓碎的黑白胡椒}
+  - {id: s_seasoned, label: 裹胡椒與海鹽的牛排}
+  - {id: s_rare, label: 煎到 rare 的牛排}
+  - {id: s_rested, label: 靜置好的牛排}
+  - {id: s_final, label: 法式胡椒牛排, role: final}
+
+actions:
+  - id: p1
+    technique: tech/crush
+    term: 黑、白胡椒粒用研缽壓碎
+    inputs: [p_black, p_white]
+    outputs: [s_crushed]
+    tool: tool/mortar_pestle
+    completion: [{observe: 胡椒, target: 壓得很碎（crush well）, method: 目測, evidence: H1}]
+    note: "原文替代法：沒有研缽就放在平面上，用厚底鍋來回壓碎"
+  - id: p2
+    technique: tech/season
+    term: 牛排用壓碎的胡椒與海鹽調味
+    inputs: [p_steak, s_crushed, p_salt]
+    outputs: [s_seasoned]
+    completion: [{observe: 牛排, target: 表面沾上胡椒與鹽, method: 目測, note: "原文只寫 season，完成狀態為推論"}]
+  - id: p3
+    technique: tech/pan_fry
+    term: 熱平底鍋加一點油，把牛排煎到 rare
+    inputs: [s_seasoned, p_oil]
+    outputs: [s_rare]
+    tool: tool/frying_pan
+    params:
+      heat: {level: null, raw: "a hot frying pan（熱鍋，未給檔位）", evidence: H1}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫每面煎幾分鐘", status: missing}
+      temperature: {target: core, min_c: null, max_c: null, raw: "until rare（中心溫度原文沒寫）"}
+    completion: [{observe: 牛排熟度, target: rare（原文用語；台灣對應一分熟或三分熟說法不一）, method: null, evidence: H1, note: "rare 的判斷方法與中心溫度原文沒寫"}]
+  - id: p4
+    technique: tech/rest
+    term: 牛排取出放一旁靜置
+    inputs: [s_rare]
+    outputs: [s_rested]
+    params: {duration: {min_s: null, max_s: null, raw: "原文沒寫靜置多久", status: missing}}
+    completion: [{observe: 牛排, target: 離鍋靜置（醬汁做好前）, method: 目測, evidence: H1, note: "靜置結束的狀態原文沒寫"}]
+    can_overlap: [q1, q2, q3, q4]
+    must_finish_before: [p5]
+  - id: p5
+    technique: tech/plate
+    term: 牛排配胡椒醬上桌
+    inputs: [s_rested, s_sauce]
+    outputs: [s_final]
+    optional_branch: {at: "加完鮮奶油之後、調味之前（原文第 6 步）", action: "牛排若不夠熟，放回鍋中與湯汁一起再煮到想要的熟度", evidence: H1}
+    completion: [{observe: 成品, target: 牛排淋上或搭配胡椒醬, method: 目測, note: "上桌方式原文沒寫；原文只建議配粗薯條、沙拉、烤馬鈴薯或烤蔬菜"}]
+
+notes:
+  source_level: "H1 是 B 級（具名主廚出版食譜），不是官方或學校標準；之後若找到 A 級來源可再對照"
+  cross_check: "Codex 主抽、Kimi 交叉核對；不一致與裁決見 research/p1/核對紀錄-法式胡椒牛排.md"
+  burners: "原文全程用同一只平底鍋（第 6 步 place back in the pan），家庭版因此只需 1 口爐（推論）"
