@@ -3,7 +3,7 @@
 schema_version: "1.0"
 recipe:
   id: gongbao_jiding.sichuan.db51t1728
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/gongbao_jiding
   name: {zh_hant: 宮保雞丁, zh_hans: 宫保鸡丁, en: Kung Pao chicken}
@@ -15,7 +15,7 @@ recipe:
     - {id: region/guizhou, basis: "丁寶楨任職貴州的起源說（K1，C 級）", claim: origin_claim}
   flavor_template: {ref: flavor/hulat_sweet_sour, basis: "DB51/T 1728-2014 表 2：煳辣味型略帶甜酸", evidence: S1}
   servings: {value: null, status: missing, note: "標準未標份數；主料雞肉 200 g"}
-  status: machine_checked
+  status: cross_checked
   catalog:
     - {list: 中國烹飪協會2018地域經典名菜, region: 四川, listed: null, note: "待 K4 名錄核對"}
   sources:
@@ -30,6 +30,7 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-20, change: "由 examples/gongbao-jiding.yaml（v0.2 草案）轉為規格 v1.0 正式檔", by: grokbot}
     - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變", by: grokbot}
+    - {version: "1.1", date: 2026-11-21, change: "Codex 獨立交叉核對（research/p1/codex-X3-gongbao-retry.md）後升 cross_checked：非原文的判斷方法、風險與完成描述改標推論；炒雞丁技法由滑炒改一般炒（原文無過油）；食鹽／料酒／水澱粉補總量與分項說明。數字、份量、步驟順序無修改", by: grokbot}
 
 ingredients:
   - {id: i_chicken, concept: ing/chicken_thigh_breast, label: 雞肉（仔公雞腿肉與脯肉）, role: 主料,
@@ -48,20 +49,20 @@ ingredients:
   - {id: i_scallion, concept: ing/scallion, label: 蔥丁, form: 丁, role: 輔料,
      qty: {value: 40, unit: g, raw_text: "蔥丁 40", evidence: S1, status: sourced}}
   - {id: i_salt_m, concept: ing/salt, label: 食鹽（碼味）, role: 調料,
-     qty: {value: 1, unit: g, raw_text: "食鹽 1.5（碼味 1、調味 0.5）", evidence: S1, status: sourced}}
+     qty: {value: 1, unit: g, raw_text: "食鹽 1.5（碼味 1、調味 0.5）", evidence: S1, status: sourced, note: "表 B.3 總量 1.5 g，此為碼味分項；調味 0.5 g 在 j_salt"}}
   - {id: i_wine_m, concept: ing/cooking_wine, label: 料酒（碼味）, role: 調料,
-     qty: {value: 3, unit: g, raw_text: "料酒 6（碼味 3、調味 3）", evidence: S1, status: sourced}}
+     qty: {value: 3, unit: g, raw_text: "料酒 6（碼味 3、調味 3）", evidence: S1, status: sourced, note: "表 B.3 總量 6 g，此為碼味分項；調味 3 g 在 j_wine"}}
   - {id: i_starch_m, concept: ing/starch_slurry_1to1, label: 水澱粉（碼味）, role: 芡粉,
-     qty: {value: 20, unit: g, raw_text: "水澱粉 30（碼味 20、調味 10）", evidence: S1, status: sourced}}
+     qty: {value: 20, unit: g, raw_text: "水澱粉 30（碼味 20、調味 10）", evidence: S1, status: sourced, note: "表 B.3 總量 30 g，此為碼味分項；調味 10 g 在 j_starch；水澱粉＝澱粉:水 1:1（表 1 注）"}}
   - {id: i_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂,
      qty: {value: 50, unit: g, raw_text: "食用油 50", evidence: S1, status: sourced}}
 
 components:
   - id: c_sauce
-    call: {ref: recipe/gongbao_sauce.db51t1728, version: "1.0", scale: 1.0}
+    call: {ref: recipe/gongbao_sauce.db51t1728, version: "1.0", scale: 1.0}  # 結構欄位，非原文數字
     output_as: s_sauce
     make_ahead: true
-    note: 可先兌好
+    note: "可先兌好（推論：原文沒說可預先製作）"
     definition:
       recipe:
         id: gongbao_sauce.db51t1728
@@ -69,7 +70,7 @@ components:
         kind: sauce
         name: {zh_hant: 宮保芡汁（兌碗芡）}
         flavor_template: {ref: flavor/hulat_sweet_sour, evidence: S1}
-        status: machine_checked
+        status: cross_checked
       ingredients:
         - {id: j_salt, concept: ing/salt, label: 食鹽（調味）, role: 調料, qty: {value: 0.5, unit: g, evidence: S1, status: sourced}}
         - {id: j_sugar, concept: ing/white_sugar, label: 白糖, role: 調料, qty: {value: 8, unit: g, evidence: S1, status: sourced}}
@@ -86,7 +87,7 @@ components:
           inputs: [j_salt, j_sugar, j_soy, j_vinegar, j_wine, j_starch, j_stock, j_msg]
           outputs: [s_sauce]
           tool: tool/bowl
-          completion: [{observe: 調料, target: 糖鹽溶解、澱粉懸浮均勻, method: 目測}]
+          completion: [{observe: 調料, target: 調成芡汁（原文只寫「入碗調成芡汁」；溶解、均勻程度原文沒寫，目測為推論）, method: 目測}]
           note: "表 2：應控制好白糖和醋的用量與比例，以呈現出略帶甜酸的味道為宜"
 
 states:
@@ -116,7 +117,7 @@ actions:
     inputs: [s_diced, i_salt_m, i_wine_m, i_starch_m]
     outputs: [s_marinated]
     params: {duration: {min_s: null, max_s: null, raw: 標準未註明, status: missing}, agitation: {mode: 拌勻}}
-    completion: [{observe: 雞丁, target: 均勻裹漿, method: 目測／手感}]
+    completion: [{observe: 雞丁, target: 拌勻（原文：加入食鹽、料酒、水澱粉拌勻）, method: 目測（推論，原文沒寫判斷方式）}]
   - id: a3
     technique: tech/cut
     term: 切節
@@ -134,7 +135,7 @@ actions:
     params:
       temperature: {target: oil, min_c: 150, max_c: 150, raw: "油燒至 150℃", evidence: S1}
       heat: {level: null, raw: 標準未寫火力檔位}
-    completion: [{observe: 油溫, target: 150°C, method: 溫度計或經驗, evidence: S1}]
+    completion: [{observe: 油溫, target: 150°C（原文）, method: 經驗（推論：原文只給 150℃、沒寫如何判斷）, evidence: S1}]
   - id: a5
     technique: tech/qiang
     term: 炒香（熗辣椒花椒）
@@ -143,15 +144,15 @@ actions:
     tool: tool/wok
     params: {agitation: {mode: 翻炒, continuous: true}}
     completion: [{observe: 辣椒花椒色澤, target: 棕紅、出香、勿焦, method: 目測與嗅覺, evidence: S1}]
-    risk: 最易失敗步驟：過火即焦苦
+    risk: "原文要求勿焦（表 2）；『最易失敗、過火焦苦』為推論，原文沒寫"
   - id: a6
-    technique: tech/stir_fry_slide
+    technique: tech/stir_fry
     term: 入雞丁炒斷生
     inputs: [s_aromatic, s_marinated]
     outputs: [s_chicken_cooked]
     tool: tool/wok
     params: {agitation: {mode: 翻炒／炒散, continuous: true}}
-    completion: [{observe: 雞丁熟度, target: 剛熟（斷生）, method: 目測（變白、無血色）, evidence: S1}]
+    completion: [{observe: 雞丁熟度, target: 剛熟（斷生；表 2：炒至剛熟）, method: 目測（推論，原文沒寫判斷方式）, evidence: S1}]
   - id: a7
     technique: tech/stir_fry
     term: 入薑蒜蔥炒香
@@ -175,7 +176,7 @@ actions:
     inputs: [s_coated, i_peanut]
     outputs: [s_final]
     tool: tool/wok
-    completion: [{observe: 花生, target: 香脆不返軟, method: 口感, evidence: S1}]
+    completion: [{observe: 花生, target: 花生香脆（表 2）；起鍋前才下, method: 口感, evidence: S1}]
     timing: {phase: 起鍋前, evidence: S1, status: sourced}
 
 serving:

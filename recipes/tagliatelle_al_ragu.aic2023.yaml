@@ -3,7 +3,7 @@
 schema_version: "1.0"
 recipe:
   id: tagliatelle_al_ragu.aic2023
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/tagliatelle_al_ragu
   name: {zh_hant: 波隆那肉醬寬麵, it: Tagliatelle al ragù alla bolognese}
@@ -13,17 +13,18 @@ recipe:
     - {id: region/italy.emilia_romagna.bologna, basis: "波隆那商會登錄", claim: primary, evidence: R2}
   flavor_template: null
   servings: {value: 6, status: sourced, evidence: R1, note: "指肉醬 6 人份；麵量原文未給"}
-  status: machine_checked
+  status: cross_checked
   sources:
     - {id: R1, title: "Accademia Italiana della Cucina — Ricetta aggiornata del tradizionale ragù alla bolognese (2023-04-20)",
        url: "https://www.accademia1953.it/sites/default/files/Rag%C3%B9%20alla%20bolognese%20-%20ricetta%20aggiornata%2020%20aprile%202023.pdf",
        level: A, type: official, accessed: 2026-11-20}
-    - {id: R2, title: "Camera di Commercio di Bologna 登錄公告",
+    - {id: R2, title: "Camera di Commercio di Bologna 登錄公告（內含配方全文）",
        url: "https://www.bo.camcom.it/it/blog/depositata-la-rinnovata-ricetta-del-vero-ragu-alla-bolognese",
        level: A, type: official, accessed: 2026-11-20}
   extracted_by: [codex, grokbot]
   changelog:
     - {version: "1.0", date: 2026-11-20, change: "由 examples/tagliatelle-ragu-bolognese.yaml（v0.2 草案）轉為規格 v1.0 正式檔", by: grokbot}
+    - {version: "1.1", date: 2026-11-21, change: "Codex 獨立交叉核對（research/p1/codex-X3-ragu.md）後升 cross_checked：刪除煮麵「約 10 分鐘」排程數字（原文的「約十分鐘」是肉拌炒時間）；高湯補原文句與 tazza 不換算；f3 補 evidence R1；R2 標題註明含配方全文。肉醬數字、份量、步驟順序無修改", by: grokbot}
     - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變；肉醬鍋具由厚底鍋改為湯鍋為主、炒鍋為替代（家庭改法）", by: grokbot}
 
 ingredients:
@@ -45,7 +46,7 @@ components:
         kind: sauce
         name: {zh_hant: 波隆那肉醬, it: Ragù alla bolognese}
         servings: {value: 6, status: sourced, evidence: R1}
-        status: machine_checked
+        status: cross_checked
       ingredients:
         - {id: r_beef, concept: ing/beef_minced_coarse, label: 粗絞牛肉, role: 主料, qty: {value: 400, unit: g, evidence: R1, status: sourced},
            allowed_variants: ["牛約60%＋豬約40%（里肌或頸肉）", "手切絞肉"], forbidden: ["小牛肉", "全豬肉"]}
@@ -54,7 +55,7 @@ components:
         - {id: r_passata, concept: ing/tomato_passata, label: 番茄泥, role: 輔料, qty: {value: 200, unit: g, evidence: R1, status: sourced}}
         - {id: r_paste, concept: ing/tomato_paste_double, label: 雙倍濃縮番茄膏, role: 調料, qty: {value: 1, unit: cucchiaio, evidence: R1, status: sourced}}
         - {id: r_milk, concept: ing/whole_milk, label: 全脂牛奶, role: 液體, optional: true, qty: {value: 1, unit: bicchiere, evidence: R1, status: sourced}}
-        - {id: r_broth, concept: ing/meat_or_veg_broth_light, label: 高湯, role: 液體, qty: {qualitative: "一杯起，按需添加", evidence: R1, status: sourced}}
+        - {id: r_broth, concept: ing/meat_or_veg_broth_light, label: 高湯, role: 液體, qty: {qualitative: "一杯起，按需添加", raw_text: "una tazza di brodo bollente … aggiungendo il brodo caldo man mano che occorre", evidence: R1, status: sourced, note: "tazza 容量原文未定義，不換算；原文也允許只用水"}}
         - {id: r_salt_pepper, concept: [ing/salt, ing/black_pepper], label: 鹽、胡椒, role: 調料, qty: {qualitative: 適量, evidence: R1, status: sourced}}
       components:
         - id: c_soffritto
@@ -66,7 +67,7 @@ components:
               version: "1.0"
               kind: base
               name: {zh_hant: 豬腹肉蔬菜炒香底, it: soffritto / battuto}
-              status: machine_checked
+              status: cross_checked
             ingredients:
               - {id: f_pancetta, concept: ing/pancetta_fresh, label: 新鮮豬腹肉（非煙燻）, role: 主料, qty: {value: 150, unit: g, evidence: R1, status: sourced}, forbidden: [煙燻豬腹肉]}
               - {id: f_onion, concept: ing/onion, label: 洋蔥（半顆）, role: 輔料, qty: {value: 60, unit: g, raw_text: "mezza cipolla: circa gr. 60", evidence: R1, status: sourced, note: 約}}
@@ -82,7 +83,7 @@ components:
                  completion: [{observe: 蔬菜, target: 細碎, method: 目測, evidence: R1}]}
               - {id: f3, technique: tech/render, term: 豬腹肉加油煸化, inputs: [fs_pancetta_minced, f_oil], outputs: [fs_fat],
                  tool: tool/stock_pot, note: "原文用厚底鍋，鍋徑 24–26 cm；本版改以湯鍋為主，炒鍋為替代做法（家庭改法，不是原文）",
-                 completion: [{observe: 豬腹肉, target: 油脂化出, method: 目測}]}
+                 completion: [{observe: 豬腹肉, target: 油脂化出, method: 目測, evidence: R1}]}
               - {id: f4, technique: tech/sweat, term: 小火慢炒蔬菜至軟, inputs: [fs_fat, fs_battuto], outputs: [s_soffritto], tool: tool/stock_pot,
                  params: {heat: {level: heat/medium_low, raw: "calore medio basso", evidence: R1}, agitation: {mode: 木勺持續攪拌, continuous: true}},
                  completion: [{observe: 洋蔥, target: 軟化、絕不可有焦味, method: 目測與嗅覺, evidence: R1}]}
@@ -112,7 +113,7 @@ actions:
   - {id: t1, technique: tech/boil_water, term: 燒一大鍋鹽水, inputs: [t_water, t_salt], outputs: [s_boiling], tool: tool/stock_pot, can_overlap: [r4]}
   - {id: t2, technique: tech/boil, term: 煮麵, inputs: [s_boiling, t_pasta], outputs: [s_pasta_cooked], tool: tool/stock_pot,
      params: {duration: {min_s: null, max_s: null, raw: 依包裝, status: missing}},
-     timing: {phase: "肉醬完成前約 10 分鐘開始", status: inferred},
+     timing: {phase: "肉醬將完成時開始煮麵（原文沒寫時點）", status: inferred},
      completion: [{observe: 麵, target: 依包裝時間煮好, method: 試吃, note: 原文未給}]}
   - {id: t3, technique: tech/toss, term: 拌麵, inputs: [s_pasta_cooked, s_ragu], outputs: [s_final],
      note: "麵醬比例原文未給，待試做後填入",
