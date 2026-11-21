@@ -20,7 +20,7 @@ try:
     # 繁簡同形、會被誤轉的字（例：干二流芡→幹、一面→一麵），不拿來判斷「這句是簡體」
     _AMBIG = set('干台只面后里才余云准几布松占当着征斗冲借制系历丑咸签卷向苏范钟致游注采术朴姜升合谷了志郁据弦恶')
     def s2t(s):
-        s = str(s)
+        s = str(s).replace('分钟', '分鐘').replace('小时', '小時')
         if any(c not in _AMBIG and _cc.convert(c) != c for c in s):
             s = _cc.convert(s)
         return s.replace('臺', '台')
@@ -47,11 +47,11 @@ UNIT = {'g': '克', 'kg': '公斤', 'ml': '毫升', 'l': '公升', 'piece': '個
         'bicchiere': '杯', 'cucchiaio': '匙', 'tbsp': '大匙', 'tsp': '小匙', 'cup': '杯', 'pack': '包', 'mm': '毫米', 'cm': '公分'}
 SPOONISH = {'piece', 'clove', 'slice', 'stalk', 'bicchiere', 'cucchiaio', 'tbsp', 'tsp', 'cup', 'pack'}
 PIECE_WORD = [('蛋', '顆'), ('洋蔥', '顆'), ('番茄', '顆'), ('甜椒', '顆'), ('青椒', '顆'), ('紅蔥頭', '顆'), ('檸檬', '顆'),
-              ('魚', '尾'), ('瑪芬', '個'), ('牛', '塊'), ('蔥', '根'), ('胡椒粒', '粒')]
+              ('魚', '尾'), ('瑪芬', '個'), ('牛', '塊'), ('蔥', '根'), ('胡椒粒', '粒'), ('香菇', '朵')]
 BURNER_TOOLS = {'tool/wok', 'tool/frying_pan', 'tool/heavy_pot', 'tool/dutch_oven', 'tool/stock_pot', 'tool/clay_pot',
                 'tool/saucepan', 'tool/bain_marie'}
 LEVEL = {'A': '官方或教科書', 'B': '出版食譜', 'C': '網路食譜'}
-CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩'
+CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳'
 TAGS = {'weekday': ('平日可做（20 分鐘內）', 'ok', '●'), 'weekend': ('假日菜', 'na', '○'), 'pending': ('待試做計時', 'watch', '◐')}
 
 FRAC = {0: '', 1/6: '⅙', 1/4: '¼', 1/3: '⅓', 1/2: '½', 2/3: '⅔', 3/4: '¾', 5/6: '⅚'}
@@ -180,8 +180,25 @@ def build_model(path):
     return dict(d=d, r=r, rid=rid, ov=ov, flat=flat, srcs=srcs, srcmap=srcmap, clean=clean, order=order, deps=deps,
                 prod=prod, num=num, ings=ings, comps=comps, name=s2t(r['name']['zh_hant']), slug=rid.split('.')[0])
 
+def range_html(q, label):
+    mn, mx, u = q.get('min'), q.get('max'), q.get('unit')
+    uw = unit_word(u, label)
+    a = f'<span class="q" data-v="{mn}" data-u="{u}" data-w="">{fmt_num(mn, u)}</span>' if mn is not None else ''
+    b = f'<span class="q" data-v="{mx}" data-u="{u}" data-w="{E(uw)}">{fmt_num(mx, u)} {E(uw)}</span>' if mx is not None else ''
+    return a + ('–' if a and b else '') + b
+
+def sug_html(iid, m):
+    """白話說明檔給的「建議值」：原文沒寫或只寫目測詞時，附上有出處的參考量，和原文數字分開標示。"""
+    t = ((m['ov'].get('ing') or {}).get(iid) or {}).get('suggest')
+    return f'<span class="sug"><b>建議值</b>{E(t)}</span>' if t else ''
+
 def qty_html(ing, m):
+    return qty_html0(ing, m) + sug_html(ing['id'], m)
+
+def qty_html0(ing, m):
     q = ing['qty']; v = q.get('value'); u = q.get('unit')
+    if v is None and (q.get('min') is not None or q.get('max') is not None):
+        return range_html(q, ing['label'])
     if v is not None:
         uw = unit_word(u, ing['label'])
         note = '（義式原文的杯，原文沒定義容量）' if u == 'bicchiere' else '（義式原文的匙，原文沒定義容量）' if u == 'cucchiaio' else ''
@@ -456,7 +473,7 @@ def timeline_html(m, step_lane, maxc, over):
 SKIP_SHOP = {'ing/water', 'ing/pan_fond'}
 SEASON_ROLES = {'調料', '香料', '油脂', '芡粉', '液體'}
 def ing_li(ing, m):
-    opt = '（可省）' if ing.get('optional') else ''
+    opt = '（可省）' if ing.get('optional') and '可省' not in ing['label'] else ''
     buy = '（買現成的）' if ing.get('product') and '市售' not in ing['label'] and '購買' not in ing['label'] else ''
     note = ((m['ov'].get('ing') or {}).get(ing['id']) or {}).get('note')
     nt = f'<span class="ing-note">{E(note)}</span>' if note else ''
@@ -483,9 +500,11 @@ def shopping_html(m):
         name = VZH.get(con) or strip_paren(s2t(i['label']))
         if '辣椒油' in i['label']: name = '辣椒油（市售）'
         q = i['qty']; key = (name, q.get('unit') if q.get('value') is not None else None)
-        e = groups[g].setdefault(key, dict(name=name, v=0.0, u=q.get('unit'), has=False, qual=[], miss=False, opt=True, label=s2t(i['label'])))
+        e = groups[g].setdefault(key, dict(name=name, v=0.0, u=q.get('unit'), has=False, qual=[], miss=False, opt=True, label=s2t(i['label']), ids=[]))
+        e['ids'].append(i['id'])
         e['opt'] = e['opt'] and bool(i.get('optional'))
         if q.get('value') is not None: e['v'] += q['value']; e['has'] = True
+        elif q.get('min') is not None or q.get('max') is not None: e.setdefault('rng', []).append(range_html(q, i['label']))
         elif q.get('qualitative'): e['qual'].append(m['clean'](q['qualitative']))
         else: e['miss'] = True
     out = []
@@ -496,8 +515,10 @@ def shopping_html(m):
             if e['has']:
                 uw = unit_word(e['u'], e['label'])
                 qty = f'<span class="q" data-v="{round(e["v"], 4)}" data-u="{e["u"]}" data-w="{E(uw)}">{fmt_num(e["v"], e["u"])} {E(uw)}</span>'
+            elif e.get('rng'): qty = '、'.join(e['rng'])
             elif e['qual']: qty = E('、'.join(dict.fromkeys(e['qual'])))
             else: qty = '<span class="na">份量原文沒寫</span>'
+            qty += ''.join(dict.fromkeys(sug_html(x, m) for x in e['ids']))
             opt = '（可省）' if e['opt'] else ''
             lis.append(f'<li><label><input type="checkbox"><span>{E(e["name"])}{opt}</span></label><span class="ing-qty">{qty}</span></li>')
         out.append(f'<div class="shop-g"><h3 class="ing-h">{g}</h3><ul class="shop-list">{"".join(lis)}</ul></div>')
@@ -585,6 +606,19 @@ def notes_html(m):
         parts.append('<div class="note-block"><h3 class="h3">和其他版本的差別</h3><ul>' + ''.join(f'<li>{E(x)}</li>' for x in ov['compare']) + '</ul></div>')
     return ''.join(parts)
 
+def two_html(m):
+    t = m['ov'].get('two_serving')
+    if not t: return ''
+    KIND = {'src': ('ok', '來源數字'), 'calc': ('ok', '照原文比例'), 'sug': ('watch', '建議值'), 'na': ('na', '原文沒寫')}
+    rows = []
+    for r in t['rows']:
+        k = KIND[r['kind']]
+        rows.append(f'<tr><td>{E(r["item"])}</td><td>{E(r["orig"])}</td><td><span class="zd-signal zd-signal--{k[0]} kind">{k[1]}</span> {E(r["two"])}</td><td class="zd-small">{E(r.get("basis", ""))}</td></tr>')
+    return (f'<section class="block" aria-labelledby="two-h"><h2 class="h2" id="two-h">{E(t.get("title", "兩人份怎麼抓"))}</h2>'
+            f'<p class="lead">{E(t.get("intro", ""))}</p>'
+            '<div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>材料</th><th>原文寫的</th><th>兩人份</th><th>依據</th></tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div></section>')
+
 def servings_text(m):
     sv = m['r'].get('servings') or {}
     if sv.get('value'): return f'{fmt_num(sv["value"], "piece")} 人份'
@@ -621,6 +655,7 @@ def recipe_page(m):
   <p class="zd-small scale-note">按倍數只會換算材料份量；火候、時間和「好了的樣子」不跟著變，份量變大時鍋子也要夠大。「換算值」是用公開換算表算出的湯匙或目測數，只是方便你不用秤，<a href="../conversions.html">看換算表和出處</a>。</p>
   {ingredients_html(m)}
 </section>
+{two_html(m)}
 <section class="block" aria-labelledby="shop-h"><h2 class="h2" id="shop-h">購物清單</h2>{shopping_html(m)}</section>
 <section class="block" aria-labelledby="flow-h"><h2 class="h2" id="flow-h">流程圖：材料怎麼變成一道菜</h2>
   <p class="lead">由上往下看。每個方塊是一個步驟（點方塊可以跳到那一步），線表示做好的東西交給下一步。<span class="legend"><span class="lg lg-step">主菜步驟</span><span class="lg lg-sub">醬料或配料（子食譜）</span></span></p>

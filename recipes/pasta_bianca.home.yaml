@@ -1,0 +1,247 @@
+# 白醬義大利麵（雞肉香菇・爐上版、不焗烤）— B 版，規格 v1.0
+# 主來源 M＝愛料理 蓁心蓁意の料理〈白醬義大利麵〉（icook 159170，3 人份、20 分鐘）。本檔數字只照抄 M：
+#   奶油 50g、麵粉 50g、牛奶 600cc、玉米筍 4根、香菇 5、6朵、洋蔥 半顆、煮麵約 6-7 分鐘。
+#   M 只寫目測詞或沒寫的（雞胸肉「ㄧ大塊」、義大利麵「ㄧ碗公約3人份」、蒜頭「少許」、煮麵水、煮麵鹽「ㄧ些」、炒料油、調味鹽「ㄧ點」）
+#   保留原文、標 missing 或定性；有出處的「建議值」只寫在 note 與 notes.two_serving，不進主體數字。
+# 兩人份：M 是 3 人份。M 的數字照比例 ×⅔ 的換算只放 notes.two_serving，主體仍是 M 原量。
+# 原本以 Dassana（Veg Recipes of India）為主來源的版本存於 research/p2/dassana-版存檔/，不刪。
+# 鍋具：煮麵用湯鍋；白醬用平底鍋（M 作者說用「一般般的鐵鍋」）；炒料與拌麵用炒鍋（M 寫「炒」）。工具分配是推論。
+schema_version: "1.0"
+recipe:
+  id: pasta_bianca.home
+  version: "2.0"
+  kind: dish
+  dish_concept: dish/pasta_bianca
+  name: {zh_hant: 白醬義大利麵, en: White sauce pasta with chicken and mushroom}
+  variant: 雞肉香菇・爐上版、不焗烤
+  summary: 小火融化奶油、加麵粉攪到絲滑，離火分次加牛奶，再回爐小火攪到濃稠成白醬；另外炒洋蔥、蒜、雞胸肉、香菇和玉米筍，最後和煮好的義大利麵、白醬一起拌炒收汁。
+  cuisine:
+    - {id: cuisine/italian, basis: "M 標籤 #異國料理 #義式 #義大利麵；台灣家常做法，不據此宣稱為義大利傳統定式", claim: secondary, evidence: M}
+    - {id: region/italy, basis: "M 標籤 #義式；不是產地證明，只作地域軸標記", claim: secondary, evidence: M}
+  flavor_template: null
+  servings: {value: 3, status: sourced, evidence: M, note: "M 標『3 人份』。兩人份見 notes.two_serving（M 數字 ×⅔ 的換算與有出處的建議值），主體不縮放"}
+  status: machine_checked
+  sources:
+    - {id: M, title: "蓁心蓁意の料理〈白醬義大利麵〉（愛料理，食譜 159170，2016-06-05）", url: "https://icook.tw/recipes/159170", level: C, type: web, accessed: 2026-11-21,
+       note: "唯一主來源。3 人份、20 分鐘。本機 sources/c-icook-159170.html／.txt。留言區作者回覆：麵粉用中筋麵粉；加麵粉時沒有關火，加牛奶時有關；白醬太稠是煮太久、收汁收過頭；煮白醬用一般的鐵鍋"}
+    - {id: T1, title: "臺灣阿鹹〈義大利麵全方位料理指南〉（關鍵評論網轉載愛料理生活誌，2024-04-14）", url: "https://www.thenewslens.com/article/201366", level: C, type: web, accessed: 2026-11-21,
+       note: "建議值依據（麵量、煮麵水與鹽）：『可以以100g乾麵條為1人份來做評估煮食份量』；『通常都會建議100g的麵，要使用1L的水與10g的鹽巴與些許油』；另寫 500ml 水煮 100g 麵也可以。本機 sources/c-tnl-201366-pasta-guide.*"}
+    - {id: T2, title: "食力 foodNEXT〈水、鹽巴量加多少？義大利麵到底要怎麼煮？〉（摘自安東尼奧．卡路奇歐《PASTA義大利麵料理全書》，2022-09-16）", url: "https://www.foodnext.net/life/culture/paper/5234741503", level: C, type: web, accessed: 2026-11-21,
+       note: "建議值旁證：『1公升水量要搭配100公克的麵條；1公升的水要配10公克的鹽巴』；『正常份量…每個人約是70至80克乾燥麵』、大份量『每個人使用100至110克乾燥麵』；並說濾水後『不要再額外用水沖洗麵條』（與 M 泡冷水不同，見 notes.compare）。本機 sources/c-foodnext-5234741503.*"}
+    - {id: T3, title: "西西烹飪筆記〈白醬蒜味奶油雞肉蘑菇義大利麵〉（2018-10-13）", url: "https://www.sisicooking.com/2018/10/blog-post_22.html", level: C, type: web, accessed: 2026-11-21,
+       note: "建議值依據（雞胸肉、蒜、油）：『(一人份) 雞胸肉 75g 蒜頭 2瓣 … 橄欖油 1大匙』；橄欖油用在醃雞與煎雞。白醬做法不同（鮮奶油），不進主體。本機 sources/c-sisicooking-chicken-mushroom.*"}
+    - {id: T4, title: "小磨坊〈白醬蘑菇雞肉義大利麵〉（愛料理，食譜 282394，2019-01-17）", url: "https://icook.tw/recipes/282394", level: C, type: web, accessed: 2026-11-21,
+       note: "對照（兩人份）：『2 人份』、雞胸肉 400g、義大利麵(螺旋) 1/2包、蘑菇 5朵、洋蔥 1/2顆。白醬用濃湯粉，不進主體。本機 sources/c-icook-282394.*"}
+    - {id: T5, title: "桑尼閒煮〈［超簡單］白醬蘑菇（雞肉）義大利麵〉（愛料理，食譜 380183）", url: "https://icook.tw/recipes/380183", level: C, type: web, accessed: 2026-11-21,
+       note: "對照（4 人份）：義大利麵 400克、雞胸肉 200克、蒜頭 2瓣。白醬用鮮奶油，不進主體。本機 sources/c-icook-380183.*"}
+  extracted_by: [grokbot]
+  changelog:
+    - {version: "2.0", date: 2026-11-21, change: "改用 B 版：主來源換成愛料理 159170 雞肉香菇白醬麵（3 人份）。M 有寫的數字照抄；目測詞保留原文；沒寫的標 missing；兩人份換算與建議值（T1–T5）只放 note 與 notes.two_serving。Dassana 版 v1.0（已兩邊比對過）存於 research/p2/dassana-版存檔/。狀態回到 machine_checked，第二輪比對另排", by: grokbot}
+
+ingredients:
+  - {id: p_pasta, concept: ing/dried_pasta, label: 義大利麵, role: 主料,
+     qty: {value: null, unit: null, qualitative: 一碗公（約 3 人份）, raw_text: "義大利麵 ㄧ碗公約3人份", evidence: M, status: sourced,
+           note: "M 沒寫克數與麵形。建議值：每人 100 公克，兩人 200 公克（T1『以100g乾麵條為1人份』）；T2 正常份量每人 70 至 80 公克，胃口小可少放"}}
+  - {id: p_water, concept: ing/water, label: 煮麵水, role: 液體,
+     qty: {value: null, unit: l, raw_text: null, status: missing, note: "M 沒寫水量。建議值：每 100 公克麵配 1 公升水，兩人份 200 公克麵配 2 公升（T1、T2 同一比例）；T1 另說 500ml 煮 100g 也可以，只要麵能被水淹過"}}
+  - {id: p_salt, concept: ing/salt, label: 煮麵鹽, role: 調料,
+     qty: {value: null, unit: null, qualitative: 一些, raw_text: "水裡面加ㄧ些鹽巴", evidence: M, status: sourced,
+           note: "M 沒寫克數。建議值：每 1 公升水 10 公克鹽，兩人份 2 公升水配 20 公克（T1、T2 同一比例）"}}
+  - {id: p_chicken, concept: ing/chicken_breast, label: 雞胸肉, form: 小塊, role: 主料,
+     qty: {value: null, unit: null, qualitative: 一大塊, raw_text: "雞胸肉 ㄧ大塊", evidence: M, status: sourced,
+           note: "M 沒寫克數。建議值：每人 75 公克，兩人 150 公克（T3 一人份『雞胸肉 75g』）。其他食譜差很多：T4 兩人份用 400g，T5 四人份用 200克"}}
+  - {id: p_babycorn, concept: ing/baby_corn, label: 玉米筍, form: 小塊, role: 輔料,
+     qty: {value: 4, unit: stalk, raw_text: "玉米筍 4根", evidence: M, status: sourced, note: "M 原量（3 人份）。兩人份照比例約 3 根（4 × ⅔ ≈ 2.7）"}}
+  - {id: p_shiitake, concept: ing/shiitake_fresh, label: 香菇, form: 片, role: 輔料,
+     qty: {value: null, min: 5, max: 6, unit: piece, raw_text: "香菇 5、6朵", evidence: M, status: sourced,
+           note: "M 原量（3 人份）只寫「香菇」，沒寫新鮮或乾香菇；M 直接切片下鍋、沒有泡發步驟，所以用新鮮香菇（推論）。兩人份照比例約 3 至 4 朵（5～6 × ⅔ ≈ 3.3～4）"}}
+  - {id: p_onion, concept: ing/onion, label: 洋蔥, form: 碎, role: 輔料,
+     qty: {value: 0.5, unit: piece, raw_text: "洋蔥 半顆", evidence: M, status: sourced, note: "M 原量（3 人份）。兩人份照比例約 ⅓ 顆"}}
+  - {id: p_garlic, concept: ing/garlic, label: 蒜頭, form: 碎, role: 香料,
+     qty: {value: null, unit: clove, qualitative: 少許, raw_text: "蒜頭 少許", evidence: M, status: sourced,
+           note: "M 沒寫瓣數。建議值：2 瓣（T5 四人份『蒜頭 2瓣』；T3 一人份也是 2 瓣，喜歡蒜味可多放）"}}
+  - {id: p_oil, concept: ing/cooking_oil, label: 炒料用油, role: 油脂,
+     qty: {value: null, unit: tbsp, raw_text: null, status: missing, note: "M 步驟寫「先炒洋蔥」，但食材表沒有油。建議值：每人 1 大匙，兩人 2 大匙（T3 一人份『橄欖油 1大匙』，T3 是醃雞和煎雞共用）"}}
+  - {id: p_salt_season, concept: ing/salt, label: 調味鹽, role: 調料,
+     qty: {value: null, unit: null, qualitative: 一點, raw_text: "加ㄧ點鹽巴調味", evidence: M, status: sourced, note: "M 沒寫克數，邊試味邊加。沒有找到可靠的建議值，不另補"}}
+
+components:
+  - id: c_white_sauce
+    call: {ref: recipe/white_sauce.pasta_bianca.home, version: "2.0"}
+    output_as: s_white_sauce
+    note: "M：先煮白醬，煮好放旁邊備用。白醬做法 M 註明學自〈蘿潔塔的廚房〉影片，本檔只用 M 的文字"
+    definition:
+      recipe:
+        id: white_sauce.pasta_bianca.home
+        version: "2.0"
+        kind: sauce
+        name: {zh_hant: 白醬}
+        status: machine_checked
+        extracted_by: [grokbot]
+      ingredients:
+        - {id: w_butter, concept: ing/butter, label: 奶油, role: 油脂,
+           qty: {value: 50, unit: g, raw_text: "奶油 50g", evidence: M, status: sourced, note: "M 原量（3 人份）；沒寫有鹽或無鹽。兩人份照比例約 33 公克（50 × ⅔ ≈ 33.3）"}}
+        - {id: w_flour, concept: ing/all_purpose_flour, label: 中筋麵粉, role: 輔料,
+           qty: {value: 50, unit: g, raw_text: "麵粉 50g", evidence: M, status: sourced, note: "M 原量（3 人份）。麵粉種類：作者在留言回覆『我是用中筋麵粉唷』。兩人份照比例約 33 公克"}}
+        - {id: w_milk, concept: ing/milk, label: 牛奶, role: 液體,
+           qty: {value: 600, unit: ml, raw_text: "牛奶 600cc", evidence: M, status: sourced, note: "M 原量（3 人份）；沒寫全脂或冰的。兩人份照比例 400 毫升（600 × ⅔）"}}
+      states:
+        - {id: s_butter_melted, label: 融化的奶油}
+        - {id: s_roux, label: 攪到絲滑的奶油麵糊}
+        - {id: s_milk_mixed, label: 離火加好牛奶的麵糊}
+        - {id: s_white_sauce, label: 煮好的白醬}
+      actions:
+        - id: w1
+          technique: tech/melt_butter
+          term: 小火將奶油煮融化
+          inputs: [w_butter]
+          outputs: [s_butter_melted]
+          tool: tool/frying_pan
+          params:
+            heat: {level: heat/low, raw: "小火將奶油煮融化", evidence: M}
+            duration: {min_s: null, max_s: null, raw: "時間原文沒寫", status: missing}
+          completion: [{observe: 奶油, target: 全部融化, method: 目測, evidence: M}]
+          note: "工具改寫（推論）：M 作者回覆煮白醬用『一般般的鐵鍋』，本檔用平底鍋；炒鍋可替代"
+        - id: w2
+          technique: tech/make_roux
+          term: 奶油全部融化後加入麵粉，一直攪拌到有絲滑感
+          inputs: [s_butter_melted, w_flour]
+          outputs: [s_roux]
+          tool: tool/frying_pan
+          params:
+            heat: {level: heat/low, raw: "承上小火；作者回覆『加麵粉的時候沒有關火』", evidence: M}
+            duration: {min_s: null, max_s: null, raw: "時間原文沒寫", status: missing}
+            agitation: {mode: 一直攪拌, continuous: true}
+          completion: [{observe: 麵糊, target: 攪拌到有絲滑的感覺, method: 目測, evidence: M}]
+        - id: w3
+          technique: tech/combine
+          term: 移開火源，分批加入牛奶：先倒約三分之一，確定麵粉都攪開，再加入全部牛奶
+          inputs: [s_roux, w_milk]
+          outputs: [s_milk_mixed]
+          tool: tool/frying_pan
+          completion: [{observe: 麵糊, target: 全部的麵粉都攪拌開來，沒有結塊, method: 目測, evidence: M}]
+          note: "M 原文寫『先倒入約3/1』，依上下文是三分之一（推論）。作者回覆：加牛奶的時候有關火"
+        - id: w4
+          technique: tech/simmer
+          term: 移回爐上，小火持續攪拌到濃稠，盛起放旁邊備用
+          inputs: [s_milk_mixed]
+          outputs: [s_white_sauce]
+          tool: tool/frying_pan
+          params:
+            heat: {level: heat/low, raw: "然後再移回瓦斯爐....小火持續攪拌至濃稠感", evidence: M}
+            duration: {min_s: null, max_s: null, raw: "時間原文沒寫，以濃稠為準", status: missing}
+            agitation: {mode: 持續攪拌, continuous: true}
+          completion: [{observe: 白醬, target: 有濃稠感, method: 目測, evidence: M}]
+          risk: "作者回覆：成品太稠是煮太久、收汁收過頭"
+
+states:
+  - {id: s_prepped, label: 切好的洋蔥、蒜、香菇、雞胸肉和玉米筍}
+  - {id: s_water_boiling, label: 加鹽煮滾的煮麵水}
+  - {id: s_pasta_cooked, label: 煮好的義大利麵}
+  - {id: s_pasta_cooled, label: 泡過冷水的義大利麵}
+  - {id: s_aromatics, label: 炒香的洋蔥和蒜}
+  - {id: s_topping, label: 炒好的雞肉香菇玉米筍}
+  - {id: s_tossed, label: 拌炒收汁的白醬義大利麵}
+  - {id: s_final, label: 白醬義大利麵, role: final}
+
+actions:
+  - id: a1
+    technique: tech/cut
+    term: 洋蔥和蒜頭剁碎，香菇切片，雞胸肉和玉米筍切小塊
+    inputs: [p_onion, p_garlic, p_shiitake, p_chicken, p_babycorn]
+    outputs: [s_prepped]
+    tool: tool/knife
+    params: {cut: {shape: cut/kuai, size_mm: {min: null, max: null}, raw: "洋蔥跟蒜頭剁碎、香菇切片、雞胸肉跟玉米筍切小塊", evidence: M, note: "一個步驟有三種切法（碎、片、小塊）；小塊多大原文沒寫"}}
+    completion: [{observe: 材料, target: 切好備用, method: 目測, evidence: M}]
+    can_overlap: [a2]
+  - id: a2
+    technique: tech/boil_water
+    term: 湯鍋放水，加一些鹽煮滾
+    inputs: [p_water, p_salt]
+    outputs: [s_water_boiling]
+    tool: tool/stock_pot
+    params:
+      heat: {level: null, raw: "火力原文沒寫，只要求滾"}
+      duration: {min_s: null, max_s: null, raw: "燒開要多久原文沒寫", status: missing}
+    completion: [{observe: 水, target: 滾了, method: 目測, evidence: M}]
+    can_overlap: [a1]
+    note: "工具（推論）：煮麵用湯鍋；沒有湯鍋時炒鍋可替代。也可以在燒水時先做白醬（兩口爐），但規格的 can_overlap 不能指向子食譜，寫在 notes.burners"
+  - id: a3
+    technique: tech/boil
+    term: 水滾後倒入義大利麵，煮約 6–7 分鐘
+    inputs: [s_water_boiling, p_pasta]
+    outputs: [s_pasta_cooked]
+    tool: tool/stock_pot
+    params:
+      heat: {level: null, raw: "火力原文沒寫"}
+      duration: {min_s: 360, max_s: 420, raw: "滾後倒入義大利麵煮約6-7分鐘", is_guide: true, evidence: M, status: sourced}
+    completion: [{observe: 麵, target: 煮約 6–7 分鐘；麵的熟度原文沒寫, method: 計時, evidence: M}]
+    can_overlap: [a5, a6]
+    note: "M 沒寫麵形，6–7 分鐘是 M 的時間；不同麵形與品牌的時間不同，T1、T2 建議照包裝"
+  - id: a4
+    technique: tech/rinse
+    term: 撈起，放入冷水備用
+    inputs: [s_pasta_cooked]
+    outputs: [s_pasta_cooled]
+    tool: tool/bowl
+    completion: [{observe: 麵, target: 撈起放入冷水備用, method: 目測, evidence: M}]
+    note: "冷水量與泡多久原文沒寫。T2 說濾水後不要再用水沖麵（會洗掉澱粉），與 M 不同；本檔照 M，見 notes.compare"
+  - id: a5
+    technique: tech/stir_fry
+    term: 炒鍋放油，先炒洋蔥到有點焦黃，再加蒜頭拌炒
+    inputs: [s_prepped, p_oil]
+    outputs: [s_aromatics]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "火力原文沒寫"}
+      duration: {min_s: null, max_s: null, raw: "時間原文沒寫", status: missing}
+    completion: [{observe: 洋蔥, target: 有點焦黃, method: 目測, evidence: M}]
+    can_overlap: [a3]
+    note: "M 寫『先炒洋蔥』，沒列油（油量見 p_oil 建議值）。工具（推論）：炒鍋；平底鍋可替代。本步只先下洋蔥和蒜，雞肉、香菇、玉米筍下一步才下"
+  - id: a6
+    technique: tech/stir_fry
+    term: 加入雞胸肉拌炒，再加香菇和玉米筍，加一點鹽調味
+    inputs: [s_aromatics, p_salt_season]
+    outputs: [s_topping]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "火力原文沒寫"}
+      duration: {min_s: null, max_s: null, raw: "時間原文沒寫", status: missing}
+    completion: [{observe: 雞肉, target: 原文沒寫；建議炒到表面全部變白、切開沒有粉紅色（推論）, method: 目測}]
+    can_overlap: [a3]
+  - id: a7
+    technique: tech/toss
+    term: 倒入義大利麵和白醬，一起拌炒收汁
+    inputs: [s_topping, s_pasta_cooled, s_white_sauce]
+    outputs: [s_tossed]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "火力原文沒寫"}
+      duration: {min_s: null, max_s: null, raw: "時間原文沒寫", status: missing}
+    completion: [{observe: 醬汁, target: 收汁；作者提醒收過頭會太稠, method: 目測, evidence: M}]
+    note: "M 用『拌炒收汁』，所以這步要開火（推論為中小火，原文沒寫）"
+  - id: a8
+    technique: tech/plate
+    term: 盛盤
+    inputs: [s_tossed]
+    outputs: [s_final]
+    tool: tool/wok
+    completion: [{observe: 成品, target: 用盤子裝起來, method: 目測, evidence: M}]
+    optional_branch: {at: 盛盤後, action: "想做成焗烤：上面灑滿起司，放入烤箱烤到起司稍微焦黃（M 的選做；起司量、烤溫、時間原文沒寫，本檔不做）"}
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
+  sensory_target:
+    taste: 作者回覆：白醬是「鹹鹹的奶香」
+    texture: 原文沒寫；作者提醒煮太久會太稠
+
+notes:
+  main_source: "主來源只有 M。主體數字只照抄 M；T1–T3 只提供 M 沒寫的項目的建議值，T4、T5 只作對照，都不混進主體"
+  two_serving: "兩人份（M 是 3 人份）。照 M 比例 ×⅔：奶油約 33 公克、中筋麵粉約 33 公克、牛奶 400 毫升、玉米筍約 3 根、香菇約 3 至 4 朵、洋蔥約 ⅓ 顆。建議值（有出處）：義大利麵 200 公克（T1 每人 100g）、雞胸肉 150 公克（T3 每人 75g）、煮麵水 2 公升與鹽 20 公克（T1／T2 每 100g 麵 1 公升水、每 1 公升水 10g 鹽）、蒜頭 2 瓣（T5／T3）、炒料油 2 大匙（T3 每人 1 大匙）。原文沒寫也沒有建議值：調味鹽（試味）、各步驟火力與時間（除煮麵 6–7 分鐘）"
+  burners: "兩口爐：可以先做白醬（平底鍋，1 口爐），同時另一口爐燒煮麵水（湯鍋）；煮麵時另一口爐炒料（炒鍋）。白醬做好離火放旁邊，不佔爐口。原文沒寫要幾口爐，這是推論"
+  no_bake: "M 的焗烤是「另外想做成焗烤的話」的選做，本檔不做（起司量、烤溫、烤多久原文都沒寫）"
+  compare: "M 煮好的麵撈起放入冷水備用；T2 說濾水後不要再用冷水或熱水沖麵，會沖掉太多澱粉。本檔照 M。另外 T3、T4、T5 的白醬分別用鮮奶油或濃湯粉，做法不同，不混用"
+  spicy_split: "主體沒有辣椒、花椒，整盤不辣不麻。要辣的人盛盤後自己加（原文沒有，份量自己抓）"
+  missing: "原文沒寫：雞胸肉與義大利麵的克數、麵形、煮麵水量與鹽量、炒料油量、蒜瓣數、調味鹽量、各步驟火力（除白醬的小火）、白醬與炒料的分鐘數、燒水要多久、泡冷水多久、雞肉怎麼看熟、上桌溫度"
+  schema_gaps: "can_overlap 不能指向子食譜，白醬和燒水同時做只能寫在 notes。一個切配步驟有三種切法，cut 只能填一種。兩人份換算與建議值沒有專用欄位，只能寫在 note。香菇 5、6朵用 min／max 表示"

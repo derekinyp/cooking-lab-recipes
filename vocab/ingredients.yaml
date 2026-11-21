@@ -109,3 +109,16 @@ concepts:
   - {id: ing/dried_thyme, zh: 乾百里香, alt: [dried thyme], note: "P2 新增 2026-11-21"}
   - {id: ing/cheddar, zh: 切達起司, alt: [cheddar cheese], note: "P2 新增 2026-11-21；白醬義大利麵主來源可選配料，本檔主體未採用"}
 
+  - {id: ing/rice_raw, zh: 白米（生米）, alt: [生米, 米], note: "粥 2026-11-21"}
+  - {id: ing/shrimp_shell_on, zh: 帶殼鮮蝦, alt: [鮮蝦, 蝦子, 蝦仁], note: "粥 2026-11-21；殼頭留作湯底"}
+  - {id: ing/century_egg, zh: 皮蛋, alt: [century egg], note: "粥 2026-11-21"}
+  - {id: ing/salted_egg_yolk, zh: 鹹蛋黃, alt: [鹹鴨蛋黃], note: "粥 2026-11-21"}
+  - {id: ing/bok_choy, zh: 青江菜, alt: [湯匙菜], note: "粥 2026-11-21"}
+  - {id: ing/pork_sliced, zh: 豬肉片, alt: [火鍋肉片, 瘦肉片], note: "粥 2026-11-21；部位未指定"}
+  - {id: ing/chicken_powder, zh: 雞粉, alt: [], note: "粥 2026-11-21"}
+  - {id: ing/shiitake_fresh, zh: 鮮香菇, alt: [], note: "粥 2026-11-21"}
+  # ── P2 白醬義大利麵 B 版（愛料理雞肉蘑菇，2026-11-21）──
+  - {id: ing/chicken_breast, zh: 雞胸肉, alt: [雞胸], broader: ing/chicken_thigh_breast, note: "P2 白醬義大利麵 B 版"}
+  - {id: ing/baby_corn, zh: 玉米筍, alt: [], note: "P2 白醬義大利麵 B 版"}
+  - {id: ing/dried_pasta, zh: 義大利麵, alt: [乾燥義大利麵], note: "P2 白醬義大利麵 B 版；主來源沒寫麵形"}
+  - {id: ing/milk, zh: 牛奶, alt: [鮮奶], note: "P2 白醬義大利麵 B 版；主來源只寫牛奶，沒寫全脂或低脂"}

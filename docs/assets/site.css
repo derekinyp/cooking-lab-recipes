@@ -186,3 +186,8 @@ a{color:var(--color-text-link)}
 }
 @media print{.top,.steps-bar,.fb-row-btn,.fb-end,.scale,.jump,.filters{display:none}.step{break-inside:avoid}}
 .check-note{background:var(--color-signal-watch-bg);color:var(--color-signal-watch-text);border-radius:var(--radius-md);padding:var(--space-2) var(--space-3);font-size:var(--zd-font-small)}
+
+/* 建議值：原文沒寫或只寫目測詞時的參考量，和原文數字分開標示 */
+.sug{display:block;margin-top:var(--space-1);font-weight:var(--weight-regular);font-size:var(--zd-font-small);color:var(--color-signal-watch-text);background:var(--color-signal-watch-bg);border-radius:var(--radius-sm);padding:0 var(--space-1)}
+.sug b{margin-right:var(--space-1)}
+.kind{white-space:nowrap}

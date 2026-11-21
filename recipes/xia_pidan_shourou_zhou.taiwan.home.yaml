@@ -1,0 +1,235 @@
+# 鮮蝦皮蛋瘦肉粥（蝦殼鹹蛋黃湯底・生米直煮）— 兩人份起始檔，規格 v1.0
+# 主來源 M＝愛料理 ijustcookit〈皮蛋鮮蝦粥〉（3 人份）：米、水、蝦仁、皮蛋、青江菜、調味、時間只用 M 的數字，本版採 M 原量（3 人份量，選定米量 B：1 米杯＋7½ 米杯水），不再縮放。
+# 蝦殼＋鹹蛋黃湯底、豬肉片是影片（Ssu Chiao Huang reel）的做法；M 沒有這幾樣，用量標 missing，建議值寫在 note，不混進主體比例。
+# 無秤版：米杯換算依 U1（大同量米杯 180 ml）、U2（Panasonic：1 米杯平口白米約 150 g）。
+schema_version: "1.0"
+recipe:
+  id: xia_pidan_shourou_zhou.taiwan.home
+  version: "1.2"
+  kind: dish
+  dish_concept: dish/xia_pidan_shourou_zhou
+  name: {zh_hant: 鮮蝦皮蛋瘦肉粥, zh_hans: 鲜虾皮蛋瘦肉粥, en: "Shrimp, century egg and pork congee"}
+  variant: 蝦殼鹹蛋黃湯底・生米直煮家常版
+  summary: 蝦殼和鹹蛋黃炒香加水煮成湯底，撈殼後下泡過的生米加蓋小火煮，再下皮蛋、豬肉片、蝦仁，最後加青江菜的一鍋到底粥。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "影片與主來源 M 均為台灣作者家常做法（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣食譜平台愛料理；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: 3, status: sourced, evidence: M, note: "M 標『3 人份』。選定採 M 原量（米量 B），兩人吃會多約一碗；份數以 M 標示為準"}
+  status: machine_checked
+  sources:
+    - {id: V, title: "Facebook reel〈暖心暖胃〉Ssu Chiao Huang（30.6 秒）", url: "https://www.facebook.com/share/r/1EjSr6DoSn/", level: C, type: media, accessed: 2026-11-21,
+       note: "做法依據，無份量。本機 /workspace/congee/reel.mp4。步驟由看片轉述（標影片轉述）；畫面字幕由 Grok Bot 抽影格看過（標影片字幕）：把豬肉抓醃、加入鹹蛋黃、加入適量的水、再把蝦殼撈出、加入事先泡過的米飯、蓋上鍋蓋煮10分鐘、所以又加了兩顆皮蛋、煮到豬肉和蝦仁都…、就可以加入蔬菜、最後撒點黑胡椒"}
+    - {id: M, title: "愛料理 ijustcookit〈皮蛋鮮蝦粥〉（2023-01-13）", url: "https://icook.tw/recipes/430378", level: C, type: web, accessed: 2026-11-21,
+       note: "主來源。3 人份、時間 60 分鐘。本機 sources/c-icook-430378.*"}
+    - {id: S1, title: "愛料理〈金沙蝦仁粥〉（作者暱稱 😊，2024-08-24）", url: "https://icook.tw/recipes/465367", level: C, type: web, accessed: 2026-11-21,
+       note: "蝦殼＋鹹蛋黃炒香、加水煮滾撈殼、下生米的做法依據。份數沒寫；鹹蛋 1顆、蝦子 5隻、米半杯、水 800毫升、橄欖油 2大匙、米酒 1大匙、薑 4片；生米小火煮 25 分鐘、蝦仁再煮 5 分鐘。本機 sources/c-icook-465367.*"}
+    - {id: S2, title: "愛料理 YCH〈虱目魚鮮蝦粥（生米煮粥）〉（2022-10-30）", url: "https://icook.tw/recipes/425696", level: C, type: web, accessed: 2026-11-21,
+       note: "對照。2 人份、45 分鐘；生米一杯、蝦子 8、開水半鍋；另一煎鍋煎蝦頭，加入熱水約煮 5 分鐘，倒入米鍋。本機 sources/c-icook-425696.*"}
+    - {id: Y1, title: "楊桃美食網〈大廚教你做出正統港式皮蛋瘦肉粥！〉（2021-06-25）", url: "https://www.ytower.com.tw/videos/mov-3300", level: C, type: media, accessed: 2026-11-21,
+       note: "對照。洗淨的米 2杯、水 3500公克、絞肉 400公克；轉中小火讓水保持滾動、隔一段時間攪拌一下、煮約20分鐘至米粒開花。本機 sources/c-ytower-mov-3300.*"}
+    - {id: Y2, title: "楊桃美食網〈哇！粥要這樣做才好吃〉（2017-01-20）", url: "https://www.ytower.com.tw/videos/mov-1509", level: C, type: media, accessed: 2026-11-21,
+       note: "對照。粥底米水比例 1:12（米 1杯、水 12杯）；皮蛋瘦肉粥用粥底 1份、皮蛋 4顆、瘦絞肉 300公克。本機 sources/c-ytower-mov-1509.*"}
+    - {id: K1, title: "愛料理 木子太太〈皮蛋瘦肉粥〉（2025-05-26）", url: "https://icook.tw/recipes/477482", level: C, type: web, accessed: 2026-11-21,
+       note: "對照。4 人份；生米半杯、高湯/水 4杯、『高湯/水 : 米 = 8 : 1』、絞肉 150g。本機 sources/c-icook-477482.*"}
+    - {id: K2, title: "愛料理 林小姐蔡太太〈皮蛋瘦肉粥〉（2022-01-08）", url: "https://icook.tw/recipes/401239", level: C, type: web, accessed: 2026-11-21,
+       note: "對照。米 2杯、水 16杯（1:8，稀一點 1:10）；瘦絞肉 300克、醬油 2湯匙、醃 10分鐘。本機 sources/c-icook-401239.*"}
+    - {id: U1, title: "大同日本官網《電鍋のキホンBOOK》", url: "https://dennabe-official.tatung.co.jp/pdf/recipe-original-book01.pdf", level: A, type: official, accessed: 2026-11-21,
+       note: "換算依據：附屬『計量カップ（180 ㎖）』。本機 sources/a-tatung-jp-recipebook01.*"}
+    - {id: U2, title: "Panasonic UP LIFE〈米1合は何グラム？〉（Panasonic Cooking @Lab 監修，2025-11-19）", url: "https://panasonic.jp/life/food/110156.html", level: A, type: official, accessed: 2026-11-21,
+       note: "換算依據：『米専用計量カップ（180mL）』『すりきり一杯入れた重さで、その重量は約150g』（米種、含水量會有差）。本機 sources/c-panasonic-rice-1gou.*"}
+    - {id: U3, title: "維基百科〈量米杯〉", url: "https://zh.wikipedia.org/zh-tw/%E9%87%8F%E7%B1%B3%E6%9D%AF", level: C, type: web, accessed: 2026-11-21,
+       note: "輔證：『米杯的容積為 180 毫升』。本機 sources/c-wiki-liangmibei.*"}
+    - {id: U4, title: "大同公司官方食譜平台〈電鍋 紅燒羊肉爐〉小撇步", url: "https://cooking.tatung.com/Home/Recipes/603", level: A, type: official, accessed: 2026-11-21,
+       note: "換算依據（台灣官方）：『用的是量米杯，1米杯=180ml。7.5米杯=1350ml。』本機 sources/a-tatung-tw-recipe603.*；Kimi 找到、Grok Bot 重抓核對"}
+    - {id: B1, title: "愛料理官方部落格〈簡單的樸實真味，粥〉", url: "https://icook.tw/blogs/91662", level: C, type: media, accessed: 2026-11-21,
+       note: "米水比依據：『要以生米煮粥，米和和水的比例大約為1：8～1：9之間』、浸泡約半小時、『看到米粒熟透軟化即可熄火，再悶個10分鐘』；電鍋煮粥 1：7。本機 sources/c-icook-blog-91662.*；Kimi 找到、Grok Bot 重抓核對"}
+  extracted_by: [grokbot, kimi]
+  changelog:
+    - {version: "1.2", date: 2026-11-21, change: "豬肉由約 200 g 改約 300 g、醃肉醬油改 2 湯匙（K2 原比例）", by: grokbot}
+    - {version: "1.1", date: 2026-11-21, change: "選定米量 B（M 原量 1 米杯）：M 有的全部回到原量；鹹蛋黃依 S1 比例改建議 2 顆；油、米酒、薑維持原建議值並說明不放大；豬肉選定參考值約 200 g（Y2）；炒殼用湯鍋；補鍋子大小（原文沒寫）與時間確認", by: grokbot}
+    - {version: "1.0", date: 2026-11-21, change: "Kimi 交叉核對（research/congee/kimi-X-congee.md）：×2/3 縮放值改 inferred；a8 補證據鏈；註明不用 dry_fry、略過 S1 蒜末。Codex 因訂閱用量上限未跑，暫不升 cross_checked", by: grokbot}
+    - {version: "1.0", date: 2026-11-21, change: "Kimi 獨立起草同樣選 M、×2/3；補 U4 台灣大同量米杯與 B1 米水比出處；標明 M 醃料未用於步驟", by: grokbot}
+    - {version: "1.0", date: 2026-11-21, change: "起始檔：以 M 為主來源縮放成兩人份；湯底與豬肉照影片、做法依 S1；無主來源的用量標 missing、建議值寫在 note", by: grokbot}
+
+ingredients:
+  - {id: i_rice, concept: ing/rice_raw, label: 白米, role: 主料,
+     qty: {value: 150, unit: g, raw_text: "白米 150公克", evidence: M, status: sourced, note: "M 原量。無秤版：1 米杯（平口不壓；U2 1 米杯≈150 g，換算）"}}
+  - {id: i_water, concept: ing/water, label: 清水, role: 液體,
+     qty: {value: 1350, unit: ml, raw_text: "清水 1350cc", evidence: M, status: sourced, note: "M 原量。無秤版：7½ 米杯（U4『1米杯=180ml。7.5米杯=1350ml』；U1／U3 同為 180 ml）。米水比（體積）1:7.5、重量 1:9；對照 B1 生米煮粥 1：8～1：9、K1 8:1、K2 1:8～1:10、Y2 1:12。本檔先用這些水煮蝦殼湯底，再下米（做法依影片／S1）；蒸發量原文沒寫"}}
+  - {id: i_shrimp, concept: ing/shrimp_shell_on, label: 帶殼鮮蝦, role: 主料,
+     qty: {value: 150, unit: g, raw_text: "蝦仁 150公克", evidence: M, status: sourced, note: "M 原量（蝦仁重）；帶殼隻數 M 沒寫。建議值 8 隻：S2 同樣用『生米一杯』配『蝦子 8』，米量相同，維持（不同食譜，只作參考）。要留殼頭煮湯，所以買帶殼蝦（影片）"}}
+  - {id: i_pidan, concept: ing/century_egg, label: 皮蛋, role: 主料,
+     qty: {value: 2, unit: piece, raw_text: "皮蛋切塊 2顆", evidence: M, status: sourced, note: "M 原量，與影片字幕『所以又加了兩顆皮蛋』一致"}}
+  - {id: i_bokchoy, concept: ing/bok_choy, label: 青江菜, form: 段, role: 輔料,
+     qty: {value: 5, unit: slice, raw_text: "青江菜切塊 5片", evidence: M, status: sourced, note: "M 原量（葉片）"}}
+  - {id: i_shiitake, concept: ing/shiitake_fresh, label: 鮮香菇（可省）, form: 片, role: 輔料, optional: true,
+     qty: {value: 2, unit: piece, raw_text: "鮮香菇切片 2朵", evidence: M, status: sourced, note: "M 原量；影片沒有，可省"}}
+  - {id: i_yolk, concept: ing/salted_egg_yolk, label: 鹹蛋黃, role: 輔料,
+     qty: {value: null, unit: piece, raw_text: null, status: missing, note: "M 沒有鹹蛋黃；影片沒寫量。建議值 2 顆：S1 是『米 半杯』配『鹹蛋 1顆』，本版米 1 杯，照 S1 比例為 2 顆（推論）。影片畫面只看到 1 顆蛋黃（影片米量不明）；怕太鹹可用 1 顆"}}
+  - {id: i_pork, concept: ing/pork_sliced, label: 豬肉片, role: 主料,
+     qty: {value: null, unit: g, raw_text: null, status: missing, note: "M 沒有豬肉；影片沒寫量。選定參考值約 300 g（2026-11-21 選定；依 Y2『粥底 1份（米 1杯）』配『瘦絞肉 300公克』的比例；Y2 的「杯」是否為米杯原文沒寫）"}}
+  - {id: i_pork_sauce, concept: ing/soy_sauce, label: 豬肉醃醬（深色醬）, role: 調料,
+     qty: {value: null, unit: tbsp, raw_text: null, status: missing, note: "影片只看到深色醬，種類與量沒寫。建議值：300 g 肉配醬油 2 湯匙、醃 10 分鐘（2026-11-21 選定；依 K2『瘦絞肉 300克、醬油 2湯匙』『醃10分鐘』，不同食譜，只作參考）"}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 油（炒蝦殼、鹹蛋黃）, role: 油脂,
+     qty: {value: null, unit: tbsp, raw_text: null, status: missing, note: "M 沒有這步。建議值維持 2 湯匙（S1『橄欖油 2大匙』，S1 米半杯、蝦 5 隻）。照米量比例會是 4 湯匙，但炒殼用油跟殼量有關、跟米量無直接關係，原文沒寫怎麼放大，所以不放大；S1 本來就分兩次下（先炒殼、再補油炒蛋黃），不夠時第二次補油（兩次各多少 S1 沒寫）"}}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒（可省）, role: 調料, optional: true,
+     qty: {value: null, unit: tbsp, raw_text: null, status: missing, note: "M、影片都沒有。建議值維持 1 湯匙（S1『米酒 1大匙』，S1 米半杯、水 800 毫升）；照米量或水量放大原文沒寫依據，不放大"}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑片（可省）, form: 片, role: 香料, optional: true,
+     qty: {value: null, unit: slice, raw_text: null, status: missing, note: "M、影片都沒有。建議值維持 4 片（S1『薑 4片』）；放大原文沒寫依據，不放大"}}
+  - {id: i_salt_mar, concept: ing/salt, label: 鹽（醃蝦仁）, role: 調料,
+     qty: {value: 0.25, unit: tbsp, raw_text: "鹽巴 1/4大湯匙", evidence: M, status: sourced, note: "M 原量。M 食材表列了『醃料』，但步驟沒寫醃哪樣（M 沒有肉）；本檔拿來醃蝦仁是推論"}}
+  - {id: i_wp_mar, concept: ing/white_pepper_powder, label: 白胡椒粉（醃蝦仁）, role: 香料, optional: true,
+     qty: {value: 0.25, unit: tbsp, raw_text: "白胡椒粉 1/4大湯匙", evidence: M, status: sourced, note: "M 原量。不辣版：可省（推論）"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽（調味）, role: 調料,
+     qty: {value: 0.75, unit: tbsp, raw_text: "鹽巴 3/4大湯匙", evidence: M, status: sourced, note: "M 原量。M 沒有鹹蛋黃和醬油醃肉，本檔兩者都帶鹹：先下一半試味（推論）"}}
+  - {id: i_chicken_powder, concept: ing/chicken_powder, label: 雞粉（可省）, role: 調料, optional: true,
+     qty: {value: 0.25, unit: tbsp, raw_text: "雞粉 1/4大湯匙", evidence: M, status: sourced, note: "M 原量"}}
+  - {id: i_sesame, concept: ing/sesame_oil, label: 香油, role: 調料,
+     qty: {value: 0.5, unit: tbsp, raw_text: "香油 半大湯匙", evidence: M, status: sourced, note: "M 原量"}}
+  - {id: i_pepper_finish, concept: [ing/white_pepper_powder, ing/black_pepper], label: 胡椒粉（最後撒）, role: 香料, optional: true,
+     qty: {value: 0.25, unit: tbsp, raw_text: "白胡椒粉 1/4大湯匙", evidence: M, status: sourced, note: "M 原量（白胡椒）；影片字幕『最後撒點黑胡椒』（量沒寫）。不辣版：胡椒最後各自在碗裡加"}}
+
+states:
+  - {id: s_rice_soaked, label: 洗好泡過的米}
+  - {id: s_shrimp_meat, label: 開背去腸泥的蝦仁}
+  - {id: s_shells, label: 蝦殼和蝦頭}
+  - {id: s_shrimp_mar, label: 抓醃好的蝦仁}
+  - {id: s_pork_mar, label: 抓醃好的豬肉片}
+  - {id: s_bokchoy_cut, label: 切段的青江菜}
+  - {id: s_pidan_peeled, label: 去殼皮蛋}
+  - {id: s_yolk_crushed, label: 壓碎的鹹蛋黃}
+  - {id: s_shell_fried, label: 煸香的蝦殼}
+  - {id: s_yolk_fried, label: 炒出泡沫的蝦殼鹹蛋黃}
+  - {id: s_broth, label: 撈掉殼的蝦殼鹹蛋黃湯底}
+  - {id: s_congee_base, label: 小火煮好的粥底}
+  - {id: s_congee_full, label: 下好皮蛋肉片蝦仁的粥}
+  - {id: s_final, label: 鮮蝦皮蛋瘦肉粥, role: final}
+
+actions:
+  - id: a1
+    technique: tech/wash_soak
+    term: 白米清洗後泡水半小時
+    inputs: [i_rice]
+    outputs: [s_rice_soaked]
+    tool: tool/bowl
+    params: {duration: {min_s: 1800, max_s: 1800, raw: "泡水半小時", is_guide: true, evidence: M, status: sourced}}
+    completion: [{observe: 計時, target: 泡滿半小時, method: 目測, evidence: M}]
+    can_overlap: [a2, a3, a4, a5]
+    note: "泡米用水不計入 i_water。影片字幕『加入事先泡過的米飯』也有泡米"
+  - id: a2
+    technique: tech/cut
+    term: 蝦剝殼留殼頭，蝦仁開背去腸泥
+    inputs: [i_shrimp]
+    outputs: [s_shrimp_meat, s_shells]
+    tool: tool/knife
+    completion: [{observe: 蝦仁, target: 開背、腸泥去乾淨, method: 目測, evidence: S1}]
+    note: "影片轉述：蝦剝殼留殼、蝦仁開背。S1：蝦頭剪開取出胃囊、去腸泥，保留蝦頭、蝦殼"
+  - id: a3
+    technique: tech/marinate
+    term: 蝦仁用鹽、白胡椒粉抓醃
+    inputs: [s_shrimp_meat, i_salt_mar, i_wp_mar]
+    outputs: [s_shrimp_mar]
+    tool: tool/bowl
+    params: {duration: {min_s: null, max_s: null, raw: "原文沒寫醃多久", status: missing}}
+    completion: [{observe: 蝦仁, target: 原文沒寫, method: null}]
+  - id: a4
+    technique: tech/marinate
+    term: 豬肉片用深色醬抓醃
+    inputs: [i_pork, i_pork_sauce]
+    outputs: [s_pork_mar]
+    tool: tool/bowl
+    params: {duration: {min_s: null, max_s: null, raw: "影片沒寫；建議值 10 分鐘（K2）", status: missing}}
+    completion: [{observe: 肉片, target: 抓勻（影片字幕『把豬肉抓醃』）, method: 目測, evidence: V}]
+  - id: a5
+    technique: tech/cut
+    term: 青江菜切段；皮蛋剝殼；鹹蛋黃壓碎
+    inputs: [i_bokchoy, i_pidan, i_yolk]
+    outputs: [s_bokchoy_cut, s_pidan_peeled, s_yolk_crushed]
+    tool: tool/knife
+    params: {cut: {shape: cut/duan, raw: "青江菜切段（影片轉述）；M 寫切塊", evidence: V}}
+    completion: [{observe: 材料, target: 切好備用, method: 目測, evidence: V}]
+  - id: a6
+    technique: tech/stir_fry
+    term: 湯鍋熱油，下蝦頭、蝦殼（與薑片）大火煸出香氣，變色後輕壓蝦頭擠出蝦膏
+    inputs: [s_shells, i_oil, i_ginger]
+    outputs: [s_shell_fried]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/high, raw: "用大火煸出香氣", evidence: S1}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+    completion:
+      - {observe: 蝦殼, target: 變色、有香氣，輕壓蝦頭擠出蝦膏, method: 目測、聞, evidence: S1}
+    note: "技法用 tech/stir_fry 不用 tech/dry_fry：dry_fry 定義為少油慢火，與 S1『大火煸』不合。湯鍋為主要鍋具：S1、影片都是同一鍋炒殼後直接加水。炒鍋替代做法見 a8 note（S2）"
+  - id: a7
+    technique: tech/stir_fry
+    term: 補油加鹹蛋黃，轉中小火快速拌炒出泡沫
+    inputs: [s_shell_fried, s_yolk_crushed]
+    outputs: [s_yolk_fried]
+    tool: tool/stock_pot
+    params: {heat: {level: heat/medium_low, raw: "轉中小火快速拌炒出泡沫", evidence: S1}}
+    completion: [{observe: 鹹蛋黃, target: 拌炒出泡沫, method: 目測, evidence: S1}]
+    note: "S1 這步還加蒜末（蒜頭 2瓣）炒香；影片沒有，本檔略過"
+  - id: a8
+    technique: tech/boil
+    term: 加米酒、水煮滾，約煮 5 分鐘後撈出蝦殼蝦頭
+    inputs: [s_yolk_fried, i_wine, i_water]
+    outputs: [s_broth]
+    tool: tool/stock_pot
+    params:
+      duration: {min_s: 300, max_s: 300, raw: "煮5分鐘（僅影片轉述，抽影格未見此字幕；S2『加入熱水，約煮5分鐘』為獨立旁證）", is_guide: true, evidence: V, status: sourced}
+    completion:
+      - {observe: 湯, target: 煮滾後撈出蝦頭、蝦殼, method: 目測, evidence: S1}
+    note: "S1：倒入米酒、水煮滾後將蝦頭、蝦殼撈出（S1 沒寫滾後再煮多久）。炒鍋替代做法（S2）：另一鍋（炒鍋）煎香蝦頭，加入熱水約煮 5 分鐘，將高湯倒入米鍋（湯鍋）"
+  - id: a9
+    technique: tech/simmer_covered
+    term: 下泡好的米，煮滾後蓋上鍋蓋轉小火煮 25 分鐘，不時攪拌
+    inputs: [s_broth, s_rice_soaked]
+    outputs: [s_congee_base]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/low, raw: "煮滾後蓋上鍋蓋轉小火煮25分鐘", evidence: M}
+      duration: {min_s: 1500, max_s: 1500, raw: "25分鐘", is_guide: true, evidence: M, status: sourced}
+    completion:
+      - {observe: 米粒, target: 米粒開花（對照 Y1『煮約20分鐘至米粒開花』；M 原文沒寫完成狀態）, method: 目測, evidence: Y1}
+      - {observe: 米粒, target: 米粒熟透軟化（對照 B1）, method: 目測、試吃, evidence: B1}
+    note: "攪拌避免黏鍋：S2『需適時翻攪，避免黏鍋』、Y1『隔一段時間攪拌一下』。影片字幕為『蓋上鍋蓋煮10分鐘』，但下的是『事先泡過的米飯』，生米或飯看不準；生米依 M 25 分鐘"
+  - id: a10
+    technique: tech/simmer_covered
+    term: 下皮蛋（剪塊）、豬肉片、蝦仁（與香菇），蓋鍋小火煮 5 分鐘
+    inputs: [s_congee_base, s_pidan_peeled, s_pork_mar, s_shrimp_mar, i_shiitake]
+    outputs: [s_congee_full]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/low, raw: "蓋上鍋蓋轉小火煮5分鐘", evidence: M}
+      duration: {min_s: 300, max_s: 300, raw: "5分鐘", is_guide: true, evidence: M, status: sourced}
+    completion:
+      - {observe: 豬肉和蝦仁, target: 都變色（影片字幕『煮到豬肉和蝦仁都…』，影片轉述『煮到變色』）, method: 目測, evidence: V}
+    note: "M 這步加蝦仁、皮蛋、香菇；豬肉照影片同時下。皮蛋用剪的（影片轉述）"
+  - id: a11
+    technique: tech/season
+    term: 加青江菜、鹽、雞粉、香油拌勻；胡椒最後撒
+    inputs: [s_congee_full, s_bokchoy_cut, i_salt, i_chicken_powder, i_sesame, i_pepper_finish]
+    outputs: [s_final]
+    tool: tool/stock_pot
+    params: {duration: {min_s: null, max_s: null, raw: "青江菜煮多久原文沒寫", status: missing}}
+    completion:
+      - {observe: 青江菜, target: 原文沒寫；建議看葉子變軟、轉深綠（推論）, method: 目測}
+      - {observe: 鹹度, target: 鹽先下一半試味再補（推論：鹹蛋黃與醃肉醬油已帶鹹）, method: 試吃}
+    note: "M：加入青江菜、雞粉、鹽巴及香油攪拌均勻，起鍋前撒上白胡椒粉。影片：最後撒點黑胡椒。不辣版：胡椒最後各自在碗裡加"
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
+  sensory_target: {texture: "M 原文沒寫；對照 Y1 米粒開花", taste: 原文沒寫}
+
+notes:
+  weekday: "非平日菜：M 標 60 分鐘（本版即 M 原量）（含泡米半小時、下米後 25＋5 分鐘）；炒殼與湯底時間原文沒寫，待試做計時"
+  burners: "全程 1 口爐、1 只湯鍋（影片、S1 同鍋做法）。炒鍋替代做法時：炒鍋煮湯底與湯鍋可能同時佔 2 口爐，未超過 2 口"
+  no_scale: "無秤版：白米 1 米杯、水 7½ 米杯（U1／U2／U3／U4 換算）；蝦仁 150 g 換隻數原文沒寫，建議 8 隻（S2）；豬肉約 300 g 看包裝標重；湯匙＝M 的『大湯匙』"
+  spicy_split: "主體沒有辣椒、花椒。不辣版：胡椒（白或黑）最後分開加，醃蝦仁的白胡椒可省（推論）"
+  decisions: "已選定（2026-11-21）：米量 B＝M 原量 1 米杯＋7½ 米杯水；豬肉選定參考值約 300 g（Y2 比例，11/21 由 200 g 改定）、醃肉醬油 2 湯匙；炒殼 A＝湯鍋直接炒（S1、影片）。炒鍋替代做法保留在 a8 note"
+  pot_size: "湯鍋容量原文沒寫（M、S1、影片都沒寫鍋子大小）。已知：水 1350 ml，另加米 150 g、蝦、肉、皮蛋、青江菜；粥滾時會冒泡、需攪拌（Y1、S2）。建議選明顯大於 1.35 L、留得出翻攪空間的鍋（推論，無來源數字）"
+  timing: "M 原本就是這個量（3 人份），泡米 30 分鐘、滾後小火 25 分鐘、下料後 5 分鐘不變；總時間 M 標 60 分鐘"
+  missing: "原文沒寫：豬肉量與醃料量、鹹蛋黃量、炒殼油量、帶殼蝦隻數、炒殼時間、兩次下油各多少、蝦仁醃多久、青江菜煮多久、M 粥的完成狀態、湯鍋大小、上桌溫度"
+  spec_gaps: "縮放後的數值與 raw_text 原量並存只能靠 note；多成分胡椒以 concept 陣列表示；撈出丟棄的蝦殼（副產物）會被當成成品，故不列狀態"

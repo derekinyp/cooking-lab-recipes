@@ -18,7 +18,7 @@
     var tb=g/c[0];if(tb>=8){var cup=Math.round(tb/16*4)/4;if(cup>=0.25)return '約 '+fmt(cup,'cup')+' 杯（量杯）';}
     if(tb>=1)return '約 '+fmt(Math.round(tb*2)/2,'tbsp')+' 大匙';var t=tb*3;if(t>=0.249)return '約 '+fmt(Math.max(Math.round(t*4)/4,0.25),'tsp')+' 小匙';return '不到 ¼ 小匙';}
   function scale(s){
-    document.querySelectorAll('.q').forEach(function(e){e.textContent=fmt(parseFloat(e.dataset.v)*s,e.dataset.u)+' '+e.dataset.w;});
+    document.querySelectorAll('.q').forEach(function(e){e.textContent=(fmt(parseFloat(e.dataset.v)*s,e.dataset.u)+' '+e.dataset.w).trim();});
     document.querySelectorAll('.cv').forEach(function(e){e.textContent='換算值：'+conv(parseFloat(e.dataset.g)*s,+e.dataset.k);});
     document.querySelectorAll('.scale-btn').forEach(function(b){b.setAttribute('aria-pressed',+b.dataset.s===s);});
     store.set('zd-scale-'+KEY,String(s));}
