@@ -1054,7 +1054,9 @@ def main():
     for name, page in pages.items(): (OUT / name).write_text(page, encoding='utf-8')
     (OUT / 'robots.txt').write_text('User-agent: *\nDisallow: /\n', encoding='utf-8')
     (OUT / '.nojekyll').write_text('', encoding='utf-8')
-    probs = lint(pages) + ['外文原句沒有中文說明：' + x for x in DROPPED] + sorted(set(FACET_WARN))
+    probs = lint(pages) + ['外文原句沒有中文說明：' + x for x in DROPPED]
+    if FACET_WARN:  # 只提醒、不擋：先歸「其他」或不列做法，補上 site/facets.yaml 後重跑即可
+        print('找菜分類提醒：'); [print('  ' + p) for p in sorted(set(FACET_WARN))]
     for m in models: probs += number_guard(m)
     # 字型涵蓋檢查
     fonts_dir = vend / 'fonts'
