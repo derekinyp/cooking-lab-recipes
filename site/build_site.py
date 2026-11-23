@@ -749,9 +749,12 @@ def load_weekly():
     d = SITE / 'weekly'
     return [(p.stem, yaml.safe_load(p.read_text(encoding='utf-8'))) for p in sorted(d.glob('*.yaml'))] if d.exists() else []
 
-def weekly_page(stem, wk, by_slug):
+def is_west(m, plan):
+    return any(x['id'] in plan.get('west_cuisines', []) for x in m['r'].get('cuisine') or [] if x['id'].startswith('cuisine/'))
+
+def weekly_rows(items, by_slug):
     rows = []; done = 0
-    for it in wk['dishes']:
+    for it in items:
         m = by_slug.get(it['slug'])
         if m and m['r'].get('status') == 'cross_checked':
             done += 1
@@ -759,15 +762,28 @@ def weekly_page(stem, wk, by_slug):
             st = '<span class="zd-signal zd-signal--ok tag">已入庫</span>'
             kind = TAGS[m['ov']['tag']][0]
         else:
-            name = E(it['name']); st = '<span class="zd-signal zd-signal--watch tag">整理中</span>'; kind = '—'
+            name = E(it['name']); kind = '—'
+            st = '<span class="zd-signal zd-signal--watch tag">待審</span>' if it.get('review') else '<span class="zd-signal zd-signal--watch tag">整理中</span>'
         rows.append(f'<tr><td>{name}</td><td>{st}</td><td>{E(kind)}</td><td>{E(it.get("note") or "")}</td></tr>')
+    return ''.join(rows), done
+
+def weekly_page(stem, wk, by_slug):
+    TH = '<thead><tr><th>菜</th><th>狀態</th><th>平日或假日</th><th>備註</th></tr></thead>'
+    rows, done = weekly_rows(wk['dishes'], by_slug)
+    west = ''
+    if wk.get('west'):
+        wrows, wdone = weekly_rows(wk['west'], by_slug)
+        west = f'''<section class="block"><h2 class="h2">這週另收的歐美經典（不算進 10 道）</h2>
+<div class="zd-table-wrap card"><table class="zd-table">{TH}<tbody>{wrows}</tbody></table></div>
+<p class="zd-small">歐美經典是第三階段的菜，先收進來的保留在庫裡，另外計算。</p></section>'''
     body = f'''{topbar('')}
 <main class="wrap">
-<header class="hero card"><p class="zd-kicker">每週新增・{E(wk["week"])}（{E(wk["range"])}）</p><h1 class="dish-name">這週新收 {len(wk["dishes"])} 道，已入庫 {done} 道</h1>
+<header class="hero card"><p class="zd-kicker">每週新增・{E(wk["week"])}（{E(wk["range"])}）</p><h1 class="dish-name">這週新收家常菜 {len(wk["dishes"])} 道，已入庫 {done} 道</h1>
 <p class="intro">{E(wk["intro"])}</p></header>
-<section class="block"><h2 class="h2">這週的菜</h2>
-<div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>菜</th><th>狀態</th><th>平日或假日</th><th>備註</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
-<p class="zd-small">「整理中」的菜還沒通過檢查或比對，暫時不放食譜頁；通過後會自動出現連結。</p></section>
+<section class="block"><h2 class="h2">這週的中式家常菜</h2>
+<div class="zd-table-wrap card"><table class="zd-table">{TH}<tbody>{rows}</tbody></table></div>
+<p class="zd-small">「整理中」的菜還沒通過檢查或比對，暫時不放食譜頁；通過後會自動出現連結。「待審」的菜要等整份清單審過才開始整理。</p></section>
+{west}
 <p class="zd-small"><a href="progress.html">看全部收錄進度 →</a></p>
 </main>
 {FOOT}
@@ -775,23 +791,38 @@ def weekly_page(stem, wk, by_slug):
     return head(f'每週新增 {wk["week"]}｜振達的廚房', '') + body
 
 def progress_page(models, plan, weeklies):
-    n = sum(1 for m in models if m['r'].get('status') == 'cross_checked')
-    tgt = plan['target']; pct = min(100, round(n * 100 / tgt))
+    done = [m for m in models if m['r'].get('status') == 'cross_checked']
+    west = [m for m in done if is_west(m, plan)]
+    home = [m for m in done if not is_west(m, plan)]
+    n = len(home); tgt = plan['target']; pct = min(100, round(n * 100 / tgt))
+    wn = len(west); wt = plan['west_target']; wpct = min(100, round(wn * 100 / wt))
     wk_links = {w['week']: f'weekly-{stem}.html' for stem, w in weeklies}
-    rows = ''.join(f'<tr><td>{(f"<a href=\"{wk_links[w["week"]]}\">{E(w["week"])}</a>") if w["week"] in wk_links else E(w["week"])}</td><td>{E(w["theme"])}</td><td>{w["plan"]} 道</td></tr>' for w in plan['weeks'])
+    def wcell(w):
+        return f'<a href="{wk_links[w["week"]]}">{E(w["week"])}</a>' if w['week'] in wk_links else E(w['week'])
+    rows = ''.join(f'<tr><td>{wcell(w)}</td><td>{E(w["theme"])}</td><td>{w["plan"]} 道</td></tr>' for w in plan['weeks'])
     after = ''.join(f'<li>{E(x)}</li>' for x in plan['after'])
-    cuis = {}
-    for m in models:
-        c = next((VZH.get(x['id']) for x in m['r'].get('cuisine') or [] if x['id'].startswith('cuisine/') and VZH.get(x['id'])), '其他')
-        cuis[c] = cuis.get(c, 0) + 1
-    cu = '、'.join(f'{k} {v} 道' for k, v in sorted(cuis.items(), key=lambda kv: -kv[1]))
+    def by_cuisine(ms):
+        cuis = {}
+        for m in ms:
+            c = next((VZH.get(x['id']) for x in m['r'].get('cuisine') or [] if x['id'].startswith('cuisine/') and VZH.get(x['id'])), '其他')
+            cuis[c] = cuis.get(c, 0) + 1
+        return '、'.join(f'{k} {v} 道' for k, v in sorted(cuis.items(), key=lambda kv: -kv[1])) or '還沒有'
+    wlist = '、'.join(f'<a href="recipes/{m["slug"]}.html">{E(m["name"])}</a>' for m in west)
     body = f'''{topbar('')}
 <main class="wrap">
-<header class="hero card"><p class="zd-kicker">收錄進度</p><h1 class="dish-name">已收 {n} 道，第一階段目標 {tgt} 道</h1>
+<header class="hero card"><p class="zd-kicker">收錄進度・第一階段</p><h1 class="dish-name">中式家常菜已收 {n} 道，目標 {tgt} 道，還差 {tgt - n} 道</h1>
 <div class="lib-bar" role="progressbar" aria-valuenow="{n}" aria-valuemin="0" aria-valuemax="{tgt}"><span style="width:{pct}%"></span></div>
 <p class="intro">{E(plan["intro"])}</p>
-<p class="zd-small">目前各菜系：{E(cu)}。</p></header>
-<section class="block"><h2 class="h2">往 {tgt} 道的每週計畫</h2>
+<p class="zd-small">中式家常菜各菜系：{E(by_cuisine(home))}。</p></header>
+<section class="block"><h2 class="h2">各階段收錄數</h2>
+<div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>階段</th><th>已收</th><th>目標</th></tr></thead><tbody>
+<tr><td>第一階段：中式家常菜（含台式）</td><td>{n} 道</td><td>{tgt} 道</td></tr>
+<tr><td>第二階段：八大菜系經典</td><td>還沒開始</td><td>每系 20 道，共 160 道</td></tr>
+<tr><td>第三階段：歐美經典</td><td>{wn} 道</td><td>約 {wt} 道</td></tr>
+</tbody></table></div>
+<p class="zd-small">歐美經典已收：{wlist}（{E(by_cuisine(west))}）。這些菜保留在庫裡，不算進中式家常菜的 {tgt} 道。</p>
+<div class="lib-bar" role="progressbar" aria-label="歐美經典" aria-valuenow="{wn}" aria-valuemin="0" aria-valuemax="{wt}"><span style="width:{wpct}%"></span></div></section>
+<section class="block"><h2 class="h2">往 {tgt} 道中式家常菜的每週計畫</h2>
 <div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>週</th><th>這週主題</th><th>預計累計</th></tr></thead><tbody>{rows}</tbody></table></div>
 <p class="zd-small">每週的菜會依找得到的可靠食譜調整；哪週沒做完，就順延到下一週。</p></section>
 <section class="block"><h2 class="h2">{tgt} 道之後</h2><ul class="card plain-list">{after}</ul></section>

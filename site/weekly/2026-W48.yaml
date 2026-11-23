@@ -1,6 +1,6 @@
 week: 2026 第 48 週
 range: 11/23 – 11/29
-intro: 食譜庫每週新增 10 道菜。這頁列出這週新收的菜；已經在庫裡的菜不算新增。每道菜要先通過自動檢查，再由第二個來源比對過，才算正式入庫、放上網站。
+intro: 食譜庫每週新增 10 道中式家常菜（含台式）。這頁列出這週新收的菜；已經在庫裡的菜不算新增。每道菜要先通過自動檢查，再由第二個來源比對過，才算正式入庫、放上網站。這週另有 2 道歐美經典菜，歸到第三階段，不算進這 10 道。
 dishes:
   - {slug: gaolicai_fan, name: 高麗菜飯, note: 一則短影片的做法，份量照公開的家常食譜}
   - {slug: fanqie_chaodan, name: 番茄炒蛋}
@@ -10,5 +10,8 @@ dishes:
   - {slug: xianggu_jitang, name: 香菇雞湯}
   - {slug: kejia_xiaochao, name: 客家小炒}
   - {slug: chao_kongxincai, name: 蒜炒空心菜}
+  - {slug: mayou_ji, name: 麻油雞, note: 清單審核中，審過才開始整理, review: true}
+  - {slug: xiandan_kugua, name: 鹹蛋苦瓜, note: 清單審核中，審過才開始整理, review: true}
+west:
   - {slug: spaghetti_aglio_olio, name: 蒜香辣椒義大利麵}
   - {slug: tortilla_de_patatas, name: 西班牙馬鈴薯烘蛋}
