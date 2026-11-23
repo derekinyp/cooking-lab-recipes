@@ -1,0 +1,14 @@
+week: 2026 第 48 週
+range: 11/23 – 11/29
+intro: 食譜庫每週新增 10 道菜。這頁列出這週新收的菜；已經在庫裡的菜不算新增。每道菜要先通過自動檢查，再由第二個來源比對過，才算正式入庫、放上網站。
+dishes:
+  - {slug: gaolicai_fan, name: 高麗菜飯, note: 一則短影片的做法，份量照公開的家常食譜}
+  - {slug: fanqie_chaodan, name: 番茄炒蛋}
+  - {slug: congbao_niurou, name: 蔥爆牛肉}
+  - {slug: yuxiang_rousi, name: 魚香肉絲, note: 四川省地方標準}
+  - {slug: gela_zhengdan, name: 蛤蜊蒸蛋, note: 電鍋}
+  - {slug: xianggu_jitang, name: 香菇雞湯}
+  - {slug: kejia_xiaochao, name: 客家小炒}
+  - {slug: chao_kongxincai, name: 蒜炒空心菜}
+  - {slug: spaghetti_aglio_olio, name: 蒜香辣椒義大利麵}
+  - {slug: tortilla_de_patatas, name: 西班牙馬鈴薯烘蛋}

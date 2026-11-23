@@ -124,3 +124,6 @@ concepts:
   - {id: ing/milk, zh: 牛奶, alt: [鮮奶], note: "P2 白醬義大利麵 B 版；主來源只寫牛奶，沒寫全脂或低脂"}
   # ── 高麗菜飯（Facebook 影片，2026-11-23）──
   - {id: ing/cabbage, zh: 高麗菜, alt: [甘藍, 捲心菜], note: "高麗菜飯 2026-11-23"}
+  # ── W48 每週新增（2026-11-23）──
+  - {id: ing/parsley, zh: 巴西里, alt: [歐芹, 洋香菜], note: "W48 蒜香辣椒義大利麵"}
+  - {id: ing/potato, zh: 馬鈴薯, alt: [洋芋], note: "W48 西班牙馬鈴薯烘蛋"}

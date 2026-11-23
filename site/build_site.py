@@ -560,10 +560,10 @@ def head(title, depth=''):
 
 def topbar(depth='', back=True):
     nav = f'<a class="top-back" href="{depth}index.html">← 全部菜色</a>' if back else ''
-    menu = f'<a class="top-conv" href="{depth}{MENU_HREF}">本週菜單</a>' if MENU_HREF else ''
-    return f'<header class="top"><div class="top-in"><a class="brand" href="{depth}index.html">振達的廚房</a>{nav}{menu}<a class="top-conv" href="{depth}conversions.html">換算表</a></div></header>'
+    wk = f'<a class="top-conv" href="{depth}{WEEKLY_HREF}">每週新增</a>' if WEEKLY_HREF else ''
+    return f'<header class="top"><div class="top-in"><a class="brand" href="{depth}index.html">振達的廚房</a>{nav}{wk}<a class="top-conv" href="{depth}progress.html">收錄進度</a><a class="top-conv" href="{depth}conversions.html">換算表</a></div></header>'
 
-MENU_HREF = ''  # 最新一週菜單頁（main() 設定）
+WEEKLY_HREF = ''  # 最新一週「每週新增」頁（main() 設定）
 FOOT = '<footer class="zd-footer">振達的廚房・食譜 v1｜數字只用原始食譜寫的，原文沒寫的就標「原文沒寫」｜振達設計規範 Workshop 1.2.1</footer>'
 
 def feedback_btn(name, where):
@@ -744,48 +744,67 @@ def conversions_page():
     return head('湯匙與目測換算表｜振達的廚房', '') + body
 
 
-# ------------------------------------------------------------------ 本週菜單
-def load_menus():
-    return [(p.stem, yaml.safe_load(p.read_text(encoding='utf-8'))) for p in sorted((SITE / 'menus').glob('*.yaml'))] if (SITE / 'menus').exists() else []
+# ------------------------------------------------------------------ 每週新增、收錄進度
+def load_weekly():
+    d = SITE / 'weekly'
+    return [(p.stem, yaml.safe_load(p.read_text(encoding='utf-8'))) for p in sorted(d.glob('*.yaml'))] if d.exists() else []
 
-def menu_page(menu, by_slug):
-    secs = []
-    for sec in menu['sections']:
-        rows = []
-        for it in sec['items']:
-            m = by_slug[it['slug']]
-            new = ' <span class="zd-signal zd-signal--watch tag">新菜</span>' if it.get('new') else ''
-            rows.append(f'<tr><td>{E(it["day"])}</td><td><a href="recipes/{m["slug"]}.html">{E(m["name"])}</a>{new}</td><td>{E(it["why"])}</td><td>{E(it["spice"])}</td><td>{E(it["burners"])}</td></tr>')
-        secs.append(f'''<section class="block"><h2 class="h2">{E(sec["name"])}（{len(sec["items"])} 道）{tag_badge(sec["kind"])}</h2>
-<div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>哪天</th><th>菜</th><th>為什麼排這天</th><th>辣不辣</th><th>爐子和鍋子</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div></section>''')
-    rules = ''.join(f'<li>{E(r)}</li>' for r in menu.get('rules') or [])
-    skipped = ''.join(f'<li>{E(r)}</li>' for r in menu.get('skipped') or [])
+def weekly_page(stem, wk, by_slug):
+    rows = []; done = 0
+    for it in wk['dishes']:
+        m = by_slug.get(it['slug'])
+        if m and m['r'].get('status') == 'cross_checked':
+            done += 1
+            name = f'<a href="recipes/{m["slug"]}.html">{E(m["name"])}</a>'
+            st = '<span class="zd-signal zd-signal--ok tag">已入庫</span>'
+            kind = TAGS[m['ov']['tag']][0]
+        else:
+            name = E(it['name']); st = '<span class="zd-signal zd-signal--watch tag">整理中</span>'; kind = '—'
+        rows.append(f'<tr><td>{name}</td><td>{st}</td><td>{E(kind)}</td><td>{E(it.get("note") or "")}</td></tr>')
     body = f'''{topbar('')}
 <main class="wrap">
-<header class="hero card"><p class="zd-kicker">本週菜單・{E(menu["week"])}</p><h1 class="dish-name">{E(menu["range"])}</h1>
-<p class="intro">{E(menu["intro"])}</p><ul class="how">{rules}</ul></header>
-{''.join(secs)}
-<section class="block"><h2 class="h2">這週沒排的菜</h2><ul class="card plain-list">{skipped}</ul></section>
+<header class="hero card"><p class="zd-kicker">每週新增・{E(wk["week"])}（{E(wk["range"])}）</p><h1 class="dish-name">這週新收 {len(wk["dishes"])} 道，已入庫 {done} 道</h1>
+<p class="intro">{E(wk["intro"])}</p></header>
+<section class="block"><h2 class="h2">這週的菜</h2>
+<div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>菜</th><th>狀態</th><th>平日或假日</th><th>備註</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
+<p class="zd-small">「整理中」的菜還沒通過檢查或比對，暫時不放食譜頁；通過後會自動出現連結。</p></section>
+<p class="zd-small"><a href="progress.html">看全部收錄進度 →</a></p>
 </main>
 {FOOT}
 </body></html>'''
-    return head(f'本週菜單 {menu["range"]}｜振達的廚房', '') + body
+    return head(f'每週新增 {wk["week"]}｜振達的廚房', '') + body
 
-DATE = re.compile(r'\d{1,2}/\d{1,2}|2026|第 48 週')
-def menu_number_guard(stem, menu, by_slug):
-    """菜單裡的數字（日期除外）必須在該道菜的食譜檔或白話說明檔找得到。"""
-    bad = []
-    for sec in menu['sections']:
-        for it in sec['items']:
-            m = by_slug[it['slug']]
-            src = s2t((ROOT / 'recipes' / f'{m["rid"]}.yaml').read_text(encoding='utf-8'))
-            cp = SITE / 'content' / f'{m["rid"]}.yaml'
-            if cp.exists(): src += cp.read_text(encoding='utf-8')
-            have = set(NUM.findall(src))
-            for k in ('why', 'spice', 'burners'):
-                for n in NUM.findall(DATE.sub(' ', str(it.get(k) or ''))):
-                    if n not in have and n not in ('1', '2'): bad.append(f'{stem}: {m["name"]} 的數字 {n} 在食譜檔找不到')
-    return bad
+def progress_page(models, plan, weeklies):
+    n = sum(1 for m in models if m['r'].get('status') == 'cross_checked')
+    tgt = plan['target']; pct = min(100, round(n * 100 / tgt))
+    wk_links = {w['week']: f'weekly-{stem}.html' for stem, w in weeklies}
+    rows = ''.join(f'<tr><td>{(f"<a href=\"{wk_links[w["week"]]}\">{E(w["week"])}</a>") if w["week"] in wk_links else E(w["week"])}</td><td>{E(w["theme"])}</td><td>{w["plan"]} 道</td></tr>' for w in plan['weeks'])
+    after = ''.join(f'<li>{E(x)}</li>' for x in plan['after'])
+    cuis = {}
+    for m in models:
+        c = next((VZH.get(x['id']) for x in m['r'].get('cuisine') or [] if x['id'].startswith('cuisine/') and VZH.get(x['id'])), '其他')
+        cuis[c] = cuis.get(c, 0) + 1
+    cu = '、'.join(f'{k} {v} 道' for k, v in sorted(cuis.items(), key=lambda kv: -kv[1]))
+    body = f'''{topbar('')}
+<main class="wrap">
+<header class="hero card"><p class="zd-kicker">收錄進度</p><h1 class="dish-name">已收 {n} 道，第一階段目標 {tgt} 道</h1>
+<div class="lib-bar" role="progressbar" aria-valuenow="{n}" aria-valuemin="0" aria-valuemax="{tgt}"><span style="width:{pct}%"></span></div>
+<p class="intro">{E(plan["intro"])}</p>
+<p class="zd-small">目前各菜系：{E(cu)}。</p></header>
+<section class="block"><h2 class="h2">往 {tgt} 道的每週計畫</h2>
+<div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>週</th><th>這週主題</th><th>預計累計</th></tr></thead><tbody>{rows}</tbody></table></div>
+<p class="zd-small">每週的菜會依找得到的可靠食譜調整；哪週沒做完，就順延到下一週。</p></section>
+<section class="block"><h2 class="h2">{tgt} 道之後</h2><ul class="card plain-list">{after}</ul></section>
+</main>
+{FOOT}
+</body></html>'''
+    return head('收錄進度｜振達的廚房', '') + body
+
+def redirect_page(target, title):
+    return f'''<!doctype html>
+<html lang="zh-Hant-TW"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow">
+<meta http-equiv="refresh" content="0; url={target}"><link rel="canonical" href="{target}"><title>{E(title)}</title></head>
+<body class="zd"><p>這一頁已經換到 <a href="{target}">{E(title)}</a>。</p></body></html>'''
 
 # ------------------------------------------------------------------ 檢查：白話、不補數字
 VISIBLE_SKIP = re.compile(r'<(script|style)[^>]*>.*?</\1>|<ol class="(?:card )?src-list">.*?</ol>|<title[^>]*>.*?</title>', re.S)
@@ -852,12 +871,15 @@ def main():
     models.sort(key=lambda m: (order_pref.index(m['slug']) if m['slug'] in order_pref else 99, m['slug']))
     missing_ov = [m['rid'] for m in models if not m['ov'].get('tag')]
     if missing_ov: raise SystemExit(f'缺白話說明檔或 tag：{missing_ov}')
-    global MENU_HREF
-    menus = load_menus()
+    global WEEKLY_HREF
+    weeklies = load_weekly()
     by_slug = {m['slug']: m for m in models}
-    if menus: MENU_HREF = f'menu-{menus[-1][0]}.html'
-    pages = {'index.html': index_page(models), 'conversions.html': conversions_page()}
-    for stem, mn in menus: pages[f'menu-{stem}.html'] = menu_page(mn, by_slug)
+    if weeklies: WEEKLY_HREF = f'weekly-{weeklies[-1][0]}.html'
+    plan = yaml.safe_load((SITE / 'plan.yaml').read_text(encoding='utf-8'))
+    pages = {'index.html': index_page(models), 'conversions.html': conversions_page(), 'progress.html': progress_page(models, plan, weeklies)}
+    for stem, wk in weeklies: pages[f'weekly-{stem}.html'] = weekly_page(stem, wk, by_slug)
+    # 舊網址：撤下的「本週菜單」頁改成轉到每週新增
+    pages['menu-2026-W48.html'] = redirect_page('weekly-2026-W48.html', '每週新增：2026 第 48 週')
     for m in models: pages[f'recipes/{m["slug"]}.html'] = recipe_page(m)
     if OUT.exists(): shutil.rmtree(OUT)
     (OUT / 'recipes').mkdir(parents=True)
@@ -874,7 +896,6 @@ def main():
     (OUT / '.nojekyll').write_text('', encoding='utf-8')
     probs = lint(pages) + ['外文原句沒有中文說明：' + x for x in DROPPED]
     for m in models: probs += number_guard(m)
-    for stem, mn in menus: probs += menu_number_guard(stem, mn, by_slug)
     # 字型涵蓋檢查
     fonts_dir = vend / 'fonts'
     print(f'產生 {len(pages)} 頁 → {OUT}')
