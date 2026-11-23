@@ -1,0 +1,203 @@
+# 高麗菜飯（一鍋到底・湯鍋爐上版）— 規格 v1.0
+# 做法依據 V＝Facebook reel〈一鍋到底〉（Ssu Chiao Huang，34.9 秒）：步驟順序、材料種類、「小火滾煮15分鐘」照影片字幕與旁白。影片沒有任何份量。
+# 主來源 M＝愛料理 Popo小日子〈一鍋到底「高麗菜飯」簡單又美味。〉（4 人份、30 分鐘）：同樣是爐上一鍋到底、煮滾後蓋鍋小火 15 分鐘；
+#   米、水、高麗菜、紅蘿蔔、醬油、鹽、白胡椒、油、悶的時間只用 M 的數字，不混拼。
+# 影片有、M 沒有的材料（五花肉、蝦米、紅蔥頭、蔥花）用量標 missing，有出處的建議值寫在 note（S1、S2），不進主體數字。
+# 影片與 M 都沒有用烤箱或氣炸鍋，不需改法。影片用「壓鑄湯鍋」，本檔用湯鍋。
+schema_version: "1.0"
+recipe:
+  id: gaolicai_fan.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/gaolicai_fan
+  name: {zh_hant: 高麗菜飯, zh_hans: 高丽菜饭, en: Taiwanese one-pot cabbage rice}
+  variant: 一鍋到底・湯鍋爐上版
+  summary: 湯鍋先把五花肉丁煸到焦香出油，加蝦米、紅蘿蔔、紅蔥頭炒香，再加高麗菜和泡好的生米翻拌，倒入調好的醬汁，蓋鍋小火煮 15 分鐘，悶一下拌鬆撒蔥花。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "影片與 M 都是台灣作者的家常一鍋到底做法（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣食譜平台愛料理；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: 4, status: sourced, evidence: M, note: "M 標『4 人份』，主體用 M 原量不縮放。影片沒寫份數"}
+  status: cross_checked
+  sources:
+    - {id: V, title: "Facebook reel〈一鍋到底👍🏻〉Ssu Chiao Huang（34.9 秒，2026-11-18 上傳）", url: "https://www.facebook.com/share/r/1EzF77yPo1/", level: C, type: media, accessed: 2026-11-23,
+       note: "辨識與做法依據（影片長度 yt-dlp 讀到 34.851 秒）。除『小火滾煮15分鐘』外沒有份量；說明欄只寫『要文字版食譜留言「食譜」』，文字版食譜公開頁面讀不到。封面字『高麗菜飯』。畫面字幕（抽影格看過）：先把豬肉煸到這種、恰恰的程度、再繼續加入、蝦米、紅蘿蔔、炒出香味後、加入高麗菜、還有剛剛泡好的、米飯、把它們稍微翻拌後、倒入調好的醬汁、蓋上鍋蓋、小火滾煮15分鐘、最後撒點蔥花、一鍋到底的高麗菜飯。旁白（機器轉寫）另有『再繼續加入蝦米 紅蘿蔔 紅蔥頭』『翻拌均勻後蓋上鍋蓋小火滾煮15分鐘』。影片說原作（脆友）用電鍋，她改用壓鑄湯鍋。本機 research/fb-video/（影片、影格、轉寫、辨識紀錄.md）"}
+    - {id: M, title: "Popo小日子〈一鍋到底「高麗菜飯」簡單又美味。〉（愛料理，食譜 349302，2020-08-17）", url: "https://icook.tw/recipes/349302", level: C, type: web, accessed: 2026-11-23,
+       note: "主來源（份量與時間）。4 人份、30 分鐘。白米 2杯、高麗菜 1/4顆、梅花豬肉片 100g、紅蘿蔔絲 1/2條、蒜末 3顆、香菇絲 5朵、水 2杯、醬油 2大匙、鹽 1小匙、白胡椒粉 少許、油 1大匙；『煮滾後蓋上鍋蓋小火煮15分鐘關火悶10分鐘即可』。留言區作者回覆：米是生米。本機 sources/c-icook-349302.*"}
+    - {id: S1, title: "小田太太の玩樂廚房〈《高麗菜飯》一鍋到底超簡單電鍋料理!〉（愛料理，食譜 427762，2022-12-12）", url: "https://icook.tw/recipes/427762", level: C, type: web, accessed: 2026-11-23,
+       note: "建議值依據（五花肉、蝦米）：4 人份、白米 2杯（與 M 同米量）、五花肉 100g、蝦米 10g；『先將五花肉下去乾煸出豬油，再加入蝦米…』。用電子鍋煮、水 1.6杯，水量不適用爐上，只作對照。本機 sources/c-icook-427762.*"}
+    - {id: S2, title: "咖啡老媽〈【壓力鍋食譜】高麗菜飯，一鍋到底做法分享〉（2018-05-08）", url: "https://cafemom.tw/archives/344", level: C, type: web, accessed: 2026-11-23,
+       note: "建議值依據（紅蔥頭）與對照：白米3杯、水3杯、五花肉300g、高麗菜250g、紅蘿蔔1/4根、香菇5朵、蝦米1小把、紅蔥頭2瓣；中小火炒五花肉將豬油煸出；蓋鍋轉小火燉煮10分鐘，再悶15分鐘（低壓悶煮鍋）。本機 sources/c-cafemom-344.*"}
+    - {id: S3, title: "CHALG 5 LOVE〈一鍋到底高麗菜飯〉（2018-12-05）", url: "https://www.chal4love.com/2018/12/05/%e4%b8%80%e9%8d%8b%e5%88%b0%e5%ba%95%e9%ab%98%e9%ba%97%e8%8f%9c%e9%a3%af/", level: C, type: web, accessed: 2026-11-23,
+       note: "對照（鑄鐵鍋爐上一鍋到底、防黏底）：『3杯米洗淨瀝乾 + 3.2杯水，泡水一小時備用』；煮的時候『每1-2分鐘即開蓋翻攪一次，確認沒黏底』『總共煮15分鐘』，再『蓋上蓋子，悶15分鐘』。作者用電爐。本機 sources/c-chal4love-cabbage-rice.*"}
+  extracted_by: [grokbot, kimi, doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-23, change: "交叉核對：Kimi（research/gaolicai/kimi-X-gaolicai.md）與豆包（research/gaolicai/doubao-X-gaolicai.md）逐字核對 M、S1–S3 與影片證據，數字與 raw_text 全部相符、無自補數字。採用：平日門檻註明是使用者條件；a4 刀工與 a10 完成判斷的證據改標 V；『米飯粒粒分明』補米字號脈絡；影片長度保留 34.851 秒；網頁白話說明把『先煮滾』歸給主要食譜、換算與推論加標。升為兩邊比對過", by: grokbot}
+    - {version: "1.0", date: 2026-11-23, change: "起始檔：影片辨識為高麗菜飯；做法照影片，份量與時間照 M；影片獨有材料標 missing，建議值依 S1、S2 寫在 note", by: grokbot}
+
+ingredients:
+  - {id: i_rice, concept: ing/rice_raw, label: 白米（生米）, role: 主料,
+     qty: {value: 2, unit: cup, raw_text: "白米 2杯", evidence: M, status: sourced, note: "M 原量；作者留言回覆米是生米。M 沒寫杯子是不是量米杯，但米和水用同一種『杯』，米水體積比 1:1（依 M 數字換算，非 M 原句）。沒有秤：用電鍋附的量米杯量米和水即可（推論）"}}
+  - {id: i_water, concept: ing/water, label: 水（調醬汁用）, role: 液體,
+     qty: {value: 2, unit: cup, raw_text: "水 2杯", evidence: M, status: sourced, note: "M 原量，M 是開蓋倒入米及水再調味。影片只有『倒入調好的醬汁』，沒拍加水；本檔把 M 的水和調味料調成醬汁一起倒（推論）。泡米的水不算在內；泡過的米要不要減水，原文沒寫（對照：S3 是用煮飯的水直接泡米，再一起下鍋）"}}
+  - {id: i_cabbage, concept: ing/cabbage, label: 高麗菜, form: 片, role: 主料,
+     qty: {value: 0.25, unit: piece, raw_text: "高麗菜 1/4顆", evidence: M, status: sourced, note: "M 原量。對照：S1 寫 250g、S2 寫 250g"}}
+  - {id: i_pork, concept: ing/pork_belly, label: 五花肉, form: 丁, role: 主料,
+     qty: {value: null, unit: g, raw_text: null, status: missing, note: "影片用五花肉切丁（影片畫面，帶肥肉），沒寫量；M 用的是『梅花豬肉片 100g』。建議值 100 公克：S1 同樣白米 2杯，用『五花肉 100g』（不同食譜，只作參考）。對照：S2 白米 3杯用五花肉 300g"}}
+  - {id: i_shrimp, concept: ing/dried_shrimp, label: 蝦米, role: 輔料,
+     qty: {value: null, unit: g, raw_text: null, status: missing, note: "影片有、M 沒有，影片沒寫量。建議值 10 公克（S1『蝦米 10g』，白米 2杯）；沒有秤時 S2 寫『蝦米1小把』（S2 白米 3杯）"}}
+  - {id: i_carrot, concept: ing/carrot, label: 紅蘿蔔, form: 絲, role: 輔料,
+     qty: {value: 0.5, unit: piece, raw_text: "紅蘿蔔絲 1/2條", evidence: M, status: sourced, note: "M 原量。影片也是切絲（影片畫面）"}}
+  - {id: i_shallot, concept: ing/shallot, label: 紅蔥頭, form: 片, role: 香料,
+     qty: {value: null, unit: clove, raw_text: null, status: missing, note: "影片有（旁白『紅蔥頭』、畫面切片），M 沒有，影片沒寫量。建議值 2 瓣（S2『紅蔥頭2瓣』，S2 白米 3杯；不放大）"}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 油, role: 油脂, optional: true,
+     qty: {value: 1, unit: tbsp, raw_text: "油 1大匙", evidence: M, status: sourced, note: "M 原量（M 用來炒蒜末）。影片沒拍有沒有先放油，五花肉會煸出油（S1『乾煸出豬油』、S2『將豬油煸出』）；鍋子容易黏時再放（推論）"}}
+  - {id: i_soy, concept: ing/soy_sauce, label: 醬油, role: 調料,
+     qty: {value: 2, unit: tbsp, raw_text: "醬油 2大匙", evidence: M, status: sourced, note: "M 原量。影片『調好的醬汁』成分原文沒寫，本檔用 M 的調味料（推論）"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "鹽 1小匙", evidence: M, status: sourced, note: "M 原量。M 沒有蝦米；本檔有蝦米，蝦米帶鹹，鹽可以先放一半，醬汁嚐過再補（推論）"}}
+  - {id: i_wp, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 調料,
+     qty: {value: null, unit: null, qualitative: 少許, raw_text: "白胡椒粉 少許", evidence: M, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥花, form: 蔥花, role: 輔料,
+     qty: {value: null, unit: null, raw_text: null, status: missing, note: "影片字幕『最後撒點蔥花』，沒寫量；M 沒有"}}
+
+states:
+  - {id: s_rice_soaked, label: 洗好泡過的米}
+  - {id: s_cabbage_cut, label: 切片的高麗菜}
+  - {id: s_pork_diced, label: 切丁的五花肉}
+  - {id: s_aromatics_cut, label: 切好的蝦米、紅蘿蔔絲和紅蔥頭片}
+  - {id: s_scallion_cut, label: 蔥花}
+  - {id: s_sauce, label: 調好的醬汁}
+  - {id: s_pork_crisp, label: 煸到焦香出油的五花肉丁}
+  - {id: s_aromatics_fried, label: 炒出香味的肉丁和配料}
+  - {id: s_mixed, label: 翻拌好的配料、高麗菜和米}
+  - {id: s_sauced, label: 倒入醬汁翻拌均勻的生飯料}
+  - {id: s_cooked, label: 小火煮好的高麗菜飯}
+  - {id: s_rested, label: 悶好的高麗菜飯}
+  - {id: s_final, label: 高麗菜飯, role: final}
+
+actions:
+  - id: a1
+    technique: tech/wash_soak
+    term: 白米洗好泡水
+    inputs: [i_rice]
+    outputs: [s_rice_soaked]
+    tool: tool/bowl
+    params: {duration: {min_s: null, max_s: null, raw: "影片字幕『剛剛泡好的米飯』，泡多久原文沒寫；M 沒有泡米", status: missing}}
+    completion: [{observe: 米, target: 泡好（泡多久原文沒寫）, method: 目測, evidence: V}]
+    can_overlap: [a2, a3, a4]
+    note: "對照：S3『3杯米洗淨瀝乾 + 3.2杯水，泡水一小時備用』，刻意延長泡米讓米更容易熟透（S3 用的是自己的米水量，只作參考）。生米：M 作者回覆『沒錯喔』（問米是生米嗎）；影片字幕寫『米飯』，旁白是『泡好的米飯』，從畫面看是生米（推論）"
+  - id: a2
+    technique: tech/cut
+    term: 高麗菜切片
+    inputs: [i_cabbage]
+    outputs: [s_cabbage_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/pian, raw: "影片畫面為大片；M 沒寫切法", evidence: V}}
+    completion: [{observe: 高麗菜, target: 切成大片（影片畫面）, method: 目測, evidence: V}]
+  - id: a3
+    technique: tech/cut
+    term: 五花肉切丁
+    inputs: [i_pork]
+    outputs: [s_pork_diced]
+    tool: tool/knife
+    params: {cut: {shape: cut/ding, raw: "影片畫面為小丁；大小原文沒寫", evidence: V}}
+    completion: [{observe: 五花肉, target: 切成丁（影片畫面）, method: 目測, evidence: V}]
+  - id: a4
+    technique: tech/cut
+    term: 蝦米切碎、紅蘿蔔切絲、紅蔥頭切片、蔥切蔥花
+    inputs: [i_shrimp, i_carrot, i_shallot, i_scallion]
+    outputs: [s_aromatics_cut, s_scallion_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/si, raw: "紅蘿蔔絲（M 食材表、影片畫面）；蝦米切碎、紅蔥頭切片（影片畫面）", evidence: V}}
+    completion: [{observe: 配料, target: 切好備用, method: 目測, evidence: V}]
+    note: "蝦米要不要先泡水，影片和 M 都沒寫；S2 是『蝦米用米酒浸泡後瀝乾』（對照）"
+  - id: a5
+    technique: tech/combine
+    term: 水、醬油、鹽、白胡椒粉調成醬汁
+    inputs: [i_water, i_soy, i_salt, i_wp]
+    outputs: [s_sauce]
+    tool: tool/bowl
+    completion: [{observe: 醬汁, target: 攪勻（鹽化開）, method: 目測}]
+    note: "家庭改法（推論）：影片只寫『倒入調好的醬汁』，成分與份量原文沒寫；M 是倒入米和水後『以鹽、白胡椒粉及醬油調味』。這裡把 M 的水和調味料先調好，對應影片的做法"
+  - id: a6
+    technique: tech/render
+    term: 湯鍋下五花肉丁，煸到焦香出油（影片說「恰恰」）
+    inputs: [s_pork_diced, i_oil]
+    outputs: [s_pork_crisp]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/medium_low, raw: "影片沒寫火力；S2『中小火炒五花肉，將豬油煸出』", evidence: S2}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+    completion:
+      - {observe: 五花肉丁, target: 煸到「恰恰」：表面焦黃、出油（影片字幕『先把豬肉煸到這種』『恰恰的程度』）, method: 目測, evidence: V}
+    note: "影片用壓鑄湯鍋，本檔用湯鍋。油是選用：M 有『油 1大匙』（用來炒蒜末），影片沒拍放油"
+  - id: a7
+    technique: tech/stir_fry
+    term: 加蝦米、紅蘿蔔絲、紅蔥頭，炒出香味
+    inputs: [s_pork_crisp, s_aromatics_cut]
+    outputs: [s_aromatics_fried]
+    tool: tool/stock_pot
+    params:
+      heat: {level: null, raw: "火力原文沒寫"}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+    completion: [{observe: 配料, target: 炒出香味（影片字幕『炒出香味後』）, method: 聞, evidence: V}]
+    note: "蔥花留到最後才撒，這步不下"
+  - id: a8
+    technique: tech/stir_fry_mixed
+    term: 加入高麗菜和泡好的米，稍微翻拌
+    inputs: [s_aromatics_fried, s_cabbage_cut, s_rice_soaked]
+    outputs: [s_mixed]
+    tool: tool/stock_pot
+    completion: [{observe: 鍋裡的料, target: 稍微翻拌（影片字幕『把它們稍微翻拌後』）, method: 目測, evidence: V}]
+    note: "泡米的水要瀝掉（推論；影片沒拍）。M 的順序不同：先下高麗菜蓋鍋悶 3 分鐘，再倒入米和水"
+  - id: a9
+    technique: tech/combine
+    term: 倒入調好的醬汁，翻拌均勻
+    inputs: [s_mixed, s_sauce]
+    outputs: [s_sauced]
+    tool: tool/stock_pot
+    completion: [{observe: 鍋裡的料, target: 翻拌均勻（影片旁白『翻拌均勻後』）, method: 目測, evidence: V}]
+  - id: a10
+    technique: tech/simmer_covered
+    term: 煮滾後蓋上鍋蓋，小火滾煮 15 分鐘
+    inputs: [s_sauced]
+    outputs: [s_cooked]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/low, raw: "影片字幕『小火滾煮15分鐘』；M『煮滾後蓋上鍋蓋小火煮15分鐘』", evidence: V}
+      duration: {min_s: 900, max_s: 900, raw: "15分鐘", is_guide: true, evidence: V, status: sourced}
+    completion:
+      - {observe: 計時, target: 小火滾煮滿 15 分鐘（影片與 M 同樣是 15 分鐘）, method: 計時, evidence: V}
+    note: "先煮滾再轉小火是 M 的寫法；影片只寫蓋鍋小火滾煮。煮的時候要不要開蓋翻攪，影片和 M 都沒寫；S3（鑄鐵鍋、電爐）每 1～2 分鐘開蓋翻攪一次防黏底（對照）。完成狀態（米熟、水收乾）原文沒寫"
+  - id: a11
+    technique: tech/rest
+    term: 關火，蓋著悶 10 分鐘
+    inputs: [s_cooked]
+    outputs: [s_rested]
+    tool: tool/stock_pot
+    params: {duration: {min_s: 600, max_s: 600, raw: "關火悶10分鐘", is_guide: true, evidence: M, status: sourced}}
+    completion: [{observe: 計時, target: 悶滿 10 分鐘, method: 計時, evidence: M}]
+    note: "影片沒拍這步（影片煮完直接撒蔥花）；M 有。對照：S2、S3 都是再悶 15 分鐘"
+  - id: a12
+    technique: tech/toss
+    term: 開蓋拌鬆，撒上蔥花
+    inputs: [s_rested, s_scallion_cut]
+    outputs: [s_final]
+    tool: tool/spatula
+    completion: [{observe: 飯, target: 拌鬆、撒好蔥花（影片字幕『最後撒點蔥花』）, method: 目測, evidence: V}]
+    note: "拌鬆是推論（影片畫面有用鏟子翻拌）"
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
+  sensory_target: {texture: "影片字幕『米飯粒粒分明*』（帶米字號，接在『我用我的壓鑄湯鍋』後面，說的是她的鍋，不當成品通用目標）", taste: 原文沒寫}
+
+notes:
+  weekday: "假日菜：M 標 30 分鐘（含小火 15 分鐘、悶 10 分鐘），超過平日 20 分鐘（平日門檻是使用者條件，不是來源數字）；影片還有泡米，泡多久原文沒寫"
+  burners: "全程 1 口爐、1 只湯鍋（影片做法）。另一口爐可以同時做別的菜（推論）"
+  oven_airfryer: "影片與 M 都沒有用烤箱或氣炸鍋，不需改法；影片原作者說原作用電鍋，她用壓鑄湯鍋，本檔用湯鍋"
+  spicy_split: "影片和 M 都沒有辣椒、花椒，整鍋就是不辣那份。白胡椒是調味用，可以少放（推論）"
+  pot_size: "湯鍋容量原文沒寫。已知：生米 2 杯、水 2 杯、¼ 顆高麗菜（下鍋前體積大），建議用裝得下又能翻拌的鍋（推論，無來源數字）"
+  compare: "M 原有、影片沒有、本檔不用的材料：梅花豬肉片 100g（換成影片的五花肉）、蒜末 3顆、香菇絲 5朵（乾香菇泡軟切絲）。想加香菇可照 M：與紅蘿蔔一起炒。S1 電鍋版：煮好後拌入油蔥酥與香油。S2：小火 10 分鐘再悶 15 分鐘（低壓悶煮鍋）。S3：鑄鐵鍋，煮 15 分鐘時勤翻攪，再悶 15 分鐘"
+  missing: "原文沒寫：泡米多久、五花肉量、蝦米量、紅蔥頭量、蔥花量、各步火力與時間（小火 15 分鐘與悶 10 分鐘以外）、醬汁成分（影片）、煮好的狀態、鍋子大小、上桌溫度"

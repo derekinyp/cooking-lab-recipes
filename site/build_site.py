@@ -560,8 +560,10 @@ def head(title, depth=''):
 
 def topbar(depth='', back=True):
     nav = f'<a class="top-back" href="{depth}index.html">← 全部菜色</a>' if back else ''
-    return f'<header class="top"><div class="top-in"><a class="brand" href="{depth}index.html">振達的廚房</a>{nav}<a class="top-conv" href="{depth}conversions.html">換算表</a></div></header>'
+    menu = f'<a class="top-conv" href="{depth}{MENU_HREF}">本週菜單</a>' if MENU_HREF else ''
+    return f'<header class="top"><div class="top-in"><a class="brand" href="{depth}index.html">振達的廚房</a>{nav}{menu}<a class="top-conv" href="{depth}conversions.html">換算表</a></div></header>'
 
+MENU_HREF = ''  # 最新一週菜單頁（main() 設定）
 FOOT = '<footer class="zd-footer">振達的廚房・食譜 v1｜數字只用原始食譜寫的，原文沒寫的就標「原文沒寫」｜振達設計規範 Workshop 1.2.1</footer>'
 
 def feedback_btn(name, where):
@@ -741,6 +743,50 @@ def conversions_page():
 </body></html>'''
     return head('湯匙與目測換算表｜振達的廚房', '') + body
 
+
+# ------------------------------------------------------------------ 本週菜單
+def load_menus():
+    return [(p.stem, yaml.safe_load(p.read_text(encoding='utf-8'))) for p in sorted((SITE / 'menus').glob('*.yaml'))] if (SITE / 'menus').exists() else []
+
+def menu_page(menu, by_slug):
+    secs = []
+    for sec in menu['sections']:
+        rows = []
+        for it in sec['items']:
+            m = by_slug[it['slug']]
+            new = ' <span class="zd-signal zd-signal--watch tag">新菜</span>' if it.get('new') else ''
+            rows.append(f'<tr><td>{E(it["day"])}</td><td><a href="recipes/{m["slug"]}.html">{E(m["name"])}</a>{new}</td><td>{E(it["why"])}</td><td>{E(it["spice"])}</td><td>{E(it["burners"])}</td></tr>')
+        secs.append(f'''<section class="block"><h2 class="h2">{E(sec["name"])}（{len(sec["items"])} 道）{tag_badge(sec["kind"])}</h2>
+<div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>哪天</th><th>菜</th><th>為什麼排這天</th><th>辣不辣</th><th>爐子和鍋子</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div></section>''')
+    rules = ''.join(f'<li>{E(r)}</li>' for r in menu.get('rules') or [])
+    skipped = ''.join(f'<li>{E(r)}</li>' for r in menu.get('skipped') or [])
+    body = f'''{topbar('')}
+<main class="wrap">
+<header class="hero card"><p class="zd-kicker">本週菜單・{E(menu["week"])}</p><h1 class="dish-name">{E(menu["range"])}</h1>
+<p class="intro">{E(menu["intro"])}</p><ul class="how">{rules}</ul></header>
+{''.join(secs)}
+<section class="block"><h2 class="h2">這週沒排的菜</h2><ul class="card plain-list">{skipped}</ul></section>
+</main>
+{FOOT}
+</body></html>'''
+    return head(f'本週菜單 {menu["range"]}｜振達的廚房', '') + body
+
+DATE = re.compile(r'\d{1,2}/\d{1,2}|2026|第 48 週')
+def menu_number_guard(stem, menu, by_slug):
+    """菜單裡的數字（日期除外）必須在該道菜的食譜檔或白話說明檔找得到。"""
+    bad = []
+    for sec in menu['sections']:
+        for it in sec['items']:
+            m = by_slug[it['slug']]
+            src = s2t((ROOT / 'recipes' / f'{m["rid"]}.yaml').read_text(encoding='utf-8'))
+            cp = SITE / 'content' / f'{m["rid"]}.yaml'
+            if cp.exists(): src += cp.read_text(encoding='utf-8')
+            have = set(NUM.findall(src))
+            for k in ('why', 'spice', 'burners'):
+                for n in NUM.findall(DATE.sub(' ', str(it.get(k) or ''))):
+                    if n not in have and n not in ('1', '2'): bad.append(f'{stem}: {m["name"]} 的數字 {n} 在食譜檔找不到')
+    return bad
+
 # ------------------------------------------------------------------ 檢查：白話、不補數字
 VISIBLE_SKIP = re.compile(r'<(script|style)[^>]*>.*?</\1>|<ol class="(?:card )?src-list">.*?</ol>|<title[^>]*>.*?</title>', re.S)
 ALLOWED_LATIN = {'Notion', 'Workshop', 'AA'}
@@ -806,7 +852,12 @@ def main():
     models.sort(key=lambda m: (order_pref.index(m['slug']) if m['slug'] in order_pref else 99, m['slug']))
     missing_ov = [m['rid'] for m in models if not m['ov'].get('tag')]
     if missing_ov: raise SystemExit(f'缺白話說明檔或 tag：{missing_ov}')
+    global MENU_HREF
+    menus = load_menus()
+    by_slug = {m['slug']: m for m in models}
+    if menus: MENU_HREF = f'menu-{menus[-1][0]}.html'
     pages = {'index.html': index_page(models), 'conversions.html': conversions_page()}
+    for stem, mn in menus: pages[f'menu-{stem}.html'] = menu_page(mn, by_slug)
     for m in models: pages[f'recipes/{m["slug"]}.html'] = recipe_page(m)
     if OUT.exists(): shutil.rmtree(OUT)
     (OUT / 'recipes').mkdir(parents=True)
@@ -823,6 +874,7 @@ def main():
     (OUT / '.nojekyll').write_text('', encoding='utf-8')
     probs = lint(pages) + ['外文原句沒有中文說明：' + x for x in DROPPED]
     for m in models: probs += number_guard(m)
+    for stem, mn in menus: probs += menu_number_guard(stem, mn, by_slug)
     # 字型涵蓋檢查
     fonts_dir = vend / 'fonts'
     print(f'產生 {len(pages)} 頁 → {OUT}')

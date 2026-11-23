@@ -122,3 +122,5 @@ concepts:
   - {id: ing/baby_corn, zh: 玉米筍, alt: [], note: "P2 白醬義大利麵 B 版"}
   - {id: ing/dried_pasta, zh: 義大利麵, alt: [乾燥義大利麵], note: "P2 白醬義大利麵 B 版；主來源沒寫麵形"}
   - {id: ing/milk, zh: 牛奶, alt: [鮮奶], note: "P2 白醬義大利麵 B 版；主來源只寫牛奶，沒寫全脂或低脂"}
+  # ── 高麗菜飯（Facebook 影片，2026-11-23）──
+  - {id: ing/cabbage, zh: 高麗菜, alt: [甘藍, 捲心菜], note: "高麗菜飯 2026-11-23"}
