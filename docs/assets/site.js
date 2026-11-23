@@ -1,10 +1,44 @@
 (function(){
   var store={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
-  // 首頁篩選
-  var filts=[].slice.call(document.querySelectorAll('.filt'));
-  filts.forEach(function(b){b.addEventListener('click',function(){var f=b.dataset.f;
-    filts.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-    document.querySelectorAll('.dish-card').forEach(function(c){c.hidden=!(f==='all'||c.dataset.tag===f)});});});
+  // 首頁找菜：搜尋＋分類篩選（沒有 JavaScript 時這一塊不出現，菜色清單照常全部顯示）
+  var fd=document.getElementById('finder'),grid=document.getElementById('dish-grid');
+  if(fd&&grid&&window.ZDFind&&window.Fuse){(function(){
+    fd.hidden=false;
+    var recs=JSON.parse(document.getElementById('dish-index').textContent);
+    var order=[].slice.call(grid.children),cardBy={};order.forEach(function(c){cardBy[c.dataset.slug]=c;});
+    var KEYS=['line','ing','cuis','tech','time'];
+    var input=fd.querySelector('.search-in'),clr=fd.querySelector('.search-clear'),resN=fd.querySelector('.result-n'),
+        selN=fd.querySelector('.fbox-n'),none=document.querySelector('.none-hit'),go=fd.querySelector('.f-go');
+    var boxes=[].slice.call(fd.querySelectorAll('input[type=checkbox]'));
+    var finder=ZDFind.create(Fuse,recs,null),pyState=0,timer=null;
+    function loadPy(){if(pyState)return;pyState=1;
+      fetch('assets/pinyin.json').then(function(r){return r.json();}).then(function(j){finder=ZDFind.create(Fuse,recs,j);pyState=2;run();}).catch(function(){pyState=0;});}
+    function vals(c,k){return (c.dataset[k]||'').split('|');}
+    function sel(){var s={};KEYS.forEach(function(k){s[k]=[];});boxes.forEach(function(b){if(b.checked)s[b.name].push(b.value);});return s;}
+    function ok(c,s,skip){for(var i=0;i<KEYS.length;i++){var k=KEYS[i];if(k===skip||!s[k].length)continue;var v=vals(c,k);
+      if(!s[k].some(function(x){return v.indexOf(x)>=0;}))return false;}return true;}
+    function run(){
+      var q=input.value,hits=finder.search(q),hm=null;
+      if(hits){hm={};hits.forEach(function(h){hm[h.slug]=h;});}
+      var s=sel(),shown=0,nsel=boxes.filter(function(b){return b.checked;}).length;
+      var list=hits?hits.map(function(h){return cardBy[h.slug];}).concat(order.filter(function(c){return !hm[c.dataset.slug];})):order;
+      list.forEach(function(c){grid.appendChild(c);});
+      order.forEach(function(c){var inQ=!hm||!!hm[c.dataset.slug],vis=inQ&&ok(c,s);c.hidden=!vis;if(vis)shown++;
+        var w=c.querySelector('.dc-hit'),t=hm&&hm[c.dataset.slug]?finder.why(hm[c.dataset.slug]):'';w.textContent=t;w.hidden=!t;});
+      boxes.forEach(function(b){var n=order.filter(function(c){return (!hm||hm[c.dataset.slug])&&ok(c,s,b.name)&&vals(c,b.name).indexOf(b.value)>=0;}).length;
+        var l=b.parentNode;l.querySelector('.fopt-n').textContent=n;l.classList.toggle('on',b.checked);l.classList.toggle('zero',n===0&&!b.checked);});
+      selN.textContent=nsel?'已選 '+nsel+' 項，剩 '+shown+' 道':'';
+      go.textContent='看結果（'+shown+' 道）';
+      resN.textContent=(q.trim()||nsel)?'找到 '+shown+' 道（全部 '+order.length+' 道）':'共 '+order.length+' 道';
+      none.hidden=shown>0;clr.hidden=!q;}
+    input.addEventListener('focus',loadPy);
+    input.addEventListener('input',function(){loadPy();clearTimeout(timer);timer=setTimeout(run,120);});
+    input.addEventListener('keydown',function(e){if(e.key==='Enter'){input.blur();}});
+    clr.addEventListener('click',function(){input.value='';run();input.focus();});
+    boxes.forEach(function(b){b.addEventListener('change',run);});
+    go.addEventListener('click',function(){fd.querySelector('.fbox').open=false;(none.hidden?grid:none).scrollIntoView({behavior:'smooth',block:'start'});});
+    fd.querySelector('.f-reset').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});run();});
+    run();})();}
   var KEY=window.ZD_KEY; if(!KEY) return;
   // 份量倍數
   var FR=[[0,''],[1/6,'⅙'],[1/4,'¼'],[1/3,'⅓'],[1/2,'½'],[2/3,'⅔'],[3/4,'¾'],[5/6,'⅚']];

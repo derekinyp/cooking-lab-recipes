@@ -77,7 +77,7 @@ concepts:
   # ── P3 批次三（2026-11-20）新增：台式家常菜用料 ──
   - {id: ing/bell_pepper, zh: 甜椒, alt: [彩椒, 黃甜椒, 紅甜椒], note: "P3 糖醋排骨（Cookpad Ritas）"}
   - {id: ing/green_pepper, zh: 青椒, alt: [], note: "P3 糖醋排骨；WDA 302-2"}
-  - {id: ing/tomato, zh: 番茄, alt: [蕃茄], note: "P3 糖醋排骨"}
+  - {id: ing/tomato, zh: 番茄, alt: [蕃茄, 西紅柿], note: "P3 糖醋排骨"}
   - {id: ing/ketchup, zh: 番茄醬, alt: [蕃茄醬], note: "P3 糖醋排骨"}
   - {id: ing/starch, zh: 太白粉／玉米粉, alt: [太白粉, 玉米粉, 澱粉], note: "P3 糖醋排骨醃料；水澱粉另見 ing/starch_slurry_1to1"}
   - {id: ing/pork_spare_rib, zh: 小排骨, alt: [排骨, 豬小排], broader: ing/pork, note: "P3 糖醋排骨；WDA 302-2"}

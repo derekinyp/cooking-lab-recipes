@@ -161,8 +161,39 @@ a{color:var(--color-text-link)}
 .fb-end{background:var(--color-surface-sunken);border-radius:var(--radius-lg);padding:var(--space-5)}
 /* 首頁 */
 .how{margin:0;padding-left:1.2em}
-.filters{display:flex;flex-wrap:wrap;gap:var(--space-2);margin:0 0 var(--space-5)}
-.filt{min-height:44px;cursor:pointer}
+/* 找菜：搜尋與分類篩選 */
+.finder{padding:var(--space-5);margin:0 0 var(--space-5)}
+.finder[hidden],.search-clear[hidden],.none-hit[hidden],.dc-hit[hidden]{display:none}
+.finder-h{display:block;font-weight:var(--weight-bold);font-size:var(--zd-font-h3);margin:0 0 var(--space-2)}
+.search-row{display:flex;gap:var(--space-2);align-items:stretch}
+.search-in{flex:1 1 auto;min-width:0;min-height:52px;padding:0 var(--space-4);font:inherit;font-size:var(--zd-font-lead);color:var(--color-text-default);background:var(--color-surface-default);border:2px solid var(--color-border-strong);border-radius:var(--radius-md)}
+.search-in:focus{outline:3px solid var(--color-brand-tint);border-color:var(--color-brand-default)}
+.search-clear{min-height:52px;min-width:64px;padding:0 var(--space-3);font:inherit;font-size:var(--zd-font-label);font-weight:var(--weight-bold);border-radius:var(--radius-md);border:2px solid var(--color-brand-default);color:var(--color-brand-default);background:var(--color-surface-default);cursor:pointer}
+.finder-tip{color:var(--color-text-muted);margin:var(--space-2) 0 0}
+.fbox{margin:var(--space-4) 0 0;border-top:1px solid var(--color-border-default);padding-top:var(--space-3)}
+.fbox-s{display:flex;align-items:center;gap:var(--space-3);min-height:48px;cursor:pointer;font-weight:var(--weight-bold);font-size:var(--zd-font-body);list-style:none}
+.fbox-s::-webkit-details-marker{display:none}
+.fbox-s::before{content:"＋";display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--color-brand-default);color:var(--color-text-on-brand);flex:none}
+.fbox[open] .fbox-s::before{content:"－"}
+.fbox-n{font-weight:var(--weight-regular);font-size:var(--zd-font-label);color:var(--color-brand-default)}
+.fgroup{border:0;margin:var(--space-4) 0 0;padding:0;min-width:0}
+.fgroup-h{font-weight:var(--weight-bold);font-size:var(--zd-font-label);color:var(--color-text-muted);padding:0;margin:0 0 var(--space-2)}
+.fopts{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.fopt{display:inline-flex;align-items:center;gap:var(--space-2);min-height:44px;padding:0 var(--space-3) 0 var(--space-2);border-radius:var(--radius-pill);border:2px solid var(--color-border-strong);background:var(--color-surface-default);color:var(--color-text-default);font-size:var(--zd-font-body);cursor:pointer;user-select:none}
+.fopt input{width:22px;height:22px;margin:0;accent-color:var(--color-brand-default);flex:none}
+.fopt.on{border-color:var(--color-brand-default);background:var(--color-brand-tint)}
+.fopt.zero{border-style:dashed;color:var(--color-text-subtle)}
+.fopt-n{font-size:var(--zd-font-label);font-weight:var(--weight-bold);color:var(--color-text-muted);background:var(--color-surface-sunken);border-radius:var(--radius-pill);padding:0 var(--space-2);min-width:28px;text-align:center}
+.f-acts{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-5)}
+.f-acts .zd-btn{min-height:48px;flex:1 1 140px}
+.search-in::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+#dish-grid{scroll-margin-top:var(--space-9)}
+.finder{scroll-margin-top:var(--space-9)}
+.result-n{margin:var(--space-4) 0 0;font-weight:var(--weight-bold);font-size:var(--zd-font-body)}
+.none-hit{padding:var(--space-5);margin:0 0 var(--space-5)}
+.dc-hit{color:var(--color-brand-default);font-weight:var(--weight-bold);margin:var(--space-2) 0 0}
+/* 菜名卡片標題前面不放短橫線（區塊標題保留） */
+.dc-name::before{content:none;display:none}
 .dish-grid{list-style:none;margin:0 0 var(--space-5);padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:var(--space-4)}
 .dish-card a{display:block;padding:var(--space-5);color:var(--color-text-default);text-decoration:none;height:100%}
 .dish-card a:hover .dc-name,.dish-card a:focus .dc-name{color:var(--color-brand-default)}
@@ -184,7 +215,7 @@ a{color:var(--color-text-link)}
   .facts{grid-template-columns:1fr 1fr}
   .steps-bar{top:62px}
 }
-@media print{.top,.steps-bar,.fb-row-btn,.fb-end,.scale,.jump,.filters{display:none}.step{break-inside:avoid}}
+@media print{.top,.steps-bar,.fb-row-btn,.fb-end,.scale,.jump,.finder{display:none}.step{break-inside:avoid}}
 .check-note{background:var(--color-signal-watch-bg);color:var(--color-signal-watch-text);border-radius:var(--radius-md);padding:var(--space-2) var(--space-3);font-size:var(--zd-font-small)}
 
 /* 建議值：原文沒寫或只寫目測詞時的參考量，和原文數字分開標示 */

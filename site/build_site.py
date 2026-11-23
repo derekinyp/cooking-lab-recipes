@@ -35,12 +35,15 @@ def load_vocab():
             if isinstance(o.get('id'), str) and 'zh' in o:
                 zh[o['id']] = o['zh']
                 if 'facets' in o: facets[o['id']] = o['facets']
+                if o.get('alt'): VALT[o['id']] = [str(x) for x in o['alt']]
+                if o.get('broader'): VBROADER[o['id']] = o['broader']
             for v in o.values(): walk(v)
         elif isinstance(o, list):
             for v in o: walk(v)
     for f in sorted((ROOT / 'vocab').glob('*.yaml')):
         walk(yaml.safe_load(f.read_text(encoding='utf-8')))
     return zh, facets
+VALT, VBROADER = {}, {}
 VZH, VFACET = load_vocab()
 
 UNIT = {'g': '克', 'kg': '公斤', 'ml': '毫升', 'l': '公升', 'piece': '個', 'clove': '瓣', 'slice': '片', 'stalk': '根',
@@ -682,19 +685,138 @@ def recipe_page(m):
 </body></html>'''
     return head(f'{m["name"]}｜振達的廚房', '../') + body
 
-def index_page(models):
-    cards = []
+# ------------------------------------------------------------------ 首頁找菜：分類與搜尋資料
+FACETS = yaml.safe_load((SITE / 'facets.yaml').read_text(encoding='utf-8'))
+FACET_WARN = []
+def _chain(cid):
+    seen = []
+    while cid and cid not in seen:
+        seen.append(cid); cid = VBROADER.get(cid)
+    return seen
+
+def ing_group(concept):
+    for g in FACETS['ingredient_groups']:
+        if any(concept == x or concept.startswith(x) for x in g['match']): return g['name']
+    FACET_WARN.append(f'材料「{VZH.get(concept, concept)}」還沒歸到主要材料分類（site/facets.yaml）')
+    return '其他'
+
+def tech_group(t):
+    for c in _chain(t):
+        if c in FACETS['technique_ignore']: return None
+        for g in FACETS['technique_groups']:
+            if c in g['match']: return g['name']
+    FACET_WARN.append(f'做法「{VZH.get(t, t)}」還沒歸類（site/facets.yaml）')
+    return None
+
+def load_aliases():
+    al = {}
+    for fn in ('aliases.yaml', 'aliases_extra.yaml'):
+        p = SITE / fn
+        if p.exists():
+            for k, v in (yaml.safe_load(p.read_text(encoding='utf-8')) or {}).items():
+                al.setdefault(strip_paren(str(k)), []).extend(str(x) for x in v or [])
+    return al
+
+def _concepts(i):
+    c = i.get('concept')
+    return [x for x in (c if isinstance(c, list) else [c]) if isinstance(x, str)]
+
+CUIS_N, CUIS_WEST = {}, {}
+LINE_HOME, LINE_WEST = '中式家常', '歐美經典'
+def dish_facets(m, plan):
+    """一道菜的分類（全部從食譜檔與白話說明檔算出來）。"""
+    comp_ok = set(FACETS['component_groups'])
+    ings = []
+    for i in m['flat']['ings']:
+        if i.get('role') != '主料' or not i.get('concept'): continue
+        for c in _concepts(i):
+            g = ing_group(c)
+            if i.get('_comp') and g not in comp_ok: continue
+            ings.append(g)
+    techs = [tech_group(a['technique']) for a in m['flat']['actions']
+             if a.get('technique') and (VFACET.get(a['technique']) or {}).get('phase') in ('cook', 'finish')]
+    cuis = [FACETS.get('cuisine_labels', {}).get(VZH[c['id']], VZH[c['id']]) for c in m['r'].get('cuisine') or [] if c['id'].startswith('cuisine/') and VZH.get(c['id'])]
+    for c in cuis:
+        CUIS_N[c] = CUIS_N.get(c, 0) + 1; CUIS_WEST[c] = int(is_west(m, plan))
+    return {'line': [LINE_WEST if is_west(m, plan) else LINE_HOME], 'ing': list(dict.fromkeys(ings)),
+            'tech': list(dict.fromkeys(t for t in techs if t)), 'cuis': list(dict.fromkeys(cuis)) or ['其他'],
+            'time': [TAGS[m['ov']['tag']][0]]}
+
+FACET_GROUPS = [('line', '中式家常或歐美經典'), ('ing', '主要材料'), ('cuis', '菜系或地區'), ('tech', '做法（有用到就算）'), ('time', '要花多少時間')]
+def facet_order(key, values):
+    if key == 'line': pref = [LINE_HOME, LINE_WEST]
+    elif key == 'ing': pref = [g['name'] for g in FACETS['ingredient_groups']] + ['其他']
+    elif key == 'tech': pref = [g['name'] for g in FACETS['technique_groups']]
+    elif key == 'time': pref = [TAGS[k][0] for k in TAGS]
+    else: pref = []
+    if key == 'cuis':  # 中式在前、歐美在後，各自依道數多到少
+        return sorted(values, key=lambda v: (CUIS_WEST.get(v, 0), -CUIS_N.get(v, 0), v))
+    return sorted(values, key=lambda v: (pref.index(v) if v in pref else len(pref), v))
+
+PINYIN = {c: k for k, v in json.loads((SITE / 'static' / 'pinyin.json').read_text(encoding='utf-8')).items() for c in v}
+def to_py(s):
+    """讀音字串：每個字一個讀音，用空白隔開；讀音表沒有的字略過。"""
+    return ' '.join(PINYIN[c] for c in s if c in PINYIN)
+
+try:
+    _t2s = opencc.OpenCC('t2s').convert
+except Exception:
+    _t2s = lambda s: s
+
+def search_record(m, al):
+    name = m['name']; base = strip_paren(name)
+    alias = list(dict.fromkeys(a for a in al.get(base, []) + al.get(name, []) if a != name))
+    ings = []
+    for i in m['flat']['ings']:
+        if i.get('role') not in ('主料', '輔料') or not i.get('concept'): continue
+        if i.get('_comp') and i.get('role') != '主料': continue
+        ings += [strip_paren(i.get('label') or '')] + re.findall(r'[（(]([^）)]+)[）)]', i.get('label') or '')
+        for c in _concepts(i): ings += [strip_paren(VZH.get(c, ''))] + VALT.get(c, [])
+    ings = [s2t(x) for x in dict.fromkeys(x for x in ings if x and re.search(r'[\u4e00-\u9fff]', x))]
+    names = [name, base] + alias
+    zpair = {}
+    for n in names:
+        z = _t2s(n)
+        if z not in names and z not in zpair: zpair[z] = n
+    py = list(dict.fromkeys(to_py(n) for n in names if to_py(n)))
+    return {'s': m['slug'], 'n': name, 'a': alias, 'z': list(zpair), 'zt': list(zpair.values()), 'i': ings,
+            'p': py + [p.replace(' ', '') for p in py], 'pi': [to_py(x) for x in ings]}
+
+def index_page(models, plan):
+    al = load_aliases()
+    cards, facets, recs = [], {}, []
     for m in models:
         ov = m['ov']; spm = (ov.get('spice') or {}).get('mode', 'none')
-        cuis = '・'.join(dict.fromkeys(VZH.get(c['id'], '') for c in m['r'].get('cuisine') or [] if VZH.get(c['id'])))
-        cards.append(f'''<li class="dish-card card" data-tag="{ov['tag']}"><a href="recipes/{m['slug']}.html">
+        fc = dish_facets(m, plan); facets[m['slug']] = fc
+        recs.append(search_record(m, al))
+        cuis = '・'.join(fc['line'] + [c for c in fc['cuis'] if c != '其他'])
+        data = ' '.join(f'data-{k}="{E("|".join(fc[k]))}"' for k, _ in FACET_GROUPS)
+        cards.append(f'''<li class="dish-card card" data-slug="{m['slug']}" {data}><a href="recipes/{m['slug']}.html">
 <p class="zd-kicker">{E(cuis)}</p><h2 class="h2 dc-name">{E(m['name'])}</h2>
 <p class="dc-tag">{tag_badge(ov['tag'])}</p>
 <p class="dc-intro">{E(ov.get('card') or m['clean'](m['r'].get('summary') or ''))}</p>
-<p class="zd-small dc-meta">{'還沒做第二輪比對・' if m['r'].get('status') == 'machine_checked' else ''}{E(servings_text(m))}・{len(m['order'])} 個步驟・{ {'addon': '辣麻最後分開加', 'separate': '辣的要分開做', 'none': '不辣不麻'}[spm] }</p></a></li>''')
-    counts = {k: sum(1 for m in models if m['ov']['tag'] == k) for k in TAGS}
-    chips = f'<button type="button" class="zd-chip filt" data-f="all" aria-pressed="true">全部 {len(models)}</button>' + ''.join(
-        f'<button type="button" class="zd-chip filt" data-f="{k}" aria-pressed="false">{TAGS[k][0]} {counts[k]}</button>' for k in TAGS)
+<p class="zd-small dc-meta">{'還沒做第二輪比對・' if m['r'].get('status') == 'machine_checked' else ''}{E(servings_text(m))}・{len(m['order'])} 個步驟・{ {'addon': '辣麻最後分開加', 'separate': '辣的要分開做', 'none': '不辣不麻'}[spm] }</p>
+<p class="zd-small dc-hit" hidden></p></a></li>''')
+    groups = []
+    for key, label in FACET_GROUPS:
+        vals = facet_order(key, {v for fc in facets.values() for v in fc[key]})
+        opts = ''.join(f'<label class="fopt"><input type="checkbox" name="{key}" value="{E(v)}"><span class="fopt-t">{E(v)}</span>'
+                       f'<span class="fopt-n">{sum(1 for fc in facets.values() if v in fc[key])}</span></label>' for v in vals)
+        groups.append(f'<fieldset class="fgroup"><legend class="fgroup-h">{E(label)}</legend><div class="fopts">{opts}</div></fieldset>')
+    data = json.dumps(recs, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    finder = f'''<section class="finder card" id="finder" hidden aria-label="找菜">
+<label class="finder-h" for="q">找菜</label>
+<div class="search-row"><input id="q" class="search-in" type="search" autocomplete="off" enterkeyhint="search" placeholder="打菜名或材料，例如：蘿蔔乾、西紅柿">
+<button type="button" class="search-clear" hidden>清除</button></div>
+<p class="zd-small finder-tip">只打幾個字、打同音字、別名或材料都找得到，也可以打拼音。</p>
+<details class="fbox"><summary class="fbox-s"><span>分類篩選</span><span class="fbox-n"></span></summary>
+<p class="zd-small finder-tip">同一類勾好幾個，符合其中一個就算；不同類要同時符合。選項後面的數字是勾了以後剩幾道。</p>
+{''.join(groups)}
+<div class="f-acts"><button type="button" class="zd-btn zd-btn--primary f-go">看結果</button><button type="button" class="zd-btn zd-btn--secondary f-reset">清除全部條件</button></div>
+</details>
+<p class="result-n" aria-live="polite">共 {len(models)} 道</p>
+</section>
+<script type="application/json" id="dish-index">{data}</script>'''
     body = f'''{topbar('', back=False)}
 <main class="wrap">
 <header class="hero card home-hero">
@@ -703,13 +825,17 @@ def index_page(models):
   <p class="intro">每道菜都有材料、購物清單、流程圖、用爐安排和一步一步的做法。數字只用原始食譜寫的；原文沒寫的地方會直接標「原文沒寫」，請照「好了的樣子」判斷。</p>
   <ul class="how">
     <li><b>平日可做</b>：依原文時間 20 分鐘內。</li><li><b>假日菜</b>：原文時間明顯超過 20 分鐘。</li><li><b>待試做計時</b>：原文沒寫總時間，要你做一次計時才知道。</li>
+    <li><b>中式家常</b>：中式和台式家常菜；<b>歐美經典</b>：歐美各國的經典菜，另外算。</li>
   </ul>
 </header>
-<div class="filters" role="group" aria-label="篩選">{chips}</div>
-<ul class="dish-grid">{''.join(cards)}</ul>
+{finder}
+<p class="none-hit card" hidden>沒有找到符合的菜。可以少打幾個字、換個說法，或清除分類條件。</p>
+<ul class="dish-grid" id="dish-grid">{''.join(cards)}</ul>
 <p class="zd-small">做完一道，在那道菜的頁面按「我做了這道」，就會打開你的 Notion 做菜紀錄。</p>
 </main>
 {FOOT}
+<script src="assets/fuse.min.js"></script>
+<script src="assets/find.js"></script>
 <script src="assets/site.js"></script>
 </body></html>'''
     return head('振達的廚房・食譜', '') + body
@@ -907,7 +1033,7 @@ def main():
     by_slug = {m['slug']: m for m in models}
     if weeklies: WEEKLY_HREF = f'weekly-{weeklies[-1][0]}.html'
     plan = yaml.safe_load((SITE / 'plan.yaml').read_text(encoding='utf-8'))
-    pages = {'index.html': index_page(models), 'conversions.html': conversions_page(), 'progress.html': progress_page(models, plan, weeklies)}
+    pages = {'index.html': index_page(models, plan), 'conversions.html': conversions_page(), 'progress.html': progress_page(models, plan, weeklies)}
     for stem, wk in weeklies: pages[f'weekly-{stem}.html'] = weekly_page(stem, wk, by_slug)
     # 舊網址：撤下的「本週菜單」頁改成轉到每週新增
     pages['menu-2026-W48.html'] = redirect_page('weekly-2026-W48.html', '每週新增：2026 第 48 週')
@@ -917,15 +1043,18 @@ def main():
     vend = SITE / 'assets' / ASSET_VER
     if '--fonts' in sys.argv:
         (vend / 'fonts').mkdir(parents=True, exist_ok=True)
-        allt = ''.join(html.unescape(re.sub(r'<[^>]+>', ' ', p)) for p in pages.values()) + (SITE / 'static/site.js').read_text(encoding='utf-8')
+        allt = ''.join(html.unescape(re.sub(r'<[^>]+>', ' ', p)) for p in pages.values()) + (SITE / 'static/site.js').read_text(encoding='utf-8') + (SITE / 'static/find.js').read_text(encoding='utf-8')
         build_fonts(allt, vend / 'fonts')
     shutil.copytree(vend, OUT / 'assets' / ASSET_VER)
     shutil.copy(SITE / 'static/site.css', OUT / 'assets/site.css')
     shutil.copy(SITE / 'static/site.js', OUT / 'assets/site.js')
+    shutil.copy(SITE / 'static/pinyin.json', OUT / 'assets/pinyin.json')
+    shutil.copy(SITE / 'static/find.js', OUT / 'assets/find.js')
+    shutil.copy(SITE / 'vendor/fuse.min.js', OUT / 'assets/fuse.min.js')
     for name, page in pages.items(): (OUT / name).write_text(page, encoding='utf-8')
     (OUT / 'robots.txt').write_text('User-agent: *\nDisallow: /\n', encoding='utf-8')
     (OUT / '.nojekyll').write_text('', encoding='utf-8')
-    probs = lint(pages) + ['外文原句沒有中文說明：' + x for x in DROPPED]
+    probs = lint(pages) + ['外文原句沒有中文說明：' + x for x in DROPPED] + sorted(set(FACET_WARN))
     for m in models: probs += number_guard(m)
     # 字型涵蓋檢查
     fonts_dir = vend / 'fonts'

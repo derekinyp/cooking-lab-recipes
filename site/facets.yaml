@@ -1,0 +1,38 @@
+# 首頁「找菜」的分類規則（中性內容）。分類一律從食譜檔算出來，不另外猜：
+# - 主要材料：食譜裡標「主料」的材料；配菜、醬料裡的主料只算肉、海鮮、蛋、豆腐。
+# - 做法：食譜步驟用到的烹調做法（切、洗、裝盤這類準備或收尾不算）。
+# - 菜系或地區：食譜檔的菜系欄。
+# - 時間：白話說明檔的平日／假日／待試做計時。原文沒寫總時間的歸「待試做計時」。
+# 新菜用到這裡沒列的材料或做法時，產生網頁會列出來提醒補上（先歸「其他」）。
+
+# 主要材料：依序比對材料代碼開頭，先符合的算
+ingredient_groups:
+  - {name: 豬肉, match: [ing/pork, ing/pancetta, ing/canadian_bacon, ing/ham, ing/bacon, ing/minced_pork, ing/pork_]}
+  - {name: 雞肉, match: [ing/chicken, ing/duck, ing/goose]}
+  - {name: 牛肉, match: [ing/beef, ing/lamb]}
+  - {name: 魚蝦海鮮, match: [ing/fish, ing/shrimp, ing/prawn, ing/clam, ing/oyster, ing/squid, ing/crab, ing/scallop, ing/mussel]}
+  - {name: 蛋, match: [ing/egg, ing/century_egg, ing/salted_egg, ing/duck_egg]}
+  - {name: 豆腐豆乾, match: [ing/tofu, ing/dougan, ing/bean_curd]}
+  - {name: 蔬菜, match: [ing/green_bean, ing/cabbage, ing/tomato, ing/bamboo_shoot, ing/eggplant, ing/potato, ing/spinach, ing/water_spinach, ing/bitter_melon, ing/mushroom, ing/shiitake, ing/onion, ing/carrot, ing/radish, ing/daikon, ing/corn, ing/shallot, ing/garlic, ing/scallion, ing/pepper, ing/bell_pepper, ing/zucchini, ing/caipu]}
+  - {name: 米飯, match: [ing/rice, ing/steamed_rice, ing/glutinous_rice]}
+  - {name: 麵食麵包, match: [ing/dried_pasta, ing/tagliatelle, ing/spaghetti, ing/noodle, ing/rice_noodle, ing/english_muffin, ing/bread]}
+# 配菜、醬料裡的主料只算這些
+component_groups: [豬肉, 雞肉, 牛肉, 魚蝦海鮮, 蛋, 豆腐豆乾]
+
+# 做法：依做法代碼（含它所屬的大類）歸類
+technique_groups:
+  - {name: 炒, match: [tech/stir_fry, tech/dry_fry, tech/qiang, tech/sweat, tech/brown, tech/liu]}
+  - {name: 煎, match: [tech/pan_fry]}
+  - {name: 炸, match: [tech/deep_fry]}
+  - {name: 蒸, match: [tech/steam]}
+  - {name: 煮, match: [tech/boil, tech/simmer, tech/poach, tech/soak_in_broth]}
+  - {name: 燉滷燒燜, match: [tech/shao, tech/men, tech/dun, tech/lu, tech/simmer_covered]}
+  - {name: 涼拌, match: [tech/ban]}
+  - {name: 烤, match: [tech/roast, tech/toast, tech/bake]}
+# 這些是準備、配角或收尾，不算進「做法」
+technique_ignore: [tech/aromatics, tech/render, tech/reheat, tech/melt_butter, tech/make_roux, tech/sabayon, tech/deglaze_reduce,
+  tech/heat_oil, tech/emulsify, tech/assemble, tech/drain, tech/plate, tech/season, tech/spread, tech/rest, tech/toss, tech/toss_in,
+  tech/thicken, tech/pour_sauce_thicken, tech/reduce, tech/drizzle_hot_oil, tech/combine, tech/deglaze]
+
+# 菜系名稱在篩選上的顯示（比較好懂的說法）
+cuisine_labels: {本幫菜: 上海本幫菜}
