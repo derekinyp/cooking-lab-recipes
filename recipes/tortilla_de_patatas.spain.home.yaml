@@ -1,0 +1,156 @@
+schema_version: "1.0"
+recipe:
+  id: tortilla_de_patatas.spain.home
+  version: "1.1"
+  kind: dish
+  dish_concept: dish/tortilla_patatas
+  name: {zh_hant: 西班牙馬鈴薯烘蛋, es: "Tortilla de patatas", en: "Spanish potato omelette"}
+  variant: 西班牙家常版（平底鍋）
+  summary: 馬鈴薯以大量橄欖油低溫煨軟，與洋蔥、蛋液混合後在平底鍋煎熟；用盤子翻面，煎至表面金黃、內部熟而仍濕潤。
+  cuisine:
+    - {id: cuisine/spanish, basis: "主來源 RTVE（西班牙公共廣播電視）以西班牙經典家常菜介紹；菜系標籤為編者分類", claim: primary, evidence: RTVE_MC}
+    - {id: region/spain, basis: "主來源 RTVE 將食譜命名為 Tortilla de patatas；地域標籤為編者分類", claim: primary, evidence: RTVE_MC}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "主來源沒寫份數"}
+  status: cross_checked
+  sources:
+    - id: RTVE_MC
+      title: "RTVE〈Tortilla de patatas〉（MasterChef 4 食譜）"
+      url: "https://www.rtve.es/television/20160525/receta-tortilla-patatas-masterchef-4/1352162.shtml"
+      level: C
+      type: media
+      accessed: "2026-11-23"
+      note: "主來源。原文份量：『800 gr Patatas』『7 unid. Huevos』『1 unid. Cebolla (opcional)』『Aceite de oliva virgen』『Sal』。技法：『confitar* en abundante aceite hasta que se reblandezcan sin dorarse』；解釋為『Cocción a baja temperatura en una grasa.』翻面見原文『volcar para dar la vuelta a la tortilla』那一句，完成狀態見 PRESENTACIÓN 段。"
+    - id: RTVE_TORRES
+      title: "RTVE〈Receta de la mejor tortilla de patatas de los hermanos Torres〉"
+      url: "https://www.rtve.es/television/20230615/receta-tortilla-patatas/2305260.shtml"
+      level: C
+      type: media
+      accessed: "2026-11-23"
+      note: "比較來源。原文份量：『500 g de patatas (de la variedad Kennebec)』『200 g de cebolla』『6 huevos』『AOVE』『Ajo』『Sal』。原文寫『A los 35 minutos tendremos la patata, la cebolla y los ajos caramelizados』；翻面寫『cuando cuaje, movemos y volteamos』。"
+    - id: HOGARMANIA
+      title: "Hogarmania〈Tortilla de patatas o tortilla española por Joseba Arguiñano〉"
+      url: "https://www.hogarmania.com/cocina/recetas/huevos/tortilla-patatas-8684.html"
+      level: C
+      type: web
+      accessed: "2026-11-23"
+      note: "比較來源。原文份量：『4 patatas』『4 huevos』『1 yema de huevo』『2 cebollas dulces』『aceite de oliva virgen extra』『sal』，標示 4 份、總時間 60 分鐘。原文寫『a fuego suave』炒軟洋蔥、『fuego medio-alto, unos 45 segundos por cada lado』煎蛋餅。"
+  extracted_by: [codex, doubao, grokbot]
+  changelog:
+    - {version: "1.0", date: "2026-11-23", change: "起始草稿：主來源 RTVE（MasterChef 4），平底鍋版", by: codex}
+    - {version: "1.1", date: "2026-11-23", change: "豆包交叉核對後修正：爐口安排標推論；平日門檻註明是使用者條件；可選洋蔥的採用標推論；來源說明不用自編步驟號；油品名稱改為橄欖油（原文沒寫特級初榨）；補削皮洗淨；判斷方式標推論；補鏟子修邊。作者署名屬出處引用，保留。升為 cross_checked", by: doubao}
+
+ingredients:
+  - id: i_potato
+    concept: ing/potato
+    label: 馬鈴薯
+    role: 主料
+    qty: {value: 800, unit: g, raw_text: "800 gr Patatas", evidence: RTVE_MC, status: sourced}
+  - id: i_egg
+    concept: ing/egg
+    label: 雞蛋
+    role: 主料
+    qty: {value: 7, unit: piece, raw_text: "7 unid. Huevos", evidence: RTVE_MC, status: sourced}
+  - id: i_onion
+    concept: ing/onion
+    label: 洋蔥
+    role: 輔料
+    qty: {value: 1, unit: piece, raw_text: "1 unid. Cebolla (opcional)", evidence: RTVE_MC, status: sourced, note: "主來源寫洋蔥可選（opcional）；本檔採用加洋蔥的版本，是編者的選擇（推論）。"}
+  - id: i_oil
+    concept: ing/evoo
+    label: 橄欖油
+    role: 油脂
+    qty: {value: null, unit: null, raw_text: "Aceite de oliva virgen", evidence: RTVE_MC, status: missing, note: "主來源沒有油量，也未明確寫 extra virgen；食材概念沿用詞表特級初榨橄欖油，品級細節原文不足。"}
+  - id: i_salt
+    concept: ing/salt
+    label: 鹽
+    role: 調料
+    qty: {value: null, unit: null, raw_text: "Sal", evidence: RTVE_MC, status: missing, note: "主來源未給鹽量。"}
+
+states:
+  - {id: s_potato_cut, label: 切成薄片的馬鈴薯}
+  - {id: s_onion_cut, label: 切成細絲的洋蔥}
+  - {id: s_potato_soft, label: 油煨軟的馬鈴薯}
+  - {id: s_onion_soft, label: 炒軟的洋蔥}
+  - {id: s_egg_mix, label: 拌入蛋液並調味的馬鈴薯洋蔥}
+  - {id: s_tortilla_first_side, label: 第一面煎定型的蛋餅}
+  - {id: s_tortilla, label: 西班牙馬鈴薯烘蛋, role: final}
+
+actions:
+  - id: a1
+    technique: tech/cut
+    term: 馬鈴薯削皮、洗淨、切薄片；洋蔥切細絲
+    inputs: [i_potato, i_onion]
+    outputs: [s_potato_cut, s_onion_cut]
+    tool: tool/knife
+    params:
+      cut: {shape: cut/pian, raw: "patatas en lonchas delgadas", evidence: RTVE_MC}
+    completion:
+      - {observe: 馬鈴薯, target: 切成薄片, method: 目測, evidence: RTVE_MC}
+      - {observe: 洋蔥, target: 切成細絲, method: 目測, evidence: RTVE_MC}
+
+  - id: a2
+    technique: tech/sweat
+    term: 洋蔥在平底鍋中炒軟
+    inputs: [s_onion_cut, i_oil]
+    outputs: [s_onion_soft]
+    tool: tool/frying_pan
+    params:
+      heat: {level: null, raw: "pochar en una sartén；火力原文沒寫", evidence: RTVE_MC}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+    completion:
+      - {observe: 洋蔥, target: 原文沒寫完成狀態, method: null, note: "原文沒寫"}
+
+  - id: a3
+    technique: tech/pan_fry
+    term: 馬鈴薯用大量油低溫慢慢泡軟（油封），軟而不焦黃
+    inputs: [s_potato_cut, i_oil]
+    outputs: [s_potato_soft]
+    tool: tool/frying_pan
+    params:
+      heat: {level: null, raw: "a baja temperatura；未對應火力檔位", evidence: RTVE_MC}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+      loading: {submerged: null, note: "原文寫 abundante aceite，未明確說完全浸沒"}
+    completion:
+      - {observe: 馬鈴薯, target: 軟化且不焦黃（sin dorarse）, method: 目測（判斷方式原文沒寫，推論）, evidence: RTVE_MC}
+    note: "詞表沒有 confitar／低溫油煨技法；本步暫用 tech/pan_fry 表示平底鍋油煨，分類不完全吻合。"
+
+  - id: a4
+    technique: tech/combine
+    term: 混合油煨馬鈴薯、炒軟洋蔥與打散的蛋，調味
+    inputs: [s_potato_soft, s_onion_soft, i_egg, i_salt]
+    outputs: [s_egg_mix]
+    tool: tool/bowl
+    completion:
+      - {observe: 蛋液與配料, target: 混合均勻並調味, method: 目測, evidence: RTVE_MC}
+    note: "原文寫 patatas confitadas、cebolla、huevos batidos 混合並調味；未說明要不要先瀝油。"
+
+  - id: a5
+    technique: tech/pan_fry
+    term: 平底鍋加熱油，倒入混合物；起初攪動，之後慢慢煎至外層開始離開鍋邊
+    inputs: [s_egg_mix, i_oil]
+    outputs: [s_tortilla_first_side]
+    tool: tool/frying_pan
+    params:
+      heat: {level: null, raw: "火力原文沒寫；原文『dejar que se termine de cuajar lentamente』（讓它慢慢凝固）", evidence: RTVE_MC}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+    completion:
+      - {observe: 蛋餅外層, target: 開始從鍋邊脫離, method: 目測, evidence: RTVE_MC}
+
+  - id: a6
+    technique: tech/pan_fry
+    term: 用盤子蓋住平底鍋，翻轉蛋餅後滑回鍋中，煎熟另一面並修圓邊
+    inputs: [s_tortilla_first_side]
+    outputs: [s_tortilla]
+    tool: tool/frying_pan
+    params:
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+    completion:
+      - {observe: 表面與內部, target: 表面金黃、內部熟而仍濕潤, method: 目測（判斷方式原文沒寫，推論）, evidence: RTVE_MC}
+    note: "翻面依據原文『con ayuda de un plato, volcar para dar la vuelta a la tortilla』；修圓邊原文用鏟子（con ayuda de una espátula）。"
+
+notes:
+  weekday: "平日門檻為使用者條件，不是來源數字；能不能在平日做：主來源原文沒寫總時間或各步時間，待試做；對照來源 Hogarmania 標示總時間 60 分鐘，不可代替主來源時間。"
+  burners: "家庭安排（推論，非原文）：a2、a3 可用同一口爐分批做；全程 1 口爐就夠。"
+  spicy_split: "本食譜沒有辣椒、花椒或辣豆瓣；無須分辣。"
+  source_method: "無烤箱、氣炸鍋或蒸籠步驟；使用現有平底鍋。"

@@ -1,0 +1,296 @@
+schema_version: "1.0"
+recipe:
+  id: spaghetti_aglio_olio.italy.home
+  version: "1.1"
+  kind: dish
+  dish_concept: dish/aglio_olio
+  name:
+    zh_hant: 蒜香辣椒義大利麵
+    en: Spaghetti aglio, olio e peperoncino
+    it: Spaghetti aglio, olio e peperoncino
+  variant: 義大利家常版
+  summary: 蒜末以特級初榨橄欖油炒香，加入煮至彈牙的義大利麵與煮麵水拌至醬汁吸收；主體不放辣椒，辣椒另作最後添加的配料。
+  cuisine:
+    - id: cuisine/italian
+      basis: 主來源為義大利食譜網站 GialloZafferano；比較來源 CD 稱此菜屬義大利傳統（tradizione italiana）
+      claim: primary
+      evidence: CD
+    - id: region/italy
+      basis: 依主來源網站與料理名稱作地域分類，來源未指明更細地域
+      claim: primary
+      evidence: GZ
+  flavor_template: null
+  servings:
+    value: 4
+    status: sourced
+    evidence: GZ
+    note: "原文：Serving: 4"
+  status: cross_checked
+  sources:
+    - id: GZ
+      title: "Easy Spaghetti Aglio, Olio e Peperoncino — GialloZafferano"
+      url: "https://www.giallozafferano.com/recipes/Easy-Spaghetti-Aglio-Olio-e-Peperoncino.html"
+      level: C
+      type: web
+      accessed: "2026-11-23"
+      note: "主來源。頁面標示 Luciano Monosilio 食譜，4 人份，準備 5 分鐘、烹調 10 分鐘。主體所有份量與流程採此來源原量；英文頁面原文已開啟閱讀。"
+    - id: CD
+      title: "Ricetta Spaghetti aglio, olio e peperoncino — Cucchiaio d'Argento"
+      url: "https://www.cucchiaio.it/ricetta/spaghetti-aglio-olio-e-peperoncino/"
+      level: C
+      type: web
+      accessed: "2026-11-23"
+      note: "比較來源。4 人份、準備 5 分鐘、烹調 10 分鐘；原文列 320 g 義大利麵、2 瓣蒜、辣椒 1 根，橄欖油與鹽未給定數字。義大利文頁面已開啟閱讀。"
+  extracted_by: [codex, doubao, grokbot]
+  changelog:
+    - version: "1.0"
+      date: "2026-11-23"
+      change: "起始草稿；主體採 GialloZafferano 原量與做法，辣椒改為另置的最後添加配料（推論）。"
+      by: codex
+    - version: "1.1"
+      date: "2026-11-23"
+      change: "豆包交叉核對後修正：煮麵火力改原文未標；爐口安排標推論；動作重新連號；摘要不寫慢炒；炒蒜完成判斷方式改原文沒寫；註明備料順序調整；菜系的傳統說法改掛 CD。作者署名屬出處引用，保留。麵的名稱和巴西里份量改用中文顯示。升為 cross_checked"
+      by: doubao
+
+ingredients:
+  - id: pasta
+    concept: ing/dried_pasta
+    label: 義大利直麵
+    role: 主料
+    product: true
+    qty:
+      value: 320
+      unit: g
+      raw_text: "Spaghetti 11.3 oz (320 g)"
+      evidence: GZ
+      status: sourced
+  - id: garlic
+    concept: ing/garlic
+    label: 大蒜
+    role: 香料
+    qty:
+      value: 2
+      unit: clove
+      raw_text: "Garlic 2 cloves"
+      evidence: GZ
+      status: sourced
+    note: 去皮、剁末，去除中間的芽芯；原文步驟有寫去芯。
+  - id: oil
+    concept: ing/evoo
+    label: 特級初榨橄欖油
+    role: 油脂
+    qty:
+      value: 60
+      unit: g
+      raw_text: "Extra virgin olive oil 4 ½ tbsp (60 g)"
+      evidence: GZ
+      status: sourced
+    note: "原文步驟分次使用：20 g（1.5 tbsp）炒蒜；約 40 g（3 tbsp）拌麵。主體採原文總量，不另換算。"
+  - id: chili
+    concept: ing/chili_fresh
+    label: 新鮮辣椒
+    role: 香料
+    optional: true
+    qty:
+      value: 1
+      unit: piece
+      raw_text: "Fresh chili pepper 1"
+      evidence: GZ
+      status: sourced
+    note: "來源原量留作辣椒配料；主鍋不放。最後由食用者自行添加屬推論。"
+  - id: parsley
+    concept: ing/parsley
+    label: 新鮮巴西里
+    role: 輔料
+    qty:
+      value: null
+      unit: null
+      qualitative: "1 把（原文 1 bunch）"
+      raw_text: "Parsley 1 bunch"
+      evidence: GZ
+      status: sourced
+  - id: salt
+    concept: ing/salt
+    label: 鹽
+    role: 調料
+    qty:
+      value: null
+      unit: null
+      raw_text: null
+      status: missing
+      note: "主來源只說煮水時加鹽，未提供份量；另說最後可視需要以細鹽調整。"
+  - id: water
+    concept: ing/water
+    label: 煮麵水
+    role: 液體
+    qty:
+      value: null
+      unit: null
+      raw_text: null
+      status: missing
+      note: "來源寫加入一杓煮麵水，未標容量；依規則不補數字。"
+
+states:
+  - {id: garlic_ready, label: 去芯剁末的大蒜}
+  - {id: chili_ready, label: 剁碎的新鮮辣椒}
+  - {id: parsley_ready, label: 去梗切碎的巴西里}
+  - {id: pasta_cooked, label: 煮至彈牙的義大利麵}
+  - {id: oil_garlic, label: 蒜香油}
+  - {id: pasta_sauced, label: 吸收煮麵水與油的義大利麵}
+  - {id: pasta_finished, label: 拌入巴西里的不辣義大利麵}
+  - {id: final, label: 蒜香辣椒義大利麵（辣椒另放）, role: final}
+
+actions:
+  - id: a1
+    technique: tech/mince
+    term: 大蒜去芯剁末
+    inputs: [garlic]
+    outputs: [garlic_ready]
+    tool: tool/knife
+    completion:
+      - observe: 大蒜
+        target: 去皮、去除中間芽芯並剁末
+        method: 目測
+        evidence: GZ
+
+  - id: a2
+    technique: tech/mince
+    term: 辣椒剁碎
+    inputs: [chili]
+    outputs: [chili_ready]
+    tool: tool/knife
+    completion:
+      - observe: 辣椒
+        target: 剁碎
+        method: 目測
+        evidence: GZ
+    note: "切好的辣椒另放；與主鍋分開，最後作配料是推論。"
+
+  - id: a3
+    technique: tech/cut
+    term: 巴西里去梗切碎
+    inputs: [parsley]
+    outputs: [parsley_ready]
+    tool: tool/knife
+    params:
+      cut:
+        shape: cut/mo
+        raw: "chop the leaves"
+        evidence: GZ
+    completion:
+      - observe: 巴西里
+        target: 去除梗、葉片切碎
+        method: 目測
+        evidence: GZ
+
+  - id: a4
+    technique: tech/boil_water
+    term: 煮水加鹽，煮義大利麵至彈牙
+    inputs: [pasta, salt, water]
+    outputs: [pasta_cooked]
+    tool: tool/stock_pot
+    params:
+      heat:
+        level: null
+        raw: "bring to a boil（原文未標火力檔位）"
+        evidence: GZ
+      duration:
+        min_s: null
+        max_s: null
+        raw: "來源未提供麵條煮製分鐘數；煮至 al dente"
+        status: missing
+    completion:
+      - observe: 義大利麵
+        target: "al dente（彈牙）"
+        method: 試吃
+        evidence: GZ
+    note: "原文寫鍋中加鹽水煮沸後下麵，未指定鹽量、煮麵水量或麵條煮製時間。保留部分煮麵水供後續使用。備料（a1–a3）整理在煮麵之前，GZ 原文是先煮水下麵再備料，順序略有調整。"
+
+  - id: a5
+    technique: tech/stir_fry
+    term: 以部分橄欖油炒蒜，加入巴西里梗和一杓煮麵水
+    inputs: [oil, garlic_ready, water]
+    outputs: [oil_garlic]
+    tool: tool/frying_pan
+    params:
+      heat:
+        level: null
+        raw: "Sauté；原文未標明火力"
+      duration:
+        min_s: null
+        max_s: null
+        raw: "原文未寫時間"
+        status: missing
+    completion:
+      - observe: 蒜與油
+        target: "炒香；原文沒有蒜的顏色或熟度完成描述"
+        method: null
+        note: 原文沒寫蒜的具體感官完成條件；用什麼方式判斷原文也沒寫
+    note: "使用總油量中的 20 g（1.5 tbsp）；加入巴西里梗與一杓煮麵水。煮麵水的容量原文沒寫。此步不加入辣椒，與來源原流程不同，為不辣分食的推論。GZ 接著『加入辣椒浸出風味，再取出巴西里梗』；本檔主鍋不放辣椒，只取出巴西里梗。巴西里梗來自 a3 去掉的梗（推論）。"
+
+  - id: a6
+    technique: tech/emulsify
+    term: 加入彈牙義大利麵與煮麵水，拌至吸收；拌入其餘橄欖油
+    inputs: [pasta_cooked, oil_garlic, oil, water]
+    outputs: [pasta_sauced]
+    tool: tool/frying_pan
+    params:
+      heat:
+        level: null
+        raw: "let it absorb to complete the cooking；原文未標明火力"
+      duration:
+        min_s: null
+        max_s: null
+        raw: "briefly；未提供秒數"
+        status: missing
+    completion:
+      - observe: 義大利麵與鍋中液體
+        target: "煮麵水被吸收、完成麵條烹煮"
+        method: 目測與試吃
+        evidence: GZ
+    note: "將麵直接瀝入平底鍋，加一杓煮麵水；待吸收以完成烹煮，再拌入約 40 g（3 tbsp）橄欖油並短暫翻拌。"
+
+  - id: a7
+    technique: tech/season
+    term: 視需要加細鹽，拌入切碎巴西里
+    inputs: [pasta_sauced, salt, parsley_ready]
+    outputs: [pasta_finished]
+    tool: tool/spatula
+    completion:
+      - observe: 義大利麵
+        target: 拌入切碎巴西里；需要時以細鹽調味
+        method: 目測與試吃
+        evidence: GZ
+    note: "鹽只按口味視需要調整，來源未給用量。"
+
+  - id: a8
+    technique: tech/assemble
+    term: 辣椒配料另碟盛放，主體保持不辣
+    inputs: [pasta_finished, chili_ready]
+    outputs: [final]
+    tool: tool/bowl
+    completion:
+      - observe: 義大利麵與辣椒
+        target: "義大利麵不含辣椒；辣椒另放，食用時可自行添加"
+        method: 目測
+        note: 推論；來源沒有一鍋兩吃的分裝步驟
+    note: "辣椒另置並最後分開添加是依家庭需求作的推論；不改動來源原量。"
+
+serving:
+  completion:
+    - observe: 上桌狀態
+      target: 熱食；來源建議立即食用
+      method: 試吃
+      evidence: GZ
+  sensory_target:
+    texture: "麵條 al dente；完成烹煮後煮麵水吸收"
+    taste: 原文沒寫
+
+notes:
+  spicy_split: "主鍋不加辣椒，辣椒另放並於最後由食用者自行添加，屬推論。GZ 原流程將辣椒放入炒香油中；本檔分開處理是為保留不辣那份。"
+  weekday: "可在平日做：GZ 標準備 5 分鐘、烹調 10 分鐘，合計 15 分鐘（來源時間）；未含來源未標時長的彈牙判斷與備料變動。"
+  burners: "家庭安排（推論，非原文）：GZ 用湯鍋煮麵、平底鍋做蒜香油，爐口數原文沒寫；兩件同時做時用 2 口爐。"
+  family_method: "家庭改法（推論）：GZ 用湯鍋煮麵及平底鍋拌炒，符合家中器具；無烤箱、氣炸鍋或蒸籠步驟，因此不需替換。"
+  missing: "原文沒寫：鹽的數量、煮麵水容量、煮麵時間、炒蒜火力與時間、辣椒浸油時間、巴西里重量、上桌後食用時限的具體分鐘數。"
+  source_comparison: "CD 對照：320 g spaghetti、2 瓣蒜、1 根辣椒；橄欖油與鹽未標定數量；原文建議蒜略呈金黃時加入一至兩杓煮麵水以免燒焦，麵煮至 molto al dente 後入鍋續煮，關火後加生橄欖油。"
+

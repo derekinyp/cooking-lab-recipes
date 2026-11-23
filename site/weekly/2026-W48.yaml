@@ -10,8 +10,8 @@ dishes:
   - {slug: xianggu_jitang, name: 香菇雞湯}
   - {slug: kejia_xiaochao, name: 客家小炒}
   - {slug: chao_kongxincai, name: 蒜炒空心菜}
-  - {slug: mayou_ji, name: 麻油雞, note: 清單審核中，審過才開始整理, review: true}
-  - {slug: xiandan_kugua, name: 鹹蛋苦瓜, note: 清單審核中，審過才開始整理, review: true}
+  - {slug: mayou_ji, name: 麻油雞, note: 11/23 加入}
+  - {slug: xiandan_kugua, name: 鹹蛋苦瓜, note: 11/23 加入}
 west:
   - {slug: spaghetti_aglio_olio, name: 蒜香辣椒義大利麵}
   - {slug: tortilla_de_patatas, name: 西班牙馬鈴薯烘蛋}

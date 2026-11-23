@@ -896,6 +896,7 @@ def weekly_rows(items, by_slug):
 def weekly_page(stem, wk, by_slug):
     TH = '<thead><tr><th>菜</th><th>狀態</th><th>平日或假日</th><th>備註</th></tr></thead>'
     rows, done = weekly_rows(wk['dishes'], by_slug)
+    review_note = '「待審」的菜要等清單審過才開始整理。' if any(it.get('review') for it in wk['dishes']) else ''
     west = ''
     if wk.get('west'):
         wrows, wdone = weekly_rows(wk['west'], by_slug)
@@ -908,7 +909,7 @@ def weekly_page(stem, wk, by_slug):
 <p class="intro">{E(wk["intro"])}</p></header>
 <section class="block"><h2 class="h2">這週的中式家常菜</h2>
 <div class="zd-table-wrap card"><table class="zd-table">{TH}<tbody>{rows}</tbody></table></div>
-<p class="zd-small">「整理中」的菜還沒通過檢查或比對，暫時不放食譜頁；通過後會自動出現連結。「待審」的菜要等整份清單審過才開始整理。</p></section>
+<p class="zd-small">「整理中」的菜還沒通過檢查或比對，暫時不放食譜頁；通過後會自動出現連結。{review_note}</p></section>
 {west}
 <p class="zd-small"><a href="progress.html">看全部收錄進度 →</a></p>
 </main>
