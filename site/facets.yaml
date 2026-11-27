@@ -13,7 +13,7 @@ ingredient_groups:
   - {name: 魚蝦海鮮, match: [ing/fish, ing/shrimp, ing/prawn, ing/clam, ing/oyster, ing/squid, ing/dried_squid, ing/crab, ing/scallop, ing/mussel]}
   - {name: 蛋, match: [ing/egg, ing/century_egg, ing/salted_egg, ing/duck_egg]}
   - {name: 豆腐豆乾, match: [ing/tofu, ing/dougan, ing/bean_curd]}
-  - {name: 蔬菜, match: [ing/green_bean, ing/cabbage, ing/tomato, ing/bamboo_shoot, ing/eggplant, ing/potato, ing/spinach, ing/water_spinach, ing/bitter_melon, ing/mushroom, ing/shiitake, ing/onion, ing/carrot, ing/radish, ing/daikon, ing/corn, ing/shallot, ing/garlic, ing/scallion, ing/pepper, ing/bell_pepper, ing/zucchini, ing/caipu, ing/chive, ing/gai_lan]}
+  - {name: 蔬菜, match: [ing/green_bean, ing/cabbage, ing/tomato, ing/bamboo_shoot, ing/eggplant, ing/potato, ing/spinach, ing/water_spinach, ing/bitter_melon, ing/mushroom, ing/shiitake, ing/onion, ing/carrot, ing/radish, ing/daikon, ing/corn, ing/shallot, ing/garlic, ing/scallion, ing/pepper, ing/bell_pepper, ing/zucchini, ing/caipu, ing/chive, ing/gai_lan, ing/cream_style_corn]}
   - {name: 米飯, match: [ing/rice, ing/steamed_rice, ing/glutinous_rice]}
   - {name: 麵食麵包, match: [ing/dried_pasta, ing/tagliatelle, ing/spaghetti, ing/noodle, ing/rice_noodle, ing/rice_vermicelli, ing/english_muffin, ing/bread]}
 # 配菜、醬料裡的主料只算這些
