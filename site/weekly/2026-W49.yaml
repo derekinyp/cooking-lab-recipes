@@ -1,0 +1,14 @@
+week: 2026 第 49 週
+range: 11/30 – 12/6
+intro: 食譜庫每週新增 10 道中式家常菜（含台式）。這週的主題是台式平日快炒；這頁列出這週新收的菜，已經在庫裡的菜不算新增。每道菜要先通過自動檢查，再由第二個來源比對過，才算正式入庫、放上網站。
+dishes:
+  - {slug: chao_mifen, name: 炒米粉}
+  - {slug: cangying_tou, name: 蒼蠅頭}
+  - {slug: tasuan_qiezi, name: 塔香茄子}
+  - {slug: dougan_rousi, name: 豆干肉絲}
+  - {slug: huadan_xiaren, name: 滑蛋蝦仁}
+  - {slug: haoyou_jielan, name: 蠔油芥藍}
+  - {slug: jiachang_doufu, name: 家常豆腐}
+  - {slug: hujiao_xia, name: 胡椒蝦}
+  - {slug: ganguo_huacai, name: 乾鍋花菜}
+  - {slug: yumi_dandan, name: 玉米蛋花湯}

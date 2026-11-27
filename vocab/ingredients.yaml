@@ -139,3 +139,14 @@ concepts:
   - {id: ing/black_vinegar, zh: 烏醋, alt: [黑醋], note: "W48 客家小炒"}
   - {id: ing/water_spinach, zh: 空心菜, alt: [蕹菜, 通菜], note: "W48 蒜炒空心菜"}
   - {id: ing/chicken, zh: 雞肉, alt: [雞, 雞肉塊], note: "W48 香菇雞湯；來源只寫『雞』、沒寫部位，不能歸腿肉或胸肉"}
+  - {id: ing/bitter_melon, zh: 苦瓜, alt: [涼瓜], note: "W48 鹹蛋苦瓜"}
+  - {id: ing/salted_egg, zh: 鹹蛋, alt: [熟鹹蛋, 鹹鴨蛋], note: "W48 鹹蛋苦瓜；來源寫鹹蛋，是否預熟依各食譜原文"}
+  - {id: ing/rice_vermicelli, zh: 米粉, alt: [炊粉, 新竹米粉], note: "W49 炒米粉"}
+  - {id: ing/shiitake_dried, zh: 乾香菇, alt: [香菇（乾）], note: "W49 炒米粉；需泡發"}
+  - {id: ing/pork_minced, zh: 豬絞肉, alt: [絞肉, 豬肉末], broader: ing/pork, note: "W49 蒼蠅頭"}
+  - {id: ing/chive_flower, zh: 韭菜花, alt: [韭菜苔], note: "W49 蒼蠅頭"}
+  - {id: ing/eggplant, zh: 茄子, note: "W49 塔香茄子"}
+  - {id: ing/spicy_soybean_paste, zh: 辣豆醬, note: "W49 塔香茄子 M1 spicy soybean paste（taucheo 類）"}
+  - {id: ing/fried_shallot, zh: 油蔥酥, note: "W49 塔香茄子點綴"}
+  - {id: ing/soy_sauce_dark, zh: 老抽, broader: ing/soy_sauce}
+  - {id: ing/soy_sauce_light, zh: 生抽, broader: ing/soy_sauce}

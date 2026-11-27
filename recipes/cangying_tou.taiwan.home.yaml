@@ -1,0 +1,141 @@
+# 蒼蠅頭（台式家常版）— 起始草稿，規格 v1.0
+# 主來源 M＝楊桃美食網〈蒼蠅頭(2)〉：材料、調味料份量、大火、收汁只用 M 的數字，不混拼。
+# S1＝楊桃美食網〈蒼蠅頭(7)〉、S2＝DayDayCook〈蒼蠅頭〉僅作對照，數字不進主體。
+schema_version: "1.0"
+recipe:
+  id: cangying_tou.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/cangying_tou
+  name: {zh_hant: 蒼蠅頭, zh_hans: 苍蝇头, en: "Cangying tou (Taiwanese minced pork, chive flower and black bean stir-fry)"}
+  variant: 台式家常版
+  summary: 炒鍋先以蒜末、豆豉、辣椒片爆香，下絞肉與韭菜花拌炒，加入調味料大火炒至收汁的台式下飯小炒。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "M 頁面標籤 #中式家常；食材與做法為台灣家常小炒（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣食譜平台楊桃美食網；平台本身不單獨證明地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "M 未標份數"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "楊桃美食網〈蒼蠅頭(2)〉（頁面標註出處《點菜率最高的聚餐下飯菜》）"
+      url: https://www.ytower.com.tw/recipe/F01-0964
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "主來源。材料：絞肉100公克、韭菜花200公克、蒜末30公克、豆豉50公克、辣椒片30公克；調味料：鹽1/2小匙、糖1小匙、水60㏄、雞粉1小匙、米酒1/2小匙、醬油1小匙、香油適量；油2大匙；步驟3 大火炒至收汁；頁面標籤 #中式家常 #快速上桌 #30 分鐘內 #一鍋到底。頁面標註出處為出版書《點菜率最高的聚餐下飯菜》，該書本身未親自開啟，故來源層級記網頁 C。"
+    - id: S1
+      title: "楊桃美食網〈蒼蠅頭(7)〉"
+      url: https://www.ytower.com.tw/recipe/F02-0751
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "對照。材料：韭菜花100公克、豬絞肉150公克、豆豉10公克、紅辣椒1支、蒜頭4粒；調味料：醬油1大匙、糖1小匙、米酒1大匙、五香粉1/2小匙；沙拉油適量。作法：絞肉先入鍋炒乾備用；熱鍋加適量沙拉油，蒜碎、辣椒碎、豆豉炒香，再加絞肉及所有調味料炒勻，起鍋前下切小段韭菜花，略拌炒均勻至翠綠。備註：絞肉應爆炒至微乾焦、香氣溢出才調味並放韭菜花，以保韭菜花爽脆。頁面結構化資料標示日期 2014-07-21。"
+    - id: S2
+      title: "DayDayCook 日日煮〈蒼蠅頭〉"
+      url: https://www.daydaycook.com/zh-Hans/recipe/stir-fried-minced-pork-with-chinese-chives-and-salted-black-bean
+      level: C
+      type: media
+      accessed: 2026-11-27
+      note: "對照。時間 15-30 分鐘；配料：豬肉末300g、韭菜苔200g、豆豉15g、紅辣椒1pc、指天椒2pc、蒜蓉2tbsp、薑蓉1tbsp、水20ml、紹興酒1tbsp、生抽1tbsp、麻油1tsp、砂糖5g、生粉5g、胡椒粉3tsp。作法：韭菜苔洗淨切丁；肉加入紹興酒、生抽、麻油、砂糖、生粉及胡椒粉拌勻醃製20分鐘；中高火燒熱鍋加少許油，下肉末炒2分鐘，再加韭菜、蒜蓉、薑蓉、豆豉、紅辣椒及指天椒炒勻；加少許水煮2分鐘，加砂糖、胡椒粉及麻油炒勻即成。原文配料表砂糖、麻油、胡椒粉各重複列出兩筆。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始草稿：以 M 為主來源建立主體；S1、S2 作對照；份量只用 M 數字，其餘標 missing 或推論。", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_pork, concept: ing/pork_minced, label: 絞肉, role: 主料,
+     qty: {value: 100, unit: g, raw_text: "絞肉100公克", evidence: M, status: sourced},
+     note: "M 只寫「絞肉」，部位與肥瘦原文沒寫"}
+  - {id: i_chive, concept: ing/chive_flower, label: 韭菜花, form: 丁, role: 主料,
+     qty: {value: 200, unit: g, raw_text: "韭菜花200公克", evidence: M, status: sourced}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜末, form: 末, role: 輔料,
+     qty: {value: 30, unit: g, raw_text: "蒜末30公克", evidence: M, status: sourced}}
+  - {id: i_douchi, concept: ing/douchi, label: 豆豉, role: 輔料,
+     qty: {value: 50, unit: g, raw_text: "豆豉50公克", evidence: M, status: sourced,
+       note: "豆豉種類（黑豆豉／蔭豆豉）原文沒寫；份量比例與 S1、S2 差異見 notes.compare"}}
+  - {id: i_chili, concept: ing/chili_fresh, label: 辣椒片, form: 片, role: 香料, optional: true,
+     qty: {value: 30, unit: g, raw_text: "辣椒片30公克", evidence: M, status: sourced},
+     note: "M 原列材料；不吃辣可省略（推論）。辣椒在下鍋階段與蒜、豆豉同爆香，分辣方式見 notes.spicy_split"}
+  - {id: i_oil, concept: ing/cooking_oil, label: 油, role: 油脂,
+     qty: {value: 2, unit: tbsp, raw_text: "倒入2大匙的油", evidence: M, status: sourced},
+     note: "M 只寫「油」，油種原文沒寫"}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
+     qty: {value: 0.5, unit: tsp, raw_text: "鹽1/2小匙", evidence: M, status: sourced}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 糖, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "糖1小匙", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 水, role: 液體,
+     qty: {value: 60, unit: ml, raw_text: "水60㏄", evidence: M, status: sourced,
+       note: "原文單位 ㏄，對應單位 id ml；未另行換算"}}
+  - {id: i_powder, concept: ing/chicken_powder, label: 雞粉, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "雞粉1小匙", evidence: M, status: sourced}}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料,
+     qty: {value: 0.5, unit: tsp, raw_text: "米酒1/2小匙", evidence: M, status: sourced}}
+  - {id: i_soy, concept: ing/soy_sauce, label: 醬油, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "醬油1小匙", evidence: M, status: sourced}}
+  - {id: i_sesame, concept: ing/sesame_oil, label: 香油, role: 調料, optional: true,
+     qty: {value: null, unit: null, qualitative: 適量, raw_text: "香油適量", evidence: M, status: sourced}}
+
+states:
+  - {id: s_chive_diced, label: 洗淨切丁的韭菜花}
+  - {id: s_douchi_rinsed, label: 沖水擰乾的豆豉}
+  - {id: s_aromatic, label: 蒜末、豆豉、辣椒片爆香鍋底}
+  - {id: s_final, label: 蒼蠅頭, role: final}
+
+actions:
+  - id: a1
+    technique: tech/cut
+    term: 韭菜花洗淨切丁
+    inputs: [i_chive]
+    outputs: [s_chive_diced]
+    tool: tool/knife
+    params: {cut: {shape: cut/ding, size_mm: {min: null, max: null}, raw: 切丁, evidence: M, note: "丁的尺寸原文沒寫"}}
+    completion: [{observe: 韭菜花, target: 洗淨、切成丁（原文「韭菜花洗淨切丁」）, method: 目測, evidence: M}]
+  - id: a2
+    technique: tech/rinse
+    term: 豆豉沖一下水後擰乾
+    inputs: [i_douchi]
+    outputs: [s_douchi_rinsed]
+    tool: tool/bowl
+    completion: [{observe: 豆豉, target: 沖一下水後擰乾（原文「豆豉沖一下水後擰乾」）, method: 目測, evidence: M}]
+  - id: a3
+    technique: tech/aromatics
+    term: 熱鍋下油，放入蒜末、豆豉、辣椒片爆香
+    inputs: [i_oil, i_garlic, s_douchi_rinsed, i_chili]
+    outputs: [s_aromatic]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "步驟2 原文未寫火力檔位"}
+      agitation: {mode: "翻炒（是否全程持續原文沒寫）"}
+    completion:
+      - {observe: 蒜末、豆豉、辣椒片, target: 爆香（原文只寫「爆香」；香氣、色澤的完成狀態原文沒寫）, method: 聞（推論）, note: "判斷方式原文沒寫"}
+    note: "辣椒片在此步與蒜末、豆豉同鍋下鍋；分辣方式見 notes.spicy_split"
+  - id: a4
+    technique: tech/stir_fry_mixed
+    term: 放入絞肉與韭菜花拌炒均勻，加入所有調味料，大火炒至收汁
+    inputs: [s_aromatic, i_pork, s_chive_diced, i_salt, i_sugar, i_water, i_powder, i_wine, i_soy, i_sesame]
+    outputs: [s_final]
+    tool: tool/wok
+    params:
+      heat: {level: heat/high, raw: "以大火炒至收汁即可", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "步驟未給分鐘；頁面標籤 #30 分鐘內", status: missing}
+      agitation: {mode: "拌炒均勻、大火炒至收汁（是否全程持續原文沒寫）"}
+    completion:
+      - {observe: 鍋內湯汁, target: 炒至收汁（原文「炒至收汁即可」）, method: 目測, evidence: M}
+
+serving:
+  completion:
+    - {observe: 上桌溫度與食用時限, target: 原文沒寫, method: null}
+  sensory_target: {color: 原文沒寫, taste: 原文沒寫, texture: 原文沒寫}
+
+notes:
+  weekday: "平日（≤20 分鐘）判定：M 頁面標籤為 #30 分鐘內，已超過平日 20 分鐘門檻（門檻是使用者條件，非來源數字）；步驟本身未給烹炒分鐘數，實際可否在平日完成原文沒寫，待試做計時。"
+  burners: "本食譜使用 1 只炒鍋；M 標籤為 #一鍋到底。爐口數原文沒寫。"
+  spicy_split: "M 的辣椒片在步驟2與蒜末、豆豉同鍋爆香，不是最後分開下鍋，無法在同一鍋分出。不辣那份要另外做（推論）：爆香時先不下辣椒，辣椒另置小碗備妥，起鍋前只加到吃辣那份（推論，無來源數字）。本檔無花椒、無辣豆瓣。"
+  oven_airfryer: "M 未使用烤箱、氣炸鍋或蒸籠；家庭廚具僅有電鍋、炒鍋、平底鍋、湯鍋，本檔用炒鍋即可對應，無需家庭改法。"
+  no_scale: "家中無料理秤；M 公克項目的無秤量法原文沒寫，待試做建立。匙類照原文大匙／小匙，不換算。"
+  compare: "S1（楊桃 F02-0751）：絞肉先入鍋炒乾備用，蒜碎、辣椒碎、豆豉炒香後回鍋調味，起鍋前才下韭菜花炒至翠綠；備註主張絞肉爆炒至微乾焦、香氣溢出才調味下韭菜花，以保韭菜花爽脆。S2（DayDayCook）：肉先以紹興酒、生抽、麻油、糖、生粉、胡椒醃 20 分鐘，中高火炒肉末 2 分鐘，再加韭菜、蒜蓉、薑蓉、豆豉、辣椒炒勻，加水煮 2 分鐘調味。"
+  missing: "原文沒寫：份數、各步驟分鐘數、爆香完成狀態、絞肉部位與肥瘦、豆豉種類、辣椒品種、韭菜花丁尺寸、油的種類、上桌溫度與時限、成品色澤口感。"
+  decisions: "主來源選 M（F01-0964）：五項指定材料（絞肉、韭菜花、豆豉、辣椒、醬油）均有份量，明示大火與油量，調味料清單完整；S1、S2 僅作對照，其數字不進主體。"
+  family_adapt: "未使用溫度計；完成判斷僅用看、聞、試吃等感官，M 未給任何攝氏溫度數字。"
+  spec_gaps: "頁面標籤（#30 分鐘內、#一鍋到底、#快速上桌）無對應結構欄位，僅能記於 notes；一鍋兩吃（一半不辣）無法以結構化成品表示，頂層僅一個 final 成品。"

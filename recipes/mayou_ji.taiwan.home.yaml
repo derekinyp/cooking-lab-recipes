@@ -1,0 +1,163 @@
+# 麻油雞（台式家常版）— 起始檔，規格 v1.0
+# 主來源 M＝《40種餐廳必點雞肉料理》（楊桃美食網 A03-402 轉載）：雞肉部位與份量、老薑、麻油、米酒、水、鹽、糖、火力、時間只用 M 的數字，不混拼。
+# S2＝《四季滋補料理》（楊桃美食網 A03-1549 轉載）、S3＝李錦記美國官網食譜，僅放比較表與 notes。
+# 三份來源皆無辣椒、花椒、辣豆瓣；本身不辣不麻。米酒酒精是否煮掉，三份原文都沒寫，照實記錄。
+schema_version: "1.0"
+recipe:
+  id: mayou_ji.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/mayou_ji
+  name: {zh_hant: 麻油雞, zh_hans: 麻油鸡, en: Sesame oil chicken}
+  variant: 台式家常版
+  summary: 麻油小火爆香老薑片，雞塊大火炒 1 分鐘，倒入米酒燒開後加水、鹽、糖，水滾轉小火煮至熟爛，起鍋前淋上黑麻油。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "M 為台灣食譜網站收錄的台式家常食譜（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣楊桃美食網收錄之出版書食譜；平台本身不單獨證明地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "M 未標份數；S3 標 2 人份（對照，不進主體）"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "《40種餐廳必點雞肉料理》麻油雞（楊桃美食網 A03-402 轉載）"
+      url: https://www.ytower.com.tw/recipe/A03-402
+      level: B
+      type: book
+      accessed: 2026-11-27
+      note: "主來源。網頁標註出處《40種餐廳必點雞肉料理》；未見作者、出版年份與版次。步驟：洗淨切塊；麻油小火爆香薑片，雞塊大火炒1分鐘；倒米酒燒開後加水、鹽、白砂糖，水滾轉小火煮30分鐘至熟爛；起鍋前淋黑麻油。"
+    - id: S2
+      title: "《四季滋補料理》麻油雞(5)（楊桃美食網 A03-1549 轉載）"
+      url: https://www.ytower.com.tw/recipe/A03-1549
+      level: B
+      type: book
+      accessed: 2026-11-27
+      note: "對照。網頁標註出處《四季滋補料理》，未見作者與版次。雞肉塊900公克、薑片100公克、黑麻油3大匙、米酒1200㏄、雞粉適量；材料表未列水；小火爆香薑片至邊緣微焦，雞肉炒至顏色變白，倒米酒雞粉煮滾後小火燜煮約40分鐘至入味。"
+    - id: S3
+      title: "李錦記美國官網〈麻油雞〉（Sesame Oil Chicken）"
+      url: https://usa.lkk.com/zh-hk/recipes/sesame-oil-chicken
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "對照。品牌官方網站食譜。2 人份、準備 5 分鐘、烹煮 35 分鐘；雞腿肉（帶皮）2 磅、米酒 1½ 杯（另 2 茶匙泡枸杞）、枸杞 1 安士、油 1 茶匙、薑（切片）1 塊、芝麻油 3 湯匙（先 2 後 1）、雞粉 2 茶匙；開中大火，雞皮朝下，加入油和生薑片；熬出雞油且生薑邊緣略焦後轉至中火，雞肉表面略焦倒米酒加適量清水蓋過雞肉燜煮 25 分鐘，再加枸杞、1 湯匙芝麻油與雞粉小火慢煮 5 分鐘。"
+  extracted_by: [doubao, codex]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始檔：M 為主來源（份量、火力、時間只用 M）；S2、S3 為對照；未開啟的愛料理與大同電鍋平台頁面未採用", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex 交叉核對後修正：成品味道標推論；備料與爆香的判斷方式標家庭操作建議；S2 不再寫成來源聲明無水；S3 步驟照原文（雞皮朝下、生薑邊緣略焦）", by: codex}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X4 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_chicken, concept: ing/chicken, label: 土雞（切塊）, form: 切塊, role: 主料,
+     qty: {value: 0.5, unit: whole_bird, raw_text: "土雞1/2隻", evidence: M, status: sourced, note: "M 原量；只寫土雞，未寫部位（腿／胸）。無秤：以半隻計，不換算公克"}}
+  - {id: i_ginger, concept: ing/ginger, label: 老薑（切片）, form: 片, role: 輔料,
+     qty: {value: 20, unit: g, raw_text: "老薑20公克", evidence: M, status: sourced, note: "M 原量。無秤時怎麼量（幾片／幾克）原文沒寫"}}
+  - {id: i_oil_fry, concept: ing/sesame_oil, label: 麻油（炒薑用）, role: 油脂,
+     qty: {value: 1, unit: tsp, raw_text: "麻油1小匙", evidence: M, status: sourced, note: "M 材料表與「黑麻油」分列；此份用於步驟 2 炒薑。兩種油品的差異原文沒解釋"}}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料,
+     qty: {value: 100, unit: ml, raw_text: "米酒100㏄", evidence: M, status: sourced, note: "M 原量。酒精是否煮掉原文沒寫"}}
+  - {id: i_water, concept: ing/water, label: 水, role: 液體,
+     qty: {value: null, unit: null, qualitative: 適量, raw_text: "水適量", evidence: M, status: sourced, note: "M 原量「適量」，不換算毫升"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "鹽1小匙", evidence: M, status: sourced}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 白砂糖, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "白砂糖1小匙", evidence: M, status: sourced}}
+  - {id: i_mayou_finish, concept: ing/black_sesame_oil, label: 黑麻油（起鍋前淋）, role: 油脂,
+     qty: {value: 5, unit: tsp, raw_text: "黑麻油5小匙", evidence: M, status: sourced, note: "M 原量；全部於起鍋前淋入"}}
+
+states:
+  - {id: s_chicken_clean, label: 洗淨的土雞}
+  - {id: s_chicken_cut, label: 切塊的雞肉}
+  - {id: s_ginger_slice, label: 老薑片}
+  - {id: s_ginger_fragrant, label: 爆香的薑片（鍋中留麻油）}
+  - {id: s_chicken_seared, label: 大火炒過的雞塊}
+  - {id: s_seasoned_broth, label: 米酒燒開、加入水鹽糖的鍋料}
+  - {id: s_cooked, label: 小火煮至熟爛的麻油雞}
+  - {id: s_final, label: 麻油雞, role: final}
+
+actions:
+  - id: a1
+    technique: tech/rinse
+    term: 土雞洗淨
+    inputs: [i_chicken]
+    outputs: [s_chicken_clean]
+    completion: [{observe: 雞肉表面, target: 洗淨（原文：「將土雞洗淨切塊」）, method: 目測、沖洗（家庭操作建議，推論）, evidence: M}]
+    can_overlap: [a3]
+  - id: a2
+    technique: tech/cut
+    term: 土雞切塊
+    inputs: [s_chicken_clean]
+    outputs: [s_chicken_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/kuai, size_mm: {min: null, max: null}, raw: 切塊, evidence: M, note: "M 未給塊的尺寸"}}
+    completion: [{observe: 雞塊, target: 切塊備用（原文：「洗淨切塊」）, method: 目測（家庭操作建議，推論）, evidence: M}]
+  - id: a3
+    technique: tech/cut
+    term: 老薑切片
+    inputs: [i_ginger]
+    outputs: [s_ginger_slice]
+    tool: tool/knife
+    params: {cut: {shape: cut/pian, raw: 老薑切片, evidence: M}}
+    completion: [{observe: 薑片, target: 切片備用（原文：「老薑切片備用」）, method: 目測（家庭操作建議，推論）, evidence: M}]
+  - id: a4
+    technique: tech/aromatics
+    term: 鍋中加麻油，小火爆香薑片
+    inputs: [i_oil_fry, s_ginger_slice]
+    outputs: [s_ginger_fragrant]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/low, raw: "以小火爆香薑片", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "爆香多久原文沒寫", status: missing}
+    completion: [{observe: 薑片香氣, target: 爆香（原文：「爆香薑片」；香到什麼程度原文沒寫）, method: 聞（家庭操作建議，推論）, evidence: M}]
+    note: "家庭改法（推論）：M 只寫「取一鍋」，未指明鍋具；本檔用湯鍋完成炒香與後續燉煮。家用廚具另有炒鍋可替代，電鍋無法做此步爆炒"
+  - id: a5
+    technique: tech/stir_fry
+    term: 雞塊入鍋，大火一起炒 1 分鐘
+    inputs: [s_ginger_fragrant, s_chicken_cut]
+    outputs: [s_chicken_seared]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/high, raw: "以大火一起炒1分鐘", evidence: M}
+      duration: {min_s: 60, max_s: 60, raw: "炒1分鐘（M 原文；min_s/max_s 的 60 是 1 分鐘換成秒的單位換算值，規格只收秒）", is_guide: true, evidence: M, status: sourced}
+    completion: [{observe: 雞塊, target: 原文沒寫這步的完成狀態（只寫炒 1 分鐘）, method: null, evidence: M}]
+  - id: a6
+    technique: tech/boil
+    term: 倒入米酒，湯汁燒開後加入適量的水、鹽、白砂糖一起繼續煮
+    inputs: [s_chicken_seared, i_wine, i_water, i_salt, i_sugar]
+    outputs: [s_seasoned_broth]
+    tool: tool/stock_pot
+    params: {heat: {level: null, raw: "倒米酒燒開的火力原文沒寫"}, duration: {min_s: null, max_s: null, raw: "燒開後煮多久原文沒寫", status: missing}}
+    completion: [{observe: 湯汁, target: 湯汁燒開（原文：「等湯汁燒開後，加入適量的水、鹽、白砂糖」）, method: 目測（滾）, evidence: M}]
+    note: "投料順序依 M：先倒米酒燒開，再加水、鹽、白砂糖。米酒酒精是否煮掉原文沒寫"
+  - id: a7
+    technique: tech/simmer
+    term: 水滾後轉小火繼續煮 30 分鐘至熟爛
+    inputs: [s_seasoned_broth]
+    outputs: [s_cooked]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/low, raw: "等水滾後再轉小火繼續煮30分鐘", evidence: M}
+      duration: {min_s: 1800, max_s: 1800, raw: "繼續煮30分鐘至熟爛為止（M 原文；1800 是 30 分鐘換成秒的單位換算值，規格只收秒）", is_guide: true, evidence: M, status: sourced}
+    completion: [{observe: 雞肉熟度, target: 熟爛（原文：「至熟爛為止」）, method: 戳、試吃（判斷方式為推論，原文沒寫）, evidence: M}]
+    note: "M 沒寫是否加蓋；本步不標加蓋。中途要不要翻拌原文沒寫"
+  - id: a8
+    technique: tech/season
+    term: 起鍋前淋上黑麻油
+    inputs: [s_cooked, i_mayou_finish]
+    outputs: [s_final]
+    tool: tool/stock_pot
+    params: {heat: {level: null, raw: "淋油時火力原文沒寫"}, duration: {min_s: null, max_s: null, raw: "原文沒寫", status: missing}}
+    completion: [{observe: 黑麻油, target: 淋上即可（原文：「起鍋前再淋上黑麻油即可」）, method: 目測, evidence: M}]
+
+serving:
+  completion:
+    - {observe: 上桌溫度與食用時限, target: 原文沒寫, method: null}
+  sensory_target: {color: 原文沒寫, taste: 推論：麻油香、薑香、鹹中帶甜（依 M 的材料推得；原文未描述成品味道）, texture: 雞肉熟爛（M）}
+
+notes:
+  weekday: "假日菜：M 有時間數字的步驟為大火炒 1 分鐘＋小火煮 30 分鐘，已超過平日 20 分鐘門檻；爆香薑片、米酒燒開、起鍋淋油的時間 M 原文沒寫，待試做計時。平日（≤20 分鐘）不可做（依 M 的 30 分鐘燉煮判斷；門檻是家庭條件，不是來源數字）"
+  burners: "全程 1 口爐、1 只湯鍋（家庭改法推論：M 只寫「取一鍋」）；任何時刻不超過 2 口爐。碗、鍋蓋不另占爐口"
+  spicy_split: "M、S2、S3 主體都沒有辣椒、花椒、辣豆瓣，整鍋即不辣那份；本菜無麻味來源。三份來源皆未把辣椒／花椒一開始下鍋，無「無法分出」的情形。若要做一鍋兩吃：辣椒／花椒最後分開加在要辣的那份（推論；三份來源都沒有此配料，量原文沒寫、不另編數字）"
+  alcohol: "米酒酒精是否煮掉，M、S2、S3 原文都沒寫；照原文記錄，不推論是否揮發完畢"
+  tools_family: "三份來源都沒用烤箱、氣炸鍋或蒸籠，不需器材改法；家庭廚具為電鍋（大同式外鍋加水蒸）、炒鍋、平底鍋、湯鍋，無料理溫度計、無料理秤。M 原文未指明鍋具，本檔用湯鍋（家庭改法推論）；完成判斷全用看、聞、聽、戳、試吃，不靠溫度計"
+  compare: "S2（《四季滋補料理》）為純酒無水流派：雞肉塊 900 公克、薑片 100 公克、黑麻油 3 大匙、米酒 1200㏄、雞粉適量，小火燜煮約 40 分鐘至入味；材料表未列水、鹽、糖。S3（李錦記官網）：帶皮雞腿肉 2 磅、米酒 1½ 杯（另 2 茶匙泡枸杞）、枸杞 1 安士、油 1 茶匙、薑 1 塊、芝麻油 3 湯匙（先 2 後 1）、雞粉 2 茶匙，開中大火、雞皮朝下加油和生薑片，熬出雞油且生薑邊緣略焦後轉中火，燜煮 25 分鐘後加枸杞與收尾麻油、雞粉小火慢煮 5 分鐘。三家雞肉部位、水量、酒水量差異大，主體不混拼"
+  missing: "原文沒寫：份數、雞肉部位（腿／胸）、水量（M 為適量）、爆香薑片時間、炒雞塊的完成狀態、米酒燒開的火力與時間、燉煮是否加蓋、中途是否翻拌、兩種麻油的油品差異、鍋具種類與大小、成品顏色、上桌溫度與食用時限、酒精是否煮掉"
+  source_access: "愛料理 icook.tw 搜尋頁與大同電鍋官方平台 cooking.tatung.com 本次被 robots.txt 擋自動存取，未能開啟，故未列入來源；未引用任何未親自開過的頁面。勞動部中餐丙級術科鏡像檔（07602 題組）檢索無「麻油雞」菜色，僅有「雞肉麻油飯」「薑味麻油肉片」"

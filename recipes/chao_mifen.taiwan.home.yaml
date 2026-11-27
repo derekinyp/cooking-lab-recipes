@@ -1,0 +1,217 @@
+# 炒米粉（台式家常版）— 規格 v1.0，起始草稿
+# 主來源 M＝楊桃美食網《此生必學的炒米粉撇步》（2017/04/27）：米粉、配料、調味、時間、火力只用 M 的數字，不混拼。
+# 對照來源 S1（出版書轉錄之廈門炒米粉）、S2（Baku Kitchen 新竹米粉，英文部落格）只進比較表與 notes。
+schema_version: "1.0"
+recipe:
+  id: chao_mifen.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/chao_mifen
+  name: {zh_hant: 炒米粉, zh_hans: 炒米粉, en: Taiwanese stir-fried rice vermicelli}
+  variant: 台式家常版
+  summary: 米粉不泡水，汆燙後蓋鍋燜軟；紅蔥頭爆香，肉絲、香菇絲、蝦米炒香，下高麗菜絲、紅蘿蔔絲煮軟，加水與調味煮滾，下米粉轉中火蓋鍋燜，收汁後關火淋烏醋、加芹菜珠再燜一下拌勻。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "主來源 M 為台灣平台楊桃文化的台式炒米粉做法（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣食譜平台；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "M 未標份數"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "楊桃美食網（楊桃文化）《此生必學的炒米粉撇步》（2017/04/27）"
+      url: "https://www.ytower.com.tw/videos/mov-1567"
+      level: C
+      type: media
+      accessed: 2026-11-27
+      note: "主來源。頁面含葷食與素食兩版，本檔採葷食版。材料、調味料、作法 6 步、重點 3 點均逐字讀取；無份量的素食版不採用。"
+    - id: S1
+      title: "楊桃美食網《廈門炒米粉》（出處《100道炒麵炒米粉完整收錄》）"
+      url: "https://www.ytower.com.tw/recipe/B03-0576"
+      level: B
+      type: book
+      accessed: 2026-11-27
+      note: "對照來源。食譜轉錄自出版書《100道炒麵炒米粉完整收錄》，經楊桃美食網頁面讀取；實體書未翻閱。"
+    - id: S2
+      title: "Baku Kitchen《Hsinchu Rice Noodles (新竹米粉)》"
+      url: "https://bakukitchen.com/hsinchu-rice-noodles/"
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: "對照來源。英文個人部落格食譜，4 人份；米粉前處理為溫水浸泡，與 M 的汆燙再燜不同。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始檔：以 M 為主來源擷取份量與步驟；S1、S2 僅作比較；未補任何來源沒寫的數字", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_noodle, concept: ing/rice_vermicelli, label: 米粉, role: 主料,
+     qty: {value: 200, unit: g, raw_text: "米粉 200公克", evidence: M, status: sourced},
+     note: "M 只寫「米粉」，未寫新竹／埔里、炊粉／水粉；重點：「米粉不泡水，燙過再燜口感最Q」。"}
+  - {id: i_shallot, concept: ing/shallot, label: 紅蔥頭碎, form: 碎, role: 輔料,
+     qty: {value: 20, unit: g, raw_text: "紅蔥頭碎 20公克", evidence: M, status: sourced}}
+  - {id: i_carrot, concept: ing/carrot, label: 紅蘿蔔絲, form: 絲, role: 輔料,
+     qty: {value: 50, unit: g, raw_text: "紅蘿蔔絲 50公克", evidence: M, status: sourced}}
+  - {id: i_cabbage, concept: ing/cabbage, label: 高麗菜絲, form: 絲, role: 輔料,
+     qty: {value: 300, unit: g, raw_text: "高麗菜絲 300公克", evidence: M, status: sourced}}
+  - {id: i_pork, concept: ing/pork, label: 豬肉絲, form: 絲, role: 主料,
+     qty: {value: 200, unit: g, raw_text: "豬肉絲 200公克", evidence: M, status: sourced},
+     note: "M 未寫豬肉部位。"}
+  - {id: i_shiitake, concept: ing/shiitake_dried, label: 泡發香菇絲, form: 絲, role: 輔料,
+     qty: {value: 80, unit: g, raw_text: "泡發香菇絲 80公克", evidence: M, status: sourced},
+     note: "80 公克為泡發後重量；乾重 M 沒寫。泡香菇的水要不要入菜，M 沒寫。"}
+  - {id: i_shrimp, concept: ing/dried_shrimp, label: 蝦米, role: 輔料,
+     qty: {value: 30, unit: g, raw_text: "蝦米 30公克", evidence: M, status: sourced},
+     note: "蝦米是否先泡水，M 沒寫。"}
+  - {id: i_celery, concept: ing/celery, label: 芹菜珠, form: 珠, role: 輔料,
+     qty: {value: 30, unit: g, raw_text: "芹菜珠 30公克", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 水（調味用）, role: 液體,
+     qty: {value: 400, unit: ml, raw_text: "水 400cc", evidence: M, status: sourced}}
+  - {id: i_soy, concept: ing/soy_sauce, label: 醬油, role: 調料,
+     qty: {value: 45, unit: ml, raw_text: "醬油 45cc", evidence: M, status: sourced}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 細砂糖, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "細砂糖 1茶匙", evidence: M, status: sourced}}
+  - {id: i_pepper, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 調料,
+     qty: {value: 0.25, unit: tsp, raw_text: "白胡椒粉 1/4茶匙", evidence: M, status: sourced}}
+  - {id: i_vinegar, concept: ing/black_vinegar, label: 烏醋, role: 調料,
+     qty: {value: 20, unit: ml, raw_text: "烏醋 20cc", evidence: M, status: sourced}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 沙拉油, role: 油脂,
+     qty: {value: 3, unit: tbsp, raw_text: "熱鍋倒入3大匙沙拉油", evidence: M, status: sourced}}
+
+states:
+  - {id: s_prep_cut, label: 切好的肉絲、蔬菜絲、香菇絲、紅蔥頭碎與芹菜珠}
+  - {id: s_noodle_blanched, label: 汆燙過的米粉}
+  - {id: s_noodle_soaked, label: 燜軟翻鬆的米粉}
+  - {id: s_shallot_fragrant, label: 爆香的紅蔥頭}
+  - {id: s_meat_fragrant, label: 煸香的肉絲、香菇絲與蝦米}
+  - {id: s_veg_soft, label: 煮軟的高麗菜絲與紅蘿蔔絲}
+  - {id: s_sauce_boiling, label: 調味料水煮滾的鍋底}
+  - {id: s_noodle_braised, label: 上蓋燜過的米粉}
+  - {id: s_dry, label: 湯汁收乾的米粉}
+  - {id: s_vinegar, label: 淋上烏醋與芹菜珠的米粉}
+  - {id: s_rested, label: 蓋鍋燜過的米粉}
+  - {id: s_final, label: 炒米粉, role: final}
+
+actions:
+  - id: a1
+    technique: tech/cut
+    term: 肉絲、紅蘿蔔絲、高麗菜絲、香菇絲切絲；紅蔥頭切碎；芹菜切珠
+    inputs: [i_pork, i_carrot, i_cabbage, i_shiitake, i_shallot, i_celery]
+    outputs: [s_prep_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/si, raw: "材料名稱含「絲／碎／珠」；M 作法未寫切配動作", evidence: M}}
+    completion: [{observe: 備料, target: 切好備用（切配完成狀態原文沒寫，目測為推論）, method: 目測}]
+    note: "刀工形狀來自 M 材料名稱；M 作法步驟未描述切配。"
+  - id: a2
+    technique: tech/blanch
+    term: 燒一鍋水，放入米粉汆燙至滾，濾掉水分
+    inputs: [i_noodle]
+    outputs: [s_noodle_blanched]
+    tool: tool/stock_pot
+    params:
+      heat: {level: null, raw: "原文沒寫火力檔位"}
+      duration: {min_s: null, max_s: null, raw: "米粉在滾水中的時間原文沒寫（只寫「汆燙至滾」）", status: missing}
+    completion: [{observe: 米粉與水, target: 汆燙至滾、濾掉水分（原文）, method: 目測, evidence: M}]
+    note: "家庭改法（推論）：M 寫「燒一鍋水」未指定鍋具；家庭無蒸籠，汆燙用湯鍋。重點 1：米粉不泡水，燙過再燜口感最Q。"
+  - id: a3
+    technique: tech/rest
+    term: 蓋上鍋蓋，燜 3 分鐘至米粉軟透，開蓋翻鬆米粉
+    inputs: [s_noodle_blanched]
+    outputs: [s_noodle_soaked]
+    tool: tool/stock_pot
+    params: {duration: {min_s: 180, max_s: 180, raw: "燜3分鐘至米粉軟透", is_guide: true, evidence: M, status: sourced}}
+    completion: [{observe: 米粉, target: 軟透，開蓋翻鬆（原文）, method: 目測, evidence: M}]
+  - id: a4
+    technique: tech/aromatics
+    term: 熱鍋倒入 3 大匙沙拉油，紅蔥頭碎入鍋爆香
+    inputs: [i_oil, i_shallot]
+    outputs: [s_shallot_fragrant]
+    tool: tool/wok
+    params: {heat: {level: null, raw: "原文沒寫火力檔位"}}
+    completion: [{observe: 紅蔥頭, target: 爆香（原文「爆香」）, method: 聞, evidence: M}]
+  - id: a5
+    technique: tech/stir_fry
+    term: 放入豬肉絲煸至肉焦香，再放入香菇絲、蝦米炒香
+    inputs: [s_shallot_fragrant, s_prep_cut, i_shrimp]
+    outputs: [s_meat_fragrant]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文沒寫火力檔位"}
+      duration: {min_s: null, max_s: null, raw: "煸肉、炒香時間原文沒寫", status: missing}
+      agitation: {mode: 翻炒, continuous: true}
+    completion:
+      - {observe: 豬肉絲, target: 煸至肉焦香（原文）, method: 目測、聞, evidence: M}
+      - {observe: 香菇絲、蝦米, target: 炒香（原文）, method: 聞, evidence: M}
+  - id: a6
+    technique: tech/stir_fry
+    term: 加入高麗菜絲、紅蘿蔔絲煮軟
+    inputs: [s_meat_fragrant, s_prep_cut]
+    outputs: [s_veg_soft]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文沒寫火力檔位"}
+      duration: {min_s: null, max_s: null, raw: "蔬菜煮軟時間原文沒寫", status: missing}
+    completion: [{observe: 蔬菜, target: 煮軟（原文）, method: 目測, evidence: M}]
+  - id: a7
+    technique: tech/boil
+    term: 再加入水、醬油、細砂糖、白胡椒粉煮滾
+    inputs: [s_veg_soft, i_water, i_soy, i_sugar, i_pepper]
+    outputs: [s_sauce_boiling]
+    tool: tool/wok
+    params: {duration: {min_s: null, max_s: null, raw: "煮滾所需時間原文沒寫", status: missing}}
+    completion: [{observe: 鍋中湯汁, target: 煮滾（原文）, method: 目測、聽, evidence: M}]
+  - id: a8
+    technique: tech/simmer_covered
+    term: 加入燙過的米粉略翻動均勻，轉中火，上蓋燜 2 分鐘
+    inputs: [s_sauce_boiling, s_noodle_soaked]
+    outputs: [s_noodle_braised]
+    tool: tool/wok
+    params:
+      heat: {level: heat/medium, raw: "轉中火", evidence: M}
+      duration: {min_s: 120, max_s: 120, raw: "上蓋燜2分鐘", is_guide: true, evidence: M, status: sourced}
+      agitation: {mode: 略翻動, continuous: false}
+    completion: [{observe: 米粉, target: 略翻動均勻、上蓋燜 2 分鐘（原文）, method: 目測, evidence: M}]
+  - id: a9
+    technique: tech/reduce
+    term: 開蓋翻動米粉至湯汁收乾
+    inputs: [s_noodle_braised]
+    outputs: [s_dry]
+    tool: tool/wok
+    params: {duration: {min_s: null, max_s: null, raw: "收汁時間原文沒寫", status: missing}, agitation: {mode: 翻動, continuous: true}}
+    completion: [{observe: 湯汁, target: 湯汁收乾（原文）, method: 目測, evidence: M}]
+  - id: a10
+    technique: tech/season
+    term: 關火淋入烏醋和芹菜珠
+    inputs: [s_dry, i_vinegar, i_celery]
+    outputs: [s_vinegar]
+    tool: tool/wok
+    completion: [{observe: 烏醋、芹菜珠, target: 關火淋入（原文）, method: 目測, evidence: M}]
+    note: "重點 3：淋烏醋再燜，醋香味濃。"
+  - id: a11
+    technique: tech/rest
+    term: 上蓋燜 1 分鐘
+    inputs: [s_vinegar]
+    outputs: [s_rested]
+    tool: tool/wok
+    params: {duration: {min_s: 60, max_s: 60, raw: "上蓋燜1分鐘", is_guide: true, evidence: M, status: sourced}}
+    completion: [{observe: 計時, target: 蓋鍋燜滿 1 分鐘（原文）, method: 計時, evidence: M}]
+  - id: a12
+    technique: tech/toss
+    term: 開蓋拌勻即可
+    inputs: [s_rested]
+    outputs: [s_final]
+    tool: tool/spatula
+    completion: [{observe: 米粉, target: 開蓋拌勻（原文）, method: 目測, evidence: M}]
+
+serving:
+  completion:
+    - {observe: 上桌溫度與食用時限, target: 原文沒寫, method: null}
+  sensory_target: {taste: "M 未寫成品味型描述；調味為醬油、糖、白胡椒，起鍋前淋烏醋（依 M 材料推得）", texture: "M 重點寫「燙過再燜口感最Q」；其餘口感原文沒寫"}
+
+notes:
+  weekday: "不可判定：M 未標總烹調時間。可計時的燜製為 3＋2＋1 分鐘；切配、爆香、煸肉、炒蔬菜、收汁時間原文沒寫，待試做計時。平日（家庭條件：平日菜 ≤20 分鐘，是使用者自訂判準，非來源數字）可不可做，待試做確認。"
+  burners: "家庭改法（推論）：汆燙／燜米粉用湯鍋，炒料用炒鍋，兩者先後進行；M 未指定鍋具，爐口數原文沒寫。"
+  spicy_split: "M 主體沒有辣椒、花椒、辣豆瓣，整鍋即不辣那份。白胡椒粉在 a7 與其他調味料一起下鍋；若要分成兩碗，可把白胡椒粉改最後各自在碗裡加（推論，M 原文是下鍋）。烏醋不是辣味。對照 S1 用 TOBASCO 1 茶匙（辣味調味），若做 S1 版本，辣味需另外評估分開方式，本檔不採用。"
+  oven_airfryer: "三份來源都沒有使用烤箱、氣炸鍋或蒸籠；家庭廚具不需改法。M 米粉前處理是汆燙後蓋鍋燜，用湯鍋即可，不需蒸籠。"
+  no_scale: "無秤版：M 份量以公克／cc／茶匙／大匙為主；無秤時 g、cc 無法換算成杯匙（原文沒給對應），茶匙、大匙照原文用量取。"
+  compare: "S1《廈門炒米粉》（出版書轉錄）：細米粉 1/2 包、火腿片 2 片、韭黃 20 公克、蝦仁 50 公克、銀芽 30 公克、青椒絲 20 公克、紅椒絲 10 公克、洋蔥絲 40 公克、蒜末 1/2 茶匙、水 200㏄；沙拉油 2 大匙（作法第 2 步，不算入 M 材料）；蠔油 1 大匙、鹽 1/4 茶匙、蕃茄醬 1 大匙、TOBASCO 1 茶匙、糖 1 茶匙、胡椒粉 1/2 匙；滾水一滾起撈出、用盤子蓋上燜約 5 分鐘；最後炒 2 分鐘。S2《新竹米粉》（英文部落格）：4 人份；細米粉 300 g 溫水泡約 8 分鐘；豬肉 250 g、蝦米 40 g、乾香菇 6 朵、高麗菜 300 g、紅蘿蔔 2 根、紅蔥頭 6 瓣、青蔥 4 支；醬油 3 大匙、深色醬油 1 大匙、米酒 1 大匙、糖 1 茶匙、白胡椒 1 茶匙、高湯 250 ml＋泡香菇水；油 4 大匙；Prep 30 分鐘＋浸泡、Cook 20 分鐘。"
+  missing: "原文沒寫：份數、米粉種類（新竹／埔里、炊粉／水粉）、豬肉部位、乾香菇乾重、泡香菇水是否入菜、蝦米是否泡水、汆燙在滾水中的時間、各步火力（僅 a8 寫轉中火）、爆香／煸肉／炒蔬菜／收汁時間、總時間、成品色澤口感描述、鍋具種類與大小、上桌溫度與時限。"
