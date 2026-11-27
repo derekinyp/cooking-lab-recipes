@@ -1,0 +1,162 @@
+# 虱目魚肚湯（台式家常版）— 起始檔，規格 v1.0
+# 主來源 M＝北投之家海鮮買賣平台〈虱目魚肚湯怎麼煮？薑絲做法、時間、去腥與家常食譜〉：
+#   主料、調味、火力、時間、完成狀態只用 M 的數字；S1/S2/S3 僅放比較表與 notes，不混進主體比例。
+# 家庭條件：兩口瓦斯爐；廚具僅電鍋（大同式外鍋加水蒸）、炒鍋、平底鍋、湯鍋；無烤箱、氣炸鍋、蒸籠、溫度計、料理秤。
+schema_version: "1.0"
+recipe:
+  id: shimuyu_du_tang.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/shimuyu_du_tang
+  name: {zh_hant: 虱目魚肚湯, zh_hans: 虱目鱼肚汤, en: Milkfish belly soup}
+  variant: 台式家常版
+  summary: 魚肚沖洗吸乾；清水煮滾先下一半薑絲煮出薑香，魚肚魚皮朝下滑入、撈除浮沫，轉中小火煮至魚肉完全不透明，最後下米酒、鹽、其餘薑絲與蔥花（或芹菜珠）的台式清湯。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "主來源 M 為台灣平台中式家常湯品（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣食譜／海鮮平台；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: null, status: sourced, evidence: M, note: "M 標『家常虱目魚肚湯做法：3～4 人份』（範圍；單一數字原文沒給，不換算）"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "北投之家海鮮買賣平台〈虱目魚肚湯怎麼煮？薑絲做法、時間、去腥與家常食譜〉"
+      url: "https://seafood.beitouhome.com/seafood-recipes/fish/milkfish-belly-soup/"
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "主來源。3～4 人份。食材：虱目魚肚 2 片約 500～600 公克、薑約 25 公克切絲、青蔥 2 支切蔥花、清水約 1,000 毫升、米酒 1 大匙、鹽適量、白胡椒少許可省略。作法：魚肚流動清水快速沖洗、紙巾吸乾；清水與一半薑絲煮滾後轉中火續煮 2～3 分鐘；魚肚魚皮朝下滑入、避免用力攪動，湯重新滾起後撈除浮沫；轉中小火依魚肚大小煮約 6～10 分鐘；最厚處由半透明轉完全不透明、能沿肌理分開（溫度計中心至少 63°C）；最後加米酒與鹽、放入剩餘薑絲，撒蔥花或芹菜珠後關火。"
+    - id: S1
+      title: "Cookidoo® 官方 Thermomix® 食譜平台〈薑絲魚肚湯〉（r86727）"
+      url: "https://cookidoo.ca/recipes/recipe/en-CA/r86727"
+      level: A
+      type: official
+      accessed: 2026-11-27
+      note: "對照（官方品牌食譜平台；食譜為 Thermomix 機器專用）。公開頁僅顯示食材與營養，機器烹調步驟、火力未開放讀取，故不引用其做法。4 人份；Prep 10 min、Total 25 min；薑切絲 20 克、水 600 克、虱目魚肚切塊（約 2 公分）250 克、鹽 2 小撮、香油 3–5 滴、蔥少許斜切。"
+    - id: S2
+      title: "bakukitchen〈Milkfish Soup (虱目魚湯)〉（Chef Baku，Updated September 2026）"
+      url: "https://bakukitchen.com/milkfish-soup/"
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: "對照（英文個人部落格）。serves 4；Prep 20 minutes、Cook 25 minutes。食材：milkfish belly 600 g、醃魚鹽 1 teaspoon、water 1.2 litres、ginger 8 cm（fine julienne）、spring onions 3（cut in lengths）、rice wine 1 tablespoon、salt and white pepper；收尾：fried shallot 1 tablespoon、coriander leaves a few、sesame oil a little、其餘生薑絲。作法：鹽擦魚醃 10 分鐘後沖洗擦乾；水＋大部分薑絲微滾約 10 分鐘；下魚肚 bare simmer 約 4 分鐘；撇除浮沫、倒入米酒；轉不透明即離火；調鹽與白胡椒；下蔥段餘溫 1 分鐘；上桌鋪生薑絲、油蔥酥、香菜。"
+    - id: S3
+      title: "無毒農 greenbox〈【手繪食譜】去刺虱目魚肚料理教學：香酥乾煎與清甜煮湯一次學會〉（2026-01-16）"
+      url: "https://greenbox.tw/Blog/BlogPostNew/8471/"
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "對照。無具體份量（魚肚、薑片適量、蔥段適量、醬油少許）。煮湯：湯鍋加適量清水或高湯、放薑片開火煮滾；水滾後放入魚肚及蔥段；轉中小火煮至魚肉熟透（約 3-5 分鐘，視魚肉厚度）；起鍋前加少許醬油或鹽；最後撒蔥花。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始檔：以 M 為主來源，主料、調味、火力、時間與完成狀態照 M 原量；S1/S2/S3 作對照，只進比較表與 notes；M 沒寫的數字留 null＋missing，不補不估", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X4 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_fish, concept: ing/milkfish_belly, label: 虱目魚肚, form: 整片（或退冰後備用）, role: 主料,
+     qty: {min: 500, max: 600, unit: g, raw_text: "虱目魚肚 2 片，約 500～600 公克", evidence: M, status: sourced, note: "M 原量。2 片為原文數量；魚肚是否去刺 M 提醒「無刺」不代表絕對無細刺，食用前需檢查"}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑絲, form: 絲, role: 香料,
+     qty: {value: 25, unit: g, raw_text: "薑 約 25 公克，切絲", evidence: M, status: sourced, note: "M 原量。分兩次下：一半先煮湯底，另一半起鍋前放（M 作法 2、6）"}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥花, form: 蔥花, role: 輔料,
+     qty: {value: 2, unit: stalk, raw_text: "青蔥 2 支，切蔥花", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 清水, role: 液體,
+     qty: {value: 1000, unit: ml, raw_text: "清水 約 1,000 毫升", evidence: M, status: sourced}}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "米酒 1 大匙", evidence: M, status: sourced, note: "M 作法 6 最後調味時下，不在湯底階段下"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
+     qty: {value: null, unit: null, qualitative: 適量, raw_text: "鹽 適量", evidence: M, status: sourced, note: "M 原量為「適量」；M 建議魚肚熟成後先試味道再逐步加鹽"}}
+  - {id: i_wp, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 香料, optional: true,
+     qty: {value: null, unit: null, qualitative: 少許, raw_text: "白胡椒 少許，可省略", evidence: M, status: sourced, note: "M 原量；可省略"}}
+  - {id: i_celery, concept: ing/celery, label: 芹菜珠, role: 輔料, optional: true,
+     qty: {value: null, unit: null, raw_text: null, status: missing, note: "M 作法 6「撒上蔥花或芹菜珠」，芹菜珠份量原文沒寫；與蔥花二擇一或並用皆依原文"}}
+
+states:
+  - {id: s_fish_clean, label: 沖洗、吸乾的虱目魚肚}
+  - {id: s_ginger_shred, label: 薑絲（一半先煮、一半收尾）}
+  - {id: s_scallion, label: 蔥花}
+  - {id: s_celery, label: 芹菜珠}
+  - {id: s_ginger_broth, label: 煮出薑香的湯底}
+  - {id: s_fish_in, label: 魚肚入鍋、撈除浮沫的湯}
+  - {id: s_fish_cooked, label: 煮熟的魚肚湯（尚未最後調味）}
+  - {id: s_final, label: 虱目魚肚湯, role: final}
+
+actions:
+  - id: a1
+    technique: tech/rinse
+    term: 虱目魚肚退冰後以流動清水快速沖洗，紙巾輕輕吸乾
+    inputs: [i_fish]
+    outputs: [s_fish_clean]
+    tool: tool/bowl
+    params: {duration: {min_s: null, max_s: null, raw: "清洗時間原文沒寫", status: missing}}
+    completion:
+      - {observe: 魚肚腹腔, target: 沒有明顯血水與殘留雜質，表面輕輕吸乾（M 作法 1）, method: 目測, evidence: M}
+    note: "冷凍商品 M 建議先在冷藏完整解凍；本檔未記解凍時長（原文沒寫）。"
+  - id: a2
+    technique: tech/cut
+    term: 薑切絲；青蔥切蔥花；芹菜切芹菜珠（可省）
+    inputs: [i_ginger, i_scallion, i_celery]
+    outputs: [s_ginger_shred, s_scallion, s_celery]
+    tool: tool/knife
+    params:
+      cut: {shape: cut/si_fine, raw: "薑 約 25 公克，切絲；青蔥 2 支，切蔥花（M 食材表）；芹菜珠 M 未寫切法", evidence: M, note: "薑絲對應 cut/si_fine（vocab 示例即薑絲）；蔥花對應 cut/cong_hua；芹菜珠粒狀對應 cut/li。絲、花、粒的毫米尺寸 M 沒寫"}
+    completion:
+      - {observe: 配料, target: 切好備用, method: 目測}
+  - id: a3
+    technique: tech/boil
+    term: 鍋中加入清水與一半薑絲，煮滾後轉中火續煮 2～3 分鐘
+    inputs: [s_ginger_shred, i_water]
+    outputs: [s_ginger_broth]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/medium, raw: "煮滾後轉中火續煮 2～3 分鐘", evidence: M}
+      duration: {min_s: 120, max_s: 180, raw: "2～3 分鐘", is_guide: true, evidence: M, status: sourced}
+    completion:
+      - {observe: 湯底香氣, target: 薑香先進入湯裡（M 作法 2）, method: 聞, evidence: M}
+    note: "家庭改法（推論）：M 只寫「鍋中」，未指明鍋具；本檔用湯鍋爐上煮。薑絲一半先下、另一半留到 a6（M 作法 2、6）。"
+  - id: a4
+    technique: tech/boil
+    term: 魚肚魚皮朝下滑入鍋中，避免用力攪動；湯重新滾起後撈除表面浮沫
+    inputs: [s_ginger_broth, s_fish_clean]
+    outputs: [s_fish_in]
+    tool: tool/stock_pot
+    params: {heat: {level: null, raw: "M 此步未另寫火力（接續湯底）"}, duration: {min_s: null, max_s: null, raw: "原文沒寫此步時間", status: missing}}
+    completion:
+      - {observe: 湯面, target: 湯重新滾起，表面浮沫撈除（M 作法 3）, method: 目測, evidence: M}
+    note: "M 提醒避免用力攪動；大滾容易讓魚肉破碎、湯頭混濁。"
+  - id: a5
+    technique: tech/simmer
+    term: 轉中小火，依魚肚大小煮約 6～10 分鐘
+    inputs: [s_fish_in]
+    outputs: [s_fish_cooked]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/medium_low, raw: "轉中小火，依魚肚大小煮約 6～10 分鐘", evidence: M}
+      duration: {min_s: 360, max_s: 600, raw: "6～10 分鐘", is_guide: true, evidence: M, status: sourced}
+      temperature: {target: core, min_c: 63, raw: "使用溫度計時，中心至少達 63°C", evidence: M}
+    completion:
+      - {observe: 魚肚最厚處, target: 魚肉由半透明轉為完全不透明，能沿著肌理分開即可（M 作法 5）, method: 目測、輕戳（推論：M 未寫觸判方式）, evidence: M}
+    note: "M 另附分形態時間對照：切塊約 3～4 公分煮 4～6 分鐘；一般整片每片約 200～250 公克煮 6～8 分鐘；厚切整片每片約 250～300 公克以上煮 8～10 分鐘。煮熟後不要持續大滾。"
+  - id: a6
+    technique: tech/season
+    term: 加入米酒與鹽調整味道，放入剩餘薑絲，撒上蔥花或芹菜珠後關火
+    inputs: [s_fish_cooked, s_ginger_shred, s_scallion, s_celery, i_wine, i_salt, i_wp]
+    outputs: [s_final]
+    tool: tool/stock_pot
+    completion:
+      - {observe: 湯的鹹度, target: 先試味道再逐步加鹽調整（M 作法 6 與調味建議）, method: 試吃, evidence: M}
+      - {observe: 收尾配料, target: 剩餘薑絲、蔥花（或芹菜珠）放入／撒上後關火（M 作法 6）, method: 目測, evidence: M}
+    note: "米酒、鹽都在魚肚煮熟後才下（M 作法 6）。白胡椒粉最後各自在碗裡加；不辣那份可不放胡椒（推論）。"
+
+serving:
+  completion:
+    - {observe: 上桌溫度與食用時限, target: 原文沒寫, method: null, evidence: M}
+  sensory_target: {color: 原文沒寫, taste: 原文沒寫, texture: 魚肉完全不透明、可沿肌理分開（M 作法 5）}
+
+notes:
+  weekday: "平日（≤20 分鐘）可行性：M 沒寫總製作時間，原文沒寫、待試做計時。已標分段烹煮時間為薑絲湯底 2～3 分鐘＋魚肚 6～10 分鐘，合計約 8～13 分鐘（推論加總，非 M 總時間；不含解凍、清洗、切配）。20 分鐘平日門檻是家庭自訂條件，不是來源數字。"
+  burners: "全程 1 口爐、1 只湯鍋（M 作法未寫平行第二鍋）。任何時刻不超過 2 口爐；另一口爐若同時做別的菜屬家庭安排（推論）。"
+  oven_airfryer: "M、S2、S3 皆未使用烤箱、氣炸鍋、蒸籠；不需改法。S1 原為 Thermomix 機器食譜，公開頁無機器步驟；本檔主體用湯鍋爐上煮，屬家庭改法（推論）。電鍋外鍋加水燉煮為 M 未寫做法，屬推論，時間待試做。"
+  spicy_split: "M、S2、S3 主體都沒有辣椒、花椒、辣豆瓣；整鍋即為不辣那份。白胡椒粉為最後各自加的香料，可省略（推論）；S1 亦無麻辣配料。"
+  pot_size: "湯鍋容量 M 沒寫。已知：清水約 1,000 毫升、魚肚 500～600 公克、薑約 25 公克；建議選裝得下、滾煮時不溢出的湯鍋（推論，無來源數字）。"
+  compare: "摘要見 (F) 公開食譜比較表。主體份量、調味、火力、完成狀態全部照 M；S1（官方平台機器食譜，步驟未開放）、S2（英文部落格）、S3（無份量手繪食譜）只作對照。"
+  missing: "原文沒寫：總製作時間、魚肚是否去刺（僅提醒細刺風險）、鍋具種類與容量、是否加蓋、鹽與白胡椒的確實份量（原文為適量／少許）、芹菜珠份量、成品湯色與口感描述、上桌溫度與食用時限、清洗與解凍時長。"
+  spec_gaps: "servings 只有單一 value，無法直接記 3～4 人份範圍；63°C 溫度計門檻在無溫度計家庭只能保留原文、完成判定改感官；魚肚「2 片」的數量詞無對應單位；同一食材分兩次下鍋（薑絲）規格無分次投料欄位，靠 action note 表達。"

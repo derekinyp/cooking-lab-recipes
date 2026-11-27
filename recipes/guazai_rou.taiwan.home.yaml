@@ -1,0 +1,160 @@
+schema_version: "1.0"
+recipe:
+  id: guazai_rou.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/guazai_rou
+  name: {zh_hant: 瓜仔肉, zh_hans: 瓜仔肉, en: Steamed minced pork with pickled cucumber}
+  variant: 台式家常版
+  summary: 豬絞肉捶出黏性，與蒜末、蔥及調味料 A 拌勻，再加漬物汁、醬油，最後拌入太白粉，移入耐熱容器整平，電鍋外鍋加水、鋪蒸板蒸熟，上桌前撒預留蔥花的台式家常蒸肉。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "T 為大同電鍋官方食譜，菜名即『瓜仔肉』；其餘對照 M、S1 亦為台灣家常做法（編者分類）", claim: primary, evidence: T}
+    - {id: region/taiwan, basis: "菜名與作法屬台灣家常電鍋菜；官方頁面本身不單獨證明地域歸屬，此為編者分類", claim: primary, evidence: T}
+  flavor_template: null
+  servings: {value: 4, status: sourced, evidence: T, note: "T 標『4人前』；主體用 T 原量不縮放"}
+  status: cross_checked
+  sources:
+    - id: T
+      title: "大同電鍋官方食譜〈漬物入り蒸し団子（瓜仔肉）〉（大同日本官網）"
+      url: https://dennabe-official.tatung.co.jp/recipe/view/1528
+      level: A
+      type: official
+      accessed: 2026-11-27
+      note: "主來源。4 人前、調理時間 20 分。豚ひき肉 300g、胡瓜の漬物 45g、ニンニクすりおろし大さじ 2、青ねぎ 1 本；調味料 A：米焼酎（日本酒でも可）小さじ 1、ごま油小さじ 1、砂糖小さじ 1、コショウ小さじ 1/2；調味料 B：漬物の汁大さじ 3、しょう油小さじ 1、片栗粉小さじ 2。電鍋外鍋 1 杯水、鋪蒸し板。頁面為日文。"
+    - id: M
+      title: "楊桃美食網 A02-2728〈蒸瓜仔肉(1)〉（出處《快樂廚房雜誌第54期》）"
+      url: https://www.ytower.com.tw/recipe/A02-2728
+      level: C
+      type: media
+      accessed: 2026-11-27
+      note: "對照。內容出自出版雜誌，依規格按轉載媒介列 C（比照菜脯蛋檔 B1 前例）。胛心肉 200 公克、醬瓜 80 公克、薑末 1 茶匙、蒜末 1/2 茶匙、水 60cc、太白粉 1 茶匙、蔥花 1 大匙；鹽 1/2 茶匙、米酒 1 茶匙、胡椒粉 1/4 茶匙、香油 1/2 茶匙；摔打約 15 下、水分成 4 次加入；電鍋外鍋一杯水、蒸約 20 分鐘。"
+    - id: S1
+      title: "鍋寶好食光〈古早味瓜仔肉〉（2026-07-08）"
+      url: https://www.cookpower.cookpot.com.tw/cookbook/1325.html
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "對照。4-5 人份、頁面標準備時間 60 分鐘。絞肉 300 公克、脆瓜 70 公克、蒜頭 2 瓣、蔥 1 支、蛋 1 顆；醬油 1/2 大匙、米酒 1 大匙、胡椒粉少許、太白粉 1 小匙、脆瓜醬汁 2 大匙；電鍋外鍋放蒸架、1.5 杯水，蒸約 25–30 分鐘，跳起後餘溫燜 10 分鐘。"
+    - id: S2
+      title: "楊桃美食網 A02-0957〈瓜仔肉(2)〉（出處《絞肉料理讓你作菜不煩惱》）"
+      url: https://www.ytower.com.tw/recipe/A02-0957
+      level: B
+      type: book
+      accessed: 2026-11-27
+      note: "對照（滷煮肉燥變體，非蒸肉）。豬絞肉 300 公克、罐頭花瓜一罐、蒜末 20 公克、高湯 500㏄；醬油 5 大匙、米酒 1 大匙、冰糖 1 小匙、雞粉少許、胡椒粉少許、兩大匙油；炒鍋爆香炒散後入砂鍋，加高湯與花瓜汁煮滾轉小火 15 分鐘，再加花瓜丁小火續煮 15 分鐘。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始草稿：以 T（大同電鍋官方食譜）為主來源，份量與調味只用 T；M、S1、S2 僅作比較與 notes；未做交叉核對", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X6 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_pork, concept: ing/pork_minced, label: 豚ひき肉（豬絞肉）, role: 主料,
+     qty: {value: 300, unit: g, raw_text: "豚ひき肉300g", evidence: T, status: sourced},
+     note: "部位與肥瘦比例 T 沒寫；ing/pork_minced 為建議新增詞，詞表暫以 ing/pork 概念近似"}
+  - {id: i_pickle, concept: ing/pickled_cucumber, label: 胡瓜の漬物（醬瓜／花瓜／脆瓜）, form: 碎, role: 輔料,
+     qty: {value: 45, unit: g, raw_text: "胡瓜の漬物(胡瓜のQちゃんなど)45g", evidence: T, status: sourced},
+     note: "T 括註可使用『胡瓜のQちゃんなど』同類漬物；ing/pickled_cucumber 為建議新增詞"}
+  - {id: i_garlic, concept: ing/garlic, label: ニンニク（切末或磨泥）, form: 泥, role: 輔料,
+     qty: {value: 2, unit: tbsp, raw_text: "ニンニクすりおろし大さじ2", evidence: T, status: sourced},
+     note: "T 步驟一寫『みじん切りかすりおろし』（切末或磨泥，兩可）；大匙容量不換算"}
+  - {id: i_scallion, concept: ing/scallion, label: 青ねぎ（青蔥，部分留作飾）, form: 蔥花, role: 輔料,
+     qty: {value: 1, unit: stalk, raw_text: "青ねぎ1本", evidence: T, status: sourced},
+     note: "T 要求切小口後『飾り用に少し取り分けておきます』（預留一點點裝飾用）；預留份量 T 沒寫"}
+  - {id: i_sake, concept: ing/cooking_wine, label: 米燒酎（可用日本酒代替）, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "米焼酎(日本酒でも可)小さじ１", evidence: T, status: sourced}}
+  - {id: i_sesame, concept: ing/sesame_oil, label: ごま油（芝麻油）, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "ごま油小さじ１", evidence: T, status: sourced}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 砂糖, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "砂糖小さじ１", evidence: T, status: sourced}}
+  - {id: i_pepper, concept: ing/white_pepper_powder, label: コショウ（胡椒）, role: 香料,
+     qty: {value: 0.5, unit: tsp, raw_text: "コショウ小さじ1/2", evidence: T, status: sourced},
+     note: "T 只寫コショウ，沒寫白胡椒或黑胡椒；權威數字是原文『1/2 小さじ』，value 0.5 為欄位近似表示"}
+  - {id: i_pickle_brine, concept: ing/pickle_brine, label: 漬物の汁（醬瓜汁）, role: 調料,
+     qty: {value: 3, unit: tbsp, raw_text: "漬物の汁大さじ３", evidence: T, status: sourced},
+     note: "ing/pickle_brine 為建議新增詞"}
+  - {id: i_soy, concept: ing/soy_sauce, label: しょう油（醬油）, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "しょう油小さじ１", evidence: T, status: sourced}}
+  - {id: i_starch, concept: ing/starch, label: 片栗粉（太白粉）, role: 芡粉,
+     qty: {value: 2, unit: tsp, raw_text: "片栗粉小さじ２", evidence: T, status: sourced}}
+  - {id: i_outer_water, concept: ing/water, label: 電鍋外鍋水（設備用水，非食用）, role: 液體,
+     qty: {value: 1, unit: cup, raw_text: "外鍋に1杯の水を入れ", evidence: T, status: sourced},
+     note: "杯的容量 T 沒寫；不換算"}
+
+states:
+  - {id: s_pickle_diced, label: 切碎的胡瓜漬物}
+  - {id: s_garlic_prepped, label: 切末或磨泥的蒜}
+  - {id: s_scallion_cut, label: 切小口的青蔥（含預留飾用）}
+  - {id: s_pork_pounded, label: 捶出黏性的肉餡}
+  - {id: s_pork_mixed, label: 拌好的瓜仔肉餡}
+  - {id: s_flattened, label: 移入耐熱容器、表面整平的生肉餡}
+  - {id: s_steamed, label: 電鍋蒸好的瓜仔肉}
+  - {id: s_final, label: 瓜仔肉, role: final}
+
+actions:
+  - id: a1
+    technique: tech/cut
+    term: 漬物切碎；蒜切末或磨泥；青蔥切小口，預留裝飾用
+    inputs: [i_pickle, i_garlic, i_scallion]
+    outputs: [s_pickle_diced, s_garlic_prepped, s_scallion_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/mo, raw: "漬物は小さく切ります。にんにくはみじん切りかすりおろし、青ねぎは小口切りにし、飾り用に少し取り分けておきます", evidence: T}}
+    completion:
+      - {observe: 漬物, target: 切成小塊, method: 目測, evidence: T}
+      - {observe: 蔥, target: 切小口並分出少量飾用, method: 目測, evidence: T}
+  - id: a2
+    technique: tech/pound_mince
+    term: 用刀把肉捶到冒出黏性
+    inputs: [i_pork]
+    outputs: [s_pork_pounded]
+    tool: tool/knife
+    completion: [{observe: 肉餡, target: 冒出黏性（原文：粘りが出るまでたたきます）, method: 觸感（推論：原文沒寫判斷方式）, evidence: T}]
+    note: "tech/pound_mince 為已收錄詞條。T 寫『包丁で』（用菜刀），捶打次數 T 沒寫（對照 M：摔打約 15 下，僅參考）"
+  - id: a3
+    technique: tech/combine
+    term: 肉、蒜、蔥與調味料 A 先拌勻；再加入漬物汁、醬油拌勻；最後加片栗粉拌成肉餡
+    inputs: [s_pork_pounded, s_pickle_diced, s_garlic_prepped, s_scallion_cut, i_sake, i_sesame, i_sugar, i_pepper, i_pickle_brine, i_soy, i_starch]
+    outputs: [s_pork_mixed]
+    tool: tool/bowl
+    completion: [{observe: 肉餡, target: 拌勻成餡（原文：混ぜ合わせたら餡の完成です）, method: 目測, evidence: T}]
+    note: "T 步驟一要求切碎漬物，但步驟二未寫是否加入肉餡；若加入，屬推論，待試做確認。"
+  - id: a4
+    technique: tech/combine
+    term: 肉餡移入耐熱容器，表面整平
+    inputs: [s_pork_mixed]
+    outputs: [s_flattened]
+    tool: tool/bowl
+    completion: [{observe: 肉餡表面, target: 表面整平（原文：表面を平らにならします）, method: 目測, evidence: T}]
+    note: "耐熱容器尺寸 T 沒寫；工具以調理碗近似，家用耐熱盤／淺鍋皆可（推論）"
+  - id: a5
+    technique: tech/steam
+    term: 電鍋外鍋放 1 杯水、鋪蒸板，放上肉餡容器，蓋蓋按下開關
+    inputs: [s_flattened, i_outer_water]
+    outputs: [s_steamed]
+    tool: tool/electric_cooker
+    params:
+      heat: {level: null, raw: "電鍋按下開關，無爐火檔位", evidence: T}
+      duration: {min_s: null, max_s: null, raw: "步驟三未單寫蒸多久；頁面標『調理時間20分』，是否全為蒸製時間原文沒寫", status: missing}
+    completion:
+      - {observe: 電鍋開關, target: 原文沒寫是否等開關跳起；T 只寫『スイッチを押します』, method: null, note: "跳起與否待試做"}
+      - {observe: 肉餡熟度, target: 感官熟度條件原文沒寫，不靠溫度計, method: null}
+    note: "T 寫『蒸し板を敷き』（鋪蒸板／蒸架）。家庭無蒸籠；電鍋內若無專用蒸架，可墊筷子把容器架高（家庭改法，推論）。本步不佔瓦斯爐口"
+  - id: a6
+    technique: tech/plate
+    term: 上桌前撒上預留的蔥花
+    inputs: [s_steamed, s_scallion_cut]
+    outputs: [s_final]
+    completion: [{observe: 成品, target: 撒好飾用蔥花（原文：食卓に上げる前に飾り用の青ねぎを散らして出来上がりです）, method: 目測, evidence: T}]
+
+serving:
+  completion:
+    - {observe: 上桌溫度與食用時限, target: 原文沒寫, method: null}
+  sensory_target: {color: 原文沒寫, taste: 原文沒寫, texture: 原文沒寫}
+
+notes:
+  weekday: "平日（≤20 分鐘）：T 頁面標『調理時間20分』，落在 20 分鐘門檻邊緣；但備料（切、捶、拌）與電鍋蒸製的時間如何重疊、20 分是否含蒸製，原文沒寫，待試做計時確認。對照：M 蒸約 20 分鐘（未標總時間）；S1 標準備時間 60 分鐘、蒸 25–30 分鐘＋燜 10 分鐘"
+  burners: "家庭安排（推論，非原文）：全程用電鍋蒸，不佔瓦斯爐口；備料在砧板與調理碗完成。任一時刻 0 口爐，不超過 2 口"
+  spicy_split: "T、M、S1、S2 都沒有辣椒、花椒、辣豆瓣；主體整份就是不辣那份。要辣或麻的那份，盛盤後另行添加（推論，無來源數字）"
+  oven_airfryer: "四份來源皆未使用烤箱、氣炸鍋；T、M、S1 用電鍋蒸，與家庭設備相符，不需改法。S2 用砂鍋滷煮（家庭無砂鍋，若做此變體可改湯鍋，家庭改法（推論），僅比較用）"
+  compare: "肉量與漬物：T 絞肉 300g／漬物 45g；M 胛心肉 200 公克／醬瓜 80 公克（另加水 60cc）；S1 絞肉 300 公克／脆瓜 70 公克；S2 絞肉 300 公克／花瓜一罐（另高湯 500㏄）。調味：T 用燒酎、麻油、糖、胡椒、漬物汁、醬油、太白粉，無鹽；M 另加鹽、薑末、水、香油；S1 加醬油、米酒、太白粉、脆瓜汁與蛋；S2 為滷味：醬油 5 大匙、米酒、冰糖、雞粉、胡椒粉。外鍋水量：T 1 杯、M 1 杯、S1 1.5 杯；蒸製：T 未寫分鐘、M 約 20 分鐘、S1 25–30 分鐘＋燜 10 分鐘。S2 是炒後滷煮 15＋15 分鐘的肉燥變體"
+  missing: "原文沒寫：肉的部位與肥瘦、胡椒種類、碎漬物入餡時機、蒸的具體分鐘數、成品色澤／口感／味道、容器尺寸、上桌溫度、外鍋一杯水的容量、鹽（T 無鹽）"
+  spec_gaps: "詞表無豬絞肉、醬瓜、醬瓜汁概念，暫用建議新 id；電鍋蒸無爐火檔位可對應，heat level 留 null；schema 時間欄位只收秒，杯、匙、分鐘等權威數字保留在 raw_text"

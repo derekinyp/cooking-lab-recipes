@@ -100,4 +100,5 @@ concepts:
   # ── P2 新增 2026-11-21 ──
   - {id: tech/melt_butter, zh: 融化奶油, alt: [熔奶油], en: {term: melt butter, match: exact}, facets: {phase: cook, medium: fat, sauce: none}, def: "小火把奶油加熱到融化（可至起泡），不加麵粉或其他食材", source: SELF, note: "P2 新增 2026-11-21；白醬義大利麵主來源先融化奶油再加麵粉"}
   - {id: tech/make_roux, zh: 炒麵糊, alt: [做油麵糊, roux], en: {term: make a roux, match: exact}, facets: {phase: cook, medium: fat, sauce: none}, def: "把麵粉與油脂一起加熱炒至去掉生粉味，作為白醬等的增稠底", source: GISSLEN, note: "P2 新增 2026-11-21；定義依 Gisslen 第 9 章 roux，不把教材比例寫進家庭食譜數字"}
+  - {id: tech/pound_mince, zh: 捶打肉餡, alt: [捶肉, 捶打], en: {term: pound minced meat, match: exact}, facets: {phase: prep, medium: none}, def: "用刀捶打絞肉至出現黏性", source: "W50 T"}
 

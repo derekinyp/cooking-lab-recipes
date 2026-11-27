@@ -1,0 +1,126 @@
+schema_version: "1.0"
+recipe:
+  id: jiangsi_geli_tang.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/jiangsi_geli_tang
+  name: {zh_hant: 薑絲蛤蜊湯, zh_hans: 姜丝蛤蜊汤, en: Ginger and clam soup}
+  variant: 台式家常版
+  summary: 蛤蜊泡水吐沙洗淨；水以中火煮開，下蛤蜊與薑絲續煮至再次滾開且蛤蜊打開，加鹽、米酒、鮮雞粉、白胡椒粉煮勻，熄火撒上蔥末的台式清湯。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "主來源 M 為台灣平台中式家常一鍋到底湯品（#中式家常 #一鍋到底）（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣食譜平台楊桃美食網；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "M 沒標人份；S1 亦未標人份；S2 指定文字存檔無法核對"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "楊桃美食網〈薑絲蛤蜊湯〉（出處《薑的56種超好用妙招》）"
+      url: https://www.ytower.com.tw/recipe/B02-0282
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "主來源。材料：蛤蜊300公克、薑絲10公克、蔥末5公克、水600㏄；調味料：鹽1/4小匙、米酒1大匙、鮮雞粉少許、白胡椒粉少許。作法：1. 蛤蜊泡水吐沙後洗淨備用。2. 將水倒入鍋中以中火煮開，放入作法1和薑絲續煮至再次滾開且蛤蜊打開，加入所有調味料煮勻，熄火撒上蔥末即可。頁面標籤：#中式家常 #快速上桌 #30 分鐘內 #新手入門 #一鍋到底。"
+    - id: S1
+      title: "楊桃美食網〈薑絲蛤蜊湯(1)〉（出處《簡餐變好吃撇步大公開》）"
+      url: https://www.ytower.com.tw/recipe/B02-0319
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "對照。材料：蛤蜊200公克、薑絲15公克、水600㏄；調味料：鹽1小匙、雞粉1小匙、米酒1大匙。作法：1. 蛤蜊泡水吐砂備用。2. 取鍋，放入作法1蛤蜊、薑絲、水煮至沸騰。3. 加入所有調味料拌勻即可。頁面標籤：#中式家常 #快速上桌 #30 分鐘內 #新手入門 #一鍋到底。"
+    - id: S2
+      title: "Rasa Malaysia〈Ginger and Clam Soup〉（作者 Bee Yinn Low，2017-05-19 發布，2026-06-11 更新）"
+      url: https://rasamalaysia.com/ginger-and-clam-soup/comment-page-3/
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: "對照（英文個人部落格）；指定文字存檔僅有「Just a moment...」，目前無法從此存檔核對食譜內容。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始檔：以 M 為主來源，份量與調味照 M 原量；S1、S2 作對照，只進比較表與 notes；M 沒寫的數字留 null＋missing，不補不估", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_clam, concept: ing/clam, label: 蛤蜊, role: 主料,
+     qty: {value: 300, unit: g, raw_text: "蛤蜊300公克", evidence: M, status: sourced, note: "M 原量。吐沙用水不計入 i_water（推論）"}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑絲, form: 絲, role: 香料,
+     qty: {value: 10, unit: g, raw_text: "薑絲10公克", evidence: M, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥末, form: 末, role: 輔料,
+     qty: {value: 5, unit: g, raw_text: "蔥末5公克", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 水, role: 液體,
+     qty: {value: 600, unit: ml, raw_text: "水600㏄", evidence: M, status: sourced, note: "M 原量；㏄ 照原文保留，等同毫升。此為煮湯用水"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
+     qty: {value: 0.25, unit: tsp, raw_text: "鹽1/4小匙", evidence: M, status: sourced}}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "米酒1大匙", evidence: M, status: sourced}}
+  - {id: i_powder, concept: ing/chicken_powder, label: 鮮雞粉, role: 調料,
+     qty: {value: null, unit: null, qualitative: 少許, raw_text: "鮮雞粉少許", evidence: M, status: sourced, note: "M 原量；vocab ing/chicken_powder 中文名為雞粉，「鮮雞粉」為別名（見 D）"}}
+  - {id: i_wp, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 香料,
+     qty: {value: null, unit: null, qualitative: 少許, raw_text: "白胡椒粉少許", evidence: M, status: sourced}}
+
+states:
+  - {id: s_clam_soaked, label: 泡水吐沙、洗淨備用的蛤蜊}
+  - {id: s_ginger_shred, label: 薑絲}
+  - {id: s_scallion_mince, label: 蔥末}
+  - {id: s_soup, label: 蛤蜊打開的湯（尚未調味）}
+  - {id: s_final, label: 薑絲蛤蜊湯, role: final}
+
+actions:
+  - id: a1
+    technique: tech/wash_soak
+    term: 蛤蜊泡水吐沙後洗淨備用
+    inputs: [i_clam]
+    outputs: [s_clam_soaked]
+    tool: tool/bowl
+    params: {duration: {min_s: null, max_s: null, raw: "原文沒寫泡水吐沙多久", status: missing}}
+    completion:
+      - {observe: 蛤蜊, target: 吐沙、洗淨備用（M 作法1）, method: 目測, evidence: M}
+    can_overlap: [a2]
+    note: "M 只寫「泡水吐沙後洗淨」，泡水的鹽水濃度、時長原文沒寫；S1 作法1 同為「蛤蜊泡水吐砂備用」。貝類吐沙專條列建議新增詞（見 D）"
+  - id: a2
+    technique: tech/cut
+    term: 薑切絲、蔥切末
+    inputs: [i_ginger, i_scallion]
+    outputs: [s_ginger_shred, s_scallion_mince]
+    tool: tool/knife
+    params:
+      cut: {shape: cut/si_fine, raw: "薑絲10公克、蔥末5公克（M 材料表；作法未寫切法）", evidence: M, note: "薑絲對應 cut/si_fine（vocab 示例即薑絲）；蔥末對應 cut/mo。絲、末的毫米尺寸 M 沒寫"}
+    completion:
+      - {observe: 材料, target: 切好備用, method: 目測}
+    note: "M 材料已列薑絲、蔥末，但作法未單寫切配動作；補上切絲、切末為家庭備料（推論）"
+  - id: a3
+    technique: tech/boil
+    term: 水倒入鍋中以中火煮開，放入蛤蜊和薑絲續煮至再次滾開且蛤蜊打開
+    inputs: [s_clam_soaked, s_ginger_shred, i_water]
+    outputs: [s_soup]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/medium, raw: "將水倒入鍋中以中火煮開", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫煮多久", status: missing}
+    completion:
+      - {observe: 湯與蛤蜊, target: 再次滾開且蛤蜊打開（M 作法2）, method: 目測, evidence: M}
+    note: "M 未寫是否加蓋。M 只寫「鍋中」，未指明鍋具；用湯鍋為家庭改法（推論）"
+  - id: a4
+    technique: tech/season
+    term: 加入所有調味料煮勻，熄火撒上蔥末即可
+    inputs: [s_soup, s_scallion_mince, i_salt, i_wine, i_powder, i_wp]
+    outputs: [s_final]
+    tool: tool/stock_pot
+    completion:
+      - {observe: 湯的鹹度, target: 調味煮勻（M 作法2）, method: 試吃（判斷方式為推論，M 原文沒寫）, evidence: M}
+      - {observe: 蔥末, target: 熄火後撒上蔥末（M 作法2）, method: 目測, evidence: M}
+    note: "米酒、鮮雞粉、白胡椒粉都在蛤蜊打開後才下（M 作法2）；蔥末在熄火後撒，不下鍋煮。"
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null, evidence: M}
+  sensory_target: {color: 原文沒寫, taste: 原文沒寫, texture: 原文沒寫}
+
+notes:
+  weekday: "平日（≤20 分鐘）可行性：M 作法沒寫總時間與煮湯分鐘數，原文沒寫、待試做計時；M 頁面標籤 #30 分鐘內（平台標籤，非作法計時）。20 分鐘平日門檻是家庭自訂條件，不是來源數字。"
+  burners: "全程 1 口爐、1 只湯鍋（M 作法2「將水倒入鍋中」，鍋具未指明；用湯鍋為家庭改法（推論））。任何時刻不超過 2 口爐。"
+  spicy_split: "M、S1 的存檔都沒有辣椒、花椒、辣豆瓣；S2 存檔無法核對。M 材料列白胡椒粉，若要不加胡椒，屬推論。"
+  oven_airfryer: "M、S1 來源未使用烤箱、氣炸鍋、蒸籠；S2 存檔無法核對。本檔用湯鍋爐上煮。電鍋外鍋加水燉煮為未寫做法，屬推論，時間待試做。"
+  compare: "摘要見 (F) 公開食譜比較表。主體份量、調味、火力、完成狀態全部照 M；S1 對照，S2 指定文字存檔無法核對。"
+  pot_size: "湯鍋容量 M 沒寫。已知：水 600㏄、蛤蜊 300 g、薑絲 10 g、蔥末 5 g；建議選裝得下、滾煮時不溢出的鍋（推論，無來源數字）。"
+  missing: "原文沒寫：人份、吐沙泡水時長與鹽水濃度、煮蛤蜊／煮湯的分鐘數、S1 火力、鍋具種類與容量、是否加蓋、成品湯色與口感、上桌溫度與食用時限；S2 指定文字存檔無法核對。"

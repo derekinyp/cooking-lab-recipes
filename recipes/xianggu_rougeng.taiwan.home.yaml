@@ -1,0 +1,176 @@
+# 香菇肉羹（台式家常版）— 起始檔，規格 v1.0
+# 主來源 M＝楊桃美食網〈香菇肉羹(1)〉：主料、調味、份量、火力、時間只用 M 的數字，不混拼。
+# S1＝ISWANTING 台式香菇肉羹（英文部落格）、S2＝Food Makes Me Happy 酸辣肉羹麵，僅作比較與對照，不進主體數字。
+schema_version: "1.0"
+recipe:
+  id: xianggu_rougeng.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/xianggu_rougeng
+  name: {zh_hant: 香菇肉羹, zh_hans: 香菇肉羹, en: Shiitake mushroom pork thick soup (rou geng)}
+  variant: 台式家常版
+  summary: 乾香菇泡水切絲，與肉羹、高湯及鹽、味精、糖同煮滾，加蒜酥、柴魚片，小火以太白粉水勾琉璃芡，食用前再加香菜、香油、胡椒粉、烏醋的台式家常肉羹。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "M 為台灣家常湯羹（楊桃分類 #中式料理 #一鍋到底）（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣食譜平台楊桃美食網；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "M 沒標人份"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "楊桃美食網〈香菇肉羹(1)〉（出處《大腸蚵仔麵線》）"
+      url: https://www.ytower.com.tw/recipe/A02-408
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "主來源。材料：肉羹100g、乾香菇5朵、高湯1200cc；調味料 A 太白粉2大匙、水3大匙；B 鹽1/4茶匙、味精1/4茶匙、糖1/4茶匙；C 柴魚片10g、蒜酥10g；D 胡椒粉適量、香油適量、烏醋適量、香菜少許。作法：1.乾香菇泡水切絲；調味料A調成太白粉水備用。2.取一湯鍋，倒入高湯後，加入調味料B、作法1的香菇絲及肉羹煮至湯汁滾沸，放入蒜酥、柴魚片。3.待湯汁再度微滾時關至小火，以邊倒入太白粉水邊用湯勺攪拌的方式勾芡成琉璃芡。4.食用前加香菜、香油、胡椒粉烏醋即可。"
+    - id: S1
+      title: "ISWANTING〈Taiwanese Shiitake Mushroom and Pork Thick Soup (Xiang Gu Rou Geng) 台式香菇肉羹〉（2026-10-14 發布）"
+      url: https://iswanting.com/xiang-gu-rou-geng/
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: "對照來源存檔無法核實：目前存檔內容只有「Just a moment...」，材料、數字與步驟原文沒寫（無法由存檔確認）。"
+    - id: S2
+      title: "Food Makes Me Happy〈Taiwanese Ruo Gen Soup Noodles - 酸辣肉羹麵〉（Cindy Lo，2012-07-30）"
+      url: https://www.foodmakesmehappy.com/2012/07/taiwanese-ruo-gen-soup-noodles.html?m=1
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: "對照（酸辣肉羹麵，含辣醬入湯底）。原文標 Ingredients (3 to 4 portions)?；肉羹2 cups、無鹽雞高湯5 cups、香菇5朵、木耳4朵、紅蘿蔔1根（作者自註忘記用）、小竹筍1支、香菜一小把、紅蔥頭2瓣、蒜2瓣、橄欖油3 tbsp、烏醋3 tbsp、醬油 some、中式辣醬1 tsp、薑末1 tsp、鹽½ tsp、黑胡椒½ tsp、白胡椒粉 some、玉米粉水 some、鹼麵 some。步驟：爆香紅蔥頭蒜鹽胡椒，medium-high heat 約2分鐘；加香菇木耳炒軟，再加竹筍薑末醬油炒1分鐘；倒高湯、烏醋、辣醬、肉羹，煮滾後轉小火一點 simmer 約10分鐘；加香菜白胡椒；邊攪邊慢慢倒玉米粉水；麵另煮。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始檔：以 M 楊桃美食網為主來源；S1、S2 作對照。M 沒寫的一律 null＋missing，不補不估；主體份量只用 M 數字", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_rougen, concept: ing/rou_gen, label: 肉羹（成品）, form: 成品材料, role: 主料, product: true,
+     qty: {value: 100, unit: g, raw_text: "肉羹100g", evidence: M, status: sourced},
+     note: "M 視為現成成品材料；肉種部位、醃料與自製做法 M 沒寫。vocab 無 ing/rou_gen，列建議新增詞"}
+  - {id: i_shiitake, concept: ing/shiitake_dried, label: 乾香菇, form: 泡水切絲, role: 輔料,
+     qty: {value: 5, unit: piece, raw_text: "乾香菇5朵", evidence: M, status: sourced},
+     note: "vocab 無乾香菇概念，列建議新增詞；與鮮香菇 ing/shiitake_fresh 區分"}
+  - {id: i_stock, concept: ing/stock_light, label: 高湯, role: 液體,
+     qty: {value: 1200, unit: ml, raw_text: "高湯1200cc", evidence: M, status: sourced},
+     note: "M 原量；cc 依體積對應 ml，杯／cc 容量定義 M 沒寫，不換算成其他單位。高湯種類（雞／豬／柴魚）M 沒寫"}
+  - {id: i_potato_starch, concept: ing/starch, label: 太白粉（芡粉）, role: 芡粉,
+     qty: {value: 2, unit: tbsp, raw_text: "太白粉2大匙", evidence: M, status: sourced}}
+  - {id: i_slurry_water, concept: ing/water, label: 水（調太白粉水用）, role: 芡粉,
+     qty: {value: 3, unit: tbsp, raw_text: "水3大匙", evidence: M, status: sourced}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
+     qty: {value: 0.25, unit: tsp, raw_text: "鹽1/4茶匙", evidence: M, status: sourced, note: "原文分數 1/4；茶匙以 tsp 對應，容量差異 M 沒寫"}}
+  - {id: i_msg, concept: ing/msg, label: 味精, role: 調料,
+     qty: {value: 0.25, unit: tsp, raw_text: "味精1/4茶匙", evidence: M, status: sourced, note: "原文分數 1/4"}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 糖, role: 調料,
+     qty: {value: 0.25, unit: tsp, raw_text: "糖1/4茶匙", evidence: M, status: sourced, note: "原文分數 1/4"}}
+  - {id: i_bonito, concept: ing/bonito_flakes, label: 柴魚片, role: 調料,
+     qty: {value: 10, unit: g, raw_text: "柴魚片10g", evidence: M, status: sourced},
+     note: "vocab 無柴魚片概念，列建議新增詞"}
+  - {id: i_garlic_crisp, concept: ing/garlic_crisp, label: 蒜酥, role: 調料,
+     qty: {value: 10, unit: g, raw_text: "蒜酥10g", evidence: M, status: sourced},
+     note: "vocab 無蒜酥概念，列建議新增詞"}
+  - {id: i_pepper, concept: ing/white_pepper_powder, label: 胡椒粉, role: 香料,
+     qty: {value: null, unit: null, qualitative: 適量, raw_text: "胡椒粉適量", evidence: M, status: sourced},
+     note: "M 只寫胡椒粉，未寫白胡椒或黑胡椒；歸白胡椒粉概念供參，上桌前再加"}
+  - {id: i_sesame, concept: ing/sesame_oil, label: 香油, role: 調料,
+     qty: {value: null, unit: null, qualitative: 適量, raw_text: "香油適量", evidence: M, status: sourced}}
+  - {id: i_vinegar, concept: ing/black_vinegar, label: 烏醋, role: 調料,
+     qty: {value: null, unit: null, qualitative: 適量, raw_text: "烏醋適量", evidence: M, status: sourced}}
+  - {id: i_cilantro, concept: ing/cilantro, label: 香菜, role: 輔料,
+     qty: {value: null, unit: null, qualitative: 少許, raw_text: "香菜少許", evidence: M, status: sourced},
+     note: "vocab 無香菜概念，列建議新增詞；上桌前再加"}
+
+states:
+  - {id: s_shiitake_soaked, label: 泡過的乾香菇}
+  - {id: s_shiitake_shred, label: 香菇絲}
+  - {id: s_slurry, label: 太白粉水}
+  - {id: s_boiling, label: 煮滾的肉羹湯}
+  - {id: s_bonito_added, label: 加入蒜酥、柴魚片的湯}
+  - {id: s_thickened, label: 勾好琉璃芡的香菇肉羹}
+  - {id: s_final, label: 香菇肉羹, role: final}
+
+actions:
+  - id: a1
+    technique: tech/wash_soak
+    term: 乾香菇泡水
+    inputs: [i_shiitake]
+    outputs: [s_shiitake_soaked]
+    tool: tool/bowl
+    params: {duration: {min_s: null, max_s: null, raw: "乾香菇泡水（泡水多久 M 沒寫）", status: missing}}
+    completion:
+      - {observe: 香菇, target: 泡水（M 只寫「泡水」；軟化程度原文沒寫）, method: null, evidence: M}
+    note: "M 作法第 1 步「乾香菇泡水切絲」；泡水時間 M 沒寫，待試做計時"
+  - id: a2
+    technique: tech/cut
+    term: 泡好的香菇切絲
+    inputs: [s_shiitake_soaked]
+    outputs: [s_shiitake_shred]
+    tool: tool/knife
+    params: {cut: {shape: cut/si, raw: 切絲, evidence: M}}
+    completion:
+      - {observe: 香菇, target: 切成絲, method: 目測, evidence: M}
+  - id: a3
+    technique: tech/combine
+    term: 太白粉加水調成太白粉水備用
+    inputs: [i_potato_starch, i_slurry_water]
+    outputs: [s_slurry]
+    tool: tool/bowl
+    completion:
+      - {observe: 太白粉水, target: 調成太白粉水備用（M 作法 1：調味料A調成太白粉水備用）, method: 目測, evidence: M}
+  - id: a4
+    technique: tech/boil
+    term: 高湯入湯鍋，加調味料B、香菇絲及肉羹，煮至湯汁滾沸
+    inputs: [i_stock, i_salt, i_msg, i_sugar, s_shiitake_shred, i_rougen]
+    outputs: [s_boiling]
+    tool: tool/stock_pot
+    params:
+      heat: {level: null, raw: "步驟 2 只寫「煮至湯汁滾沸」，火力原文沒寫"}
+      duration: {min_s: null, max_s: null, raw: "煮多久 M 沒寫", status: missing}
+    completion:
+      - {observe: 湯汁, target: 煮至湯汁滾沸, method: 目測（沸騰冒泡）, evidence: M}
+  - id: a5
+    technique: tech/boil
+    term: 放入蒜酥、柴魚片
+    inputs: [s_boiling, i_garlic_crisp, i_bonito]
+    outputs: [s_bonito_added]
+    tool: tool/stock_pot
+    completion:
+      - {observe: 鍋中, target: 蒜酥、柴魚片放入湯中（M 作法 2：放入蒜酥、柴魚片）, method: 目測, evidence: M}
+    note: "M 順序為先煮滾再放入調味料 C；這步的火力與時間 M 沒寫"
+  - id: a6
+    technique: tech/thicken
+    term: 湯汁再度微滾時關小火，邊倒太白粉水邊用湯勺攪拌，勾芡成琉璃芡
+    inputs: [s_bonito_added, s_slurry]
+    outputs: [s_thickened]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/low, raw: "待湯汁再度微滾時關至小火", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "勾芡時間 M 沒寫", status: missing}
+      agitation: {mode: 邊倒入太白粉水邊用湯勺攪拌, continuous: true}
+      thickening: {type: 琉璃芡, starch_ref: i_potato_starch}
+    completion:
+      - {observe: 芡汁, target: 勾芡成琉璃芡, method: 目測, evidence: M}
+      - {observe: 攪拌, target: 邊倒入太白粉水邊用湯勺攪拌, method: 目測, evidence: M}
+  - id: a7
+    technique: tech/season
+    term: 食用前加香菜、香油、胡椒粉、烏醋
+    inputs: [s_thickened, i_cilantro, i_sesame, i_pepper, i_vinegar]
+    outputs: [s_final]
+    completion:
+      - {observe: 碗中, target: 加香菜、香油、胡椒粉、烏醋即可（M 作法 4）, method: 目測, evidence: M}
+    note: "四樣都是起鍋／食用前才加，可各自在碗內分開加；M 主體沒有辣椒、花椒"
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
+  sensory_target: {color: 原文沒寫, taste: 原文沒寫, texture: 原文沒寫；M 只寫「琉璃芡」}
+
+notes:
+  weekday: "平日（≤20 分鐘）可不可做：原文沒寫總時間。M 只有「煮至湯汁滾沸」「再度微滾」的狀態描述，沒有分鐘數；乾香菇泡水時間也沒寫。無法依原文判斷平日可不可做，待試做計時。20 分鐘門檻是家庭自訂條件，不是來源數字"
+  burners: "全程 1 口爐、1 只湯鍋（M 作法第 2 步寫「取一湯鍋」；來源沒寫爐口數，1 口是依步驟安排的推論）。任何時刻不超過 2 口；另一口爐可同時做別的菜（推論）"
+  spicy_split: "M 主體沒有辣椒、花椒；胡椒粉、烏醋、香油、香菜在食用前才加（M 第 4 步），可各自在碗裡分開加，不辣那份不需另外做。對照 S2 的中式辣醬（1 tsp）是在煮湯底時一起下鍋、無法分出；若仿 S2 做法，不辣那份要另外做（家庭改法，推論），辣醬份額原文沒寫、不自編數字。"
+  oven_airfryer: "M、S2 的可核實步驟使用湯鍋／鍋具，沒有記載烤箱、氣炸鍋或蒸籠；M 用湯鍋，不需改法。家中無料理溫度計、無料理秤，完成判斷只用看、聞、聽、戳、試吃"
+  no_scale: "無秤版：太白粉 2 大匙、水 3 大匙、鹽／味精／糖各 1/4 茶匙照原文匙／茶匙量；肉羹 100g、柴魚片 10g、蒜酥 10g 看包裝標重；高湯 1200cc 用量瓶或杯量（杯容量 M 沒定義，不換算）"
+  missing: "原文沒寫：人份數、乾香菇泡水時間、各步驟烹調分鐘數、步驟 2 煮湯火力、肉羹的肉種部位與醃料自製做法、高湯種類、杯／大匙／茶匙容量定義、勾芡後濃稠度的具體判斷標準、上桌溫度與時限、成品色澤口感、湯鍋大小"
+  compare: "見輸出 (F) 公開食譜比較表"
+  pot_size: "湯鍋容量 M 沒寫。已知高湯 1200cc，另加肉羹、香菇絲與配料；建議用裝得下、留得出翻攪空間的湯鍋（推論，無來源數字）"

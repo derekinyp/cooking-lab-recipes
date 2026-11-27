@@ -1,0 +1,147 @@
+# 榨菜肉絲湯（川式家常版）— 待核草稿，規格 v1.0
+# M 指定存檔為空；下列主體做法與來源引文未能由存檔核實，僅保留為待核草稿：
+#   不可將未能核對的草稿轉錄視為 M 已證實內容；S1、S2、S3 存檔亦不完整。
+# 來源存檔無法核實的數量留 null＋status: missing，不補、不估、不換算。
+schema_version: "1.0"
+recipe:
+  id: zhacai_rousi_tang.sichuan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/zhacai_rousi_tang
+  name: {zh_hant: 榨菜肉絲湯, zh_hans: 榨菜肉丝汤, en: "Zhacai (preserved mustard tuber) and pork shred soup"}
+  variant: 川式家常版
+  summary: "待核草稿：豬里脊絲泡水去血水、榨菜絲泡水去鹹味；清湯燒沸後下肉絲榨菜汆熟撈起，泡肉血水倒回湯中撇淨浮沫至湯清，再放回肉絲榨菜，加味精、精鹽調味。指定來源存檔不足以核實此流程。"
+  cuisine:
+    - {id: cuisine/chuan, basis: "本檔變體標為川式家常版（編者分類）；指定 M 存檔為空，來源說法無法核實", claim: secondary, evidence: null}
+    - {id: region/sichuan, basis: "地域歸屬為編者分類；指定 M 存檔為空，無法核實其是否點名四川涪陵榨菜", claim: secondary, evidence: null}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "指定來源存檔無法核實人份；M 存檔為空，S1、S2 無食譜正文，S3 未標示可核實的人份"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "火爆餐飲招商網 1588.TV 問答〈榨菜肉丝汤怎么做？〉（文字追溯出版書《家常美味湯譜》畜肉類「榨菜肉絲湯」，頁 13）"
+      url: http://www.1588.tv/wenda/20141103113818000
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: '主來源候選。指定存檔 w50-zhacai_rousi_tang-M.txt 為空，沒有可供核對的網頁文字；草稿所列書名、頁碼、原料數量及作法轉錄均無法由存檔驗證，故不得視為已核實來源內容。'
+    - id: S1
+      title: "下厨房 Fancy.〈老杨的榨菜肉丝汤〉（轉載自美食天下 ID 老杨，2012-12-03）"
+      url: https://hanwuji.xiachufang.com/recipe/1073271/
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: '存檔 w50-zhacai_rousi_tang-S1.txt 僅有滑動驗證文字，無食譜內容可供核對；草稿所列用料、份量及作法未能由指定存檔確認。'
+    - id: S2
+      title: "下厨房 Hi王琳琳〈榨菜肉丝汤｜简汤系列〉（2023-08-11）"
+      url: https://hanwuji.xiachufang.com/recipe/107175464/
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: '存檔 w50-zhacai_rousi_tang-S2.txt 僅有 429 Too Many Requests 回應，無食譜內容可供核對；草稿所列用料、份量及作法未能由指定存檔確認。'
+    - id: S3
+      title: "抖音百科〈榨菜肉丝汤——一道家常汤品〉（聚合三則做法，2023-09-25）"
+      url: https://m.baike.com/wiki/%E6%A6%A8%E8%8F%9C%E8%82%89%E4%B8%9D%E6%B1%A4/914053
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: '存檔 w50-zhacai_rousi_tang-S3.txt 僅包含條目開頭及做法一食材準備（各150克、蔥1支、薑2片），未包含後續完整步驟；草稿中其餘聚合做法與注意事項未能由指定存檔確認。'
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始待核草稿；指定 M 存檔為空，原料與作法均未能核實；數量缺證處留 null＋missing", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_pork, concept: ing/pork, label: 豬里脊肉, form: 絲, role: 主料,
+     qty: {value: null, unit: null, raw_text: null, status: missing, note: "數量無法由空白的 M 存檔核實；部位為里脊，vocab ing/pork 未分部位"}}
+  - {id: i_zhacai, concept: ing/zhacai, label: 榨菜, form: 細絲, role: 主料,
+     qty: {value: null, unit: null, raw_text: null, status: missing, note: "數量及四川涪陵榨菜描述未能由空白的 M 存檔核實；詞表已有 ing/zhacai"}}
+  - {id: i_msg, concept: ing/msg, label: 味精, role: 調料,
+     qty: {value: null, unit: null, raw_text: null, status: missing}}
+  - {id: i_stock, concept: ing/stock_light, label: 清湯, role: 液體,
+     qty: {value: null, unit: null, raw_text: null, status: missing, note: "草稿原記清湯，但數量與單位無法由空白的 M 存檔核實；家常是否可用清水代替屬推論"}}
+  - {id: i_salt, concept: ing/salt, label: 精鹽, role: 調料,
+     qty: {value: null, unit: null, raw_text: null, status: missing}}
+  - {id: i_soak_water, concept: ing/water, label: 清水（浸泡用）, role: 液體,
+     qty: {value: null, unit: null, raw_text: null, status: missing,
+     note: "肉絲泡水去血水、榨菜絲泡水去鹹味所用；指定來源存檔無法核實水量與浸泡時長。浸泡用水不計入清湯 i_stock（推論）"}}
+
+states:
+  - {id: s_pork_shred, label: 豬肉絲}
+  - {id: s_zhacai_shred, label: 榨菜細絲}
+  - {id: s_pork_soaked, label: 泡去血水的肉絲}
+  - {id: s_zhacai_soaked, label: 泡去鹹味的榨菜絲}
+  - {id: s_pork_blood_water, label: 泡肉絲的血水（副產物，留作澄清用）, role: byproduct}
+  - {id: s_blanched, label: 汆熟撈起的肉絲與榨菜}
+  - {id: s_broth_blanched, label: 汆過食材的清湯}
+  - {id: s_clear_broth, label: 撇淨浮沫的清湯}
+  - {id: s_final, label: 榨菜肉絲湯, role: final}
+
+actions:
+  - id: a1
+    technique: tech/cut
+    term: 里脊肉切絲；榨菜洗淨切細絲
+    inputs: [i_pork, i_zhacai]
+    outputs: [s_pork_shred, s_zhacai_shred]
+    tool: tool/knife
+    params:
+      cut: {shape: cut/si, size_mm: {min: null, max: null}, raw: "將豬里脊肉切成絲…榨菜洗淨切成細絲（待核草稿引文；指定 M 存檔為空）", evidence: null, note: "來源存檔無法核實絲的毫米尺寸"}
+    completion:
+      - {observe: 材料, target: 切絲備用（待核草稿引文；指定 M 存檔為空）, method: 目測, evidence: null}
+  - id: a2
+    technique: tech/wash_soak
+    term: 肉絲加清水浸泡去血水；榨菜絲清水浸泡去鹹味待用
+    inputs: [s_pork_shred, s_zhacai_shred, i_soak_water]
+    outputs: [s_pork_soaked, s_zhacai_soaked, s_pork_blood_water]
+    tool: tool/bowl
+    params: {duration: {min_s: null, max_s: null, raw: "指定來源存檔無法核實浸泡時長", status: missing}}
+    completion:
+      - {observe: 肉絲, target: 浸泡去血水（待核草稿引文；指定 M 存檔為空）, method: 目測, evidence: null}
+      - {observe: 榨菜絲, target: 浸泡去鹹味待用（待核草稿引文；指定 M 存檔為空）, method: 目測, evidence: null}
+    note: "待核草稿記載將泡肉絲的血水留到 a4 澄清用；指定 M 存檔為空，無法核實此步驟。浸泡用水不計入清湯屬推論"
+  - id: a3
+    technique: tech/cuan
+    term: 清湯燒沸，下榨菜、肉絲汆熟，漏勺撈起
+    inputs: [s_pork_soaked, s_zhacai_soaked, i_stock]
+    outputs: [s_blanched, s_broth_blanched]
+    tool: tool/stock_pot
+    params:
+      heat: {level: null, raw: "待核草稿記載鍋置火上、加入清湯燒沸；指定 M 存檔為空，無法核實", evidence: null}
+      duration: {min_s: null, max_s: null, raw: "指定來源存檔無法核實汆煮時長", status: missing}
+    completion:
+      - {observe: 榨菜與肉絲, target: 下鍋汆熟，用漏勺撈起（待核草稿引文；指定 M 存檔為空）, method: 目測, evidence: null}
+    note: "指定來源存檔無法核實鍋具；用湯鍋為家庭改法（推論）"
+  - id: a4
+    technique: tech/boil
+    term: 湯沸後倒入泡肉絲的血水，手勺撇淨浮沫至湯清
+    inputs: [s_broth_blanched, s_pork_blood_water]
+    outputs: [s_clear_broth]
+    tool: tool/stock_pot
+    params: {duration: {min_s: null, max_s: null, raw: "指定來源存檔無法核實撇沫加熱時長", status: missing}}
+    completion:
+      - {observe: 湯與浮沫, target: 浮沫撇淨、湯清（待核草稿引文；指定 M 存檔為空）, method: 目測, evidence: null}
+    note: "撇沫無專屬受控技法，本步歸 tech/boil（推論對應）；建議新增技法詞見 (D)"
+  - id: a5
+    technique: tech/season
+    term: 放回汆熟肉絲、榨菜，加味精、精鹽，倒入碗中
+    inputs: [s_clear_broth, s_blanched, i_msg, i_salt]
+    outputs: [s_final]
+    tool: tool/stock_pot
+    completion:
+      - {observe: 湯與料, target: 放入汆熟肉絲、榨菜，再加味精、精鹽，將湯倒入碗中（待核草稿引文；指定 M 存檔為空）, method: 目測, evidence: null}
+      - {observe: 成品, target: 湯汁清、榨菜脆、肉絲嫩（待核草稿引文；指定 M 存檔為空）, method: 目測、試吃, evidence: null}
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 指定來源存檔無法核實, method: null, evidence: null}
+  sensory_target: {color: 湯汁清（待核草稿引文，未核實）, taste: 指定來源存檔無法核實, texture: 榨菜脆、肉絲嫩（待核草稿引文，未核實）}
+
+notes:
+  weekday: "平日（≤20 分鐘）可行性：指定來源存檔不足以核實各步或總時間，來源存檔無法核實、待試做計時。20 分鐘平日門檻是家庭自訂條件，不是來源數字。"
+  burners: "家庭自訂：全程 1 口爐、1 只湯鍋；任何時刻不超過 2 口爐。來源存檔不足以核實爐具與鍋具。"
+  spicy_split: "本待核草稿未列辣椒、花椒或辣豆瓣；因指定來源存檔不足以核實，不將其視為已核實原方。若試做後需辣味，胡椒可於個人碗中另加（推論）；維持不加即為不辣做法。"
+  oven_airfryer: "家庭版只用爐上鍋煮，不使用烤箱、氣炸鍋或蒸籠；這是本檔做法安排，並非由指定來源存檔核實。"
+  compare: "指定 M、S1、S2 存檔無可核對的食譜正文；S3 存檔僅到做法一食材準備。主體份量、調味、火力、完成狀態均未能由指定存檔核實。"
+  pot_size: "湯鍋容量及食材數量均無法由指定來源存檔核實；若採用本待核草稿試做，建議選裝得下、滾煮時不溢出的鍋（推論，無來源數字）。"
+  missing: "指定存檔未能核實：人份、浸泡去血水／去鹹味的水量與時長、汆熟時間、撇沫加熱時間、火力檔位、是否加蓋、成品湯色與口感、上桌溫度與食用時限、烹調用油及其他配料。M 存檔為空；S1、S2 存檔無食譜正文；S3 未包含完整步驟。"
+  decisions: "M 為主來源候選，但指定存檔為空；S1、S2 存檔無食譜正文，S3 存檔只含條目開頭及做法一食材準備。各來源的完整版本差異均未能由指定存檔核實，均不據以補入主體。"

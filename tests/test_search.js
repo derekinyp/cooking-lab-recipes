@@ -43,6 +43,7 @@ for (const [q, want, topN, kind] of cases) {
 // 不相干的字不該把整個菜單都找出來
 const noise = (f.search('蘿蔔乾') || []).length;
 console.log(`「蘿蔔乾」共找到 ${noise} 道`);
-if (noise > 3) { fail++; console.log('失敗：「蘿蔔乾」找到太多不相干的菜'); }
+// W50 收了蘿蔔排骨湯，菜名含「蘿蔔」，會多算一道；菜脯蛋仍須排第 1（上面的別名測試）。
+if (noise > 4) { fail++; console.log('失敗：「蘿蔔乾」找到太多不相干的菜'); }
 if (fail) { console.log(`${fail} 項沒過`); process.exit(1); }
 console.log(`搜尋測試全部通過（${cases.length} 項）`);
