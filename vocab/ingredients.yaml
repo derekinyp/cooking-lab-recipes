@@ -151,6 +151,7 @@ concepts:
   - {id: ing/soy_sauce_dark, zh: 老抽, broader: ing/soy_sauce}
   - {id: ing/soy_sauce_light, zh: 生抽, broader: ing/soy_sauce}
   - {id: ing/gai_lan, zh: 芥藍, alt: [芥蘭, 芥蘭菜], note: "W49 蠔油芥藍"}
+  - {id: ing/cauliflower, zh: 花椰菜, alt: [白花菜, 花菜, 椰菜花, 菜花], note: "W49 乾鍋花菜"}
   - {id: ing/white_pepper, zh: 白胡椒, note: "不預設是粒或粉；W49 胡椒蝦「即磨白胡椒」"}
   - {id: ing/shrimp, zh: 蝦, alt: [海蝦, 蝦仁], note: "不預設帶殼或去殼；W49 滑蛋蝦仁"}
   - {id: ing/cream_style_corn, zh: 玉米醬, alt: [粟米蓉, 玉米茸, 奶油玉米醬], note: "罐頭玉米醬；W49 玉米蛋花湯"}

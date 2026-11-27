@@ -1,0 +1,209 @@
+# 乾鍋花菜（湖南家常版）— 起始草稿，規格 v1.0
+# 主來源 H1：份量、火力、時間、完成狀態只用 H1 原文數字；W1、L1 僅作對照，不混進主體比例。
+# 家庭條件：廚具僅電鍋、炒鍋、平底鍋、湯鍋；無烤箱、氣炸鍋、蒸籠、溫度計、料理秤。
+schema_version: "1.0"
+recipe:
+  id: ganguo_huacai.hunan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/ganguo_huacai
+  name: {zh_hant: 乾鍋花菜, zh_hans: 干锅花菜, en: Dry Pot Cauliflower (Gan Guo Hua Cai)}
+  variant: 湘式家常版
+  summary: 花菜掰小朵鹽水泡過徹底擦乾，五花肉煸出油脂，先炒辣豆瓣出紅油，再爆香辣椒、花椒、蒜、薑，最大火乾煸花菜至邊緣微焦、口感脆嫩，最後下生抽、老抽、糖與蔥段裹勻。
+  cuisine:
+    - {id: cuisine/xiang, basis: "H1 標題與內文自稱 Hunan / Xiang cuisine 湘菜", claim: primary, evidence: H1}
+    - {id: region/hunan, basis: "H1 為湖南食譜專案頁面", claim: primary, evidence: H1}
+  flavor_template: {ref: flavor/mala, basis: "H1：Dry pot cauliflower is a classic example of ma la (麻辣)；配方含花椒、乾辣椒、豆瓣醬", evidence: H1}
+  servings: {value: null, status: sourced, evidence: H1, note: "原文 Serves 3-4（結構化資料 recipeYield：3-4 servings），為範圍份數；規格 servings 只支援單一 value，留空，不自取整"}
+  status: cross_checked
+  sources:
+    - id: H1
+      title: "HunanFlavor〈Dry Pot Cauliflower (干锅花菜) — Hunan Spicy Stir-Fry〉"
+      url: https://hunanflavor.com/recipes/dry-pot-cauliflower.html
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "主來源。Serves 3–4；Prep 10 min、Cook 15 min、Total time: 25 minutes。花菜約 500 g、五花肉 100 g、乾辣椒 10 個、花椒 1 tbsp、蒜 3 瓣、薑 3 片、豆瓣 1 tbsp、生抽 1 tbsp、老抽 1/2 tsp、糖 1/2 tsp、蔥 2 枝、油 2 tbsp、泡水鹽 1 tsp。頁面本文署名 HunanFlavor Editorial Team；結構化資料的 author 欄另列 Mr. Ma from Henan，署名資訊不一致。非教材或出版書。"
+    - id: W1
+      title: "Woks of Love〈Homestyle Sichuan Dry Pot Cauliflower (Gan Guo Hua Cai)〉（Lin，2025-11-12，更新 2025-11-21）"
+      url: https://woksoflove.com/homestyle-sichuan-dry-pot-cauliflower-gan-guo-hua-cai/
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "對照（川味家常部落格，作者自稱成長於四川餐廳）。以下只摘頁面的食譜卡（正文敘述段的份量與流程另有出入，例如花菜寫 250–300 g，未採用）：2 人份；Prep 15、Cook 10、Total 25 分鐘。1 small head cauliflower (about 250g / 9 oz)、五花肉 3.5 oz (100g)、Pixian Doubanjiang 1 tbsp、乾辣椒 10-15 個、蒜 2 瓣、生抽 1 tbsp、老抽 1 tsp、鹽 1/4 tsp（or to taste）、蔥 1 枝（只用綠色部分）、泡水鹽 1 tsp；無花椒、無薑、無糖。食譜卡流程：中小火煸五花肉約 4-5 分鐘後撈出、小火炒豆瓣 1-2 分鐘、下蒜與乾辣椒 30 秒、大火炒花菜 2-3 分鐘、五花肉回鍋淋生抽老抽。"
+    - id: L1
+      title: "李錦記美國官網〈干鍋花菜〉"
+      url: https://usa.lkk.com/zh-hk/recipes/dry-pot-cauliflower
+      level: A
+      type: official
+      accessed: 2026-11-27
+      note: "對照（醬料品牌官方食譜頁，產品導向）。Serves 2；準備 5 分鐘、烹煮 10 分鐘。椰花菜 1 磅、五花肉（去皮切片）6 安士、小米辣椒 2 安士、乾紅辣椒少許、麻椒 1 湯匙、蒜 1 安士；蠔油 2 湯匙、麻辣火鍋上湯 1 湯匙、生抽 1 湯匙、雞粉 2 茶匙；食材表未列豆瓣醬與糖；另用小米辣椒、乾紅辣椒、麻椒及麻辣火鍋上湯調味。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始草稿：以 H1 為主來源建立主體；W1、L1 作對照；數字缺漏一律標 missing，未自補", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_cauliflower, concept: ing/cauliflower, label: 白花菜（花椰菜／椰花菜）, role: 主料,
+     qty: {value: 500, unit: g, raw_text: "Cauliflower (about 500g) 1 head", evidence: H1, status: sourced, note: "H1 原量 1 顆約 500 g；小朵約 3–4 cm（H1：about 3 to 4 cm across）"}}
+  - {id: i_pork_belly, concept: ing/pork_belly, label: 五花肉（薄片）, form: 片, role: 主料,
+     qty: {value: 100, unit: g, raw_text: "Pork belly, thinly sliced 100 g", evidence: H1, status: sourced, note: "H1 原量；是否去皮原文沒寫"}}
+  - {id: i_chili_dried, concept: ing/dried_chili, label: 乾紅辣椒（節）, form: 節, role: 香料,
+     qty: {value: 10, unit: piece, raw_text: "Dried red chilies 10 whole", evidence: H1, status: sourced, note: "H1：Cut them into sections with scissors（剪刀剪節）"}}
+  - {id: i_peppercorn, concept: ing/sichuan_pepper, label: 花椒（Sichuan peppercorns）, role: 香料,
+     qty: {value: 1, unit: tbsp, raw_text: "1 tbsp Sichuan peppercorns", evidence: H1, status: sourced, note: "麻味來源；H1 Less spicy 段建議減至 1 teaspoon（對照，未進主體）"}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜（切片）, form: 片, role: 輔料,
+     qty: {value: 3, unit: clove, raw_text: "Garlic cloves, sliced 3 cloves", evidence: H1, status: sourced}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 輔料,
+     qty: {value: 3, unit: slice, raw_text: "Ginger slices 3 slices", evidence: H1, status: sourced}}
+  - {id: i_douban, concept: ing/pixian_doubanjiang, label: 豆瓣醬（郫縣豆瓣／辣豆瓣）, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "Doubanjiang (chili bean paste) 1 tbsp", evidence: H1, status: sourced, note: "H1：Pixian doubanjiang is the gold standard"}}
+  - {id: i_soy_light, concept: ing/soy_sauce_light, label: 生抽（淡醬油）, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "Light soy sauce 1 tbsp", evidence: H1, status: sourced}}
+  - {id: i_soy_dark, concept: ing/soy_sauce_dark, label: 老抽（深色醬油，上色用）, role: 調料,
+     qty: {value: 0.5, unit: tsp, raw_text: "Dark soy sauce 1/2 tsp", evidence: H1, status: sourced}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 白糖, role: 調料,
+     qty: {value: 0.5, unit: tsp, raw_text: "Sugar 1/2 tsp", evidence: H1, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥（蔥段）, form: 段, role: 輔料,
+     qty: {value: 2, unit: stalk, raw_text: "Scallions 2 stalks", evidence: H1, status: sourced}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂,
+     qty: {value: 2, unit: tbsp, raw_text: "Cooking oil 2 tbsp", evidence: H1, status: sourced, note: "食材表 2 tbsp；步驟 2 另寫 Heat 1 tablespoon of oil，又寫 leave at least 2 tablespoons in the wok，兩處原文不一致，照錄不調和"}}
+  - {id: i_salt_soak, concept: ing/salt, label: 鹽（泡花菜用）, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "Salt (for soaking) 1 tsp", evidence: H1, status: sourced, note: "只用於泡水清洗，不計入最後調味；H1 主體另無額外調味鹽"}}
+
+states:
+  - {id: s_florets, label: 鹽水泡過、瀝乾擦乾的花菜小朵}
+  - {id: s_pork_sliced, label: 五花肉薄片}
+  - {id: s_garlic_ginger_cut, label: 蒜片、薑片}
+  - {id: s_chili_cut, label: 乾辣椒節}
+  - {id: s_scallion_cut, label: 蔥段}
+  - {id: s_pork_rendered, label: 煸到金黃微脆的五花肉片}
+  - {id: s_redoil, label: 炒出紅油的豆瓣底}
+  - {id: s_bloomed, label: 爆香的辣椒花椒蒜薑}
+  - {id: s_cauliflower_fried, label: 大火乾煸至邊緣微焦的花菜}
+  - {id: s_sauced, label: 裹勻紅亮醬汁的花菜}
+  - {id: s_final, label: 乾鍋花菜, role: final}
+
+actions:
+  - id: a1
+    technique: tech/wash_soak
+    term: 花菜用手掰成小朵（大小大致一致），鹽水泡 10 分鐘，瀝乾擦乾
+    inputs: [i_cauliflower, i_salt_soak]
+    outputs: [s_florets]
+    tool: tool/bowl
+    params:
+      cut: {shape: cut/kuai, size_mm: {min: 30, max: 40}, raw: "small, bite-sized florets — about 3 to 4 cm across", evidence: H1, note: "原文是用手掰成小朵，不是刀切；規格沒有「小朵」刀工代碼，暫用 cut/kuai 並以 raw 為準"}
+      duration: {min_s: 600, max_s: 600, raw: "let them soak for 10 minutes", is_guide: true, evidence: H1, status: sourced}
+    completion:
+      - {observe: 花菜表面水分, target: "徹底瀝乾並用乾淨廚房巾或紙巾擦乾（H1：drain very well and pat dry；the florets must be completely dry）", method: 目測＋觸摸, evidence: H1}
+    note: "泡花菜的鹽水不計入烹調液體。H1：濕花菜下鍋會蒸而非炒，變軟爛"
+  - id: a2
+    technique: tech/cut
+    term: 五花肉切薄片；蒜切片；薑切片
+    inputs: [i_pork_belly, i_garlic, i_ginger]
+    outputs: [s_pork_sliced, s_garlic_ginger_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/pian, raw: "Pork belly, thinly sliced；Garlic cloves, sliced；Ginger slices", evidence: H1, note: "片的厚薄原文沒寫"}}
+    completion: [{observe: 五花肉、蒜、薑, target: "切成薄片／片，備用（H1）", method: 目測, evidence: H1}]
+  - id: a2b
+    technique: tech/cut
+    term: 蔥切段
+    inputs: [i_scallion]
+    outputs: [s_scallion_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/duan, raw: "2 scallions, cut into sections", evidence: H1, note: "段長原文沒寫"}}
+    completion: [{observe: 蔥, target: "切段，備用（H1）", method: 目測, evidence: H1}]
+  - id: a2c
+    technique: tech/cut
+    term: 乾辣椒用剪刀剪節
+    inputs: [i_chili_dried]
+    outputs: [s_chili_cut]
+    tool: null
+    params: {cut: {shape: cut/segment, raw: "Cut them into sections with scissors", evidence: H1, note: "節長原文沒寫"}}
+    completion: [{observe: 乾辣椒, target: "剪成節，備用（H1）", method: 目測, evidence: H1}]
+    note: "原文用剪刀；詞表沒有剪刀工具代碼，tool 留 null"
+  - id: a3
+    technique: tech/render
+    term: 炒鍋下油（步驟寫 1 tablespoon，食材表寫 2 tbsp，來源內部矛盾，照錄不調和），中火把五花肉片攤平煸 3–4 分鐘至出油、邊緣金黃微脆
+    inputs: [s_pork_sliced, i_oil]
+    outputs: [s_pork_rendered]
+    tool: tool/wok
+    params:
+      heat: {level: heat/medium, raw: "Heat 1 tablespoon of oil in a wok over medium heat", evidence: H1}
+      duration: {min_s: 180, max_s: 240, raw: "Let it cook for 3 to 4 minutes, stirring occasionally", is_guide: true, evidence: H1, status: sourced}
+    completion:
+      - {observe: 五花肉片, target: "油脂煸出、邊緣轉金黃並略帶微脆（H1：the fat renders out and the edges turn golden and slightly crispy）", method: 目測, evidence: H1}
+    note: "H1：肥肉多可舀出多餘油脂，但鍋內至少留 2 tablespoons（leave at least 2 tablespoons in the wok）；油的總量食材表與步驟不一致，見 i_oil 註記"
+  - id: a4
+    technique: tech/aromatics
+    term: 肉推到鍋邊，轉中小火，下豆瓣醬壓炒約 30 秒至油轉紅亮
+    inputs: [s_pork_rendered, i_douban]
+    outputs: [s_redoil]
+    tool: tool/wok
+    params:
+      heat: {level: heat/medium_low, raw: "Lower the heat to medium-low", evidence: H1}
+      duration: {min_s: 30, max_s: 30, raw: "Stir-fry it for about 30 seconds", is_guide: true, evidence: H1, status: sourced}
+    completion:
+      - {observe: 鍋中油脂, target: "油呈光亮鮮紅色，鍋內充滿發酵辣椒的鹹香（H1：the oil turn a bright, glossy red; the deep, savory aroma of fermented chilies）", method: 目測＋聞, evidence: H1}
+    note: "不辣那份此步不下豆瓣醬（見 notes.spicy_split）"
+  - id: a5
+    technique: tech/qiang
+    term: 下辣椒節、花椒、蒜片、薑片炒 10–15 秒至出香
+    inputs: [s_redoil, s_chili_cut, i_peppercorn, s_garlic_ginger_cut]
+    outputs: [s_bloomed]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文未另行轉火；接續上一步 medium-low", evidence: H1}
+      duration: {min_s: 10, max_s: 15, raw: "Stir-fry for 10 to 15 seconds — just until everything becomes fragrant", is_guide: true, evidence: H1, status: sourced}
+    completion:
+      - {observe: 香氣, target: "聞得到花椒的柑橘香與乾辣椒的熱香；蒜勿炒焦（H1：smell the citrusy aroma of the Sichuan peppercorns and the deep heat of the dried chilies; garlic burns very quickly, and burnt garlic tastes bitter）", method: 聞＋目測, evidence: H1}
+    note: "花椒、乾辣椒在此一開始下鍋爆香，無法事後從同一鍋分出（見 notes.spicy_split）"
+  - id: a6
+    technique: tech/dry_fry
+    term: 轉最大火，下擦乾花菜，持續翻煸 5–7 分鐘至邊緣微焦、脆嫩有咬勁
+    inputs: [s_bloomed, s_florets]
+    outputs: [s_cauliflower_fried]
+    tool: tool/wok
+    params:
+      heat: {level: heat/high, raw: "Turn the heat up to the highest setting", evidence: H1}
+      duration: {min_s: 300, max_s: 420, raw: "Stir-fry vigorously for 5 to 7 minutes, tossing and turning constantly", is_guide: true, evidence: H1, status: sourced}
+    completion:
+      - {observe: 花菜熟度與質地, target: "熟透但仍有明顯咬勁（tender-crisp），不軟爛；邊緣略帶焦色（H1：cooked through but still with a firm bite, not soft and mushy; char the edges slightly）", method: 目測＋戳＋試吃, evidence: H1}
+    note: "H1：鍋小、花菜擁擠時分兩批炒；分批為同一口鍋先後進行。全程不加液體"
+  - id: a7
+    technique: tech/season
+    term: 下生抽、老抽、糖，再炒 1–2 分鐘至每朵裹上紅亮醬汁，試味調整
+    inputs: [s_cauliflower_fried, i_soy_light, i_soy_dark, i_sugar]
+    outputs: [s_sauced]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文未另註此步火力", evidence: H1}
+      duration: {min_s: 60, max_s: 120, raw: "Stir-fry for another 1 to 2 minutes", is_guide: true, evidence: H1, status: sourced}
+    completion:
+      - {observe: 醬汁附著, target: "每朵花菜均勻裹上光亮深紅醬汁（H1：every floret is evenly coated in the glossy, deep-red sauce）", method: 目測, evidence: H1}
+      - {observe: 味道, target: "試吃後可再補一點醬油或糖（H1：Taste a piece and adjust seasoning if you like）", method: 試吃, evidence: H1}
+  - id: a8
+    technique: tech/toss_in
+    term: 下蔥段最終翻拌，起鍋盛盤
+    inputs: [s_sauced, s_scallion_cut]
+    outputs: [s_final]
+    tool: tool/wok
+    completion:
+      - {observe: 蔥段, target: "拌入鍋中做最後一次翻拌（H1：toss in the scallion sections and give everything one final stir）", method: 目測, evidence: H1}
+    note: "上桌容器家庭改法（推論）：H1 原文盛入小砂鍋／鑄鐵鍋、以桌上小爐或蠟燭保溫繼續加熱；家中無砂鍋與桌上保溫爐，直接盛盤上桌"
+
+serving:
+  completion:
+    - {observe: 上桌時狀態, target: "趁熱立即上桌配米飯（H1：Serve immediately with steamed rice; the dish should still be sizzling when it reaches the table）", method: 目測, evidence: H1}
+    - {observe: 上桌中心溫度, target: "原文沒寫溫度數字；家中無溫度計，不量測", method: null}
+  sensory_target: {color: "深紅光亮（H1：glossy, deep-red sauce）", texture: "花菜脆嫩有咬勁、五花肉片微脆", taste: "鹹鮮、香辣帶麻（H1：spicy, it is numbing, it is savory）"}
+
+notes:
+  weekday: "假日菜：H1 標 Total time 25 minutes（Prep 10 min、Cook 15 min），超過家庭設定的平日時間門檻（門檻是家庭條件，不是來源數字）；其中泡水 10 分鐘佔備料時間，其餘各段時間見 actions。"
+  burners: "全程 1 口爐、1 只炒鍋。花菜若依 H1 建議分兩批乾煸，仍是同一口鍋先後炒，不同時佔第二口。家庭安排（推論）；爐口數原文沒寫。"
+  spicy_split: "H1 的辣豆瓣在 a4、乾辣椒與花椒在 a5 一開始下鍋爆香，無法事後從同一鍋分出；不辣那份要另外做（推論）：另起一鍋，花菜泡水擦乾、五花肉煸油照主流程，爆香只用蒜片、薑片，不下花椒、乾辣椒、辣豆瓣，調味用生抽、老抽、糖；不辣份各料份量原文沒寫，待試做確認，不編數字。H1 的 Less spicy 建議（減辣椒、去籽、花椒減至 1 tsp、豆瓣從 1 tsp 起加）是減辣，不是不辣，僅作對照。"
+  oven_airfryer: "H1、W1、L1 皆未使用烤箱、氣炸鍋、蒸籠，不需替代改法；L1 的花菜汆燙用湯鍋沸水即可（家庭有湯鍋）。H1 上桌用的砂鍋／桌上保溫爐家庭沒有，改盛盤（家庭改法（推論））。"
+  no_scale: "無秤版：花菜 1 顆約 500 g、五花肉 100 g 看包裝標重；湯匙＝tbsp、茶匙＝tsp，原文未給杯／匙容量，不換算克數。"
+  compare: "W1（川味家常，依食譜卡）：不焯水、泡水擦乾後直接炒；五花肉中小火煸約 4-5 分鐘後先撈出、最後回鍋；豆瓣小火炒 1-2 分鐘；無花椒、薑、糖；花菜大火炒 2-3 分鐘。L1（品牌官方）：花菜先開水汆燙 1 分鐘；用麻辣火鍋上湯與蠔油調味，食材表未列豆瓣醬，另有小米辣椒、乾紅辣椒、麻椒；原文未寫火力與成品色澤口感。"
+  missing: "原文沒寫：份數範圍怎麼取整、五花肉是否去皮、泡水鹽水的水量、各步鍋具大小、花菜品種、額外調味鹽量、油溫成數、上桌溫度與食用時限、不辣版配方與份量、醃料。"
+  spec_gaps: "servings 範圍 3–4 無法用單一 value 表示；同一食材同時有「顆／head」與公克兩種單位，一個 qty 只能存一個 unit；規格無桌上保溫乾鍋／砂鍋上桌工具詞；無 oz／lb 單位（L1 對照用，保留原文不換算）。"
