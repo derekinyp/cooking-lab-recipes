@@ -1,0 +1,156 @@
+# 滑蛋蝦仁（廣式家常版）— 起始草稿，規格 v1.0
+# 主來源 M＝My School HK〈滑蛋蝦仁〉：蝦仁、蛋、蔥、醃料、蛋液調味、兩段火力與完成狀態只用 M 的數字，不混拼。
+# S1、S2 僅進比較表與 notes；來源沒寫的數字一律 null＋status: missing，不補、不估、不換算。
+schema_version: "1.0"
+recipe:
+  id: huadan_xiaren.guangdong.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/huadan_xiaren
+  name: {zh_hant: 滑蛋蝦仁, zh_hans: 滑蛋虾仁, en: Scrambled eggs with shrimp (Cantonese)}
+  variant: 廣式家常版
+  summary: 蝦仁去腸抹乾，用鹽、白胡椒粉、生粉醃過；大火炒至八成熟盛起待涼，拌入加了鹽與生粉的蛋液；燒熱油鑊轉小火快炒至蛋液凝固，放上蔥成菜。
+  cuisine:
+    - {id: cuisine/yue, basis: "編者分類（推論）：本庫把滑蛋蝦仁列在粵式家常；主來源 M 是香港親子食譜網站，來源沒有主張菜系"}
+    - {id: region/hongkong, basis: "編者分類（推論）：主來源 M 為香港食譜網站；網站所在地不證明料理地域歸屬"}
+  flavor_template: {ref: flavor/xian_xian, basis: "鹽、白胡椒調味，突出蝦與蛋本味（對照味型範本）", evidence: M}
+  servings: {value: 4, status: sourced, evidence: M, note: "M 標『材料: (4人份)』"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "My School HK〈滑蛋蝦仁（4個更好吃的小秘訣）〉"
+      url: https://www.myschool.hk/Recipes/Stir-fried-shrimp-and-eggs
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "主來源。4人份；海蝦 6兩、雞蛋 5隻、蔥 少許；調味料（入蛋液）鹽 1/2 茶匙、生粉 少許；醃料鹽 1/2 茶匙、白胡椒粉 1/2 茶匙、生粉 1/2 茶匙；兩次下油各約1湯匙。作法六步：雞蛋打勻備用；蝦仁去腸洗淨抹乾加入醃料；燒熱鑊下油約1湯匙大火炒蝦仁至八成熟盛起待涼；蝦仁放入打好的蛋液加調味料拌匀；燒熱油鑊下油約1湯匙倒入蝦仁蛋液轉小火快速炒至蛋液凝固盛起；放上蔥即成。貼士：①下蛋液後轉小火快手不停炒；②稍炒後可先離火再炒幾下到自己心水的滑度；③蛋液加少許生粉可減少出水；④白胡椒粉可去蝦腥味。"
+    - id: S1
+      title: "楊桃美食網〈滑蛋蝦仁(8)〉（B03-0796）"
+      url: https://www.ytower.com.tw/recipe/B03-0796
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "對照（蝦仁先汆燙至熟、再拌入蛋液路線，無蝦仁醃料）。蝦仁150克、雞蛋8顆、金針菇50克、蔥花30克、太白粉水1大匙、香油2大匙；調味料鹽1小匙、糖1小匙、味醂1大匙、米酒1大匙、白胡椒粉少許。作法：金針菇切段、雞蛋打散；滾水將蝦仁去腸泥洗淨汆燙至熟撈起；調味料與太白粉水、香油拌勻，再加蔥花、蛋液、金針菇段、蝦仁拌勻；熱油鍋加少許沙拉油，倒入蝦仁蛋液慢慢翻炒至蛋液略凝固後關火盛盤。份數、火力、時間原文沒寫。"
+    - id: S2
+      title: "〈滑蛋蝦仁〉，出處《教瑪麗亞作菜》（楊桃美食網轉載，B04-036）"
+      url: https://www.ytower.com.tw/recipe/B04-036
+      level: B
+      type: book
+      accessed: 2026-11-27
+      note: "對照（勾芡後淋蛋液的滑溜芡路線）。網頁標示示範者與出版書名，原書未直接翻閱，份量與做法均從網頁原文讀到。蝦仁20尾、毛豆仁1杯、蛋1個、蒜末1大匙；調味料1 鹽1小匙；調味料2 鹽2小匙、糖1/3大匙、白胡椒粉1小匙、香油2小匙；調味料3 水1杯；調味料4 太白粉1/2大匙、水2大匙。作法：蝦仁牙籤挑腸泥洗淨擦乾；毛豆仁加少許鹽汆燙1～2分鐘沖涼；蛋打勻；起油鍋爆香蒜末，下蝦仁、毛豆仁翻炒至半熟；加水1杯煮沸加調味料(2)煮至熟透；調味料(4)太白粉水調勻勾芡；倒入蛋液快速拌勻至略熟盛起。頁面備註：『蛋多、油多，才滑得出軟嫩的口感；蛋稍凝固即熄火，再以餘溫炒熟即可』。份數、火力原文沒寫。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始檔：選 M 為主來源，主體份量只用 M；S1、S2 作對照列入比較表與 note；未試做，狀態 draft", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_shrimp, concept: ing/shrimp, label: 海蝦（處理成蝦仁）, form: 去腸（M 步驟寫「蝦仁去腸」）, role: 主料,
+     qty: {value: 6, unit: liang, raw_text: "海蝦 6兩", evidence: M, status: sourced, note: "M 材料寫『海蝦 6兩』，步驟稱『蝦仁去腸』；是否帶殼購買、蝦仁大小原文沒寫。『兩』照原文保留，不換算克數（港制／市制兩重量原文沒寫）。"}}
+  - {id: i_egg, concept: ing/egg, label: 雞蛋, role: 主料,
+     qty: {value: 5, unit: piece, raw_text: "雞蛋 5隻", evidence: M, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥（上桌撒）, role: 輔料,
+     qty: {value: null, unit: null, qualitative: 少許, raw_text: "蔥 少許", evidence: M, status: sourced, note: "M 步驟 6『放上蔥，即成』；蔥的切法原文沒寫。"}}
+  - {id: i_oil_shrimp, concept: ing/cooking_oil, label: 油（炒蝦仁）, role: 油脂,
+     qty: {value: 1, unit: tbsp, raw_text: "下油約1湯匙", evidence: M, status: sourced, note: "M 步驟 3；『約』為原文語氣，量照原文 1 湯匙記。"}}
+  - {id: i_oil_egg, concept: ing/cooking_oil, label: 油（炒蛋）, role: 油脂,
+     qty: {value: 1, unit: tbsp, raw_text: "下油約1湯匙", evidence: M, status: sourced, note: "M 步驟 5；第二次下油。"}}
+  - {id: i_salt_mar, concept: ing/salt, label: 鹽（醃蝦仁）, role: 調料,
+     qty: {value: 0.5, unit: tsp, raw_text: "鹽 1/2 茶匙", evidence: M, status: sourced, note: "M 醃料。"}}
+  - {id: i_wp_mar, concept: ing/white_pepper_powder, label: 白胡椒粉（醃蝦仁）, role: 香料,
+     qty: {value: 0.5, unit: tsp, raw_text: "白胡椒粉 1/2 茶匙", evidence: M, status: sourced, note: "M 醃料；M 貼士四：白胡椒粉可去蝦的腥味。"}}
+  - {id: i_starch_mar, concept: ing/starch, label: 生粉（醃蝦仁）, role: 芡粉,
+     qty: {value: 0.5, unit: tsp, raw_text: "生粉 1/2 茶匙", evidence: M, status: sourced, note: "M 醃料；生粉是否先調水原文沒寫。"}}
+  - {id: i_salt_egg, concept: ing/salt, label: 鹽（入蛋液）, role: 調料,
+     qty: {value: 0.5, unit: tsp, raw_text: "鹽 1/2 茶匙", evidence: M, status: sourced, note: "M 調味料，步驟 4 加入蛋液。"}}
+  - {id: i_starch_egg, concept: ing/starch, label: 生粉（入蛋液）, role: 芡粉,
+     qty: {value: null, unit: null, qualitative: 少許, raw_text: "生粉 少許", evidence: M, status: sourced, note: "M 調味料；M 貼士三：雞蛋打勻後加入少許生粉，可令蝦仁炒蛋減少出水。"}}
+
+states:
+  - {id: s_egg_beaten, label: 打勻的蛋液}
+  - {id: s_shrimp_clean, label: 去腸洗淨抹乾的蝦仁}
+  - {id: s_shrimp_mar, label: 加好醃料的蝦仁}
+  - {id: s_shrimp_cooked, label: 八成熟盛起待涼的蝦仁}
+  - {id: s_egg_shrimp_mix, label: 拌入蝦仁與調味料的蛋液}
+  - {id: s_egg_scrambled, label: 炒至凝固的滑蛋蝦仁}
+  - {id: s_final, label: 滑蛋蝦仁, role: final}
+
+actions:
+  - id: a1
+    technique: tech/combine
+    term: 雞蛋打勻，備用
+    inputs: [i_egg]
+    outputs: [s_egg_beaten]
+    tool: tool/bowl
+    completion: [{observe: 蛋液, target: 打勻（M 原文「雞蛋打勻，備用」）, method: 目測, evidence: M}]
+  - id: a2
+    technique: tech/rinse
+    term: 蝦仁去腸，洗淨後抹乾水分
+    inputs: [i_shrimp]
+    outputs: [s_shrimp_clean]
+    tool: null
+    completion: [{observe: 蝦仁, target: 去腸、洗淨、抹乾水分（M 原文）, method: 目測, evidence: M}]
+    note: "去腸用的工具（牙籤或刀）原文沒寫；對照 S2 寫「用牙籤挑去腸泥」（不同食譜，只作參考）。"
+  - id: a3
+    technique: tech/combine
+    term: 加入醃料
+    inputs: [s_shrimp_clean, i_salt_mar, i_wp_mar, i_starch_mar]
+    outputs: [s_shrimp_mar]
+    tool: tool/bowl
+    params: {duration: {min_s: null, max_s: null, raw: "M 原文沒寫要不要放置、放多久", status: missing}}
+    completion: [{observe: 蝦仁, target: 加入醃料（M 原文「加入醃料」；拌勻程度與醃漬時間原文沒寫）, method: 目測}]
+  - id: a4
+    technique: tech/stir_fry
+    term: 燒熱鑊，下油約1湯匙，大火炒蝦仁至八成熟，盛起待涼
+    inputs: [s_shrimp_mar, i_oil_shrimp]
+    outputs: [s_shrimp_cooked]
+    tool: tool/wok
+    params:
+      heat: {level: heat/high, raw: "用大火炒蝦仁", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "M 原文沒寫炒蝦仁時間", status: missing}
+    completion: [{observe: 蝦仁熟度, target: 八成熟（M 原文「炒蝦仁至八成熟」；八成熟的色澤判斷原文沒寫）, method: 目測, evidence: M}]
+    note: "M 寫「鑊」，對應家庭炒鍋；盛起待涼為 M 步驟 3 原文。"
+  - id: a5
+    technique: tech/combine
+    term: 將蝦仁放入打好的蛋液中，加入調味料拌匀
+    inputs: [s_egg_beaten, s_shrimp_cooked, i_salt_egg, i_starch_egg]
+    outputs: [s_egg_shrimp_mix]
+    tool: tool/bowl
+    completion: [{observe: 蛋液與蝦仁, target: 拌匀（M 原文「加入調味料拌匀」）, method: 目測, evidence: M}]
+  - id: a6
+    technique: tech/stir_fry
+    term: 燒熱油鑊，下油約1湯匙，倒入蝦仁蛋液，轉小火，快速炒至蛋液凝固，盛起
+    inputs: [s_egg_shrimp_mix, i_oil_egg]
+    outputs: [s_egg_scrambled]
+    tool: tool/wok
+    params:
+      heat: {level: heat/low, raw: "轉小火，快速炒至蛋液凝固", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "M 原文沒寫炒蛋時間", status: missing}
+      agitation: {mode: 快手不停炒, continuous: true}
+    completion:
+      - {observe: 蛋液, target: 凝固（M 原文「快速炒至蛋液凝固」）, method: 目測, evidence: M}
+      - {observe: 蛋滑嫩度, target: 稍炒後可先離火再炒幾下到自己心水的滑度（M 貼士二）, method: 目測、試吃, evidence: M}
+    note: "M 貼士一：要蛋滑嫰，下蛋液後要轉小火，並要快手不停炒；貼士三：蛋液加少許生粉可減少出水。"
+  - id: a7
+    technique: tech/plate
+    term: 放上蔥，即成
+    inputs: [s_egg_scrambled, i_scallion]
+    outputs: [s_final]
+    tool: null
+    completion: [{observe: 成品, target: 放上蔥即成（M 原文「放上蔥，即成」）, method: 目測, evidence: M}]
+
+serving:
+  completion:
+    - {observe: 上桌溫度與食用時限, target: 原文沒寫, method: null}
+  sensory_target: {texture: "M 貼士強調蛋滑嫰；具體口感形容原文沒寫", taste: 原文沒寫, color: 原文沒寫}
+
+notes:
+  weekday: "原文沒寫總時間，待試做計時：M 無任何分鐘數；可見加熱步驟為大火炒蝦仁至八成熟、小火快炒蛋液至凝固，各步時間原文沒寫。對照 S1 無時間、S2 僅毛豆仁汆燙 1～2 分鐘（不同食譜，只作參考）。平日能不能做，待試做計時。"
+  burners: "全程最多 1 口爐、1 只炒鍋：先大火炒蝦仁盛起待涼，再同鍋（或另鍋）小火炒蛋（M 步驟 3、5 先後進行；同鍋先後為推論）。爐口安排是家庭安排（推論），原文沒寫爐口數。"
+  oven_airfryer: "M、S1、S2 皆未用烤箱、氣炸鍋或蒸籠；M 用鑊（炒鍋），家庭廚具已備，無需家庭改法。"
+  spicy_split: "三份來源都沒有辣椒、花椒、辣豆瓣；白胡椒粉用於醃蝦仁去腥（M 貼士四），不是麻辣配料。主體整鍋即不辣那份，無需分流；若要分碗，白胡椒可改最後各自在碗裡加（推論，M 原文是下醃料）。"
+  no_scale: "無秤版：蝦仁 6 兩看包裝標重或以次數估量（推論，原文沒寫量具）；茶匙、湯匙照 M 原文單位，不換算克數。"
+  pot_size: "炒鍋容量原文沒寫；已知雞蛋 5 隻、蝦仁 6 兩，建議用裝得下並能翻拌蛋液的鍋（推論，無來源數字）。"
+  compare: "S1 路線：蝦仁汆燙至熟再拌入蛋液，無蝦仁醃料，另加金針菇、蔥花、香油、味醂、米酒。S2 路線：先勾芡再淋蛋液（滑溜芡），全菜僅 1 個蛋，另加毛豆仁、蒜末。"
+  decisions: "主來源選 M（My School HK）：三份中唯一同時列出蝦仁醃料、蛋液調味、兩段火力（大火／小火）與完成狀態（八成熟、凝固、心水滑度）的版本；主體份量只用 M 數字，S1、S2 僅進比較表與本節 note。"
+  missing: "原文沒寫：醃料醃漬時間；炒蝦仁時間；炒蛋時間；總製作時間；蝦仁大小與是否去殼購買；油溫；蔥的切法；八成熟與滑嫩的具體色澤／口感標準；成品色澤；上桌溫度與食用時限；鍋具容量。"
+  spec_gaps: "「生粉」在 M 同時用於醃料與蛋液，粉水比例原文沒寫；「少許」無標準量；兩次下油拆成兩條食材記錄；網頁貼士無專屬欄位，寫在 action note 與 serving sensory_target。"

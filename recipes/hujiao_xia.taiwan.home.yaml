@@ -1,0 +1,177 @@
+# 胡椒蝦（台式家常版）— 起始 draft，規格 v1.0
+# 主來源 M＝李錦記香港〈胡椒蝦〉：蝦、胡椒、鹽、酒、醬油、薑蒜蔥與各步時間、火力只用 M 的數字，不與 S1、S2 混拼。
+# S1、S2 僅作對照，數字不進主體。家中無烤箱、氣炸鍋、蒸籠、溫度計、料理秤；M 原文亦未用上述設備。
+schema_version: "1.0"
+recipe:
+  id: hujiao_xia.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/hujiao_xia
+  name: {zh_hant: 胡椒蝦, zh_hans: 胡椒虾, en: Pepper shrimp}
+  variant: 台式家常版
+  summary: 乾炒胡椒出香，爆香薑蒜後下蝦快炒，攢酒加生抽炒至蝦身乾身，最後下蔥花。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "編者分類（推論）：本庫把胡椒蝦列在中式家常 120 道清單的台式組；主來源 M 是李錦記香港網頁，來源沒有主張菜系，做法也不代表台式熱炒店版本"}
+  flavor_template: {ref: flavor/xian_xian, basis: "M 以鹽、生抽、酒調味，胡椒為主香料；歸鹹鮮味型是編者推論，M 沒描述味型", evidence: M, deviation_note: "現有味型範本無專屬「胡椒鹹鮮」，暫掛 flavor/xian_xian"}
+  servings: {value: 4, status: sourced, evidence: M, note: "M 標 Serves: 4；蝦為 10 隻"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "李錦記香港〈胡椒蝦〉"
+      url: https://hk.lkk.com/zh-hk/recipes/pepper-prawns
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "主來源。4 人份、準備 10 分鐘、烹煮 15 分鐘。無烤箱／氣炸鍋／蒸籠；鍋具原文未指定，本檔用炒鍋（家庭改法，推論）。食材表未列油量。"
+    - id: S1
+      title: "毛毛媽廚房〈蒜蓉胡椒蝦〉（2011-08-03）"
+      url: https://maomaomom.ca/zh/%E8%92%9C%E8%93%89%E8%83%A1%E6%A4%92%E8%99%BE/
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: "對照。不粘鍋、大中火；冰凍白蝦一包 600g；橄欖油 1.5 大匙、蒜蓉 2 大匙、黑胡椒 1/4 茶匙、鹽 1/3 茶匙、糖 1/3 茶匙、萬字生抽醬油 2 茶匙、蔥花 1 茶匙（可省）；蝦翻炒半分鐘，炒至汁干蝦断生。份量不混入主體。"
+    - id: S2
+      title: "WokShow〈Tang's Pepper and Salt Shrimp〉"
+      url: https://www.wok.show/recipes/tangs-pepper-and-salt-shrimp/
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "對照。4 人份、總時間 15 分鐘、頁面標示 Medium（步驟未逐步標明火力）；台灣蝦 1 kg、蒜 50 g、辣椒 50 g、蔥 50 g、黃酒（食材表列 60 ml，步驟寫 about 2 taels）、植物油 2 湯匙、醬油（食材表列 1 湯匙，步驟寫 a small amount of soy sauce）、鹽與胡椒粉 to taste。炒至蝦兩面金黃、汁將乾時撒蔥花與胡椒粉。份量不混入主體。"
+  extracted_by: [codex]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始檔：M 為主來源，S1、S2 對照；無主來源的用量標 missing，建議值僅寫在 note", by: codex}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_shrimp, concept: ing/shrimp_shell_on, label: 大蝦（帶殼）, form: 開背去腸泥, role: 主料,
+     qty: {value: 10, unit: piece, raw_text: "大蝦10隻", evidence: M, status: sourced, note: "M 原量；蝦的重量與大小規格原文沒寫"}}
+  - {id: i_pepper_black, concept: ing/black_pepper, label: 即磨黑胡椒, role: 香料,
+     qty: {value: 1, unit: tbsp, raw_text: "李錦記即磨黑胡椒1湯匙", evidence: M, status: sourced}}
+  - {id: i_pepper_white, concept: ing/white_pepper, label: 即磨白胡椒, role: 香料,
+     qty: {value: 1, unit: tbsp, raw_text: "李錦記即磨白胡椒1湯匙", evidence: M, status: sourced}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑, form: 絲, role: 香料,
+     qty: {value: 1, unit: slice, raw_text: "薑1片", evidence: M, status: sourced, note: "M 食材表寫 1 片；步驟 2 把薑切絲"}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜蓉（瓶裝）, form: 蓉, role: 輔料, product: true,
+     qty: {value: 3, unit: tsp, raw_text: "李錦記蒜蓉3茶匙", evidence: M, status: sourced}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
+     qty: {value: 0.5, unit: tsp, raw_text: "鹽½ 茶匙", evidence: M, status: sourced}}
+  - {id: i_wine, concept: ing/cooking_wine, label: 紹興酒, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "紹興酒1湯匙", evidence: M, status: sourced}}
+  - {id: i_soy, concept: ing/soy_sauce_light, label: 特鮮生抽, role: 調料,
+     qty: {value: 2, unit: tbsp, raw_text: "李錦記特鮮生抽2湯匙", evidence: M, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥花, form: 蔥花, role: 輔料,
+     qty: {value: 2, unit: tbsp, raw_text: "蔥花2湯匙", evidence: M, status: sourced}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 油, role: 油脂,
+     qty: {value: null, unit: null, raw_text: null, status: missing,
+       note: "M 食材表未列油；步驟寫「以中火燒熱油」，用量原文沒寫，不補估。M 無奶油、無糖"}}
+
+states:
+  - {id: s_pepper_ground, label: 磨好的黑白胡椒}
+  - {id: s_ginger_shredded, label: 薑絲}
+  - {id: s_shrimp_prepped, label: 剪鬚腳、開背去腸泥、印乾的大蝦}
+  - {id: s_pepper_toasted, label: 無油烘香的胡椒}
+  - {id: s_aromatics, label: 爆香的薑絲與蒜蓉}
+  - {id: s_shrimp_seared, label: 下鍋炒過的蝦}
+  - {id: s_peppered, label: 拌入胡椒與鹽的蝦}
+  - {id: s_sauced, label: 攢酒加生抽炒至乾身的蝦}
+  - {id: s_final, label: 胡椒蝦, role: final}
+
+actions:
+  - id: a1
+    technique: tech/grind
+    term: 磨出黑胡椒和白胡椒備用
+    inputs: [i_pepper_black, i_pepper_white]
+    outputs: [s_pepper_ground]
+    completion:
+      - {observe: 胡椒, target: 磨出備用（原文只寫「磨出黑胡椒和白胡椒備用」；粗細程度原文沒寫）, method: 目測, evidence: M}
+    note: "工具原文未指定；現有工具詞表無胡椒磨，見「建議新增詞」"
+  - id: a2
+    technique: tech/cut
+    term: 薑切絲；剪去蝦槍蝦腳，剪開背部取蝦腸，洗淨印乾
+    inputs: [i_ginger, i_shrimp]
+    outputs: [s_ginger_shredded, s_shrimp_prepped]
+    tool: tool/knife
+    params:
+      cut: {shape: cut/si, raw: "把薑切絲備用。剪去大蝦的蝦槍和蝦腳，剪開背部取出蝦腸，洗淨印乾備用。", evidence: M,
+        note: "蝦開背無現成刀工 id，見「建議新增詞」cut/back_split"}
+    completion:
+      - {observe: 蝦, target: 開背、腸泥去乾淨、洗淨印乾, method: 目測, evidence: M}
+  - id: a3
+    technique: tech/dry_fry
+    term: 胡椒下鍋不用下油，小火加熱間中拌炒，煮 5 分鐘至聞香盛起
+    inputs: [s_pepper_ground]
+    outputs: [s_pepper_toasted]
+    tool: tool/wok
+    params:
+      heat: {level: heat/low, raw: "以小火加熱", evidence: M}
+      duration: {min_s: 300, max_s: 300, raw: "煮5分鐘至聞香後盛起備用（M 原文；秒數由原文分鐘換算，規格只收秒）", is_guide: true, evidence: M, status: sourced}
+      agitation: {mode: 間中拌炒}
+    completion:
+      - {observe: 香氣, target: 聞香後盛起備用, method: 聞, evidence: M}
+    note: "技法以 tech/dry_fry 最接近；其定義為少油慢火去水分，本步為無油烘香，建議新增 tech/dry_toast_spice。鍋具原文沒指定，本檔用炒鍋（家庭改法，推論）"
+  - id: a4
+    technique: tech/aromatics
+    term: 中火燒熱油，加入薑和蒜頭炒 2 分鐘
+    inputs: [s_ginger_shredded, i_garlic, i_oil]
+    outputs: [s_aromatics]
+    tool: tool/wok
+    params:
+      heat: {level: heat/medium, raw: "以中火燒熱油", evidence: M}
+      duration: {min_s: 120, max_s: 120, raw: "加入薑和蒜頭炒2分鐘（M 原文；秒數由原文分鐘換算，規格只收秒）", is_guide: true, evidence: M, status: sourced}
+    completion:
+      - {observe: 薑蒜, target: 原文沒寫完成狀態（原文只給炒 2 分鐘）, method: null, evidence: M}
+  - id: a5
+    technique: tech/stir_fry
+    term: 加入大蝦炒 1 分鐘
+    inputs: [s_aromatics, s_shrimp_prepped]
+    outputs: [s_shrimp_seared]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "火力原文沒寫"}
+      duration: {min_s: 60, max_s: 60, raw: "加入大蝦炒1分鐘（M 原文；秒數由原文分鐘換算，規格只收秒）", is_guide: true, evidence: M, status: sourced}
+    completion:
+      - {observe: 蝦, target: 原文沒寫完成狀態（原文只給炒 1 分鐘）, method: null, evidence: M}
+  - id: a6
+    technique: tech/stir_fry
+    term: 加入黑胡椒、白胡椒和鹽炒 1 分鐘
+    inputs: [s_shrimp_seared, s_pepper_toasted, i_salt]
+    outputs: [s_peppered]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "火力原文沒寫"}
+      duration: {min_s: 60, max_s: 60, raw: "加入黑胡椒、白胡椒和鹽炒1分鐘（M 原文；秒數由原文分鐘換算，規格只收秒）", is_guide: true, evidence: M, status: sourced}
+    completion:
+      - {observe: 蝦與調料, target: 原文沒寫完成狀態（原文只給炒 1 分鐘）, method: null, evidence: M}
+  - id: a7
+    technique: tech/deglaze_reduce
+    term: 沿鍋邊攢酒炒勻，加入生抽炒約 4 分鐘至大蝦乾身
+    inputs: [s_peppered, i_wine, i_soy]
+    outputs: [s_sauced]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "火力原文沒寫"}
+      duration: {min_s: 240, max_s: 240, raw: "加入生抽炒約4分鐘至大蝦乾身（M 原文；秒數由原文分鐘換算，規格只收秒）", is_guide: true, evidence: M, status: sourced}
+    completion:
+      - {observe: 蝦身與鍋中汁, target: 大蝦乾身, method: 目測, evidence: M}
+  - id: a8
+    technique: tech/toss_in
+    term: 下蔥花炒勻即成
+    inputs: [s_sauced, i_scallion]
+    outputs: [s_final]
+    tool: tool/wok
+    completion:
+      - {observe: 整鍋, target: 炒勻即成, method: 目測, evidence: M}
+
+serving:
+  completion:
+    - {observe: 上桌溫度與食用時限, target: 原文沒寫, method: null}
+  sensory_target: {taste: 原文沒寫味型描述, texture: 原文沒寫}
+
+notes:
+  weekday: "非平日菜：M 標準備 10 分鐘、烹煮 15 分鐘，合計 25 分鐘（兩個原文數字相加），超過平日 ≤20 分鐘門檻（門檻為使用者條件，非來源數字）；若只算爐上烹煮 15 分鐘、備料另計，實際可做時間待試做計時"
+  burners: "全程 1 口爐、1 只炒鍋（乾炒胡椒→爆香薑蒜→炒蝦先後同鍋）；爐口安排是家庭安排（推論），原文沒寫"
+  spicy_split: "主來源 M 無辣椒、花椒、辣豆瓣，整鍋即不辣那份。對照 S2 有辣椒 50 g；若要做辣版，辣椒應最後下鍋或起鍋後撒（推論；M 本身不含辣與麻）。不辣那份不下辣椒、花椒即可"
+  oven_airfryer: "M、S1、S2 皆未用烤箱、氣炸鍋、蒸籠，不需改法；M 未指定鍋具，本檔用炒鍋（家庭改法，推論）"
+  no_scale: "無秤版：M 給的是湯匙、茶匙、隻，無公克量；鹽 ½ 茶匙照原文，不換算公克"
+  compare: "S1（不粘鍋大中火）：白蝦 600g、橄欖油 1.5 大匙、蒜蓉 2 大匙、黑胡椒 1/4 茶匙、鹽 1/3 茶匙、糖 1/3 茶匙、生抽 2 茶匙、蔥花 1 茶匙（可省），蝦翻炒半分鐘至汁干蝦断生。S2（炒鍋；頁面標示 Medium，步驟未逐步標火力）：台灣蝦 1 kg、蒜 50 g、辣椒 50 g、蔥 50 g、黃酒（食材表列 60 ml，步驟寫 about 2 taels）、油 2 湯匙、醬油（食材表列 1 湯匙，步驟寫 a small amount of soy sauce），鹽與胡椒粉 to taste，蝦兩面金黃、汁將乾撒蔥花與胡椒粉。兩者數字皆不進主體"
+  missing: "原文沒寫：油量、奶油、糖、蝦的重量與大小、a4–a7 各步火力、a4/a5/a6 完成狀態、上桌溫度與食用時限、鍋具種類與大小、胡椒研磨粗細"
