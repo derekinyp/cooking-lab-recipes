@@ -1,0 +1,219 @@
+# 家常豆腐（川式家常版）— 起始草稿，規格 v1.0
+# 主來源 S1＝DB51/T 1728-2014 附錄 D.9、表 4 第 9 列；主體份量、尺寸、溫度、完成狀態只用 S1 原文數字。
+# S2/S3/S4 為公開網站對照食譜（已逐頁開啟讀原文），僅供比較與家庭改法參考，不進主體比例。
+# 家用條件：兩口瓦斯爐（同時最多 2 口）；廚具＝電鍋（大同式外鍋加水蒸）、炒鍋、平底鍋、湯鍋；
+#           無烤箱、氣炸鍋、蒸籠、料理溫度計、料理秤。完成判斷只用感官（看、聞、聽、戳、試吃）。
+schema_version: "1.0"
+recipe:
+  id: jiachang_doufu.sichuan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/jiachang_doufu
+  name: {zh_hant: 家常豆腐, zh_hans: 家常豆腐, en: Home-style braised tofu}
+  variant: 川式家常版
+  summary: 豆腐切片煎至兩面變黃，與炒熟的肉片、郫縣豆瓣、蒜苗同燒，二流芡亮油；味型依表 1 作鹹鮮微辣（表 1：咸鲜微辣；表 4 第 9 列：咸鲜香辣，兩處原文不同），豆腐軟嫩、形態完整。
+  cuisine:
+    - {id: cuisine/chuan, basis: "DB51/T 1728-2014 表 4 列為川菜蔬果類經典菜餚（第 9 列 家常豆腐）", claim: primary, evidence: S1}
+    - {id: region/sichuan, basis: "四川省地方標準", claim: primary, evidence: S1}
+  flavor_template: {ref: flavor/jiachang, basis: "DB51/T 1728-2014 表 4：家常味型", evidence: S1}
+  servings: {value: null, status: missing, note: "標準未標份數；主料豆腐 300 g、豬肉 100 g"}
+  status: cross_checked
+  catalog:
+    - {list: 中國烹飪協會2018地域經典名菜, region: 四川, listed: false, note: "catalogs/ccas2018-340.md 四川名錄列麻婆豆腐等 10 道，未列家常豆腐"}
+  sources:
+    - id: S1
+      title: "DB51/T 1728-2014《中國川菜經典菜餚製作工藝規範》附錄 D.9、表 4 第 9 列"
+      url: https://dbba.sacinfo.org.cn/portal/download/16132ff757ea958e03976e65675614f1
+      level: A
+      type: standard
+      accessed: 2026-11-27
+      note: "本機存檔 sources/db51t1728-2014.txt（文字版）與 .pdf。配方允許誤差 ≤10%；（味精）表示可選用或不選用；水澱粉＝澱粉加水調勻，重量比 澱粉：水=1:1（表 1 注 c，全標準通用）；郫縣豆瓣應先剁細再入鍋炒香且油呈紅色，並依豆瓣含鹽量調整食鹽用量（表 1 注）。本次已實際開啟連結讀原文，與本機存檔 sources/db51t1728-2014.* 一致"
+    - id: S2
+      title: "楊桃美食網〈家常燒豆腐(1)〉（出處《快樂廚房雜誌第108期》）"
+      url: https://www.ytower.com.tw/recipe/D01-0636
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "S2 對照原文：未用豆瓣、未用花椒的對照路線（原文含紅辣椒絲 5 公克，並非不辣）：無豆瓣、無花椒。板豆腐 300 公克、豬肉絲 30 公克、蔥絲 10 公克、薑絲 10 公克、紅辣椒絲 5 公克；醬油 2 大匙、細砂糖 1 大匙、米酒 1 大匙、水 5 大匙、香油 1/2 茶匙；小火爆香、小火煮約 2 分鐘；標籤 #30 分鐘內。本次已實際開啟連結讀原文"
+    - id: S3
+      title: "楊桃美食網〈湖南豆腐〉（出處《爆紅人氣川菜湘菜》）"
+      url: https://www.ytower.com.tw/recipe/D01-0435
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "S3 對照原文：板豆腐 2 塊、蒜苗 1 根、豆鼓 5 公克（原文用字，即豆豉）、紅辣椒末 1 根、豬肉絲 50 公克；調味料 A 醬油 2 大匙、糖 1 小匙、米酒 1 大匙、水 200cc；調味料 B 太白粉水 1 大匙、香油 1 小匙、辣油 1 小匙；燜煮 6～7 分鐘至湯汁略乾；辣油起鍋前才拌入；標籤 #30 分鐘內。本次已實際開啟連結讀原文"
+    - id: S4
+      title: "快懂百科〈川式家常豆腐〉"
+      url: https://m.baike.com/wiki/%E5%B7%9D%E5%BC%8F%E5%AE%B6%E5%B8%B8%E8%B1%86%E8%85%90/7240295
+      level: C
+      type: media
+      accessed: 2026-11-27
+      note: "對照：北豆腐 1 塊(300 克)、豬瘦肉 100 克、青蒜 2 顆、新鮮青紅椒各 1 個、薑蓉 5 克、蒜蓉 5 克、蔥花 5 克；醃肉料 a、紅油豆瓣醬 1/2 大匙等 b、水淀粉 c；中大火煎兩面金黃；醃 10 分鐘；小火煨 2 分鐘；心得：豆瓣很鹹不要再放鹽、汁不要收太乾。本次已實際開啟連結讀原文；百科轉載，份量出處不明，僅作對照"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始草稿：以 S1（DB51/T 1728-2014 D.9）為主來源建檔；S2/S3/S4 為已開啟的公開對照食譜；來源未寫的數字一律 null＋missing", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_tofu, concept: ing/tofu_gypsum, label: 豆腐（石膏豆腐）, role: 主料,
+     qty: {value: 300, unit: g, raw_text: "豆腐                  300", evidence: S1, status: sourced},
+     note: "表 4：豆腐應選用石膏製作成的豆腐"}
+  - {id: i_pork, concept: ing/pork, label: 豬肉, form: 片, role: 主料,
+     qty: {value: 100, unit: g, raw_text: "猪肉                  100", evidence: S1, status: sourced},
+     note: "S1 只寫『猪肉』，未指定部位與肥瘦；肉片尺寸原文沒寫"}
+  - {id: i_sprout, concept: ing/garlic_sprout, label: 蒜苗（青蒜）, role: 輔料,
+     qty: {value: 20, unit: g, raw_text: "蒜苗                  20", evidence: S1, status: sourced}}
+  - {id: i_douban, concept: ing/pixian_doubanjiang, label: 郫縣豆瓣, role: 調料, product: true,
+     qty: {value: 35, unit: g, raw_text: "郫县豆瓣                35", evidence: S1, status: sourced},
+     note: "表 1 注：應先剁細，再入鍋炒香且油呈紅色；並應根據豆瓣含鹽量調整食鹽用量"}
+  - {id: i_salt, concept: ing/salt, label: 食鹽, role: 調料,
+     qty: {value: 1, unit: g, raw_text: "食盐                  1", evidence: S1, status: sourced}}
+  - {id: i_soy, concept: ing/soy_sauce, label: 醬油, role: 調料,
+     qty: {value: 10, unit: g, raw_text: "酱油           10", evidence: S1, status: sourced}}
+  - {id: i_starch, concept: ing/starch_slurry_1to1, label: 水澱粉, role: 芡粉,
+     qty: {value: 15, unit: g, raw_text: "水淀粉          15", evidence: S1, status: sourced},
+     note: "15 g 是已調好水澱粉的重量；表 1 注 c：澱粉：水=1:1，澱粉與水各自重量原文沒寫"}
+  - {id: i_stock, concept: ing/stock_light, label: 鮮湯, role: 液體,
+     qty: {value: 200, unit: g, raw_text: "鲜汤           200", evidence: S1, status: sourced}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂,
+     qty: {value: 80, unit: g, raw_text: "食用油          1500（约耗 80）", evidence: S1, status: sourced},
+     note: "1500 g 是油炸用油總量，標準注『約耗 80』；家庭改少油煎（推論），煎制實際用油量原文沒另給，不補數字"}
+  - {id: i_msg, concept: ing/msg, label: 味精, role: 調料, optional: true,
+     qty: {value: 1, unit: g, raw_text: "（味精）         1", evidence: S1, status: sourced},
+     note: "標準注：（味精）表示味精可選用，或不選用"}
+
+states:
+  - {id: s_tofu_cut, label: 豆腐長約 6cm×寬約 3cm×厚約 0.5cm 的片}
+  - {id: s_pork_cut, label: 豬肉片}
+  - {id: s_sprout_cut, label: 蒜苗馬耳朵形或長約 4cm 的節}
+  - {id: s_oil_210, label: 210℃ 油}
+  - {id: s_tofu_fried, label: 兩面變黃（皮酥色金黃）的豆腐片}
+  - {id: s_oil_150, label: 150℃ 油}
+  - {id: s_meat_cooked, label: 炒熟的肉片}
+  - {id: s_douban_fragrant, label: 豆瓣炒香的底料}
+  - {id: s_braised, label: 燒透的豆腐肉片}
+  - {id: s_thickened, label: 收成二流芡的家常豆腐}
+  - {id: s_final, label: 家常豆腐, role: final}
+
+actions:
+  - id: a1
+    technique: tech/cut
+    term: 豆腐切長約 6cm、寬約 3cm、厚約 0.5cm 的片
+    inputs: [i_tofu]
+    outputs: [s_tofu_cut]
+    tool: tool/knife
+    params:
+      cut: {shape: cut/pian, size_mm: {min: null, max: null}, raw: "豆腐切成长约 6cm、宽约 3cm、厚约 0.5cm 的片", evidence: S1, note: "三維尺寸（長/寬/厚）規格 range_mm 只有一對 min/max，細節留在 raw"}
+    completion: [{observe: 豆腐, target: 長約 6cm、寬約 3cm、厚約 0.5cm 的片, method: 目測, evidence: S1}]
+  - id: a2
+    technique: tech/cut
+    term: 豬肉切成片
+    inputs: [i_pork]
+    outputs: [s_pork_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/pian, size_mm: {min: null, max: null}, raw: "猪肉切成片", evidence: S1, note: "肉片厚薄尺寸原文沒寫"}}
+    completion: [{observe: 豬肉, target: 切成片, method: 目測, evidence: S1}]
+  - id: a3
+    technique: tech/cut
+    term: 蒜苗切成馬耳朵形或長約 4cm 的節
+    inputs: [i_sprout]
+    outputs: [s_sprout_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/ma_er_duo, size_mm: {min: null, max: null}, raw: "蒜苗切成马耳朵形或长约 4cm 的节", evidence: S1, note: "馬耳朵形原文未給尺寸；4cm 為近似值"}}
+    completion: [{observe: 蒜苗, target: 馬耳朵形或長約 4cm 的節, method: 目測, evidence: S1}]
+  - id: a4
+    technique: tech/heat_oil
+    term: 豆腐入 210℃ 油中煎（或炸）
+    inputs: [i_oil]
+    outputs: [s_oil_210]
+    tool: tool/frying_pan
+    params:
+      temperature: {target: oil, min_c: 210, max_c: 210, raw: "入 210℃油中煎（或炸）", evidence: S1}
+      heat: {level: null, raw: "表 4：炸制豆腐的油温应高（未給火力檔位詞）", evidence: S1}
+    completion: [{observe: 油溫, target: 210℃（原文度數保留；家用無溫度計，感官判斷法原文沒寫，待試做校準，不換算成幾成熱）, method: null, evidence: S1}]
+    note: "家庭改法（推論）：標準寫『煎（或炸）』、未指明鍋具；家用無炸鍋，改用平底鍋少油煎。對照 S2 熱鍋約 1 大匙油煎至兩面焦黃、S4 平底鍋 2 大匙油中大火煎至兩面金黃；家庭用油量原文沒另給，不補"
+  - id: a5
+    technique: tech/pan_fry
+    term: 煎至兩面變黃時撈出
+    inputs: [s_tofu_cut, s_oil_210]
+    outputs: [s_tofu_fried]
+    tool: tool/frying_pan
+    completion:
+      - {observe: 豆腐兩面, target: 兩面變黃（D.9.2.1）, method: 目測, evidence: S1}
+      - {observe: 豆腐外皮, target: 皮酥、色金黃（表 4）, method: 目測, evidence: S1}
+  - id: a6
+    technique: tech/heat_oil
+    term: 鍋中放油燒至 150℃
+    inputs: [i_oil]
+    outputs: [s_oil_150]
+    tool: tool/wok
+    params:
+      temperature: {target: oil, min_c: 150, max_c: 150, raw: "锅中放油烧至 150℃", evidence: S1}
+      heat: {level: null, raw: "標準未寫火力檔位"}
+    completion: [{observe: 油溫, target: 150℃（原文度數保留；感官判斷法原文沒寫）, method: null, evidence: S1}]
+    note: "家庭安排（推論）：與 a7 同一炒鍋；食用油在煎豆腐與炒肉片之間怎麼分配，原文沒寫，不另補油量"
+  - id: a7
+    technique: tech/stir_fry
+    term: 放入肉片炒熟
+    inputs: [s_oil_150, s_pork_cut]
+    outputs: [s_meat_cooked]
+    tool: tool/wok
+    params: {agitation: {mode: 炒散}}
+    completion: [{observe: 肉片, target: 炒熟（原文「放入肉片炒熟」）, method: 目測, evidence: S1}]
+  - id: a8
+    technique: tech/aromatics
+    term: 入郫縣豆瓣炒香
+    inputs: [s_meat_cooked, i_douban]
+    outputs: [s_douban_fragrant]
+    tool: tool/wok
+    params: {agitation: {mode: 翻炒}}
+    completion:
+      - {observe: 香氣, target: 炒香, method: 嗅覺, evidence: S1}
+      - {observe: 油色, target: 油呈紅色（表 1 注）, method: 目測, evidence: S1}
+    constraint: "表 1 注：豆瓣應先剁細再入鍋炒香；剁細併在此說明，不另立步驟"
+  - id: a9
+    technique: tech/shao
+    term: 摻入鮮湯，入豆腐、食鹽、醬油、（味精）燒透
+    inputs: [s_douban_fragrant, i_stock, s_tofu_fried, i_salt, i_soy, i_msg]
+    outputs: [s_braised]
+    tool: tool/wok
+    params:
+      heat: {level: heat/medium_low, raw: "表 4：烧制豆腐应用中小火", evidence: S1}
+      duration: {min_s: null, max_s: null, raw: "烧透（原文沒寫時間）", status: missing}
+    completion:
+      - {observe: 豆腐, target: 燒透、形整（表 4：控制好燒製時間，以便豆腐形整）, method: 目測, evidence: S1}
+    note: "豆腐下鍋前是否瀝油、瀝水，原文沒寫"
+  - id: a10
+    technique: tech/thicken
+    term: 入蒜苗、水澱粉，收汁濃稠呈二流芡狀
+    inputs: [s_braised, s_sprout_cut, i_starch]
+    outputs: [s_thickened]
+    tool: tool/wok
+    params: {thickening: {starch_ref: i_starch}}
+    completion:
+      - {observe: 滋汁, target: 收汁濃稠，呈二流芡狀（D.9.2.2）, method: 目測, evidence: S1}
+      - {observe: 表面, target: 亮油（表 4）, method: 目測, evidence: S1}
+    note: "規格 thickening.type 列舉沒有『二流芡』，所以只寫在完成條件；水澱粉分次加入與否，原文沒寫"
+  - id: a11
+    technique: tech/plate
+    term: 裝盤
+    inputs: [s_thickened]
+    outputs: [s_final]
+    tool: null
+    completion: [{observe: 成品, target: 裝盤（原文「装盘」）, method: 目測, evidence: S1}]
+    note: "vocab/tools 無盤具 id，tool 留 null；家用以盤盛裝（推論）"
+
+serving:
+  completion:
+    - {observe: 菜品中心溫度, target: "70℃ 以上", method: null, evidence: S1, note: "家用無溫度計；原文沒寫感官判斷法，推論：出鍋即上桌、仍冒熱氣"}
+    - {observe: 出鍋至食用, target: "≤10 分鐘為宜", evidence: S1}
+  sensory_target: {color: 色澤紅亮, taste: "鹹鮮微辣（依表 1「咸鲜微辣」；表 4 第 9 列作「咸鲜香辣」）", texture: 豆腐軟嫩、形態完整}
+
+notes:
+  weekday: "平日可否做（家庭設定門檻，不是來源數字）：主來源 S1 原文沒寫總時間與各步時間，待試做計時。對照 S2 標籤 #30 分鐘內（小火煮約 2 分鐘）、S3 #30 分鐘內（燜煮 6～7 分鐘）、S4 醃 10 分鐘＋小火煨 2 分鐘；S1 無時間依據，不判定平日可做與否"
+  burners: "家庭安排（推論）：先以平底鍋煎豆腐（1 口爐），再用炒鍋燒製（1 口爐）；先煎後燒，同一時間 1 口爐；爐口數原文沒寫"
+  oven_airfryer: "S1 與對照來源皆未用烤箱、氣炸鍋、蒸籠；S1 的油炸家庭改為平底鍋少油煎（推論，見 a4 note）。本菜未用到電鍋與湯鍋"
+  spicy_split: "S1 的辣味來自郫縣豆瓣 35 g；豆瓣需先剁細，並在肉片炒熟後、摻鮮湯前入鍋炒香（D.9.2.2），無法最後分開加。本菜配方沒有花椒。不辣版本省略豆瓣是家庭改法（推論），需獨立另做一份、另鍋製作：省略郫縣豆瓣，以醬油、食鹽、鮮湯調成鹹鮮底（對照 S2 未用豆瓣、未用花椒的家常燒豆腐：醬油、細砂糖、米酒、水，但原文含紅辣椒絲 5 公克；若要不辣，省略辣椒是家庭改法（推論））；不補豆瓣替代份量。對照 S3 的辣油 1 小匙雖是起鍋前最後拌入、可分開，但 S3 的紅辣椒末 1 根在第一步爆香，同樣無法分出；S4 的紅油豆瓣醬在步驟 5 炒香，亦無法分出"
+  no_scale: "無秤版：S1 份量皆為公克；無秤時如何用杯、匙換算，原文沒寫，不換算。湯匙＝S1 未給杯匙單位；S2/S3/S4 的大匙、小匙、cc 只保留在比較表"
+  missing: "原文沒寫：份數、總時間與各步時間、肉片刀工尺寸、煎/炸豆腐與炒肉片的火力檔位詞（僅表 4 燒製寫中小火）、家用感官判斷 210℃/150℃/中心 70℃ 的方法、豆腐下鍋前瀝油與否、鍋具種類與大小、水澱粉中澱粉與水各自重量、食用油在兩步間的分配、上桌擺盤"
+  compare: "S2（楊桃〈家常燒豆腐〉）未用豆瓣、未用花椒，但含紅辣椒絲 5 公克；板豆腐 300 公克、豬肉絲 30 公克，醬油、糖、米酒、水小火煮約 2 分鐘。S3（楊桃〈湖南豆腐〉）用豆豉、紅辣椒末、蒜苗，加水 200cc 燜煮，太白粉水勾芡、淋辣油。S4（快懂百科）北豆腐 300 克、豬瘦肉 100 克，中大火煎兩面金黃，紅油豆瓣醬，小火煨 2 分鐘。三份數字都只作對照，未進主體"

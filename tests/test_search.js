@@ -25,7 +25,8 @@ const cases = [
   ['mapo', 'mapo_doufu', 1, '拼音一部分'],
   ['五花肉', 'gaolicai_fan', 5, '主食材'],
   ['五花肉', 'lurou_fan', 5, '主食材'],
-  ['豆腐', 'mapo_doufu', 1, '主食材'],
+  ['豆腐', 'mapo_doufu', 2, '主食材'],  // 家常豆腐（W49）菜名也有豆腐，兩道真正以豆腐為主的菜排前 2 即可
+  ['豆腐', 'jiachang_doufu', 2, '主食材'],
   ['高麗菜', 'gaolicai_fan', 1, '主食材'],
   ['捲心菜', 'gaolicai_fan', 1, '材料別名'],
   ['皮蛋', 'xia_pidan_shourou_zhou', 1, '主食材'],
