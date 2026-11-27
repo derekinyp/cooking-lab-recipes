@@ -29,3 +29,4 @@ concepts:
   # ── P1 新增（2026-11-20）──
   - {id: cut/ma_er_duo, zh: 馬耳朵形, alt: [馬耳朵, 斜刀段], en: {term: diagonal cut, match: close}, broader: cut/duan, size_mm: null, note: "DB51 D.8 蒜苗『切成馬耳朵形』，未給尺寸", source: DB51}
   - {id: cut/pian_thin_skin_on, zh: 皮肉相連薄片, alt: [連皮薄片], en: {term: thin skin-on slice, match: close}, broader: cut/pian, size_mm: null, note: "DB51 A.1 蒜泥白肉『長約 10cm、寬約 5cm、厚約 0.15cm』屬單一食譜數字，寫在食譜裡", source: DB51}
+  - {id: cut/si_ercu, zh: 二粗絲, alt: [], en: {term: medium-thick julienne, match: close}, broader: cut/si, size_mm: null, note: "DB51/T 1728 魚香肉絲『猪肉切成二粗丝』，標準未給毫米", source: DB51}

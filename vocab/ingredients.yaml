@@ -127,3 +127,15 @@ concepts:
   # ── W48 每週新增（2026-11-23）──
   - {id: ing/parsley, zh: 巴西里, alt: [歐芹, 洋香菜], note: "W48 蒜香辣椒義大利麵"}
   - {id: ing/potato, zh: 馬鈴薯, alt: [洋芋], note: "W48 西班牙馬鈴薯烘蛋"}
+  # ── W48 每週新增續（2026-11-24）──
+  - {id: ing/wood_ear, zh: 木耳, alt: [水發木耳, 黑木耳], note: "W48 魚香肉絲；DB51 表 A.4『水发木耳』"}
+  - {id: ing/paolajiao, zh: 泡辣椒, alt: [泡椒, 泡辣椒末], note: "W48 魚香肉絲；DB51 表 A.4『泡辣椒末』，不同於乾辣椒與郫縣豆瓣"}
+  - {id: ing/beef, zh: 牛肉, alt: [牛肉絲, 牛肉片], note: "W48 蔥爆牛肉；主來源只寫『牛肉絲』，未寫部位或肥瘦"}
+  - {id: ing/clam, zh: 蛤蜊, alt: [蛤仔, 文蛤], note: "W48 蛤蜊蒸蛋"}
+  - {id: ing/goji, zh: 枸杞, alt: [枸杞子], note: "W48 蛤蜊蒸蛋"}
+  - {id: ing/dried_squid, zh: 乾魷魚, alt: [魷魚乾], note: "W48 客家小炒；需泡發"}
+  - {id: ing/dougan, zh: 豆干, alt: [豆乾, 豆腐干], note: "W48 客家小炒"}
+  - {id: ing/oyster_sauce, zh: 蠔油, alt: [蚝油], note: "W48 客家小炒"}
+  - {id: ing/black_vinegar, zh: 烏醋, alt: [黑醋], note: "W48 客家小炒"}
+  - {id: ing/water_spinach, zh: 空心菜, alt: [蕹菜, 通菜], note: "W48 蒜炒空心菜"}
+  - {id: ing/chicken, zh: 雞肉, alt: [雞, 雞肉塊], note: "W48 香菇雞湯；來源只寫『雞』、沒寫部位，不能歸腿肉或胸肉"}

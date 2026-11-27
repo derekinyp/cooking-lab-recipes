@@ -21,3 +21,6 @@ units:
   - {id: s, zh: 秒, dim: time}
   - {id: min, zh: 分鐘, dim: time}
   - {id: pack, zh: 包, dim: count, note: "包裝單位；每包重量若原文沒寫則標 missing。P3 三杯雞"}
+  - {id: liang, zh: 兩, dim: mass, conv: null, note: "台制／市制質量單位；各地換算不同，照原文保留不換算。W48 蒜炒空心菜"}
+  - {id: spoon, zh: 匙（未分大小）, dim: volume, conv: null, note: "來源只寫『匙』、未註明大匙或小匙，不自行指定。W48 客家小炒"}
+  - {id: whole_bird, zh: 隻, dim: count, conv: null, note: "整隻禽類的量詞，照原文保留不換算重量。W48 香菇雞湯"}

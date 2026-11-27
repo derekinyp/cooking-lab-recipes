@@ -1,0 +1,158 @@
+# 蛤蜊蒸蛋（電鍋版）— 起始檔，規格 v1.0
+# 主來源 M＝愛料理 小餐桌的家餚〈蛤蜊蒸蛋（電鍋蒸蛋）〉（2 人份）：蛋、蛤蜊、蛤蜊湯、鰹魚醬油、
+#   外鍋水量、鍋蓋留縫、燜的時間全部只用 M 的數字，不混拼。
+# 對照：K1＝Cookpad 小毓の饗樂廚房〈蛤蜊蒸蛋〉（20 分鐘、4 人份，電鍋版）；
+#       K2＝Cookpad 愛海食堂〈蛤蜊蒸蛋(by電鍋)〉（30 分鐘、4 人份，大同電鍋版）。
+# M、K1 用爐上煮蛤蜊後再蒸；K2 在電鍋蒸到一半時才放蛤蜊（不煮蛤蜊）。三道都用電鍋，無烤箱／氣炸鍋／蒸籠，不需家庭改法（煮蛤蜊鍋具除外，見 a1 note；a1 只依 M）。
+schema_version: "1.0"
+recipe:
+  id: gela_zhengdan.taiwan.home_dianguo
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/gela_zhengdan
+  name: {zh_hant: 蛤蜊蒸蛋, zh_hans: 蛤蜊蒸蛋, en: Clam steamed egg custard}
+  variant: 電鍋版
+  summary: 蛤蜊在滾水中大火煮到一開口就撈起，湯過濾放涼；蛋液加鰹魚醬油打勻、過篩，照蛋液 1：蛤蜊湯 2 混合，倒入排好蛤蜊的盤子，電鍋外鍋加蒸架與 1.2 米杯水、鍋緣橫放筷子留縫，蒸到開關跳起再燜 5~10 分鐘，撒蔥花與枸杞。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "主來源 M 與對照 K1、K2 皆為台灣食譜平台作者的家常電鍋做法（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣食譜平台愛料理；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: 2, status: sourced, evidence: M, note: "M 標『2人份』，主體用 M 原量不縮放。K1 標 4 人份、K2 標 4 人份（對照）"}
+  status: cross_checked
+  sources:
+    - {id: M, title: "愛料理 小餐桌的家餚〈蛤蜊蒸蛋（電鍋蒸蛋）〉（2021-07-01）", url: "https://icook.tw/recipes/382527", level: C, type: web, accessed: 2026-11-24,
+       note: "主來源（份量、比例、外鍋水量、鍋蓋留縫、燜的時間）。2 人份。雞蛋3顆（120mL）、蛤蜊15顆（大顆，300克）、蛤蜊湯240mL、蔥綠適量、枸杞適量、鰹魚醬油1大匙；過篩後蛋液：蛤蜊湯=1：2；外鍋1.2米杯水（約180mL）＋蒸架，鍋緣橫放1根筷子留縫，蒸至開關跳起，燜5~10分鐘。煮蛤蜊：水滾維持中大火、一打開口立刻夾出。枸杞泡米酒15分鐘。未標總料理時間"}
+    - {id: K1, title: "Cookpad 小毓の饗樂廚房〈蛤蜊蒸蛋〉（2020-10-12）", url: "https://cookpad.com/tw/食譜/13827170", level: C, type: web, accessed: 2026-11-24,
+       note: "對照。20 分鐘、4 人份。雞蛋3顆（約180ml）、蛤蜊300g、青蔥1/4根、米酒1大匙、水1杯（煮蛤蜊）、鹽1/8茶匙、鰹魚醬油1茶匙（淋）；蛋：高湯=1:1.1（蛋180ml：高湯200ml），蛋液過篩2次；電鍋外鍋2/3杯水，蓋子插一隻筷子留縫隙，跳保溫後燜2-3分鐘"}
+    - {id: K2, title: "Cookpad 愛海食堂 食在荒野〈蛤蜊蒸蛋(by電鍋)〉（2017-05-22）", url: "https://cookpad.com/tw/食譜/2638978-蛤蜊蒸蛋by電鍋", level: C, type: web, accessed: 2026-11-24,
+       note: "對照。30 分鐘、4 人份。雞蛋3顆、蛤蜊4-5顆、海鹽少許、醇味霖少許、溫開水約300c.c；蛋：水=1：5（用半顆蛋殼量 15 次溫開水）；大同電鍋蒸架，內鍋倒量米杯刻度 8 的水，鍋蓋留小縫；蛤蜊蒸到一半才放；開關跳起後等約 3 分鐘，口感『如同茶碗蒸，滑嫩可口』"}
+  extracted_by: [kimi, codex]
+  changelog:
+    - {version: "1.0", date: 2026-11-24, change: "起始檔：以 M 為主來源（電鍋版、資訊最完整）；份量、比例、外鍋水量、留縫、燜的時間只用 M；K1、K2 放比較表與 notes", by: kimi}
+    - {version: "1.0", date: 2026-11-27, change: "Codex 交叉核對後修正：蛤蜊合併成單一材料（顆數與克數同一括註）；煮蛤蜊只算 M、K1，K2 是蒸到一半放；過濾工具與燜的秒數換算加註", by: codex}
+    - {version: "1.0", date: 2026-11-27, change: "Codex 2 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_egg, concept: ing/egg, label: 雞蛋, role: 主料,
+     qty: {value: 3, unit: piece, raw_text: "雞蛋3顆", evidence: M, status: sourced, note: "M 原量；M 另標『3顆（120mL）』，過篩後蛋液量出為 120mL（raw_text：『打勻的雞蛋，過篩1次，再倒入量杯量出mL值，為120mL』）"}}
+  - {id: i_clam, concept: ing/clam, label: 蛤蜊（大顆）, role: 主料,
+     qty: {value: 15, unit: piece, raw_text: "蛤蜊15顆（大顆，300克）", evidence: M, status: sourced, note: "M 原量，顆數與克數並列在同一個括註；另一個單位的數字是 300 克（原文『300克』），不是另一份蛤蜊，不要加總。"}}
+  - {id: i_broth, concept: ing/stock_light, label: 蛤蜊湯（煮蛤蜊的湯）, role: 液體,
+     qty: {value: 240, unit: ml, raw_text: "蛤蜊湯240mL", evidence: M, status: sourced, note: "M 食材表列『蛤蜊湯240mL』；實為步驟一煮蛤蜊瀝出的湯，步驟三『因此蛤蜊湯取240mL』是照蛋液 120mL 的 2 倍取的。M 沒另加清水或高湯"}}
+  - {id: i_soy, concept: ing/soy_sauce, label: 鰹魚醬油, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "鰹魚醬油1大匙或隨喜好增減", evidence: M, status: sourced, note: "M 原量；『或隨喜好增減』為原文。M 推薦品牌鮮美露。vocab 無鰹魚醬油專用 id，暫用 ing/soy_sauce（見建議新增詞）"}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥綠（配色）, form: 蔥花, role: 輔料, optional: true,
+     qty: {value: null, unit: null, qualitative: 適量, raw_text: "蔥綠適量", evidence: M, status: sourced, note: "M：『蔥綠和枸杞為配色』"}}
+  - {id: i_goji, concept: ing/goji, label: 枸杞（配色）, role: 輔料, optional: true,
+     qty: {value: null, unit: null, qualitative: 適量, raw_text: "枸杞適量", evidence: M, status: sourced, note: "M：枸杞沖洗，泡米酒15分鐘，瀝乾；泡的米酒量 M 沒寫。ing/goji 為建議新增詞"}}
+  - {id: i_wine_goji, concept: ing/rice_wine, label: 米酒（泡枸杞用）, role: 調料, optional: true,
+     qty: {value: null, unit: null, raw_text: null, status: missing, note: "M 只寫『泡米酒15分鐘』，沒寫米酒用量"}}
+  - {id: i_outer_water, concept: ing/water, label: 外鍋水, role: 液體,
+     qty: {value: 1.2, unit: cup, raw_text: "電鍋外鍋放蒸架並倒入1.2米杯水（約180mL）", evidence: M, status: sourced, note: "M 原量，『米杯』為 M 原文單位（1 米杯＝180 ml 是 M 括註的原話，非換算）。杯、匙不換算（規則）"}}
+
+states:
+  - {id: s_clam_opened, label: 開口即撈起的蛤蜊}
+  - {id: s_broth_raw, label: 煮蛤蜊留下的湯（尚未過濾）}
+  - {id: s_broth, label: 過濾放涼的蛤蜊湯}
+  - {id: s_egg_beaten, label: 加鰹魚醬油打勻的蛋液}
+  - {id: s_egg_mix, label: "過篩後與蛤蜊湯混合的蛋液（120mL : 240mL）"}
+  - {id: s_plated_raw, label: 倒進蛤蜊盤、撈掉表面泡泡的生蛋液}
+  - {id: s_steamed, label: 蒸至開關跳起的蒸蛋}
+  - {id: s_rested, label: 燜好的蛤蜊蒸蛋}
+  - {id: s_final, label: 蛤蜊蒸蛋, role: final}
+
+actions:
+  - id: a1
+    technique: tech/boil
+    term: 滾水大火煮蛤蜊，一開口立刻夾出
+    inputs: [i_clam]
+    outputs: [s_clam_opened, s_broth_raw]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/medium_high, raw: "起一鍋水，煮至滾，維持中大火，加入蛤蜊", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫煮多久，只寫『一打開口，就立刻夾出來』", status: missing}
+    completion:
+      - {observe: 蛤蜊, target: 殼一打開口就立刻夾出（原文：『盯著蛤蜊們，一打開口，就立刻夾出來放在盤子上』）, method: 目測, evidence: M}
+    note: "本步只依 M（K1 也先煮蛤蜊，K2 不煮，是蒸到一半才放蛤蜊）。M 只寫『起一鍋水』沒寫鍋具；用湯鍋是家庭改法（推論）。M 貼士：『滾水+大火煮蛤蜊，縮短它受熱的時間，肉質才會嫩嫩』。M 步驟沒寫吐沙（對照：K1『將蛤蜊泡鹽水吐沙後沖乾淨備用』、K2 亦未寫）"
+  - id: a2
+    technique: tech/drain
+    term: 蛤蜊高湯過濾 1 次，放涼備用
+    inputs: [s_broth_raw]
+    outputs: [s_broth]
+    tool: tool/strainer
+    completion:
+      - {observe: 蛤蜊湯, target: 過濾 1 次、放涼（原文：『蛤蜊高湯過濾1次，放涼，備用』）, method: 目測, evidence: M}
+    note: "原文寫『蛤蜊高湯過濾1次』，沒寫用什麼濾具；詞表的『漏勺（瀝網）』只是最接近的代碼，家用可用濾網或濾勺（推論），不是撈湯。實際取用 240mL 在步驟四決定（i_broth note）"
+  - id: a3
+    technique: tech/combine
+    term: 雞蛋加鰹魚醬油，順同一方向打勻
+    inputs: [i_egg, i_soy]
+    outputs: [s_egg_beaten]
+    tool: tool/bowl
+    completion:
+      - {observe: 蛋液, target: 有打散就好、勿過度（原文：『順同一個方向打勻，有打散就好，勿過度，避免打入過多的空氣』）, method: 目測, evidence: M}
+  - id: a4
+    technique: tech/combine
+    term: 蛋液過篩、量出 120mL，與放涼蛤蜊湯 240mL 混合
+    inputs: [s_egg_beaten, s_broth, i_broth]
+    outputs: [s_egg_mix]
+    tool: tool/bowl
+    completion:
+      - {observe: 蛋液, target: 過篩1次、量出120mL（原文：『過篩後蛋液：蛤蜊湯=1：2』『為120mL，因此蛤蜊湯取240mL』）, method: 量杯目測, evidence: M}
+    note: "過篩（filter/strain）vocab 無對應技法 id，本步以 tech/combine 記混合、過篩寫在 term 與 note（見建議新增詞 tech/strain）。攪拌程度：原文『稍微拌勻』"
+  - id: a5
+    technique: tech/combine
+    term: 倒入盛裝蛤蜊的盤中，撈出表面小泡泡
+    inputs: [s_egg_mix, s_clam_opened]
+    outputs: [s_plated_raw]
+    tool: tool/bowl
+    completion:
+      - {observe: 液面, target: 表面小泡泡撈淨（原文：『撈出表面的小泡泡』）, method: 目測, evidence: M}
+    note: "容器：M 小撇步『建議使用平底盤、有高度的容器』，作者盤子 21.5 公分 x 4 公分（M 原文）。蛤蜊排在盤裡是步驟四『倒入盛裝蛤蜊的盤子中』的既成狀態（推論：排蛤蜊動作夾在步驟一與四之間，M 未單獨成步）"
+  - id: a6
+    technique: tech/steam
+    term: 電鍋外鍋放蒸架加水，鍋緣橫放筷子留縫，蒸至開關跳起
+    inputs: [s_plated_raw, i_outer_water]
+    outputs: [s_steamed]
+    tool: tool/electric_cooker
+    params:
+      heat: {level: null, raw: "電鍋按下開關，無火力檔位"}
+      duration: {min_s: null, max_s: null, raw: "原文只寫『蒸煮至開關跳起』，沒寫分鐘數", status: missing}
+    completion:
+      - {observe: 電鍋開關, target: 開關跳起（原文：『按下開關，蒸煮至開關跳起』）, method: 目測（電鍋開關）, evidence: M}
+      - {observe: 鍋蓋, target: 鍋緣橫放1根筷子、蓋上鍋蓋使其留有縫隙而非密閉（原文照錄）, method: 目測, evidence: M}
+    note: "完成口感 M 沒在步驟寫；成品照說明『裡裡外外都光滑軟嫩』（M 原文），K2 對照『口感如同茶碗蒸，滑嫩可口』。跳起時間因電鍋而異，原文沒寫分鐘，待試做計時"
+  - id: a7
+    technique: tech/rest
+    term: 跳起後燜 5~10 分鐘（不關電源、不開鍋蓋）
+    inputs: [s_steamed]
+    outputs: [s_rested]
+    tool: tool/electric_cooker
+    params: {duration: {min_s: 300, max_s: 600, raw: "燜5~10分鐘", is_guide: true, evidence: M, status: sourced}}
+    completion:
+      - {observe: 計時, target: 燜滿 5~10 分鐘；M 定義『不要關掉電鍋的電源、不要打開電鍋的鍋蓋』, method: 計時, evidence: M}
+    note: "原文單位是分鐘（5~10 分鐘）；min_s／max_s 只是欄位要的換算秒數。對照：K1『跳保溫後，再燜2-3分鐘』、K2『開關跳起後等約3分鐘』"
+  - id: a8
+    technique: tech/plate
+    term: 取出，撒上蔥花和枸杞
+    inputs: [s_rested, i_scallion, i_goji, i_wine_goji]
+    outputs: [s_final]
+    tool: tool/bowl
+    completion:
+      - {observe: 成品, target: 撒好蔥花和枸杞（原文：『取出撒上蔥花和枸杞即可』）, method: 目測, evidence: M}
+    note: "枸杞已依 M 泡米酒15分鐘瀝乾（a1 前置，可與各步並行）。蔥綠切法 M 沒寫（寫蔥花，推論為切蔥花）"
+
+serving:
+  completion:
+    - {observe: 成品狀態, target: 裡裡外外都光滑軟嫩（M 成品照說明原文）, method: 目測與試吃, evidence: M}
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
+  sensory_target: {texture: 光滑軟嫩（M）、對照 K2『如同茶碗蒸，滑嫩可口』, taste: 原文沒寫；有蛤蜊鮮味與鰹魚醬油鹹香（M、K1 描述，非完成標準）, color: 原文沒寫}
+
+notes:
+  weekday: "邊緣：M 沒標總料理時間（電鍋蒸至跳起，分鐘數原文沒寫，待試做計時）；K1 標 20 分鐘（4 人份、含煮蛤蜊與燜 2-3 分鐘）、K2 標 30 分鐘（4 人份）。若試做落在 20 分鐘上下則平日（≤20 分鐘）勉強可行，待試做確認"
+  burners: "任一時刻 ≤1 口爐：煮蛤蜊用 1 口爐（a1，湯鍋，M 只寫『起一鍋水』，用湯鍋是家庭改法（推論）），電鍋蒸不佔爐口；另一口爐可同時炒別的菜"
+  spicy_split: "M、K1、K2 都沒有辣椒、花椒、辣豆瓣，整份就是不辣那份，天然符合『不辣不麻』，不需分流"
+  no_scale: "無秤版照 M 即可：蛋用顆數、蛤蜊用顆數（15 顆大顆）、蛤蜊湯與外鍋水用 ml 或米杯刻度（M 寫 1.2 米杯水約 180mL），全程不需秤"
+  compare: "蛋水比：M 蛋液：蛤蜊湯=1：2；K1 蛋：高湯=1:1.1（180ml:200ml）；K2 蛋：溫開水=1：5。外鍋水：M 1.2 米杯、K1 2/3 杯、K2 量米杯刻度 8。燜：M 5~10 分鐘、K1 2-3 分鐘、K2 約 3 分鐘。三份都留鍋蓋縫（M 與 K1 用 1 根筷子、K2 只寫留小縫）"
+  missing: "原文沒寫：M 的總時間與蒸的分鐘數、煮蛤蜊的時間、枸杞泡米酒的米酒量、鹽（M 無鹽）、蛤蜊吐沙與否、上桌溫度"
+  decisions: "已選定（2026-11-24）：主來源＝M（電鍋版、2 人份、比例與外鍋水量資訊最完整）；主體全部採 M 原量不縮放"

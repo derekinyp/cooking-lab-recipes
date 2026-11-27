@@ -1,0 +1,214 @@
+# 魚香肉絲（四川省地方標準版）— 起始檔，規格 v1.0
+# 主來源 S1＝DB51/T 1728-2014 附錄 A.4；所有數字逐字取自表 A.4 與 A.4.2，來源沒寫的一律 null＋status: missing。
+schema_version: "1.0"
+recipe:
+  id: yuxiang_rousi.sichuan.db51t1728
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/yuxiang_rousi
+  name: {zh_hant: 魚香肉絲, zh_hans: 鱼香肉丝, en: Yuxiang shredded pork}
+  variant: 四川省地方標準版
+  summary: 肉絲炒散至斷生，青筍與水發木耳炒至斷生；下泡辣椒末、薑米、蒜米、蔥花炒香，倒入兌好的糖、醋、醬油芡汁，收至包芡。
+  cuisine:
+    - {id: cuisine/chuan, basis: "DB51/T 1728-2014 將魚香肉絲列為川菜經典菜餚（附錄 A.4）", claim: primary, evidence: S1}
+    - {id: region/sichuan, basis: "四川省地方標準", claim: primary, evidence: S1}
+  flavor_template: {ref: flavor/yuxiang, basis: "DB51/T 1728-2014 附錄 A.4 為魚香味型標準配方；投料順序『泡辣椒、薑蒜炒香，倒入兌好的芡汁』與味型詞表 order 一致", evidence: S1}
+  servings: {value: null, status: missing, note: "標準未標份數。表 A.4 豬肉 200 g，不可據此推算份數"}
+  status: cross_checked
+  catalog:
+    - {list: 中國烹飪協會2018地域經典名菜, region: 四川, listed: null, note: "魚香肉絲是否入選四川名錄待 K4 核對"}
+  sources:
+    - id: S1
+      title: "DB51/T 1728-2014《中國川菜經典菜餚製作工藝規範》附錄 A.4（鱼香肉丝的配方及制作工艺）"
+      url: https://dbba.sacinfo.org.cn/portal/download/16132ff757ea958e03976e65675614f1
+      level: A
+      type: standard
+      accessed: 2026-11-24
+      note: "配方允許誤差 ≤10%；水澱粉＝澱粉:水 1:1（標準總則註）；味精可選用或不選用。本機 sources/db51t1728-2014.txt 第 966–1014 行"
+    - id: T1
+      title: "愛料理 🌿跳Tone的廚房〈【魚香肉絲】撩起來勢洶洶的😋食慾！〉（2022-12-25）"
+      url: https://icook.tw/recipes/429566
+      level: C
+      type: web
+      accessed: 2026-11-24
+      note: "台灣家常對照。4 人份、20 分鐘；用涼薯（豆薯）與新鮮筍絲、辣豆瓣醬（辣椒醬）取代標準的青筍與泡辣椒；肉絲先滑散快炒盛出，另鍋爆香。步驟原文：『油熱放入醃好的豬肉絲滑散快炒，盛盤備用。』『另起一個鍋倒入2 大匙的沙拉油』『再放入辣豆瓣醬(辣椒醬)煸炒』『大火快炒』。網頁結構化資料有完整食材表（對照用，不採進主體數字）"
+    - id: T2
+      title: "愛料理 黃二姐美食〈正宗魚香肉絲〉（2024-12-24）"
+      url: https://icook.tw/recipes/471062
+      level: C
+      type: web
+      accessed: 2026-11-24
+      note: "台灣家常對照。2 人份、20 分鐘；肉絲以蛋白、鹽、薑末、太白粉、植物油醃製至少 10 分鐘，中火炒至變白盛出；辣豆瓣醬小火拌炒出香味，蔥薑蒜爆香，木耳青椒紅蘿蔔筍絲大火快炒 2-3 分鐘，回鍋肉絲與醬汁拌炒。網頁結構化資料有完整食材表（僅作對照，未採入主體數字）"
+  extracted_by: [kimi, codex]
+  changelog:
+    - {version: "1.0", date: 2026-11-24, change: "起始檔：主來源 DB51/T 1728-2014 附錄 A.4 逐字錄入；台灣家常對照（T1、T2）僅入比較，不混拼數字", by: kimi}
+    - {version: "1.0", date: 2026-11-24, change: "Codex 交叉核對後修正：摘要改寫成標準原文完成狀態；T2 投料順序改為與標準不同；一鍋一爐改標推論；刪除 160℃ 無依據的感官換算；份數備註不據豬肉重量推算", by: codex}
+    - {version: "1.0", date: 2026-11-27, change: "Codex 3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_pork, concept: ing/pork, label: 豬肉, role: 主料,
+     qty: {value: 200, unit: g, raw_text: "猪肉 200", evidence: S1, status: sourced}}
+  - {id: i_celtuce, concept: ing/celtuce_stem, label: 青筍, role: 輔料,
+     qty: {value: 100, unit: g, raw_text: "青笋 100", evidence: S1, status: sourced},
+     note: "台灣市場常見萵筍／A 菜心近似物替代與否，原文沒寫"}
+  - {id: i_woodear, concept: ing/wood_ear, label: 水發木耳, role: 輔料,
+     qty: {value: 30, unit: g, raw_text: "水发木耳 30", evidence: S1, status: sourced},
+     note: "概念 id 為建議新增（vocab 尚無木耳）"}
+  - {id: i_paolajiao, concept: ing/paolajiao, label: 泡辣椒末, role: 香料,
+     qty: {value: 50, unit: g, raw_text: "泡辣椒末 50", evidence: S1, status: sourced},
+     note: "概念 id 為建議新增；辣味來源，一開始下鍋（見 A.4.2.3），無法最後分開"}
+  - {id: i_ginger, concept: ing/ginger, label: 姜米, role: 輔料,
+     qty: {value: 7, unit: g, raw_text: "姜米 7", evidence: S1, status: sourced}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜米, role: 輔料,
+     qty: {value: 15, unit: g, raw_text: "蒜米 15", evidence: S1, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 葱花, role: 輔料,
+     qty: {value: 25, unit: g, raw_text: "葱花 25", evidence: S1, status: sourced}}
+  - {id: i_salt_m, concept: ing/salt, label: 食鹽（碼味）, role: 調料,
+     qty: {value: 1.5, unit: g, raw_text: "食盐 3（码味 1.5、调味 1.5）", evidence: S1, status: sourced},
+     note: "表 A.4 總量 3 g，此為碼味分項；調味 1.5 g 在 j_salt"}
+  - {id: i_wine_m, concept: ing/cooking_wine, label: 料酒（碼味）, role: 調料,
+     qty: {value: 3, unit: g, raw_text: "料酒 6（码味 3、调味 3）", evidence: S1, status: sourced},
+     note: "表 A.4 總量 6 g，此為碼味分項；調味 3 g 在 j_wine"}
+  - {id: i_starch_m, concept: ing/starch_slurry_1to1, label: 水澱粉（碼味）, role: 芡粉,
+     qty: {value: 40, unit: g, raw_text: "水淀粉 55（码味 40、调味 15）", evidence: S1, status: sourced},
+     note: "表 A.4 總量 55 g，此為碼味分項；調味 15 g 在 j_starch；水澱粉＝澱粉:水 1:1（標準總則註）"}
+  - {id: i_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂,
+     qty: {value: 70, unit: g, raw_text: "食用油 70", evidence: S1, status: sourced}}
+
+components:
+  - id: c_sauce
+    call: {ref: recipe/yuxiang_sauce.db51t1728, version: "1.0", scale: 1.0}  # 結構欄位，非原文數字
+    output_as: s_sauce
+    make_ahead: true
+    note: "可先兌好（推論：原文沒說可預先製作，但 A.4.2.2 獨立成段『入碗調成芡汁』）"
+    definition:
+      recipe:
+        id: yuxiang_sauce.db51t1728
+        version: "1.0"
+        kind: sauce
+        name: {zh_hant: 魚香芡汁（兌碗芡）}
+        flavor_template: {ref: flavor/yuxiang, evidence: S1}
+        status: draft
+      ingredients:
+        - {id: j_salt, concept: ing/salt, label: 食鹽（調味）, role: 調料, qty: {value: 1.5, unit: g, raw_text: "食盐 3（码味 1.5、调味 1.5）", evidence: S1, status: sourced}}
+        - {id: j_sugar, concept: ing/white_sugar, label: 白糖, role: 調料, qty: {value: 17, unit: g, raw_text: "白糖 17", evidence: S1, status: sourced}}
+        - {id: j_soy, concept: ing/soy_sauce, label: 酱油, role: 調料, qty: {value: 4, unit: g, raw_text: "酱油 4", evidence: S1, status: sourced}}
+        - {id: j_vinegar, concept: ing/vinegar, label: 醋, role: 調料, qty: {value: 10, unit: g, raw_text: "醋 10", evidence: S1, status: sourced}}
+        - {id: j_wine, concept: ing/cooking_wine, label: 料酒（調味）, role: 調料, qty: {value: 3, unit: g, raw_text: "料酒 6（码味 3、调味 3）", evidence: S1, status: sourced}}
+        - {id: j_starch, concept: ing/starch_slurry_1to1, label: 水澱粉（調味）, role: 芡粉, qty: {value: 15, unit: g, raw_text: "水淀粉 55（码味 40、调味 15）", evidence: S1, status: sourced}}
+        - {id: j_stock, concept: ing/stock_light, label: 鲜汤, role: 液體, qty: {value: 30, unit: g, raw_text: "鲜汤 30", evidence: S1, status: sourced}}
+        - {id: j_msg, concept: ing/msg, label: 味精, role: 調料, optional: true, qty: {value: 1, unit: g, raw_text: "（味精） 1", evidence: S1, status: sourced, note: "可選用或不選用（表 A.4 注）"}}
+      actions:
+        - id: ja1
+          technique: tech/combine
+          term: 入碗調成芡汁
+          inputs: [j_salt, j_sugar, j_soy, j_vinegar, j_wine, j_starch, j_stock, j_msg]
+          outputs: [s_sauce]
+          tool: tool/bowl
+          completion: [{observe: 調料, target: 調成芡汁（原文：入碗調成芡汁；溶解、均勻程度原文沒寫）, method: 目測（推論）}]
+          note: "糖:醋:醬油＝17:10:4（依表 A.4 原文換算的比例，非原文原句）"
+
+states:
+  - {id: s_shredded, label: 豬肉二粗絲}
+  - {id: s_marinated, label: 碼味上漿肉絲}
+  - {id: s_veg_shredded, label: 青筍二粗絲、木耳粗絲}
+  - {id: s_hot_oil, label: 160°C 熱油}
+  - {id: s_pork_cooked, label: 炒散斷生肉絲}
+  - {id: s_fragrant, label: 泡辣椒蔥薑蒜炒香底}
+  - {id: s_veg_cooked, label: 青筍木耳炒斷生}
+  - {id: s_coated, label: 包芡魚香肉絲}
+  - {id: s_final, label: 魚香肉絲, role: final}
+
+actions:
+  - id: a1
+    technique: tech/cut
+    term: 切成二粗絲
+    inputs: [i_pork]
+    outputs: [s_shredded]
+    tool: tool/knife
+    params: {cut: {shape: cut/si_ercu, size_mm: {min: null, max: null}, raw: "二粗丝", evidence: S1, note: "標準未給毫米；cut/si_ercu 為建議新增 id"}}
+    completion: [{observe: 肉絲, target: 大小一致的二粗絲, method: 目測（推論：原文只寫形狀名，沒寫判斷方式）}]
+  - id: a2
+    technique: tech/marinate_coat
+    term: 碼味
+    inputs: [s_shredded, i_salt_m, i_wine_m, i_starch_m]
+    outputs: [s_marinated]
+    tool: tool/bowl
+    params: {duration: {min_s: null, max_s: null, raw: 標準未註明, status: missing}, agitation: {mode: 拌勻}}
+    completion: [{observe: 肉絲, target: 拌勻（原文：加入食盐、料酒、水淀粉拌匀）, method: 目測（推論，原文沒寫判斷方式）}]
+  - id: a3
+    technique: tech/cut
+    term: 青筍切二粗絲、木耳切粗絲
+    inputs: [i_celtuce, i_woodear]
+    outputs: [s_veg_shredded]
+    tool: tool/knife
+    params: {cut: {shape: cut/si, size_mm: {min: null, max: null}, raw: "青笋切成二粗丝；水发木耳切成粗丝", evidence: S1, note: "木耳『粗絲』以 cut/si（alt: 粗絲）表示；毫米原文沒寫"}}
+    completion: [{observe: 青筍與木耳, target: 切好成絲, method: 目測}]
+    can_overlap: [a2]
+  - id: a4
+    technique: tech/heat_oil
+    term: 燒油
+    inputs: [i_oil]
+    outputs: [s_hot_oil]
+    tool: tool/wok
+    params:
+      temperature: {target: oil, min_c: 160, max_c: 160, raw: "锅中放油烧至160℃", evidence: S1}
+      heat: {level: null, raw: 標準未寫火力檔位}
+    completion: [{observe: 油溫, target: 160°C（原文）, method: 原文只給 160℃、沒寫無溫度計時如何判斷（家庭沒有溫度計，待試做校準）, evidence: S1}]
+    note: "標準給定 160℃；原文沒寫無溫度計時的判斷法。家庭沒有料理溫度計，待試做校準（不自編感官換算）"
+  - id: a5
+    technique: tech/stir_fry
+    term: 放入肉絲炒散、斷生
+    inputs: [s_hot_oil, s_marinated]
+    outputs: [s_pork_cooked]
+    tool: tool/wok
+    params: {agitation: {mode: 炒散, continuous: true}}
+    completion: [{observe: 肉絲, target: 炒散、斷生（原文）, method: 目測（推論：原文沒寫判斷方式，建議看肉絲變白、分開）, evidence: S1}]
+  - id: a6
+    technique: tech/aromatics
+    term: 入泡辣椒末、姜米、蒜米、葱花炒香
+    inputs: [s_pork_cooked, i_paolajiao, i_ginger, i_garlic, i_scallion]
+    outputs: [s_fragrant]
+    tool: tool/wok
+    params: {agitation: {mode: 翻炒, continuous: true}}
+    completion: [{observe: 香氣, target: 炒香（原文）, method: 嗅覺（推論：原文沒寫判斷方式）, evidence: S1}]
+    risk: "泡辣椒末在此步下鍋，辣味進入整鍋，無法最後分出（見 notes.spicy_split）"
+  - id: a7
+    technique: tech/stir_fry
+    term: 入青筍絲、木耳炒斷生
+    inputs: [s_fragrant, s_veg_shredded]
+    outputs: [s_veg_cooked]
+    tool: tool/wok
+    params: {agitation: {mode: 翻炒, continuous: true}}
+    completion: [{observe: 青筍、木耳, target: 炒斷生（原文）, method: 目測（推論：原文沒寫判斷方式）, evidence: S1}]
+  - id: a8
+    technique: tech/pour_sauce_thicken
+    term: 倒入芡汁炒勻，收汁呈包芡狀
+    inputs: [s_veg_cooked, s_sauce]
+    outputs: [s_coated]
+    tool: tool/wok
+    params: {thickening: {type: 包芡, starch_ref: j_starch}}
+    completion:
+      - {observe: 芡汁, target: 收汁呈包芡状（原文）, method: 目測, evidence: S1}
+      - {observe: 翻炒, target: 炒勻, method: 目測, evidence: S1}
+  - id: a9
+    technique: tech/plate
+    term: 裝盤
+    inputs: [s_coated]
+    outputs: [s_final]
+    tool: tool/bowl
+    completion: [{observe: 菜品, target: 裝盤（原文：装盘）, method: 目測, evidence: S1}]
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
+  sensory_target: {color: 原文沒寫, taste: 原文沒寫, texture: 原文沒寫}
+
+notes:
+  weekday: "原文沒寫總時間，待試做計時。對照來源 T1、T2 各自標 20 分鐘（不同食譜，只作參考，不據此斷定平日可做）"
+  burners: "標準步驟以鍋中烹製描述；全程一鍋一爐是依步驟安排的推論。對照來源 T1 另起一鍋爆香（不同做法）"
+  spicy_split: "泡辣椒末 50 g 在肉絲斷生後即下鍋炒香（A.4.2.3），辣味與紅色進油、遍布整鍋，無法最後分開加。不辣那份要另外做：另起一鍋，不放泡辣椒末，其餘步驟照 A.4.2.3；不辣版少了泡辣椒的鹹香與紅色，是否以其他調料補足，原文沒寫（家庭改法，推論，不自編數字，待試做）。另：本菜無花椒，『不麻』天然成立。標準沒有不辣版本，此分流是家庭改法（推論）。"
+  cross_check: "T2（C 級）以辣豆瓣醬取代泡辣椒，肉絲先炒至變白盛出；另鍋先炒辣豆瓣醬，再下蔥薑蒜，與標準投料順序不同；T1（C 級）肉絲先盛出、另起一鍋爆香（標準只寫『鍋中』烹製，沒有明言鍋數），屬家常變體。兩者的食材表與數字只作對照，未採入主體（主體只用標準的數字）"
+  no_scale: "無秤版待試做：標準全用克數，家中無料理秤，需先以量勺校準（推論）"
+  missing: "原文沒寫：份數、火力檔位、總時間與各步時間、二粗絲毫米、碼味時間、160℃ 的感官判斷法、上桌溫度與感官目標、青筍是否須先焯水"
+  spec_gaps: "辣味來源無法分開的處理只能寫在 notes，規格無 spicy_split 欄位"

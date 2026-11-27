@@ -1,0 +1,117 @@
+# 蒜炒空心菜（台式家常版）— 起始檔，規格 v1.0
+# 主來源 M＝楊桃美食網〈炒空心菜〉（出處《10分鐘做廣東粥》）：空心菜 6兩、蒜頭 2瓣、
+# 薑絲／辣椒絲／鹽／雞粉 少許，大火快炒至變色。份量只用 M 的數字，不混拼。
+# 對照 C1＝Cookpad 台灣站 May〈蒜炒空心菜〉：蒜末 1大匙、橄欖油 1大匙、雞粉 0.5匙、
+# 2人份、預備 10 分鐘＋步驟 10 分鐘，只放比較表與 note。
+# 單位「兩」照原文保留，詞表 unit/liang，不換算克數。
+schema_version: "1.0"
+recipe:
+  id: chao_kongxincai.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/kongxincai
+  name: {zh_hant: 蒜炒空心菜, zh_hans: 蒜炒空心菜, en: "Stir-fried water spinach with garlic"}
+  variant: 台式家常版
+  summary: 空心菜洗淨切段，熱油鍋爆香蒜頭、薑絲，下空心菜大火快炒到變色，加鹽、雞粉拌勻即盛出；辣椒絲最後分開加（一鍋兩吃）。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "M 小撇步明言『在這裡我們寫的是台式炒空心菜的作法』（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "M 為台灣食譜平台楊桃美食網，平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "M 沒寫份數。對照 C1 標『2人份』（不同來源，只作參考）"}
+  status: cross_checked
+  sources:
+    - {id: M, title: "楊桃美食網〈炒空心菜〉（出處《10分鐘做廣東粥》）", url: "https://www.ytower.com.tw/recipe/F02-087", level: C, type: web, accessed: 2026-11-24,
+       note: "主來源。材料：空心菜6兩、蒜頭2瓣、薑絲少許、辣椒絲少許；調味料：鹽少許、雞粉少許。作法2步：洗淨切段；熱油鍋爆香蒜頭、薑絲，加空心菜以大火快炒至變色時，加調味料拌炒均勻即可盛出。小撇步：『在這裡我們寫的是台式炒空心菜的作法，大火快炒的好處在於顏色會很綠很漂亮』。頁面標籤含 #快速上桌 #30 分鐘內"}
+    - {id: C1, title: "Cookpad 台灣站 May〈蒜炒空心菜〉（2024-12-10）", url: "https://cookpad.com/tw/%E9%A3%9F%E8%AD%9C/23961953", level: C, type: web, accessed: 2026-11-24,
+       note: "對照。2人份；預備食材 10 分鐘、料理步驟 10 分鐘。材料：空心菜1把、蒜末1大匙、橄欖油1大匙、雞粉0.5匙；步驟2『加鹽、雞粉調味』但食材表沒列鹽、也沒寫鹽量。步驟3『大火快炒，拌均勻即可完成』。雞粉『0.5匙』的大匙／小匙原文沒寫"}
+  extracted_by: [kimi, codex]
+  changelog:
+    - {version: "1.0", date: 2026-11-24, change: "起始檔：以 M 為主來源；辣椒絲依需求改為最後分開加（家庭改法，推論）；C1 只作對照", by: kimi}
+    - {version: "1.0", date: 2026-11-27, change: "Codex 交叉核對後修正：補齊主來源 M 的存檔；平日判斷不再套用對照來源時間；刪去『憑一把目測』；試吃與連續翻炒標為推論；單位『兩』註解更新", by: codex}
+    - {version: "1.0", date: 2026-11-27, change: "Codex 2 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_kongxincai, concept: ing/water_spinach, label: 空心菜, role: 主料,
+     qty: {value: 6, unit: liang, raw_text: "空心菜6兩", evidence: M, status: sourced, note: "M 原量。單位『兩』用詞表 liang，照原文不換算克數。對照 C1『空心菜1把』（定性單位，只作參考）"}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜頭, form: 瓣, role: 香料,
+     qty: {value: 2, unit: clove, raw_text: "蒜頭2瓣", evidence: M, status: sourced, note: "M 原量（爆香用，不切；M 沒寫是否切末）"}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑絲, form: 絲, role: 香料,
+     qty: {value: null, unit: null, qualitative: "少許", raw_text: "薑絲少許", evidence: M, status: sourced, note: "M 原量（定性）；刀工對 cut/si_fine"}}
+  - {id: i_chili, concept: ing/chili_fresh, label: 辣椒絲, form: 絲, role: 香料, optional: true,
+     qty: {value: null, unit: null, qualitative: "少許", raw_text: "辣椒絲少許", evidence: M, status: sourced, note: "M 原文辣椒絲與蒜頭、薑絲一起爆香；本檔依一鍋兩吃需求改為最後分開加（家庭改法，推論），見 a4"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
+     qty: {value: null, unit: null, qualitative: "少許", raw_text: "鹽少許", evidence: M, status: sourced, note: "M 只寫『少許』，無數字"}}
+  - {id: i_chicken_powder, concept: ing/chicken_powder, label: 雞粉, role: 調料,
+     qty: {value: null, unit: null, qualitative: "少許", raw_text: "雞粉少許", evidence: M, status: sourced, note: "M 只寫『少許』。對照 C1『雞粉0.5匙』（大匙或小匙原文沒寫；不同來源，只作參考）"}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 油, role: 油脂,
+     qty: {value: null, unit: null, raw_text: null, status: missing, note: "M 只寫『熱油鍋』沒寫油量。建議參考 C1『橄欖油1大匙』（不同來源，只作參考）"}}
+
+states:
+  - {id: s_kxc_clean, label: 洗淨切段的空心菜}
+  - {id: s_aromatics, label: 爆香的蒜頭與薑絲}
+  - {id: s_final_mild, label: 蒜炒空心菜（不辣）, role: final}
+  - {id: s_final_spicy, label: 蒜炒空心菜（加辣椒絲）, note: "辣版為不辣成品分盤後另加辣椒絲；辣度最後加可分開"}
+
+actions:
+  - id: a1
+    technique: tech/cut
+    term: 空心菜洗淨，切段備用
+    inputs: [i_kongxincai]
+    outputs: [s_kxc_clean]
+    tool: tool/knife
+    params: {cut: {shape: cut/duan, raw: "空心菜洗淨，切段備用", evidence: M}}
+    completion: [{observe: 空心菜, target: 洗淨、切成段, method: 目測, evidence: M}]
+    note: "洗滌併入本步；段的長度 M 沒寫"
+  - id: a2
+    technique: tech/aromatics
+    term: 熱油鍋，爆香蒜頭、薑絲
+    inputs: [i_oil, i_garlic, i_ginger]
+    outputs: [s_aromatics]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "熱油鍋，爆香蒜頭、薑絲（火力原文沒寫）", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+    completion:
+      - {observe: 蒜頭、薑絲, target: 原文沒寫；爆香到有香氣（推論，無來源數字）, method: 聞}
+    note: "鍋具用炒鍋為家庭慣用選擇（M 只寫『鍋』沒寫鍋型）。不辣那份：本步維持原樣"
+  - id: a3
+    technique: tech/stir_fry_quick
+    term: 加入空心菜，以大火快炒至變色，加鹽、雞粉拌炒均勻即可盛出
+    inputs: [s_aromatics, s_kxc_clean, i_salt, i_chicken_powder]
+    outputs: [s_final_mild]
+    tool: tool/wok
+    params:
+      heat: {level: heat/high, raw: "以大火快炒至變色時", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫分鐘數", status: missing}
+      agitation: {mode: 拌炒, continuous: true}
+    completion:
+      - {observe: 空心菜, target: 變色（M 原文）, method: 目測, evidence: M}
+      - {observe: 顏色, target: 很綠很漂亮（M 小撇步對大火快炒的說明）, method: 目測, evidence: M}
+      - {observe: 調味, target: 拌炒均勻, method: 目測、試吃（試吃為推論，M 沒寫）, evidence: M}
+    note: "M 作法兩步原文即為本步；時間長短原文沒寫，完成以變色為準。「連續翻炒」是依快炒做法的推論，M 沒明寫"
+  - id: a4
+    technique: tech/toss_in
+    term: 辣椒絲最後分開加
+    inputs: [s_final_mild, i_chili]
+    outputs: [s_final_spicy]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文沒寫（M 原文是開頭與蒜同爆）"}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫", status: missing}
+    completion:
+      - {observe: 辣椒絲, target: 原文沒寫；拌勻即可（推論）, method: 目測}
+    note: "家庭改法（推論）：M 原文辣椒絲在 a2 與蒜頭、薑絲同爆；因家中要『不辣不麻』一份，本檔把辣椒絲改為起鍋後分盤、最後拌入辣的那份，一鍋兩吃；不辣那份完全不接觸辣椒。辣的那份用鍋餘溫或小火拌一下即可，火力與時間原文沒寫"
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
+  sensory_target: {color: "顏色很綠很漂亮（M 小撇步）", texture: 原文沒寫, taste: 原文沒寫}
+
+notes:
+  weekday: "原文沒寫分鐘數，待試做計時。M 頁面標籤只有『#快速上桌 #30 分鐘內』（不是 20 分鐘），所以不能標平日可做；對照 C1 另標『預備食材 10 分鐘、料理步驟 10 分鐘』，是不同食譜，只作參考"
+  burners: "全程 1 口爐、1 只炒鍋；任何時刻不超過 2 口"
+  no_scale: "無秤版：空心菜照原文 6 兩（看攤販台兩標示）；蒜頭 2 瓣數數即可；鹽、雞粉為『少許』，邊炒邊試吃（推論）"
+  spicy_split: "主體（a1–a3）無辣椒、無花椒、無麻味來源；辣椒絲集中在 a4 最後分開加，不辣那份即 s_final_mild，可直接上桌，無需另外做一鍋。花椒、辣豆瓣本菜皆無"
+  decisions: "主來源選 M：M 有明確菜量（6 兩）、蒜量（2 瓣）、火力（大火）與完成狀態（變色），比 C1 完整；C1 份量（1把、大匙）不混入主體"
+  missing: "原文沒寫：油量、鹽與雞粉的實際用量（只寫少許）、爆香火力與時間、快炒分鐘數、段的長度、份數（M）、口感軟硬度、上桌溫度與時限、鍋型"
+  spec_gaps: "見輸出（E）規格不足段落"

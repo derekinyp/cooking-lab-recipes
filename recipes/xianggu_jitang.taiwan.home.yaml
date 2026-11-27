@@ -1,0 +1,106 @@
+# 香菇雞湯（家常湯鍋版）— 起始檔，規格 v1.0
+# 主來源 M＝楊桃美食網〈香菇雞湯〉（曹麗娟示範，出處《教瑪麗亞作菜》）：份量、水量、調味、火力、時間全部只用 M 的數字，不混拼。
+# 對照：楊桃〈香菇雞湯(6)〉（A03-2046，快樂廚房雜誌第86期）、愛料理劉雪瑜〈美味香菇雞湯〉（電鍋版）。
+schema_version: "1.0"
+recipe:
+  id: xianggu_jitang.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/xianggu_jitang
+  name: {zh_hant: 香菇雞湯, zh_hans: 香菇鸡汤, en: Shiitake chicken soup}
+  variant: 家常版（湯鍋版）
+  summary: 雞切塊汆燙去血水，與對切鮮香菇、薑片、米酒、鹽等調味料同入湯鍋，中火燉煮 30 分鐘，撈去浮沫即可。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "主來源 M 為台灣家常一鍋到底湯品（#中式家常 #一鍋到底）（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣食譜平台楊桃美食網；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "M 沒標人份；材料寫『雞1/2隻』"}
+  status: cross_checked
+  sources:
+    - {id: M, title: "楊桃美食網〈香菇雞湯〉（示範：曹麗娟，出處《教瑪麗亞作菜》）", url: "https://www.ytower.com.tw/recipe/A03-122", level: C, type: web, accessed: 2026-11-24,
+       note: "主來源。雞1/2隻、新鮮香菇10朵、薑片5片、水8杯；米酒1/3杯、香油1/3大匙、鹽1/3大匙、柴魚味精1/3大匙；作法：雞切塊汆燙去血水、香菇去蒂對切、8杯水入湯鍋加全部材料、中火燉煮30分鐘、撈去浮沫即可食用。頁首註：『雞肉川燙可以去除血水與腥味』"}
+    - {id: S1, title: "楊桃美食網〈香菇雞湯(6)〉（出處《快樂廚房雜誌第86期》）", url: "https://www.ytower.com.tw/recipe/A03-2046", level: C, type: web, accessed: 2026-11-24,
+       note: "對照。香菇10朵、雞腿肉1支、薑片20公克、蔥段20公克、水1000㏄；鹽1小匙、米酒2大匙；先汆燙，少許油炒香薑片香菇，水煮滾後下雞腿肉小火煮約15分鐘至熟透，加蔥段調味。小撇步：水滾後才下雞腿肉才不會過老乾柴"}
+    - {id: S2, title: "愛料理 劉雪瑜〈美味香菇雞湯〉（2018-06-07）", url: "https://icook.tw/recipes/255094", level: C, type: web, accessed: 2026-11-24,
+       note: "對照（電鍋版）。10 人份；雞肉半隻、香菇適量、鹽2匙半、米酒少許、水適量；雞剁塊、香菇泡水、炒鍋加水燙雞肉撈起，加鹽與米酒後拿去電鍋燉。時間欄標 5 分鐘（推論：可能不含電鍋燉煮時間）。小撇步：可加紅棗枸杞"}
+  extracted_by: [kimi, codex]
+  changelog:
+    - {version: "1.0", date: 2026-11-24, change: "起始檔：以 M 為主來源；S1、S2 作對照。M 沒寫的一律 null＋missing，不補不估", by: kimi}
+    - {version: "1.0", date: 2026-11-27, change: "Codex 交叉核對後修正：雞改用未指定部位的 ing/chicken；1/3 改用文字欄照原文記、不轉小數；S2 香菇不再說成乾香菇；汆燙與撈浮沫不再指定來源沒寫的工具；燉煮技法改歸煮、保留中火；平日判斷與戳熟的標示改清楚", by: codex}
+    - {version: "1.0", date: 2026-11-27, change: "Codex 4 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_chicken, concept: ing/chicken, label: 雞（半隻，切塊）, role: 主料,
+     qty: {value: 0.5, unit: whole_bird, raw_text: "雞 1/2隻", evidence: M, status: sourced, note: "M 原量；部位 M 只寫『雞』沒寫部位（用未指定部位的 ing/chicken）"}}
+  - {id: i_shiitake, concept: ing/shiitake_fresh, label: 新鮮香菇（去蒂對切）, role: 輔料,
+     qty: {value: 10, unit: piece, raw_text: "新鮮香菇10朵", evidence: M, status: sourced, note: "M 用鮮香菇，無泡發步驟；對照 S2 寫香菇「稍微泡水一下」，未註明鮮、乾"}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 香料,
+     qty: {value: 5, unit: slice, raw_text: "薑片5片", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 水, role: 液體,
+     qty: {value: 8, unit: cup, raw_text: "水8杯", evidence: M, status: sourced, note: "M 原量；『杯』容量 M 沒定義，不換算（M 作法第 4 步也寫『將8杯水倒入湯鍋中』）"}}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料,
+     qty: {value: null, unit: cup, qualitative: "1/3杯", raw_text: "米酒1/3杯", evidence: M, status: sourced, note: "原文是分數 1/3，數值欄存不了分數，所以用文字欄照原文記「1/3杯」，不轉成小數；杯容量不換算"}}
+  - {id: i_sesame, concept: ing/sesame_oil, label: 香油, role: 調料,
+     qty: {value: null, unit: tbsp, qualitative: "1/3大匙", raw_text: "香油1/3大匙", evidence: M, status: sourced, note: "原文是分數 1/3，用文字欄照原文記，不轉成小數"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
+     qty: {value: null, unit: tbsp, qualitative: "1/3大匙", raw_text: "鹽1/3大匙", evidence: M, status: sourced, note: "原文是分數 1/3，用文字欄照原文記，不轉成小數"}}
+  - {id: i_dashi_msg, concept: ing/msg, label: 柴魚味精, role: 調料,
+     qty: {value: null, unit: tbsp, qualitative: "1/3大匙", raw_text: "柴魚味精1/3大匙", evidence: M, status: sourced, note: "原文是分數 1/3，用文字欄照原文記，不轉成小數。vocab 只有 ing/msg（味精），柴魚味精列建議新增詞"}}
+
+states:
+  - {id: s_chicken_blanched, label: 汆燙洗淨的雞塊}
+  - {id: s_shiitake_cut, label: 去蒂對切的香菇}
+  - {id: s_ginger_cut, label: 薑片}
+  - {id: s_soup, label: 中火燉煮好的香菇雞湯}
+  - {id: s_final, label: 香菇雞湯, role: final}
+
+actions:
+  - id: a1
+    technique: tech/blanch
+    term: 雞切塊汆燙去血水，撈起洗淨
+    inputs: [i_chicken]
+    outputs: [s_chicken_blanched]
+    params: {duration: {min_s: null, max_s: null, raw: "原文沒寫汆燙多久", status: missing}, heat: {level: null, raw: "汆燙火力原文沒寫"}}
+    completion:
+      - {observe: 雞塊, target: 去血水（頁首註『雞肉川燙可以去除血水與腥味』）, method: 目測（浮沫浮出為推論判斷方式，原文沒寫怎麼判斷）, evidence: M}
+    note: "M 作法第 1 步；M 沒寫用哪種鍋汆燙（家用建議用湯鍋，推論）。用同一湯鍋汆燙再洗淨換水，或直接另起燙鍋，M 沒寫；本檔全程 1 口爐則先燙好撈起洗淨再進 a3（家庭改法，推論）"
+  - id: a2
+    technique: tech/cut
+    term: 香菇洗淨瀝乾去蒂再對切；薑洗淨切片
+    inputs: [i_shiitake, i_ginger]
+    outputs: [s_shiitake_cut, s_ginger_cut]
+    tool: tool/knife
+    completion: [{observe: 香菇, target: 去蒂、對切（M 作法第 2 步）, method: 目測, evidence: M}]
+    can_overlap: [a1]
+  - id: a3
+    technique: tech/boil
+    term: 8 杯水入湯鍋，放入雞肉塊、香菇、薑片與所有調味料，中火燉煮 30 分鐘
+    inputs: [s_chicken_blanched, s_shiitake_cut, s_ginger_cut, i_water, i_wine, i_sesame, i_salt, i_dashi_msg]
+    outputs: [s_soup]
+    tool: tool/stock_pot
+    params:
+      heat: {level: heat/medium, raw: "用中火燉煮30分鐘", evidence: M}
+      duration: {min_s: 1800, max_s: 1800, raw: "中火燉煮30分鐘", is_guide: true, evidence: M, status: sourced}
+    note: "原文寫『燉煮』；詞表『燉』定義為小火長時間，與原文明寫的中火不同，所以技法歸『煮』，原文用字與中火照留"
+    completion:
+      - {observe: 計時, target: 中火燉煮滿 30 分鐘, method: 計時, evidence: M}
+      - {observe: 雞肉熟度, target: 原文沒寫完成狀態；對照 S1『小火煮約15分鐘至熟透』，以筷子戳得穿是家庭判斷建議（推論，不是 M 或 S1 的原句；依據：S1 寫『煮約15分鐘至熟透』，可見熟度才是判斷標準）, method: 戳（推論）}
+  - id: a4
+    technique: tech/season
+    term: 撈去浮沫即可食用
+    inputs: [s_soup]
+    outputs: [s_final]
+    completion: [{observe: 湯面, target: 浮沫撈淨（M 作法第 6 步）, method: 目測, evidence: M}]
+    note: "M 沒寫用什麼工具撈浮沫（家用可用漏勺或湯勺，推論）"
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
+  sensory_target: {taste: 原文沒寫, texture: 原文沒寫；對照 S1 小撇步：雞腿肉勿煮過老、否則乾柴}
+
+notes:
+  weekday: "平日不可（≤20 分鐘）：M 寫中火燉煮就要 30 分鐘，已超過 20 分鐘（再加汆燙與前置，總時間 M 沒寫）。20 分鐘是家庭自訂的平日門檻，不是來源數字"
+  burners: "步驟以一只湯鍋依序汆燙再燉煮；來源沒寫爐口數，全程 1 口爐是依步驟安排的推論"
+  spicy_split: "M、S1、S2 都沒有辣椒、花椒，整鍋就是不辣那份，一鍋兩吃不需分流；想加辣者各自在碗裡加（推論）"
+  missing: "原文沒寫：人份數、雞的部位與克重、汆燙時間與火力、杯／大匙的容量定義、燉煮後的完成狀態（只寫 30 分鐘與撈浮沫）、鍋子大小、上桌溫度"
+  compare: "見輸出 (F) 公開食譜比較表。M 用鮮香菇直接對切；S1 用鮮香菇但先油炒香薑片香菇、水滾才下雞腿肉（防乾柴）；S2 用電鍋燉、香菇稍微泡水（來源未註明鮮、乾），水與香菇量都寫『適量』"

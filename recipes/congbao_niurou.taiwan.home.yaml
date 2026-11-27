@@ -1,0 +1,148 @@
+# 蔥爆牛肉（台式家常版）— 起始檔 draft，規格 v1.0
+# 主來源 S1＝楊桃美食網〈蔥爆牛肉〉（出處《快樂廚房雜誌第96期》）：牛肉份量、蔥量、醃料、調味料、步驟只用 S1 的數字，不混拼。
+# S1 無蠔油、無火力檔位、無份數；S2、S3 放比較表與 notes。
+schema_version: "1.0"
+recipe:
+  id: congbao_niurou.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/congbao_niurou
+  name: {zh_hant: 蔥爆牛肉, zh_hans: 葱爆牛肉, en: Stir-fried beef with scallions}
+  variant: 台式家常版
+  summary: 牛肉絲先用米酒、醬油、糖、水抓拌吸收，最後拌入太白粉保護；起鍋倒入少許沙拉油，放入蒜片爆香，下牛肉絲拌炒至肉色變白，再下醬油、糖、蔥段、紅椒絲拌炒均勻即起。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "主來源 S1 為台灣食譜平台楊桃美食網之中式家常料理（編者分類）", claim: primary, evidence: S1}
+    - {id: region/taiwan, basis: "主來源為台灣平台，平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: S1}
+  flavor_template: {ref: flavor/jiachang, basis: "S1 調味僅醬油與細砂糖，為台灣家常鹹香微甜做法（編者分類）", evidence: S1}
+  servings: {value: null, status: missing, note: "S1 未標份數；主料牛肉絲 150 公克"}
+  status: cross_checked
+  sources:
+    - id: S1
+      title: "楊桃美食網〈蔥爆牛肉〉（出處《快樂廚房雜誌第96期》）"
+      url: https://www.ytower.com.tw/recipe/A01-1206
+      level: C
+      type: web
+      accessed: 2026-11-24
+      note: "主來源。材料：牛肉絲150公克、青蔥5支、紅辣椒1支、蒜仁2顆；醃料：米酒1大匙、醬油1大匙、細砂糖1小匙、水1大匙、太白粉1/2小匙；調味料：醬油1大匙、細砂糖1小匙；作法 3 步。頁面標籤 #30分鐘內 #新手入門。未寫份數、火力、沙拉油用量、各步時間、上桌溫度。牛肉不過油，直接拌炒。"
+    - id: S2
+      title: "愛料理 Hank Chung〈蔥爆牛肉〉（食譜 50247）"
+      url: https://icook.tw/recipes/50247
+      level: C
+      type: web
+      accessed: 2026-11-24
+      note: "比較用。3人份、5分鐘。步驟：牛肉用醃料醃約10分鐘；3大匙油爆香薑絲、蔥白、蒜末後盛起；油倒入牛肉拌一拌再入鍋炒至半熟；加爆香料與醬油、蠔油、米酒；快熟時放蔥青、紅辣椒段，蔥青變色後倒烏醋拌勻。存檔食材表有名稱與數量（例如火鍋牛肉片 300g、紅辣椒段 3支、蔥段 8支等）。本檔以 S1 為主來源，S2 數字只作對照、不採入主體。作者小撇步：辣椒放最後才放（家裡辣椒太辣），可作為一鍋兩吃改法的參考（推論，S2 沒有提出一鍋兩吃）。"
+    - id: S3
+      title: "李錦記台灣〈蔥爆牛肉〉美味食譜"
+      url: https://tw.lkk.com/zh-hk/recipes/twnds19
+      level: C
+      type: web
+      accessed: 2026-11-24
+      note: "比較用（品牌食譜）。材料：牛肉片200克、洋蔥40克、青蔥2根、蒜頭15克、辣椒1條；醃料：蠔油1茶匙、醬油1茶匙、米酒1茶匙、蛋清1顆、太白粉1茶匙，醃約10分鐘；調味料：蠔油1茶匙、醬油1茶匙、米酒1大匙、白胡椒粉1/8茶匙；1大匙油爆香洋蔥絲、蒜片、辣椒片、蔥白，下牛肉拌炒，起鍋前加蔥綠段大火拌炒。S1 無蠔油，此為蠔油用法對照。"
+  extracted_by: [kimi, codex]
+  changelog:
+    - {version: "1.0", date: 2026-11-24, change: "起始檔：主來源 S1（楊桃），份量與步驟全用 S1；S2、S3 比較用", by: kimi}
+    - {version: "1.0", date: 2026-11-24, change: "Codex 交叉核對後修正：牛肉改用不指定肥瘦的 ing/beef；爐口安排改標推論、刪去來源沒寫的大火；去掉把直接拌炒寫成『少油版』的說法", by: codex}
+    - {version: "1.0", date: 2026-11-27, change: "Codex 4 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_beef, concept: ing/beef, label: 牛肉絲, form: 絲, role: 主料,
+     qty: {value: 150, unit: g, raw_text: "牛肉絲150公克", evidence: S1, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 青蔥, form: 段, role: 輔料,
+     qty: {value: 5, unit: stalk, raw_text: "青蔥5支", evidence: S1, status: sourced}}
+  - {id: i_chili, concept: ing/chili_fresh, label: 紅辣椒（去籽切絲；不辣那份省略）, form: 絲, role: 香料,
+     qty: {value: 1, unit: stalk, raw_text: "紅辣椒1支", evidence: S1, status: sourced}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜仁（切片）, form: 片, role: 香料,
+     qty: {value: 2, unit: clove, raw_text: "蒜仁2顆", evidence: S1, status: sourced}}
+  - {id: i_m_wine, concept: ing/cooking_wine, label: 米酒（醃料）, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "米酒1大匙", evidence: S1, status: sourced}}
+  - {id: i_m_soy, concept: ing/soy_sauce, label: 醬油（醃料）, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "醬油1大匙", evidence: S1, status: sourced}}
+  - {id: i_m_sugar, concept: ing/white_sugar, label: 細砂糖（醃料）, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "細砂糖1小匙", evidence: S1, status: sourced}}
+  - {id: i_m_water, concept: ing/water, label: 水（醃料）, role: 液體,
+     qty: {value: 1, unit: tbsp, raw_text: "水1大匙", evidence: S1, status: sourced}}
+  - {id: i_m_starch, concept: ing/starch, label: 太白粉（最後拌入）, role: 芡粉,
+     qty: {value: 0.5, unit: tsp, raw_text: "太白粉1/2小匙", evidence: S1, status: sourced},
+     note: "S1 小撇步：先讓肉絲吸收醬汁風味，最後才加太白粉，避免阻斷入味、並形成保護膜使口感軟嫩"}
+  - {id: i_soy, concept: ing/soy_sauce, label: 醬油（調味）, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "醬油1大匙", evidence: S1, status: sourced}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 細砂糖（調味）, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "細砂糖1小匙", evidence: S1, status: sourced}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 沙拉油（爆香用）, role: 油脂,
+     qty: {value: null, unit: null, qualitative: 少許, raw_text: "倒入少許沙拉油", evidence: S1, status: sourced},
+     note: "S1 只寫『少許』，沒給量；對照：S2『3大匙的油』、S3『1大匙的油』"}
+
+states:
+  - {id: s_veg_cut, label: 切段的青蔥、去籽切絲的紅辣椒、蒜片}
+  - {id: s_beef_mar, label: 抓拌好醃料的牛肉絲}
+  - {id: s_garlic_bloomed, label: 爆香蒜片的油}
+  - {id: s_beef_white, label: 拌炒至肉色變白的牛肉絲}
+  - {id: s_final, label: 蔥爆牛肉, role: final}
+
+actions:
+  - id: a1
+    technique: tech/cut
+    term: 青蔥切段、紅辣椒去籽切絲、蒜仁切片
+    inputs: [i_scallion, i_chili, i_garlic]
+    outputs: [s_veg_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/duan, raw: "青蔥洗淨、切段；紅辣椒去籽、切絲；蒜仁切片", evidence: S1}}
+    completion: [{observe: 配料, target: 切好備用（原文：備用）, method: 目測, evidence: S1}]
+    can_overlap: [a2]
+  - id: a2
+    technique: tech/marinate
+    term: 牛肉絲加米酒、醬油、糖、水抓拌，最後加太白粉拌勻
+    inputs: [i_beef, i_m_wine, i_m_soy, i_m_sugar, i_m_water, i_m_starch]
+    outputs: [s_beef_mar]
+    tool: tool/bowl
+    params:
+      duration: {min_s: null, max_s: null, raw: "S1 沒寫醃多久（對照：S2『醃約10分鐘』、S3『醃約10分鐘』）", status: missing}
+    completion:
+      - {observe: 牛肉絲, target: 先吸收醬汁風味再拌入太白粉（S1 小撇步）, method: 目測, evidence: S1}
+      - {observe: 拌勻, target: 拌勻（原文）, method: 目測, evidence: S1}
+    note: "太白粉最後加是 S1 原文要求；醃多久原文沒寫"
+  - id: a3
+    technique: tech/aromatics
+    term: 起鍋倒少許沙拉油，蒜片爆香
+    inputs: [i_oil, s_veg_cut]
+    outputs: [s_garlic_bloomed]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "S1 沒寫火力（S3 起鍋前寫『大火拌炒』，僅對照）"}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+    completion: [{observe: 蒜片, target: 爆香（香氣出來；原文沒寫判斷方式）, method: 嗅覺, note: "原文沒寫完成狀態，以嗅覺判斷為推論"}]
+    note: "全程用 1 只炒鍋依序做（推論；來源沒寫爐口數或火力）"
+  - id: a4
+    technique: tech/stir_fry
+    term: 下牛肉絲拌炒至肉色變白
+    inputs: [s_garlic_bloomed, s_beef_mar]
+    outputs: [s_beef_white]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文沒寫火力"}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+    completion: [{observe: 牛肉絲, target: 肉色變白, method: 目測, evidence: S1}]
+    note: "S1 沒有過油步驟；倒入少許沙拉油後直接拌炒；S3 也是直接下鍋拌炒，S2 則是先爆香盛起再回鍋。牛肉最怕炒太老（S1 小撇步標題）"
+  - id: a5
+    technique: tech/stir_fry
+    term: 加入調味料、蔥段、紅椒絲，拌炒均勻即可
+    inputs: [s_beef_white, i_soy, i_sugar, s_veg_cut]
+    outputs: [s_final]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文沒寫火力"}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+    completion: [{observe: 全鍋, target: 拌炒均勻即可（原文；沒寫更具體狀態）, method: 目測, evidence: S1}]
+    note: "S1 的紅辣椒絲在此步與蔥段一起下鍋（非一開始爆香），一鍋兩吃可行：先盛出『不辣那份』，剩下的再加辣椒絲拌炒（家庭改法，推論）"
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
+  sensory_target: {color: 原文沒寫, taste: 原文沒寫（僅知醬油鹹香帶微甜，由 S1 調味料推論）, texture: 牛肉絲軟嫩、肉汁不流失（S1 小撇步）}
+
+notes:
+  weekday: "來源只標頁面標籤『#30 分鐘內』，是否 ≤20 分鐘原文沒寫，平日可不可做待試做計時；S2 標 5 分鐘（不同食譜，只作參考）"
+  burners: "步驟用 1 只炒鍋依序進行；來源沒寫爐口數，1 口爐是依步驟安排的推論"
+  spicy_split: "S1 的紅辣椒絲在最後一步（a5）才與蔥段同下，不是一開始爆香，可以一鍋兩吃：a5 先盛出『不辣那份』，鍋中剩餘再加辣椒絲拌炒（家庭改法，推論）；S2 作者也把辣椒放最後才放。不需另外做一鍋"
+  compare: "S2（愛料理 50247）：3人份、5分鐘；3大匙油先爆香薑絲、蔥白、蒜末盛起，再與牛肉合炒，調味用醬油、蠔油、米酒，起鍋前加蔥青與辣椒段、淋烏醋。S3（李錦記）：牛肉片200克配蔥2根，有洋蔥40克，醃料與調味都有蠔油、米酒、白胡椒，起鍋前蔥綠大火拌炒。S1 無蠔油、無洋蔥、無薑；本檔不加（不混拼）"
+  missing: "原文沒寫：份數、沙拉油用量、全部火力檔位、全部時間、醃漬時間、蔥段長度、上桌溫度、成品顏色與味道目標"

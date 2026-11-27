@@ -10,7 +10,7 @@ ingredient_groups:
   - {name: 豬肉, match: [ing/pork, ing/pancetta, ing/canadian_bacon, ing/ham, ing/bacon, ing/minced_pork, ing/pork_]}
   - {name: 雞肉, match: [ing/chicken, ing/duck, ing/goose]}
   - {name: 牛肉, match: [ing/beef, ing/lamb]}
-  - {name: 魚蝦海鮮, match: [ing/fish, ing/shrimp, ing/prawn, ing/clam, ing/oyster, ing/squid, ing/crab, ing/scallop, ing/mussel]}
+  - {name: 魚蝦海鮮, match: [ing/fish, ing/shrimp, ing/prawn, ing/clam, ing/oyster, ing/squid, ing/dried_squid, ing/crab, ing/scallop, ing/mussel]}
   - {name: 蛋, match: [ing/egg, ing/century_egg, ing/salted_egg, ing/duck_egg]}
   - {name: 豆腐豆乾, match: [ing/tofu, ing/dougan, ing/bean_curd]}
   - {name: 蔬菜, match: [ing/green_bean, ing/cabbage, ing/tomato, ing/bamboo_shoot, ing/eggplant, ing/potato, ing/spinach, ing/water_spinach, ing/bitter_melon, ing/mushroom, ing/shiitake, ing/onion, ing/carrot, ing/radish, ing/daikon, ing/corn, ing/shallot, ing/garlic, ing/scallion, ing/pepper, ing/bell_pepper, ing/zucchini, ing/caipu]}
