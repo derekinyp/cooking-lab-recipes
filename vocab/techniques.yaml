@@ -9,6 +9,7 @@ concepts:
   # ── 前處理 prep ──────────────────────────────────────────────
   - {id: tech/cut, zh: 切配, alt: [改刀], en: {term: cut, match: broader}, facets: {phase: prep, medium: none}, def: "把食材切成指定形狀；形狀與尺寸寫在 params.cut", source: WDA_C}
   - {id: tech/mince, zh: 剁末, alt: [剁碎, 切末, 剁茸], en: {term: mince, match: close}, broader: tech/cut, facets: {phase: prep, medium: none}, def: "切或剁成末、茸", source: WDA_CUT}
+  - {id: tech/grind, zh: 研磨, alt: [磨出, 現磨], en: {term: grind, match: exact}, broader: tech/cut, facets: {phase: prep, medium: none}, def: "用研磨器把香料磨碎（如即磨胡椒罐）；不是研缽壓碎", source: SELF}
   - {id: tech/smash, zh: 拍, alt: [拍碎], en: {term: smash, match: exact}, broader: tech/cut, facets: {phase: prep, medium: none}, def: "用刀面拍裂（蒜、薑、黃瓜）", source: SELF}
   - {id: tech/score, zh: 剞刀, alt: [花刀, 切花刀], en: {term: score, match: close}, broader: tech/cut, facets: {phase: prep, medium: none}, def: "在食材表面切出不切斷的刀紋，如菊花花刀", source: WDA_CUT}
   - {id: tech/rinse, zh: 清洗, alt: [略洗, 洗淨, 沖洗], en: {term: rinse, match: close}, facets: {phase: prep, medium: water}, def: "用水洗去表面污物後瀝乾，不是浸泡", source: SELF}

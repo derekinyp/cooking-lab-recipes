@@ -1,0 +1,245 @@
+# 豆干肉絲（台式家常版）— 起始草案，規格 v1.0
+# 主來源 M＝究好豬官方食譜頁《豆乾炒肉絲》（1 人份、30 分鐘）：豆乾、肉絲、蔥、辣椒、
+#   醬油、糖、醃料、時間只採 M 的數字，不與 S1/S2 混拼。S1、S2 僅作比較與 note 對照。
+# 家庭條件：兩口瓦斯爐（最多 2 口）；廚具僅電鍋、炒鍋、平底鍋、湯鍋；無烤箱、氣炸鍋、
+#   蒸籠、溫度計、料理秤。M/S1/S2 皆未用到烤箱、氣炸鍋、蒸籠，無需改法。
+schema_version: "1.0"
+recipe:
+  id: dougan_rousi.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/dougan_rousi
+  name: {zh_hant: 豆干肉絲, zh_hans: 豆干肉丝, en: Stir-fried pork shreds with firm tofu (dougan)}
+  variant: 台式家常版
+  summary: 豆乾先川燙剖半切絲、炒至微金黃取出；肉絲抓醃再加太白粉抓勻；爆香蔥白、辣椒、蒜末後下肉絲炒至 6 分熟，回鍋豆乾與醬油、蠔油、糖、米酒拌炒，最後加青蔥、白胡椒粉起鍋。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "主來源 M 為台灣品牌站家常炒法（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源 M 為台灣品牌官方食譜站；地域歸屬為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: 1, status: sourced, evidence: M, note: "M 標「適用人數：1」；主體用 M 原量不縮放"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "究好豬（choho）官方食譜頁【豆乾炒肉絲】"
+      url: https://www.choho.com.tw/recipe-detail/91/
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "主來源。1 人份、料理時間 30 分鐘。肉絲為品牌包裝產品「究好豬-黃金比例肉絲 200g/1包」。醃料：鹽 1小匙、糖 1小匙、蒜泥 1小瓣、醬油 1小匙、米酒 1中匙、香油 適量、太白粉 1中匙；調味：蒜頭 3瓣(切末)、蔥 3支(蔥白斜切、青蔥斜切)、辣椒 適量、醬油 1中匙、蠔油 1小匙、糖 1小匙、米酒 2大匙、白胡椒粉 適量、油 適量。火力檔位原文沒寫。"
+    - id: S1
+      title: "金蘭食品股份有限公司 廚藝學院《香干肉丝》（料理作者：金兰小酱）"
+      url: https://www.kimlanfoods.com.tw/cn/recipes/18
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "比較來源。2 人份、料理時間 45 分鐘。豆干 300克、肉丝 150克、蒜头 20克、辣椒 1支、葱 5支；調味：金兰油膏 1大匙、金兰酱油 1大匙、酒 2大匙、糖 少许；腌肉酱料：金兰油膏 1小匙、酒 1小匙、太白粉 少许。頁面為簡體中文，引用保留原字。火力檔位原文沒寫。"
+    - id: S2
+      title: "灶神（zaogod）部落格《五香豆干炒肉絲》（2018-10-29）"
+      url: https://www.zaogod.com/post/%E4%BA%94%E9%A6%99%E8%B1%86%E5%B9%B2%E7%82%92%E8%82%89%E7%B5%B2
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: "比較來源。份數與總烹調時間原文沒寫（「讀畢需時 1 分鐘」是文章閱讀時間，非烹調時間）。梅花肉 100g 切絲、五香豆干 200g 切絲、大蒜 3～4顆切末、辣椒 半根、青蔥 2根切段、白芝麻 適量；醃料：鹽 1小匙、醬油 1大匙、蛋白 1大匙、玉米粉 1小匙；調味：米酒 2大匙、醬油 2大匙、糖 1大匙、白胡椒粉 適量、水 半碗。作法 4 寫「開大火」。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始草案：以 M 為主來源縮寫主體；S1、S2 入比較表與 notes；缺詞列入建議新增詞", by: doubao}
+    - {version: "1.0", date: 2026-11-27, change: "Codex X4 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_pork, concept: ing/pork, label: 豬肉絲（究好豬黃金比例肉絲）, form: 絲, role: 主料,
+     qty: {value: 200, unit: g, raw_text: "究好豬-黃金比例肉絲 200g/1包", evidence: M, status: sourced, note: "M 原量（包裝標重）；部位 M 沒寫。無秤：看包裝標重"}}
+  - {id: i_dougan, concept: ing/dougan, label: 豆乾, role: 主料,
+     qty: {value: 5, unit: slice, raw_text: "豆乾 5片", evidence: M, status: sourced}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜末（爆香用）, form: 末, role: 輔料,
+     qty: {value: 3, unit: clove, raw_text: "蒜頭 3瓣(切末)", evidence: M, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥（蔥白、青蔥分切）, form: 斜切段, role: 輔料,
+     qty: {value: 3, unit: stalk, raw_text: "蔥 3支(蔥白斜切、青蔥斜切)", evidence: M, status: sourced}}
+  - {id: i_chili, concept: ing/chili_fresh, label: 辣椒（可最後分開加）, role: 香料, optional: true,
+     qty: {value: null, unit: null, qualitative: 適量, raw_text: "辣椒 適量", evidence: M, status: sourced, note: "M 於爆香步驟一開始下鍋；不辣那份省略（推論），見 notes.spicy_split"}}
+  - {id: i_soy, concept: ing/soy_sauce, label: 醬油（調味）, role: 調料,
+     qty: {value: 1, unit: mid_spoon, raw_text: "醬油 1中匙", evidence: M, status: sourced, note: "「中匙」容量原文沒寫，不換算"}}
+  - {id: i_oyster, concept: ing/oyster_sauce, label: 蠔油, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "蠔油 1小匙", evidence: M, status: sourced}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 糖（調味）, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "糖 1小匙", evidence: M, status: sourced, note: "M 只寫「糖」，白糖或紅糖原文沒寫"}}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒（調味）, role: 調料,
+     qty: {value: 2, unit: tbsp, raw_text: "米酒 2大匙", evidence: M, status: sourced}}
+  - {id: i_wp, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 香料, optional: true,
+     qty: {value: null, unit: null, qualitative: 適量, raw_text: "白胡椒粉 適量", evidence: M, status: sourced, note: "最後起鍋前加"}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 油, role: 油脂,
+     qty: {value: null, unit: null, qualitative: 適量, raw_text: "油 適量", evidence: M, status: sourced}}
+  - {id: i_starch, concept: ing/starch, label: 太白粉（肉絲醃好後上漿）, role: 芡粉,
+     qty: {value: 1, unit: mid_spoon, raw_text: "太白粉 1中匙", evidence: M, status: sourced}}
+
+components:
+  - id: c_marinade
+    call: {ref: recipe/dougan_rousi_marinade.taiwan.home, version: "1.0", scale: 1.0}
+    output_as: s_marinade
+    note: "M 順序：肉絲與醃料抓勻醃 10 分鐘後，再加入太白粉抓勻（太白粉在主食材 i_starch、步驟 a1b）。能不能提前做原文沒寫"
+    definition:
+      recipe:
+        id: dougan_rousi_marinade.taiwan.home
+        version: "1.0"
+        kind: marinade
+        name: {zh_hant: 肉絲醃料（不含太白粉）}
+        status: draft
+      ingredients:
+        - {id: j_salt, concept: ing/salt, label: 鹽（醃）, role: 調料,
+           qty: {value: 1, unit: tsp, raw_text: "鹽 1小匙", evidence: M, status: sourced}}
+        - {id: j_sugar, concept: ing/white_sugar, label: 糖（醃）, role: 調料,
+           qty: {value: 1, unit: tsp, raw_text: "糖 1小匙", evidence: M, status: sourced}}
+        - {id: j_garlic, concept: ing/garlic, label: 蒜泥（醃）, form: 泥, role: 香料,
+           qty: {value: 1, unit: clove, raw_text: "蒜泥 1小瓣", evidence: M, status: sourced}}
+        - {id: j_soy, concept: ing/soy_sauce, label: 醬油（醃）, role: 調料,
+           qty: {value: 1, unit: tsp, raw_text: "醬油 1小匙", evidence: M, status: sourced}}
+        - {id: j_wine, concept: ing/rice_wine, label: 米酒（醃）, role: 調料,
+           qty: {value: 1, unit: mid_spoon, raw_text: "米酒 1中匙", evidence: M, status: sourced}}
+        - {id: j_sesame, concept: ing/sesame_oil, label: 香油, role: 油脂,
+           qty: {value: null, unit: null, qualitative: 適量, raw_text: "香油 適量", evidence: M, status: sourced}}
+      actions:
+        - id: ja1
+          technique: tech/combine
+          term: 醃料放在一起（太白粉不在這裡，等肉絲醃好才加，見 a1b）
+          inputs: [j_salt, j_sugar, j_garlic, j_soy, j_wine, j_sesame]
+          outputs: [s_marinade]
+          tool: tool/bowl
+          completion: [{observe: 醃料, target: 備齊（原文沒寫醃料要先調勻，推論）, method: 目測}]
+
+states:
+  - {id: s_pork_marinated, label: 醃好的肉絲（未加太白粉）}
+  - {id: s_pork_mar, label: 抓醃上漿肉絲}
+  - {id: s_dougan_boiled, label: 川燙過的豆乾}
+  - {id: s_dougan_shred, label: 剖半切絲的豆乾}
+  - {id: s_scallion_white, label: 蔥白段}
+  - {id: s_scallion_green, label: 青蔥段}
+  - {id: s_chili_slice, label: 辣椒片}
+  - {id: s_garlic_minced, label: 蒜末}
+  - {id: s_dougan_golden, label: 炒至微金黃的豆乾絲}
+  - {id: s_aromatic_fried, label: 爆香的蔥白、辣椒、蒜末}
+  - {id: s_pork_60, label: 炒至 6 分熟的肉絲}
+  - {id: s_mixed, label: 豆乾肉絲拌炒料}
+  - {id: s_final, label: 豆干肉絲, role: final}
+
+actions:
+  - id: a1
+    technique: tech/marinate_coat
+    term: 肉絲與醃料抓勻醃 10 分鐘
+    inputs: [i_pork, s_marinade]
+    outputs: [s_pork_marinated]
+    tool: tool/bowl
+    params:
+      duration: {min_s: 600, max_s: 600, raw: "醃10分鐘", is_guide: true, evidence: M, status: sourced}
+      agitation: {mode: 抓勻, continuous: false}
+    completion:
+      - {observe: 肉絲, target: 與醃料抓勻（原文：將肉絲與醃料抓勻醃10分鐘後）, method: 目測, evidence: M}
+    can_overlap: [a2, a4]
+  - id: a1b
+    technique: tech/marinate_coat
+    term: 醃好的肉絲加入太白粉抓勻備著
+    inputs: [s_pork_marinated, i_starch]
+    outputs: [s_pork_mar]
+    tool: tool/bowl
+    completion:
+      - {observe: 肉絲, target: 抓勻備著（原文：再加入太白粉抓勻備著）, method: 目測, evidence: M}
+  - id: a2
+    technique: tech/blanch
+    term: 豆乾川燙兩分鐘撈起
+    inputs: [i_dougan]
+    outputs: [s_dougan_boiled]
+    tool: tool/stock_pot
+    params:
+      duration: {min_s: 120, max_s: 120, raw: "川燙兩分鐘", is_guide: true, evidence: M, status: sourced}
+      heat: {level: null, raw: "原文沒寫火力檔位"}
+    completion:
+      - {observe: 豆乾, target: 川燙兩分鐘撈起, method: 計時, evidence: M}
+    note: "家庭廚具：M 未指明鍋具；家用湯鍋川燙（家庭改法，推論）。無蒸籠、無溫度計"
+  - id: a3
+    technique: tech/cut
+    term: 豆乾由橫面剖半，再切成絲狀
+    inputs: [s_dougan_boiled]
+    outputs: [s_dougan_shred]
+    tool: tool/knife
+    params: {cut: {shape: cut/si, size_mm: {min: null, max: null}, raw: "由橫面剖半，再切成絲狀", evidence: M, note: "絲寬厚長度毫米原文沒寫"}}
+    completion:
+      - {observe: 豆乾, target: 剖半後切成絲狀, method: 目測, evidence: M}
+  - id: a4
+    technique: tech/cut
+    term: 蔥白與青蔥分斜切，蒜頭切末；辣椒切片（切法 M 沒寫，推論，對照 S1）
+    inputs: [i_scallion, i_chili, i_garlic]
+    outputs: [s_scallion_white, s_scallion_green, s_chili_slice, s_garlic_minced]
+    tool: tool/knife
+    params: {cut: {shape: cut/duan, raw: "蔥白斜切、青蔥斜切", evidence: M, note: "只指蔥；辣椒切法 M 沒寫，切片是推論（對照 S1『辣椒切片』）"}}
+    completion:
+      - {observe: 配料, target: 蔥白、青蔥斜切；蒜頭切末, method: 目測, evidence: M}
+      - {observe: 辣椒, target: 切片（推論，M 沒寫切法）, method: 目測}
+    note: "辣椒切法 M 原文沒寫；S1 作『辣椒切片』，僅對照"
+  - id: a5
+    technique: tech/stir_fry
+    term: 鍋子熱油，下豆乾絲炒至微金黃取出
+    inputs: [s_dougan_shred, i_oil]
+    outputs: [s_dougan_golden]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文沒寫火力檔位；M 只寫「鍋子熱油」"}
+      duration: {min_s: null, max_s: null, raw: "炒至微金黃的時間原文沒寫", status: missing}
+    completion:
+      - {observe: 豆乾絲色澤, target: 炒至微金黃取出, method: 目測, evidence: M}
+  - id: a6
+    technique: tech/aromatics
+    term: 下蔥白、辣椒、蒜末爆香
+    inputs: [s_scallion_white, s_chili_slice, s_garlic_minced]
+    outputs: [s_aromatic_fried]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文沒寫火力檔位"}
+      duration: {min_s: null, max_s: null, raw: "爆香時間原文沒寫", status: missing}
+    completion:
+      - {observe: 香氣, target: 爆香, method: 聞, evidence: M}
+    note: "青蔥本段不下，留到 a9 最後加。辣椒在此步與蔥白、蒜末同下（M 原順序）；一鍋兩吃的處理見 notes.spicy_split"
+  - id: a7
+    technique: tech/stir_fry
+    term: 下肉絲翻炒至 6 分熟
+    inputs: [s_aromatic_fried, s_pork_mar]
+    outputs: [s_pork_60]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文沒寫火力檔位"}
+      duration: {min_s: null, max_s: null, raw: "肉絲翻炒時間原文沒寫", status: missing}
+    completion:
+      - {observe: 肉絲熟度, target: 翻炒至 6 分熟, method: 目測（推論：原文沒寫判斷方式）, evidence: M}
+  - id: a8
+    technique: tech/stir_fry_mixed
+    term: 加入豆乾、醬油、蠔油、糖與米酒拌炒
+    inputs: [s_pork_60, s_dougan_golden, i_soy, i_oyster, i_sugar, i_wine]
+    outputs: [s_mixed]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文沒寫火力檔位"}
+      duration: {min_s: null, max_s: null, raw: "拌炒時間原文沒寫", status: missing}
+    completion:
+      - {observe: 鍋中料, target: 豆乾與調味料拌炒均勻（原文：加入豆乾、醬油、蠔油、糖與米酒拌炒）, method: 目測, evidence: M}
+  - id: a9
+    technique: tech/toss_in
+    term: 最後加入青蔥、白胡椒粉即可起鍋
+    inputs: [s_mixed, s_scallion_green, i_wp]
+    outputs: [s_final]
+    tool: tool/wok
+    params: {duration: {min_s: null, max_s: null, raw: "最後拌炒時間原文沒寫", status: missing}}
+    completion:
+      - {observe: 青蔥與胡椒, target: 加入青蔥、白胡椒粉後起鍋（M 原文作「最後加入青蔥、白胡椒粉即可起」，句尾照錄）, method: 目測, evidence: M}
+    timing: {phase: 起鍋前, evidence: M, status: sourced}
+
+serving:
+  completion:
+    - {observe: 上桌溫度與食用時限, target: 原文沒寫, method: null}
+  sensory_target: {color: "豆乾微金黃（M）；其餘色澤原文沒寫", texture: "原文沒寫", taste: "原文沒寫"}
+
+notes:
+  weekday: "非平日菜：M 標料理時間 30 分鐘，超過平日 20 分鐘門檻（門檻為家庭條件，非來源數字）；其中醃 10 分鐘、川燙 2 分鐘。醃肉若提前於假日備好，平日實際下鍋時間 M 沒寫，待試做計時。"
+  burners: "全程 1 口爐、1 只炒鍋（M 做法：豆乾先炒取出、同鍋再爆香炒肉）；醃肉在碗中，不佔爐口。爐口數是家庭安排（推論），原文沒寫。"
+  spicy_split: "M 作法第 4 步辣椒與蔥白、蒜末一同爆香（一開始下鍋），原文未說可分開，無法在同一鍋內分出辣與不辣。不辣那份：辣椒不下鍋（推論；M 未提供不辣版本）。辣的那份：辣椒最後再加入鍋中拌炒（推論，無來源數字）。若要一鍋兩吃，依 M 做法做不到，不辣那份要另外做（推論）：先盛出不辣部分，辣椒再加入鍋中剩餘料裡拌炒。本菜 M 無花椒、無辣豆瓣。"
+  no_scale: "無秤版：肉絲 200g 為包裝標重（M『200g/1包』）；豆乾 5片、蒜頭 3瓣、蔥 3支照原文數；匙量照原文（大匙／小匙／中匙），不換算克數；「中匙」容量原文沒寫，不換算。"
+  oven_airfryer: "M、S1、S2 皆未使用烤箱、氣炸鍋、蒸籠，不需家庭改法。S2 肉絲先過油，為對照來源手法；本檔主體依 M 不過油。"
+  compare: "S1（金蘭，2 人份 45 分鐘）：豆干 300g、肉絲 150g，豆干燙過切絲；肉絲炒變白撈起，鍋中再下油把豆干煸炒到金黃，放肉絲、蒜頭、辣椒及蔥白拌炒；加醬油嗆香、下糖、油膏，倒米酒，最後青蔥段快炒上桌。S2（灶神部落格）：梅花肉 100g、豆干 200g，肉絲先過油撈起；爆香蒜末、辣椒炒豆干；米酒嗆鍋，加醬油、糖、白胡椒調味；加水開大火燒入味，放入肉絲煮收汁；最後放蔥段翻炒起鍋，盛盤撒白芝麻。"
+  missing: "原文沒寫：芹菜（M 主體用青蔥、未用芹菜）；各步火力檔位；豆乾煸炒時間、肉絲翻炒時間、爆香時間、拌炒時間；油溫成數／溫度；豆乾絲與肉絲尺寸毫米；肉絲部位；糖的種類；調味用鹽；加水；上桌溫度與食用時限；成品口感與其餘色澤描述；鍋具大小。"
+  spec_gaps: "規格無「一鍋兩吃／辣料最後分開加」專用結構，只能寫 notes.spicy_split；先醃後上漿拆成 a1（醃 10 分鐘）與 a1b（加太白粉）兩步；包裝產品份量（200g/1包）無獨立包裝欄位，重量寫 qty、包裝寫 raw_text/note。"

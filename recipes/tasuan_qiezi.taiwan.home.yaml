@@ -1,0 +1,413 @@
+# 塔香茄子（台式家常版）— 起始檔，規格 v1.0
+# 主來源 M1＝NoobCook〈Claypot Eggplant with Basil（九层塔茄子煲）〉：已開啟公開頁逐句核對；
+#   食材與醬汁逐項份量、份數、Prep/Cook 時間、完成狀態句最完整。本檔份量只用 M1，不與其他來源混拼。
+# 對照來源 X1–X4 重抓存檔只有驗證／錯誤頁，未採用；X5 存檔可讀，未採用。
+# 辣椒與辣豆醬在爆香步驟即下鍋、無法最後分開；不辣那份另做，見 notes.spicy_split。
+# 爐口：全程 1 口爐、1 只炒鍋；預熟茄子用電鍋蒸（不占爐口），任何時刻 ≤2 口。
+schema_version: "1.0"
+recipe:
+  id: tasuan_qiezi.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/tasuan_qiezi
+  name: {zh_hant: 塔香茄子, zh_hans: 塔香茄子, en: Eggplant with basil (Taiwanese home-style)}
+  variant: 台式家常版
+  summary: 茄子先預熟，熱油爆香蒜末、辣椒與辣豆醬，下調味醬汁煮滾勾芡，放入茄子裹勻醬汁加蓋燜約 2 分鐘，趁熱拌入九層塔。
+  cuisine:
+    - id: cuisine/taiwanese.home
+      basis: "編者分類。M1 稱成品有「a nice Taiwanese vibe」、菜名標註「九层塔茄子煲」；M1 本身為英文部落格，未標註菜系"
+      claim: primary
+      evidence: M1
+    - id: region/taiwan
+      basis: "編者分類（台式家常版變體）；M1 未標註地域，證據強度弱"
+      claim: primary
+      evidence: M1
+  flavor_template:
+    ref: flavor/xian_xian
+    basis: "醬油、白胡椒為基底的鹹鮮味，糖回甜"
+    evidence: M1
+    deviation_note: "詞表無「塔香／九層塔香」獨立味型；M1 另含辣豆醬與新鮮辣椒，成品帶微辣，與純鹹鮮味有偏差"
+  servings:
+    value: null
+    evidence: M1
+    status: missing
+    note: "原文沒寫單一份數；M1 原文 Serves: 2-3（範圍，規格欄位只收單一數字，不自行取中間值）"
+  status: cross_checked
+  sources:
+    - id: M1
+      title: "NoobCook Recipes〈Claypot Eggplant with Basil（九层塔茄子煲）〉"
+      url: https://noobcook.com/claypot-eggplant-with-basil/print/
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "主來源。個人食譜部落格英文頁；已實際開啟 print 頁讀食材表、醬汁(A)與 Directions 原文"
+    - id: X1
+      title: "下廚房 Sarah丁〈塔香茄子(健康少油)〉"
+      url: https://m.xiachufang.com/recipe/101853039/
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: "對照未採用。重抓存檔只有驗證／錯誤頁，內容存檔無法核實，不列細節"
+    - id: X2
+      title: "730 月子網〈塔香茄子〉"
+      url: https://jzoctsunshine.com/yzc/info.asp?id=4442
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "對照未採用。重抓存檔只有驗證／錯誤頁，內容存檔無法核實，不列細節"
+    - id: X3
+      title: "豆果美食〈九层塔茄子——来自台湾的快手美味〉"
+      url: https://m.douguo.com/recipe/imgs/787936
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "對照未採用。重抓存檔只有驗證／錯誤頁，內容存檔無法核實，不列細節"
+    - id: X4
+      title: "Leite's Culinaria〈Taiwanese-Style Eggplant〉"
+      url: https://leitesculinaria.com/339285/recipes-taiwanese-style-eggplant.html
+      level: C
+      type: media
+      accessed: 2026-11-27
+      note: "未採用。重抓存檔只有驗證／錯誤頁，內容存檔無法核實"
+    - id: X5
+      title: "Cherry & Dennis〈Thai Eggplant Stir-Fry with Basil〉"
+      url: https://www.goldendennis.com/en/recipe-thai-eggplant-basil-stir-fry.html
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: "已開讀，未採用。泰國茄子，調味用魚露、蠔油"
+  extracted_by: [doubao]
+  changelog:
+    - version: "1.0"
+      date: 2026-11-27
+      change: "起始檔：kimi 開啟 6 份公開來源逐句核對，以 M1 為主來源起草；份量僅採 M1，X1–X5 列入比較表與 notes"
+      by: kimi
+    - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+    - {version: "1.0", date: 2026-11-27, change: "辣椒與白胡椒粉的 qualitative 改寫成中文（數字不變，原文英文留在括號與 raw_text），供公開網站顯示", by: grokbot}
+
+ingredients:
+  - id: i_eggplant
+    concept: ing/eggplant
+    label: 茄子
+    role: 主料
+    qty:
+      value: 200
+      unit: g
+      raw_text: "200 grams eggplants cut to 5 cm sections, then cut to smaller “logs”"
+      evidence: M1
+      status: sourced
+    note: "刀工：先切 5 cm 段，再切小條；茄子品種與單根重量原文沒寫"
+  - id: i_oil
+    concept: ing/cooking_oil
+    label: 食用油
+    role: 油脂
+    qty:
+      value: 1
+      unit: tbsp
+      raw_text: "1 tbsp cooking oil"
+      evidence: M1
+      status: sourced
+  - id: i_garlic
+    concept: ing/garlic
+    label: 蒜末
+    role: 輔料
+    qty:
+      value: 3
+      unit: clove
+      raw_text: "3 garlic cloves minced"
+      evidence: M1
+      status: sourced
+  - id: i_chili
+    concept: ing/chili_fresh
+    label: 新鮮辣椒（去籽切細片）
+    role: 輔料
+    optional: true
+    qty:
+      value: null
+      unit: null
+      qualitative: "手指長的辣椒 1 根或小辣椒 2 根（1 finger-length chilli or 2 chilli padi）"
+      raw_text: "1 finger-length chilli or 2 chilli padi de-seeded & sliced thinly"
+      evidence: M1
+      status: sourced
+    note: "二選一；辣椒種類與實際用量分配原文沒寫"
+  - id: i_taucheo
+    concept: ing/spicy_soybean_paste
+    label: 辣豆醬（spicy taucheo；依原文 taucheo 判讀為發酵豆醬，推論）
+    role: 調料
+    qty:
+      value: 1
+      unit: tbsp
+      raw_text: "1 tbsp chilli soy bean paste (spicy “taucheo”/辣豆漿)"
+      evidence: M1
+      status: sourced
+    note: "不同於郫縣豆瓣（ing/pixian_doubanjiang）"
+  - id: i_starch
+    concept: ing/starch
+    label: 玉米粉（corn starch）
+    role: 調料
+    qty:
+      value: 1
+      unit: tsp
+      raw_text: "dissolve 1 tsp corn starch in 1 tbsp water"
+      evidence: M1
+      status: sourced
+  - id: i_slurry_water
+    concept: ing/water
+    label: 芡漿用水
+    role: 液體
+    qty:
+      value: 1
+      unit: tbsp
+      raw_text: "dissolve 1 tsp corn starch in 1 tbsp water"
+      evidence: M1
+      status: sourced
+  - id: i_basil
+    concept: ing/thai_basil
+    label: 新鮮九層塔葉
+    role: 香料
+    qty:
+      value: 15
+      unit: g
+      raw_text: "15 grams fresh sweet basil leaves"
+      evidence: M1
+      status: sourced
+  - id: i_fried_shallot
+    concept: ing/fried_shallot
+    label: 油蔥酥（炸紅蔥頭）
+    role: 輔料
+    optional: true
+    qty:
+      value: null
+      unit: null
+      raw_text: "fried shallots to garnish"
+      status: missing
+    note: "原文只寫 to garnish，份量原文沒寫"
+  - id: i_garnish
+    concept: ing/scallion
+    label: 蔥花／香菜或新鮮九層塔葉（擇一點綴）
+    role: 輔料
+    optional: true
+    qty:
+      value: null
+      unit: null
+      raw_text: "chopped spring onions/coriander or fresh basil leaves to garnish"
+      status: missing
+    note: "任擇其一；香菜（coriander）概念見建議新增詞；份量原文沒寫"
+
+components:
+  - id: c_sauce
+    call: {ref: recipe/tasuan_qiezi_sauce.m1, version: "1.0"}
+    output_as: s_sauce
+    make_ahead: true
+    note: "M1 食材表 (A) Sauce；先調好備用"
+    definition:
+      recipe:
+        id: tasuan_qiezi_sauce.m1
+        version: "1.0"
+        kind: sauce
+        name: {zh_hant: 調味醬汁(A)}
+        status: draft
+      ingredients:
+        - id: j_soy_dark
+          concept: ing/soy_sauce_dark
+          label: 老抽（深色醬油）
+          role: 調料
+          qty:
+            value: 0.25
+            unit: tsp
+            raw_text: "1/4 tsp dark soy sauce"
+            evidence: M1
+            status: sourced
+        - id: j_soy_light
+          concept: ing/soy_sauce_light
+          label: 生抽（淺色醬油）
+          role: 調料
+          qty:
+            value: 1
+            unit: tsp
+            raw_text: "1 tsp light soy sauce"
+            evidence: M1
+            status: sourced
+        - id: j_sugar
+          concept: ing/white_sugar
+          label: 白糖
+          role: 調料
+          qty:
+            value: 1
+            unit: tsp
+            raw_text: "1 tsp sugar"
+            evidence: M1
+            status: sourced
+        - id: j_wp
+          concept: ing/white_pepper_powder
+          label: 白胡椒粉
+          role: 調料
+          qty:
+            value: null
+            unit: null
+            qualitative: "撒 3 下（3 dashes）"
+            raw_text: "3 dashes white pepper powder"
+            evidence: M1
+            status: sourced
+          note: "dash 無容量定義，不換算"
+        - id: j_water
+          concept: ing/water
+          label: 水
+          role: 液體
+          qty:
+            value: 50
+            unit: ml
+            raw_text: "50 ml (1/4 cup) water"
+            evidence: M1
+            status: sourced
+      actions:
+        - id: j1
+          technique: tech/combine
+          term: 將醬汁(A)材料混合均勻
+          inputs: [j_soy_dark, j_soy_light, j_sugar, j_wp, j_water]
+          outputs: [s_sauce]
+          tool: tool/bowl
+          completion: [{observe: 醬汁, target: 混合均勻, method: 目測, evidence: M1}]
+          note: "M1 只列 (A) Sauce 材料；調和動作依常規備料寫，碗為家庭選用（推論）"
+
+states:
+  - {id: s_basil_rinsed, label: 洗淨瀝乾的九層塔葉}
+  - {id: s_garlic_minced, label: 蒜末}
+  - {id: s_chili_cut, label: 去籽切細片的辣椒}
+  - {id: s_eggplant_cut, label: 切 5 cm 段再切小條的茄子}
+  - {id: s_eggplant_precooked, label: 預先熟化的茄子}
+  - {id: s_slurry, label: 玉米粉加水調成的芡漿}
+  - {id: s_aromatics, label: 炒香的蒜末、辣椒與辣豆醬}
+  - {id: s_sauced, label: 滾沸並勾芡的醬汁}
+  - {id: s_eggplant_coated, label: 裹勻醬汁、加蓋燜過的茄子}
+  - {id: s_final, label: 塔香茄子, role: final}
+
+actions:
+  - id: a1
+    technique: tech/rinse
+    term: 九層塔去梗取葉、洗淨瀝乾
+    inputs: [i_basil]
+    outputs: [s_basil_rinsed]
+    tool: tool/colander
+    completion: [{observe: 九層塔葉, target: 洗淨瀝乾, method: 目測, note: "M1 只列 fresh sweet basil leaves；清洗與去梗為一般備料，原文沒寫"}]
+  - id: a2
+    technique: tech/mince
+    term: 蒜頭切末
+    inputs: [i_garlic]
+    outputs: [s_garlic_minced]
+    tool: tool/knife
+    completion: [{observe: 蒜頭, target: 切末（minced）, method: 目測, evidence: M1}]
+  - id: a3
+    technique: tech/cut
+    term: 辣椒去籽、切細片
+    inputs: [i_chili]
+    outputs: [s_chili_cut]
+    tool: tool/knife
+    params: {cut: {shape: cut/pian, raw: "de-seeded & sliced thinly", evidence: M1}}
+    completion: [{observe: 辣椒, target: 去籽、細片, method: 目測, evidence: M1}]
+  - id: a4
+    technique: tech/cut
+    term: 茄子切 5 cm 段，再切小條
+    inputs: [i_eggplant]
+    outputs: [s_eggplant_cut]
+    tool: tool/knife
+    params:
+      cut:
+        shape: cut/duan
+        size_mm: {min: 50, max: 50}
+        note: "先切 5 cm 段，再切小條（cut/tiao）；小條粗細原文沒寫"
+        raw: "cut to 5 cm sections, then cut to smaller “logs”"
+        evidence: M1
+    completion: [{observe: 茄子, target: 5 cm 段再切小條, method: 目測, evidence: M1}]
+  - id: a5
+    technique: tech/steam
+    term: 預先熟化茄子（家庭改法（推論）：電鍋外鍋加水蒸）
+    inputs: [s_eggplant_cut]
+    outputs: [s_eggplant_precooked]
+    tool: tool/electric_cooker
+    must_finish_before: [a11]
+    params:
+      heat: {level: null, raw: "M1 沒寫火力"}
+      duration: {min_s: null, max_s: null, raw: "M1 預熟方法另見連結教學；蒸／煮時間原文沒寫", status: missing}
+    completion:
+      - {observe: 茄子, target: 預先熟化（pre-cooked）, method: 目測與戳觸, note: "原文沒寫具體熟度；感官判斷：茄子軟化、可輕易戳穿（推論完成條件，待試做）"}
+    note: "家庭改法（推論）：M1 提供 microwave／boiling／steaming 三法，家庭無微波爐，本版採電鍋外鍋加水蒸；亦可改用湯鍋水煮（推論）。蒸／煮時間原文沒寫，待試做。M1 內文稱本次用微波爐，配圖為蒸架蒸茄子，方法記述不一致"
+  - id: a6
+    technique: tech/combine
+    term: 玉米粉加水調成芡漿
+    inputs: [i_starch, i_slurry_water]
+    outputs: [s_slurry]
+    tool: tool/bowl
+    completion: [{observe: 芡漿, target: 玉米粉溶於水, method: 目測, evidence: M1}]
+  - id: a7
+    technique: tech/aromatics
+    term: 熱油先下蒜末與辣椒炒到蒜開始變色，再下辣豆醬炒香
+    inputs: [i_oil, s_garlic_minced, s_chili_cut, i_taucheo]
+    outputs: [s_aromatics]
+    tool: tool/wok
+    params: {heat: {level: null, raw: "M1 沒寫火力檔位"}}
+    completion:
+      - {observe: 蒜頭, target: 開始變色（garlic starts to turn colour）, method: 目測, evidence: M1}
+      - {observe: 辣豆醬, target: 炒出香氣（aromatic）, method: 嗅覺, evidence: M1}
+    note: "M1 原文：Add garlic and chilli; stir fry until the garlic starts to turn colour. Add soybean paste and stir fry briskly until aromatic."
+  - id: a8
+    technique: tech/stir_fry
+    term: 倒入醬汁(A)煮滾
+    inputs: [s_aromatics, s_sauce]
+    outputs: [s_sauced]
+    tool: tool/wok
+    params: {heat: {level: null, raw: "M1 沒寫火力檔位"}}
+    completion: [{observe: 醬汁, target: 煮滾（bring to a boil）, method: 目測與聽覺, evidence: M1}]
+  - id: a9
+    technique: tech/thicken
+    term: 淋入芡漿勾芡
+    inputs: [s_sauced, s_slurry]
+    outputs: [s_thickened]
+    tool: tool/wok
+    params: {heat: {level: null, raw: "M1 沒寫火力檔位"}}
+    completion: [{observe: 醬汁, target: 勾芡增稠, method: 目測, evidence: M1}]
+    note: "M1 原文：Thicken the sauce with cornstarch slurry. 芡漿實際淋入比例原文沒寫"
+  - id: a10
+    technique: tech/men
+    term: 加入預熟茄子裹勻醬汁，加蓋燜約 2 分鐘
+    inputs: [s_thickened, s_eggplant_precooked]
+    outputs: [s_eggplant_coated]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "M1 沒寫火力檔位"}
+      duration: {min_s: 120, max_s: 120, raw: "simmer down for about 2 minutes", is_guide: true, evidence: M1, status: sourced}
+    completion:
+      - {observe: 茄子, target: 鍋鏟翻拌、均勻裹附醬汁, method: 目測, evidence: M1}
+      - {observe: 醬汁, target: 收至喜好的濃稠度（reduced to liking）, method: 目測與試吃, evidence: M1}
+    note: "duration.min_s/max_s 為 schema 只收秒的單位正規化，權威數字以 raw 原文『about 2 minutes』為準"
+  - id: a11
+    technique: tech/toss_in
+    term: 趁鍋內仍熱拌入九層塔葉
+    inputs: [s_eggplant_coated, s_basil_rinsed]
+    outputs: [s_final]
+    tool: tool/wok
+    completion: [{observe: 九層塔葉, target: 趁內容物仍熱時拌入, method: 目測, evidence: M1}]
+    note: "M1 原文：Stir in the basil leaves while the contents are still hot."
+  - id: a12
+    technique: tech/plate
+    term: 盛盤，可選點綴油蔥酥與蔥花／香菜或九層塔葉（編者整理，推論）
+    inputs: [s_final, i_fried_shallot, i_garnish]
+    outputs: [s_plated]
+    completion: [{observe: 成品, target: 盛盤整理（編者整理，推論）, method: 目測}]
+    note: "盛盤與點綴是編者整理（推論）：M1 食材表列點綴料為可選，上桌原文只寫 Serve with steamed rice（搭配白飯）"
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
+  sensory_target:
+    color: 原文沒寫（M1 提醒預先熟化可保留茄子紫色）
+    taste: 鹹鮮、蒜香、九層塔香，辣豆醬帶微辣（M1）
+    texture: 茄子軟糯、外層裹附醬汁（M1）
+
+notes:
+  weekday: "M1 標 Prep Time 15 mins、Cook Time 15 mins，合計 30 分鐘，超過平日 ≤20 分鐘門檻 → 平日不可做；備料與烹調能否重疊、15 分鐘備料是否已含在 20 分鐘內，原文沒寫，待試做計時。假日可做"
+  burners: "家庭安排（推論，非原文）：全程 1 口爐、1 只炒鍋依序做；預熟茄子用電鍋蒸（不占爐口），可與切配備料同時進行。任何時刻爐口 ≤2；碗、濾盆、鍋蓋不另占爐口"
+  spicy_split: "M1 新鮮辣椒與辣豆醬在爆香步驟（a7）一起下鍋，無法最後分開加；本菜無花椒。不辣那份要另外做（推論）：主鍋省略新鮮辣椒與辣豆醬；若要保留發酵豆香，可改用不辣發酵豆醬或省略（推論，M1 未給替代品與份量，不另編數字）。辣椒若要分開加，要辣那份加多少原文沒寫、不另編數字"
+  home_adapt: "家庭無烤箱、氣炸鍋、蒸籠、料理溫度計、料理秤。M1 原做法示範用微波爐（配圖為蒸架蒸茄子），家庭改電鍋外鍋加水蒸或湯鍋水煮（家庭改法（推論））；M1 原用砂鍋，但原文同句允許 wokpan，本版用炒鍋，不算推論改法。家庭無秤：200 g、15 g 等公克數保留 M1 原文，實作份數對應原文沒寫。完成判斷只用看、聞、聽、戳、試吃；M1 未給任何溫度數字"
+  compare: "X1–X4 重抓存檔只有驗證／錯誤頁，內容無法核實，不列細節。X5 goldendennis（存檔可讀）：泰國茄子快炒九層塔，調味用魚露、蠔油，與台式做法差異大，未採用"
+  missing: "原文沒寫：預熟茄子（微波／煮／蒸）各法所需時間與熟度判斷；各步火力檔位與油溫；茄子品種與單根重量；點綴料份量；芡漿實際淋入比例；不辣那份的替代調味份量；上桌溫度；成品顏色與口感的量化標準；電鍋外鍋加水量"

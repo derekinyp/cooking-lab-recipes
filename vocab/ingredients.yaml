@@ -150,3 +150,5 @@ concepts:
   - {id: ing/fried_shallot, zh: 油蔥酥, note: "W49 塔香茄子點綴"}
   - {id: ing/soy_sauce_dark, zh: 老抽, broader: ing/soy_sauce}
   - {id: ing/soy_sauce_light, zh: 生抽, broader: ing/soy_sauce}
+  - {id: ing/gai_lan, zh: 芥藍, alt: [芥蘭, 芥蘭菜], note: "W49 蠔油芥藍"}
+  - {id: ing/white_pepper, zh: 白胡椒, note: "不預設是粒或粉；W49 胡椒蝦「即磨白胡椒」"}
