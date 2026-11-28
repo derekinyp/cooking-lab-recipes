@@ -38,6 +38,53 @@ heat_by_technique:
   炸: {levels: [heat/medium_high], seconds: [60, 360]}
   收汁: {levels: [heat/medium, heat/medium_high], seconds: [60, 240]}
   燒開水煮麵: {levels: [heat/high], seconds: [420, 720]}
+  # —— 以下為第 1、2 批用到的做法（2026-11-28 E5 補，一般家庭做法；只供補寫與 K4b 提醒用，細節仍以來源為準）——
+  滷: {levels: [heat/low, heat/medium_low], seconds: [900, 5400], note: "先大火煮滾再轉小火；同燉滷"}
+  焢: {levels: [heat/low, heat/medium_low], seconds: [3600, 10800], note: "焢肉（五花肉）小火慢滷 1–3 小時"}
+  過油: {levels: [heat/medium, heat/medium_high], seconds: [10, 90], note: "油溫約中低到中；肉片變色即撈"}
+  復炸: {levels: [heat/high], seconds: [15, 60], note: "第二次高油溫逼油上色"}
+  白灼: {levels: [heat/high], seconds: [30, 180], note: "沸水，食材熟即撈"}
+  煲: {levels: [heat/low, heat/medium_low], seconds: [600, 1500], note: "煲仔飯：滾後轉小火悶煮，淋油沿鍋邊"}
+  煮湯圓: {levels: [heat/medium, heat/medium_high], seconds: [180, 480], note: "水滾下鍋，浮起後再煮約 1 分鐘"}
+  煮米粉: {levels: [heat/medium, heat/medium_low], seconds: [180, 600], note: "已泡軟的米粉；炊粉要先泡"}
+  燙青菜: {levels: [heat/high], seconds: [20, 120], note: "同汆燙"}
+  拌: {levels: [], seconds: [0, 0], note: "涼拌、拌麵不開火；不應有火候欄位"}
+technique_map:
+  # 詞表 tech/ 的 id → 上面 heat_by_technique 的名稱（K4b 用它查「補寫的火候與時間」有沒有離譜）
+  aromatics: 爆香
+  qiang: 爆香
+  sweat: 爆香
+  stir_fry: 炒
+  stir_fry_mixed: 炒
+  stir_fry_quick: 炒
+  stir_fry_cooked: 炒
+  stir_fry_plain: 炒
+  stir_fry_slide: 炒
+  dry_fry: 煸
+  render: 煸
+  pan_fry: 煎
+  sear: 煎
+  blanch: 汆燙
+  cuan: 汆燙
+  bai_zhuo: 白灼
+  boil: 煮
+  boil_water: 煮
+  braise_red: 燉滷
+  braise_soft: 燉滷
+  shao: 燉滷
+  dun: 燉滷
+  wei: 燉滷
+  simmer: 燉滷
+  simmer_covered: 燉滷
+  lu: 滷
+  men: 燜
+  steam: 蒸
+  deep_fry: 炸
+  deep_fry_soft: 炸
+  refry: 復炸
+  pass_through_oil: 過油
+  reduce: 收汁
+  deglaze_reduce: 收汁
 prep_time_rules:
   # 備料時間（洗、切、醃、秤量）：家庭廚房、一個人做
   蔬菜洗切: "每 300 公克約 3–5 分鐘"
