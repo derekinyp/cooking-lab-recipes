@@ -1,4 +1,4 @@
-/* 振達的廚房・食譜網站樣式（只用振達設計規範 Workshop 1.2.1 的變數；延伸自 demo/食譜示意.html） */
+/* 振達廚房・食譜網站樣式（只用振達設計規範 Workshop 1.2.1 的變數；延伸自 demo/食譜示意.html） */
 html{scroll-behavior:smooth}
 body.zd{line-height:var(--leading-body)}
 a{color:var(--color-text-link)}

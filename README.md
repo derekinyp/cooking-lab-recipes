@@ -1,6 +1,8 @@
-# 家常食譜網站（cooking-lab-recipes）
+# 振達廚房（cooking-lab-recipes）
 
 網址：https://derekinyp.github.io/cooking-lab-recipes/
+
+對外網站名稱是「振達廚房」。倉庫與網址不改。
 
 這是一個自己在家做菜用的食譜網站，不給搜尋引擎收錄（每頁都有 noindex，`robots.txt` 全部禁止）。
 

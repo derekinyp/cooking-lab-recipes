@@ -624,10 +624,10 @@ def head(title, depth=''):
 def topbar(depth='', back=True):
     nav = f'<a class="top-back" href="{depth}index.html">← 全部菜色</a>' if back else ''
     wk = f'<a class="top-conv" href="{depth}{WEEKLY_HREF}">最新食譜</a>' if WEEKLY_HREF else ''
-    return f'<header class="top"><div class="top-in"><a class="brand" href="{depth}index.html">振達的廚房</a>{nav}{wk}<a class="top-conv" href="{depth}conversions.html">量匙換算</a></div></header>'
+    return f'<header class="top"><div class="top-in"><a class="brand" href="{depth}index.html">振達廚房</a>{nav}{wk}<a class="top-conv" href="{depth}conversions.html">量匙換算</a></div></header>'
 
 WEEKLY_HREF = ''  # 最新一週「每週新增」頁（main() 設定）
-FOOT = '<footer class="zd-footer">振達的廚房・食譜｜食譜整理自公開來源，各頁底部附參考連結</footer>'
+FOOT = '<footer class="zd-footer">振達廚房・食譜｜食譜整理自公開來源，各頁底部附參考連結</footer>'
 
 def tag_badge(tag):
     t, cls = TAGS[tag]
@@ -735,7 +735,7 @@ def recipe_page(m):
 <script>window.ZD_CONV={json.dumps([[it.get('g_per_tbsp'), it.get('g_per_piece'), it.get('piece')] for it in CONV['items']], ensure_ascii=False)};window.ZD_KEY={json.dumps(m['slug'])};</script>
 <script src="../assets/site.js"></script>
 </body></html>'''
-    return head(f'{m["name"]}｜振達的廚房', '../') + body
+    return head(f'{m["name"]}｜振達廚房', '../') + body
 
 # ------------------------------------------------------------------ 首頁找菜：分類與搜尋資料
 FACETS = yaml.safe_load((SITE / 'facets.yaml').read_text(encoding='utf-8'))
@@ -896,7 +896,7 @@ def index_page(models, plan):
 <script src="assets/find.js"></script>
 <script src="assets/site.js"></script>
 </body></html>'''
-    return head('振達的廚房・食譜', '') + body
+    return head('振達廚房・食譜', '') + body
 
 def conversions_page():
     rows = []
@@ -925,7 +925,7 @@ def conversions_page():
 </main>
 {FOOT}
 </body></html>'''
-    return head('湯匙與目測換算表｜振達的廚房', '') + body
+    return head('湯匙與目測換算表｜振達廚房', '') + body
 
 
 # ------------------------------------------------------------------ 最新食譜
@@ -961,7 +961,7 @@ def new_page(weeklies, by_slug):
 </main>
 {FOOT}
 </body></html>'''
-    return head('最新食譜｜振達的廚房', '') + body
+    return head('最新食譜｜振達廚房', '') + body
 
 def redirect_page(target, title):
     return f'''<!doctype html>
@@ -1045,7 +1045,7 @@ def main():
     by_slug = {m['slug']: m for m in models}
     if weeklies: WEEKLY_HREF = 'new.html'
     plan = yaml.safe_load((SITE / 'plan.yaml').read_text(encoding='utf-8'))
-    pages = {'index.html': index_page(models, plan), 'conversions.html': conversions_page(), 'progress.html': redirect_page('index.html', '振達的廚房・食譜')}
+    pages = {'index.html': index_page(models, plan), 'conversions.html': conversions_page(), 'progress.html': redirect_page('index.html', '振達廚房・食譜')}
     pages['new.html'] = new_page(weeklies, by_slug)
     # 舊網址（每週頁、本週菜單頁）一律轉到最新食譜
     for stem, wk in weeklies: pages[f'weekly-{stem}.html'] = redirect_page('new.html', '最新食譜')
