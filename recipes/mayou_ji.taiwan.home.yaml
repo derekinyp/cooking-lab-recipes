@@ -58,7 +58,7 @@ ingredients:
      qty: {value: null, unit: null, qualitative: 適量, raw_text: "水適量", evidence: M, status: sourced, note: "M 原量「適量」，不換算毫升"}}
   - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
      qty: {value: 1, unit: tsp, raw_text: "鹽1小匙", evidence: M, status: sourced}}
-  - {id: i_sugar, concept: ing/white_sugar, label: 白砂糖, role: 調料,
+  - {id: i_sugar, concept: ing/white_sugar, label: 砂糖, role: 調料,
      qty: {value: 1, unit: tsp, raw_text: "白砂糖1小匙", evidence: M, status: sourced}}
   - {id: i_mayou_finish, concept: ing/black_sesame_oil, label: 黑麻油（起鍋前淋）, role: 油脂,
      qty: {value: 5, unit: tsp, raw_text: "黑麻油5小匙", evidence: M, status: sourced, note: "M 原量；全部於起鍋前淋入"}}
@@ -120,12 +120,12 @@ actions:
     completion: [{observe: 雞塊, target: 原文沒寫這步的完成狀態（只寫炒 1 分鐘）, method: null, evidence: M}]
   - id: a6
     technique: tech/boil
-    term: 倒入米酒，湯汁燒開後加入適量的水、鹽、白砂糖一起繼續煮
+    term: 倒入米酒，湯汁燒開後加入適量的水、鹽、砂糖一起繼續煮
     inputs: [s_chicken_seared, i_wine, i_water, i_salt, i_sugar]
     outputs: [s_seasoned_broth]
     tool: tool/stock_pot
     params: {heat: {level: null, raw: "倒米酒燒開的火力原文沒寫"}, duration: {min_s: null, max_s: null, raw: "燒開後煮多久原文沒寫", status: missing}}
-    completion: [{observe: 湯汁, target: 湯汁燒開（原文：「等湯汁燒開後，加入適量的水、鹽、白砂糖」）, method: 目測（滾）, evidence: M}]
+    completion: [{observe: 湯汁, target: 湯汁燒開（原文：「等湯汁燒開後，加入適量的水、鹽、砂糖」）, method: 目測（滾）, evidence: M}]
     note: "投料順序依 M：先倒米酒燒開，再加水、鹽、白砂糖。米酒酒精是否煮掉原文沒寫"
   - id: a7
     technique: tech/simmer

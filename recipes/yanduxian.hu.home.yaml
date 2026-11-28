@@ -68,11 +68,11 @@ ingredients:
   - {id: i_baiye, concept: ing/baiyejie, label: 百葉結, role: 輔料,
      qty: {value: 300, unit: g, raw_text: "百叶结300克", evidence: S1, status: sourced},
      note: "S1 說明薄百葉裁成 10 公分寬再摺疊打結；如今可買現成。本檔用量以 300 克為準，是否現成 S1 沒要求"}
-  - {id: i_wine, concept: ing/cooking_wine, label: 黃酒, role: 調料,
+  - {id: i_wine, concept: ing/cooking_wine, label: 紹興酒, role: 調料,
      qty: {value: 50, unit: ml, raw_text: "倒入50毫升黄酒", evidence: S1, status: sourced}}
-  - {id: i_water_blanch_meat, concept: ing/water, label: 水（肉焯水）, role: 液體,
+  - {id: i_water_blanch_meat, concept: ing/water, label: 水（肉汆燙）, role: 液體,
      qty: {value: null, unit: null, qualitative: null, raw_text: "放入锅中，加水煮开", evidence: S1, status: missing, note: "原文只寫加水煮開，沒有給水量；「加水煮開」是操作，不是定性份量"}}
-  - {id: i_water_baiye, concept: ing/water, label: 水（百葉結焯水與沖洗）, role: 液體,
+  - {id: i_water_baiye, concept: ing/water, label: 水（百葉結汆燙與沖洗）, role: 液體,
      qty: {value: null, unit: null, qualitative: null, raw_text: "百叶结用沸水煮2分钟，再用清水冲洗", evidence: S1, status: missing, note: "原文只寫沸水煮、清水沖洗，沒有給水量；這是操作，不是定性份量"}}
   - {id: i_water_stew, concept: ing/water, label: 清水（燉湯）, role: 液體,
      qty: {value: null, unit: null, qualitative: 與肉塊齊平, raw_text: "与肉块齐平的清水", evidence: S1, status: sourced, note: "只給液面高度，沒有公升數，不自編"}}
@@ -83,8 +83,8 @@ states:
   - {id: s_salted_cut, label: 切好的鹹腿肉塊}
   - {id: s_belly_cut, label: 切好的五花肉塊}
   - {id: s_bamboo_cut, label: 去殼滾刀塊春筍}
-  - {id: s_baiye_ready, label: 焯過並沖洗的百葉結}
-  - {id: s_meats_blanched, label: 焯過煮開並洗淨的肉塊}
+  - {id: s_baiye_ready, label: 汆燙過並沖洗的百葉結}
+  - {id: s_meats_blanched, label: 汆燙過煮開並洗淨的肉塊}
   - {id: s_stew_30, label: 小火燉半小時、肉塊半熟的湯}
   - {id: s_stew_bamboo, label: 加入春筍後再燉 20 分鐘}
   - {id: s_final, label: 醃篤鮮, role: final}
@@ -96,7 +96,7 @@ actions:
     inputs: [i_salted]
     outputs: [s_salted_cut]
     tool: tool/knife
-    params: {cut: {shape: cut/kuai, size_mm: {min: null, max: null}, raw: "切成3厘米宽、1.5厘米厚的小块", evidence: S1, note: "schema 的 size_mm 只能放一個尺寸區間，無法同時表達寬與厚，故欄位留空，權威以 raw 為準；不可把兩個維度寫成同一區間"}}
+    params: {cut: {shape: cut/kuai, size_mm: {min: null, max: null}, raw: "切成3釐米寬、1.5釐米厚的小塊", evidence: S1, note: "schema 的 size_mm 只能放一個尺寸區間，無法同時表達寬與厚，故欄位留空，權威以 raw 為準；不可把兩個維度寫成同一區間"}}
     completion: [{observe: 鹹腿肉, target: 3 公分寬、1.5 公分厚的小塊, method: 目測, evidence: S1}]
     note: "刀、砧板為選用工具（推論；S1 未指定）"
   - id: a2
@@ -105,7 +105,7 @@ actions:
     inputs: [i_belly]
     outputs: [s_belly_cut]
     tool: tool/knife
-    params: {cut: {shape: cut/kuai, size_mm: {min: null, max: null}, raw: "切成4厘米长、3厘米厚的小块", evidence: S1, note: "size_mm 只能放一個尺寸區間，無法同時表達長與厚，故欄位留空，權威以 raw 為準；不可把兩個維度寫成同一區間"}}
+    params: {cut: {shape: cut/kuai, size_mm: {min: null, max: null}, raw: "切成4釐米長、3釐米厚的小塊", evidence: S1, note: "size_mm 只能放一個尺寸區間，無法同時表達長與厚，故欄位留空，權威以 raw 為準；不可把兩個維度寫成同一區間"}}
     completion: [{observe: 五花肉, target: 4 公分長、3 公分厚的小塊, method: 目測, evidence: S1}]
     can_overlap: [a1]
   - id: a3
@@ -114,7 +114,7 @@ actions:
     inputs: [i_bamboo]
     outputs: [s_bamboo_cut]
     tool: tool/knife
-    params: {cut: {shape: cut/gun_dao, size_mm: {min: null, max: null}, raw: "竹笋去壳，切滚刀块", evidence: S1, note: "塊的大小 S1 沒寫。S1 主張春筍不必沸水汆透去草酸，本檔也不焯筍"}}
+    params: {cut: {shape: cut/gun_dao, size_mm: {min: null, max: null}, raw: "竹筍去殼，切滾刀塊", evidence: S1, note: "塊的大小 S1 沒寫。S1 主張春筍不必沸水汆透去草酸，本檔也不焯筍"}}
     completion: [{observe: 春筍, target: 去殼、滾刀塊, method: 目測, evidence: S1}]
     can_overlap: [a1, a2]
   - id: a4
@@ -124,7 +124,7 @@ actions:
     outputs: [s_baiye_ready]
     tool: tool/stock_pot
     params:
-      duration: {min_s: 120, max_s: 120, raw: "用沸水煮2分钟", is_guide: true, evidence: S1, status: sourced}
+      duration: {min_s: 120, max_s: 120, raw: "用沸水煮2分鐘", is_guide: true, evidence: S1, status: sourced}
       heat: {level: null, raw: "沸水（火力檔位原文沒寫，只要求水是沸的）"}
     completion:
       - {observe: 計時, target: 沸水煮 2 分鐘, method: 目測計時, evidence: S1}
@@ -138,19 +138,19 @@ actions:
     outputs: [s_meats_blanched]
     tool: tool/stock_pot
     params:
-      duration: {min_s: null, max_s: null, raw: "加水煮开（沒寫幾分鐘）", status: missing}
-      heat: {level: null, raw: "加水煮开（火力檔位原文沒寫）"}
+      duration: {min_s: null, max_s: null, raw: "加水煮開（沒寫幾分鐘）", status: missing}
+      heat: {level: null, raw: "加水煮開（火力檔位原文沒寫）"}
     completion: [{observe: 水與肉, target: 煮開後撈出洗淨, method: 目測（沸騰）, evidence: S1}]
     note: "原文是「分別洗淨……放入鍋中」，沒有寫是否分兩鍋。本檔以同一口湯鍋先後或同鍋焯（推論，無新數字）；炒鍋或平底鍋可作替代"
   - id: a6
     technique: tech/dun
-    term: 肉放入鍋中，倒入 50 毫升黃酒與與肉塊齊平的清水，煮開後轉小火慢燉半小時，至肉塊半熟
+    term: 肉放入鍋中，倒入 50 毫升紹興酒與與肉塊齊平的清水，煮開後轉小火慢燉半小時，至肉塊半熟
     inputs: [s_meats_blanched, i_wine, i_water_stew]
     outputs: [s_stew_30]
     tool: tool/stock_pot
     params:
-      heat: {level: heat/low, raw: "煮开，转小火慢炖半小时", evidence: S1}
-      duration: {min_s: 1800, max_s: 1800, raw: "慢炖半小时", is_guide: true, evidence: S1, status: sourced}
+      heat: {level: heat/low, raw: "煮開，轉小火慢燉半小時", evidence: S1}
+      duration: {min_s: 1800, max_s: 1800, raw: "慢燉半小時", is_guide: true, evidence: S1, status: sourced}
       loading: {submerged: null, note: "液面標準是「與肉塊齊平」，不是完全沒過或加倍"}
     completion:
       - {observe: 湯, target: 煮開後轉小火, method: 目測, evidence: S1}
@@ -163,8 +163,8 @@ actions:
     outputs: [s_stew_bamboo]
     tool: tool/stock_pot
     params:
-      heat: {level: heat/low, raw: "放入春笋慢炖20分钟", evidence: S1}
-      duration: {min_s: 1200, max_s: 1200, raw: "慢炖20分钟", is_guide: true, evidence: S1, status: sourced}
+      heat: {level: heat/low, raw: "放入春筍慢燉20分鐘", evidence: S1}
+      duration: {min_s: 1200, max_s: 1200, raw: "慢燉20分鐘", is_guide: true, evidence: S1, status: sourced}
     completion: [{observe: 計時, target: 春筍下鍋後慢燉 20 分鐘, method: 目測計時, evidence: S1}]
     note: "本句原文只寫「慢炖」，小火是承接 a6 的轉小火，不是本句另給的火力檔。S1 強調不可把肉、筍、百葉結同時下鍋，因為春筍太熟會偏軟、百葉結容易煮糊爛"
   - id: a8
@@ -174,8 +174,8 @@ actions:
     outputs: [s_final]
     tool: tool/stock_pot
     params:
-      heat: {level: heat/low, raw: "大火煮沸，转小火炖5分钟", evidence: S1}
-      duration: {min_s: 300, max_s: 300, raw: "转小火炖5分钟", is_guide: true, evidence: S1, status: sourced}
+      heat: {level: heat/low, raw: "大火煮沸，轉小火燉5分鐘", evidence: S1}
+      duration: {min_s: 300, max_s: 300, raw: "轉小火燉5分鐘", is_guide: true, evidence: S1, status: sourced}
     completion:
       - {observe: 湯, target: 大火煮沸後轉小火燉 5 分鐘即成, method: 目測計時, evidence: S1}
       - {observe: 味道, target: 鹹肉已帶鹹味，吃口較重才稍加鹽, method: 試吃, evidence: S1}
@@ -196,7 +196,7 @@ notes:
   electric_cooker: "燉煮段（a6–a8，半小時＋20 分＋5 分）也可改放電鍋內鍋（替代做法）。內鍋水面仍只跟「與肉塊齊平」；外鍋水量原文沒寫，不自編。S1 不是電鍋食譜，不能宣稱電鍋時間與爐上相同，待試做"
   spicy_split: "S1／S3 主體都無辣椒、花椒。S2 起鍋前用白胡椒粉提鮮（胡椒不是花椒的麻），且僅對照來源有，本檔主體不加。若要辣味，盛碗後另加（不辣版分開做；推論，無來源數字）"
   weekday: "平日（≤20 分鐘，此為專案門檻，不是 S1 提供的總料理時間）不可從頭現做：僅燉煮段就半小時＋20 分＋5 分，加切配與焯水更久。S1 沒寫總料理時間，也沒寫可前一晚做好再回溫"
-  burners: "爐口安排（推論，非原文）：切配與備料不占爐口；焯水與燉煮可依序用同一口湯鍋完成。原文未寫需要幾口爐，本檔不另填爐口數字"
+  burners: "爐口安排（推論，非原文）：切配與備料不占爐口；汆燙與燉煮可依序用同一口湯鍋完成。原文未寫需要幾口爐，本檔不另填爐口數字"
   author_cautions: "S1 小提示：①春筍不必沸水汆透，以免失去鮮脆嫩；②肉、筍、百葉結不可同時下鍋，因為春筍太熟會偏軟、百葉結容易煮糊爛；③不要加萵筍、青菜、黃豆芽，不要用雞肉／排骨／蹄髈代替五花，不要用冬筍或筍乾代替春筍，不要用火腿代替鹹肉；④不宜燉太久；鹹肉已鹹，不必放鹽，吃口較重才稍加"
   compare: "S2 搜狐（約 3–4 人份）：春筍 2 根（中等大小）、鹹肉 1 小把（約三指寬一條）、豬骨或五花拳頭大、百葉結 5 個左右、蔥 2 根、薑 4 片、料酒 1 勺、鹽半小勺（看鹹肉鹹度再定）、白胡椒少許；鹹肉提前一晚泡水、第二天換 2–3 次水，切成約兩公分厚片；筍加一小勺鹽、水開後煮 5 分鐘撈出過涼水；骨肉冷水下鍋加 2 片薑、1 勺料酒，水開後煮 3 分鐘；砂鍋或厚底鍋加沒過食材兩指的熱水，大火保持翻滾 10 分鐘轉最小火蓋留一縫燉 40 分鐘，下百葉結和春筍塊再燉 15 分鐘，蔥結煮 2 分鐘；強調一定用熱水、鍋蓋留縫，完成看奶白湯。S3 大廚網：春筍 5 支、鹹肉 150 g（切成約 3 cm 塊）、五花 250 g、千張結 15 個、料酒 2 大勺；砂鍋加水大概至四分之三處，大火煮肉、撇沫下酒，小火 30 分，中火下筍 15 分，下千張結後先拌勻再加蓋中火 10 分。S4 自由時報（6–10 人份，餐館式）：五花 200 g、鹹肉 50 g、竹筍 1 支、百頁紙 20 張、青江菜適量、1/4 雞骨架、金華火腿 250 g、米酒 50 g、蒜苗絲少許；五花可蒸約 4 小時（或汆燙去血水），再重壓約 1 小時後切成寬約 1.5 公分長條；鹹肉水滾後轉小火煮約 4 小時，切約 2–3 小塊；雞骨架與金華火腿放入 700 c.c. 滾水中小火燉 8 小時以上至湯頭乳白（或 700 c.c. 滾水加干貝粉／雞粉作簡易高湯）；百頁紙對摺兩次打結，溫水加小蘇打粉浸泡約 1 小時，沖至觸感較澀、完全不滑；砂鍋小火煨至少 40 分鐘至表面一層油膜，起鍋前青江菜約 3 分鐘，上桌前放蒜苗絲。與 S1 差異大，尤其是長時間高湯與用火腿、雞骨，不混用"
   missing: "原文沒寫：幾人份、焯肉要幾分鐘、焯水與沖洗的水量、大火煮沸要多久、半熟的細步判斷法、燉時蓋嚴或留縫、上桌溫度與時限、總料理時間、去殼後春筍淨重"

@@ -71,7 +71,7 @@ components:
             ingredients:
               - {id: f_pancetta, concept: ing/pancetta_fresh, label: 新鮮豬腹肉（非煙燻）, role: 主料, qty: {value: 150, unit: g, evidence: R1, status: sourced}, forbidden: [煙燻豬腹肉]}
               - {id: f_onion, concept: ing/onion, label: 洋蔥（半顆）, role: 輔料, qty: {value: 60, unit: g, raw_text: "mezza cipolla: circa gr. 60", evidence: R1, status: sourced, note: 約}}
-              - {id: f_carrot, concept: ing/carrot, label: 胡蘿蔔（1 根）, role: 輔料, qty: {value: 60, unit: g, raw_text: "1 carota: circa gr. 60", evidence: R1, status: sourced, note: 約}}
+              - {id: f_carrot, concept: ing/carrot, label: 紅蘿蔔（1 根）, role: 輔料, qty: {value: 60, unit: g, raw_text: "1 carota: circa gr. 60", evidence: R1, status: sourced, note: 約}}
               - {id: f_celery, concept: ing/celery, label: 芹菜莖（1 根）, role: 輔料, qty: {value: 60, unit: g, raw_text: "1 gambo di sedano: circa gr. 60", evidence: R1, status: sourced, note: 約}}
               - {id: f_oil, concept: ing/evoo, label: 特級初榨橄欖油, role: 油脂, qty: {value: 3, unit: cucchiaio, evidence: R1, status: sourced}}
             actions:

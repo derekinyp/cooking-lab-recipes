@@ -9,7 +9,7 @@ recipe:
   dish_concept: dish/haoyou_jielan
   name: {zh_hant: 蠔油芥藍, zh_hans: 蚝油芥兰, en: Chinese broccoli (gai lan) with oyster sauce}
   variant: 廣式家常版
-  summary: 芥蘭菜頭尾切齊，滾水加油、糖汆燙，水滾10秒後撈起裝盤，淋上蠔油的家常青菜。
+  summary: 芥蘭菜頭尾切齊，滾水加油、糖汆燙，水滾10秒後撈起盛盤，淋上蠔油的家常青菜。
   cuisine:
     - {id: cuisine/yue, basis: "編者分類（推論）：蠔油芥藍常見於粵式、港式家常；M、S1 網頁分類都只寫「中式料理」，來源沒有明說菜系"}
     - {id: region/hongkong, basis: "編者分類（推論）：對照來源 S2 是香港食物環境衞生署食譜單張；這不證明菜的地域歸屬"}
@@ -58,7 +58,7 @@ ingredients:
 states:
   - {id: s_gailan_trimmed, label: 頭尾切齊的芥蘭菜}
   - {id: s_blanch_water, label: 滾水加沙拉油、細砂糖的汆燙水}
-  - {id: s_gailan_plated, label: 汆燙後裝盤的芥蘭菜}
+  - {id: s_gailan_plated, label: 汆燙後盛盤的芥蘭菜}
   - {id: s_final, label: 蠔油芥藍, role: final}
 
 actions:
@@ -83,7 +83,7 @@ actions:
     note: "家庭改法（推論）：M 未指明鍋具；家庭廚具無蒸籠，汆燙用湯鍋。"
   - id: a3
     technique: tech/blanch
-    term: 放入芥蘭菜翻動汆燙，水滾 10 秒後撈起裝盤
+    term: 放入芥蘭菜翻動汆燙，水滾 10 秒後撈起盛盤
     inputs: [s_blanch_water, s_gailan_trimmed]
     outputs: [s_gailan_plated]
     tool: tool/stock_pot
@@ -91,7 +91,7 @@ actions:
       duration: {min_s: 10, max_s: 10, raw: "水滾10秒後", is_guide: true, evidence: M, status: sourced}
       agitation: {mode: "翻動汆燙（翻動頻率原文沒寫）"}
     completion:
-      - {observe: 芥蘭菜, target: 水滾 10 秒後撈起裝盤（M 原文）, method: 目測, evidence: M}
+      - {observe: 芥蘭菜, target: 水滾 10 秒後撈起盛盤（M 原文）, method: 目測, evidence: M}
       - {observe: 色澤與脆嫩度, target: 原文沒寫；待試做以目測色澤、試吃口感判斷, method: 目測、試吃}
     note: "M 沒寫撈起後是否沖冷水／冰鎮；對照 S1 是「撈起沖冷水，以保持鮮綠色」。"
   - id: a4

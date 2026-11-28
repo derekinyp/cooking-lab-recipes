@@ -139,7 +139,7 @@ actions:
       - {observe: 湯汁, target: 煮至湯汁收乾, method: 目測, evidence: M}
   - id: a7
     technique: tech/plate
-    term: 裝盤
+    term: 盛盤
     inputs: [s_braised]
     outputs: [s_final]
     completion: [{observe: 成品, target: 擺盤樣式原文沒寫, method: null}]

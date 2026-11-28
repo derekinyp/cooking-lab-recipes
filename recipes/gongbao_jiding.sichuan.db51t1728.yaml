@@ -48,11 +48,11 @@ ingredients:
      qty: {value: 20, unit: g, raw_text: "蒜片 20", evidence: S1, status: sourced}}
   - {id: i_scallion, concept: ing/scallion, label: 蔥丁, form: 丁, role: 輔料,
      qty: {value: 40, unit: g, raw_text: "蔥丁 40", evidence: S1, status: sourced}}
-  - {id: i_salt_m, concept: ing/salt, label: 食鹽（碼味）, role: 調料,
+  - {id: i_salt_m, concept: ing/salt, label: 食鹽（醃肉）, role: 調料,
      qty: {value: 1, unit: g, raw_text: "食鹽 1.5（碼味 1、調味 0.5）", evidence: S1, status: sourced, note: "表 B.3 總量 1.5 g，此為碼味分項；調味 0.5 g 在 j_salt"}}
-  - {id: i_wine_m, concept: ing/cooking_wine, label: 料酒（碼味）, role: 調料,
+  - {id: i_wine_m, concept: ing/cooking_wine, label: 米酒（醃肉）, role: 調料,
      qty: {value: 3, unit: g, raw_text: "料酒 6（碼味 3、調味 3）", evidence: S1, status: sourced, note: "表 B.3 總量 6 g，此為碼味分項；調味 3 g 在 j_wine"}}
-  - {id: i_starch_m, concept: ing/starch_slurry_1to1, label: 水澱粉（碼味）, role: 芡粉,
+  - {id: i_starch_m, concept: ing/starch_slurry_1to1, label: 太白粉水（醃肉）, role: 芡粉,
      qty: {value: 20, unit: g, raw_text: "水澱粉 30（碼味 20、調味 10）", evidence: S1, status: sourced, note: "表 B.3 總量 30 g，此為碼味分項；調味 10 g 在 j_starch；水澱粉＝澱粉:水 1:1（表 1 注）"}}
   - {id: i_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂,
      qty: {value: 50, unit: g, raw_text: "食用油 50", evidence: S1, status: sourced}}
@@ -73,12 +73,12 @@ components:
         status: cross_checked
       ingredients:
         - {id: j_salt, concept: ing/salt, label: 食鹽（調味）, role: 調料, qty: {value: 0.5, unit: g, evidence: S1, status: sourced}}
-        - {id: j_sugar, concept: ing/white_sugar, label: 白糖, role: 調料, qty: {value: 8, unit: g, evidence: S1, status: sourced}}
+        - {id: j_sugar, concept: ing/white_sugar, label: 砂糖, role: 調料, qty: {value: 8, unit: g, evidence: S1, status: sourced}}
         - {id: j_soy, concept: ing/soy_sauce, label: 醬油, role: 調料, qty: {value: 5, unit: g, evidence: S1, status: sourced}}
         - {id: j_vinegar, concept: ing/vinegar, label: 醋, role: 調料, qty: {value: 6, unit: g, evidence: S1, status: sourced}}
-        - {id: j_wine, concept: ing/cooking_wine, label: 料酒（調味）, role: 調料, qty: {value: 3, unit: g, evidence: S1, status: sourced}}
-        - {id: j_starch, concept: ing/starch_slurry_1to1, label: 水澱粉（調味）, role: 芡粉, qty: {value: 10, unit: g, evidence: S1, status: sourced}}
-        - {id: j_stock, concept: ing/stock_light, label: 鮮湯, role: 液體, qty: {value: 25, unit: g, evidence: S1, status: sourced}}
+        - {id: j_wine, concept: ing/cooking_wine, label: 米酒（調味）, role: 調料, qty: {value: 3, unit: g, evidence: S1, status: sourced}}
+        - {id: j_starch, concept: ing/starch_slurry_1to1, label: 太白粉水（調味）, role: 芡粉, qty: {value: 10, unit: g, evidence: S1, status: sourced}}
+        - {id: j_stock, concept: ing/stock_light, label: 高湯, role: 液體, qty: {value: 25, unit: g, evidence: S1, status: sourced}}
         - {id: j_msg, concept: ing/msg, label: 味精, role: 調料, optional: true, qty: {value: 1, unit: g, evidence: S1, status: sourced}}
       actions:
         - id: ja1
@@ -92,7 +92,7 @@ components:
 
 states:
   - {id: s_diced, label: 雞肉中丁}
-  - {id: s_marinated, label: 碼味上漿雞丁}
+  - {id: s_marinated, label: 醃肉上漿雞丁}
   - {id: s_chili_seg, label: 乾辣椒節（2 cm）}
   - {id: s_hot_oil, label: 150°C 熱油}
   - {id: s_aromatic, label: 煳辣香油底}
@@ -113,11 +113,11 @@ actions:
     can_overlap: [a3]
   - id: a2
     technique: tech/marinate_coat
-    term: 碼味上漿
+    term: 醃肉上漿
     inputs: [s_diced, i_salt_m, i_wine_m, i_starch_m]
     outputs: [s_marinated]
     params: {duration: {min_s: null, max_s: null, raw: 標準未註明, status: missing}, agitation: {mode: 拌勻}}
-    completion: [{observe: 雞丁, target: 拌勻（原文：加入食鹽、料酒、水澱粉拌勻）, method: 目測（推論，原文沒寫判斷方式）}]
+    completion: [{observe: 雞丁, target: 拌勻（原文：加入食鹽、米酒、太白粉水拌勻）, method: 目測（推論，原文沒寫判斷方式）}]
   - id: a3
     technique: tech/cut
     term: 切節
@@ -138,7 +138,7 @@ actions:
     completion: [{observe: 油溫, target: 150°C（原文）, method: 經驗（推論：原文只給 150℃、沒寫如何判斷）, evidence: S1}]
   - id: a5
     technique: tech/qiang
-    term: 炒香（熗辣椒花椒）
+    term: 炒香（嗆辣椒花椒）
     inputs: [s_hot_oil, s_chili_seg, i_pepper]
     outputs: [s_aromatic]
     tool: tool/wok
@@ -182,7 +182,7 @@ actions:
 serving:
   completion:
     - {observe: 菜品中心溫度, target: "≥70°C", method: 溫度計, evidence: S1}
-    - {observe: 出鍋至食用, target: "≤10 分鐘", evidence: S1}
+    - {observe: 起鍋至食用, target: "≤10 分鐘", evidence: S1}
   sensory_target: {color: 棕紅, taste: 鹹鮮麻辣略帶甜酸, texture: 雞肉滑嫩、花生香脆}
 
 notes:

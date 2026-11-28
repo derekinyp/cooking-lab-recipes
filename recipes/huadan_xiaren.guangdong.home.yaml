@@ -9,7 +9,7 @@ recipe:
   dish_concept: dish/huadan_xiaren
   name: {zh_hant: 滑蛋蝦仁, zh_hans: 滑蛋虾仁, en: Scrambled eggs with shrimp (Cantonese)}
   variant: 廣式家常版
-  summary: 蝦仁去腸抹乾，用鹽、白胡椒粉、生粉醃過；大火炒至八成熟盛起待涼，拌入加了鹽與生粉的蛋液；燒熱油鑊轉小火快炒至蛋液凝固，放上蔥成菜。
+  summary: 蝦仁去腸抹乾，用鹽、白胡椒粉、太白粉醃過；大火炒至八成熟盛起待涼，拌入加了鹽與太白粉的蛋液；燒熱油鑊轉小火快炒至蛋液凝固，放上蔥成菜。
   cuisine:
     - {id: cuisine/yue, basis: "編者分類（推論）：本庫把滑蛋蝦仁列在粵式家常；主來源 M 是香港親子食譜網站，來源沒有主張菜系"}
     - {id: region/hongkong, basis: "編者分類（推論）：主來源 M 為香港食譜網站；網站所在地不證明料理地域歸屬"}
@@ -58,11 +58,11 @@ ingredients:
      qty: {value: 0.5, unit: tsp, raw_text: "鹽 1/2 茶匙", evidence: M, status: sourced, note: "M 醃料。"}}
   - {id: i_wp_mar, concept: ing/white_pepper_powder, label: 白胡椒粉（醃蝦仁）, role: 香料,
      qty: {value: 0.5, unit: tsp, raw_text: "白胡椒粉 1/2 茶匙", evidence: M, status: sourced, note: "M 醃料；M 貼士四：白胡椒粉可去蝦的腥味。"}}
-  - {id: i_starch_mar, concept: ing/starch, label: 生粉（醃蝦仁）, role: 芡粉,
+  - {id: i_starch_mar, concept: ing/starch, label: 太白粉（醃蝦仁）, role: 芡粉,
      qty: {value: 0.5, unit: tsp, raw_text: "生粉 1/2 茶匙", evidence: M, status: sourced, note: "M 醃料；生粉是否先調水原文沒寫。"}}
   - {id: i_salt_egg, concept: ing/salt, label: 鹽（入蛋液）, role: 調料,
      qty: {value: 0.5, unit: tsp, raw_text: "鹽 1/2 茶匙", evidence: M, status: sourced, note: "M 調味料，步驟 4 加入蛋液。"}}
-  - {id: i_starch_egg, concept: ing/starch, label: 生粉（入蛋液）, role: 芡粉,
+  - {id: i_starch_egg, concept: ing/starch, label: 太白粉（入蛋液）, role: 芡粉,
      qty: {value: null, unit: null, qualitative: 少許, raw_text: "生粉 少許", evidence: M, status: sourced, note: "M 調味料；M 貼士三：雞蛋打勻後加入少許生粉，可令蝦仁炒蛋減少出水。"}}
 
 states:
@@ -111,11 +111,11 @@ actions:
     note: "M 寫「鑊」，對應家庭炒鍋；盛起待涼為 M 步驟 3 原文。"
   - id: a5
     technique: tech/combine
-    term: 將蝦仁放入打好的蛋液中，加入調味料拌匀
+    term: 將蝦仁放入打好的蛋液中，加入調味料拌勻
     inputs: [s_egg_beaten, s_shrimp_cooked, i_salt_egg, i_starch_egg]
     outputs: [s_egg_shrimp_mix]
     tool: tool/bowl
-    completion: [{observe: 蛋液與蝦仁, target: 拌匀（M 原文「加入調味料拌匀」）, method: 目測, evidence: M}]
+    completion: [{observe: 蛋液與蝦仁, target: 拌勻（M 原文「加入調味料拌勻」）, method: 目測, evidence: M}]
   - id: a6
     technique: tech/stir_fry
     term: 燒熱油鑊，下油約1湯匙，倒入蝦仁蛋液，轉小火，快速炒至蛋液凝固，盛起

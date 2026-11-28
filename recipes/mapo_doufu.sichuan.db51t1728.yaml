@@ -8,8 +8,8 @@ recipe:
   kind: dish
   dish_concept: dish/mapo_doufu
   name: {zh_hant: 麻婆豆腐, zh_hans: 麻婆豆腐, en: Mapo tofu}
-  variant: 四川傳統（地方標準版，牛肉末）
-  summary: 豆腐嫩而不碎，牛肉末酥香，湯汁紅亮濃稠，麻、辣、鹹、鮮、燙。
+  variant: 四川傳統（地方標準版，牛絞肉）
+  summary: 豆腐嫩而不碎，牛絞肉酥香，湯汁紅亮濃稠，麻、辣、鹹、鮮、燙。
   cuisine:
     - {id: cuisine/chuan, basis: "DB51/T 1728-2014 列為川菜蔬果類經典菜餚（表 4 第 8 列）", claim: primary, evidence: S1}
     - {id: region/sichuan, basis: "四川省地方標準（名錄歸屬見 catalog）", claim: primary, evidence: S1}
@@ -54,9 +54,9 @@ ingredients:
      qty: {value: 1, unit: g, raw_text: "花椒粉 1", evidence: S1, status: sourced}}
   - {id: m_soy, concept: ing/soy_sauce, label: 醬油, role: 調料,
      qty: {value: 10, unit: g, raw_text: "酱油 10", evidence: S1, status: sourced}}
-  - {id: m_stock, concept: ing/stock_light, label: 鮮湯, role: 液體,
+  - {id: m_stock, concept: ing/stock_light, label: 高湯, role: 液體,
      qty: {value: 200, unit: g, raw_text: "鲜汤 200", evidence: S1, status: sourced}}
-  - {id: m_starch, concept: ing/starch_slurry_1to1, label: 水澱粉, role: 芡粉,
+  - {id: m_starch, concept: ing/starch_slurry_1to1, label: 太白粉水, role: 芡粉,
      qty: {value: 30, unit: g, raw_text: "水淀粉 30", evidence: S1, status: sourced},
      note: "30 g 是水澱粉（已調好）的重量；表 1 注 c：水淀粉系淀粉加水調勻而成，重量比 淀粉：水=1：1"}
   - {id: m_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂,
@@ -76,14 +76,14 @@ components:
         id: beef_suozi.db51t1728
         version: "1.0"
         kind: base
-        name: {zh_hant: 牛肉臊子（牛肉末炒酥香）}
+        name: {zh_hant: 牛肉臊子（牛絞肉炒酥香）}
         status: cross_checked
       ingredients:
         - {id: m_beef, concept: ing/beef_lean, label: 牛肉（淨瘦肉）, role: 主料,
            qty: {value: 50, unit: g, raw_text: "牛肉 50", evidence: S1, status: sourced}, note: "表 4：牛肉應選用淨瘦肉"}
         - {id: m_salt_beef, concept: ing/salt, label: 食鹽（牛肉臊子用）, role: 調料,
            qty: {value: 1, unit: g, raw_text: "食盐 11（浸泡 10、牛肉臊子 1）", evidence: S1, status: sourced}}
-        - {id: m_wine, concept: ing/cooking_wine, label: 料酒, role: 調料,
+        - {id: m_wine, concept: ing/cooking_wine, label: 米酒, role: 調料,
            qty: {value: 5, unit: g, raw_text: "料酒 5", evidence: S1, status: sourced}, note: "D.8.2.1 只在炒牛肉末時出現"}
       actions:
         - id: m3
@@ -96,12 +96,12 @@ components:
           completion: [{observe: 牛肉, target: 成末, method: 目測, evidence: S1}]
         - id: m4
           technique: tech/stir_fry
-          term: 牛肉末入鍋炒散，入食鹽、料酒炒酥香
+          term: 牛絞肉入鍋炒散，入食鹽、米酒炒酥香
           inputs: [s_beef_mince, m_salt_beef, m_wine]
           outputs: [s_beef_cooked]
           tool: tool/wok
           params: {agitation: {mode: 炒散}, heat: {level: null, raw: "原文沒寫火力"}}
-          completion: [{observe: 牛肉末, target: 炒散、炒酥香, method: null, evidence: S1, note: "檢測方法原文沒寫（推論：目測與聞香）"}]
+          completion: [{observe: 牛絞肉, target: 炒散、炒酥香, method: null, evidence: S1, note: "檢測方法原文沒寫（推論：目測與聞香）"}]
           note: "原文沒寫這一步用不用油；表 D.8 食用油 70 g 是總量，分配原文沒寫"
 
 states:
@@ -141,7 +141,7 @@ actions:
     inputs: [m_garlic_sprout]
     outputs: [s_garlic_sprout_cut]
     tool: tool/knife
-    params: {cut: {shape: cut/segment, size_mm: {min: null, max: null}, raw: "切成马耳朵形或长约 3cm 的节", evidence: S1, note: "原文是『長約 3cm』的近似值，不寫成固定毫米上下限；另一選項馬耳朵形（cut/ma_er_duo）原文未給尺寸"}}
+    params: {cut: {shape: cut/segment, size_mm: {min: null, max: null}, raw: "切成馬耳朵形或長約 3cm 的節", evidence: S1, note: "原文是『長約 3cm』的近似值，不寫成固定毫米上下限；另一選項馬耳朵形（cut/ma_er_duo）原文未給尺寸"}}
     completion: [{observe: 蒜苗, target: 馬耳朵形或約 3 cm 的節, method: 目測, evidence: S1}]
   - id: m6
     technique: tech/heat_oil
@@ -150,7 +150,7 @@ actions:
     outputs: [s_oil_100]
     tool: tool/wok
     params:
-      temperature: {target: oil, min_c: 100, max_c: 100, raw: "锅中放油烧至 100℃", evidence: S1}
+      temperature: {target: oil, min_c: 100, max_c: 100, raw: "鍋中放油燒至 100℃", evidence: S1}
       heat: {level: null, raw: 標準未寫火力檔位}
     completion: [{observe: 油溫, target: 100°C, method: null, evidence: S1, note: "不用溫度計版；不用溫度計時怎麼判斷 100°C，原文沒寫，待試做校準（不換算成幾成熱）"}]
     must_finish_before: [m7]
@@ -171,7 +171,7 @@ actions:
     note: "剁細併在此說明，不另立步驟"
   - id: m8
     technique: tech/shao
-    term: 摻入鮮湯，入醬油、豆腐、牛肉末燒至成熟
+    term: 摻入高湯，入醬油、豆腐、牛絞肉燒至成熟
     inputs: [s_red_oil_base, m_stock, m_soy, s_tofu_soaked, s_beef_cooked]
     outputs: [s_braised]
     tool: tool/wok
@@ -180,7 +180,7 @@ actions:
     note: "豆腐從浸泡的鹽水中撈出的方式與是否瀝水，原文沒寫"
   - id: m9
     technique: tech/thicken
-    term: 入蒜苗、（味精）、花椒粉、水澱粉，收汁濃稠呈干二流芡
+    term: 入蒜苗、（味精）、花椒粉、太白粉水，收汁濃稠呈干二流芡
     inputs: [s_braised, s_garlic_sprout_cut, m_msg, m_pepper_powder, m_starch]
     outputs: [s_thickened]
     tool: tool/wok
@@ -202,7 +202,7 @@ actions:
 serving:
   completion:
     - {observe: 菜品中心溫度, target: "70°C 以上", method: null, evidence: S1, note: "不用溫度計版；原文沒寫感官判斷法，推論：出鍋即上桌、仍冒熱氣"}
-    - {observe: 出鍋至食用, target: "≤10 分鐘為宜", evidence: S1}
+    - {observe: 起鍋至食用, target: "≤10 分鐘為宜", evidence: S1}
   sensory_target: {color: 色澤紅亮, taste: 麻、辣、鹹、鮮、燙，味道濃厚, texture: 酥、嫩，形整不爛}
 
 notes:

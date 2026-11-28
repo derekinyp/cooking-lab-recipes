@@ -39,7 +39,7 @@ ingredients:
      qty: {value: 165, unit: g, raw_text: "猪肉 165", evidence: S1, status: sourced}, note: "表 1：猪肉应选用带皮二刀肉"}
   - {id: w_water, concept: ing/water, label: 煮肉的水（之後當原湯）, role: 液體,
      qty: {value: null, unit: g, raw_text: null, status: missing, note: "水量原文沒寫"}}
-  - {id: w_veg, concept: [ing/scallion, ing/cucumber, ing/celtuce_stem], label: 墊底蔬菜（蔥、黃瓜、青筍等）, role: 輔料, optional: true,
+  - {id: w_veg, concept: [ing/scallion, ing/cucumber, ing/celtuce_stem], label: 墊底蔬菜（蔥、小黃瓜、青筍等）, role: 輔料, optional: true,
      qty: {value: null, unit: g, raw_text: "可选用葱、黄瓜、青笋等蔬菜垫底", status: missing, note: "表 1 只說可選用，份量與切法原文沒寫"}}
 
 components:
@@ -86,14 +86,14 @@ components:
               - {id: f_star, concept: ing/star_anise, label: 八角, role: 香料, qty: {value: 3, unit: g, raw_text: "八角 3g", evidence: S1, status: sourced}}
               - {id: f_caoguo, concept: ing/caoguo, label: 草果, role: 香料, qty: {value: 3, unit: g, raw_text: "草果 3g", evidence: S1, status: sourced}}
               - {id: f_sannai, concept: ing/sannai, label: 山柰（原文寫三奈）, role: 香料, qty: {value: 3, unit: g, raw_text: "三奈 3g", evidence: S1, status: sourced}}
-              - {id: f_cassia, concept: ing/cassia_bark, label: 桂皮, role: 香料, qty: {value: 3, unit: g, raw_text: "桂皮 3g", evidence: S1, status: sourced}}
+              - {id: f_cassia, concept: ing/cassia_bark, label: 肉桂, role: 香料, qty: {value: 3, unit: g, raw_text: "桂皮 3g", evidence: S1, status: sourced}}
               - {id: f_pepper, concept: ing/sichuan_pepper, label: 花椒, role: 香料, qty: {value: 1, unit: g, raw_text: "花椒 1g", evidence: S1, status: sourced}}
-              - {id: f_brown, concept: ing/brown_sugar, label: 紅糖, role: 調料, qty: {value: 50, unit: g, raw_text: "切细的红糖 50g", evidence: S1, status: sourced}}
-              - {id: f_white, concept: ing/white_sugar, label: 白糖, role: 調料, qty: {value: 100, unit: g, raw_text: "白糖 100g", evidence: S1, status: sourced}}
+              - {id: f_brown, concept: ing/brown_sugar, label: 黑糖, role: 調料, qty: {value: 50, unit: g, raw_text: "切细的红糖 50g", evidence: S1, status: sourced}}
+              - {id: f_white, concept: ing/white_sugar, label: 砂糖, role: 調料, qty: {value: 100, unit: g, raw_text: "白糖 100g", evidence: S1, status: sourced}}
             actions:
               - id: f1
                 technique: tech/combine
-                term: 八角、草果、三奈、桂皮、花椒裝成香料包
+                term: 八角、草果、三奈、肉桂、花椒裝成香料包
                 note: "原文寫『香料包（八角…花椒）』，詞表沒有『裝袋』技法，暫用 tech/combine（Codex 指出不貼切，列為詞表不足）"
                 inputs: [f_star, f_caoguo, f_sannai, f_cassia, f_pepper]
                 outputs: [fs_bag]
@@ -104,11 +104,11 @@ components:
                 inputs: [f_water, f_soy, fs_bag]
                 outputs: [fs_boiled]
                 tool: tool/stock_pot
-                params: {heat: {level: heat/medium_low, raw: "中小火烧沸", evidence: S1}}
+                params: {heat: {level: heat/medium_low, raw: "中小火燒沸", evidence: S1}}
                 completion: [{observe: 醬油, target: 燒沸, method: 目測, evidence: S1}]
               - id: f3
                 technique: tech/cut
-                term: 紅糖切細
+                term: 黑糖切細
                 inputs: [f_brown]
                 outputs: [fs_brown_fine]
                 tool: tool/knife
@@ -116,7 +116,7 @@ components:
                 note: "可與燒沸同時做是排程推論；原文順序是燒沸後再加入切細的紅糖"
               - id: f4
                 technique: tech/reduce
-                term: 加入紅糖、白糖，小火熬至醬油較濃稠
+                term: 加入黑糖、砂糖，小火熬至醬油較濃稠
                 inputs: [fs_boiled, fs_brown_fine, f_white]
                 outputs: [s_fuzhi]
                 tool: tool/stock_pot
@@ -139,7 +139,7 @@ components:
           outputs: [s_sauce]
           tool: tool/bowl
           completion:
-            - {observe: 味汁, target: 白糖溶化, method: null, evidence: S1, note: "表 1 原句『3.调味：白糖溶化，各种调味料搅拌均匀』；表 A.1 與 A.1.2.2 都沒有白糖，所指未明（可能是複製醬油裡的糖，未確定），本檔不另加白糖、不補量"}
+            - {observe: 味汁, target: 砂糖溶化, method: null, evidence: S1, note: "表 1 原句『3.调味：白糖溶化，各种调味料搅拌均匀』；表 A.1 與 A.1.2.2 都沒有白糖，所指未明（可能是複製醬油裡的糖，未確定），本檔不另加白糖、不補量"}
             - {observe: 味汁, target: 各種調味料攪拌均勻, method: 目測, evidence: S1}
 
 states:
@@ -157,7 +157,7 @@ actions:
     outputs: [s_pork_cooked]
     tool: tool/stock_pot
     params: {duration: {min_s: null, max_s: null, raw: "原文沒寫煮多久", status: missing}, heat: {level: null, raw: "原文沒寫火力"}}
-    completion: [{observe: 豬肉, target: 剛熟（表 1：煮至刚熟）, method: null, evidence: S1, note: "判熟方法原文沒寫"}]
+    completion: [{observe: 豬肉, target: 剛熟（表 1：煮至剛熟）, method: null, evidence: S1, note: "判熟方法原文沒寫"}]
   - id: w2
     technique: tech/soak_in_broth
     term: 用原湯浸泡至溫熱，撈出
@@ -173,7 +173,7 @@ actions:
     inputs: [s_pork_warm]
     outputs: [s_slices]
     tool: tool/knife
-    params: {cut: {shape: cut/pian_thin_skin_on, size_mm: {min: null, max: null}, raw: "长约10cm、宽约5cm、厚约0.15cm的薄片", evidence: S1,
+    params: {cut: {shape: cut/pian_thin_skin_on, size_mm: {min: null, max: null}, raw: "長約10cm、寬約5cm、厚約0.15cm的薄片", evidence: S1,
                    note: "原文是『約』值且有長寬厚三維，size_mm 不寫成固定上下限、留空；以 raw 的原文為準"}}
     completion: [{observe: 肉片, target: 皮肉相連、厚薄均勻, method: 目測, evidence: S1}]
     risk: "肉片很薄，刀工是最難的一步（料理提醒，非原文）"
@@ -186,10 +186,10 @@ actions:
     completion: [{observe: 肉片, target: 與味汁拌勻, method: 目測, evidence: S1}]
   - id: w5
     technique: tech/plate
-    term: 裝盤（可先墊蔬菜）
+    term: 盛盤（可先墊蔬菜）
     inputs: [s_dressed, w_veg]
     outputs: [s_final]
-    completion: [{observe: 成品, target: 裝盤；可選用蔥、黃瓜、青筍等蔬菜墊底, method: 目測, evidence: S1}]
+    completion: [{observe: 成品, target: 盛盤；可選用蔥、小黃瓜、青筍等蔬菜墊底, method: 目測, evidence: S1}]
 
 serving:
   completion:

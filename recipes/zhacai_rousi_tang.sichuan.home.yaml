@@ -10,7 +10,7 @@ recipe:
   dish_concept: dish/zhacai_rousi_tang
   name: {zh_hant: 榨菜肉絲湯, zh_hans: 榨菜肉丝汤, en: "Zhacai (preserved mustard tuber) and pork shred soup"}
   variant: 川式家常版
-  summary: "待核草稿：豬里脊絲泡水去血水、榨菜絲泡水去鹹味；清湯燒沸後下肉絲榨菜汆熟撈起，泡肉血水倒回湯中撇淨浮沫至湯清，再放回肉絲榨菜，加味精、精鹽調味。指定來源存檔不足以核實此流程。"
+  summary: "待核草稿：豬里肌絲泡水去血水、榨菜絲泡水去鹹味；清湯燒沸後下肉絲榨菜汆熟撈起，泡肉血水倒回湯中撇淨浮沫至湯清，再放回肉絲榨菜，加味精、精鹽調味。指定來源存檔不足以核實此流程。"
   cuisine:
     - {id: cuisine/chuan, basis: "本檔變體標為川式家常版（編者分類）；指定 M 存檔為空，來源說法無法核實", claim: secondary, evidence: null}
     - {id: region/sichuan, basis: "地域歸屬為編者分類；指定 M 存檔為空，無法核實其是否點名四川涪陵榨菜", claim: secondary, evidence: null}
@@ -52,7 +52,7 @@ recipe:
     - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
 
 ingredients:
-  - {id: i_pork, concept: ing/pork, label: 豬里脊肉, form: 絲, role: 主料,
+  - {id: i_pork, concept: ing/pork, label: 豬里肌肉, form: 絲, role: 主料,
      qty: {value: null, unit: null, raw_text: null, status: missing, note: "數量無法由空白的 M 存檔核實；部位為里脊，vocab ing/pork 未分部位"}}
   - {id: i_zhacai, concept: ing/zhacai, label: 榨菜, form: 細絲, role: 主料,
      qty: {value: null, unit: null, raw_text: null, status: missing, note: "數量及四川涪陵榨菜描述未能由空白的 M 存檔核實；詞表已有 ing/zhacai"}}
@@ -80,12 +80,12 @@ states:
 actions:
   - id: a1
     technique: tech/cut
-    term: 里脊肉切絲；榨菜洗淨切細絲
+    term: 里肌肉切絲；榨菜洗淨切細絲
     inputs: [i_pork, i_zhacai]
     outputs: [s_pork_shred, s_zhacai_shred]
     tool: tool/knife
     params:
-      cut: {shape: cut/si, size_mm: {min: null, max: null}, raw: "將豬里脊肉切成絲…榨菜洗淨切成細絲（待核草稿引文；指定 M 存檔為空）", evidence: null, note: "來源存檔無法核實絲的毫米尺寸"}
+      cut: {shape: cut/si, size_mm: {min: null, max: null}, raw: "將豬里肌肉切成絲…榨菜洗淨切成細絲（待核草稿引文；指定 M 存檔為空）", evidence: null, note: "來源存檔無法核實絲的毫米尺寸"}
     completion:
       - {observe: 材料, target: 切絲備用（待核草稿引文；指定 M 存檔為空）, method: 目測, evidence: null}
   - id: a2

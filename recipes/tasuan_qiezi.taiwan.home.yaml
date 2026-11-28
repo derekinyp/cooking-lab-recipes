@@ -230,7 +230,7 @@ components:
             status: sourced
         - id: j_sugar
           concept: ing/white_sugar
-          label: 白糖
+          label: 砂糖
           role: 調料
           qty:
             value: 1

@@ -8,7 +8,7 @@ recipe:
   version: "1.0"
   kind: dish
   dish_concept: dish/shimuyu_du_tang
-  name: {zh_hant: 虱目魚肚湯, zh_hans: 虱目鱼肚汤, en: Milkfish belly soup}
+  name: {zh_hant: 蝨目魚肚湯, zh_hans: 虱目鱼肚汤, en: Milkfish belly soup}
   variant: 台式家常版
   summary: 魚肚沖洗吸乾；清水煮滾先下一半薑絲煮出薑香，魚肚魚皮朝下滑入、撈除浮沫，轉中小火煮至魚肉完全不透明，最後下米酒、鹽、其餘薑絲與蔥花（或芹菜珠）的台式清湯。
   cuisine:
@@ -52,7 +52,7 @@ recipe:
     - {version: "1.0", date: 2026-11-27, change: "Codex X4 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
 
 ingredients:
-  - {id: i_fish, concept: ing/milkfish_belly, label: 虱目魚肚, form: 整片（或退冰後備用）, role: 主料,
+  - {id: i_fish, concept: ing/milkfish_belly, label: 蝨目魚肚, form: 整片（或退冰後備用）, role: 主料,
      qty: {min: 500, max: 600, unit: g, raw_text: "虱目魚肚 2 片，約 500～600 公克", evidence: M, status: sourced, note: "M 原量。2 片為原文數量；魚肚是否去刺 M 提醒「無刺」不代表絕對無細刺，食用前需檢查"}}
   - {id: i_ginger, concept: ing/ginger, label: 薑絲, form: 絲, role: 香料,
      qty: {value: 25, unit: g, raw_text: "薑 約 25 公克，切絲", evidence: M, status: sourced, note: "M 原量。分兩次下：一半先煮湯底，另一半起鍋前放（M 作法 2、6）"}}
@@ -70,19 +70,19 @@ ingredients:
      qty: {value: null, unit: null, raw_text: null, status: missing, note: "M 作法 6「撒上蔥花或芹菜珠」，芹菜珠份量原文沒寫；與蔥花二擇一或並用皆依原文"}}
 
 states:
-  - {id: s_fish_clean, label: 沖洗、吸乾的虱目魚肚}
+  - {id: s_fish_clean, label: 沖洗、吸乾的蝨目魚肚}
   - {id: s_ginger_shred, label: 薑絲（一半先煮、一半收尾）}
   - {id: s_scallion, label: 蔥花}
   - {id: s_celery, label: 芹菜珠}
   - {id: s_ginger_broth, label: 煮出薑香的湯底}
   - {id: s_fish_in, label: 魚肚入鍋、撈除浮沫的湯}
   - {id: s_fish_cooked, label: 煮熟的魚肚湯（尚未最後調味）}
-  - {id: s_final, label: 虱目魚肚湯, role: final}
+  - {id: s_final, label: 蝨目魚肚湯, role: final}
 
 actions:
   - id: a1
     technique: tech/rinse
-    term: 虱目魚肚退冰後以流動清水快速沖洗，紙巾輕輕吸乾
+    term: 蝨目魚肚退冰後以流動清水快速沖洗，紙巾輕輕吸乾
     inputs: [i_fish]
     outputs: [s_fish_clean]
     tool: tool/bowl

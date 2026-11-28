@@ -10,7 +10,7 @@ recipe:
   dish_concept: dish/fanqie_chaodan
   name: {zh_hant: 番茄炒蛋, zh_hans: 番茄炒蛋, en: Chinese tomato and egg stir-fry}
   variant: 家常版
-  summary: 番茄切小塊、蔥切小段，蛋液加鹽打勻；小火爆香蔥、番茄，加入番茄醬、高湯、糖煮開，勾芡後起鍋備用；另熱鍋快速炒勻蛋液至稍凝固，再加入炒好的番茄拌炒均勻。
+  summary: 番茄切小塊、蔥切小段，蛋液加鹽打勻；小火爆蔥、番茄，加入番茄醬、高湯、糖煮開，勾芡後起鍋備用；另熱鍋快速炒勻蛋液至稍凝固，再加入炒好的番茄拌炒均勻。
   cuisine:
     - {id: cuisine/taiwanese.home, basis: "M 為台灣主流食譜媒體楊桃美食網的家常做法（編者分類）", claim: primary, evidence: M}
     - {id: region/taiwan, basis: "主來源為台灣食譜平台楊桃美食網；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
@@ -73,12 +73,12 @@ actions:
     note: "『打勻』以 tech/combine（拌勻）記；大小原文沒寫"
   - id: a2
     technique: tech/aromatics
-    term: 熱鍋下沙拉油，小火爆香蔥、番茄
+    term: 熱鍋下沙拉油，小火爆蔥、番茄
     inputs: [s_scallion_cut, s_tomato_cut, i_oil]
     outputs: [s_tomato_fried]
     tool: tool/wok
     params:
-      heat: {level: heat/low, raw: "小火爆香蔥、番茄", evidence: M}
+      heat: {level: heat/low, raw: "小火爆蔥、番茄", evidence: M}
       duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
     completion:
       - {observe: 蔥、番茄, target: 爆香（香氣、程度原文只寫『爆香』，沒寫更具體狀態）, method: 聞, evidence: M}

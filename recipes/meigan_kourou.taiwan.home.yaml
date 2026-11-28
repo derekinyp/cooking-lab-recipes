@@ -10,7 +10,7 @@ recipe:
   dish_concept: dish/meigan_kourou
   name: {zh_hant: 梅干扣肉, zh_hans: 梅干扣肉, en: "Pork belly with preserved mustard greens (Mei Cai Kou Rou)"}
   variant: 客家家常版（推論）
-  summary: 五花肉煮過、扎孔後皮朝下煎至表面起泡，與炒至水分收乾的梅乾菜排入碗中，淋略煮勻的肉片湯汁，電鍋蒸2小時後倒扣裝盤；肉蒸軟為推論，原文沒寫完成狀態。
+  summary: 五花肉煮過、扎孔後皮朝下煎至表面起泡，與炒至水分收乾的梅乾菜排入碗中，淋略煮勻的肉片湯汁，電鍋蒸2小時後倒扣盛盤；肉蒸軟為推論，原文沒寫完成狀態。
   cuisine:
     - {id: cuisine/taiwanese.home, basis: "主來源為楊桃美食網家常做法，頁面標註 #中式家常（編者分類）", claim: primary, evidence: M}
     - {id: region/taiwan, basis: "主來源為台灣食譜平台；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
@@ -90,7 +90,7 @@ states:
   - {id: s_meigan_fried, label: 炒至水分收乾的梅乾菜}
   - {id: s_pork_sauced, label: 略煮勻的肉片與湯汁}
   - {id: s_steamed, label: 電鍋蒸好的扣肉}
-  - {id: s_final, label: 梅干扣肉（倒扣裝盤）, role: final}
+  - {id: s_final, label: 梅干扣肉（倒扣盛盤）, role: final}
 
 actions:
   - id: a1

@@ -11,7 +11,7 @@ recipe:
   dish_concept: dish/ganbian_sijidou
   name: {zh_hant: 乾煸四季豆, zh_hans: 干煸四季豆, en: Dry-fried green beans}
   variant: 少油家庭版（平底鍋少油煸，不過油）
-  summary: 四季豆用平底鍋少油煸到表皮起皺，再和酥香肉末、芽菜一起煸炒入味，鹹鮮乾香。
+  summary: 四季豆用平底鍋少油煸到表皮起皺，再和酥香絞肉、芽菜一起煸炒入味，鹹鮮乾香。
   cuisine:
     - {id: cuisine/chuan, basis: "DB51/T 1728-2014 列為川菜蔬果類經典菜餚（表 4 第 11 列）", claim: primary, evidence: S1}
     - {id: region/sichuan, basis: "四川省地方標準", claim: primary, evidence: S1}
@@ -84,18 +84,18 @@ components:
         id: pork_crumble.db51t1728
         version: "1.0"
         kind: base
-        name: {zh_hant: 肉臊（豬肉末炒酥香）}
+        name: {zh_hant: 肉臊（豬絞肉炒酥香）}
         status: cross_checked
       ingredients:
         - {id: g_pork, concept: ing/pork, label: 豬肉（剁碎）, form: 碎, role: 輔料,
            qty: {value: 50, unit: g, raw_text: "猪肉 50", evidence: S1, status: sourced}, note: "部位原文沒寫；WDA 版用五花絞肉"}
-        - {id: g_salt_pork, concept: ing/salt, label: 食鹽（炒肉末）, role: 調料,
+        - {id: g_salt_pork, concept: ing/salt, label: 食鹽（炒絞肉）, role: 調料,
            qty: {value: 0.5, unit: g, raw_text: "食盐 2.5（炒肉末 0.5、烹制 2）", evidence: S1, status: sourced}}
-        - {id: g_soy_pork, concept: ing/soy_sauce, label: 醬油（炒肉末）, role: 調料,
+        - {id: g_soy_pork, concept: ing/soy_sauce, label: 醬油（炒絞肉）, role: 調料,
            qty: {value: 2, unit: g, raw_text: "酱油 4（炒肉末 2、烹制 2）", evidence: S1, status: sourced}}
-        - {id: g_wine, concept: ing/cooking_wine, label: 料酒（炒肉末）, role: 調料,
+        - {id: g_wine, concept: ing/cooking_wine, label: 米酒（炒絞肉）, role: 調料,
            qty: {value: 3, unit: g, raw_text: "料酒 3", evidence: S1, status: sourced}}
-        - {id: g_oil_pork, concept: ing/cooking_oil, label: 食用油（炒肉末）, role: 油脂,
+        - {id: g_oil_pork, concept: ing/cooking_oil, label: 食用油（炒絞肉）, role: 油脂,
            qty: {value: null, unit: g, raw_text: null, status: missing, note: "D.11.2.1(2) 只寫『猪肉剁碎，入锅』，炒肉末用不用油、用多少原文沒寫"}}
       actions:
         - id: g2
@@ -104,16 +104,16 @@ components:
           inputs: [g_pork]
           outputs: [gs_pork_minced]
           tool: tool/knife
-          params: {cut: {shape: cut/mo, raw: "猪肉剁碎", evidence: S1, note: "粗細原文沒寫"}}
+          params: {cut: {shape: cut/mo, raw: "豬肉剁碎", evidence: S1, note: "粗細原文沒寫"}}
           completion: [{observe: 豬肉, target: 剁碎, method: 目測, evidence: S1}]
         - id: g3
           technique: tech/stir_fry
-          term: 入鍋，加食鹽、料酒、醬油炒至酥香
+          term: 入鍋，加食鹽、米酒、醬油炒至酥香
           inputs: [gs_pork_minced, g_oil_pork, g_salt_pork, g_wine, g_soy_pork]
           outputs: [s_pork_crumble]
           tool: tool/frying_pan
           params: {heat: {level: null, raw: "原文沒寫火力"}, duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}}
-          completion: [{observe: 肉末, target: 炒至酥香, method: null, evidence: S1, note: "檢測方法原文沒寫（推論：目測與聞香）"}]
+          completion: [{observe: 絞肉, target: 炒至酥香, method: null, evidence: S1, note: "檢測方法原文沒寫（推論：目測與聞香）"}]
 
 states:
   - {id: s_beans_cut, label: 去筋切段的四季豆}
@@ -140,7 +140,7 @@ actions:
     outputs: [s_beans_wrinkled]
     tool: tool/frying_pan
     params:
-      heat: {level: heat/medium_high, raw: "中大火把四季豆铺平，保持“滋滋”声少翻动", evidence: C2}
+      heat: {level: heat/medium_high, raw: "中大火把四季豆鋪平，保持“滋滋”聲少翻動", evidence: C2}
       duration: {min_s: null, max_s: null, raw: "C2 時間軸區段『2’–5’ 少油干煸起“虎皮”』（是時間軸，不是時長）", is_guide: true, status: missing}
       agitation: {mode: 鋪平少翻，一面起皺微焦再翻面, continuous: false}
     completion:
@@ -151,12 +151,12 @@ actions:
     note: "時長原文沒寫（C2 只有時間軸 2’–5’；C1 另一做法中小火 5–7 分鐘見 notes），以完成狀態為準。平底鍋是本版工具選擇（推論；C2 原文是炒鍋、S1 是鍋）。技法用 tech/dry_fry 作菜式分類；詞表定義是『少油慢火持續翻炒』，C2 這步是中大火、少翻動，動作上較接近煎（tech/pan_fry），列為詞表不足。C2 是分次煸，本檔不補批數。煸好後豆子留在鍋裡直接進下一步是本檔的安排（推論）；C2 是先盛出再『同锅留约 1 茶匙油』炒料"
   - id: g5
     technique: tech/dry_fry
-    term: 下芽菜、肉臊炒出香味，入食鹽、（味精）、醬油、芝麻油煸炒入味，裝盤
+    term: 下芽菜、肉臊炒出香味，入食鹽、（味精）、醬油、芝麻油煸炒入味，盛盤
     inputs: [s_beans_wrinkled, g_yacai, s_pork_crumble, g_salt, g_msg, g_soy, g_sesame]
     outputs: [s_final]
     tool: tool/frying_pan
     params:
-      heat: {level: heat/medium, raw: "表 4：煸炒四季豆时应用中火，并控制好油温，以免炒焦", evidence: S1}
+      heat: {level: heat/medium, raw: "表 4：煸炒四季豆時應用中火，並控制好油溫，以免炒焦", evidence: S1}
       duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
     completion:
       - {observe: 香氣, target: 四季豆、芽菜、肉臊炒出香味, method: 嗅覺, evidence: S1}
@@ -166,7 +166,7 @@ actions:
 serving:
   completion:
     - {observe: 菜品中心溫度, target: "70°C 以上", method: null, evidence: S1, note: "不用溫度計版；原文沒寫感官判斷法，推論：出鍋即上桌"}
-    - {observe: 出鍋至食用, target: "≤10 分鐘為宜", evidence: S1}
+    - {observe: 起鍋至食用, target: "≤10 分鐘為宜", evidence: S1}
   sensory_target: {color: "黃綠帶少許焦斑（少油版，W1）；官方過油版為色澤碧綠（S1）", taste: 味道鹹鮮, texture: 乾香軟嫩}
 
 notes:

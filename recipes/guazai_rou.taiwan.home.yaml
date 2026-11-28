@@ -74,7 +74,7 @@ ingredients:
      note: "ing/pickle_brine 為建議新增詞"}
   - {id: i_soy, concept: ing/soy_sauce, label: しょう油（醬油）, role: 調料,
      qty: {value: 1, unit: tsp, raw_text: "しょう油小さじ１", evidence: T, status: sourced}}
-  - {id: i_starch, concept: ing/starch, label: 片栗粉（太白粉）, role: 芡粉,
+  - {id: i_starch, concept: ing/starch, label: 片慄粉（太白粉）, role: 芡粉,
      qty: {value: 2, unit: tsp, raw_text: "片栗粉小さじ２", evidence: T, status: sourced}}
   - {id: i_outer_water, concept: ing/water, label: 電鍋外鍋水（設備用水，非食用）, role: 液體,
      qty: {value: 1, unit: cup, raw_text: "外鍋に1杯の水を入れ", evidence: T, status: sourced},
@@ -111,7 +111,7 @@ actions:
     note: "tech/pound_mince 為已收錄詞條。T 寫『包丁で』（用菜刀），捶打次數 T 沒寫（對照 M：摔打約 15 下，僅參考）"
   - id: a3
     technique: tech/combine
-    term: 肉、蒜、蔥與調味料 A 先拌勻；再加入漬物汁、醬油拌勻；最後加片栗粉拌成肉餡
+    term: 肉、蒜、蔥與調味料 A 先拌勻；再加入漬物汁、醬油拌勻；最後加片慄粉拌成肉餡
     inputs: [s_pork_pounded, s_pickle_diced, s_garlic_prepped, s_scallion_cut, i_sake, i_sesame, i_sugar, i_pepper, i_pickle_brine, i_soy, i_starch]
     outputs: [s_pork_mixed]
     tool: tool/bowl
@@ -143,7 +143,7 @@ actions:
     term: 上桌前撒上預留的蔥花
     inputs: [s_steamed, s_scallion_cut]
     outputs: [s_final]
-    completion: [{observe: 成品, target: 撒好飾用蔥花（原文：食卓に上げる前に飾り用の青ねぎを散らして出来上がりです）, method: 目測, evidence: T}]
+    completion: [{observe: 成品, target: 撒好飾用蔥花（原文：食卓に上げる前に飾り用の青ねぎを散らして出來上がりです）, method: 目測, evidence: T}]
 
 serving:
   completion:

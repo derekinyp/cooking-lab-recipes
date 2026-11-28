@@ -13,8 +13,24 @@
       for (var k in extra) o[k] = extra[k];
       return o;
     }
-    var text = new Fuse(recs, opts({ keys: [{ name: 'n', weight: 3 }, { name: 'a', weight: 2 }, { name: 'z', weight: 2 }, { name: 'i', weight: 1.5 }] }));
+    var text = new Fuse(recs, opts({ keys: [{ name: 'n', weight: 3 }, { name: 'a', weight: 2 }, { name: 'ax', weight: 2 }, { name: 'z', weight: 2 }, { name: 'i', weight: 1.5 }, { name: 'ia', weight: 1.2 }] }));
     var sound = new Fuse(recs, opts({ threshold: 0.2, keys: [{ name: 'p', weight: 2 }, { name: 'pi', weight: 1 }] }));
+    var bySlug = {};
+    recs.forEach(function (r) { bySlug[r.s] = r; });
+    function has(list, q) { return (list || []).some(function (x) { return x.indexOf(q) >= 0; }); }
+    // 排序分層：0 菜名含關鍵字；1 別名含關鍵字、或主要食材就是它；2 菜名模糊相近、讀音相近；3 只是其他食材沾到。同層再比相似度。
+    function tierOf(r, q, hit) {
+      if (CJK.test(q)) {
+        if (r.n.indexOf(q) >= 0) return 0;
+        for (var k = 0; k < (r.z || []).length; k++) if (r.z[k].indexOf(q) >= 0) return r.zt[k] === r.n || r.n.indexOf(r.zt[k]) === 0 ? 0 : 1;
+        if (has(r.a, q) || has(r.ax, q)) return 1;
+        if (has(r.mi, q)) return 1;
+      }
+      var key = hit.match && hit.match.key;
+      if (hit.via === 'sound') return key === 'pi' ? 3 : 2;
+      if (key === 'n' || key === 'a' || key === 'ax' || key === 'z') return 2;
+      return 3;
+    }
     function search(q) {
       q = String(q || '').replace(/\s+/g, ' ').trim();
       if (!q) return null;
@@ -23,7 +39,8 @@
         list.forEach(function (r) {
           var s = r.score + (plus || 0), cur = res[r.item.s];
           var m = (r.matches || [])[0] || null;
-          if (m && m.key === 'z') m = { key: m.value === r.item.n ? 'n' : 'a', value: r.item.zt[m.refIndex] };  // 簡體字寫法 → 顯示原本的寫法
+          if (m && m.key === 'z') { var zo = r.item.zt[m.refIndex]; m = { key: zo === r.item.n ? 'n' : (r.item.a.indexOf(zo) >= 0 ? 'a' : 'ax'), value: zo }; }  // 簡體字寫法 → 顯示原本的寫法；大陸說法不顯示
+          if (m && m.key === 'ia') m = { key: 'ia', value: r.item.iz[m.refIndex] };  // 材料別名 → 顯示台灣說法
           if (!cur || s < cur.score) res[r.item.s] = { slug: r.item.s, score: s, via: via, match: m, name: r.item.n };
         });
       }
@@ -49,7 +66,9 @@
         }), 'sound', 0);
         add(text.search(ql), 'text', 0);
       }
-      return Object.keys(res).map(function (k) { return res[k]; }).sort(function (a, b) { return a.score - b.score; });
+      var qq = CJK.test(q) ? q.replace(/\s/g, '') : q.toLowerCase();
+      return Object.keys(res).map(function (k) { var h = res[k]; h.tier = tierOf(bySlug[h.slug], qq, h); return h; })
+        .sort(function (a, b) { return a.tier - b.tier || a.score - b.score; });
     }
     function why(hit) {
       if (!hit) return '';
@@ -59,6 +78,7 @@
       if (m.key === 'a' && (m.value === hit.name || hit.name.indexOf(m.value) === 0)) return '';
       if (m.key === 'a') return '也叫「' + m.value + '」';
       if (m.key === 'i') return '材料有「' + m.value + '」';
+      if (m.key === 'ia') return '材料有「' + m.value + '」';
       return '';
     }
     return { search: search, why: why };

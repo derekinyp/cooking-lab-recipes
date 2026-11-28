@@ -51,7 +51,7 @@ ingredients:
      qty: {value: 1, unit: tbsp, raw_text: "李錦記即磨白胡椒1湯匙", evidence: M, status: sourced}}
   - {id: i_ginger, concept: ing/ginger, label: 薑, form: 絲, role: 香料,
      qty: {value: 1, unit: slice, raw_text: "薑1片", evidence: M, status: sourced, note: "M 食材表寫 1 片；步驟 2 把薑切絲"}}
-  - {id: i_garlic, concept: ing/garlic, label: 蒜蓉（瓶裝）, form: 蓉, role: 輔料, product: true,
+  - {id: i_garlic, concept: ing/garlic, label: 蒜末（瓶裝）, form: 蓉, role: 輔料, product: true,
      qty: {value: 3, unit: tsp, raw_text: "李錦記蒜蓉3茶匙", evidence: M, status: sourced}}
   - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
      qty: {value: 0.5, unit: tsp, raw_text: "鹽½ 茶匙", evidence: M, status: sourced}}
@@ -70,7 +70,7 @@ states:
   - {id: s_ginger_shredded, label: 薑絲}
   - {id: s_shrimp_prepped, label: 剪鬚腳、開背去腸泥、印乾的大蝦}
   - {id: s_pepper_toasted, label: 無油烘香的胡椒}
-  - {id: s_aromatics, label: 爆香的薑絲與蒜蓉}
+  - {id: s_aromatics, label: 爆香的薑絲與蒜末}
   - {id: s_shrimp_seared, label: 下鍋炒過的蝦}
   - {id: s_peppered, label: 拌入胡椒與鹽的蝦}
   - {id: s_sauced, label: 攢酒加生抽炒至乾身的蝦}

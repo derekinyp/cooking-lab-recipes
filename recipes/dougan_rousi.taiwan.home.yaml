@@ -11,7 +11,7 @@ recipe:
   dish_concept: dish/dougan_rousi
   name: {zh_hant: 豆干肉絲, zh_hans: 豆干肉丝, en: Stir-fried pork shreds with firm tofu (dougan)}
   variant: 台式家常版
-  summary: 豆乾先川燙剖半切絲、炒至微金黃取出；肉絲抓醃再加太白粉抓勻；爆香蔥白、辣椒、蒜末後下肉絲炒至 6 分熟，回鍋豆乾與醬油、蠔油、糖、米酒拌炒，最後加青蔥、白胡椒粉起鍋。
+  summary: 豆乾先川燙剖半切絲、炒至微金黃取出；肉絲抓醃再加太白粉抓勻；爆蔥白、辣椒、蒜末後下肉絲炒至 6 分熟，回鍋豆乾與醬油、蠔油、糖、米酒拌炒，最後加青蔥、白胡椒粉起鍋。
   cuisine:
     - {id: cuisine/taiwanese.home, basis: "主來源 M 為台灣品牌站家常炒法（編者分類）", claim: primary, evidence: M}
     - {id: region/taiwan, basis: "主來源 M 為台灣品牌官方食譜站；地域歸屬為編者分類", claim: primary, evidence: M}

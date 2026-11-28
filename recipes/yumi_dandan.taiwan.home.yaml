@@ -10,7 +10,7 @@ recipe:
   dish_concept: dish/yumi_dandan
   name: {zh_hant: 玉米蛋花湯, zh_hans: 玉米蛋花汤, en: Corn egg drop soup}
   variant: 台式家常版
-  summary: 清水加入玉米茸大火煮沸，以雞粉和鹽調味；生粉用少許水調成糊勾芡，待湯再次燒開後淋入蛋液攪拌，最後調入白胡椒粉和芝麻油。
+  summary: 清水加入玉米茸大火煮沸，以雞粉和鹽調味；太白粉用少許水調成糊勾芡，待湯再次燒開後淋入蛋液攪拌，最後調入白胡椒粉和芝麻油。
   cuisine:
     - {id: cuisine/taiwanese.home, basis: "編者分類（推論）：本庫把玉米蛋花湯列在台式家常；主來源 M 是品牌台灣官網，來源沒有主張菜系"}
     - {id: region/taiwan, basis: "編者分類（推論）：主來源是李錦記台灣官網；網站所在地不證明料理地域歸屬"}
@@ -51,7 +51,7 @@ ingredients:
      qty: {value: 2, unit: piece, raw_text: "雞蛋2個", evidence: M, status: sourced}}
   - {id: i_water, concept: ing/water, label: 清水, role: 液體,
      qty: {value: 7, unit: cup, raw_text: "清水7杯", evidence: M, status: sourced, note: "M 用清水，未用高湯；「杯」容量 M 沒定義，不換算"}}
-  - {id: i_starch, concept: ing/starch, label: 生粉（太白粉／玉米粉，種類 M 沒寫）, role: 芡粉,
+  - {id: i_starch, concept: ing/starch, label: 太白粉（太白粉／玉米粉，種類 M 沒寫）, role: 芡粉,
      qty: {value: 3, unit: tbsp, raw_text: "生粉3湯匙", evidence: M, status: sourced, note: "M 只寫「生粉」，澱粉種類沒寫；vocab ing/starch 標太白粉／玉米粉。勾芡另需少許水，見 i_slurry_water"}}
   - {id: i_slurry_water, concept: ing/water, label: 勾芡用水, role: 液體,
      qty: {value: null, unit: null, qualitative: 少許, raw_text: "用少許水將生粉調成糊狀", evidence: M, status: sourced, note: "「少許」為 M 原文說法；實際水量 M 沒寫，不補數字"}}
@@ -66,7 +66,7 @@ ingredients:
 
 states:
   - {id: s_egg_beaten, label: 打散的雞蛋液}
-  - {id: s_slurry, label: 調成糊狀的生粉水}
+  - {id: s_slurry, label: 調成糊狀的太白粉水}
   - {id: s_soup_base, label: 玉米茸煮滾調味的湯底}
   - {id: s_thickened, label: 勾芡濃稠的湯}
   - {id: s_final, label: 玉米蛋花湯, role: final}
@@ -94,16 +94,16 @@ actions:
     note: "M 只寫「鍋裡」，未指定鍋具；用湯鍋為家庭改法（推論）"
   - id: a3
     technique: tech/combine
-    term: 用少許水將生粉調成糊狀（M 寫在煮沸調味之後、勾芡之前）
+    term: 用少許水將太白粉調成糊狀（M 寫在煮沸調味之後、勾芡之前）
     inputs: [i_starch, i_slurry_water]
     outputs: [s_slurry]
     tool: tool/bowl
     completion:
-      - {observe: 生粉糊, target: 調成糊狀（M 步驟 2「用少許水將生粉調成糊狀」）；有無粉粒、濃稠程度原文沒寫, method: 目測, evidence: M}
+      - {observe: 太白粉糊, target: 調成糊狀（M 步驟 2「用少許水將太白粉調成糊狀」）；有無粉粒、濃稠程度原文沒寫, method: 目測, evidence: M}
     note: "粉水比 M 沒寫；勾芡用水只寫「少許水」"
   - id: a4
     technique: tech/thicken
-    term: 倒入生粉糊勾芡，使湯汁濃稠
+    term: 倒入太白粉糊勾芡，使湯汁濃稠
     inputs: [s_soup_base, s_slurry]
     outputs: [s_thickened]
     tool: tool/stock_pot

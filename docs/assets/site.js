@@ -53,7 +53,7 @@
     if(tb>=1)return '約 '+fmt(Math.round(tb*2)/2,'tbsp')+' 大匙';var t=tb*3;if(t>=0.249)return '約 '+fmt(Math.max(Math.round(t*4)/4,0.25),'tsp')+' 小匙';return '不到 ¼ 小匙';}
   function scale(s){
     document.querySelectorAll('.q').forEach(function(e){e.textContent=(fmt(parseFloat(e.dataset.v)*s,e.dataset.u)+' '+e.dataset.w).trim();});
-    document.querySelectorAll('.cv').forEach(function(e){e.textContent='換算值：'+conv(parseFloat(e.dataset.g)*s,+e.dataset.k);});
+    document.querySelectorAll('.cv').forEach(function(e){e.textContent=conv(parseFloat(e.dataset.g)*s,+e.dataset.k);});
     document.querySelectorAll('.scale-btn').forEach(function(b){b.setAttribute('aria-pressed',+b.dataset.s===s);});
     store.set('zd-scale-'+KEY,String(s));}
   document.querySelectorAll('.scale-btn').forEach(function(b){b.addEventListener('click',function(){scale(+b.dataset.s);});});

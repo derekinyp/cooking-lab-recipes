@@ -16,10 +16,10 @@ concepts:
   - {id: tech/wash_soak, zh: 浸泡, alt: [泡發, 復水], en: {term: soak, match: close}, facets: {phase: prep, medium: water}, def: "以水浸泡使乾貨回軟或去雜味", source: SELF}
   - {id: tech/marinate, zh: 醃漬, alt: [醃, 碼味], en: {term: marinate, match: close}, facets: {phase: prep, medium: none}, def: "食材預先入味，置放些時再作後續處理", source: WDA_C}
   - {id: tech/coat_slurry, zh: 上漿, alt: [漿], en: {term: velvet, match: close}, facets: {phase: prep, medium: none}, def: "以蛋白及太白粉或單用太白粉拌合，加熱後透明滑順、保持柔嫩", source: WDA_C}
-  - {id: tech/marinate_coat, zh: 碼味上漿, alt: [], en: {term: marinate and velvet, match: close}, broader: tech/coat_slurry, facets: {phase: prep, medium: none}, def: "醃漬與上漿一次完成的複合處理", source: DB51}
+  - {id: tech/marinate_coat, zh: 醃肉上漿, alt: [碼味上漿], en: {term: marinate and velvet, match: close}, broader: tech/coat_slurry, facets: {phase: prep, medium: none}, def: "醃漬與上漿一次完成的複合處理", source: DB51}
   - {id: tech/dredge, zh: 拍粉, alt: [沾粉], en: {term: dredge, match: exact}, facets: {phase: prep, medium: none}, def: "將待炸食材潤濕後沾上乾粉", source: WDA_C}
   - {id: tech/batter, zh: 掛糊, alt: [著衣], en: {term: batter, match: exact}, facets: {phase: prep, medium: none}, def: "以蛋、麵粉、澱粉等加水成裹衣裹住食材", source: WDA_C}
-  - {id: tech/blanch, zh: 焯水, alt: [過水, 川燙, 汆燙], en: {term: blanch, match: close}, facets: {phase: prep, medium: water}, def: "以沸水作食材熟化的前處理，以備後續烹調", source: WDA_C}
+  - {id: tech/blanch, zh: 汆燙, alt: [焯水, 過水, 川燙], en: {term: blanch, match: close}, facets: {phase: prep, medium: water}, def: "以沸水作食材熟化的前處理，以備後續烹調", source: WDA_C}
   - {id: tech/pass_through_oil, zh: 過油, alt: [滑油, 拉油], en: {term: oil-blanch, match: close}, facets: {phase: prep, medium: oil}, def: "以油作熟化前處理，處理後還有後續烹調；分低、中、高油溫", source: WDA_C}
   - {id: tech/combine, zh: 調和, alt: [兌汁, 調醬, 拌勻], en: {term: combine, match: exact}, facets: {phase: prep, medium: none}, def: "把調料混合成醬汁、芡汁或拌料", source: SELF}
   - {id: tech/boil_water, zh: 燒水, alt: [燒開水], en: {term: bring to a boil, match: exact}, facets: {phase: prep, medium: water}, def: "把水或湯燒到沸騰", source: SELF}
@@ -33,7 +33,7 @@ concepts:
   - {id: tech/stir_fry_slide, zh: 滑炒, alt: [], en: {term: velvet stir-fry, match: close}, broader: tech/stir_fry, facets: {phase: cook, medium: fat, sauce: none}, def: "上漿後過油或過水初熟，再炒成；口感滑順、不帶汁液", source: WDA_C}
   - {id: tech/dry_fry, zh: 煸, alt: [乾煸, 乾炒], en: {term: dry-fry, match: close}, broader: tech/stir_fry, facets: {phase: cook, medium: fat, sauce: none}, def: "少油慢火持續翻炒至水分逸去、稍皺縮，再入調味炒至汁收味入；快法先過油", source: WDA_C}
   - {id: tech/aromatics, zh: 爆香, alt: [熗鍋, 炒香], en: {term: bloom aromatics, match: close}, facets: {phase: cook, medium: oil}, def: "香辛料在鍋內慢火熬煸，使香氣融入油中", source: WDA_C}
-  - {id: tech/qiang, zh: 熗, alt: [熗辣椒花椒], en: {term: flash-fry chilies, match: close}, broader: tech/aromatics, facets: {phase: cook, medium: oil}, def: "乾辣椒、花椒入熱油炒出煳辣香（川菜用法）", source: DB51}
+  - {id: tech/qiang, zh: 嗆, alt: [熗, 熗辣椒花椒], en: {term: flash-fry chilies, match: close}, broader: tech/aromatics, facets: {phase: cook, medium: oil}, def: "乾辣椒、花椒入熱油炒出煳辣香（川菜用法）", source: DB51}
   - {id: tech/toss_in, zh: 下料炒勻, alt: [], en: {term: toss in, match: close}, facets: {phase: finish, medium: fat}, def: "起鍋前加入已備好的料翻勻", source: SELF}
   # ── 帶汁、帶芡 ───────────────────────────────────────────────
   - {id: tech/liu, zh: 溜, alt: [熘], en: {term: sauté with glaze, match: close}, facets: {phase: cook, medium: mixed, sauce: thick}, def: "食材先以油、水或蒸煮處理，再與勾芡的醬汁拌合或澆淋", source: WDA_C}
@@ -85,7 +85,7 @@ concepts:
   - {id: tech/emulsify, zh: 乳化, alt: [mantecare], en: {term: emulsify, match: exact}, facets: {phase: finish, medium: none, sauce: none}, def: "讓油脂與水分融合成滑順醬汁（義麵收尾、奶油醬）", source: SELF}
   - {id: tech/season, zh: 調味, alt: [], en: {term: season, match: exact}, facets: {phase: finish, medium: none, sauce: none}, def: "最後以鹽、胡椒等調整味道", source: SELF}
   - {id: tech/rest, zh: 靜置, alt: [醒], en: {term: rest, match: exact}, facets: {phase: finish, medium: none, sauce: none}, def: "離火或不動放置一段時間", source: SELF}
-  - {id: tech/plate, zh: 裝盤, alt: [整形, 盛盤], en: {term: plate, match: exact}, facets: {phase: finish, medium: none, sauce: none}, def: "將菜餚盛盤整理", source: WDA_C}
+  - {id: tech/plate, zh: 盛盤, alt: [裝盤, 整形], en: {term: plate, match: exact}, facets: {phase: finish, medium: none, sauce: none}, def: "將菜餚盛盤整理", source: WDA_C}
   # ── P1 新增（2026-11-20）──
   - {id: tech/soak_in_broth, zh: 原湯浸泡, alt: [原湯浸], en: {term: steep in cooking liquid, match: close}, broader: tech/wash_soak, facets: {phase: cook, medium: water, sauce: none}, def: "煮熟的肉留在原湯裡浸泡至溫熱，使其吸收水分、便於刀工", source: DB51}
   - {id: tech/crush, zh: 壓碎, alt: [研碎, 搗碎], en: {term: crush, match: exact}, broader: tech/cut, facets: {phase: prep, medium: none}, def: "用研缽或重物把香料壓碎（如胡椒粒）", source: GBC_HEATHCOTE}

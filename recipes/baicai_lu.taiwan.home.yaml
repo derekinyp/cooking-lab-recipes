@@ -12,7 +12,7 @@ recipe:
   dish_concept: dish/baicai_lu
   name: {zh_hant: 白菜滷, zh_hans: 白菜卤, en: Taiwanese braised napa cabbage}
   variant: 台式家常版
-  summary: 大白菜切大塊汆燙，爆香蔥段、薑片、香菇絲與紅蘿蔔絲，加高湯與紅蔥肉燥小火煮至白菜軟爛的家常滷白菜。
+  summary: 大白菜切大塊汆燙，爆蔥段、薑片、香菇絲與紅蘿蔔絲，加高湯與紅蔥肉燥小火煮至白菜軟爛的家常滷白菜。
   cuisine:
     - {id: cuisine/taiwanese.home, basis: "M 為台灣食譜平台楊桃美食網收錄的家常料理（編者分類）", claim: primary, evidence: M}
     - {id: region/taiwan, basis: "平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
@@ -102,7 +102,7 @@ actions:
     completion: [{observe: 香菇, target: 切絲備用, method: 目測（推論）, evidence: M}]
   - id: a4
     technique: tech/aromatics
-    term: 熱鍋下少許油，小火爆香蔥段、薑片、香菇絲、紅蘿蔔絲
+    term: 熱鍋下少許油，小火爆蔥段、薑片、香菇絲、紅蘿蔔絲
     inputs: [i_oil, i_scallion, i_ginger, s_shiitake_shredded, i_carrot]
     outputs: [s_aromatic]
     tool: tool/wok
