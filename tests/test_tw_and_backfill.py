@@ -20,6 +20,13 @@ for src, want in [('肉末燒茄子', '絞肉燒茄子'), ('土豆燒牛肉', '�
                   ('黃瓜與小黃瓜', '小黃瓜與小黃瓜'), ('花椰菜', '花椰菜'), ('白花菜（花椰菜／椰花菜）', '花椰菜'), ('西紅柿炒蛋', '番茄炒蛋'), ('用料酒和白糖', '用米酒和砂糖'),
                   ('生抽', '生抽'), ('老抽', '老抽'), ('豆干絲', '豆干絲'), ('粉絲煲', '冬粉煮'), ('鮮湯', '高湯')]:
     check(A.tw(src) == want, f'用語取代：{src} → {want}（實際 {A.tw(src)}）')
+# E6：「青花菜」本身就是台灣說法（西蘭花→青花菜），不能被「花菜→花椰菜」再改成「青花椰菜」
+for src, want in [('青花菜炒蝦仁', '青花菜炒蝦仁'), ('西蘭花炒蝦仁', '青花菜炒蝦仁'), ('乾鍋花菜', '乾鍋花椰菜'), ('花菜炒肉', '花椰菜炒肉'), ('青花椰菜', '青花椰菜')]:
+    check(A.tw(src) == want, f'花菜誤判：{src} → {want}（實際 {A.tw(src)}）')
+check(A.tw(A.tw('西蘭花炒蝦仁')) == '青花菜炒蝦仁', '西蘭花改成青花菜後，再套用一次不會變成青花椰菜')
+import re as _re
+_cn = next(t for t in TW['terms'] if t['cn'] == '花菜')
+check(not _re.search(_cn['rx'], '青花菜') and _re.search(_cn['rx'], '花菜炒肉'), '用語表的花菜規則：青花菜不算大陸用語，花菜算')
 check(A.tw(A.tw('土豆焯水')) == A.tw('土豆焯水'), '重複套用結果不變')
 check(A.fix_text('  raw_text: "土豆焯水"\n  label: 土豆\n') == '  raw_text: "土豆焯水"\n  label: 馬鈴薯\n', '來源原句 raw_text 不改，label 會改')
 check(A.fix_text('  note: "Total time: 25 minutes 花菜"\n') == '  note: "Total time: 25 minutes 花菜"\n', 'note 欄位和字串裡的「time:」不會被誤改')
