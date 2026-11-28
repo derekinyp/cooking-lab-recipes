@@ -655,7 +655,10 @@ def serving_html(m):
 def sources_html(m):
     lis = []
     for s in m['srcs']:
-        lis.append(f'<li><a href="{E(s["url"])}" target="_blank" rel="noopener noreferrer">{E(s2t(s["title"]))}</a></li>')
+        if s.get("url"):
+            lis.append(f'<li><a href="{E(s["url"])}" target="_blank" rel="noopener noreferrer">{E(s2t(s["title"]))}</a></li>')
+        else:
+            lis.append(f'<li>{E(s2t(s["title"]))}</li>')
     return '<ol class="src-list">' + ''.join(lis) + '</ol>'
 
 def notes_html(m):
