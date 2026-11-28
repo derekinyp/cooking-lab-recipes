@@ -668,6 +668,17 @@ def notes_html(m):
         if xs: parts.append(f'<div class="note-block"><h3 class="h3">{ttl}</h3><ul>' + ''.join(f'<li>{E(x)}</li>' for x in xs) + '</ul></div>')
     return ''.join(parts)
 
+def also_html(m):
+    """代表菜頁面最下方的「也可以這樣做」：只換主食材的變體不另做頁，在這裡用一兩句寫換什麼、要調整什麼。
+    資料來自說明檔 site/content/<rid>.yaml 的 also: [{name, text}]；文字過 pub_ok（過程用語整句不顯示）。"""
+    rows = []
+    for x in m['ov'].get('also') or []:
+        name, text = pub_ok(x.get('name'), m['rid'] + ' also.name'), pub_ok(x.get('text'), m['rid'] + ' also.text')
+        if name and text: rows.append(f'<li><b>{E(name)}</b>：{E(text)}</li>')
+    if not rows: return ''
+    return ('<section class="block" aria-labelledby="also-h"><h2 class="h2" id="also-h">也可以這樣做</h2>'
+            f'<div class="card notes"><ul class="also">{"".join(rows)}</ul></div></section>')
+
 def two_html(m):
     t = m['ov'].get('two_serving')
     if not t: return ''
@@ -730,6 +741,7 @@ def recipe_page(m):
 {serving_html(m)}
 {f'<section class="block" aria-labelledby="nt-h"><h2 class="h2" id="nt-h">小提醒</h2><div class="card notes">{notes_html(m)}</div></section>' if notes_html(m) else ''}
 <section class="block" aria-labelledby="src-h"><h2 class="h2" id="src-h">參考食譜</h2><div class="card notes">{sources_html(m)}<p class="zd-small">本頁做法整理自以上公開食譜，份量與時間已依家庭廚房調整。</p></div></section>
+{also_html(m)}
 </main>
 {FOOT}
 <script>window.ZD_CONV={json.dumps([[it.get('g_per_tbsp'), it.get('g_per_piece'), it.get('piece')] for it in CONV['items']], ensure_ascii=False)};window.ZD_KEY={json.dumps(m['slug'])};</script>
