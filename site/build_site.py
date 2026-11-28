@@ -1042,10 +1042,12 @@ def main():
     if no_serv and not ALLOW_INCOMPLETE: raise SystemExit(f'缺份量，請先補寫：{no_serv}')
     global WEEKLY_HREF
     weeklies = load_weekly()
-    by_slug = {m['slug']: m for m in models}
+    # 防呆：基底（recipe.kind 不是 dish）不算「一道菜」：不進首頁清單、菜數、搜尋資料、最新食譜頁；頁面仍會產生，但沒有任何連結指向它
+    dishes = [m for m in models if (m['r'].get('kind') or 'dish') == 'dish']
+    by_slug = {m['slug']: m for m in dishes}
     if weeklies: WEEKLY_HREF = 'new.html'
     plan = yaml.safe_load((SITE / 'plan.yaml').read_text(encoding='utf-8'))
-    pages = {'index.html': index_page(models, plan), 'conversions.html': conversions_page(), 'progress.html': redirect_page('index.html', '振達廚房・食譜')}
+    pages = {'index.html': index_page(dishes, plan), 'conversions.html': conversions_page(), 'progress.html': redirect_page('index.html', '振達廚房・食譜')}
     pages['new.html'] = new_page(weeklies, by_slug)
     # 舊網址（每週頁、本週菜單頁）一律轉到最新食譜
     for stem, wk in weeklies: pages[f'weekly-{stem}.html'] = redirect_page('new.html', '最新食譜')
