@@ -11,13 +11,13 @@ concepts:
   - {id: ing/garlic, zh: 蒜}
   - {id: ing/scallion, zh: 蔥}
   - {id: ing/salt, zh: 鹽}
-  - {id: ing/cooking_wine, zh: 料酒, alt: [米酒, 紹興酒]}
-  - {id: ing/starch_slurry_1to1, zh: 水澱粉（澱粉:水 1:1）}
+  - {id: ing/cooking_wine, zh: 米酒, alt: [料酒, 紹興酒]}
+  - {id: ing/starch_slurry_1to1, zh: 太白粉水（太白粉:水 1:1）, alt: [水澱粉]}
   - {id: ing/cooking_oil, zh: 食用油}
-  - {id: ing/white_sugar, zh: 白糖}
+  - {id: ing/white_sugar, zh: 砂糖, alt: [白糖, 白砂糖]}
   - {id: ing/soy_sauce, zh: 醬油}
   - {id: ing/vinegar, zh: 醋}
-  - {id: ing/stock_light, zh: 鮮湯, alt: [高湯]}
+  - {id: ing/stock_light, zh: 高湯, alt: [鮮湯]}
   - {id: ing/msg, zh: 味精}
   - {id: ing/tagliatelle, zh: 義大利寬麵}
   - {id: ing/water, zh: 水}
@@ -30,7 +30,7 @@ concepts:
   - {id: ing/black_pepper, zh: 黑胡椒}
   - {id: ing/pancetta_fresh, zh: 新鮮豬腹肉（非煙燻）}
   - {id: ing/onion, zh: 洋蔥}
-  - {id: ing/carrot, zh: 胡蘿蔔}
+  - {id: ing/carrot, zh: 紅蘿蔔, alt: [胡蘿蔔]}
   - {id: ing/celery, zh: 芹菜}
   - {id: ing/evoo, zh: 特級初榨橄欖油}
   # ── P1 新增（2026-11-20）：依據寫在 note；中菜依 DB51/T 1728（DB51）、西菜依各自來源 ──
@@ -48,8 +48,8 @@ concepts:
   - {id: ing/star_anise, zh: 八角, alt: [大茴香], note: "DB51 表 1 注 a"}
   - {id: ing/caoguo, zh: 草果, alt: [], note: "DB51 表 1 注 a"}
   - {id: ing/sannai, zh: 山柰, alt: [三奈, 沙薑], note: "DB51 表 1 注 a 寫『三奈』"}
-  - {id: ing/cassia_bark, zh: 桂皮, alt: [肉桂皮], note: "DB51 表 1 注 a"}
-  - {id: ing/brown_sugar, zh: 紅糖, alt: [黑糖], note: "DB51 表 1 注 a"}
+  - {id: ing/cassia_bark, zh: 肉桂, alt: [桂皮, 肉桂皮], note: "DB51 表 1 注 a"}
+  - {id: ing/brown_sugar, zh: 黑糖, alt: [紅糖], note: "DB51 表 1 注 a"}
   - {id: ing/green_bean, zh: 四季豆, alt: [敏豆, 菜豆], note: "DB51 D.11；WDA 301-1"}
   - {id: ing/yacai, zh: 碎米芽菜, alt: [芽菜, 宜賓芽菜], note: DB51}
   - {id: ing/dried_shrimp, zh: 蝦米, alt: [], note: "WDA 301-1（只列在參照的 WDA 版）"}
@@ -72,7 +72,7 @@ concepts:
   - {id: ing/lemon, zh: 檸檬, alt: [檸檬汁], note: LCB}
   - {id: ing/distilled_vinegar, zh: 白醋（蒸餾醋）, alt: [distilled vinegar], broader: ing/vinegar, note: GISSLEN}
   - {id: ing/pan_fond, zh: 鍋底（煎肉後留在鍋中的油脂與焦香）, alt: [fond, 鍋底焦香], note: "GBC_HEATHCOTE 第 4 步沿用煎牛排的同一只鍋；用於鍋底醬子食譜"}
-  - {id: ing/cucumber, zh: 黃瓜, alt: [小黃瓜], note: "DB51 表 1 蒜泥白肉：可選用蔥、黃瓜、青筍等蔬菜墊底"}
+  - {id: ing/cucumber, zh: 小黃瓜, alt: [黃瓜], note: "DB51 表 1 蒜泥白肉：可選用蔥、黃瓜、青筍等蔬菜墊底"}
   - {id: ing/celtuce_stem, zh: 青筍, alt: [萵筍, 萵苣莖], note: "DB51 表 1 蒜泥白肉墊底蔬菜"}
   # ── P3 批次三（2026-11-20）新增：台式家常菜用料 ──
   - {id: ing/bell_pepper, zh: 甜椒, alt: [彩椒, 黃甜椒, 紅甜椒], note: "P3 糖醋排骨（Cookpad Ritas）"}
@@ -148,8 +148,8 @@ concepts:
   - {id: ing/eggplant, zh: 茄子, note: "W49 塔香茄子"}
   - {id: ing/spicy_soybean_paste, zh: 辣豆醬, note: "W49 塔香茄子 M1 spicy soybean paste（taucheo 類）"}
   - {id: ing/fried_shallot, zh: 油蔥酥, note: "W49 塔香茄子點綴"}
-  - {id: ing/soy_sauce_dark, zh: 老抽, broader: ing/soy_sauce}
-  - {id: ing/soy_sauce_light, zh: 生抽, broader: ing/soy_sauce}
+  - {id: ing/soy_sauce_dark, zh: 蔭油, alt: [老抽, 深色醬油], broader: ing/soy_sauce}
+  - {id: ing/soy_sauce_light, zh: 醬油, alt: [生抽], broader: ing/soy_sauce}
   - {id: ing/gai_lan, zh: 芥藍, alt: [芥蘭, 芥蘭菜], note: "W49 蠔油芥藍"}
   - {id: ing/cauliflower, zh: 花椰菜, alt: [白花菜, 花菜, 椰菜花, 菜花], note: "W49 乾鍋花菜"}
   - {id: ing/white_pepper, zh: 白胡椒, note: "不預設是粒或粉；W49 胡椒蝦「即磨白胡椒」"}

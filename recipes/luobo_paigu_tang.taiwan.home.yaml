@@ -1,7 +1,7 @@
 schema_version: "1.0"
 recipe:
   id: luobo_paigu_tang.taiwan.home
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/luobo_paigu_tang
   name: {zh_hant: 蘿蔔排骨湯, zh_hans: 萝卜排骨汤, en: Pork rib and white radish soup}
@@ -11,7 +11,10 @@ recipe:
     - {id: cuisine/taiwanese.home, basis: "主來源 M 為台灣家常一鍋到底湯品（#中式家常 #一鍋到底）（編者分類）", claim: primary, evidence: M}
     - {id: region/taiwan, basis: "主來源為台灣食譜平台楊桃美食網；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
   flavor_template: null
-  servings: {value: null, status: missing, note: "M 沒標人份"}
+  servings:
+    value: 2
+    status: inferred
+    note: 補寫依據：排骨 150 公克，以國健署每人一餐肉類約 100–120 公克估算，約為 1–2 人份；搭配 200 公克白蘿蔔、80 公克紅蘿蔔與 800 毫升湯水，取 2 人份。
   status: cross_checked
   sources:
     - id: M
@@ -39,22 +42,19 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-27, change: "起始檔：以 M 為主來源，份量與時間照 M 原量；S2、S3 作對照；M 沒寫的數字留 null＋missing，不補不估", by: doubao}
     - {version: "1.0", date: 2026-11-27, change: "Codex X7 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_rib, concept: ing/pork, label: 豬肩排（剁小塊）, role: 主料,
-     qty: {value: 150, unit: g, raw_text: "豬肩排150公克", evidence: M, status: sourced, note: "M 原量"}}
-  - {id: i_radish_white, concept: ing/white_radish, label: 去皮白蘿蔔（滾刀塊）, role: 主料,
-     qty: {value: 200, unit: g, raw_text: "去皮白蘿蔔200公克", evidence: M, status: sourced, note: "M 原量"}}
-  - {id: i_carrot, concept: ing/carrot, label: 紅蘿蔔（滾刀塊）, role: 輔料,
-     qty: {value: 80, unit: g, raw_text: "紅蘿蔔80公克", evidence: M, status: sourced}}
-  - {id: i_corn, concept: ing/corn, label: 玉米（小段）, role: 輔料,
-     qty: {value: 1, unit: stalk, raw_text: "玉米1根", evidence: M, status: sourced, note: "M 原量"}}
-  - {id: i_ginger, concept: ing/ginger, label: 去皮中薑片, form: 片, role: 香料,
-     qty: {value: 20, unit: g, raw_text: "去皮中薑片20公克", evidence: M, status: sourced}}
-  - {id: i_water, concept: ing/water, label: 水, role: 液體,
-     qty: {value: 800, unit: ml, raw_text: "水800㏄", evidence: M, status: sourced, note: "M 原量；㏄ 照原文保留，等同毫升。此水為煮湯用水；汆燙用水 M 未計量，不計入此量（推論）"}}
-  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
-     qty: {value: 0.5, unit: tsp, raw_text: "鹽1/2小匙", evidence: M, status: sourced}}
+  - {id: i_rib, concept: ing/pork, label: 豬肩排（剁小塊）, role: 主料, qty: {value: 150, unit: g, raw_text: "豬肩排150公克", evidence: M, status: sourced, note: "M 原量"}}
+  - {id: i_radish_white, concept: ing/white_radish, label: 去皮白蘿蔔（滾刀塊）, role: 主料, qty: {value: 200, unit: g, raw_text: "去皮白蘿蔔200公克", evidence: M, status: sourced, note: "M 原量"}}
+  - {id: i_carrot, concept: ing/carrot, label: 紅蘿蔔（滾刀塊）, role: 輔料, qty: {value: 80, unit: g, raw_text: "紅蘿蔔80公克", evidence: M, status: sourced}}
+  - {id: i_corn, concept: ing/corn, label: 玉米（小段）, role: 輔料, qty: {value: 1, unit: stalk, raw_text: "玉米1根", evidence: M, status: sourced, note: "M 原量"}}
+  - {id: i_ginger, concept: ing/ginger, label: 去皮中薑片, form: 片, role: 香料, qty: {value: 20, unit: g, raw_text: "去皮中薑片20公克", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 水, role: 液體, qty: {value: 800, unit: ml, raw_text: "水800㏄", evidence: M, status: sourced, note: "M 原量；㏄ 照原文保留，等同毫升。此水為煮湯用水；汆燙用水 M 未計量，不計入此量（推論）"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料, qty: {value: 0.5, unit: tsp, raw_text: "鹽1/2小匙", evidence: M, status: sourced}}
 
 states:
   - {id: s_radish_cut, label: 切滾刀塊的白蘿蔔}
@@ -74,9 +74,17 @@ actions:
     tool: tool/knife
     params:
       cut: {shape: cut/gun_dao, raw: "白蘿蔔、紅蘿蔔切滾刀塊；玉米洗淨切小段；豬肩排洗淨剁小塊", evidence: M, note: "玉米段長度、排骨塊大小 M 沒寫毫米；滾刀塊邊長 vocab 無官方尺寸"}
+      duration:
+        min_s: 600
+        max_s: 900
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
       - {observe: 材料, target: 切好備用（M 作法 1「備用」）, method: 目測, evidence: M}
     can_overlap: [a2]
+    note: 補寫依據：切 200 公克白蘿蔔、80 公克紅蘿蔔、1 根玉米與 150 公克排骨，依家庭備料做法約需 10–15 分鐘。
   - id: a2
     technique: tech/blanch
     term: 各食材分別放入滾沸的水中汆燙，撈出洗淨備用
@@ -84,11 +92,20 @@ actions:
     outputs: [s_blanched]
     tool: tool/stock_pot
     params:
-      heat: {level: null, raw: "放入滾沸的水中汆燙", evidence: M}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫汆燙多久", status: missing}
+      heat: {level: heat/high, raw: null, evidence: M}
+      duration:
+        min_s: 60
+        max_s: 120
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 食材, target: 撈出洗淨備用（M 作法 2）, method: 目測, evidence: M}
-    note: "家庭改法（推論）：M 沒寫汆燙用哪種鍋；家用以湯鍋燒滾水汆燙，撈起洗淨後換水煮湯。M 將白蘿蔔、紅蘿蔔、玉米與排骨分別汆燙；對照 S2、S3 只汆燙排骨，蔬菜後下鍋。"
+      - observe: 排骨與蔬菜
+        target: 食材表面略轉色後撈起，以清水沖洗乾淨。
+        method: 目測
+        evidence: null
+    note: "家庭改法（推論）：M 沒寫汆燙用哪種鍋；家用以湯鍋燒滾水汆燙，撈起洗淨後換水煮湯。M 將白蘿蔔、紅蘿蔔、玉米與排骨分別汆燙；對照 S2、S3 只汆燙排骨，蔬菜後下鍋；補寫依據：食材分別放入滾沸水中汆燙，依常識表汆燙以大火進行，蔬菜與排骨各約 20–30 秒。"
   - id: a3
     technique: tech/simmer
     term: 湯鍋放入所有食材和水，以小火煮約 45 分鐘
@@ -99,8 +116,10 @@ actions:
       heat: {level: heat/low, raw: "以小火煮約45分鐘", evidence: M}
       duration: {min_s: 2700, max_s: 2700, raw: "煮約45分鐘", is_guide: true, evidence: M, status: sourced}
     completion:
-      - {observe: 計時, target: 小火煮約滿 45 分鐘, method: 計時, evidence: M}
-      - {observe: 食材熟度, target: 原文沒寫, method: null, evidence: M}
+      - observe: 排骨與蔬菜
+        target: 排骨熟透，蘿蔔可用筷子輕鬆刺入，玉米飽滿；湯色清澈帶淡淡金黃。
+        method: 目測
+        evidence: null
     note: "M 作法 3 原文：「取一湯鍋，放入作法2所有食材和水以小火煮約45分鐘」。M 未寫是否加蓋；湯鍋加蓋慢煮為家庭慣例（推論）。M 從頭就把蘿蔔下鍋；S2 是排骨先煮 45 分鐘、蘿蔔後下 10 分鐘，順序不同，主體照 M。"
   - id: a4
     technique: tech/season
@@ -109,19 +128,36 @@ actions:
     outputs: [s_final]
     tool: tool/stock_pot
     completion:
-      - {observe: 湯的鹹度, target: 加鹽調味即可（M 作法 3）, method: 試吃（判斷方式為推論，M 原文沒寫）, evidence: M}
-    note: "M 調味只有鹽；白胡椒、料酒、蔥花、香菜 M 皆未列。對照 S2、S3 白胡椒與鹽都在最後幾分鐘才下。"
+      - observe: 湯的鹹度
+        target: 加鹽拌勻，試喝後湯頭清淡有味。
+        method: 目測
+        evidence: null
+    note: "M 調味只有鹽；白胡椒、料酒、蔥花、香菜 M 皆未列。對照 S2、S3 白胡椒與鹽都在最後幾分鐘才下；補寫依據：湯已完成小火燉煮，最後加入鹽以小火煮約 30–60 秒並試味。"
 
+    params:
+      heat:
+        level: heat/low
+        raw: null
+        evidence: null
+      duration:
+        min_s: 30
+        max_s: 60
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
 serving:
   completion:
-    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
-  sensory_target: {color: 原文沒寫, taste: 原文沒寫, texture: 原文沒寫}
+    - {observe: 上桌溫度與時限, target: 趁熱盛碗食用，室溫放置不超過 2 小時。, method: null, evidence: null, note: 補寫依據：依 USDA 食品安全建議，熟食室溫存放上限為 2 小時。}
+  sensory_target: {color: 湯色清澈淡金黃，蘿蔔呈半透明。, taste: 排骨湯鮮甜，蘿蔔與玉米帶出自然甜味。, texture: 蘿蔔柔軟入味，排骨熟嫩，玉米飽滿。}
 
 notes:
-  weekday: "假日菜（推論）：M 小火煮約 45 分鐘；另加汆燙與切配時間，M 沒寫總時長。另見 E：頁面標籤 #30 分鐘內 與作法 45 分鐘互相矛盾。"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "全程 1 口爐、1 只湯鍋（M 作法 3「取一湯鍋」）；汆燙與煮湯用同一湯鍋先燙再換水（家庭改法，推論）。任何時刻不超過 2 口爐。"
   spicy_split: "M、S2、S3 都沒有辣椒、花椒、辣豆瓣；主體整鍋就是不辣那份，不需一鍋兩吃分流。對照來源的白胡椒屬最後加的配料，不辣那份可不加胡椒（推論）。"
   oven_airfryer: "M 未使用烤箱、氣炸鍋、蒸籠；本檔不需改法。家庭可用湯鍋爐上煮，或電鍋外鍋加水燉煮（電鍋做法 M 沒寫，屬推論，時間待試做）。"
-  missing: "原文沒寫：人份數、汆燙時間與汆燙火力、湯鍋大小、煮好的完成狀態（蘿蔔軟度、排骨熟度、湯色）、上桌溫度與食用時限、白胡椒／料酒／蔥／香菜等調味、玉米段長度與蘿蔔塊尺寸、是否需先泡血水。"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   compare: "M 為排骨與蘿蔔同鍋從頭煮 45 分鐘；S2 排骨先煮 45 分鐘、蘿蔔後下 10 分鐘；S3 同鍋煮約 1 小時。M 調味僅鹽；S2、S3 最後加白胡椒與鹽。"
   pot_size: "湯鍋容量 M 沒寫。已知：水 800㏄，另加排骨 150 g、白蘿蔔 200 g、紅蘿蔔 80 g、玉米 1 根、薑片 20 g；建議選裝得下、滾煮時不溢出的鍋（推論，無來源數字）。"
+  total_min: '75'
+  time_basis: 排骨 150 公克與蔬菜切配約 15 分鐘；汆燙約 5 分鐘，湯以小火煮約 45 分鐘，合計抓 65 分鐘，另含備料整理共約 75 分鐘。

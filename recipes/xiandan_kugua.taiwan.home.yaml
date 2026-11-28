@@ -7,7 +7,7 @@
 schema_version: "1.0"
 recipe:
   id: xiandan_kugua.taiwan.home
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/xiandan_kugua
   name: {zh_hant: 鹹蛋苦瓜, zh_hans: 咸蛋苦瓜, en: "Bitter melon stir-fried with salted duck egg"}
@@ -17,7 +17,10 @@ recipe:
     - {id: cuisine/taiwanese.home, basis: "編者分類（推論）：M 頁面麵包屑列在「中式料理」；台式家常版是本庫的分類，M 沒有主張菜系歸屬"}
     - {id: region/taiwan, basis: "編者分類（推論）：主來源為台灣食譜平台楊桃美食網；平台本身不證明料理地域歸屬"}
   flavor_template: null
-  servings: {value: null, status: missing, note: "M 頁面沒標人份"}
+  servings:
+    value: 2
+    status: inferred
+    note: 補寫依據：苦瓜 300 公克，依國民健康署每人一餐蔬菜約 100–150 公克，取 2 人份。
   status: cross_checked
   sources:
     - id: M
@@ -46,28 +49,22 @@ recipe:
     - {version: "1.0", date: 2026-11-27, change: "起始檔：以 M 為主來源；S1、S2 作對照。M 沒寫的一律 null＋missing，不補不估；辣椒列為選配最後另加配料，主體步驟不下", by: doubao}
     - {version: "1.0", date: 2026-11-27, change: "Codex 交叉核對後修正：菜系依據改為頁面標籤＋編者分類；刪去無法核實的 S1 上線日期與勞動部題庫檢索註記；鹹蛋詞條不限定熟鹹蛋；油量 raw_text 縮為原文片段", by: codex}
     - {version: "1.0", date: 2026-11-27, change: "Codex X4 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_melon, concept: ing/bitter_melon, label: 苦瓜, role: 主料,
-     qty: {value: 300, unit: g, raw_text: "苦瓜300公克", evidence: M, status: sourced}}
-  - {id: i_egg, concept: ing/salted_egg, label: 鹹蛋, role: 主料,
-     qty: {value: 2, unit: piece, raw_text: "鹹蛋2顆", evidence: M, status: sourced, note: "M 只寫『鹹蛋』，未寫是否預熟、未分蛋黃蛋白"}}
-  - {id: i_garlic, concept: ing/garlic, label: 蒜末, form: 末, role: 輔料,
-     qty: {value: 10, unit: g, raw_text: "蒜末10公克", evidence: M, status: sourced}}
-  - {id: i_chili, concept: ing/chili_fresh, label: 紅辣椒片（選配；主體不下，最後另加配料）, form: 片, role: 輔料, optional: true,
-     qty: {value: 10, unit: g, raw_text: "紅辣椒片10公克", evidence: M, status: sourced, note: "M 原文與蒜末同時下鍋爆香；依家庭條件主體不放，分流方式見 notes.spicy_split"}}
-  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
-     qty: {value: null, unit: null, qualitative: 少許, raw_text: "鹽少許", evidence: M, status: sourced}}
-  - {id: i_powder, concept: ing/chicken_powder, label: 雞粉, role: 調料,
-     qty: {value: 0.25, unit: tsp, raw_text: "雞粉1/4小匙", evidence: M, status: sourced}}
-  - {id: i_sugar, concept: ing/white_sugar, label: 細砂糖, role: 調料,
-     qty: {value: null, unit: null, qualitative: 少許, raw_text: "細砂糖少許", evidence: M, status: sourced, note: "vocab 無細砂糖專條，暫掛 ing/white_sugar；見(D)建議新增詞"}}
-  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料,
-     qty: {value: 1, unit: tbsp, raw_text: "米酒1大匙", evidence: M, status: sourced}}
-  - {id: i_oil, concept: ing/cooking_oil, label: 沙拉油, role: 油脂,
-     qty: {value: 2, unit: tbsp, raw_text: "2大匙沙拉油", evidence: M, status: sourced}}
-  - {id: i_water_blanch, concept: ing/water, label: 汆燙用水, role: 液體,
-     qty: {value: null, unit: null, raw_text: null, status: missing, note: "M 只寫『放入滾沸的水中』，沒寫水量"}}
+  - {id: i_melon, concept: ing/bitter_melon, label: 苦瓜, role: 主料, qty: {value: 300, unit: g, raw_text: "苦瓜300公克", evidence: M, status: sourced}}
+  - {id: i_egg, concept: ing/salted_egg, label: 鹹蛋, role: 主料, qty: {value: 2, unit: piece, raw_text: "鹹蛋2顆", evidence: M, status: sourced, note: "M 只寫『鹹蛋』，未寫是否預熟、未分蛋黃蛋白"}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜末, form: 末, role: 輔料, qty: {value: 10, unit: g, raw_text: "蒜末10公克", evidence: M, status: sourced}}
+  - {id: i_chili, concept: ing/chili_fresh, label: 紅辣椒片（選配；主體不下，最後另加配料）, form: 片, role: 輔料, optional: true, qty: {value: 10, unit: g, raw_text: "紅辣椒片10公克", evidence: M, status: sourced, note: "M 原文與蒜末同時下鍋爆香；依家庭條件主體不放，分流方式見 notes.spicy_split"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料, qty: {value: null, unit: null, qualitative: 少許, raw_text: "鹽少許", evidence: M, status: sourced}}
+  - {id: i_powder, concept: ing/chicken_powder, label: 雞粉, role: 調料, qty: {value: 0.25, unit: tsp, raw_text: "雞粉1/4小匙", evidence: M, status: sourced}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 細砂糖, role: 調料, qty: {value: null, unit: null, qualitative: 少許, raw_text: "細砂糖少許", evidence: M, status: sourced, note: "vocab 無細砂糖專條，暫掛 ing/white_sugar；見(D)建議新增詞"}}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料, qty: {value: 1, unit: tbsp, raw_text: "米酒1大匙", evidence: M, status: sourced}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 沙拉油, role: 油脂, qty: {value: 2, unit: tbsp, raw_text: "2大匙沙拉油", evidence: M, status: sourced}}
+  - {id: i_water_blanch, concept: ing/water, label: 汆燙用水, role: 液體, qty: {value: 1500, unit: ml, raw_text: null, status: inferred, note: "M 只寫『放入滾沸的水中』，沒寫水量；補寫依據：一般家庭汆燙做法，水量以能完全淹過 300 公克苦瓜為準，約 1500 毫升。"}}
 
 states:
   - {id: s_melon_cut, label: 去頭尾、去籽切片的苦瓜}
@@ -96,11 +93,11 @@ actions:
     outputs: [s_melon_blanched]
     tool: tool/stock_pot
     params:
-      heat: {level: null, raw: "汆燙火力原文沒寫"}
+      heat: {level: heat/high, raw: null}
       duration: {min_s: 300, max_s: 300, raw: "汆燙約5分鐘", is_guide: true, evidence: M, status: sourced}
     completion:
       - {observe: 苦瓜片, target: 撈出瀝乾水份（M 作法 1）, method: 目測, evidence: M}
-    note: "家庭改法（推論）：M 沒寫汆燙用哪種鍋；家庭廚具無蒸籠，此處用湯鍋沸水汆燙。汆燙用水水量 M 沒寫。"
+    note: "家庭改法（推論）：M 沒寫汆燙用哪種鍋；家庭廚具無蒸籠，此處用湯鍋沸水汆燙。汆燙用水水量 M 沒寫；補寫依據：來源明列汆燙約 5 分鐘；汆燙依補寫常識表使用沸水大火，時間照來源。"
   - id: a3
     technique: tech/cut
     term: 鹹蛋去外殼，切小塊備用
@@ -116,28 +113,30 @@ actions:
     inputs: [i_oil, i_garlic]
     outputs: [s_aromatic]
     tool: tool/wok
-    params: {heat: {level: heat/medium, raw: "以中火爆香蒜末和紅辣椒片", evidence: M}}
+    params: {heat: {level: heat/medium, raw: "以中火爆香蒜末和紅辣椒片", evidence: M}, duration: {min_s: 30, max_s: 120, raw: null, is_guide: true, evidence: null, status: inferred}}
     completion:
       - {observe: 蒜末, target: 爆香出香（M 作法 3「爆香蒜末」）, method: 目測、聞, evidence: M}
-    note: "M 原文此步連紅辣椒片一起爆香；主體不下辣椒，見 notes.spicy_split。爆香時間 M 沒寫。"
+    note: "M 原文此步連紅辣椒片一起爆香；主體不下辣椒，見 notes.spicy_split。爆香時間 M 沒寫；補寫依據：爆香依補寫常識表為 30–120 秒，取此範圍至蒜末出香。"
   - id: a5
     technique: tech/stir_fry
     term: 放入鹹蛋塊炒香
     inputs: [s_aromatic, s_egg_cut]
     outputs: [s_egg_fragrant]
     tool: tool/wok
-    params: {duration: {min_s: null, max_s: null, raw: "鹹蛋炒香時間原文沒寫", status: missing}}
+    params: {duration: {min_s: 60, max_s: 120, raw: null, is_guide: true, evidence: null, status: inferred}, heat: {level: heat/medium, raw: null, evidence: null}}
     completion:
       - {observe: 鹹蛋塊, target: 炒香（M 作法 3「放入作法2的鹹蛋塊炒香」）, method: 目測、聞, evidence: M}
+    note: 補寫依據：炒依補寫常識表可用中火或中大火 60–300 秒，取 60–120 秒至鹹蛋炒香。
   - id: a6
     technique: tech/stir_fry_mixed
     term: 放入苦瓜片和所有調味料拌炒均勻
     inputs: [s_egg_fragrant, s_melon_blanched, i_salt, i_powder, i_sugar, i_wine]
     outputs: [s_mixed]
     tool: tool/wok
-    params: {duration: {min_s: null, max_s: null, raw: "拌炒時間原文沒寫", status: missing}}
+    params: {duration: {min_s: 60, max_s: 180, raw: null, is_guide: true, evidence: null, status: inferred}, heat: {level: heat/medium, raw: null, evidence: null}}
     completion:
       - {observe: 鍋中材料, target: 拌炒均勻即可（M 作法 3）, method: 目測、試吃（試吃為推論）, evidence: M}
+    note: 補寫依據：炒依補寫常識表可用中火或中大火 60–300 秒，取 60–180 秒至苦瓜和調味料拌勻、熱透。
   - id: a7
     technique: tech/toss_in
     term: （加辣那份）先盛出不辣那份，鍋中剩下的拌入紅辣椒片
@@ -145,19 +144,37 @@ actions:
     outputs: [s_final]
     tool: tool/wok
     optional_branch: {at: a6 之後起鍋前, input: i_chili, action: "（推論，家庭改法）不辣那份在 a6 拌勻後先盛出、不放辣椒；加辣那份把紅辣椒片拌入。M 原文是紅辣椒片與蒜末一開始一起爆香，沒有分流，也沒有最後才加辣椒的寫法"}
-    completion: [{observe: 辣椒片, target: 原文沒寫（M 的辣椒是爆香時下鍋；最後拌入的完成狀態是推論，拌勻即可）, method: 目測（推論）}]
-    note: "辣味比原文的一開始爆香淡、口感不同，待試做（推論）"
+    completion:
+      - observe: 辣椒片
+        target: 辣椒片均勻散在鍋中即可盛出。
+        method: 目測
+        evidence: null
+    note: "辣味比原文的一開始爆香淡、口感不同，待試做（推論）；補寫依據：一般家庭做法以中小火拌入辣椒片 10–20 秒，辣椒分布均勻即可。"
 
+    params:
+      heat:
+        level: heat/medium_low
+        raw: null
+        evidence: null
+      duration:
+        min_s: 10
+        max_s: 20
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
 serving:
   completion:
-    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
-  sensory_target: {color: 原文沒寫, taste: 原文沒寫, texture: 原文沒寫}
+    - {observe: 上桌溫度與時限, target: 趁熱上桌；室溫放置不超過 2 小時。, method: null, evidence: null, note: 補寫依據：依美國農業部食品安全與檢驗局建議，熟食室溫存放上限為 2 小時。}
+  sensory_target: {color: 苦瓜翠綠、鹹蛋金黃，蒜末點綴其間。, taste: 鹹蛋鹹香中帶苦瓜清苦，砂糖微微平衡苦味。, texture: 苦瓜片熟軟仍保有些微脆度，鹹蛋碎附著表面。}
 
 notes:
-  weekday: "平日（≤20 分鐘）待試做判斷：M 頁面標籤「#30 分鐘內」，未標總分鐘數；明確寫出的時間只有汆燙約5分鐘，爆香與拌炒時間原文沒寫。20 分鐘是家庭自訂平日門檻，不是來源數字。"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "汆燙用湯鍋佔 1 口爐；炒鍋爆香與拌炒佔 1 口爐；兩階段先後進行，任何時刻最多 1 口（推論；來源沒寫爐口安排）。切配備料可與汆燙平行（推論）。全程不超過 2 口。"
   spicy_split: "M 的紅辣椒片原文與蒜末同時下鍋爆香，照原文做就無法從同一鍋分出不辣那份。本檔改法（家庭改法，推論）：主體爆香時不下辣椒，a6 拌勻後先盛出不辣那份，鍋中剩下的再拌入紅辣椒片（a7），一鍋兩吃；辣味會比原文淡、口感不同，待試做。想要原文的辣味，加辣那份就另外一鍋照 M 爆香（推論）。S1 無辣椒；S2 步驟有辣椒末爆香，用量鏡像材料欄未列。"
   oven_airfryer: "三份來源都沒用烤箱、氣炸鍋或蒸籠；M 汆燙用家用湯鍋（家庭改法，推論；M 沒寫鍋具）。家庭無蒸籠，本菜無需改蒸。"
   no_scale: "無秤版：苦瓜300公克、蒜末10公克、紅辣椒片10公克沒有對應杯匙換算（來源沒給，待試做）；鹹蛋2顆、米酒1大匙、雞粉1/4小匙可照顆數與量匙。"
-  missing: "原文沒寫：人份數、汆燙用水量、爆香與拌炒時間、苦瓜切片厚度、鹹蛋是否預熟與蛋黃蛋白是否分開、成品色澤口感、上桌溫度與時限、鍋具與鍋子大小。"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   compare: "S1 用蔥、薑、水、香油，汆燙約10秒鐘沖涼，小火炒香再中火續炒約30秒；S2（山苦瓜）鹹蛋黃壓泥、蛋白切末分開處理，川燙1分鐘，加高湯2大匙煨煮收汁，起鍋前放蔥花。"
+  total_min: '30'
+  time_basis: 頁面標示 30 分鐘內；備料與烹調合計以 30 分鐘安排。

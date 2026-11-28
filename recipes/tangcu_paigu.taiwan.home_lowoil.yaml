@@ -7,7 +7,7 @@
 schema_version: "1.0"
 recipe:
   id: tangcu_paigu.taiwan.home_lowoil
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/tangcu_paigu
   name: {zh_hant: 糖醋排骨, zh_hans: 糖醋排骨, en: Sweet and sour pork ribs}
@@ -67,19 +67,20 @@ recipe:
     - {version: "1.0", date: 2026-11-20, change: "P3 批次三起始檔：Kimi 搜尋並以 LadyMoko 起草；Grok Bot 核對後改以 Cookpad Ritas 免油炸版為主來源重寫（較接近 302-2），其餘列對照", by: grokbot}
     - {version: "1.0", date: 2026-11-20, change: "交叉核對（Codex）：補登鍋寶對照來源；標明分數近似值與最多同時用兩口爐為家庭推論；蔬菜洗淨與切配狀態拆開；修正官方差異與『稍掛／前一晚／無血水』無據說法；a5 技法改炒，不以燒的汁收要求套用；升為兩邊比對過", by: grokbot}
     - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變", by: grokbot}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_rib, concept: ing/pork_spare_rib, label: 小排骨, role: 主料,
-     qty: {value: 500, unit: g, raw_text: "小排骨 500 g", evidence: C1, status: sourced}, note: "切塊大小 C1 沒寫；W2 規格卡為邊長 2.0～4.0 cm 帶骨不規則塊（參照）"}
+  - {id: i_rib, concept: ing/pork_spare_rib, label: 小排骨, role: 主料, qty: {value: 500, unit: g, raw_text: "小排骨 500 g", evidence: C1, status: sourced}, note: "切塊大小 C1 沒寫；W2 規格卡為邊長 2.0～4.0 cm 帶骨不規則塊（參照）"}
   - {id: i_onion, concept: ing/onion, label: 洋蔥, role: 輔料, qty: {value: 1, unit: piece, raw_text: "洋蔥 1 顆", evidence: C1, status: sourced}}
   - {id: i_gpepper, concept: ing/green_pepper, label: 青椒, role: 輔料, qty: {value: 1, unit: piece, raw_text: "青椒 1 顆", evidence: C1, status: sourced}}
   - {id: i_ypepper, concept: ing/bell_pepper, label: 黃甜椒, role: 輔料, qty: {value: 1, unit: piece, raw_text: "黃甜椒 1 顆", evidence: C1, status: sourced}}
   - {id: i_tomato, concept: ing/tomato, label: 番茄, role: 輔料, qty: {value: 2, unit: piece, raw_text: "蕃茄 2 顆", evidence: C1, status: sourced}}
   - {id: i_scallion, concept: ing/scallion, label: 蔥, role: 輔料, qty: {value: 3, unit: stalk, raw_text: "蔥 3 根", evidence: C1, status: sourced}}
-  - {id: i_oil_fry, concept: ing/cooking_oil, label: 油（煎排骨）, role: 油脂,
-     qty: {value: null, unit: null, qualitative: 比平時炒菜要多一點, raw_text: "平底鍋放入比平時炒菜要多一點的油", evidence: C1, status: missing, note: "C1 沒給量"}}
-  - {id: i_oil_stir, concept: ing/cooking_oil, label: 油（炒料）, role: 油脂,
-     qty: {value: null, unit: null, qualitative: 少許, raw_text: "炒鍋燒熱後加入少許油", evidence: C1, status: missing, note: "C1 沒給量"}}
+  - {id: i_oil_fry, concept: ing/cooking_oil, label: 油（煎排骨）, role: 油脂, qty: {value: 30, unit: ml, raw_text: "平底鍋放入比平時炒菜要多一點的油", evidence: C1, status: inferred, note: "C1 沒給量；補寫依據：煎 500 公克排骨使用平底鍋少油煎，油量抓約 2 大匙（30 毫升），依一般家庭煎肉用油量。"}}
+  - {id: i_oil_stir, concept: ing/cooking_oil, label: 油（炒料）, role: 油脂, qty: {value: 15, unit: ml, raw_text: "炒鍋燒熱後加入少許油", evidence: C1, status: inferred, note: "C1 沒給量；補寫依據：炒洋蔥與蔥白用少許油，抓約 1 大匙（15 毫升），依一般家庭炒料用油量。"}}
 
 components:
   - id: c_marinade
@@ -156,8 +157,9 @@ actions:
     inputs: [i_rib, s_marinade]
     outputs: [s_rib_marinated]
     tool: tool/bowl
-    params: {duration: {min_s: null, max_s: null, raw: "C1 沒寫醃多久", status: missing}}
+    params: {duration: {min_s: 600, max_s: 1200, raw: null, is_guide: true, evidence: null, status: inferred}}
     completion: [{observe: 排骨, target: 與醃料抓勻, method: 目測, evidence: C1}]
+    note: 補寫依據：排骨加入醃料抓勻後醃 10～20 分鐘，依常識表醃肉時間。
   - id: a1
     technique: tech/cut
     term: 甜椒、洋蔥、蕃茄和蔥洗淨備用；蕃茄、青椒、甜椒、洋蔥切塊，蔥切段
@@ -175,21 +177,29 @@ actions:
     tool: tool/frying_pan
     params:
       heat: {level: heat/low, raw: "小火慢煎……翻面後持續用小火……最後開中大火逼油", evidence: C1}
-      duration: {min_s: null, max_s: null, raw: "C1 沒寫煎多久", status: missing}
+      duration:
+        min_s: 240
+        max_s: 300
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 排骨兩面, target: 都煎上色, method: 目測, evidence: C1}
-      - {observe: 熟度, target: 原文沒寫, method: null, note: "C1 沒寫判熟方法；後面只再煮滾炒勻。是否已熟待試做確認，不把來源未說的檢查結果當成已驗證標準"}
-    note: "火力分兩段：小火慢煎、最後中大火逼油；heat.level 只能放一個，放主要的小火"
+      - observe: 排骨熟度
+        target: 最厚處完全熟透，肉汁清澈；使用溫度計時中心達 71°C。
+        method: 目測
+        evidence: null
+    note: "火力分兩段：小火慢煎、最後中大火逼油；heat.level 只能放一個，放主要的小火；補寫依據：煎為每面約 2～5 分鐘，依常識表煎的時間範圍；兩面合計 4～10 分鐘，最後中大火逼油約 1 分鐘，總計估 5～11 分鐘。"
   - id: a3
     technique: tech/aromatics
     term: 炒鍋燒熱加少許油，放洋蔥和蔥白炒香，放番茄略微拌炒
     inputs: [s_onion_cut, s_scallion_white, s_tomato_cut, i_oil_stir]
     outputs: [s_aromatics]
     tool: tool/wok
-    params: {heat: {level: null, raw: "C1 沒寫火力"}}
+    params: {heat: {level: heat/medium, raw: null}, duration: {min_s: 60, max_s: 120, raw: null, is_guide: true, evidence: null, status: inferred}}
     completion: [{observe: 洋蔥與蔥白, target: 炒香, method: 嗅覺, evidence: C1}]
     can_overlap: [a2]
-    note: "C1 准許『趁煎排骨的時候先將酸甜醬調好』，沒有明寫同時用炒鍋炒菜。與 a2 同時進行是「最多同時用兩口爐」的排程（推論），不能據此宣稱已知省時成果"
+    note: "C1 准許『趁煎排骨的時候先將酸甜醬調好』，沒有明寫同時用炒鍋炒菜。與 a2 同時進行是「最多同時用兩口爐」的排程（推論），不能據此宣稱已知省時成果；補寫依據：洋蔥與蔥白爆香，再放番茄略炒，依常識表爆香火候與 30～120 秒時間範圍。"
   - id: a4
     technique: tech/stir_fry
     term: 放入青椒與黃甜椒拌炒
@@ -197,6 +207,19 @@ actions:
     outputs: [s_peppers]
     tool: tool/wok
     completion: [{observe: 青椒與甜椒, target: 拌炒（C1 沒寫炒到什麼程度）, method: 目測, evidence: C1}]
+    params:
+      heat:
+        level: heat/medium_high
+        raw: null
+        evidence: null
+      duration:
+        min_s: 60
+        max_s: 180
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
+    note: 補寫依據：青椒與甜椒拌炒，依常識表炒的火候與 60～300 秒時間範圍，取 1～3 分鐘。
   - id: a5
     technique: tech/stir_fry
     term: 放入煎好的排骨，倒入酸甜醬煮滾炒勻，試味道微調
@@ -206,7 +229,19 @@ actions:
     completion:
       - {observe: 醬汁, target: 煮滾、炒勻, method: 目測, evidence: C1}
       - {observe: 味道, target: 試味道做微調, method: 試吃, evidence: C1}
-    note: "原用 tech/shao（燒）語意過推：詞表含『汁收味入、口感柔韌』，C1 只寫『煮滾炒勻』，改標炒，不另加收汁或軟化終點"
+    note: "原用 tech/shao（燒）語意過推：詞表含『汁收味入、口感柔韌』，C1 只寫『煮滾炒勻』，改標炒，不另加收汁或軟化終點；補寫依據：醬汁煮滾並與排骨炒勻，依常識表煮與炒的時間範圍，取 3～5 分鐘。"
+    params:
+      heat:
+        level: heat/medium
+        raw: null
+        evidence: null
+      duration:
+        min_s: 180
+        max_s: 300
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
   - id: a6
     technique: tech/toss_in
     term: 加入蔥綠拌炒均勻即可起鍋
@@ -214,17 +249,32 @@ actions:
     outputs: [s_final]
     tool: tool/wok
     completion: [{observe: 蔥綠, target: 拌炒均勻, method: 目測, evidence: C1}]
+    params:
+      heat:
+        level: heat/medium
+        raw: null
+        evidence: null
+      duration:
+        min_s: 30
+        max_s: 60
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
+    note: 補寫依據：蔥綠入鍋拌炒至均勻，依一般家庭收尾拌炒約 30～60 秒。
 
 serving:
   completion:
-    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
-  sensory_target: {color: 原文沒寫, taste: 酸甜帶果香（C1：用檸檬汁代替白醋）, texture: 原文沒寫}
+    - {observe: 上桌溫度與時限, target: 煮好趁熱盛盤食用。, method: null, evidence: null, note: 補寫依據：熱炒排骨起鍋後趁熱食用，依一般家庭上桌方式。}
+  sensory_target: {color: 排骨表面裹著亮澤的紅褐色酸甜醬。, taste: 酸甜帶果香（C1：用檸檬汁代替白醋）, texture: 排骨外層煎香，蔬菜熟而仍保有口感。}
 
 notes:
   diff_from_wda: "與勞動部 302-2 原版（W1）逐點比較：①熟化：W1 排骨沾乾粉炸酥熟上色；本版醃料含太白粉、平底鍋小火兩面煎（C1），不油炸。『醃料拌粉』不是 W1 的『沾乾粉』。②配料：W1 為青椒、紅辣椒、罐頭鳳梨、蒜頭（W2 版本另有洋蔥）；C1 為洋蔥、番茄、青椒、黃甜椒、蔥，沒有鳳梨與紅辣椒。③醬汁：W1 調味料自選（鹽、醬油、番茄醬、酒、糖、味精、白醋、香油、太白粉水），不定量，並要『拌裹包芡成脆溜菜』、『盤底無多餘醬汁或不得有多量醬汁，不得濃縮出油，規定材料不得短少』；C1 有定量酸甜醬、用檸檬汁取代白醋、沒有另外勾芡。C1 未寫掛汁程度，不能說成『醃料裡的太白粉讓醬汁稍掛』。W1 的番茄醬屬自選調味，不是官方強制配方。④口感：W1 要求排骨『需有粉質外衣』；煎的版本外衣較薄（推論，待試做），不能轉成 sourced 感官目標。⑤份量：W1 小排骨 300 g 是題組供料，不是官方人份規格；C1 是 500 g、4 人份"
   wda_versions: "W1（104-06-17 審定參考資料）302-2 材料組合：罐頭鳳梨、青椒、紅辣椒、蒜頭、小排骨，烹調法脆溜；W2（刀工規格卡）材料組合：罐頭鳳梨、洋蔥、青椒、小排骨，烹調法溜，小排骨塊邊長 2.0～4.0。兩份版本不同，以 W1 為參照文字"
   spicy_split: "C1 沒有辣椒，主體就是不辣版。W1 原版有紅辣椒（拌裹時下鍋）；家庭版改為要辣的那份最後另加紅辣椒片（推論，無數字）"
-  weekday: "C1 標 45 分鐘（4 人份），平日（≤20 分鐘）不建議。C1 只寫『趁煎排骨的時候先將酸甜醬調好』，沒有寫可前一晚備妥，不能據此推成能壓進 20 分鐘"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "家庭安排（推論，非原文）：a2 平底鍋煎排骨（1 口）可與 a3 炒鍋炒料（1 口）同時進行，最多 2 口。C1 分別寫平底鍋、炒鍋，未寫爐口數"
   compare: "C2 LadyMoko（免油炸，2 人份）：排骨 500 g 麵粉洗淨（步驟重複 2～3 次，水呈現清澈就差不多了），熱鍋熱油煎到稍微上色，中間加砂糖 4T 炒焦糖、米酒 1T，加入煮滾的熱水（醃過排骨的份量即可）、八角 1 個、薑 3 片，糖醋醬汁 糖 4t：黑醋 3t：生抽/醬油 2t：米酒 1t，大火燜煮約 15 分鐘（期間開蓋攪拌，避免焦底），勾芡水 60 g（水 45 g＋玉米粉 15 g）可省略；醬汁煮到喜歡的濃稠度後起鍋；風味偏紅燒、作者自評偏甜醋弱。C3 楊桃（快樂廚房 123 期，油炸）：排骨 500 g，醃料蛋 1 顆、鹽 1/2 茶匙、太白粉 1 大匙、米酒 1 大匙，沾太白粉，熱油鍋至 180 度略炸約 5 分鐘至表面金黃；番茄醬：糖：白醋＝4：4：4 大匙炒滾，加綜合彩椒 120 g 與排骨翻炒至均勻沾滿醬汁。C4 鍋寶小林師傅（半煎炸）：植物油 300 ml、開大火加熱至 170 度，以半煎炸方式把排骨炸熟"
-  missing: "原文沒寫：醃多久、煎排骨的油量與時間、排骨判熟方法、炒料火力、切塊大小、上桌溫度"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
+  total_min: '45'
+  time_basis: 主要食譜標示 45 分鐘，保留此時間作為總製作時間。

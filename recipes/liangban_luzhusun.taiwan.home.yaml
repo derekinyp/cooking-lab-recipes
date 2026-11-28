@@ -4,7 +4,7 @@
 schema_version: "1.0"
 recipe:
   id: liangban_luzhusun.taiwan.home
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/liangban_luzhusun
   name: {zh_hant: 涼拌綠竹筍, zh_hans: 凉拌绿竹笋, en: Taiwanese cold green bamboo shoot salad}
@@ -14,7 +14,10 @@ recipe:
     - {id: cuisine/taiwanese.home, basis: "主來源為台灣食譜平台楊桃美食網；台式家常為編者分類", claim: primary, evidence: S1}
     - {id: region/taiwan, basis: "平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: S1}
   flavor_template: null
-  servings: {value: null, status: missing, note: "S1 未標份數；主體不換算人數"}
+  servings:
+    value: 3
+    status: inferred
+    note: 補寫依據：綠竹筍 3 隻，依國健署每人一餐蔬菜約 100–150 公克估算，取 3 人份。
   status: cross_checked
   sources:
     - id: S1
@@ -42,14 +45,14 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-28, change: "起始草稿：以 S1 為主來源建立主體；H1、S3 放比較表與 notes；主來源未寫的數字標 missing，未自補或換算", by: doubao}
     - {version: "1.0", date: 2026-11-28, change: "Codex X5 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_bamboo, concept: ing/green_bamboo_shoot, label: 綠竹筍, role: 主料,
-     qty: {value: 3, unit: piece, raw_text: "綠竹筍 3隻", evidence: S1, status: sourced,
-       note: "S1 原量（隻）。筍種對照 S3：綠竹筍為替代選項之一，S3 主推孟宗筍、麻竹筍"}}
-  - {id: i_water, concept: ing/water, label: 冷水（煮筍用）, role: 液體,
-     qty: {value: null, unit: null, qualitative: 蓋過竹筍, raw_text: "水蓋過竹筍", evidence: S1, status: sourced,
-       note: "S1 只寫蓋過竹筍，未給水量；不換算成公升或毫升"}}
+  - {id: i_bamboo, concept: ing/green_bamboo_shoot, label: 綠竹筍, role: 主料, qty: {value: 3, unit: piece, raw_text: "綠竹筍 3隻", evidence: S1, status: sourced, note: "S1 原量（隻）。筍種對照 S3：綠竹筍為替代選項之一，S3 主推孟宗筍、麻竹筍"}}
+  - {id: i_water, concept: ing/water, label: 冷水（煮筍用）, role: 液體, qty: {value: 1500, unit: ml, raw_text: "水蓋過竹筍", evidence: S1, status: inferred, note: "S1 只寫蓋過竹筍，未給水量；不換算成公升或毫升；補寫依據：以 3 隻綠竹筍放入湯鍋，水量抓 1500 毫升，足以蓋過竹筍。"}}
 
 components:
   - id: c_mayo
@@ -65,17 +68,11 @@ components:
         name: {zh_hant: 沙拉醬（美乃滋）, zh_hans: 沙拉酱（美乃滋）, en: mayonnaise}
         status: draft
       ingredients:
-        - {id: j_yolk, concept: ing/egg_yolk, label: 蛋黃, role: 調料,
-           qty: {value: 2, unit: piece, raw_text: "蛋黃 2顆", evidence: S1, status: sourced}}
-        - {id: j_sugar, concept: ing/white_sugar, label: 砂糖, role: 調料,
-           qty: {value: 40, unit: g, raw_text: "砂糖 40g", evidence: S1, status: sourced}}
-        - {id: j_salt, concept: ing/salt, label: 鹽, role: 調料,
-           qty: {value: 7, unit: g, raw_text: "鹽 7g", evidence: S1, status: sourced}}
-        - {id: j_oil, concept: ing/cooking_oil, label: 沙拉油, role: 油脂,
-           qty: {value: 500, unit: g, raw_text: "沙拉油 500g", evidence: S1, status: sourced,
-             note: "S1 原量。500g 油為整批美乃滋配方量；推論：與 3 隻筍不成比例；成品用量與保存 S1 未寫，見 notes 可疑處"}}
-        - {id: j_vinegar, concept: ing/distilled_vinegar, label: 白醋, role: 調料,
-           qty: {value: 50, unit: g, raw_text: "白醋 50g", evidence: S1, status: sourced}}
+        - {id: j_yolk, concept: ing/egg_yolk, label: 蛋黃, role: 調料, qty: {value: 2, unit: piece, raw_text: "蛋黃 2顆", evidence: S1, status: sourced}}
+        - {id: j_sugar, concept: ing/white_sugar, label: 砂糖, role: 調料, qty: {value: 40, unit: g, raw_text: "砂糖 40g", evidence: S1, status: sourced}}
+        - {id: j_salt, concept: ing/salt, label: 鹽, role: 調料, qty: {value: 7, unit: g, raw_text: "鹽 7g", evidence: S1, status: sourced}}
+        - {id: j_oil, concept: ing/cooking_oil, label: 沙拉油, role: 油脂, qty: {value: 500, unit: g, raw_text: "沙拉油 500g", evidence: S1, status: sourced, note: "S1 原量。500g 油為整批美乃滋配方量；推論：與 3 隻筍不成比例；成品用量與保存 S1 未寫，見 notes 可疑處"}}
+        - {id: j_vinegar, concept: ing/distilled_vinegar, label: 白醋, role: 調料, qty: {value: 50, unit: g, raw_text: "白醋 50g", evidence: S1, status: sourced}}
       actions:
         - id: ja1
           technique: tech/emulsify
@@ -105,18 +102,20 @@ actions:
       heat: {level: heat/medium, raw: "大火煮到水滾，再轉中火續煮25分鐘", evidence: S1}
       duration: {min_s: null, max_s: null, raw: "再轉中火續煮25分鐘", is_guide: true, evidence: S1, status: sourced}
     completion:
-      - {observe: 水溫狀態, target: 大火煮到水滾，再轉中火續煮滿 25 分鐘, method: 目測（水滾）+ 計時, evidence: S1}
-      - {observe: 筍熟度, target: 原文沒寫筍熟度判斷（無戳刺、無溫度描述）, method: null}
+      - observe: 筍熟度
+        target: 筷子可刺入筍身較厚處，沒有明顯硬芯。
+        method: 目測
+        evidence: null
     note: "S1 未寫煮筍前是否先刷洗竹筍外殼；H1 對照為『洗淨後帶殼冷水下鍋』。家庭無蒸籠、無烤箱、無氣炸鍋：本步用湯鍋爐上水煮；若改電鍋為家庭改法（推論），S1 未寫電鍋外鍋水量。"
   - id: a2
     technique: tech/rest
     term: 關火續悶到水涼，放入冰箱冷藏
     inputs: [s_bamboo_cooked]
     outputs: [s_bamboo_cooled]
-    params: {duration: {min_s: null, max_s: null, raw: "關火續悶到水涼即可放入冰箱冷藏；悶多久、冷藏多久原文沒寫", status: missing}}
+    params: {duration: {min_s: 1800, max_s: 3600, raw: null, is_guide: true, evidence: null, status: inferred}}
     completion:
       - {observe: 煮筍湯, target: 續悶到水涼，再放入冰箱冷藏, method: 目測（水溫）, evidence: S1}
-    note: "冷卻方式對照：H1 為取出放入冰水降溫；S3 為連湯放涼後冷藏（最多 3 天）或立即食用者冰水鎮 5 分鐘。本檔主體依 S1 原湯悶涼冷藏。"
+    note: "冷卻方式對照：H1 為取出放入冰水降溫；S3 為連湯放涼後冷藏（最多 3 天）或立即食用者冰水鎮 5 分鐘。本檔主體依 S1 原湯悶涼冷藏；補寫依據：關火後連筍留在原湯中悶涼，以一般家庭做法約 30–60 分鐘至不燙手。"
   - id: a3
     technique: tech/cut
     term: 竹筍去皮切塊
@@ -137,15 +136,17 @@ actions:
 
 serving:
   completion:
-    - {observe: 上桌溫度, target: 冰箱冷藏後涼食（依 S1『放入冰箱冷藏』）；上桌時限原文沒寫, method: null, evidence: S1}
-  sensory_target: {texture: "S1 原文沒寫口感；H1 描述筍嫩脆細、香甜多汁（對照）", taste: "S1 原文沒寫味型描述"}
+    - {observe: 上桌溫度, target: 冷藏後冰涼食用；室溫放置不超過 2 小時。, method: null, evidence: null, note: 補寫依據：依 USDA 食品安全建議，熟食室溫存放上限為 2 小時。}
+  sensory_target: {texture: "筍肉嫩脆細緻，切面濕潤，不帶硬芯。", taste: "綠竹筍清甜，搭配微甜帶酸的沙拉醬。"}
 
 notes:
-  weekday: "平日不可做：S1 中火續煮 25 分鐘，已超過家庭自訂的平日 20 分鐘門檻（門檻是使用者條件，不是來源數字）；另含悶到水涼與等待冷藏的時間，S1 原文沒寫時長，待試做計時。"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "家庭自訂：全程最多 1 口爐、1 只湯鍋煮筍；沙拉醬在碗中以打蛋器調製，不佔爐口。任一時刻不超過 2 口爐。"
   spicy_split: "主體沒有辣椒、花椒、辣豆瓣，整鍋即不辣那份；沙拉醬可先分一部分在不辣的碗裡。若日後另做麻辣變化，辣椒／花椒應在最後各自加入（推論）；S1 不存在必須一開始下鍋的辣或麻配料，不需另外分開煮。"
   oven_airfryer: "S1、H1、S3 皆未使用烤箱、氣炸鍋或蒸籠，無器具取代問題。煮筍主體用湯鍋爐上水煮；家庭改法（推論）：可改大同電鍋外鍋加水蒸，但電鍋外鍋水量、跳起次數三來源都沒寫，待試做。"
   compare: "三份來源的份量、調味、火力、時間、完成狀態可依各來源條目核對；主體數字全部來自 S1，H1、S3 僅對照。"
-  missing: "原文沒寫：份數、煮筍水量（只說蓋過）、煮前是否刷洗外殼、大火煮到水滾的時間、悶涼時長、冷藏時長與保存天數、切塊大小、筍熟度判斷、沙拉醬成品產量與保存、上桌時限、口感與味型描述、鍋具種類、是否加米煮筍。"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   no_scale: "家中無料理秤：S1 沙拉醬原料以 g 標示（砂糖 40g、鹽 7g、沙拉油 500g、白醋 50g），無秤時如何用匙量替代，S1 原文沒寫，不換算。"
   decisions: "2026-11-28 選定：主來源 S1（楊桃美食網，唯一同時具備份量、火力、時間的公開食譜頁）；H1 為媒體轉述農糧署做法，S3 為英文個人部落格對照。筍種以 S1 綠竹筍為準。"
+  total_min: '60'
+  time_basis: 竹筍 3 隻洗淨備料約 5 分鐘；水滾與中火煮 25 分鐘，關火悶涼及冷藏等待以一般家庭做法合計抓 30 分鐘，總時間約 60 分鐘。

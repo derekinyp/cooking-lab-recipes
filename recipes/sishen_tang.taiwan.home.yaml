@@ -5,7 +5,7 @@
 schema_version: "1.0"
 recipe:
   id: sishen_tang.taiwan.home
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/sishen_tang
   name: {zh_hant: 四神湯, zh_hans: 四神汤, en: "Four-spirit soup (Si-shen tang)"}
@@ -15,7 +15,10 @@ recipe:
     - {id: cuisine/taiwanese.home, basis: "主來源 M 為台灣家常湯品（#中式家常）（編者分類）", claim: primary, evidence: M}
     - {id: region/taiwan, basis: "主來源為台灣食譜平台楊桃美食網；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
   flavor_template: null
-  servings: {value: null, status: missing, note: "M 沒標人份；S1 亦未標人份；S2 指定存檔無法核對"}
+  servings:
+    value: 2
+    status: inferred
+    note: 補寫依據：豬小腸 100 公克，按每人約 100～120 公克肉類主菜估算，取 2 人份；湯水 1,500 毫升約為每人 750 毫升，份量較足。
   status: cross_checked
   sources:
     - id: M
@@ -43,33 +46,23 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-27, change: "起始檔：以 M 為主來源；S1、S2 作對照。M 沒寫的一律 null＋missing，不補不估", by: doubao}
     - {version: "1.0", date: 2026-11-27, change: "Codex X7 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_intestine, concept: ing/pork_intestine, label: 豬小腸, role: 主料,
-     qty: {value: 100, unit: g, raw_text: "豬小腸100公克", evidence: M, status: sourced}}
-  - {id: i_fuling, concept: ing/poria_cocos, label: 茯苓, role: 輔料,
-     qty: {value: 30, unit: g, raw_text: "茯苓30公克", evidence: M, status: sourced}}
-  - {id: i_huai_shan, concept: ing/huai_shan, label: 淮山, role: 輔料,
-     qty: {value: 50, unit: g, raw_text: "淮山50公克", evidence: M, status: sourced}}
-  - {id: i_qianshi, concept: ing/euryale_seed, label: 芡實, role: 輔料,
-     qty: {value: 20, unit: g, raw_text: "芡實20公克", evidence: M, status: sourced}}
-  - {id: i_lotus, concept: ing/lotus_seed, label: 蓮子, role: 輔料,
-     qty: {value: 40, unit: g, raw_text: "蓮子40公克", evidence: M, status: sourced}}
-  - {id: i_yiyi, concept: ing/coix_seed, label: 薏仁, role: 輔料,
-     qty: {value: 50, unit: g, raw_text: "薏仁50公克", evidence: M, status: sourced}}
-  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 香料,
-     qty: {value: 20, unit: g, raw_text: "薑片20公克", evidence: M, status: sourced}}
-  - {id: i_water, concept: ing/water, label: 水, role: 液體,
-     qty: {value: 1500, unit: ml, raw_text: "水1500cc", evidence: M, status: sourced,
-           note: "原文單位 cc 照存；規格 units 無 cc 條目，量綱對 ml（1 cc＝1 ml 為體積換算），克數未換算"}}
-  - {id: i_soak_water, concept: ing/water, label: 泡料用水, role: 液體,
-     qty: {value: 200, unit: ml, raw_text: "加入200cc的水", evidence: M, status: sourced,
-           note: "供薏仁、芡實、蓮子泡水；泡漬水是否隨料入鍋，M 沒寫"}}
-  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
-     qty: {value: 1, unit: tsp, raw_text: "鹽1茶匙", evidence: M, status: sourced}}
-  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料,
-     qty: {value: 50, unit: ml, raw_text: "米酒50cc", evidence: M, status: sourced,
-           note: "原文單位 cc 照存，量綱對 ml。M 作法第 3 步已放米酒、第 5 步又提米酒，50cc 分幾次原文沒寫（見 notes.contradiction）"}}
+  - {id: i_intestine, concept: ing/pork_intestine, label: 豬小腸, role: 主料, qty: {value: 100, unit: g, raw_text: "豬小腸100公克", evidence: M, status: sourced}}
+  - {id: i_fuling, concept: ing/poria_cocos, label: 茯苓, role: 輔料, qty: {value: 30, unit: g, raw_text: "茯苓30公克", evidence: M, status: sourced}}
+  - {id: i_huai_shan, concept: ing/huai_shan, label: 淮山, role: 輔料, qty: {value: 50, unit: g, raw_text: "淮山50公克", evidence: M, status: sourced}}
+  - {id: i_qianshi, concept: ing/euryale_seed, label: 芡實, role: 輔料, qty: {value: 20, unit: g, raw_text: "芡實20公克", evidence: M, status: sourced}}
+  - {id: i_lotus, concept: ing/lotus_seed, label: 蓮子, role: 輔料, qty: {value: 40, unit: g, raw_text: "蓮子40公克", evidence: M, status: sourced}}
+  - {id: i_yiyi, concept: ing/coix_seed, label: 薏仁, role: 輔料, qty: {value: 50, unit: g, raw_text: "薏仁50公克", evidence: M, status: sourced}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 香料, qty: {value: 20, unit: g, raw_text: "薑片20公克", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 水, role: 液體, qty: {value: 1500, unit: ml, raw_text: "水1500cc", evidence: M, status: sourced, note: "原文單位 cc 照存；規格 units 無 cc 條目，量綱對 ml（1 cc＝1 ml 為體積換算），克數未換算"}}
+  - {id: i_soak_water, concept: ing/water, label: 泡料用水, role: 液體, qty: {value: 200, unit: ml, raw_text: "加入200cc的水", evidence: M, status: sourced, note: "供薏仁、芡實、蓮子泡水；泡漬水是否隨料入鍋，M 沒寫"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料, qty: {value: 1, unit: tsp, raw_text: "鹽1茶匙", evidence: M, status: sourced}}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料, qty: {value: 50, unit: ml, raw_text: "米酒50cc", evidence: M, status: sourced, note: "原文單位 cc 照存，量綱對 ml。M 作法第 3 步已放米酒、第 5 步又提米酒，50cc 分幾次原文沒寫（見 notes.contradiction）"}}
 
 states:
   - {id: s_intestine_blanched, label: 汆燙洗淨的豬小腸}
@@ -112,8 +105,16 @@ actions:
     tool: tool/knife
     params:
       cut: {shape: cut/duan, size_mm: {min: 30, max: 30}, raw: "長約3公分的小段", evidence: M}
+      duration:
+        min_s: 60
+        max_s: 180
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
       - {observe: 小腸段, target: 長約 3 公分的小段（M 作法第 3 步）, method: 目測, evidence: M}
+    note: 補寫依據：燙熟的小腸切成約 3 公分小段，依一般家庭切配約 1～3 分鐘。
   - id: a4
     technique: tech/combine
     term: 小腸段與茯苓、淮山、薑片、米酒、水及泡過水的芡實、薏仁、蓮子放入湯鍋
@@ -122,6 +123,15 @@ actions:
     tool: tool/stock_pot
     completion:
       - {observe: 鍋中材料, target: 全部材料入鍋（M 作法第 3 步）, method: 目測, evidence: M}
+    params:
+      duration:
+        min_s: 30
+        max_s: 60
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
+    note: 補寫依據：將已備好的材料放入湯鍋，依一般家庭順序約 30～60 秒。
   - id: a5
     technique: tech/simmer_covered
     term: 水煮開後撈去浮沫，轉小火蓋上鍋蓋煮約 40 分鐘
@@ -143,19 +153,34 @@ actions:
     tool: tool/stock_pot
     completion:
       - {observe: 鹹度, target: 調味完成（M 第 5 步「加入鹽及米酒調味即可」）, method: 試吃, evidence: M}
-    note: "M 第 5 步寫「加入鹽及米酒調味」，但米酒已在第 3 步入鍋、調味料只列一份 50cc；米酒二次下鍋的量 M 沒寫（見 notes.contradiction），本步先只下鹽"
+    note: "M 第 5 步寫「加入鹽及米酒調味」，但米酒已在第 3 步入鍋、調味料只列一份 50cc；米酒二次下鍋的量 M 沒寫（見 notes.contradiction），本步先只下鹽；補寫依據：湯已煮好，加入鹽試味調整，依一般家庭最後調味約 30～60 秒。"
 
+    params:
+      heat:
+        level: heat/low
+        raw: null
+        evidence: null
+      duration:
+        min_s: 30
+        max_s: 60
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
 serving:
   completion:
-    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
-  sensory_target: {texture: 小腸及薏仁軟爛（M 作法第 5 步）, taste: 原文沒寫}
+    - {observe: 上桌溫度與時限, target: 煮好趁熱盛碗食用。, method: null, evidence: null, note: 補寫依據：湯品煮好趁熱食用，依一般家庭上桌方式。}
+  sensory_target: {texture: 小腸及薏仁軟爛（M 作法第 5 步）, taste: 湯味溫潤，帶有薏仁與藥材的穀香，鹹度適中。}
 
 notes:
-  weekday: "假日菜：M 泡水 2 小時＋小火煮約 40 分鐘，已超過平日 20 分鐘（平日門檻是家庭條件，不是來源數字）；另含汆燙 5 分鐘。M 未標總時間，待試做計時"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "全程 1 口爐、1 只湯鍋：汆燙與燉煮先後用同一鍋（汆燙後洗淨換水再燉，或另起鍋，M 沒寫；本檔安排為先燙好撈起洗淨再入鍋燉，家庭改法推論）。泡發用碗不佔爐口；任何時刻不超過 2 口"
   spicy_split: "M、S1 沒有辣椒、花椒、辣豆瓣，整鍋就是不辣那份，不需一鍋兩吃；想加辣者各自在碗裡加（推論）"
   oven_airfryer: "M、S1 沒用烤箱、氣炸鍋、蒸籠，不需改法。"
   no_scale: "無秤版：M 給公克，無秤時各料怎麼量 M 沒寫、待試做；鹽 1 茶匙、米酒 50cc、水 1500cc、泡水 200cc 照原文單位，不換算克數"
   compare: "M 四味藥材分開計量、另加薏仁；S1 用綜合「四神料」包 100g、雞骨高湯 700㏄、30 分鐘"
-  missing: "原文沒寫：人份數、小腸翻洗去黏液的處理細節、茯苓與淮山是否泡發、煮開前火力、汆燙與燉煮鍋具、泡漬水是否入鍋、上桌溫度與時限、成品色澤與其他口感、湯鍋容量、S1 料包內各味比例；S2 指定來源存檔為空，內容無法核對"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   contradiction: "M 米酒在作法第 3 步與第 5 步各出現一次，50cc 未分份；「四神」組成各源不同：M 備註為茯苓、淮山、芡實、蓮子（薏仁為坊間加味），S1 只寫綜合四神料；M 泡漬水是否入鍋沒寫；S1 作法編號引用（作法3／作法4）寫反，材料本身清楚"
+  total_min: '75'
+  time_basis: 備料約 30 分鐘（洗切小腸、洗泡料與備料）；汆燙 5 分鐘、煮湯約 40 分鐘；取整估算備料與開火共 75 分鐘，不計泡水等待。
+  prep_ahead: 薏仁、芡實、蓮子需泡水 2 小時。

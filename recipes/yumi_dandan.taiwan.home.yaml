@@ -5,12 +5,12 @@
 schema_version: "1.0"
 recipe:
   id: yumi_dandan.taiwan.home
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/yumi_dandan
   name: {zh_hant: 玉米蛋花湯, zh_hans: 玉米蛋花汤, en: Corn egg drop soup}
   variant: 台式家常版
-  summary: 清水加入玉米茸大火煮沸，以雞粉和鹽調味；生粉用少許水調成糊勾芡，待湯再次燒開後淋入蛋液攪拌，最後調入白胡椒粉和芝麻油。
+  summary: 清水加入玉米茸大火煮沸，以雞粉和鹽調味；太白粉用少許水調成糊勾芡，待湯再次燒開後淋入蛋液攪拌，最後調入白胡椒粉和芝麻油。
   cuisine:
     - {id: cuisine/taiwanese.home, basis: "編者分類（推論）：本庫把玉米蛋花湯列在台式家常；主來源 M 是品牌台灣官網，來源沒有主張菜系"}
     - {id: region/taiwan, basis: "編者分類（推論）：主來源是李錦記台灣官網；網站所在地不證明料理地域歸屬"}
@@ -43,30 +43,25 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-27, change: "起始檔：以 M 為主來源；份量、時間、火力只用 M；S1、S2 放比較表與 notes。M 沒寫的標 missing，不補不估", by: doubao}
     - {version: "1.0", date: 2026-11-27, change: "Codex X5 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_corn, concept: ing/cream_style_corn, label: 玉米茸（cream-style corn，玉米醬）, role: 主料,
-     qty: {value: 1, unit: can, raw_text: "玉米茸1 罐", evidence: M, status: sourced, note: "M 原量；每罐容量原文沒寫。詞表 ing/cream_style_corn 已收「玉米茸」為別名"}}
-  - {id: i_egg, concept: ing/egg, label: 雞蛋, role: 主料,
-     qty: {value: 2, unit: piece, raw_text: "雞蛋2個", evidence: M, status: sourced}}
-  - {id: i_water, concept: ing/water, label: 清水, role: 液體,
-     qty: {value: 7, unit: cup, raw_text: "清水7杯", evidence: M, status: sourced, note: "M 用清水，未用高湯；「杯」容量 M 沒定義，不換算"}}
-  - {id: i_starch, concept: ing/starch, label: 生粉（太白粉／玉米粉，種類 M 沒寫）, role: 芡粉,
-     qty: {value: 3, unit: tbsp, raw_text: "生粉3湯匙", evidence: M, status: sourced, note: "M 只寫「生粉」，澱粉種類沒寫；vocab ing/starch 標太白粉／玉米粉。勾芡另需少許水，見 i_slurry_water"}}
-  - {id: i_slurry_water, concept: ing/water, label: 勾芡用水, role: 液體,
-     qty: {value: null, unit: null, qualitative: 少許, raw_text: "用少許水將生粉調成糊狀", evidence: M, status: sourced, note: "「少許」為 M 原文說法；實際水量 M 沒寫，不補數字"}}
-  - {id: i_chicken_powder, concept: ing/chicken_powder, label: 鮮味雞粉, role: 調料,
-     qty: {value: 2, unit: tbsp, raw_text: "李錦記鮮味雞粉2湯匙", evidence: M, status: sourced, note: "M 為品牌指定產品；替代為高湯或鹽的做法 M 沒寫"}}
-  - {id: i_sesame, concept: ing/sesame_oil, label: 芝麻油, role: 調料,
-     qty: {value: 2, unit: tsp, raw_text: "芝麻油2茶匙", evidence: M, status: sourced}}
-  - {id: i_pepper, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 調料,
-     qty: {value: null, unit: null, qualitative: 適量, raw_text: "白胡椒粉適量", evidence: M, status: sourced}}
-  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
-     qty: {value: null, unit: null, qualitative: 適量, raw_text: "鹽適量", evidence: M, status: sourced}}
+  - {id: i_corn, concept: ing/cream_style_corn, label: 玉米茸（cream-style corn，玉米醬）, role: 主料, qty: {value: 1, unit: can, raw_text: "玉米茸1 罐", evidence: M, status: sourced, note: "M 原量；每罐容量原文沒寫。詞表 ing/cream_style_corn 已收「玉米茸」為別名"}}
+  - {id: i_egg, concept: ing/egg, label: 雞蛋, role: 主料, qty: {value: 2, unit: piece, raw_text: "雞蛋2個", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 清水, role: 液體, qty: {value: 7, unit: cup, raw_text: "清水7杯", evidence: M, status: sourced, note: "M 用清水，未用高湯；「杯」容量 M 沒定義，不換算"}}
+  - {id: i_starch, concept: ing/starch, label: 太白粉, role: 芡粉, qty: {value: 3, unit: tbsp, raw_text: "生粉3湯匙", evidence: M, status: sourced, note: "M 只寫「生粉」，澱粉種類沒寫；vocab ing/starch 標太白粉／玉米粉。勾芡另需少許水，見 i_slurry_water"}}
+  - {id: i_slurry_water, concept: ing/water, label: 勾芡用水, role: 液體, qty: {value: null, unit: null, qualitative: 少許, raw_text: "用少許水將生粉調成糊狀", evidence: M, status: sourced, note: "「少許」為 M 原文說法；實際水量 M 沒寫，不補數字"}}
+  - {id: i_chicken_powder, concept: ing/chicken_powder, label: 鮮味雞粉, role: 調料, qty: {value: 2, unit: tbsp, raw_text: "李錦記鮮味雞粉2湯匙", evidence: M, status: sourced, note: "M 為品牌指定產品；替代為高湯或鹽的做法 M 沒寫"}}
+  - {id: i_sesame, concept: ing/sesame_oil, label: 芝麻油, role: 調料, qty: {value: 2, unit: tsp, raw_text: "芝麻油2茶匙", evidence: M, status: sourced}}
+  - {id: i_pepper, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 調料, qty: {value: null, unit: null, qualitative: 適量, raw_text: "白胡椒粉適量", evidence: M, status: sourced}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料, qty: {value: null, unit: null, qualitative: 適量, raw_text: "鹽適量", evidence: M, status: sourced}}
 
 states:
   - {id: s_egg_beaten, label: 打散的雞蛋液}
-  - {id: s_slurry, label: 調成糊狀的生粉水}
+  - {id: s_slurry, label: 調成糊狀的太白粉水}
   - {id: s_soup_base, label: 玉米茸煮滾調味的湯底}
   - {id: s_thickened, label: 勾芡濃稠的湯}
   - {id: s_final, label: 玉米蛋花湯, role: final}
@@ -88,32 +83,50 @@ actions:
     tool: tool/stock_pot
     params:
       heat: {level: heat/high, raw: "大火煮沸", evidence: M}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫這步多久", status: missing}
+      duration:
+        min_s: 180
+        max_s: 420
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
       - {observe: 湯底, target: 煮沸（M 步驟 2「大火煮沸」）, method: 目測、聽, evidence: M}
-    note: "M 只寫「鍋裡」，未指定鍋具；用湯鍋為家庭改法（推論）"
+    note: "M 只寫「鍋裡」，未指定鍋具；用湯鍋為家庭改法（推論）；補寫依據：清水 7 杯與 1 罐玉米茸加熱至沸騰，依一般家庭煮湯做法估 3–7 分鐘，視爐火與鍋具而定。"
   - id: a3
     technique: tech/combine
-    term: 用少許水將生粉調成糊狀（M 寫在煮沸調味之後、勾芡之前）
+    term: 用少許水將太白粉調成糊狀（M 寫在煮沸調味之後、勾芡之前）
     inputs: [i_starch, i_slurry_water]
     outputs: [s_slurry]
     tool: tool/bowl
     completion:
-      - {observe: 生粉糊, target: 調成糊狀（M 步驟 2「用少許水將生粉調成糊狀」）；有無粉粒、濃稠程度原文沒寫, method: 目測, evidence: M}
+      - observe: 太白粉糊
+        target: 攪拌至看不見乾粉和明顯粉粒，呈均勻流動的糊狀。
+        method: 目測
+        evidence: null
     note: "粉水比 M 沒寫；勾芡用水只寫「少許水」"
   - id: a4
     technique: tech/thicken
-    term: 倒入生粉糊勾芡，使湯汁濃稠
+    term: 倒入太白粉糊勾芡，使湯汁濃稠
     inputs: [s_soup_base, s_slurry]
     outputs: [s_thickened]
     tool: tool/stock_pot
     params:
-      heat: {level: null, raw: "勾芡火力 M 沒寫"}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫勾芡時間", status: missing}
+      heat: {level: heat/medium, raw: null}
+      duration:
+        min_s: 30
+        max_s: 60
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
       thickening: {type: 薄芡, starch_ref: i_starch}
     completion:
-      - {observe: 湯汁, target: 勾芡使湯汁濃稠（M 步驟 2）；濃稠程度原文沒寫, method: 目測, evidence: M}
-    note: "「薄芡」為推論的芡分類；M 原文只寫「勾芡使湯汁濃稠」。對照 S1 寫「勾薄芡」"
+      - observe: 湯汁
+        target: 湯汁略帶稠度，能薄薄附在湯匙表面。
+        method: 目測
+        evidence: null
+    note: "「薄芡」為推論的芡分類；M 原文只寫「勾芡使湯汁濃稠」。對照 S1 寫「勾薄芡」；補寫依據：湯底保持小滾，太白粉糊分次加入並攪拌至湯汁濃稠，依一般家庭勾芡做法估 30–60 秒。"
   - id: a5
     technique: tech/cuan
     term: 待湯再次燒開後放入蛋液，攪拌後調入白胡椒粉和芝麻油即可
@@ -121,23 +134,33 @@ actions:
     outputs: [s_final]
     tool: tool/stock_pot
     params:
-      heat: {level: null, raw: "M 只寫「待湯再次燒開後」，未寫火力檔位"}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫下蛋與收尾時間", status: missing}
+      heat: {level: heat/medium, raw: null}
+      duration:
+        min_s: 30
+        max_s: 60
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 湯底, target: 再次燒開（M 步驟 3「待湯再次燒開後」）, method: 目測、聽, evidence: M}
-      - {observe: 蛋液, target: 放入後攪拌，調入白胡椒粉和芝麻油即可（M 步驟 3）；蛋花成形的細緻程度原文沒寫, method: 目測, evidence: M}
-    note: "vocab 無「淋蛋液成蛋花」專屬技法，本步暫歸 tech/cuan 是編者分類（推論），M 沒指定技法，只寫湯再次燒開後放入蛋液、攪拌。下蛋時機各來源不同：M 為湯再燒開後下蛋攪拌；S1 為熄火後下蛋略拌；S2 為關火淋蛋靜置 30 秒。"
+      - observe: 蛋花
+        target: 蛋液凝成柔嫩蛋花，湯面重新微滾即可調入白胡椒粉和芝麻油。
+        method: 目測
+        evidence: null
+    note: "vocab 無「淋蛋液成蛋花」專屬技法，本步暫歸 tech/cuan 是編者分類（推論），M 沒指定技法，只寫湯再次燒開後放入蛋液、攪拌。下蛋時機各來源不同：M 為湯再燒開後下蛋攪拌；S1 為熄火後下蛋略拌；S2 為關火淋蛋靜置 30 秒；補寫依據：來源要求湯再次燒開後加入蛋液；中火攪拌至蛋花凝固約需 30–60 秒，依一般家庭煮蛋花湯做法估計。"
 
 serving:
   completion:
-    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
-  sensory_target: {color: 原文沒寫, taste: 原文沒寫, texture: 蛋花狀態原文沒寫}
+    - {observe: 上桌溫度與時限, target: 趁熱上桌；室溫放置不超過 2 小時，剩湯冷藏 3–4 天內吃完。, method: null, evidence: null, note: 補寫依據：依 USDA 食品安全指引，室溫存放上限 2 小時，剩菜冷藏 3–4 天。}
+  sensory_target: {color: 湯色淡黃，帶有玉米粒與蛋花。, taste: 玉米清甜，帶雞粉、白胡椒與芝麻油香。, texture: 湯汁略稠，蛋花柔嫩。}
 
 notes:
-  weekday: "平日可做（推論依據 M 時間）：M 標準備 2 分鐘、烹煮 8 分鐘（原文分列，未寫總時間）。各步驟細項時間 M 沒寫，待試做計時"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "全程 1 口爐、1 只湯鍋（家庭安排，推論；M 只寫「鍋裡」，未指定鍋具與爐口數）"
   spicy_split: "M、S1、S2 都沒有辣椒、花椒、辣豆瓣，整鍋就是不辣那份，一鍋兩吃不需分流；白胡椒粉最後調入，不辣那份可少放或不放。要辣／麻者各自在碗裡另加（推論，無來源數字）"
   oven_airfryer: "三份來源都不用烤箱、氣炸鍋、蒸籠；本版廚具為湯鍋與調理碗，不需家庭改法"
   no_scale: "無秤版：玉米茸用罐頭、蛋用顆數、水用杯、生粉與雞粉用湯匙、芝麻油用茶匙；杯、匙容量 M 沒定義，不換算克數"
   compare: "S1（楊桃〈玉米濃湯〉，頁面分類標西式料理）：玉米醬 1 罐、雞蛋 1 顆、高湯 600㏄，小火加鹽、糖、白胡椒粉，太白粉水勾薄芡後熄火才加蛋液。S2（英語部落格）：高湯 5 cups、甜玉米 1 can、蛋 4 顆，另加薑、青蔥；勾芡煮 1 分鐘至濃稠；蛋液與青蔥綠色部分打勻，關火淋入蛋液、靜置 30 秒再拌；正文作法最後淋芝麻油並加剩餘青蔥，結構化食譜步驟只寫淋芝麻油。各家份量差異大，主體只用 M"
-  missing: "原文沒寫：生粉種類、勾芡用水實際量、勾芡與下蛋的火力、各步驟時間、蛋花完成狀態（絲狀／片狀）、鍋具大小、杯／湯匙／茶匙容量定義、上桌溫度與時限"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
+  total_min: '10'
+  time_basis: 來源標示準備 2 分鐘、烹煮 8 分鐘，合計 10 分鐘。

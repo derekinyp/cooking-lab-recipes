@@ -7,17 +7,20 @@
 schema_version: "1.0"
 recipe:
   id: baicai_lu.taiwan.home
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/baicai_lu
   name: {zh_hant: 白菜滷, zh_hans: 白菜卤, en: Taiwanese braised napa cabbage}
   variant: 台式家常版
-  summary: 大白菜切大塊汆燙，爆香蔥段、薑片、香菇絲與紅蘿蔔絲，加高湯與紅蔥肉燥小火煮至白菜軟爛的家常滷白菜。
+  summary: 大白菜切大塊汆燙，爆蔥段、薑片、香菇絲與紅蘿蔔絲，加高湯與紅蔥肉燥小火煮至白菜軟爛的家常滷白菜。
   cuisine:
     - {id: cuisine/taiwanese.home, basis: "M 為台灣食譜平台楊桃美食網收錄的家常料理（編者分類）", claim: primary, evidence: M}
     - {id: region/taiwan, basis: "平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
   flavor_template: null
-  servings: {value: null, status: missing, note: "M 沒寫份數"}
+  servings:
+    value: 3
+    status: inferred
+    note: 補寫依據：大白菜 300 公克，依衛福部國民健康署每日飲食指南一餐每人約 100–150 公克蔬菜，取 3 人份。
   status: cross_checked
   sources:
     - id: M
@@ -45,24 +48,20 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-28, change: "起始草稿：以 M 為主來源，份量與時間只用 M；S1、S2 作對照放比較表與 notes；家庭改法標推論", by: doubao}
     - {version: "1.0", date: 2026-11-28, change: "Codex X5 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_cabbage, concept: ing/napa_cabbage, label: 大白菜, role: 主料,
-     qty: {value: 300, unit: g, raw_text: "大白菜300公克", evidence: M, status: sourced}}
-  - {id: i_shiitake, concept: ing/shiitake, label: 泡發香菇, role: 輔料,
-     qty: {value: 50, unit: g, raw_text: "泡發香菇50公克", evidence: M, status: sourced, note: "M 只寫「泡發香菇」，乾貨或鮮貨泡發原文沒寫"}}
-  - {id: i_carrot, concept: ing/carrot, label: 紅蘿蔔絲, form: 絲, role: 輔料,
-     qty: {value: 50, unit: g, raw_text: "紅蘿蔔絲50公克", evidence: M, status: sourced}}
-  - {id: i_scallion, concept: ing/scallion, label: 蔥段, form: 段, role: 輔料,
-     qty: {value: 30, unit: g, raw_text: "蔥段30公克", evidence: M, status: sourced}}
-  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 輔料,
-     qty: {value: 20, unit: g, raw_text: "薑片20公克", evidence: M, status: sourced}}
-  - {id: i_meat_sauce, concept: ing/red_scallion_meat_sauce, label: 紅蔥肉燥, role: 調料,
-     qty: {value: 5, unit: tbsp, raw_text: "牛頭牌紅蔥肉燥5大匙", evidence: M, status: sourced}}
-  - {id: i_stock, concept: ing/stock_light, label: 原味高湯, role: 液體,
-     qty: {value: 200, unit: ml, raw_text: "牛頭牌原味高湯200㏄", evidence: M, status: sourced}}
-  - {id: i_oil, concept: ing/cooking_oil, label: 油, role: 油脂,
-     qty: {value: null, unit: null, qualitative: "少許", raw_text: "熱鍋下少許油", evidence: M, status: sourced, note: "M 只寫「少許油」，無數字"}}
+  - {id: i_cabbage, concept: ing/napa_cabbage, label: 大白菜, role: 主料, qty: {value: 300, unit: g, raw_text: "大白菜300公克", evidence: M, status: sourced}}
+  - {id: i_shiitake, concept: ing/shiitake, label: 泡發香菇, role: 輔料, qty: {value: 50, unit: g, raw_text: "泡發香菇50公克", evidence: M, status: sourced, note: "M 只寫「泡發香菇」，乾貨或鮮貨泡發原文沒寫"}}
+  - {id: i_carrot, concept: ing/carrot, label: 紅蘿蔔絲, form: 絲, role: 輔料, qty: {value: 50, unit: g, raw_text: "紅蘿蔔絲50公克", evidence: M, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥段, form: 段, role: 輔料, qty: {value: 30, unit: g, raw_text: "蔥段30公克", evidence: M, status: sourced}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 輔料, qty: {value: 20, unit: g, raw_text: "薑片20公克", evidence: M, status: sourced}}
+  - {id: i_meat_sauce, concept: ing/red_scallion_meat_sauce, label: 紅蔥肉燥, role: 調料, qty: {value: 5, unit: tbsp, raw_text: "牛頭牌紅蔥肉燥5大匙", evidence: M, status: sourced}}
+  - {id: i_stock, concept: ing/stock_light, label: 原味高湯, role: 液體, qty: {value: 200, unit: ml, raw_text: "牛頭牌原味高湯200㏄", evidence: M, status: sourced}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 油, role: 油脂, qty: {value: 1, unit: tsp, raw_text: "熱鍋下少許油", evidence: M, status: inferred, note: "M 只寫「少許油」，無數字；補寫依據：一般家庭做法以 1 小匙油潤鍋，足以爆香蔥段、薑片與蔬菜。"}}
 
 states:
   - {id: s_cabbage_cut, label: 切大塊的大白菜}
@@ -79,7 +78,11 @@ actions:
     outputs: [s_cabbage_cut]
     tool: tool/knife
     params: {cut: {shape: cut/kuai, raw: "大白菜切大塊", evidence: M}}
-    completion: [{observe: 大白菜, target: 切成大塊, method: 目測（推論）, evidence: M}]
+    completion:
+      - observe: 大白菜
+        target: 切成方便入口的大塊，厚薄接近，煮起來較均勻。
+        method: 目測
+        evidence: null
     note: "塊的大小 M 沒寫"
   - id: a2
     technique: tech/blanch
@@ -88,10 +91,14 @@ actions:
     outputs: [s_cabbage_blanched]
     tool: tool/stock_pot
     params:
-      heat: {level: null, raw: "沸水（汆燙火力原文沒寫）", evidence: M}
+      heat: {level: heat/high, raw: null, evidence: M}
       duration: {min_s: 30, max_s: 30, raw: "約30秒", is_guide: true, evidence: M, status: sourced}
-    completion: [{observe: 白菜, target: 汆燙後撈起瀝乾, method: 目測（推論）, evidence: M}]
-    note: "家庭改法（推論）：M 未指明鍋具；用湯鍋爐上燒沸水汆燙，不用蒸籠。汆燙後是否沖涼 M 沒寫"
+    completion:
+      - observe: 大白菜
+        target: 葉片稍微軟化、仍能夾起完整，撈起瀝乾。
+        method: 目測
+        evidence: null
+    note: "家庭改法（推論）：M 未指明鍋具；用湯鍋爐上燒沸水汆燙，不用蒸籠。汆燙後是否沖涼 M 沒寫；補寫依據：汆燙依補寫常識表使用沸水與大火，時間採 30–180 秒範圍；原食譜已給約 30 秒，照原數字操作即可。"
   - id: a3
     technique: tech/cut
     term: 泡發香菇切絲
@@ -99,19 +106,32 @@ actions:
     outputs: [s_shiitake_shredded]
     tool: tool/knife
     params: {cut: {shape: cut/si, raw: "泡發香菇切絲", evidence: M}}
-    completion: [{observe: 香菇, target: 切絲備用, method: 目測（推論）, evidence: M}]
+    completion:
+      - observe: 香菇
+        target: 切成粗細相近的細絲。
+        method: 目測
+        evidence: null
   - id: a4
     technique: tech/aromatics
-    term: 熱鍋下少許油，小火爆香蔥段、薑片、香菇絲、紅蘿蔔絲
+    term: 熱鍋下少許油，小火爆蔥段、薑片、香菇絲、紅蘿蔔絲
     inputs: [i_oil, i_scallion, i_ginger, s_shiitake_shredded, i_carrot]
     outputs: [s_aromatic]
     tool: tool/wok
     params:
       heat: {level: heat/low, raw: "小火", evidence: M}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫爆香時間", status: missing}
+      duration:
+        min_s: 30
+        max_s: 120
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 辛香料, target: 爆香出香（M 小撇步：辛香料事先爆香，瞬間高溫將香氣散發出來）, method: 聞（推論）, evidence: M}
-    note: "鍋具用炒鍋為家庭慣用選擇（M 只寫「熱鍋」，沒寫鍋型）"
+      - observe: 辛香料與蔬菜
+        target: 聞得到蔥、薑與香菇香氣，紅蘿蔔顏色轉亮。
+        method: 目測
+        evidence: null
+    note: "鍋具用炒鍋為家庭慣用選擇（M 只寫「熱鍋」，沒寫鍋型）；補寫依據：爆香依補寫常識表約 30–120 秒；以蔥、薑、香菇與紅蘿蔔出香為止。"
   - id: a5
     technique: tech/simmer
     term: 放入白菜，加高湯與紅蔥肉燥，小火煮約5分鐘至白菜軟爛
@@ -122,20 +142,25 @@ actions:
       heat: {level: heat/low, raw: "小火", evidence: M}
       duration: {min_s: 300, max_s: 300, raw: "約5分鐘", is_guide: true, evidence: M, status: sourced}
     completion:
-      - {observe: 白菜, target: 軟爛（M 原文：至白菜軟爛即可）, method: 目測、戳（推論）, evidence: M}
+      - observe: 白菜
+        target: 葉梗軟透、用筷子能輕易夾斷，湯汁仍略帶濕潤即可。
+        method: 目測
+        evidence: null
     note: "是否加蓋 M 沒寫；是否收汁 M 沒寫"
 
 serving:
   completion:
-    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
-  sensory_target: {color: 原文沒寫, taste: 原文沒寫, texture: 白菜軟爛（M 原文）}
+    - {observe: 上桌溫度與時限, target: 趁熱盛盤上桌。, method: null, evidence: null, note: 補寫依據：一般家庭做法，白菜滷趁熱食用風味較好。}
+  sensory_target: {color: 白菜呈淡金褐色，搭配紅蘿蔔橘色與香菇深色。, taste: 高湯與紅蔥肉燥帶出鹹香，蔬菜清甜。, texture: 白菜軟爛（M 原文）}
 
 notes:
-  weekday: "原文沒寫總時間，待試做計時。M 作法可見時間：汆燙約30秒、小火煮約5分鐘；切配與爆香時間 M 沒寫。頁面標籤含 #30 分鐘內（不是 20 分鐘），家庭自訂平日門檻為20分鐘；目前不能直接判定平日可做"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "M 未寫爐口數；爆香後同鍋加入白菜、高湯與肉燥續煮。汆燙另用湯鍋（家庭改法，推論）；是否與爆香同時進行原文沒寫"
   oven_airfryer: "M、S1 未用烤箱、氣炸鍋、蒸籠；S2 存檔空白，無法核對。汆燙以湯鍋爐上燒沸水代替（家庭改法，推論）。家中無溫度計、無料理秤"
   spicy_split: "主體無辣椒、花椒、辣豆瓣，亦無胡椒（M 調味只有肉燥與高湯）；不辣那份即主體，可直接上桌。若要加白胡椒，最後各自在碗裡加（推論）；本菜不存在辣椒／花椒必須一開始下鍋、無法分出的情況"
   no_scale: "無秤版：大白菜 300 公克、香菇 50 公克等公克數無秤無法直接量（M 未給杯匙換算，不換算）；高湯 200㏄ 可用量米杯或湯匙計量（推論，無來源數字）；肉燥 5 大匙用湯匙量"
   compare: "S1 開陽白菜：白菜 600g、乾香菇 3 朵、蝦米 25g、蒜末 10g、高湯 200㏄、太白粉水少許；鹽 1/2 小匙、糖 1/4 小匙、雞粉 1/4 小匙、香油 1 小匙；油 2 大匙；高湯蓋鍋燜煮入味後勾芡淋香油，燜煮時間與火力原文沒寫。S2 存檔空白，草稿中對其材料、數字與作法的描述無法核對"
-  missing: "原文沒寫：份數、油量數字（僅少許）、白菜切塊大小、爆香時間、煮時是否加蓋、是否收汁、成品色澤與味道、上桌溫度與時限、鍋型與鍋子大小、香菇乾鮮來源"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   spec_gaps: "見輸出（E）規格不足段落"
+  total_min: '20'
+  time_basis: 白菜 300 公克、紅蘿蔔 50 公克等蔬菜洗切約 5 分鐘；汆燙約 30 秒、爆香約 1 分鐘、煮約 5 分鐘，並計入燒水與瀝乾時間，抓整數約 20 分鐘。

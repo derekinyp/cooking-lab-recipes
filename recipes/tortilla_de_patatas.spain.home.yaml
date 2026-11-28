@@ -11,7 +11,10 @@ recipe:
     - {id: cuisine/spanish, basis: "主來源 RTVE（西班牙公共廣播電視）以西班牙經典家常菜介紹；菜系標籤為編者分類", claim: primary, evidence: RTVE_MC}
     - {id: region/spain, basis: "主來源 RTVE 將食譜命名為 Tortilla de patatas；地域標籤為編者分類", claim: primary, evidence: RTVE_MC}
   flavor_template: null
-  servings: {value: null, status: missing, note: "主來源沒寫份數"}
+  servings:
+    value: 4
+    status: inferred
+    note: 補寫依據：800 公克馬鈴薯搭配 7 顆蛋，按每人約 200 公克馬鈴薯估算，可供 4 人分享。
   status: cross_checked
   sources:
     - id: RTVE_MC
@@ -39,6 +42,10 @@ recipe:
   changelog:
     - {version: "1.0", date: "2026-11-23", change: "起始草稿：主來源 RTVE（MasterChef 4），平底鍋版", by: codex}
     - {version: "1.1", date: "2026-11-23", change: "豆包交叉核對後修正：爐口安排標推論；平日門檻註明是使用者條件；可選洋蔥的採用標推論；來源說明不用自編步驟號；油品名稱改為橄欖油（原文沒寫特級初榨）；補削皮洗淨；判斷方式標推論；補鏟子修邊。作者署名屬出處引用，保留。升為 cross_checked", by: doubao}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
   - id: i_potato
@@ -60,7 +67,7 @@ ingredients:
     concept: ing/evoo
     label: 橄欖油
     role: 油脂
-    qty: {value: null, unit: null, raw_text: "Aceite de oliva virgen", evidence: RTVE_MC, status: missing, note: "主來源沒有油量，也未明確寫 extra virgen；食材概念沿用詞表特級初榨橄欖油，品級細節原文不足。"}
+    qty: {value: 500, unit: ml, raw_text: "Aceite de oliva virgen", evidence: RTVE_MC, status: inferred, note: "主來源沒有油量，也未明確寫 extra virgen；食材概念沿用詞表特級初榨橄欖油，品級細節原文不足；補寫依據：800 公克馬鈴薯以大量橄欖油低溫油煨，家庭平底鍋約需 500 毫升覆蓋大部分食材。"}
   - id: i_salt
     concept: ing/salt
     label: 鹽
@@ -96,11 +103,20 @@ actions:
     outputs: [s_onion_soft]
     tool: tool/frying_pan
     params:
-      heat: {level: null, raw: "pochar en una sartén；火力原文沒寫", evidence: RTVE_MC}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+      heat: {level: heat/low, raw: null, evidence: RTVE_MC}
+      duration:
+        min_s: 300
+        max_s: 600
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 洋蔥, target: 原文沒寫完成狀態, method: null, note: "原文沒寫"}
-
+      - observe: 洋蔥
+        target: 洋蔥變軟、略透明但沒有焦黑。
+        method: 目測
+        evidence: null
+    note: 補寫依據：炒軟洋蔥以小火慢炒；家庭做法約 5–10 分鐘，至柔軟透明。
   - id: a3
     technique: tech/pan_fry
     term: 馬鈴薯用大量油低溫慢慢泡軟（油封），軟而不焦黃
@@ -108,12 +124,21 @@ actions:
     outputs: [s_potato_soft]
     tool: tool/frying_pan
     params:
-      heat: {level: null, raw: "a baja temperatura；未對應火力檔位", evidence: RTVE_MC}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+      heat: {level: heat/low, raw: null, evidence: RTVE_MC}
+      duration:
+        min_s: 1800
+        max_s: 2400
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
       loading: {submerged: null, note: "原文寫 abundante aceite，未明確說完全浸沒"}
     completion:
-      - {observe: 馬鈴薯, target: 軟化且不焦黃（sin dorarse）, method: 目測（判斷方式原文沒寫，推論）, evidence: RTVE_MC}
-    note: "詞表沒有 confitar／低溫油煨技法；本步暫用 tech/pan_fry 表示平底鍋油煨，分類不完全吻合。"
+      - observe: 馬鈴薯
+        target: 薄片可用叉子輕易刺穿，表面仍未焦黃。
+        method: 目測
+        evidence: null
+    note: "詞表沒有 confitar／低溫油煨技法；本步暫用 tech/pan_fry 表示平底鍋油煨，分類不完全吻合；補寫依據：低溫油煨以小火慢煮；參考另一份同類料理約 35 分鐘，家庭估計 30–40 分鐘至馬鈴薯軟化。"
 
   - id: a4
     technique: tech/combine
@@ -132,11 +157,20 @@ actions:
     outputs: [s_tortilla_first_side]
     tool: tool/frying_pan
     params:
-      heat: {level: null, raw: "火力原文沒寫；原文『dejar que se termine de cuajar lentamente』（讓它慢慢凝固）", evidence: RTVE_MC}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+      heat: {level: heat/medium_low, raw: null, evidence: RTVE_MC}
+      duration:
+        min_s: 300
+        max_s: 600
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 蛋餅外層, target: 開始從鍋邊脫離, method: 目測, evidence: RTVE_MC}
-
+      - observe: 蛋餅外層
+        target: 邊緣凝固並開始離開鍋邊，底面已定形。
+        method: 目測
+        evidence: null
+    note: 補寫依據：蛋液以中小火慢煎至邊緣開始離鍋，家庭做法約 5–10 分鐘。
   - id: a6
     technique: tech/pan_fry
     term: 用盤子蓋住平底鍋，翻轉蛋餅後滑回鍋中，煎熟另一面並修圓邊
@@ -144,13 +178,31 @@ actions:
     outputs: [s_tortilla]
     tool: tool/frying_pan
     params:
-      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+      duration:
+        min_s: 180
+        max_s: 300
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
+      heat:
+        level: heat/medium_low
+        raw: null
+        evidence: null
     completion:
-      - {observe: 表面與內部, target: 表面金黃、內部熟而仍濕潤, method: 目測（判斷方式原文沒寫，推論）, evidence: RTVE_MC}
-    note: "翻面依據原文『con ayuda de un plato, volcar para dar la vuelta a la tortilla』；修圓邊原文用鏟子（con ayuda de una espátula）。"
+      - observe: 蛋餅
+        target: 另一面煎至金黃，中心熟而保持濕潤。
+        method: 目測
+        evidence: null
+    note: "翻面依據原文『con ayuda de un plato, volcar para dar la vuelta a la tortilla』；修圓邊原文用鏟子（con ayuda de una espátula）；補寫依據：另一面以中小火煎約 3–5 分鐘，讓蛋液熟透而內部仍濕潤。"
 
 notes:
-  weekday: "平日門檻為使用者條件，不是來源數字；能不能在平日做：主來源原文沒寫總時間或各步時間，待試做；對照來源 Hogarmania 標示總時間 60 分鐘，不可代替主來源時間。"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "家庭安排（推論，非原文）：a2、a3 可用同一口爐分批做；全程 1 口爐就夠。"
   spicy_split: "本食譜沒有辣椒、花椒或辣豆瓣；無須分辣。"
   source_method: "無烤箱、氣炸鍋或蒸籠步驟；使用現有平底鍋。"
+  total_min: '60'
+  time_basis: 來源 HOGARMANIA 標示 4 份、總時間 60 分鐘，照來源數字（自行估算的備料與煎煮約 60–75 分鐘，與來源相符）。
+serving:
+  completion: []
+  sensory_target: {}

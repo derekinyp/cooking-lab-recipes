@@ -3,7 +3,7 @@
 用法：python3 site/build_site.py            # 產生 docs/
       python3 site/build_site.py --fonts    # 另外重做字型子集（需要設計規範原始字型）
 """
-import html, json, math, re, shutil, sys
+import html, json, math, os, re, shutil, sys
 from pathlib import Path
 import yaml
 
@@ -11,7 +11,6 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / 'site'
 OUT = ROOT / 'docs'
 ASSET_VER = 'zd-1.2.1'
-NOTION_URL = 'https://app.notion.com/p/41ee8f6a3d02815d8e0aff273621fa82'
 E = lambda s: html.escape(str(s), quote=True)
 
 try:
@@ -46,7 +45,7 @@ def load_vocab():
 VALT, VBROADER = {}, {}
 VZH, VFACET = load_vocab()
 
-UNIT = {'g': '克', 'kg': '公斤', 'ml': '毫升', 'l': '公升', 'piece': '個', 'clove': '瓣', 'slice': '片', 'stalk': '根',
+UNIT = {'g': '公克', 'kg': '公斤', 'ml': '毫升', 'l': '公升', 'piece': '個', 'clove': '瓣', 'slice': '片', 'stalk': '根',
         'bicchiere': '杯', 'cucchiaio': '匙', 'tbsp': '大匙', 'tsp': '小匙', 'cup': '杯', 'pack': '包', 'mm': '毫米', 'cm': '公分'}
 SPOONISH = {'piece', 'clove', 'slice', 'stalk', 'bicchiere', 'cucchiaio', 'tbsp', 'tsp', 'cup', 'pack'}
 PIECE_WORD = [('蛋', '顆'), ('洋蔥', '顆'), ('番茄', '顆'), ('甜椒', '顆'), ('青椒', '顆'), ('紅蔥頭', '顆'), ('檸檬', '顆'),
@@ -55,7 +54,55 @@ BURNER_TOOLS = {'tool/wok', 'tool/frying_pan', 'tool/heavy_pot', 'tool/dutch_ove
                 'tool/saucepan', 'tool/bain_marie'}
 LEVEL = {'A': '官方或教科書', 'B': '出版食譜', 'C': '網路食譜'}
 CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳'
-TAGS = {'weekday': ('平日可做（20 分鐘內）', 'ok', '●'), 'weekend': ('假日菜', 'na', '○'), 'pending': ('待試做計時', 'watch', '◐')}
+TAGS = {'quick': ('平日可做（30 分鐘內）', 'ok'), 'mid': ('30–60 分鐘', 'na'), 'long': ('1 小時以上', 'na')}
+TW = yaml.safe_load((ROOT / 'vocab' / 'tw_terms.yaml').read_text(encoding='utf-8'))
+FORB_RX = re.compile('|'.join(map(re.escape, TW['forbidden_phrases'])) + r'|沒寫|未寫|未註明|未給|來源[①-⑳]')
+PUB_DROPPED = []
+CN_RX = re.compile('|'.join(t.get('rx') or re.escape(t['cn']) for t in TW['terms']))
+def has_cn(s):
+    """是不是大陸用語（只能當搜尋別名，不能顯示）。"""
+    return bool(CN_RX.search(s2t(str(s))))
+def pub_ok(t, where=''):
+    """說明文字裡有過程用語就整句不顯示（資料該補寫，不是把「沒有」寫給讀者看）。"""
+    if t and FORB_RX.search(str(t)):
+        PUB_DROPPED.append(f'{where}: {t}'); return None
+    return t
+def pub_list(xs, where=''):
+    return [x for x in (pub_ok(x, where) for x in xs or []) if x]
+SPICE_LABEL = {'none': '不辣', 'addon': '可另外加辣', 'separate': '辣'}
+ALLOW_INCOMPLETE = bool(os.environ.get('ZD_ALLOW_INCOMPLETE'))   # 只在開發中用；正式建置缺總時間就停下來
+
+def total_min(m):
+    v = (m['d'].get('notes') or {}).get('total_min')
+    try: return int(float(v))
+    except (TypeError, ValueError): return None
+
+def time_tag(m):
+    t = total_min(m)
+    if t is None: return 'long'
+    return 'quick' if t <= 30 else 'mid' if t <= 60 else 'long'
+
+def fmt_min(t):
+    if t < 60: return f'{t} 分鐘'
+    h, r = divmod(t, 60)
+    return f'{h} 小時' + (f' {r} 分鐘' if r else '')
+
+def fmt_dur(du):
+    """步驟時間：有明確寫法就用，沒有就由 min_s／max_s 算出「約 N 分鐘」。"""
+    lo, hi = du.get('min_s'), du.get('max_s')
+    if lo is None and hi is None: return None
+    def one(x):
+        x = float(x)
+        if x < 90: return f'{int(round(x))} 秒'
+        mi = x / 60
+        if mi < 90: return f'{int(round(mi))} 分鐘'
+        return f'{int(mi // 60)} 小時' + (f' {int(round(mi % 60))} 分鐘' if round(mi % 60) else '')
+    a, b = (lo if lo is not None else hi), (hi if hi is not None else lo)
+    if a == b: return '約 ' + one(a)
+    ua, ub = one(a), one(b)
+    if ua.split(' ')[-1] == ub.split(' ')[-1] and len(ua.split(' ')) == 2 and len(ub.split(' ')) == 2:
+        return f'{ua.split(" ")[0]}–{ub}'
+    return f'{ua}–{ub}'
 
 FRAC = {0: '', 1/6: '⅙', 1/4: '¼', 1/3: '⅓', 1/2: '½', 2/3: '⅔', 3/4: '¾', 5/6: '⅚'}
 def fmt_num(v, unit):
@@ -87,14 +134,18 @@ def make_cleaner(srcmap):
         if s is None: return None
         s = s2t(str(s))
         s = LATIN_PAREN.sub('', s)
-        if code_re: s = code_re.sub(lambda m: '來源' + srcmap[m.group(1)], s)
+        if code_re:
+            s = re.sub(r'[（(][^（）()]*?' + code_re.pattern + r'[^（）()]*?[）)]', '', s)
+            s = code_re.sub('', s)
         s = s.replace('℃', '°C')
         s = re.sub(r'(?<=[\d\s])cm\b', '公分', s); s = re.sub(r'(?<=[\d\s])mm\b', '毫米', s); s = re.sub(r'(?<=[\d\s])m[lL]\b', '毫升', s)
         s = re.sub(r'\s+(?=[公毫])', ' ', s)
         s = re.sub(r'(公分|毫米|毫升) (?=[\u4e00-\u9fff])', r'\1', s)
-        s = re.sub(r'(?:見)?(?:表|附錄) ?[A-Z]?\.?\d+(?:\.\d+)*(?: ?注 ?[a-z])?(?:[／/] ?注 ?[a-z])*', '原文', s)
-        s = re.sub(r'(?:見)?標準 ?\d+(?:\.\d+)+', '原文', s)
-        s = s.replace('原文：原文', '原文')
+        s = re.sub(r'(?:見)?(?:表|附錄) ?[A-Z]?\.?\d+(?:\.\d+)*(?: ?注 ?[a-z])?(?:[／/] ?注 ?[a-z])*', '', s)
+        s = re.sub(r'(?:見)?標準 ?\d+(?:\.\d+)+', '', s)
+        s = re.sub(r'[（(]\s*[）)]', '', s)
+        s = re.sub(r'([，、；：])\1+', r'\1', s)
+        s = re.sub(r'[ 　]{2,}', ' ', s)
         return s.strip()
     return clean
 
@@ -180,8 +231,11 @@ def build_model(path):
     num = {a['id']: n + 1 for n, a in enumerate(order)}
     ings = {i['id']: i for i in flat['ings']}
     comps = {c['id']: c for c in flat['comps']}
-    return dict(d=d, r=r, rid=rid, ov=ov, flat=flat, srcs=srcs, srcmap=srcmap, clean=clean, order=order, deps=deps,
+    model = dict(d=d, r=r, rid=rid, ov=ov, flat=flat, srcs=srcs, srcmap=srcmap, clean=clean, order=order, deps=deps,
                 prod=prod, num=num, ings=ings, comps=comps, name=s2t(r['name']['zh_hant']), slug=rid.split('.')[0])
+    model['tag'] = time_tag(model)
+    return model
+
 
 def range_html(q, label):
     mn, mx, u = q.get('min'), q.get('max'), q.get('unit')
@@ -191,11 +245,11 @@ def range_html(q, label):
     return a + ('–' if a and b else '') + b
 
 def sug_html(iid, m):
-    """白話說明檔給的「建議值」：原文沒寫或只寫目測詞時，附上有出處的參考量，和原文數字分開標示。"""
+    """目測量：公克數旁邊附「約幾片、幾大匙」，不用標示來源。"""
     o = (m['ov'].get('ing') or {}).get(iid) or {}
-    if o.get('confirmed'): return f'<span class="cfm"><b>已確認</b>{E(o["confirmed"])}</span>'
-    t = o.get('suggest')
-    return f'<span class="sug"><b>建議值</b>{E(t)}</span>' if t else ''
+    t = o.get('confirmed') or o.get('suggest')
+    t = pub_ok(t, iid + ' 目測量') if t else None
+    return f'<span class="sug">{E(t)}</span>' if t else ''
 
 def qty_html(ing, m):
     return qty_html0(ing, m) + sug_html(ing['id'], m)
@@ -206,15 +260,15 @@ def qty_html0(ing, m):
         return range_html(q, ing['label'])
     if v is not None:
         uw = unit_word(u, ing['label'])
-        note = '（義式原文的杯，原文沒定義容量）' if u == 'bicchiere' else '（義式原文的匙，原文沒定義容量）' if u == 'cucchiaio' else ''
+        note = '（義式食譜的杯，沒有固定容量）' if u == 'bicchiere' else '（義式食譜的匙，沒有固定容量）' if u == 'cucchiaio' else ''
         s = f'<span class="q" data-v="{v}" data-u="{u}" data-w="{E(uw)}">{fmt_num(v, u)} {E(uw)}</span>{note}'
         it = conv_for(ing)
         if it:
-            s += (f'<span class="cv" data-g="{v}" data-k="{CONV["items"].index(it)}">換算值：{E(conv_text(v, it))}</span>')
+            s += (f'<span class="cv" data-g="{v}" data-k="{CONV["items"].index(it)}">{E(conv_text(v, it))}</span>')
         return s
     if q.get('qualitative'):
         return f'<span class="qual">{E(m["clean"](q["qualitative"]))}</span>'
-    return '<span class="na">原文沒寫</span>'
+    return '<span class="qual">適量</span>'
 
 def step_tool(a, m=None):
     t = a.get('tool') or ''
@@ -353,10 +407,9 @@ def flow_svg(m):
     return '\n'.join(o), W
 
 # ------------------------------------------------------------------ 步驟
-NO_THERMO = '不用溫度計版：原文沒寫不用溫度計怎麼判斷，請先看「好了的樣子」，試做後再補上。'
+NO_THERMO = '沒有溫度計時，請照「好了的樣子」判斷。'
 def fact(label, val, cls=''):
-    if not val: return f'<div class="fact {cls}"><dt>{label}</dt><dd><span class="na">原文沒寫</span></dd></div>'
-    if cls != 'fact-done' and re.search(r'沒寫|未寫|未註明|未給', val) and len(val) < 40: return f'<div class="fact {cls}"><dt>{label}</dt><dd><span class="na">{val}</span></dd></div>'
+    if not val or (cls != 'fact-done' and FORB_RX.search(val)): return ''
     return f'<div class="fact {cls}"><dt>{label}</dt><dd>{val}</dd></div>'
 
 DROPPED = []
@@ -364,11 +417,12 @@ def zh_only(s, m, where):
     """原文是外文時，改用括號裡的中文說明；沒有中文說明就記下來，要在白話說明檔補。"""
     if not s: return None
     t = m['clean'](s)
+    if t and FORB_RX.search(t): return None
     if t and not re.search(r'[A-Za-z]{3,}', t): return t
     zh = re.findall(r'[（(]([^（）()]*)[）)]', s2t(str(s)))
     zh = [z for z in zh if z and not re.search(r'[A-Za-z]{3,}', z)]
-    if zh: return '原文：' + '；'.join(zh)
-    DROPPED.append(f'{m["rid"]} {where}: {s}')
+    if zh: return '；'.join(zh)
+    if not where.endswith((' 火候', ' 時間')): DROPPED.append(f'{m["rid"]} {where}: {s}')   # 火候與時間缺的由補寫處理，不擋建置
     return None
 
 def raw_or_none(s, m, where=''):
@@ -399,21 +453,21 @@ def steps_html(m, step_lane, over):
                 ins.append(f'<li><span class="ing-name">{E(m['clean'](ing["label"]))}</span><span class="ing-qty">{qty_html(ing, m)}</span></li>')
             elif x in m['prod']:
                 ins.append(f'<li><span class="ing-name">第 {num[m["prod"][x]]} 步做好的{E(state_label(x, m))}</span><span class="ing-qty"></span></li>')
-        heat = o.get('heat') or raw_or_none((p.get('heat') or {}).get('raw'), m, i + ' 火候') or (VZH.get((p.get('heat') or {}).get('level') or '', None))
-        dur = o.get('time') or raw_or_none((p.get('duration') or {}).get('raw'), m, i + ' 時間')
+        heat = pub_ok(o.get('heat'), i + ' 火候') or raw_or_none((p.get('heat') or {}).get('raw'), m, i + ' 火候') or (VZH.get((p.get('heat') or {}).get('level') or '', None))
+        dur = pub_ok(o.get('time'), i + ' 時間') or raw_or_none((p.get('duration') or {}).get('raw'), m, i + ' 時間') or fmt_dur(p.get('duration') or {})
         temp = None
         tp = p.get('temperature')
         if tp:
-            temp = o.get('temp') or zh_only(tp.get('raw'), m, i + ' 溫度') or ''
+            temp = pub_ok(o.get('temp'), i + ' 溫度') or zh_only(tp.get('raw'), m, i + ' 溫度') or ''
             if tp.get('min_c') is not None or tp.get('max_c') is not None: temp = (temp + '。' if temp else '') + NO_THERMO
-        done = o.get('done')
+        done = pub_list(o.get('done'), i + ' done') if o.get('done') is not None else None
         if done is None:
             done = []
             if o.get('done_extra'): pass
             for c in a.get('completion') or []:
                 t = zh_only(c.get('target'), m, i + ' 好了的樣子')
                 if t: done.append(f'{m["clean"](c["observe"])}：{t}')
-        done = list(done) + list(o.get('done_extra') or [])
+        done = list(done) + pub_list(o.get('done_extra'), i + ' done_extra')
         done_html = '<ul class="done-list">' + ''.join(f'<li>{E(x)}</li>' for x in done) + '</ul>' if done else None
         tips = []
         for k in ('risk', 'constraint', 'control'):
@@ -422,8 +476,9 @@ def steps_html(m, step_lane, over):
                 if t: tips.append(t)
         ob = a.get('optional_branch')
         if ob and not o.get('hide_branch'):
-            tips.append(f'可以選擇做（{m["clean"](ob.get("at", ""))}）：{m["clean"](ob.get("action", ""))}')
-        tips += o.get('tips') or []
+            t_ = pub_ok(f'可以選擇做（{m["clean"](ob.get("at", ""))}）：{m["clean"](ob.get("action", ""))}', i + ' branch')
+            if t_: tips.append(t_)
+        tips += pub_list(o.get('tips'), i + ' tips')
         ov_ = sorted(num[b] for b in over.get(i, ()) if b in num)
         par = f'<span class="badge badge-par">可和第 {"、".join(map(str, ov_))} 步同時做</span>' if ov_ else ''
         sub = f'<span class="badge badge-sub">{E(a["_comp"]["name"])}</span>' if a['_comp'] else ''
@@ -522,7 +577,7 @@ def shopping_html(m):
                 qty = f'<span class="q" data-v="{round(e["v"], 4)}" data-u="{e["u"]}" data-w="{E(uw)}">{fmt_num(e["v"], e["u"])} {E(uw)}</span>'
             elif e.get('rng'): qty = '、'.join(e['rng'])
             elif e['qual']: qty = E('、'.join(dict.fromkeys(e['qual'])))
-            else: qty = '<span class="na">份量原文沒寫</span>'
+            else: qty = '<span class="qual">適量</span>'
             qty += ''.join(dict.fromkeys(sug_html(x, m) for x in e['ids']))
             opt = '（可省）' if e['opt'] else ''
             lis.append(f'<li><label><input type="checkbox"><span>{E(e["name"])}{opt}</span></label><span class="ing-qty">{qty}</span></li>')
@@ -533,16 +588,21 @@ def shopping_html(m):
 
 # ------------------------------------------------------------------ 辣與麻
 def spice_html(m):
+    """辣度一律只用「不辣／可另外加辣／辣」；有加辣或分辣做法時，才在頁面上放一小段說明。"""
     sp = m['ov'].get('spice') or {}
     mode = sp.get('mode', 'none')
-    head = {'addon': '一鍋兩吃，最後分開加', 'separate': '要分開做', 'none': '本來就不辣不麻'}[mode]
-    cls = {'addon': 'ok', 'separate': 'off', 'none': 'na'}[mode]
+    if mode == 'none': return ''
+    text = pub_ok(sp.get('text'), m['rid'] + ' spice.text')
+    mild = pub_list(sp.get('mild'), m['rid'] + ' spice.mild')
+    hot = pub_list(sp.get('yours') or sp.get('hot'), m['rid'] + ' spice.hot')
+    if not (text or mild or hot): return ''
     cols = ''
-    if sp.get('mild') or sp.get('yours'):
-        cols = (f'<div class="vs"><div class="vs-a"><p class="vs-h">不辣那份：不辣不麻</p><ul>{"".join(f"<li>{E(x)}</li>" for x in sp.get("mild") or [])}</ul></div>'
-                f'<div class="vs-b"><p class="vs-h">你那份：微辣、微麻</p><ul>{"".join(f"<li>{E(x)}</li>" for x in sp.get("yours") or [])}</ul></div></div>')
-    return (f'<section class="block" aria-labelledby="spice-h"><div class="card spice spice-{cls}"><h2 class="h2" id="spice-h">辣與麻：{head}</h2>'
-            f'<p>{E(sp.get("text", ""))}</p>{cols}</div></section>')
+    if mild or hot:
+        cols = (f'<div class="vs"><div class="vs-a"><p class="vs-h">不吃辣</p><ul>{"".join(f"<li>{E(x)}</li>" for x in mild)}</ul></div>'
+                f'<div class="vs-b"><p class="vs-h">想吃辣</p><ul>{"".join(f"<li>{E(x)}</li>" for x in hot)}</ul></div></div>')
+    cls = 'ok' if mode == 'addon' else 'off'
+    return (f'<section class="block" aria-labelledby="spice-h"><div class="card spice spice-{cls}"><h2 class="h2" id="spice-h">辣度：{SPICE_LABEL[mode]}</h2>'
+            f'{f"<p>{E(text)}</p>" if text else ""}{cols}</div></section>')
 
 # ------------------------------------------------------------------ 頁面
 def head(title, depth=''):
@@ -563,103 +623,94 @@ def head(title, depth=''):
 
 def topbar(depth='', back=True):
     nav = f'<a class="top-back" href="{depth}index.html">← 全部菜色</a>' if back else ''
-    wk = f'<a class="top-conv" href="{depth}{WEEKLY_HREF}">每週新增</a>' if WEEKLY_HREF else ''
-    return f'<header class="top"><div class="top-in"><a class="brand" href="{depth}index.html">振達的廚房</a>{nav}{wk}<a class="top-conv" href="{depth}progress.html">收錄進度</a><a class="top-conv" href="{depth}conversions.html">換算表</a></div></header>'
+    wk = f'<a class="top-conv" href="{depth}{WEEKLY_HREF}">最新食譜</a>' if WEEKLY_HREF else ''
+    return f'<header class="top"><div class="top-in"><a class="brand" href="{depth}index.html">振達的廚房</a>{nav}{wk}<a class="top-conv" href="{depth}conversions.html">量匙換算</a></div></header>'
 
 WEEKLY_HREF = ''  # 最新一週「每週新增」頁（main() 設定）
-FOOT = '<footer class="zd-footer">振達的廚房・食譜 v1｜數字只用原始食譜寫的，原文沒寫的就標「原文沒寫」｜振達設計規範 Workshop 1.2.1</footer>'
-
-def feedback_btn(name, where):
-    return (f'<div class="fb-row-btn"><a class="zd-btn zd-btn--primary fb-btn" href="{NOTION_URL}" target="_blank" rel="noopener noreferrer" data-where="{where}">我做了這道</a>'
-            f'<span class="zd-small">打開你的 Notion 做菜紀錄，記下「{E(name)}」做得怎麼樣（只在 Notion 裡，不會放到這個網站）。</span></div>')
+FOOT = '<footer class="zd-footer">振達的廚房・食譜｜食譜整理自公開來源，各頁底部附參考連結</footer>'
 
 def tag_badge(tag):
-    t, cls, shape = TAGS[tag]
+    t, cls = TAGS[tag]
     return f'<span class="zd-signal zd-signal--{cls} tag">{t}</span>'
 
 def serving_html(m):
     sv = m['d'].get('serving') or {}
     ovs = m['ov'].get('serving')
     lis = []
-    if ovs is not None: lis = list(ovs)
+    if ovs is not None: lis = pub_list(ovs, m['rid'] + ' serving')
     else:
         for c in sv.get('completion') or []:
             t = m['clean'](c.get('target'))
             if t and not re.search(r'[A-Za-z]{3,}', t):
-                lis.append(f'{m["clean"](c["observe"])}：{t}' + ('（不用溫度計版，參考就好）' if '°C' in t else ''))
+                lis.append(f'{m["clean"](c["observe"])}：{t}')
     st = sv.get('sensory_target') or {}
     for k, lab in (('color', '顏色'), ('taste', '味道'), ('texture', '口感')):
         if st.get(k):
             t = m['clean'](st[k])
             if not re.search(r'[A-Za-z]{3,}', t): lis.append(f'{lab}：{t}')
+    lis = [x for x in lis if not FORB_RX.search(x)]
     if not lis: return ''
     return f'<section class="block" aria-labelledby="sv-h"><h2 class="h2" id="sv-h">上桌：成品該有的樣子</h2><ul class="card plain-list">{"".join(f"<li>{E(x)}</li>" for x in lis)}</ul></section>'
 
 def sources_html(m):
     lis = []
     for s in m['srcs']:
-        lv = LEVEL.get(s['level'], '')
-        lis.append(f'<li><span class="src-no">{m["srcmap"][s["id"]]}</span><span class="src-lv">{lv}</span>'
-                   f'<a href="{E(s["url"])}" target="_blank" rel="noopener noreferrer">{E(s2t(s["title"]))}</a></li>')
+        lis.append(f'<li><a href="{E(s["url"])}" target="_blank" rel="noopener noreferrer">{E(s2t(s["title"]))}</a></li>')
     return '<ol class="src-list">' + ''.join(lis) + '</ol>'
 
 def notes_html(m):
-    ov = m['ov']; parts = []
-    if ov.get('missing'):
-        parts.append('<div class="note-block"><h3 class="h3">原文沒寫、這頁也不亂補的地方</h3><ul>' + ''.join(f'<li>{E(x)}</li>' for x in ov['missing']) + '</ul></div>')
-    if ov.get('notes'):
-        parts.append('<div class="note-block"><h3 class="h3">做之前先知道</h3><ul>' + ''.join(f'<li>{E(x)}</li>' for x in ov['notes']) + '</ul></div>')
-    if ov.get('compare'):
-        parts.append('<div class="note-block"><h3 class="h3">和其他版本的差別</h3><ul>' + ''.join(f'<li>{E(x)}</li>' for x in ov['compare']) + '</ul></div>')
+    ov = m['ov']; parts = []; rid = m['rid']
+    for key, ttl in (('notes', '做之前先知道'), ('compare', '和別的做法有什麼不同')):
+        xs = pub_list(ov.get(key), f'{rid} {key}')
+        if xs: parts.append(f'<div class="note-block"><h3 class="h3">{ttl}</h3><ul>' + ''.join(f'<li>{E(x)}</li>' for x in xs) + '</ul></div>')
     return ''.join(parts)
 
 def two_html(m):
     t = m['ov'].get('two_serving')
     if not t: return ''
-    KIND = {'src': ('ok', '來源數字'), 'calc': ('ok', '照原文比例'), 'sug': ('watch', '建議值'), 'ok': ('ok', '已確認'), 'na': ('na', '原文沒寫')}
     rows = []
     for r in t['rows']:
-        k = KIND[r['kind']]
-        rows.append(f'<tr><td>{E(r["item"])}</td><td>{E(r["orig"])}</td><td><span class="zd-signal zd-signal--{k[0]} kind">{k[1]}</span> {E(r["two"])}</td><td class="zd-small">{E(r.get("basis", ""))}</td></tr>')
+        two = pub_ok(r.get('two'), m['rid'] + ' two')
+        if not two: continue
+        rows.append(f'<tr><td>{E(r["item"])}</td><td>{E(r["orig"])}</td><td>{E(two)}</td></tr>')
+    if not rows: return ''
     return (f'<section class="block" aria-labelledby="two-h"><h2 class="h2" id="two-h">{E(t.get("title", "兩人份怎麼抓"))}</h2>'
-            f'<p class="lead">{E(t.get("intro", ""))}</p>'
-            '<div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>材料</th><th>原文寫的</th><th>兩人份</th><th>依據</th></tr></thead>'
+            f'<p class="lead">{E(pub_ok(t.get("intro", ""), m["rid"] + " two.intro") or "")}</p>'
+            '<div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>材料</th><th>食譜寫的</th><th>兩人份</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div></section>')
 
 def servings_text(m):
     sv = m['r'].get('servings') or {}
     if sv.get('value'): return f'{fmt_num(sv["value"], "piece")} 人份'
-    return '原文沒寫幾人份'
+    return ''
 
 def recipe_page(m):
     ov = m['ov']; r = m['r']
     step_lane, maxc, over = lanes(m)
     svg, W = flow_svg(m)
     cuis = '・'.join(dict.fromkeys(VZH.get(c['id'], '') for c in r.get('cuisine') or [] if VZH.get(c['id'])))
-    levels = '、'.join(dict.fromkeys(LEVEL[s['level']] for s in m['srcs']))
-    intro = ov.get('intro') or m['clean'](r.get('summary') or '')
-    variant = ov.get('variant') or (m['clean'](r.get('variant')) if r.get('variant') else '')
+    intro = pub_ok(ov.get('intro'), m['rid'] + ' intro') or pub_ok(m['clean'](r.get('summary') or ''), m['rid'] + ' summary') or ''
+    variant = pub_ok(ov.get('variant'), m['rid'] + ' variant') or (pub_ok(m['clean'](r.get('variant')), m['rid'] + ' variant') if r.get('variant') else '')
+    tmin = total_min(m)
+    prep_ahead = pub_ok((m['d'].get('notes') or {}).get('prep_ahead'), m['rid'] + ' prep_ahead')
     spm = (ov.get('spice') or {}).get('mode', 'none')
-    meta = [('份量', servings_text(m)), ('什麼時候做', TAGS[ov['tag']][0]), ('數字依據', levels),
-            ('辣與麻', {'addon': '一鍋兩吃，最後分開加', 'separate': '要分開做', 'none': '不辣不麻'}[spm])]
+    meta = [(k, v) for k, v in (('份量', servings_text(m)), ('總時間', '約 ' + fmt_min(tmin) if tmin else ''), ('辣度', SPICE_LABEL[spm])) if v]
     nsteps = len(m['order'])
     body = f'''{topbar('../')}
 <main class="wrap">
 <header class="hero card">
   <p class="zd-kicker">{E(cuis)}</p>
   <h1 class="dish-name">{E(m['name'])}</h1>
-  <p class="tagline">{tag_badge(ov['tag'])}{f'<span class="variant">{E(variant)}</span>' if variant else ''}</p>
+  <p class="tagline">{tag_badge(m['tag'])}{f'<span class="variant">{E(variant)}</span>' if variant else ''}</p>
   <p class="intro">{E(intro)}</p>
-  {f'<p class="zd-small tag-note">{E(ov["tag_note"])}</p>' if ov.get('tag_note') else ''}
-  {'<p class="check-note">這道菜的數字已經對過原文，但還沒做第二輪「兩邊交叉比對」。照著做沒問題，數字以後可能會小修。</p>' if r.get('status') == 'machine_checked' else ''}
+  {f'<p class="prep"><b>先準備：</b>{E(prep_ahead)}</p>' if prep_ahead else ''}
   <ul class="meta">{''.join(f'<li><span class="meta-k">{k}</span><span class="meta-v">{E(v)}</span></li>' for k, v in meta)}</ul>
-  {feedback_btn(m['name'], 'top')}
-  <nav class="jump" aria-label="跳到">{''.join(f'<a href="#{a}">{b}</a>' for a, b in (('ing-h','材料'),('shop-h','購物清單'),('flow-h','流程圖'),('tl-h','時間安排'),('steps-h','步驟'),('src-h','來源')))}</nav>
+  <nav class="jump" aria-label="跳到">{''.join(f'<a href="#{a}">{b}</a>' for a, b in (('ing-h','材料'),('shop-h','購物清單'),('flow-h','流程圖'),('tl-h','時間安排'),('steps-h','步驟'),('src-h','參考食譜')))}</nav>
 </header>
 {spice_html(m)}
 <section class="block" aria-labelledby="ing-h"><h2 class="h2" id="ing-h">準備材料</h2>
   <div class="scale" role="group" aria-label="份量倍數"><span class="scale-k">份量</span>{''.join(f'<button type="button" class="scale-btn" data-s="{s}" aria-pressed="{"true" if s == 1 else "false"}">{lab}</button>' for s, lab in ((0.5, '半份'), (1, '原份量'), (1.5, '1.5 倍'), (2, '2 倍')))}</div>
-  <p class="zd-small scale-note">按倍數只會換算材料份量；火候、時間和「好了的樣子」不跟著變，份量變大時鍋子也要夠大。「換算值」是用公開換算表算出的湯匙或目測數，只是方便你不用秤，<a href="../conversions.html">看換算表和出處</a>。</p>
+  <p class="zd-small scale-note">選倍數只會換算材料；火候和時間不變，份量變大時記得換大一點的鍋。公克數旁的「約…」是不用秤也能抓的目測量，<a href="../conversions.html">看量匙換算</a>。</p>
   {ingredients_html(m)}
 </section>
 {two_html(m)}
@@ -671,13 +722,11 @@ def recipe_page(m):
 <section class="block" aria-labelledby="tl-h"><h2 class="h2" id="tl-h">時間安排：什麼先做、用哪口爐</h2>{timeline_html(m, step_lane, maxc, over)}</section>
 <section class="block" aria-labelledby="steps-h"><h2 class="h2" id="steps-h">一步一步做</h2>
   <div class="steps-bar"><span class="progress">已完成 0 / {nsteps}</span><button type="button" class="zd-btn zd-btn--quiet reset">清除勾選</button></div>
-  <p class="honest">這頁的數字都來自下面的來源。原文沒寫的火候、時間，就寫「原文沒寫」，請照「好了的樣子」判斷。</p>
   <ol class="steps">{steps_html(m, step_lane, over)}</ol>
 </section>
 {serving_html(m)}
-<section class="block" aria-labelledby="nt-h"><h2 class="h2" id="nt-h">備註</h2><div class="card notes">{notes_html(m) or '<p>沒有其他備註。</p>'}</div></section>
-<section class="block" aria-labelledby="src-h"><h2 class="h2" id="src-h">來源</h2><div class="card notes">{sources_html(m)}<p class="zd-small">步驟裡寫「來源①」之類的，就是指這裡的編號。</p></div></section>
-<section class="block fb-end">{feedback_btn(m['name'], 'bottom')}</section>
+{f'<section class="block" aria-labelledby="nt-h"><h2 class="h2" id="nt-h">小提醒</h2><div class="card notes">{notes_html(m)}</div></section>' if notes_html(m) else ''}
+<section class="block" aria-labelledby="src-h"><h2 class="h2" id="src-h">參考食譜</h2><div class="card notes">{sources_html(m)}<p class="zd-small">本頁做法整理自以上公開食譜，份量與時間已依家庭廚房調整。</p></div></section>
 </main>
 {FOOT}
 <script>window.ZD_CONV={json.dumps([[it.get('g_per_tbsp'), it.get('g_per_piece'), it.get('piece')] for it in CONV['items']], ensure_ascii=False)};window.ZD_KEY={json.dumps(m['slug'])};</script>
@@ -740,9 +789,9 @@ def dish_facets(m, plan):
         CUIS_N[c] = CUIS_N.get(c, 0) + 1; CUIS_WEST[c] = int(is_west(m, plan))
     return {'line': [LINE_WEST if is_west(m, plan) else LINE_HOME], 'ing': list(dict.fromkeys(ings)),
             'tech': list(dict.fromkeys(t for t in techs if t)), 'cuis': list(dict.fromkeys(cuis)) or ['其他'],
-            'time': [TAGS[m['ov']['tag']][0]]}
+            'time': [TAGS[m['tag']][0]]}
 
-FACET_GROUPS = [('line', '中式家常或歐美經典'), ('ing', '主要材料'), ('cuis', '菜系或地區'), ('tech', '做法（有用到就算）'), ('time', '要花多少時間')]
+FACET_GROUPS = [('line', '中式家常或歐美經典'), ('ing', '主要食材'), ('cuis', '菜系或地區'), ('tech', '做法'), ('time', '要花多少時間')]
 def facet_order(key, values):
     if key == 'line': pref = [LINE_HOME, LINE_WEST]
     elif key == 'ing': pref = [g['name'] for g in FACETS['ingredient_groups']] + ['其他']
@@ -765,22 +814,35 @@ except Exception:
 
 def search_record(m, al):
     name = m['name']; base = strip_paren(name)
-    alias = list(dict.fromkeys(a for a in al.get(base, []) + al.get(name, []) if a != name))
-    ings = []
+    alias_all = list(dict.fromkeys(a for a in al.get(base, []) + al.get(name, []) if a != name))
+    alias = [a for a in alias_all if not has_cn(a)]          # 可以顯示的別名
+    alias_hid = [a for a in alias_all if has_cn(a)]          # 大陸說法：只拿來搜尋，不顯示
+    ings = []; mains = []; ing_alt = []
     for i in m['flat']['ings']:
+        if i.get('role') == '主料' and i.get('concept'):
+            mains += [strip_paren(i.get('label') or '')] + [strip_paren(VZH.get(c, '')) for c in _concepts(i)] + [a for c in _concepts(i) for a in VALT.get(c, [])]
         if i.get('role') not in ('主料', '輔料') or not i.get('concept'): continue
         if i.get('_comp') and i.get('role') != '主料': continue
         ings += [strip_paren(i.get('label') or '')] + re.findall(r'[（(]([^）)]+)[）)]', i.get('label') or '')
-        for c in _concepts(i): ings += [strip_paren(VZH.get(c, ''))] + VALT.get(c, [])
+        for c in _concepts(i):
+            ings += [strip_paren(VZH.get(c, ''))]
+            for a_ in VALT.get(c, []):
+                if strip_paren(VZH.get(c, '')): ing_alt.append((s2t(a_), strip_paren(VZH.get(c, ''))))
     ings = [s2t(x) for x in dict.fromkeys(x for x in ings if x and re.search(r'[\u4e00-\u9fff]', x))]
-    names = [name, base] + alias
+    mains = [s2t(x) for x in dict.fromkeys(x for x in mains if x and re.search(r'[\u4e00-\u9fff]', x))]
+    ing_alt = [(a, d) for a, d in dict.fromkeys(ing_alt) if a not in ings and d]
+    names = [name, base] + alias + alias_hid
     zpair = {}
     for n in names:
         z = _t2s(n)
         if z not in names and z not in zpair: zpair[z] = n
     py = list(dict.fromkeys(to_py(n) for n in names if to_py(n)))
-    return {'s': m['slug'], 'n': name, 'a': alias, 'z': list(zpair), 'zt': list(zpair.values()), 'i': ings,
+    return {'s': m['slug'], 'n': name, 'a': alias, 'ax': alias_hid, 'z': list(zpair), 'zt': list(zpair.values()), 'i': ings, 'ia': [a for a, d in ing_alt], 'iz': [d for a, d in ing_alt], 'mi': mains,
             'p': py + [p.replace(' ', '') for p in py], 'pi': [to_py(x) for x in ings]}
+
+def card_meta(m):
+    t = total_min(m); spm = (m['ov'].get('spice') or {}).get('mode', 'none')
+    return '・'.join(x for x in (f'約 {fmt_min(t)}' if t else '', servings_text(m), SPICE_LABEL[spm]) if x)
 
 def index_page(models, plan):
     al = load_aliases()
@@ -793,9 +855,9 @@ def index_page(models, plan):
         data = ' '.join(f'data-{k}="{E("|".join(fc[k]))}"' for k, _ in FACET_GROUPS)
         cards.append(f'''<li class="dish-card card" data-slug="{m['slug']}" {data}><a href="recipes/{m['slug']}.html">
 <p class="zd-kicker">{E(cuis)}</p><h2 class="h2 dc-name">{E(m['name'])}</h2>
-<p class="dc-tag">{tag_badge(ov['tag'])}</p>
-<p class="dc-intro">{E(ov.get('card') or m['clean'](m['r'].get('summary') or ''))}</p>
-<p class="zd-small dc-meta">{'還沒做第二輪比對・' if m['r'].get('status') == 'machine_checked' else ''}{E(servings_text(m))}・{len(m['order'])} 個步驟・{ {'addon': '辣麻最後分開加', 'separate': '辣的要分開做', 'none': '不辣不麻'}[spm] }</p>
+<p class="dc-tag">{tag_badge(m['tag'])}</p>
+<p class="dc-intro">{E(pub_ok(ov.get('card'), m['rid'] + ' card') or pub_ok(m['clean'](m['r'].get('summary') or ''), m['rid'] + ' summary') or '')}</p>
+<p class="zd-small dc-meta">{E(card_meta(m))}</p>
 <p class="zd-small dc-hit" hidden></p></a></li>''')
     groups = []
     for key, label in FACET_GROUPS:
@@ -806,11 +868,9 @@ def index_page(models, plan):
     data = json.dumps(recs, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     finder = f'''<section class="finder card" id="finder" hidden aria-label="找菜">
 <label class="finder-h" for="q">找菜</label>
-<div class="search-row"><input id="q" class="search-in" type="search" autocomplete="off" enterkeyhint="search" placeholder="打菜名或材料，例如：蘿蔔乾、西紅柿">
+<div class="search-row"><input id="q" class="search-in" type="search" autocomplete="off" enterkeyhint="search" placeholder="輸入菜名或食材，例如：高麗菜、雞腿、蘿蔔乾">
 <button type="button" class="search-clear" hidden>清除</button></div>
-<p class="zd-small finder-tip">只打幾個字、打同音字、別名或材料都找得到，也可以打拼音。</p>
-<details class="fbox"><summary class="fbox-s"><span>分類篩選</span><span class="fbox-n"></span></summary>
-<p class="zd-small finder-tip">同一類勾好幾個，符合其中一個就算；不同類要同時符合。選項後面的數字是勾了以後剩幾道。</p>
+<details class="fbox"><summary class="fbox-s"><span>用分類找</span><span class="fbox-n"></span></summary>
 {''.join(groups)}
 <div class="f-acts"><button type="button" class="zd-btn zd-btn--primary f-go">看結果</button><button type="button" class="zd-btn zd-btn--secondary f-reset">清除全部條件</button></div>
 </details>
@@ -820,18 +880,13 @@ def index_page(models, plan):
     body = f'''{topbar('', back=False)}
 <main class="wrap">
 <header class="hero card home-hero">
-  <p class="zd-kicker">食譜 v1・{len(models)} 道</p>
+  <p class="zd-kicker">{len(models)} 道家常菜</p>
   <h1 class="dish-name">今天做哪一道？</h1>
-  <p class="intro">每道菜都有材料、購物清單、流程圖、用爐安排和一步一步的做法。數字只用原始食譜寫的；原文沒寫的地方會直接標「原文沒寫」，請照「好了的樣子」判斷。</p>
-  <ul class="how">
-    <li><b>平日可做</b>：依原文時間 20 分鐘內。</li><li><b>假日菜</b>：原文時間明顯超過 20 分鐘。</li><li><b>待試做計時</b>：原文沒寫總時間，要你做一次計時才知道。</li>
-    <li><b>中式家常</b>：中式和台式家常菜；<b>歐美經典</b>：歐美各國的經典菜，另外算。</li>
-  </ul>
+  <p class="intro">台灣家庭的日常菜，從白菜滷、三杯雞到義大利麵。每道都有材料、購物清單和一步一步的做法。</p>
 </header>
 {finder}
-<p class="none-hit card" hidden>沒有找到符合的菜。可以少打幾個字、換個說法，或清除分類條件。</p>
+<p class="none-hit card" hidden>找不到相符的菜，試試少打幾個字，或清除篩選。</p>
 <ul class="dish-grid" id="dish-grid">{''.join(cards)}</ul>
-<p class="zd-small">做完一道，在那道菜的頁面按「我做了這道」，就會打開你的 Notion 做菜紀錄。</p>
 </main>
 {FOOT}
 <script src="assets/fuse.min.js"></script>
@@ -844,26 +899,26 @@ def conversions_page():
     rows = []
     for it in CONV['items']:
         if 'g_per_tbsp' in it:
-            val = f'1 大匙 ≈ {fmt_num(it["g_per_tbsp"], "g")} 克'
+            val = f'1 大匙 ≈ {fmt_num(it["g_per_tbsp"], "g")} 公克'
         else:
-            val = f'1 {it["piece"]} ≈ {it["g_per_piece"]} 克'
+            val = f'1 {it["piece"]} ≈ {it["g_per_piece"]} 公克'
         rows.append(f'<tr><td>{E(it["name"])}</td><td>{E(val)}</td><td><a href="https://fdc.nal.usda.gov/food-details/{it["fdc"]}/nutrients" target="_blank" rel="noopener noreferrer">美國農業部資料第 {it["fdc"]} 號</a></td></tr>')
     s = CONV['sources']
     body = f'''{topbar('')}
 <main class="wrap">
-<header class="hero card"><p class="zd-kicker">換算值怎麼來的</p><h1 class="dish-name">湯匙與目測換算表</h1>
-<p class="intro">這是無秤版：食譜頁會在克數旁邊加一行「換算值」，告訴你大約幾大匙、幾瓣、幾片。這些換算值只用下面兩個公開出處算出來，<b>不會寫回食譜</b>；食譜本身的數字還是以原文的克數為準。</p></header>
+<header class="hero card"><p class="zd-kicker">量匙換算</p><h1 class="dish-name">湯匙與目測換算表</h1>
+<p class="intro">食譜頁在公克數旁邊會寫「約幾大匙、幾瓣、幾片」，沒有秤也能做。下面是換算的方式和常見材料的對照。</p></header>
 <section class="block"><h2 class="h2">換算規則</h2><ul class="card plain-list">
-<li>1 大匙＝3 小匙＝15 毫升；1 杯（量杯）＝16 大匙＝240 毫升（出處②）。</li>
-<li>每樣材料 1 大匙或 1 個有多重，用出處①的「常用份量」重量。</li>
+<li>1 大匙＝3 小匙＝15 毫升；1 杯（量杯）＝16 大匙＝240 毫升。</li>
+<li>每樣材料 1 大匙或 1 個有多重，依下表的重量換算。</li>
 <li>大匙四捨五入到半匙、小匙到 ¼ 匙，所以寫「約」。超過 4 大匙改用量杯。</li>
-<li>只換算查得到可靠對應的材料。花椒、郫縣豆瓣、豆豉、醬油膏、冰糖、紅糖、水澱粉、味精這些查不到可靠數字，就不換算。</li>
-<li>出處①是美國的食材，和台灣買到的可能有點差別（例如醬油、米酒的濃淡），所以換算值只是大約，味道以你試吃為準。</li>
+<li>只換算有可靠對照的材料；花椒、豆瓣醬、豆豉、醬油膏、冰糖、黑糖、太白粉水、味精沒有可靠數字，就不換算。</li>
+<li>對照用的是美國的食材資料，和台灣買到的可能略有差別（例如醬油、米酒的濃淡），所以只是大約，味道以試吃為準。</li>
 </ul></section>
-<section class="block"><h2 class="h2">每樣材料的換算</h2><div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>材料</th><th>換算</th><th>出處①的資料</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div></section>
-<section class="block"><h2 class="h2">出處</h2><ol class="card src-list">
-<li><span class="src-no">①</span><a href="{E(s['usda']['url'])}" target="_blank" rel="noopener noreferrer">{E(s['usda']['title'])}</a></li>
-<li><span class="src-no">②</span><a href="{E(s['nist']['url'])}" target="_blank" rel="noopener noreferrer">{E(s['nist']['title'])}</a></li></ol></section>
+<section class="block"><h2 class="h2">每樣材料的換算</h2><div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>材料</th><th>換算</th><th>資料來源</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div></section>
+<section class="block"><h2 class="h2">資料來源</h2><ol class="card src-list">
+<li><a href="{E(s['usda']['url'])}" target="_blank" rel="noopener noreferrer">{E(s['usda']['title'])}</a></li>
+<li><a href="{E(s['nist']['url'])}" target="_blank" rel="noopener noreferrer">{E(s['nist']['title'])}</a></li></ol></section>
 </main>
 {FOOT}
 </body></html>'''
@@ -879,84 +934,24 @@ def is_west(m, plan):
     return any(x['id'] in plan.get('west_cuisines', []) for x in m['r'].get('cuisine') or [] if x['id'].startswith('cuisine/'))
 
 def weekly_rows(items, by_slug):
-    rows = []; done = 0
+    rows = []
     for it in items:
         m = by_slug.get(it['slug'])
-        if m and m['r'].get('status') == 'cross_checked':
-            done += 1
-            name = f'<a href="recipes/{m["slug"]}.html">{E(m["name"])}</a>'
-            st = '<span class="zd-signal zd-signal--ok tag">已入庫</span>'
-            kind = TAGS[m['ov']['tag']][0]
-        else:
-            name = E(it['name']); kind = '—'
-            st = '<span class="zd-signal zd-signal--watch tag">待審</span>' if it.get('review') else '<span class="zd-signal zd-signal--watch tag">整理中</span>'
-        rows.append(f'<tr><td>{name}</td><td>{st}</td><td>{E(kind)}</td><td>{E(it.get("note") or "")}</td></tr>')
-    return ''.join(rows), done
+        if not m: continue
+        t = total_min(m)
+        rows.append(f'<tr><td><a href="recipes/{m["slug"]}.html">{E(m["name"])}</a></td><td>{E("約 " + fmt_min(t) if t else "")}</td><td>{tag_badge(m["tag"])}</td></tr>')
+    return ''.join(rows), len(rows)
 
 def weekly_page(stem, wk, by_slug):
-    TH = '<thead><tr><th>菜</th><th>狀態</th><th>平日或假日</th><th>備註</th></tr></thead>'
-    rows, done = weekly_rows(wk['dishes'], by_slug)
-    review_note = '「待審」的菜要等清單審過才開始整理。' if any(it.get('review') for it in wk['dishes']) else ''
-    west = ''
-    if wk.get('west'):
-        wrows, wdone = weekly_rows(wk['west'], by_slug)
-        west = f'''<section class="block"><h2 class="h2">這週另收的歐美經典（不算進 10 道）</h2>
-<div class="zd-table-wrap card"><table class="zd-table">{TH}<tbody>{wrows}</tbody></table></div>
-<p class="zd-small">歐美經典是第三階段的菜，先收進來的保留在庫裡，另外計算。</p></section>'''
+    rows, done = weekly_rows(list(wk['dishes']) + list(wk.get('west') or []), by_slug)
     body = f'''{topbar('')}
 <main class="wrap">
-<header class="hero card"><p class="zd-kicker">每週新增・{E(wk["week"])}（{E(wk["range"])}）</p><h1 class="dish-name">這週新收家常菜 {len(wk["dishes"])} 道，已入庫 {done} 道</h1>
-<p class="intro">{E(wk["intro"])}</p></header>
-<section class="block"><h2 class="h2">這週的中式家常菜</h2>
-<div class="zd-table-wrap card"><table class="zd-table">{TH}<tbody>{rows}</tbody></table></div>
-<p class="zd-small">「整理中」的菜還沒通過檢查或比對，暫時不放食譜頁；通過後會自動出現連結。{review_note}</p></section>
-{west}
-<p class="zd-small"><a href="progress.html">看全部收錄進度 →</a></p>
+<header class="hero card"><p class="zd-kicker">最新食譜・{E(wk["week"])}（{E(wk["range"])}）</p><h1 class="dish-name">這週新增 {done} 道家常菜</h1></header>
+<section class="block"><div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>菜名</th><th>總時間</th><th>適合什麼時候做</th></tr></thead><tbody>{rows}</tbody></table></div></section>
 </main>
 {FOOT}
 </body></html>'''
-    return head(f'每週新增 {wk["week"]}｜振達的廚房', '') + body
-
-def progress_page(models, plan, weeklies):
-    done = [m for m in models if m['r'].get('status') == 'cross_checked']
-    west = [m for m in done if is_west(m, plan)]
-    home = [m for m in done if not is_west(m, plan)]
-    n = len(home); tgt = plan['target']; pct = min(100, round(n * 100 / tgt))
-    wn = len(west); wt = plan['west_target']; wpct = min(100, round(wn * 100 / wt))
-    wk_links = {w['week']: f'weekly-{stem}.html' for stem, w in weeklies}
-    def wcell(w):
-        return f'<a href="{wk_links[w["week"]]}">{E(w["week"])}</a>' if w['week'] in wk_links else E(w['week'])
-    rows = ''.join(f'<tr><td>{wcell(w)}</td><td>{E(w["theme"])}</td><td>{w["plan"]} 道</td></tr>' for w in plan['weeks'])
-    after = ''.join(f'<li>{E(x)}</li>' for x in plan['after'])
-    def by_cuisine(ms):
-        cuis = {}
-        for m in ms:
-            c = next((VZH.get(x['id']) for x in m['r'].get('cuisine') or [] if x['id'].startswith('cuisine/') and VZH.get(x['id'])), '其他')
-            cuis[c] = cuis.get(c, 0) + 1
-        return '、'.join(f'{k} {v} 道' for k, v in sorted(cuis.items(), key=lambda kv: -kv[1])) or '還沒有'
-    wlist = '、'.join(f'<a href="recipes/{m["slug"]}.html">{E(m["name"])}</a>' for m in west)
-    body = f'''{topbar('')}
-<main class="wrap">
-<header class="hero card"><p class="zd-kicker">收錄進度・第一階段</p><h1 class="dish-name">中式家常菜已收 {n} 道，目標 {tgt} 道，還差 {tgt - n} 道</h1>
-<div class="lib-bar" role="progressbar" aria-valuenow="{n}" aria-valuemin="0" aria-valuemax="{tgt}"><span style="width:{pct}%"></span></div>
-<p class="intro">{E(plan["intro"])}</p>
-<p class="zd-small">中式家常菜各菜系：{E(by_cuisine(home))}。</p></header>
-<section class="block"><h2 class="h2">各階段收錄數</h2>
-<div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>階段</th><th>已收</th><th>目標</th></tr></thead><tbody>
-<tr><td>第一階段：中式家常菜（含台式）</td><td>{n} 道</td><td>{tgt} 道</td></tr>
-<tr><td>第二階段：八大菜系經典</td><td>還沒開始</td><td>每系 20 道，共 160 道</td></tr>
-<tr><td>第三階段：歐美經典</td><td>{wn} 道</td><td>約 {wt} 道</td></tr>
-</tbody></table></div>
-<p class="zd-small">歐美經典已收：{wlist}（{E(by_cuisine(west))}）。這些菜保留在庫裡，不算進中式家常菜的 {tgt} 道。</p>
-<div class="lib-bar" role="progressbar" aria-label="歐美經典" aria-valuenow="{wn}" aria-valuemin="0" aria-valuemax="{wt}"><span style="width:{wpct}%"></span></div></section>
-<section class="block"><h2 class="h2">往 {tgt} 道中式家常菜的每週計畫</h2>
-<div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>週</th><th>這週主題</th><th>預計累計</th></tr></thead><tbody>{rows}</tbody></table></div>
-<p class="zd-small">每週的菜會依找得到的可靠食譜調整；哪週沒做完，就順延到下一週。</p></section>
-<section class="block"><h2 class="h2">{tgt} 道之後</h2><ul class="card plain-list">{after}</ul></section>
-</main>
-{FOOT}
-</body></html>'''
-    return head('收錄進度｜振達的廚房', '') + body
+    return head(f'最新食譜 {wk["week"]}｜振達的廚房', '') + body
 
 def redirect_page(target, title):
     return f'''<!doctype html>
@@ -966,7 +961,7 @@ def redirect_page(target, title):
 
 # ------------------------------------------------------------------ 檢查：白話、不補數字
 VISIBLE_SKIP = re.compile(r'<(script|style)[^>]*>.*?</\1>|<ol class="(?:card )?src-list">.*?</ol>|<title[^>]*>.*?</title>', re.S)
-ALLOWED_LATIN = {'Notion', 'Workshop', 'AA'}
+ALLOWED_LATIN = {'AA'}
 BANNED = ['yaml', 'status', 'sourced', 'inferred', 'missing', 'cross_checked', 'tech/', 'tool/', 'ing/', 'schema', '詞表', '規格', 'Kimi', 'Codex', 'notes', 'research/']
 def visible_text(page):
     t = VISIBLE_SKIP.sub(' ', page)
@@ -981,6 +976,10 @@ def lint(pages):
             if w not in ALLOWED_LATIN: problems.append(f'{name}: 英文字「{w}」')
         for b in BANNED:
             if b.lower() in t.lower(): problems.append(f'{name}: 技術詞「{b}」')
+        for ph in TW['forbidden_phrases']:
+            if ph in t: problems.append(f'{name}: 過程用語「{ph}」')
+        for tm in TW['terms']:
+            if re.search(tm.get('rx') or re.escape(tm['cn']), t): problems.append(f'{name}: 大陸用語「{tm["cn"]}」（應為{tm["tw"]}）')
         if 'name="robots" content="noindex,nofollow"' not in page: problems.append(f'{name}: 缺 noindex')
     return problems
 
@@ -1027,24 +1026,26 @@ def main():
     notready = [m['rid'] for m in models if m['r'].get('status') not in ('machine_checked', 'cross_checked', 'spot_checked', 'tried', 'gold')]
     if notready: raise SystemExit(f'還沒兩邊比對過，不能上網站：{notready}')
     models.sort(key=lambda m: (order_pref.index(m['slug']) if m['slug'] in order_pref else 99, m['slug']))
-    missing_ov = [m['rid'] for m in models if not m['ov'].get('tag')]
-    if missing_ov: raise SystemExit(f'缺白話說明檔或 tag：{missing_ov}')
+    no_time = [m['rid'] for m in models if total_min(m) is None]
+    if no_time and not ALLOW_INCOMPLETE: raise SystemExit(f'缺總時間（notes.total_min），請先補寫：{no_time}')
+    no_serv = [m['rid'] for m in models if not (m['r'].get('servings') or {}).get('value')]
+    if no_serv and not ALLOW_INCOMPLETE: raise SystemExit(f'缺份量，請先補寫：{no_serv}')
     global WEEKLY_HREF
     weeklies = load_weekly()
     by_slug = {m['slug']: m for m in models}
     if weeklies: WEEKLY_HREF = f'weekly-{weeklies[-1][0]}.html'
     plan = yaml.safe_load((SITE / 'plan.yaml').read_text(encoding='utf-8'))
-    pages = {'index.html': index_page(models, plan), 'conversions.html': conversions_page(), 'progress.html': progress_page(models, plan, weeklies)}
+    pages = {'index.html': index_page(models, plan), 'conversions.html': conversions_page(), 'progress.html': redirect_page('index.html', '振達的廚房・食譜')}
     for stem, wk in weeklies: pages[f'weekly-{stem}.html'] = weekly_page(stem, wk, by_slug)
     # 舊網址：撤下的「本週菜單」頁改成轉到每週新增
-    pages['menu-2026-W48.html'] = redirect_page('weekly-2026-W48.html', '每週新增：2026 第 48 週')
+    pages['menu-2026-W48.html'] = redirect_page('weekly-2026-W48.html', '最新食譜：2026 第 48 週')
     for m in models: pages[f'recipes/{m["slug"]}.html'] = recipe_page(m)
     if OUT.exists(): shutil.rmtree(OUT)
     (OUT / 'recipes').mkdir(parents=True)
     vend = SITE / 'assets' / ASSET_VER
     if '--fonts' in sys.argv:
         (vend / 'fonts').mkdir(parents=True, exist_ok=True)
-        allt = ''.join(html.unescape(re.sub(r'<[^>]+>', ' ', p)) for p in pages.values()) + (SITE / 'static/site.js').read_text(encoding='utf-8') + (SITE / 'static/find.js').read_text(encoding='utf-8')
+        allt = ''.join(html.unescape(re.sub(r'<[^>]+>', ' ', p) + ' '.join(re.findall(r'(?:placeholder|aria-label|title|alt)="([^"]*)"', p))) for p in pages.values()) + (SITE / 'static/site.js').read_text(encoding='utf-8') + (SITE / 'static/find.js').read_text(encoding='utf-8')
         build_fonts(allt, vend / 'fonts')
     shutil.copytree(vend, OUT / 'assets' / ASSET_VER)
     shutil.copy(SITE / 'static/site.css', OUT / 'assets/site.css')
@@ -1061,7 +1062,8 @@ def main():
     for m in models: probs += number_guard(m)
     # 字型涵蓋檢查
     fonts_dir = vend / 'fonts'
-    print(f'產生 {len(pages)} 頁 → {OUT}')
+    print(f'產生 {len(pages)} 頁 → {OUT}；被擋掉的過程用語說明 {len(PUB_DROPPED)} 句')
+    if os.environ.get('ZD_SHOW_DROPPED'): [print('  擋掉：' + x) for x in PUB_DROPPED]
     if probs:
         print('需要處理：'); [print('  ' + p) for p in probs]
         sys.exit(1)

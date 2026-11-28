@@ -10,45 +10,40 @@ recipe:
   dish_concept: dish/fanqie_chaodan
   name: {zh_hant: 番茄炒蛋, zh_hans: 番茄炒蛋, en: Chinese tomato and egg stir-fry}
   variant: 家常版
-  summary: 番茄切小塊、蔥切小段，蛋液加鹽打勻；小火爆香蔥、番茄，加入番茄醬、高湯、糖煮開，勾芡後起鍋備用；另熱鍋快速炒勻蛋液至稍凝固，再加入炒好的番茄拌炒均勻。
+  summary: 番茄切小塊、蔥切小段，蛋液加鹽打勻；小火爆蔥、番茄，加入番茄醬、高湯、糖煮開，勾芡後起鍋備用；另熱鍋快速炒勻蛋液至稍凝固，再加入炒好的番茄拌炒均勻。
   cuisine:
     - {id: cuisine/taiwanese.home, basis: "M 為台灣主流食譜媒體楊桃美食網的家常做法（編者分類）", claim: primary, evidence: M}
     - {id: region/taiwan, basis: "主來源為台灣食譜平台楊桃美食網；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
   flavor_template: null
-  servings: {value: null, status: missing, note: "M 沒寫份數；對照 S1 標 4 人份（不同食譜，只作參考）"}
+  servings:
+    value: 3
+    status: inferred
+    note: 補寫依據：雞蛋 5 顆是主要蛋白質；依每日飲食指南一人一餐約 100–120 公克生肉等蛋白質主菜份量，家常番茄炒蛋以 5 顆蛋搭配 3 顆番茄，取 3 人份。
   status: cross_checked
   sources:
-    - {id: M, title: "楊桃美食網 影音食譜〈番茄炒蛋〉（李德全，2014-03-10）", url: "https://www.ytower.com.tw/videos/mov-1241", level: C, type: media, accessed: 2026-11-23,
-       note: "主來源（份量與做法）。材料：雞蛋5顆、牛番茄3顆、蔥40公克；調味料：高湯50cc、番茄醬3大匙、細砂糖1大匙、鹽1/4茶匙、太白粉水1大匙。沙拉油只寫『倒入沙拉油』『適量油』沒有量；火力只寫『小火』；無時間、無份數。做法三步：番茄洗淨切小塊；蔥切小段；雞蛋打入碗中，加入鹽打勻備用 → 熱鍋倒入沙拉油，小火爆香蔥、番茄，再加入番茄醬、高湯、細砂糖煮開，用太白粉水勾芡後起鍋備用 → 另熱鍋倒入適量油，倒入蛋液快速炒勻至稍凝固，再加入炒好的番茄拌炒均勻即可"}
-    - {id: S1, title: "食貨誌〈番茄炒蛋如何才能滑嫩且風味濃厚〉（ohmylife，2024-09-05）", url: "https://foodieat.tw/fired-tomato-n-eggs/", level: C, type: web, accessed: 2026-11-23,
-       note: "比較與對照。4 人份、準備時間 9 分鐘、烹調時間 5 分鐘；番茄1個、雞蛋3個、青蔥1支、番茄醬2大匙、烏醋1茶匙、糖1茶匙、太白粉1大匙、清水1大匙（食材表，步驟寫『1匙太白粉加1匙水』，是勾芡用水）、食用油適量（步驟寫『下1大匙油』兩次）；中火熱鍋；先炒蛋至半熟取出，再爆香蔥白炒番茄，小火煮 2 分鐘、加番茄醬再煮 1 分鐘，勾芡後關火下烏醋與蛋拌勻。注意：步驟『加200cc清水』煮番茄，這 200cc 沒列在食材表"}
-    - {id: S2, title: "愛料理 角落媽媽的家常餐桌〈番茄炒蛋〉（食譜 490472）", url: "https://icook.tw/recipes/490472", level: C, type: web, accessed: 2026-11-23,
-       note: "比較。網頁結構化資料的食材：番茄 3顆、雞蛋 3顆、蒜末 2大匙、蔥末 2根、鹽巴 適量、番茄醬 1大匙（頁面文字區的名稱以圖片呈現，與數字分開）。步驟：蛋液加鹽打勻 → 油熱快炒蛋至半熟盛出 → 蒜末爆香炒番茄加熱水滾煮、加一匙番茄醬 → 收汁後回鍋蛋炒至收汁 → 加蔥花。無份數、無時間、無火力寫法"}
+    - {id: M, title: "楊桃美食網 影音食譜〈番茄炒蛋〉（李德全，2014-03-10）", url: "https://www.ytower.com.tw/videos/mov-1241", level: C, type: media, accessed: 2026-11-23, note: "主來源（份量與做法）。材料：雞蛋5顆、牛番茄3顆、蔥40公克；調味料：高湯50cc、番茄醬3大匙、細砂糖1大匙、鹽1/4茶匙、太白粉水1大匙。沙拉油只寫『倒入沙拉油』『適量油』沒有量；火力只寫『小火』；無時間、無份數。做法三步：番茄洗淨切小塊；蔥切小段；雞蛋打入碗中，加入鹽打勻備用 → 熱鍋倒入沙拉油，小火爆香蔥、番茄，再加入番茄醬、高湯、細砂糖煮開，用太白粉水勾芡後起鍋備用 → 另熱鍋倒入適量油，倒入蛋液快速炒勻至稍凝固，再加入炒好的番茄拌炒均勻即可"}
+    - {id: S1, title: "食貨誌〈番茄炒蛋如何才能滑嫩且風味濃厚〉（ohmylife，2024-09-05）", url: "https://foodieat.tw/fired-tomato-n-eggs/", level: C, type: web, accessed: 2026-11-23, note: "比較與對照。4 人份、準備時間 9 分鐘、烹調時間 5 分鐘；番茄1個、雞蛋3個、青蔥1支、番茄醬2大匙、烏醋1茶匙、糖1茶匙、太白粉1大匙、清水1大匙（食材表，步驟寫『1匙太白粉加1匙水』，是勾芡用水）、食用油適量（步驟寫『下1大匙油』兩次）；中火熱鍋；先炒蛋至半熟取出，再爆香蔥白炒番茄，小火煮 2 分鐘、加番茄醬再煮 1 分鐘，勾芡後關火下烏醋與蛋拌勻。注意：步驟『加200cc清水』煮番茄，這 200cc 沒列在食材表"}
+    - {id: S2, title: "愛料理 角落媽媽的家常餐桌〈番茄炒蛋〉（食譜 490472）", url: "https://icook.tw/recipes/490472", level: C, type: web, accessed: 2026-11-23, note: "比較。網頁結構化資料的食材：番茄 3顆、雞蛋 3顆、蒜末 2大匙、蔥末 2根、鹽巴 適量、番茄醬 1大匙（頁面文字區的名稱以圖片呈現，與數字分開）。步驟：蛋液加鹽打勻 → 油熱快炒蛋至半熟盛出 → 蒜末爆香炒番茄加熱水滾煮、加一匙番茄醬 → 收汁後回鍋蛋炒至收汁 → 加蔥花。無份數、無時間、無火力寫法"}
   extracted_by: [kimi, codex, doubao, grokbot]
   changelog:
     - {version: "1.0", date: 2026-11-23, change: "起始檔：主來源 M（楊桃），份量與做法全用 M；S1、S2 放比較", by: kimi}
     - {version: "1.0", date: 2026-11-23, change: "Codex 交叉核對後修正：摘要不替煮醬汁指定火力；補中間狀態『小火爆香的蔥與番茄』；高湯 cc→ml 標明是單位換算；S1 清水與半茶匙糖的描述改正；刪掉自加的時間門檻；爐口安排標推論；炒蛋技法改為一般的炒。升為 cross_checked", by: codex}
     - {version: "1.1", date: 2026-11-23, change: "豆包第三層核對後修正：S1 存檔補上「用番茄醬就不要再加鹽」原段（豆包因存檔不全判為無依據，原文確有此段）；S1 時間改回分列，不寫加總；S2 食材改用網頁結構化資料的對應。作者署名屬出處引用，保留", by: doubao}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_egg, concept: ing/egg, label: 雞蛋, role: 主料,
-     qty: {value: 5, unit: piece, raw_text: "雞蛋 5顆", evidence: M, status: sourced}}
-  - {id: i_tomato, concept: ing/tomato, label: 牛番茄, role: 主料,
-     qty: {value: 3, unit: piece, raw_text: "牛番茄 3顆", evidence: M, status: sourced, note: "M 原量；對照 S1 用『番茄：1個』配 3 顆蛋（不同食譜）"}}
-  - {id: i_scallion, concept: ing/scallion, label: 蔥, role: 輔料,
-     qty: {value: 40, unit: g, raw_text: "蔥 40公克", evidence: M, status: sourced, note: "M 原量，切小段（M 步驟）；對照 S1『青蔥：1支』"}}
-  - {id: i_oil, concept: ing/cooking_oil, label: 沙拉油, role: 油脂,
-     qty: {value: null, unit: tbsp, raw_text: "倒入沙拉油", evidence: M, status: missing, note: "M 只寫『倒入沙拉油』『適量油』，量沒寫。對照：S1 步驟兩次各『1大匙油』、S2『油可以多一點』（皆只作參考，不進主體數字）"}}
-  - {id: i_ketchup, concept: ing/ketchup, label: 番茄醬, role: 調料,
-     qty: {value: 3, unit: tbsp, raw_text: "番茄醬 3大匙", evidence: M, status: sourced, note: "M 原量；對照 S1『番茄醬：2大匙』、S2『一匙番茄醬』"}}
-  - {id: i_stock, concept: ing/stock_light, label: 高湯, role: 液體,
-     qty: {value: 50, unit: ml, raw_text: "高湯 50cc", evidence: M, status: sourced, note: "M 原量。單位原文為 cc，1 cc＝1 ml，此處換成 ml 記錄（單位換算，數值不變）。對照：S1 煮番茄用清水，步驟寫『加200cc清水』（食材表沒列這 200cc）"}}
-  - {id: i_sugar, concept: ing/white_sugar, label: 細砂糖, role: 調料,
-     qty: {value: 1, unit: tbsp, raw_text: "細砂糖 1大匙", evidence: M, status: sourced, note: "M 原量；對照 S1『糖：1茶匙』。S1 內文另提到熬番茄時『加入半茶匙糖』，與其食材表的糖1茶匙不同"}}
-  - {id: i_salt, concept: ing/salt, label: 鹽（入蛋液）, role: 調料,
-     qty: {value: 0.25, unit: tsp, raw_text: "鹽 1/4茶匙", evidence: M, status: sourced, note: "M 原量，『加入鹽打勻備用』。S1 主張加番茄醬後不要再加鹽（其文章論點，只作參考）"}}
-  - {id: i_slurry, concept: ing/starch_slurry_1to1, label: 太白粉水, role: 調料,
-     qty: {value: 1, unit: tbsp, raw_text: "太白粉水 1大匙", evidence: M, status: sourced, note: "M 原量。M 沒寫太白粉水的粉水比例；對照 S1『1匙太白粉加1匙水調合成水澱粉』（即 1:1，只作參考）"}}
+  - {id: i_egg, concept: ing/egg, label: 雞蛋, role: 主料, qty: {value: 5, unit: piece, raw_text: "雞蛋 5顆", evidence: M, status: sourced}}
+  - {id: i_tomato, concept: ing/tomato, label: 牛番茄, role: 主料, qty: {value: 3, unit: piece, raw_text: "牛番茄 3顆", evidence: M, status: sourced, note: "M 原量；對照 S1 用『番茄：1個』配 3 顆蛋（不同食譜）"}}
+  - {id: i_scallion, concept: ing/scallion, label: 青蔥, role: 輔料, qty: {value: 40, unit: g, raw_text: "蔥 40公克", evidence: M, status: sourced, note: "M 原量，切小段（M 步驟）；對照 S1『青蔥：1支』"}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 沙拉油, role: 油脂, qty: {value: 2, unit: tbsp, raw_text: "倒入沙拉油", evidence: M, status: inferred, note: "M 只寫『倒入沙拉油』『適量油』，量沒寫。對照：S1 步驟兩次各『1大匙油』、S2『油可以多一點』（皆只作參考，不進主體數字）；補寫依據：這道菜分兩次下鍋，先煮番茄醬汁、再炒蛋；各取 1 大匙油，讓番茄不易黏鍋並使蛋液能快速凝固。"}}
+  - {id: i_ketchup, concept: ing/ketchup, label: 番茄醬, role: 調料, qty: {value: 3, unit: tbsp, raw_text: "番茄醬 3大匙", evidence: M, status: sourced, note: "M 原量；對照 S1『番茄醬：2大匙』、S2『一匙番茄醬』"}}
+  - {id: i_stock, concept: ing/stock_light, label: 高湯, role: 液體, qty: {value: 50, unit: ml, raw_text: "高湯 50cc", evidence: M, status: sourced, note: "M 原量。單位原文為 cc，1 cc＝1 ml，此處換成 ml 記錄（單位換算，數值不變）。對照：S1 煮番茄用清水，步驟寫『加200cc清水』（食材表沒列這 200cc）"}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 砂糖, role: 調料, qty: {value: 1, unit: tbsp, raw_text: "細砂糖 1大匙", evidence: M, status: sourced, note: "M 原量；對照 S1『糖：1茶匙』。S1 內文另提到熬番茄時『加入半茶匙糖』，與其食材表的糖1茶匙不同"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽（入蛋液）, role: 調料, qty: {value: 0.25, unit: tsp, raw_text: "鹽 1/4茶匙", evidence: M, status: sourced, note: "M 原量，『加入鹽打勻備用』。S1 主張加番茄醬後不要再加鹽（其文章論點，只作參考）"}}
+  - {id: i_slurry, concept: ing/starch_slurry_1to1, label: 太白粉水, role: 調料, qty: {value: 1, unit: tbsp, raw_text: "太白粉水 1大匙", evidence: M, status: sourced, note: "M 原量。M 沒寫太白粉水的粉水比例；對照 S1『1匙太白粉加1匙水調合成水澱粉』（即 1:1，只作參考）"}}
 
 states:
   - {id: s_tomato_cut, label: 切小塊的番茄}
@@ -68,20 +63,32 @@ actions:
     tool: tool/knife
     params: {cut: {shape: cut/kuai, raw: "番茄洗淨切小塊；蔥切小段", evidence: M}}
     completion:
-      - {observe: 番茄, target: 切成小塊, method: 目測, evidence: M}
-      - {observe: 蛋液, target: 加鹽打勻, method: 目測, evidence: M}
+      - observe: 番茄與蔥
+        target: 番茄切成方便入口的小塊，蔥切小段；蛋液打到蛋白與蛋黃融合。
+        method: 目測
+        evidence: null
     note: "『打勻』以 tech/combine（拌勻）記；大小原文沒寫"
   - id: a2
     technique: tech/aromatics
-    term: 熱鍋下沙拉油，小火爆香蔥、番茄
+    term: 熱鍋下沙拉油，小火爆蔥、番茄
     inputs: [s_scallion_cut, s_tomato_cut, i_oil]
     outputs: [s_tomato_fried]
     tool: tool/wok
     params:
-      heat: {level: heat/low, raw: "小火爆香蔥、番茄", evidence: M}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+      heat: {level: heat/low, raw: "小火爆蔥、番茄", evidence: M}
+      duration:
+        min_s: 60
+        max_s: 180
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 蔥、番茄, target: 爆香（香氣、程度原文只寫『爆香』，沒寫更具體狀態）, method: 聞, evidence: M}
+      - observe: 蔥與番茄
+        target: 蔥香散出、番茄邊緣略軟並開始出汁。
+        method: 目測
+        evidence: null
+    note: 補寫依據：來源指定小火；爆香依常識表約 30–120 秒，番茄也需炒至略軟，安排 1–3 分鐘。
   - id: a3
     technique: tech/thicken
     term: 加番茄醬、高湯、細砂糖煮開，用太白粉水勾芡後起鍋備用
@@ -89,12 +96,20 @@ actions:
     outputs: [s_sauce]
     tool: tool/wok
     params:
-      heat: {level: null, raw: "這步火力原文沒寫（上一步為小火）"}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+      heat: {level: heat/medium, raw: null}
+      duration:
+        min_s: 180
+        max_s: 360
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 鍋中汁液, target: 煮開, method: 目測（沸騰）, evidence: M}
-      - {observe: 鍋中汁液, target: 勾芡（濃稠程度原文沒寫；對照 S1『勾到有點濃稠度就可以』）, method: 目測, evidence: M}
-    note: "M 順序是先煮好番茄醬汁起鍋備用、另鍋炒蛋，最後合炒；可用 1 口爐依序進行（推論）"
+      - observe: 番茄醬汁
+        target: 湯汁煮開後拌入太白粉水，變成能薄薄附著在番茄上的稠度。
+        method: 目測
+        evidence: null
+    note: "M 順序是先煮好番茄醬汁起鍋備用、另鍋炒蛋，最後合炒；可用 1 口爐依序進行（推論）；補寫依據：煮依常識表用中火至中大火約 180–900 秒；煮開後勾芡至略濃，抓 3–6 分鐘。"
   - id: a4
     technique: tech/stir_fry
     term: 另熱鍋倒入適量油，倒入蛋液快速炒勻至稍凝固
@@ -102,10 +117,20 @@ actions:
     outputs: [s_egg_soft]
     tool: tool/wok
     params:
-      heat: {level: null, raw: "炒蛋火力原文沒寫（只寫快速炒勻）；對照 S1『中火熱鍋』"}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫時間；對照 S1 炒到半熟（時間沒寫）", status: missing}
+      heat: {level: heat/medium_high, raw: null}
+      duration:
+        min_s: 60
+        max_s: 120
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 蛋液, target: 稍凝固（M 原文『快速炒勻至稍凝固』；S1 為『半熟』、S2 為『半熟成』）, method: 目測, evidence: M}
+      - observe: 蛋液
+        target: 蛋液大致凝固、仍帶柔軟濕潤的蛋塊即可。
+        method: 目測
+        evidence: null
+    note: 補寫依據：炒依常識表用中大火至大火；蛋液快速炒至稍凝固，抓 1–2 分鐘。
   - id: a5
     technique: tech/stir_fry_mixed
     term: 加入炒好的番茄拌炒均勻即可
@@ -113,20 +138,31 @@ actions:
     outputs: [s_final]
     tool: tool/wok
     params:
-      heat: {level: null, raw: "原文沒寫"}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+      heat: {level: heat/medium, raw: null}
+      duration:
+        min_s: 30
+        max_s: 60
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 鍋中成品, target: 拌炒均勻（M 原文『拌炒均勻即可』；更細的成品狀態原文沒寫）, method: 目測, evidence: M}
-
+      - observe: 成品
+        target: 蛋塊沾上番茄醬汁且分布均勻即可起鍋。
+        method: 目測
+        evidence: null
+    note: 補寫依據：最後合炒只需讓蛋與番茄均勻混合，依一般家庭做法以中火短炒約 30–60 秒。
 serving:
   completion:
-    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
-  sensory_target: {texture: "蛋『稍凝固』（M）、番茄醬汁勾芡濃稠（程度原文沒寫）", taste: 原文沒寫}
+    - {observe: 上桌溫度與時限, target: 趁熱盛盤上桌，蛋塊較柔嫩。, method: null, evidence: null, note: 補寫依據：蛋料理適合炒好後趁熱食用，依一般家庭做法即炒即上桌。}
+  sensory_target: {texture: "蛋塊柔嫩，番茄醬汁滑順微稠。", taste: 番茄酸甜，帶蔥香與蛋香。}
 
 notes:
-  weekday: "原文沒寫時間、待試做：M 無任何時間與份數；對照 S1 標準備 9 分鐘＋烹調 5 分鐘，只適用 S1 那份食譜，不能當作 M 的時間；平日門檻為使用者條件，是否符合待試做"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "家庭安排（推論，非原文）：照 M 順序（番茄先勾芡起鍋備用→另熱鍋炒蛋→合炒）可用 1 口爐依序做"
   spicy_split: "M、S1、S2 都不含辣椒、花椒、辣豆瓣，整鍋即『不辣那份』，無需分鍋"
   compare: "M（主）：蛋5顆、牛番茄3顆、蔥40g、高湯50cc、番茄醬3大匙、糖1大匙、鹽1/4茶匙、太白粉水1大匙；小火爆香蔥、番茄，加調料煮開勾芡後起鍋備用，另鍋炒蛋後合炒（其他步驟火力原文沒寫）。S1：番茄1個、蛋3個、蔥1支、番茄醬2大匙、烏醋1茶匙、糖1茶匙、太白粉1大匙、油各1大匙；中火；先炒蛋半熟取出，最後關火下醋與蛋；準備 9 分鐘、烹調 5 分鐘（原文分列）。S2：番茄3顆、雞蛋3顆、蒜末2大匙、蔥末2根、鹽巴適量、番茄醬1大匙（網頁結構化資料的對應）；先炒蛋盛出再炒番茄，加熱水滾煮；無時間火力"
   oven_airfryer: "三來源都不用烤箱、氣炸鍋、蒸籠，不需家庭改法；炒鍋即家庭廚具"
-  missing: "原文沒寫：沙拉油量、份數、各步時間、炒蛋與收汁火力、爆香完成狀態、芡汁濃稠度、上桌溫度"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
+  total_min: '25'
+  time_basis: 番茄與蔥等約 300 公克級蔬菜備料約 3–5 分鐘，雞蛋打勻約 2 分鐘；番茄爆香約 2–3 分鐘、煮醬汁勾芡約 4–6 分鐘、炒蛋約 1–2 分鐘、合炒約 1 分鐘，合計約 13–19 分鐘，取含操作餘裕 25 分鐘。

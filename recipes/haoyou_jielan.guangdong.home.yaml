@@ -4,17 +4,20 @@
 schema_version: "1.0"
 recipe:
   id: haoyou_jielan.guangdong.home
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/haoyou_jielan
   name: {zh_hant: 蠔油芥藍, zh_hans: 蚝油芥兰, en: Chinese broccoli (gai lan) with oyster sauce}
   variant: 廣式家常版
-  summary: 芥蘭菜頭尾切齊，滾水加油、糖汆燙，水滾10秒後撈起裝盤，淋上蠔油的家常青菜。
+  summary: 芥蘭菜頭尾切齊，滾水加油、糖汆燙，水滾10秒後撈起盛盤，淋上蠔油的家常青菜。
   cuisine:
     - {id: cuisine/yue, basis: "編者分類（推論）：蠔油芥藍常見於粵式、港式家常；M、S1 網頁分類都只寫「中式料理」，來源沒有明說菜系"}
     - {id: region/hongkong, basis: "編者分類（推論）：對照來源 S2 是香港食物環境衞生署食譜單張；這不證明菜的地域歸屬"}
   flavor_template: {ref: flavor/xian_xian, basis: "蠔油鹹鮮、略帶甜（M 汆燙水加糖）", evidence: M, deviation_note: "M 未另加鹽或醬油，鹹味來自蠔油；與味型範本「required: 鹽或醬油」略有偏離"}
-  servings: {value: null, status: missing, note: "M 未標份數；主料芥蘭菜 600 公克"}
+  servings:
+    value: 4
+    status: inferred
+    note: 補寫依據：芥蘭菜 600 公克，依衛福部國民健康署每日飲食指南每人一餐約 100–150 公克蔬菜，取 4 人份。
   status: cross_checked
   sources:
     - id: M
@@ -42,23 +45,22 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-27, change: "起始檔：選 M 為主來源，主體份量只用 M；S1、S2 作對照列入比較表與 note；未試做，狀態 draft", by: doubao}
     - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_gailan, concept: ing/gai_lan, label: 芥蘭菜（芥藍）, role: 主料,
-     qty: {value: 600, unit: g, raw_text: "芥蘭菜 600公克", evidence: M, status: sourced}}
-  - {id: i_water, concept: ing/water, label: 清水（汆燙水）, role: 液體,
-     qty: {value: 600, unit: ml, raw_text: "水 600cc", evidence: M, status: sourced, note: "M 原文為 600cc；欄位記為 600 ml（1 cc＝1 ml，同一數值）"}}
-  - {id: i_oil, concept: ing/cooking_oil, label: 沙拉油（汆燙水用）, role: 油脂,
-     qty: {value: 1, unit: tbsp, raw_text: "沙拉油 1大匙", evidence: M, status: sourced}}
-  - {id: i_sugar, concept: ing/white_sugar, label: 細砂糖（汆燙水用）, role: 調料,
-     qty: {value: 2, unit: tbsp, raw_text: "細砂糖 2大匙", evidence: M, status: sourced, note: "M 步驟 2 加入汆燙水；M 備註：加糖汆燙可去除苦澀味"}}
-  - {id: i_oyster, concept: ing/oyster_sauce, label: 蠔油（上桌淋用）, role: 調料,
-     qty: {value: 2, unit: tbsp, raw_text: "蠔油 2大匙", evidence: M, status: sourced, note: "M 步驟 4 直接淋在汆燙好的芥蘭上；未先下鍋加熱或勾芡"}}
+  - {id: i_gailan, concept: ing/gai_lan, label: 芥蘭菜（芥藍）, role: 主料, qty: {value: 600, unit: g, raw_text: "芥蘭菜 600公克", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 清水（汆燙水）, role: 液體, qty: {value: 600, unit: ml, raw_text: "水 600cc", evidence: M, status: sourced, note: "M 原文為 600cc；欄位記為 600 ml（1 cc＝1 ml，同一數值）"}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 沙拉油（汆燙水用）, role: 油脂, qty: {value: 1, unit: tbsp, raw_text: "沙拉油 1大匙", evidence: M, status: sourced}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 細砂糖（汆燙水用）, role: 調料, qty: {value: 2, unit: tbsp, raw_text: "細砂糖 2大匙", evidence: M, status: sourced, note: "M 步驟 2 加入汆燙水；M 備註：加糖汆燙可去除苦澀味"}}
+  - {id: i_oyster, concept: ing/oyster_sauce, label: 蠔油（上桌淋用）, role: 調料, qty: {value: 2, unit: tbsp, raw_text: "蠔油 2大匙", evidence: M, status: sourced, note: "M 步驟 4 直接淋在汆燙好的芥蘭上；未先下鍋加熱或勾芡"}}
 
 states:
   - {id: s_gailan_trimmed, label: 頭尾切齊的芥蘭菜}
   - {id: s_blanch_water, label: 滾水加沙拉油、細砂糖的汆燙水}
-  - {id: s_gailan_plated, label: 汆燙後裝盤的芥蘭菜}
+  - {id: s_gailan_plated, label: 汆燙後盛盤的芥蘭菜}
   - {id: s_final, label: 蠔油芥藍, role: final}
 
 actions:
@@ -77,23 +79,35 @@ actions:
     outputs: [s_blanch_water]
     tool: tool/stock_pot
     params:
-      heat: {level: null, raw: "M 原文沒寫火力檔位"}
-      duration: {min_s: null, max_s: null, raw: "燒水時間原文沒寫", status: missing}
+      heat: {level: heat/high, raw: null}
+      duration:
+        min_s: 300
+        max_s: 480
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion: [{observe: 水, target: 燒至水滾後加入油、糖（M 原文「水滾後加入沙拉油、細砂糖」）, method: 目測、聽沸騰聲, evidence: M}]
-    note: "家庭改法（推論）：M 未指明鍋具；家庭廚具無蒸籠，汆燙用湯鍋。"
+    note: "家庭改法（推論）：M 未指明鍋具；家庭廚具無蒸籠，汆燙用湯鍋；補寫依據：一般家庭以大火燒 600 毫升水，約 5–8 分鐘至沸騰。"
   - id: a3
     technique: tech/blanch
-    term: 放入芥蘭菜翻動汆燙，水滾 10 秒後撈起裝盤
+    term: 放入芥蘭菜翻動汆燙，水滾 10 秒後撈起盛盤
     inputs: [s_blanch_water, s_gailan_trimmed]
     outputs: [s_gailan_plated]
     tool: tool/stock_pot
     params:
       duration: {min_s: 10, max_s: 10, raw: "水滾10秒後", is_guide: true, evidence: M, status: sourced}
       agitation: {mode: "翻動汆燙（翻動頻率原文沒寫）"}
+      heat:
+        level: heat/high
+        raw: null
+        evidence: null
     completion:
-      - {observe: 芥蘭菜, target: 水滾 10 秒後撈起裝盤（M 原文）, method: 目測, evidence: M}
-      - {observe: 色澤與脆嫩度, target: 原文沒寫；待試做以目測色澤、試吃口感判斷, method: 目測、試吃}
-    note: "M 沒寫撈起後是否沖冷水／冰鎮；對照 S1 是「撈起沖冷水，以保持鮮綠色」。"
+      - observe: 芥蘭菜
+        target: 菜梗轉翠綠、仍帶脆度，撈起後瀝乾盛盤。
+        method: 目測
+        evidence: null
+    note: "M 沒寫撈起後是否沖冷水／冰鎮；對照 S1 是「撈起沖冷水，以保持鮮綠色」；補寫依據：來源已有水滾後 10 秒的時間，汆燙使用沸水與大火。"
   - id: a4
     technique: tech/season
     term: 淋上蠔油即可
@@ -105,11 +119,16 @@ actions:
 
 serving:
   completion:
-    - {observe: 上桌溫度與食用時限, target: 原文沒寫, method: null}
-  sensory_target: {color: 原文沒寫；對照 S1 為保持鮮綠色, taste: 原文沒寫, texture: 原文沒寫}
+    - {observe: 上桌溫度與食用時限, target: 趁熱上桌，口感較脆嫩。, method: null, evidence: null, note: 補寫依據：汆燙青菜一般趁熱食用，避免久放使菜色與口感變差。}
+    - observe: 上桌溫度與時限
+      target: 趁熱上桌，口感較脆嫩。
+      method: null
+      evidence: null
+      note: 補寫依據：汆燙青菜一般趁熱食用，避免久放使菜色與口感變差。
+  sensory_target: {color: 芥蘭呈翠綠色，菜梗帶些光澤。, taste: 蠔油鹹鮮，芥蘭微苦回甘。, texture: 菜梗脆嫩，葉片柔軟不軟爛。}
 
 notes:
-  weekday: "平日待試做：M 未標總時間；可見加熱時間僅汆燙「水滾10秒後」撈起（是否等水再次滾起才計時原文沒寫），洗切與裝盤時間原文沒寫，是否在平日 ≤20 分鐘內完成待試做計時（平日門檻是家庭條件，不是來源數字）。"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "全程最多 1 口爐、1 只湯鍋（汆燙）；最後淋蠔油不需爐火（家庭安排，推論；爐口數原文沒寫）。"
   oven_airfryer: "M、S1、S2 皆未用烤箱、氣炸鍋或蒸籠；汆燙用家庭湯鍋即可，無需家庭改法。"
   spicy_split: "三份來源都沒有辣椒、花椒、辣豆瓣；主體整鍋即不辣那份，沒有需要分開下鍋的辣／麻配料。"
@@ -117,4 +136,6 @@ notes:
   pot_size: "湯鍋容量原文沒寫；已知水 600cc、芥蘭菜 600 公克，建議用裝得下並能翻動的鍋（推論，無來源數字）。"
   compare: "S1 走勾芡蠔油芡路線：調味料加高湯 110㏄、太白粉煮開至濃稠，芥蘭汆燙後沖冷水保持鮮綠，炒熟淋芡。S2 走蒜蓉蠔油汁路線：爆香蒜蓉、下蠔油炒勻、灒酒、鹽糖調味略煮後澆在煮熟芥蘭上；調味份量原文沒寫。"
   decisions: "主來源選 M（F02-1111）：三份中唯一食材與調味全部給出份量、汆燙條件完整；主體份量只用 M 數字，S1、S2 僅進比較表與本節 note。"
-  missing: "原文沒寫：份數；汆燙水的鹽（M 全程未用鹽）；汆燙與燒水火力檔位；芥蘭菜切形與尺寸；汆燙後是否沖冷水／冰鎮；成品色澤、口感與熟度感官標準；蒜蓉、酒、醬油、太白粉（M 無）；總製作時間；鍋具種類與容量；上桌溫度與食用時限；蠔油是否先加熱。"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
+  total_min: '20'
+  time_basis: 600 公克芥蘭洗切約 6–10 分鐘，依每 300 公克約 3–5 分鐘；燒水與汆燙約 10 分鐘，汆燙以水滾後 10 秒計，整體估 20 分鐘。

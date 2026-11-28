@@ -6,7 +6,7 @@
 schema_version: "1.0"
 recipe:
   id: eggs_benedict.usa.gisslen_lcb
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/eggs_benedict
   name: {zh_hant: 班尼迪克蛋, en: Eggs Benedict}
@@ -44,14 +44,15 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-20, change: "P1 第 2 批：依 Gisslen 與 LCB 原文建檔；Codex 主抽、Kimi 交叉核對、Grok Bot 對原文抽查", by: grokbot}
     - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變；瑪芬平底鍋乾烙與辣椒粉分開加兩項家庭改法定稿（不是原文）", by: grokbot}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: b_muffin, concept: ing/english_muffin, label: 英式瑪芬（半個）, role: 主料, product: true,
-     qty: {value: 0.5, unit: piece, raw_text: "½ English muffin", evidence: G1, status: sourced}}
-  - {id: b_butter, concept: ing/butter, label: 奶油（抹瑪芬）, role: 油脂,
-     qty: {qualitative: 適量, raw_text: "as needed Butter", evidence: G1, status: sourced}}
-  - {id: b_ham, concept: ing/canadian_bacon_or_ham, label: 加拿大培根或熟火腿（1 片，約 60 g）, role: 主料,
-     qty: {value: 1, unit: slice, raw_text: "1 slice Canadian bacon or ham, cooked (about 2 oz/60 g per slice)", evidence: G1, status: sourced, note: "每片約 60 g"}}
+  - {id: b_muffin, concept: ing/english_muffin, label: 英式瑪芬（半個）, role: 主料, product: true, qty: {value: 0.5, unit: piece, raw_text: "½ English muffin", evidence: G1, status: sourced}}
+  - {id: b_butter, concept: ing/butter, label: 奶油（抹瑪芬）, role: 油脂, qty: {raw_text: "as needed Butter", evidence: G1, status: inferred, value: 10, unit: g, note: 補寫依據：半個英式瑪芬抹薄薄一層奶油，一般家庭約用 10 公克。}}
+  - {id: b_ham, concept: ing/canadian_bacon_or_ham, label: 加拿大培根或熟火腿（1 片，約 60 g）, role: 主料, qty: {value: 1, unit: slice, raw_text: "1 slice Canadian bacon or ham, cooked (about 2 oz/60 g per slice)", evidence: G1, status: sourced, note: "每片約 60 g"}}
 
 components:
   - id: c_hollandaise
@@ -69,19 +70,12 @@ components:
         servings: {value: 4, status: sourced, evidence: L1}
         status: cross_checked
       ingredients:
-        - {id: h_eggs, concept: ing/egg, label: 雞蛋（4 顆，只取蛋黃）, role: 主料,
-           qty: {value: 4, unit: piece, raw_text: "4 eggs", evidence: L1, status: sourced},
-           note: "G2 建議為安全起見用巴氏殺菌蛋（對照，非 L1 要求）"}
-        - {id: h_water, concept: ing/water, label: 水, role: 液體,
-           qty: {value: 60, unit: ml, raw_text: "60 ml water", evidence: L1, status: sourced}}
-        - {id: h_lemon, concept: ing/lemon, label: 檸檬（¼ 顆，取汁）, role: 調料,
-           qty: {value: 0.25, unit: piece, raw_text: "¼ lemon", evidence: L1, status: sourced, note: "步驟寫 lemon juice to taste；擠汁量原文沒寫"}}
-        - {id: h_cayenne, concept: ing/cayenne, label: 卡宴辣椒粉, role: 香料,
-           qty: {qualitative: 一撮, raw_text: "pinch cayenne pepper", evidence: L1, status: sourced}}
-        - {id: h_salt, concept: ing/salt, label: 鹽, role: 調料,
-           qty: {qualitative: 一撮, raw_text: "pinch salt", evidence: L1, status: sourced}}
-        - {id: h_bath_water, concept: ing/water, label: 隔水加熱用的水, role: 液體,
-           qty: {value: null, unit: ml, raw_text: null, status: missing, note: "水量原文沒寫"}}
+        - {id: h_eggs, concept: ing/egg, label: 雞蛋（4 顆，只取蛋黃）, role: 主料, qty: {value: 4, unit: piece, raw_text: "4 eggs", evidence: L1, status: sourced}, note: "G2 建議為安全起見用巴氏殺菌蛋（對照，非 L1 要求）"}
+        - {id: h_water, concept: ing/water, label: 水, role: 液體, qty: {value: 60, unit: ml, raw_text: "60 ml water", evidence: L1, status: sourced}}
+        - {id: h_lemon, concept: ing/lemon, label: 檸檬（¼ 顆，取汁）, role: 調料, qty: {value: 0.25, unit: piece, raw_text: "¼ lemon", evidence: L1, status: sourced, note: "步驟寫 lemon juice to taste；擠汁量原文沒寫"}}
+        - {id: h_cayenne, concept: ing/cayenne, label: 卡宴辣椒粉, role: 香料, qty: {qualitative: 一撮, raw_text: "pinch cayenne pepper", evidence: L1, status: sourced}}
+        - {id: h_salt, concept: ing/salt, label: 鹽, role: 調料, qty: {qualitative: 一撮, raw_text: "pinch salt", evidence: L1, status: sourced}}
+        - {id: h_bath_water, concept: ing/water, label: 隔水加熱用的水, role: 液體, qty: {value: null, unit: ml, raw_text: null, status: missing, note: "水量原文沒寫"}}
       components:
         - id: c_clarified
           call: {ref: recipe/clarified_butter.lcb, version: "1.0", scale: 1.0}
@@ -95,10 +89,8 @@ components:
               name: {zh_hant: 澄清奶油, en: clarified butter}
               status: cross_checked
             ingredients:
-              - {id: k_butter, concept: ing/butter, label: 奶油, role: 油脂,
-                 qty: {value: 250, unit: g, raw_text: "250 g butter", evidence: L1, status: sourced}}
-              - {id: k_water, concept: ing/water, label: 隔水加熱用的水, role: 液體,
-                 qty: {value: null, unit: ml, raw_text: null, status: missing, note: "原文沒寫"}}
+              - {id: k_butter, concept: ing/butter, label: 奶油, role: 油脂, qty: {value: 250, unit: g, raw_text: "250 g butter", evidence: L1, status: sourced}}
+              - {id: k_water, concept: ing/water, label: 隔水加熱用的水, role: 液體, qty: {value: null, unit: ml, raw_text: null, status: missing, note: "原文沒寫"}}
             actions:
               - id: k1
                 technique: tech/clarify_butter
@@ -165,16 +157,10 @@ components:
         servings: {value: 1, status: sourced, evidence: G1, note: "Eggs Benedict 每份 1 顆"}
         status: cross_checked
       ingredients:
-        - {id: e_egg, concept: ing/egg, label: 雞蛋（盡量用最新鮮的 AA 級）, role: 主料,
-           qty: {value: 1, unit: piece, raw_text: "1 Egg, fresh Grade AA", evidence: G1, status: sourced}}
-        - {id: e_water, concept: ing/water, label: 水, role: 液體,
-           qty: {value: null, unit: ml, raw_text: null, status: missing, note: "水量與鍋中水深原文沒寫"}}
-        - {id: e_salt, concept: ing/salt, label: 鹽（蛋不夠新鮮時才加）, role: 調料, optional: true,
-           qty: {qualitative: "每公升水 5 mL（1 tsp per quart）", raw_text: "add 1 teaspoon salt ... per quart of water (5 mL salt ... per L)", evidence: G1, status: sourced,
-                 note: "規格不足：沒有『每公升水』的比例份量欄，只能寫成文字；蛋很新鮮就不加"}}
-        - {id: e_vinegar, concept: ing/distilled_vinegar, label: 白醋（蛋不夠新鮮時才加）, role: 調料, optional: true,
-           qty: {qualitative: "每公升水 15 mL（1 tbsp per quart）", raw_text: "1 tablespoon distilled vinegar per quart of water (... 15 mL vinegar per L)", evidence: G1, status: sourced,
-                 note: "蛋很新鮮就不加，因為加醋會讓蛋白較硬、較不亮（G1）"}}
+        - {id: e_egg, concept: ing/egg, label: 雞蛋（盡量用最新鮮的 AA 級）, role: 主料, qty: {value: 1, unit: piece, raw_text: "1 Egg, fresh Grade AA", evidence: G1, status: sourced}}
+        - {id: e_water, concept: ing/water, label: 水, role: 液體, qty: {value: null, unit: ml, raw_text: null, status: missing, note: "水量與鍋中水深原文沒寫"}}
+        - {id: e_salt, concept: ing/salt, label: 鹽（蛋不夠新鮮時才加）, role: 調料, optional: true, qty: {qualitative: "每公升水 5 mL（1 tsp per quart）", raw_text: "add 1 teaspoon salt ... per quart of water (5 mL salt ... per L)", evidence: G1, status: sourced, note: "規格不足：沒有『每公升水』的比例份量欄，只能寫成文字；蛋很新鮮就不加"}}
+        - {id: e_vinegar, concept: ing/distilled_vinegar, label: 白醋（蛋不夠新鮮時才加）, role: 調料, optional: true, qty: {qualitative: "每公升水 15 mL（1 tbsp per quart）", raw_text: "1 tablespoon distilled vinegar per quart of water (... 15 mL vinegar per L)", evidence: G1, status: sourced, note: "蛋很新鮮就不加，因為加醋會讓蛋白較硬、較不亮（G1）"}}
       actions:
         - id: e1
           technique: tech/simmer
@@ -217,8 +203,21 @@ actions:
     inputs: [b_muffin]
     outputs: [s_toasted]
     tool: tool/frying_pan
-    completion: [{observe: 瑪芬, target: 烤好（toast）, method: 目測, note: "原文只寫 toast，沒寫用什麼烤、烤到什麼顏色；用平底鍋乾烙是家庭改法（定稿，不是原文）"}]
+    completion:
+      - observe: 瑪芬
+        target: 切面烙成金黃色，表面乾爽酥香。
+        method: 目測
+        evidence: null
     can_overlap: [e1, e2]
+    params:
+      duration:
+        min_s: 120
+        max_s: 180
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
+    note: 補寫依據：半個英式瑪芬以平底鍋中小火乾烙，約 2–3 分鐘至表面上色。
   - id: b2
     technique: tech/spread
     term: 抹奶油，放到餐盤上
@@ -232,29 +231,53 @@ actions:
     outputs: [s_ham_hot]
     tool: tool/frying_pan
     params:
-      heat: {level: null, raw: "on a hot griddle or in a sauté pan（熱鍋，未給檔位）", evidence: G1}
+      heat: {level: heat/medium, raw: null, evidence: G1}
       duration: {min_s: 60, max_s: 60, raw: "for 1 minute", is_guide: true, evidence: G1, status: sourced}
     can_overlap: [e2]
-    completion: [{observe: 火腿, target: 熱透, method: 目測／手感, note: "原文只給時間，熱透為推論"}]
+    completion:
+      - observe: 火腿
+        target: 兩面溫熱，表面微微上色。
+        method: 目測
+        evidence: null
+    note: 補寫依據：來源要求熱鍋加熱火腿 1 分鐘；一般家庭用中火較易熱透且不易煎焦。
   - id: b4
     technique: tech/assemble
     term: 火腿放在瑪芬上
     inputs: [s_buttered, s_ham_hot]
     outputs: [s_base]
     completion: [{observe: 組裝, target: 火腿放在烤好的瑪芬上, method: 目測, evidence: G1}]
+    params:
+      duration:
+        min_s: 5
+        max_s: 10
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
+    note: 補寫依據：火腿放在瑪芬上即完成組裝，家庭操作約 5–10 秒。
   - id: b5
     technique: tech/assemble
     term: 瀝乾的水波蛋放在火腿上
     inputs: [s_base, s_poached]
     outputs: [s_stacked]
     completion: [{observe: 組裝, target: 水波蛋放在火腿上, method: 目測, evidence: G1}]
+    params:
+      duration:
+        min_s: 5
+        max_s: 10
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
+    note: 補寫依據：瀝乾水波蛋並放上火腿，家庭操作約 5–10 秒。
   - id: b6
     technique: tech/plate
     term: 舀荷蘭醬淋在最上面，立刻上桌
     inputs: [s_stacked, s_hollandaise]
     outputs: [s_final]
-    params: {raw: "Hollandaise Sauce 1½ fl oz／50 mL（每份用量）"}
+    params: {raw: "Hollandaise Sauce 1½ fl oz／50 mL（每份用量）", duration: {min_s: 5, max_s: 10, raw: null, is_guide: true, evidence: null, status: inferred}}
     completion: [{observe: 荷蘭醬, target: 每份 50 mL 淋在蛋上；立刻上桌, method: 目測, evidence: G1}]
+    note: 補寫依據：舀 50 毫升荷蘭醬淋上後立刻上桌，家庭操作約 5–10 秒。
 
 serving:
   completion:
@@ -269,3 +292,5 @@ notes:
   hollandaise_reference: "G2 準則：用圓底不鏽鋼碗；標準比例 6 顆蛋黃對 450 g（1 lb）澄清奶油；加醋讓蛋白凝固較快、形狀較好（G1）"
   hollandaise_holding_home: "G2 要求約 63°C 保溫；不用溫度計版；離火後怎麼維持這個溫度原文沒寫，待試做"
   cross_check: "Codex 主抽、Kimi 交叉核對；不一致與裁決見 research/p1/核對紀錄-班尼迪克蛋.md"
+  total_min: '35'
+  time_basis: 水波蛋與組裝按一般家庭做法約 10 分鐘；荷蘭醬來源準備時間 15 分鐘；澄清奶油依一般家庭做法約 10 分鐘，合計 35 分鐘。
