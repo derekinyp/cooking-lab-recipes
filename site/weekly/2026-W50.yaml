@@ -10,3 +10,5 @@ dishes:
   - {slug: xianggu_rougeng, name: 香菇肉羹}
   - {slug: zhacai_rousi_tang, name: 榨菜肉絲湯}
   - {slug: shimuyu_du_tang, name: 虱目魚肚湯}
+  - {slug: suancai_dupian_tang, name: 酸菜肚片湯}
+  - {slug: liangban_luzhusun, name: 涼拌綠竹筍}

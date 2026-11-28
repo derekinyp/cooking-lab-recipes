@@ -1,0 +1,149 @@
+schema_version: "1.0"
+recipe:
+  id: suancai_dupian_tang.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/suancai_dupian_tang
+  name: {zh_hant: 酸菜肚片湯, zh_hans: 酸菜肚片汤, en: "Pickled mustard greens and pork tripe soup"}
+  variant: 台式家常版
+  summary: 豬肚加米酒、蔥、薑煮軟後切片，酸菜、薑絲加水煮滾，再放入肚片煮約 10 分鐘，加鹽調味的台式清湯。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "主來源 M 為楊桃美食網台灣平台家常湯品（#中式家常 #一鍋到底）（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣食譜平台楊桃美食網；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "M 沒標人份；S1 未標人份。S2 存檔為 429 錯誤頁，無法核對"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "楊桃美食網〈酸菜豬肚湯〉（出處《人氣指數超高小館子料理》）"
+      url: https://www.ytower.com.tw/recipe/A02-1455
+      level: C
+      type: web
+      accessed: 2026-11-27
+      note: "主來源。材料 A：豬肚 1/2 個、酸菜 2 片、薑絲 50 公克；材料 B：米酒 1 大匙、蔥 1 支、薑片 2 片；調味料：鹽少許。作法：1. 豬肚放入沸水中，加材料 B 煮約 40 分鐘至軟化，撈起切斜片備用。2. 酸菜洗淨，切斜片備用。3. 取鍋加水 2000cc 加入作法 2 的酸菜片、薑絲煮至沸騰。4. 再加入作法 1 的豬肚片，再煮約 10 分鐘，加入鹽調味即可。頁面標籤：#中式家常 #一鍋到底。"
+    - id: S1
+      title: "《美味鮮湯》（小廚師美食系列七，山東科學技術出版社，ISBN 7-5331-1622-4）〈酸菜肚片湯〉"
+      url: https://18803350.s21i.faiusr.com/61/ABUIABA9GAAgs6-xlgYo8ICQ-gM.pdf
+      level: B
+      type: book
+      accessed: 2026-11-27
+      note: "對照。掃描 PDF 經免費檔案空間散佈；版權頁載 ISBN 7-5331-1622-4、山東科學技術出版社、圖字：15-95-08、TS·118。材料：猪肚 1 个、酸菜 150 克、笋 1 支、高汤 6 碗。調味料：盐 1 小匙、麻油少许。做法：1. 猪肚兩面搓洗乾淨（詳見薏仁豬肚湯），入熱水略燙一下，切成片狀；酸菜沖去浸汁，切取葉梗部分成小段；筍去殼洗淨，切成薄片備用。2. 高湯入鍋煮滾，放入肚片、酸菜、筍片同煮，等高湯滾時加鹽調味，改用小火繼續燉煮 10~15 分鐘，見肚片酥軟即可熄火。上桌前，滴下少許麻油。"
+    - id: S2
+      title: "下廚房 Garcia666 轉《家常菜秘訣一學就會》生活新實用編輯部〈酸菜肚片湯〉"
+      url: https://hanwuji.xiachufang.com/recipe/107639136/
+      level: C
+      type: personal
+      accessed: 2026-11-27
+      note: "對照來源存檔目前只有 429 Too Many Requests 錯誤訊息，未取得食譜文字；本來源內容無法核實，不用於食譜主體或比較結論。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-27, change: "起始檔：以 M 為主來源，份量與時間照 M 原量；S1、S2 作對照，數字不進主體；M 沒寫的數字留 null＋missing，不補不估", by: doubao}
+    - {version: "1.0", date: 2026-11-28, change: "Codex X1 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_tripe, concept: ing/pork_tripe, label: 豬肚, role: 主料,
+     qty: {value: 0.5, unit: piece, raw_text: "豬肚1/2個", evidence: M, status: sourced, note: "M 原量；1/2 為分數，數值欄存 0.5，原句照留 raw_text。"}}
+  - {id: i_suancai, concept: ing/suancai, label: 酸菜, form: 斜片, role: 主料,
+     qty: {value: 2, unit: slice, raw_text: "酸菜2片", evidence: M, status: sourced, note: "M 原量"}}
+  - {id: i_ginger_shred, concept: ing/ginger, label: 薑絲, form: 絲, role: 輔料,
+     qty: {value: 50, unit: g, raw_text: "薑絲50公克", evidence: M, status: sourced}}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "米酒1大匙", evidence: M, status: sourced, note: "M 材料 B，用於煮豬肚去膻"}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥, form: 段, role: 香料,
+     qty: {value: 1, unit: stalk, raw_text: "蔥1支", evidence: M, status: sourced, note: "M 材料 B"}}
+  - {id: i_ginger_slice, concept: ing/ginger, label: 薑片, form: 片, role: 香料,
+     qty: {value: 2, unit: slice, raw_text: "薑片2片", evidence: M, status: sourced, note: "M 材料 B"}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
+     qty: {value: null, unit: null, qualitative: "少許", raw_text: "鹽少許", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 水, role: 液體,
+     qty: {value: 2000, unit: ml, raw_text: "水2000cc", evidence: M, status: sourced, note: "M 原量；來源原文作 cc；結構化單位使用 ml。此為煮湯用水；煮豬肚的用水 M 未計量，不計入此量（推論）"}}
+
+states:
+  - {id: s_tripe_washed, label: 洗淨的豬肚}
+  - {id: s_tripe_soft, label: 煮至軟化的豬肚}
+  - {id: s_tripe_sliced, label: 切斜片的豬肚}
+  - {id: s_suancai_sliced, label: 切斜片的酸菜}
+  - {id: s_soup_boiling, label: 酸菜薑絲水煮至沸騰}
+  - {id: s_final, label: 酸菜肚片湯, role: final}
+
+actions:
+  - id: a1
+    technique: tech/rinse
+    term: 豬肚洗淨
+    inputs: [i_tripe]
+    outputs: [s_tripe_washed]
+    tool: tool/bowl
+    params: {duration: {min_s: null, max_s: null, raw: "M 原文未寫清洗方式、水量與時間", status: missing}}
+    completion:
+      - {observe: 豬肚, target: 洗淨（M 未寫清洗步驟；對照 S1『豬肚兩面搓洗乾淨』；S2 存檔無可核實的食譜文字）, method: 目測, note: "清洗方式、水量、時間原文沒寫，待試做；不補數字"}
+    note: "家庭改法（推論）：M 作法第 1 步直接寫『豬肚放入沸水中』，未錄清洗；依 S1 對照補洗淨步驟；S1 另指清洗詳見同書〈薏仁豬肚湯〉，本頁未錄"
+  - id: a2
+    technique: tech/boil
+    term: 豬肚放入沸水，加材料 B（米酒、蔥、薑片）煮約 40 分鐘至軟化
+    inputs: [s_tripe_washed, i_wine, i_scallion, i_ginger_slice]
+    outputs: [s_tripe_soft]
+    tool: tool/stock_pot
+    params:
+      heat: {level: null, raw: "M 未寫火力檔位（原文『放入沸水中』『煮約40分鐘』）", evidence: M}
+      duration: {min_s: 2400, max_s: 2400, raw: "煮約40分鐘至軟化", is_guide: true, evidence: M, status: sourced}
+    completion:
+      - {observe: 豬肚質地, target: 軟化（M 製作 1『煮約40分鐘至軟化』）, method: 戳（推論判斷方式，原文沒寫如何判斷）, evidence: M}
+    note: "M 沒寫是否加蓋、煮豬肚用水量；煮豬肚用水不計入 i_water（推論）"
+  - id: a3
+    technique: tech/cut
+    term: 豬肚撈起切斜片
+    inputs: [s_tripe_soft]
+    outputs: [s_tripe_sliced]
+    tool: tool/knife
+    params: {cut: {shape: cut/pian, size_mm: {min: null, max: null}, raw: "切斜片", evidence: M, note: "斜片毫米尺寸 M 沒寫"}}
+    completion:
+      - {observe: 豬肚, target: 切斜片備用（M 製作 1）, method: 目測, evidence: M}
+  - id: a4
+    technique: tech/cut
+    term: 酸菜洗淨切斜片
+    inputs: [i_suancai]
+    outputs: [s_suancai_sliced]
+    tool: tool/knife
+    params: {cut: {shape: cut/pian, size_mm: {min: null, max: null}, raw: "酸菜洗淨，切斜片", evidence: M, note: "斜片毫米尺寸 M 沒寫"}}
+    completion:
+      - {observe: 酸菜, target: 洗淨切斜片備用（M 製作 2）, method: 目測, evidence: M}
+    note: "酸菜是否先泡水去鹹、泡水水量與時間 M 沒寫"
+  - id: a5
+    technique: tech/boil
+    term: 取鍋加水 2000 毫升，下酸菜片、薑絲煮至沸騰
+    inputs: [i_water, s_suancai_sliced, i_ginger_shred]
+    outputs: [s_soup_boiling]
+    tool: tool/stock_pot
+    params:
+      heat: {level: null, raw: "M 未寫火力檔位（原文『煮至沸騰』）", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "原文沒寫煮至沸騰的時間", status: missing}
+    completion:
+      - {observe: 湯水, target: 煮至沸騰（M 製作 3）, method: 目測／聽滾沸聲（推論判斷方式）, evidence: M}
+  - id: a6
+    technique: tech/boil
+    term: 加入豬肚片再煮約 10 分鐘，加鹽調味
+    inputs: [s_soup_boiling, s_tripe_sliced, i_salt]
+    outputs: [s_final]
+    tool: tool/stock_pot
+    params:
+      heat: {level: null, raw: "M 未寫火力檔位", evidence: M}
+      duration: {min_s: 600, max_s: 600, raw: "再煮約10分鐘", is_guide: true, evidence: M, status: sourced}
+    completion:
+      - {observe: 計時, target: 肚片回湯再煮約 10 分鐘（M 製作 4）, method: 計時, evidence: M}
+      - {observe: 成品, target: M 原文沒寫最終完成狀態（只寫『加入鹽調味即可』）；待試做以肚片軟嫩、湯味適中為判斷（推論）, method: 試吃、戳}
+    note: "鹽最後下（M 製作 4）；M 主體沒有胡椒、麻油、筍、高湯、味精"
+
+serving:
+  completion:
+    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null, evidence: M}
+  sensory_target: {color: 原文沒寫, taste: 原文沒寫（M 僅鹽少許；酸菜酸香為食材本味，推論）, texture: 肚片軟化（M 製作 1）}
+
+notes:
+  weekday: "假日菜：M 煮豬肚約 40 分鐘＋肚片回湯約 10 分鐘，合計約 50 分鐘（推論；不含清洗、切配），已超過平日 20 分鐘門檻（20 分鐘門檻是家庭自訂條件，不是來源數字）；清洗、切配時間 M 沒寫，待試做計時"
+  burners: "爐口數與兩階段是否使用同一鍋，原文沒寫；兩段煮製依步驟先後進行（推論），可依家中設備安排"
+  spicy_split: "M 主體沒有辣椒、花椒、辣豆瓣，整鍋即不辣那份，一鍋兩吃不需分流；S1 亦無辣椒、花椒。S2 存檔無可核實的食譜文字。想加辣者各自在碗裡加（推論）"
+  oven_airfryer: "M、S1 皆未使用烤箱、氣炸鍋、蒸籠；S2 存檔無可核實的食譜文字。本檔用湯鍋爐上煮，無需改法。S1 書中其他食譜用到微波爐，本菜譜未採用；家庭無微波爐不影響"
+  pot_size: "湯鍋容量原文沒寫；鍋具容量需求待試做確認（推論）"
+  compare: "主體份量與調味照 M；M 未寫火力檔位，完成句為『加入鹽調味即可』，未詳述其他完成狀態。S1（出版書《美味鮮湯》，筍、高湯、麻油）僅作對照；S2 存檔為 429 錯誤頁，無法核對內容，不作比較依據"
+  missing: "原文沒寫：人份；豬肚清洗方式／水量／時間；煮豬肚火力檔位、是否加蓋、煮豬肚用水；酸菜是否泡水去鹹及泡水水量時間；肚片／酸菜片／薑絲的毫米尺寸；酸菜薑絲水煮滾時間；最終成品色澤、口感與湯味完成狀態；上桌溫度與食用時限；筍、高湯、麻油、胡椒等配料；湯鍋大小"
+  decisions: "主來源選 M：楊桃美食網、內容出自出版書《人氣指數超高小館子料理》，台式家常湯品，兩階段煮法與時間完整。S1 為出版書《美味鮮湯》的對照版本（筍、高湯、麻油，小火 10~15 分鐘）；S2 存檔為 429 錯誤頁，內容無法核實，不作比較依據"

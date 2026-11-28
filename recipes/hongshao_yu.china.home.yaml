@@ -1,0 +1,161 @@
+# 紅燒魚（家常版）— 起始草稿，規格 v1.0
+# 主來源 M＝楊桃美食網轉載出版書《魚的40種調味絕招》B01-384：份量、刀工、火力、完成狀態只用 M 的數字，不混拼。
+# S1、S2 僅作比較表與 notes，不進主體比例。
+# 家用條件：兩口瓦斯爐（同時最多 2 口）；廚具＝電鍋、炒鍋、平底鍋、湯鍋；無烤箱、氣炸鍋、蒸籠、溫度計、料理秤。
+schema_version: "1.0"
+recipe:
+  id: hongshao_yu.china.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/hongshao_yu
+  name: {zh_hant: 紅燒魚, zh_hans: 红烧鱼, en: Red-braised fish}
+  variant: 家常版
+  summary: 整尾魚兩面劃刀煎至焦黃，蔥薑辣椒爆香後回鍋，加醬油、糖、水煮滾轉小火燒至湯汁收乾。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "主來源載體為台灣食譜平台楊桃美食網，頁面標註 #中式家常；菜品本身為泛中式家常菜，傳統菜系歸屬來源未點名，此為編者分類", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源載體為台灣食譜平台；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "M 沒寫幾人份；主料為魚 1 條"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "《魚的40種調味絕招》紅燒魚（楊桃美食網轉載 B01-384）"
+      url: https://www.ytower.com.tw/recipe/B01-384
+      level: B
+      type: book
+      accessed: 2026-11-28
+      note: "主來源。頁面標註出處為出版書《魚的40種調味絕招》；本檔實際開啟的是楊桃美食網網頁轉載頁，原書未直接翻閱，書名版次與作者未核對。份量、刀工、火力、完成狀態只用本來源數字。"
+    - id: S1
+      title: "Echo's Kitchen 盈盈小筑〈【红烧鱼】Braised Fish〉（2009-06-23）"
+      url: http://www.echoskitchen.com/2009/06/stew-fish.html?m=1
+      level: C
+      type: personal
+      accessed: 2026-11-28
+      note: "比較來源預定使用；本次來源存檔為空，且機器檢查顯示抓不到，內容未能核對，故不採用其資訊。"
+    - id: S2
+      title: "無毒農〈鮮甜海味在家做！澎湖野生黃雞魚（家常紅燒法）〉（2025-12-08）"
+      url: https://greenbox.tw/Blog/BlogPostNew/8363/
+      level: C
+      type: web
+      accessed: 2026-11-28
+      note: "比較用，不進主體。品牌部落格；調味份量多為適量／少許，完成狀態（魚眼突出、醬汁濃稠光亮）供對照。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-28, change: "起始草稿：主來源 M（楊桃轉載出版書）；S1、S2 僅作比較與 notes，不進主體數字", by: doubao}
+    - {version: "1.0", date: 2026-11-28, change: "Codex X2 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_fish, concept: ing/fish_whole, label: 魚（整尾，魚種未指定）, role: 主料,
+     qty: {value: 1, unit: piece, raw_text: "魚1條", evidence: M, status: sourced},
+     note: "魚種、重量原文沒寫"}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥, form: 段, role: 輔料,
+     qty: {value: 2, unit: stalk, raw_text: "蔥2根", evidence: M, status: sourced}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑, form: 絲, role: 輔料,
+     qty: {value: 50, unit: g, raw_text: "薑50克", evidence: M, status: sourced}}
+  - {id: i_chili, concept: ing/chili_fresh, label: 紅辣椒, form: 細絲, role: 香料,
+     qty: {value: 2, unit: stalk, raw_text: "紅辣椒2根", evidence: M, status: sourced},
+     note: "去蒂及籽；屬辣味配料，見 notes.spicy_split"}
+  - {id: i_soy, concept: ing/soy_sauce, label: 醬油, role: 調料,
+     qty: {value: 2, unit: tbsp, raw_text: "醬油2大匙", evidence: M, status: sourced}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 細砂糖, role: 調料,
+     qty: {value: 1, unit: tsp, raw_text: "細砂糖1小匙", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 水, role: 液體,
+     qty: {value: 250, unit: ml, raw_text: "水250㏄", evidence: M, status: sourced, note: "㏄＝毫升；原文單位照存"}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 食用油（煎魚用）, role: 油脂,
+     qty: {value: 3, unit: tbsp, raw_text: "放入約3大匙油", evidence: M, status: sourced, note: "原文帶「約」"}}
+
+states:
+  - {id: s_fish_scored, label: 劃好刀的魚}
+  - {id: s_scallion_cut, label: 蔥段}
+  - {id: s_ginger_cut, label: 薑絲}
+  - {id: s_chili_cut, label: 紅辣椒細絲}
+  - {id: s_hot_oil, label: 略冒煙的熱油}
+  - {id: s_fish_fried, label: 兩面焦黃、起鍋瀝油的魚}
+  - {id: s_aromatic, label: 爆香的蔥薑辣椒}
+  - {id: s_braised, label: 燒至湯汁收乾的魚}
+  - {id: s_final, label: 紅燒魚, role: final}
+
+actions:
+  - id: a1
+    technique: tech/score
+    term: 魚身兩側各劃2刀
+    inputs: [i_fish]
+    outputs: [s_fish_scored]
+    tool: tool/knife
+    params: {cut: {raw: "在魚身兩側各劃2刀，劃深至骨頭處但不切斷", evidence: M}}
+    completion: [{observe: 魚身, target: 兩側各劃2刀、深至骨頭處但不切斷, method: 目測, evidence: M}]
+  - id: a2
+    technique: tech/cut
+    term: 蔥切段；薑去皮切絲；紅辣椒去蒂及籽切細絲
+    inputs: [i_scallion, i_ginger, i_chili]
+    outputs: [s_scallion_cut, s_ginger_cut, s_chili_cut]
+    tool: tool/knife
+    params: {cut: {raw: "蔥洗淨，切段；薑去皮，切絲；紅辣椒洗淨，去蒂及籽後切成細絲", evidence: M}}
+    completion: [{observe: 配料, target: 切好備用, method: 目測, evidence: M}]
+  - id: a3
+    technique: tech/heat_oil
+    term: 熱鍋下油，開中火燒至油略冒煙
+    inputs: [i_oil]
+    outputs: [s_hot_oil]
+    tool: tool/frying_pan
+    params:
+      heat: {level: heat/medium, raw: "開中火", evidence: M}
+      temperature: {target: oil, min_c: null, max_c: null, raw: "油略冒煙", evidence: M}
+    completion: [{observe: 油, target: 略冒煙, method: 目測, evidence: M}]
+    note: "家庭改法（推論）：原文未指明鍋具；本版煎魚用平底鍋。油溫只保留原文「略冒煙」，不換算成度數"
+  - id: a4
+    technique: tech/pan_fry
+    term: 魚以小火煎至兩面焦黃，起鍋稍微瀝油
+    inputs: [s_fish_scored, s_hot_oil]
+    outputs: [s_fish_fried]
+    tool: tool/frying_pan
+    params:
+      heat: {level: heat/low, raw: "以小火煎", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "煎多久原文沒寫", status: missing}
+    completion: [{observe: 魚皮色澤, target: 兩面焦黃, method: 目測, evidence: M}]
+  - id: a5
+    technique: tech/aromatics
+    term: 鍋中放蔥、薑、紅辣椒爆香
+    inputs: [s_scallion_cut, s_ginger_cut, s_chili_cut]
+    outputs: [s_aromatic]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "爆香火力原文沒寫", evidence: null}
+      duration: {min_s: null, max_s: null, raw: "爆香時間原文沒寫", status: missing}
+    completion: [{observe: 香氣, target: 爆香、出香, method: 聞, evidence: M}]
+    note: "家庭改法（推論）：原文「作法3的鍋繼續加熱」未指明鍋具；本版紅燒用炒鍋。魚此時先起鍋備用（M）"
+  - id: a6
+    technique: tech/braise_red
+    term: 魚放回，加醬油、細砂糖、水，中火煮至水滾後關小火，不時剷動魚身以防沾鍋，煮至湯汁收乾
+    inputs: [s_aromatic, s_fish_fried, i_soy, i_sugar, i_water]
+    outputs: [s_braised]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "開中火並加入調味料煮至水滾後關小火", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "燒煮時間原文沒寫", status: missing}
+      agitation: {mode: 不時剷動魚身以防沾鍋, continuous: false}
+    completion:
+      - {observe: 湯汁, target: 煮至水滾, method: 目測／聽, evidence: M}
+      - {observe: 湯汁, target: 煮至湯汁收乾, method: 目測, evidence: M}
+  - id: a7
+    technique: tech/plate
+    term: 裝盤
+    inputs: [s_braised]
+    outputs: [s_final]
+    completion: [{observe: 成品, target: 擺盤樣式原文沒寫, method: null}]
+
+serving:
+  completion:
+    - {observe: 上桌溫度與食用時限, target: 原文沒寫, method: null}
+  sensory_target: {color: 魚面兩面焦黃、醬汁收乾裹於魚身（依 M 煎魚與收汁描述）, taste: 原文沒寫, texture: 原文沒寫}
+
+notes:
+  weekday: "平日（家庭自訂門檻：≤20 分鐘）可行性：M 原文沒寫總時間，也沒寫各段時間，待試做計時。S1 存檔為空，無法核對其時間；S2 燜煮 8–12 分鐘，為其他來源，不進主體判斷。"
+  burners: "全程預設 1 口爐、1 只鍋（家庭改法推論：煎魚用平底鍋、紅燒用炒鍋；兩階段前後使用，不同時佔爐）。任一時刻不超過 2 口。"
+  spicy_split: "M 的紅辣椒 2 根在步驟 4 與蔥薑一起下鍋爆香、同鍋燒煮，無法在最後分出。不辣那份要另外做（推論）：省略紅辣椒，其餘按 M 步驟；若要一鍋兩吃，需另起一鍋燒不辣那份，辣椒另盛小碟由要辣的人自行添加（推論，無來源數字）。"
+  oven_airfryer: "M 未使用烤箱、氣炸鍋、蒸籠，不需改用其他廚具。"
+  tools_adapt: "原文未指明鍋具；本版煎魚用平底鍋、紅燒用炒鍋，均屬家庭改法（推論）。無料理溫度計、無料理秤；完成判斷只用看、聞、聽、剷動與試吃等感官。"
+  compare: "S1 存檔為空且未能抓取，內容無法核對，不列比較細節。S2（無毒農）：魚 1 條、薑 5–6 片、蔥 2–3 根，鹽／米酒／醬油／油／水多為適量；醃 10–15 分鐘，中火熱鍋、中小火慢煎，小火燜煮 8–12 分鐘。僅供對照，不進主體數字。"
+  missing: "原文沒寫：份數、魚種與魚重、煎魚時間、爆香火力與時間、燒煮時間、醃漬步驟、蒜、料酒、醋、鹽、上桌溫度與時限、成品口感、鍋具種類與大小。"
+  no_scale: "無秤版：M 僅薑給 50 克，無秤時如何量取原文沒寫；其餘以條、大匙、小匙、㏄為單位，照原文量杯匙量取，不換算克數。"
+  source_access: "愛料理（icook.tw）搜尋頁 robots.txt 禁止自動存取，本次未開啟任何愛料理頁面，故未列入 sources；其餘搜尋到但未親自開啟的頁面亦不列入。"

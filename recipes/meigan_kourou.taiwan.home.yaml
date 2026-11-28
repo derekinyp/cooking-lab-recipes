@@ -1,0 +1,197 @@
+# 梅干扣肉（客家家常版・電鍋蒸）— 規格 v1.0，起始草稿
+# 主來源 M＝楊桃美食網〈梅乾菜扣肉〉（出處《快樂廚房雜誌第106期》）：
+#   主料、調味、份量、時間、刀工只用 M 的數字，不與 S1／S2 混拼；S1／S2 僅放比較表與 notes。
+# 家庭條件：兩口瓦斯爐；電鍋（大同式外鍋加水蒸）、炒鍋、平底鍋、湯鍋；無烤箱、氣炸鍋、蒸籠、溫度計、料理秤。
+schema_version: "1.0"
+recipe:
+  id: meigan_kourou.taiwan.home
+  version: "1.0"
+  kind: dish
+  dish_concept: dish/meigan_kourou
+  name: {zh_hant: 梅干扣肉, zh_hans: 梅干扣肉, en: "Pork belly with preserved mustard greens (Mei Cai Kou Rou)"}
+  variant: 客家家常版（推論）
+  summary: 五花肉煮過、扎孔後皮朝下煎至表面起泡，與炒至水分收乾的梅乾菜排入碗中，淋略煮勻的肉片湯汁，電鍋蒸2小時後倒扣裝盤；肉蒸軟為推論，原文沒寫完成狀態。
+  cuisine:
+    - {id: cuisine/taiwanese.home, basis: "主來源為楊桃美食網家常做法，頁面標註 #中式家常（編者分類）", claim: primary, evidence: M}
+    - {id: region/taiwan, basis: "主來源為台灣食譜平台；平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: M}
+    - {id: cuisine/yue.hakka, basis: "梅菜扣肉傳統上歸東江客家菜（推論；本批來源內文未逐字標註客家）", claim: origin_claim}
+  flavor_template: null
+  servings: {value: null, status: missing, note: "M 未標份數；主料五花肉 800 公克"}
+  status: cross_checked
+  sources:
+    - id: M
+      title: "楊桃美食網〈梅乾菜扣肉〉（出處《快樂廚房雜誌第106期》）"
+      url: "https://www.ytower.com.tw/recipe/iframe-recipe.asp?seq=A02-3643"
+      level: B
+      type: book
+      accessed: 2026-11-28
+      note: "主來源。標籤 #中式家常 #電鍋料理。五花肉800公克、梅乾菜150公克；整塊肉滾水煮約40分鐘，竹籤扎孔塗醬油晾乾，煎至表面起泡切約1.5公分厚片；梅乾菜加調味料B小火炒至水分收乾；蒜末炒香後下肉片、米酒、水、調味料A略煮勻；排入碗中蓋梅乾菜淋湯汁，電鍋蒸2小時後倒扣。"
+    - id: S1
+      title: "楊桃美食網〈梅干扣肉〉（示範者邱平英）"
+      url: "https://www.ytower.com.tw/recipe/A02-008"
+      level: C
+      type: web
+      accessed: 2026-11-28
+      note: "對照（一鍋到底家常版）。五花肉1斤、梅干菜2卷；醬油6大匙、米酒3大匙、糖1大匙、鹽少許、水適量。川燙至表皮熟透切約1公分厚片；肉與調味料入鍋加水淹過，大火水開後轉小火煮20分鐘，放入洗淨切小段梅干菜再煮15分；放涼排碗皮朝下填梅干菜，食用前再蒸10分鐘倒扣。梅干菜以冷水清洗5～6次去除多餘鹽份與沙塵。頁面標籤 #中式家常 #快速上桌 #30 分鐘內 #新手入門 #一鍋到底。"
+    - id: S2
+      title: "楊桃美食網〈梅干扣肉(2)〉（出處《快樂廚房雜誌第44期》）"
+      url: "https://www.ytower.com.tw/recipe/A02-792"
+      level: B
+      type: book
+      accessed: 2026-11-28
+      note: "對照。五花肉片300克、梅干菜150克、蒜頭10粒、辣椒2支、八角2粒、太白粉水適量；醬油1/2杯、胡椒1小匙、香菇精粉2小匙、糖1大匙、米酒1大匙、高湯800cc。蒜片辣椒片八角爆香後下梅干菜炒香；肉片滾水汆燙；湯鍋加肉片、梅干菜與所有調味料，大火煮至沸騰後蓋鍋小火悶煮50分鐘；扣碗壓緊扣盤；湯汁1杯煮沸以太白粉水勾芡淋上。"
+  extracted_by: [doubao]
+  changelog:
+    - {version: "1.0", date: 2026-11-28, change: "起始草稿：以 M 為主來源撰寫；S1、S2 作比較；家庭廚具改法與不辣分版標推論，未自編數字", by: doubao}
+    - {version: "1.0", date: 2026-11-28, change: "Codex X4 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+
+ingredients:
+  - {id: i_pork, concept: ing/pork_belly, label: 五花肉, form: 整塊帶皮, role: 主料,
+     qty: {value: 800, unit: g, raw_text: "五花肉800公克", evidence: M, status: sourced}}
+  - {id: i_meigan, concept: ing/meigan_cai, label: 梅乾菜, form: 切碎, role: 輔料,
+     qty: {value: 150, unit: g, raw_text: "梅乾菜150公克", evidence: M, status: sourced,
+       note: "vocab 無對應食材概念"}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜末, form: 末, role: 輔料,
+     qty: {value: 1, unit: tbsp, raw_text: "蒜末1大匙", evidence: M, status: sourced}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 香料,
+     qty: {value: 10, unit: g, raw_text: "薑片10公克", evidence: M, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥段, form: 段, role: 香料,
+     qty: {value: 2, unit: stalk, raw_text: "蔥段2根", evidence: M, status: sourced}}
+  - {id: i_water, concept: ing/water, label: 水, role: 液體,
+     qty: {value: 300, unit: ml, raw_text: "水300CC", evidence: M, status: sourced,
+       note: "原文單位 CC；照原文保留，不換算"}}
+  - {id: i_oil_pan, concept: ing/cooking_oil, label: 沙拉油（煎肉用）, role: 油脂,
+     qty: {value: 1, unit: tbsp, raw_text: "鍋內放入1大匙油", evidence: M, status: sourced,
+       note: "M 材料表總沙拉油2大匙；作法3煎肉1大匙、作法5炒蒜末肉片1大匙，分項列出"}}
+  - {id: i_oil_stir, concept: ing/cooking_oil, label: 沙拉油（炒蒜末肉片用）, role: 油脂,
+     qty: {value: 1, unit: tbsp, raw_text: "鍋中加入1大匙油", evidence: M, status: sourced}}
+  - {id: i_soy_a, concept: ing/soy_sauce, label: 醬油（調味料A）, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "醬油1大匙", evidence: M, status: sourced}}
+  - {id: i_sweet_bean, concept: ing/sweet_bean_paste, label: 甜麵醬（調味料A）, role: 調料,
+     qty: {value: 1, unit: tbsp, raw_text: "甜麵醬1大匙", evidence: M, status: sourced,
+       note: "vocab 無對應食材概念"}}
+  - {id: i_sugar_a, concept: ing/white_sugar, label: 糖（調味料A）, role: 調料,
+     qty: {value: 2, unit: tbsp, raw_text: "糖2大匙", evidence: M, status: sourced}}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒（調味料A）, role: 調料,
+     qty: {value: 4, unit: tbsp, raw_text: "米酒4大匙", evidence: M, status: sourced}}
+  - {id: i_star_anise, concept: ing/star_anise, label: 八角（調味料B）, role: 香料,
+     qty: {value: 4, unit: piece, raw_text: "八角4粒", evidence: M, status: sourced,
+       note: "原文計數單位「粒」，暫對應 unit/piece；見「建議新增詞」"}}
+  - {id: i_sugar_b, concept: ing/white_sugar, label: 糖（調味料B，梅乾菜用）, role: 調料,
+     qty: {value: 2, unit: tbsp, raw_text: "糖2大匙", evidence: M, status: sourced}}
+  - {id: i_soy_c, concept: ing/soy_sauce, label: 醬油（調味料C，塗肉皮用）, role: 調料,
+     qty: {value: null, unit: null, qualitative: 少許, raw_text: "醬油少許", evidence: M, status: sourced}}
+
+states:
+  - {id: s_pork_boiled, label: 滾水煮過的整塊五花肉}
+  - {id: s_skin_pricked, label: 扎孔、塗醬油晾乾的肉方}
+  - {id: s_pork_seared, label: 煎至表面起泡的肉方}
+  - {id: s_pork_sliced, label: 約1.5公分厚肉片}
+  - {id: s_meigan_fried, label: 炒至水分收乾的梅乾菜}
+  - {id: s_pork_sauced, label: 略煮勻的肉片與湯汁}
+  - {id: s_steamed, label: 電鍋蒸好的扣肉}
+  - {id: s_final, label: 梅干扣肉（倒扣裝盤）, role: final}
+
+actions:
+  - id: a1
+    technique: tech/boil
+    term: 整塊五花肉洗淨，入滾水加薑片、蔥段煮約40分鐘，撈出瀝乾
+    inputs: [i_pork, i_ginger, i_scallion]
+    outputs: [s_pork_boiled]
+    tool: tool/stock_pot
+    params:
+      heat: {level: null, raw: "入滾水中（原文未寫爐火檔位）", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "約煮40分鐘", is_guide: true, evidence: M, status: sourced}
+    completion:
+      - {observe: 五花肉, target: 撈出瀝乾備用（原文）；煮到多熟的判斷條件原文沒寫, method: 目測, evidence: M}
+    note: "薑片、蔥段在此步下鍋（M 作法1）。"
+  - id: a2
+    technique: tech/cut
+    term: 竹籤在豬皮表面扎孔，越密越好；塗上少許醬油於皮上，晾乾備用
+    inputs: [s_pork_boiled, i_soy_c]
+    outputs: [s_skin_pricked]
+    tool: null
+    params:
+      duration: {min_s: null, max_s: null, raw: "晾乾多久原文沒寫", status: missing}
+    completion:
+      - {observe: 豬皮, target: 扎孔越密越好；皮上塗好醬油、晾乾（原文）, method: 目測, evidence: M}
+    note: "竹籤扎孔屬表面前處理；以切配作較寬泛的技法分類。"
+  - id: a3
+    technique: tech/pan_fry
+    term: 鍋內放1大匙油，五花肉皮朝下煎至表面起泡
+    inputs: [s_skin_pricked, i_oil_pan]
+    outputs: [s_pork_seared]
+    tool: tool/frying_pan
+    params:
+      heat: {level: null, raw: "原文沒寫火力檔位", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "煎多久原文沒寫", status: missing}
+    completion:
+      - {observe: 肉皮, target: 表面起泡（原文「煎至表面起泡」）, method: 目測, evidence: M}
+    note: "家庭改法（推論）：M 只寫「鍋內」，家庭可用平底鍋；無深炸設備，不採油炸。"
+  - id: a4
+    technique: tech/cut
+    term: 肉方取出切約1.5公分厚肉片
+    inputs: [s_pork_seared]
+    outputs: [s_pork_sliced]
+    tool: tool/knife
+    params:
+      cut: {shape: cut/pian, size_mm: {min: null, max: null}, raw: "切約1.5公分厚肉片", evidence: M}
+    completion:
+      - {observe: 肉片, target: 厚約1.5公分（原文）, method: 目測, evidence: M}
+  - id: a5
+    technique: tech/dry_fry
+    term: 梅乾菜洗淨切碎，加調味料B（八角、糖）小火炒至水分收乾，取出備用
+    inputs: [i_meigan, i_star_anise, i_sugar_b]
+    outputs: [s_meigan_fried]
+    tool: tool/wok
+    params:
+      heat: {level: heat/low, raw: "小火炒至水分收乾", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "炒多久原文沒寫", status: missing}
+    completion:
+      - {observe: 梅乾菜, target: 水分收乾（原文「炒至水分收乾」）, method: 目測, evidence: M}
+    note: "梅乾菜是否先泡水、泡水多久，M 沒寫；對照 S1 冷水清洗5～6次、S2 泡水洗淨。"
+  - id: a6
+    technique: tech/stir_fry_mixed
+    term: 鍋中加1大匙油，蒜末炒香，下厚肉片、米酒、水、調味料A略煮勻
+    inputs: [s_pork_sliced, i_garlic, i_oil_stir, i_wine, i_water, i_soy_a, i_sweet_bean, i_sugar_a]
+    outputs: [s_pork_sauced]
+    tool: tool/wok
+    params:
+      heat: {level: null, raw: "原文沒寫火力檔位", evidence: M}
+      duration: {min_s: null, max_s: null, raw: "略煮多久原文沒寫", status: missing}
+    completion:
+      - {observe: 鍋中料, target: 略煮勻（原文「略煮勻」）；勻的程度原文沒寫, method: 目測, evidence: M}
+  - id: a7
+    technique: tech/steam
+    term: 肉片排入碗內，蓋上梅乾菜，淋上作法5湯汁，放入電鍋蒸2小時
+    inputs: [s_pork_sauced, s_meigan_fried]
+    outputs: [s_steamed]
+    tool: tool/electric_cooker
+    params:
+      duration: {min_s: 7200, max_s: 7200, raw: "放入電鍋蒸2小時", is_guide: true, evidence: M, status: sourced}
+      heat: {level: null, raw: "電鍋蒸煮，原文未寫爐火檔位", evidence: M}
+    completion:
+      - {observe: 扣肉, target: 蒸好的軟爛狀態 M 原文沒寫；以筷子戳得動、肉軟爛為準（推論，感官判斷，不用溫度計）, method: 戳、目測, note: "完成判斷為家庭推論；M 未寫熟度狀態"}
+    note: "家庭改法（推論）：大同式電鍋外鍋加水蒸；外鍋加水量 M 沒寫，不自編。"
+  - id: a8
+    technique: tech/plate
+    term: 取出倒扣入盤
+    inputs: [s_steamed]
+    outputs: [s_final]
+    completion:
+      - {observe: 成品, target: 倒扣入盤（原文「再到扣入盤內即可」，「到扣」為原文筆誤）, method: 目測, evidence: M}
+
+serving:
+  completion:
+    - {observe: 上桌溫度與食用時限, target: 原文沒寫, method: null}
+  sensory_target: {texture: "M 原文沒寫；對照此類菜品為肉軟爛、肥而不膩（推論）", taste: "M 原文沒寫；鹹甜醬香（推論）"}
+
+notes:
+  weekday: "假日菜：M 記五花肉「約煮40分鐘」、電鍋「蒸2小時」，另煎肉、炒梅乾菜、略煮的時間原文沒寫；總時長超過平日 20 分鐘門檻（20 分鐘為家庭條件，非來源數字）。"
+  burners: "先後各用 1 口瓦斯爐：湯鍋煮肉（a1）、平底鍋煎肉（a3）、炒鍋炒梅乾菜（a5）與略煮肉片（a6）；電鍋蒸製（a7）不佔瓦斯爐口。炒梅乾菜可與煮肉同時進行，那時最多 2 口，任何時刻不超過 2 口。"
+  spicy_split: "主體 M 沒有辣椒、花椒、辣豆瓣、胡椒，整鍋即為不辣那份。對照 S2：辣椒2支在作法2與蒜片、八角一起爆香（一開始下鍋），無法事後分出；若依 S2 做法，不辣那份要另外做（推論：爆香前先分出一份蒜末、八角、梅乾菜用另一鍋炒，辣椒整支不入不辣鍋；不辣鍋的份量無來源數字，不補）。"
+  oven_airfryer: "M 未用烤箱、氣炸鍋、蒸籠；最後蒸製原文即指定電鍋。若改用其他來源的蒸籠做法：家庭改法（推論）為電鍋外鍋加水蒸，不加自編水量；若來源用油炸肉皮，家庭無深炸設備，可改平底鍋油煎（推論）。"
+  no_scale: "M 份量為公克／CC／大匙／根／粒；家中無料理秤，公克項看包裝標重目測（推論，無換算數字）；大匙、杯照 M 原文保留，不換算公克或 CC。"
+  compare: "S1（C，一鍋到底）：五花肉1斤、梅干菜2卷、醬油6大匙、米酒3大匙、糖1大匙、鹽少許、水適量；大火煮滾轉小火20分，加梅干菜再煮15分，食用前蒸10分。S2（B，雜誌44期）：五花肉片300克、梅干菜150克、蒜頭10粒、辣椒2支、八角2粒、太白粉水適量；醬油1/2杯、胡椒1小匙、香菇精粉2小匙、糖1大匙、米酒1大匙、高湯800cc；大火沸騰後小火悶50分，湯汁1杯太白粉水勾芡。"
+  missing: "原文沒寫：份數；梅乾菜是否先泡水及泡水時間；煎肉時間與火力；炒梅乾菜時間；略煮肉片時間與火力；各步驟爐火檔位（僅 a5 寫小火）；肉煮好的熟度判斷；豬皮晾乾時間；蒸好的軟爛完成狀態；電鍋外鍋加水量與檔位；鍋碗尺寸；上桌溫度與食用時限。"
+  pot_size: "扣碗與鍋具尺寸 M 沒寫。已知：五花肉 800 公克整塊、梅乾菜 150 公克；建議選裝得下肉片排鋪、能蓋鍋的深碗（推論，無來源數字）。"

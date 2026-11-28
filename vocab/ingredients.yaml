@@ -165,3 +165,9 @@ concepts:
   - {id: ing/pork_tripe, zh: 豬肚, alt: []}
   - {id: ing/suancai, zh: 酸菜, alt: [酸白菜]}
   - {id: ing/rou_gen, zh: 肉羹, alt: [肉羹塊], note: "現成肉羹成品；W50 香菇肉羹主來源當主料"}
+  - {id: ing/green_bamboo_shoot, zh: 綠竹筍, alt: [綠竹筍] }
+  - {id: ing/meigan_cai, zh: 梅乾菜, alt: [梅干菜]}
+  - {id: ing/sweet_bean_paste, zh: 甜麵醬, alt: []}
+  - {id: ing/napa_cabbage, zh: 大白菜, alt: []}
+  - {id: ing/red_scallion_meat_sauce, zh: 紅蔥肉燥, alt: []}
+  - {id: ing/shiitake, zh: 香菇, alt: [泡發香菇]}
