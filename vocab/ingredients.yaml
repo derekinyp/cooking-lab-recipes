@@ -171,3 +171,5 @@ concepts:
   - {id: ing/napa_cabbage, zh: 大白菜, alt: []}
   - {id: ing/red_scallion_meat_sauce, zh: 紅蔥肉燥, alt: []}
   - {id: ing/shiitake, zh: 香菇, alt: [泡發香菇]}
+  - {id: ing/fennel_seed, zh: 小茴香, alt: [小茴], note: "滷雞腿；楊桃萬用滷汁滷包"}
+  - {id: ing/licorice, zh: 甘草, alt: [], note: "滷雞腿；楊桃萬用滷汁滷包"}

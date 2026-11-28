@@ -1,0 +1,194 @@
+schema_version: '1.0'
+recipe:
+  id: lu_jitui.taiwan.home
+  version: '1.0'
+  kind: dish
+  dish_concept: dish/lu_jitui
+  name: {zh_hant: 台式滷雞腿, zh_hans: 台式卤鸡腿, en: "Taiwanese Braised Chicken Drumsticks"}
+  variant: 台式家常版
+  summary: '先依萬用滷汁配方煮好滷汁，棒棒腿煎到上色後倒入滷汁煮滾，小火微滾再關火燜到入味，鹹香帶甜。'
+  cuisine:
+  - {id: cuisine/taiwanese.home, basis: '台式家常滷味主菜，以醬油、糖、米酒為基底的滷汁滷棒棒腿，是台灣便當與自助餐常見菜色。', claim: primary, evidence: S1}
+  - {id: region/taiwan, basis: '主來源為台灣食譜網站，菜名標示台式，材料與作法皆為台灣家庭常見做法。', claim: primary, evidence: S1}
+  servings: {value: 2, status: inferred, note: '補寫依據：主來源為棒棒腿 2 隻；依常識表肉類主菜每人 100–120 公克（生重）估算為 2 人份，一人一隻。'}
+  status: machine_checked
+  sources:
+  - id: S1
+    title: 楊桃美食網〈台式滷雞腿〉
+    url: 'https://www.ytower.com.tw/recipe/A03-1277'
+    level: C
+    type: web
+    accessed: '2026-11-28'
+    note: '主來源：雞腿 2 隻、台式滷汁 600 ㏄；熱鍋加油煎炒上色、加入滷汁煮至沸騰後轉小火煮至入味。本版以自製滷汁取代現成台式滷汁，取 600 毫升滷入雞腿。'
+  - id: S2
+    title: 楊桃美食網〈滷雞腿(4)〉
+    url: 'https://www.ytower.com.tw/recipe/A03-2272'
+    level: C
+    type: web
+    accessed: '2026-11-28'
+    note: '參考來源：滷雞腿的蔥薑爆香、滷包與醬油米酒糖用水煮開，以及雞腿下鍋後開蓋微滾約 5 分鐘、蓋上鍋蓋關火燜 20 分鐘。'
+  - id: S3
+    title: 楊桃美食網〈萬用滷汁〉
+    url: 'https://www.ytower.com.tw/recipe/iframe-recipe.asp?seq=I03-1308'
+    level: C
+    type: web
+    accessed: '2026-11-28'
+    note: '參考來源：自製滷汁與滷包配方（草果、小茴、花椒、甘草、八角、肉桂、蔥、薑、紅辣椒、水、醬油、細砂糖、米酒）及煮法。'
+  extracted_by: [doubao]
+ingredients:
+- {id: i_a, concept: ing/chicken_leg_bone_in, label: '雞腿（棒棒腿）', role: 主料, qty: {value: 2, unit: piece, raw_text: '雞腿 2隻', evidence: S1, status: sourced}}
+- {id: i_oil_sear, concept: ing/cooking_oil, label: 沙拉油, role: 油脂, qty: {value: 2, unit: tbsp, raw_text: '熱鍋加入2大匙油', evidence: S1, status: sourced}, note: '煎雞腿用。也可用 S2「熱鍋下2大匙沙拉油」。'}
+- {id: i_oil_sauce, concept: ing/cooking_oil, label: 沙拉油, role: 油脂, qty: {qualitative: 少許, raw_text: '少許沙拉油', evidence: S3, status: sourced}, note: '煮滷汁爆香用。來源寫少許，不另補數字。'}
+- {id: i_caoguo, concept: ing/caoguo, label: 草果, role: 香料, qty: {value: 1, unit: piece, raw_text: '草果 1顆', evidence: S3, status: sourced}}
+- {id: i_fennel, concept: ing/fennel_seed, label: 小茴, role: 香料, qty: {value: 3, unit: g, raw_text: '小茴 3公克', evidence: S3, status: sourced}}
+- {id: i_pepper, concept: ing/sichuan_pepper, label: 花椒, role: 香料, qty: {value: 4, unit: g, raw_text: '花椒 4公克', evidence: S3, status: sourced}}
+- {id: i_licorice, concept: ing/licorice, label: 甘草, role: 香料, qty: {value: 3, unit: g, raw_text: '甘草 3公克', evidence: S3, status: sourced}}
+- {id: i_anise, concept: ing/star_anise, label: 八角, role: 香料, qty: {value: 5, unit: g, raw_text: '八角 5公克', evidence: S3, status: sourced}}
+- {id: i_cassia, concept: ing/cassia_bark, label: 肉桂, role: 香料, qty: {value: 10, unit: g, raw_text: '肉桂 10公克', evidence: S3, status: sourced}}
+- {id: i_scallion, concept: ing/scallion, label: 蔥, role: 香料, qty: {value: 2, unit: piece, raw_text: '蔥 2根', evidence: S3, status: sourced}}
+- {id: i_ginger, concept: ing/ginger, label: 薑, role: 香料, qty: {value: 50, unit: g, raw_text: '薑 50公克', evidence: S3, status: sourced}}
+- {id: i_chili, concept: ing/chili_fresh, label: 紅辣椒, role: 香料, qty: {value: 2, unit: piece, raw_text: '紅辣椒 2根', evidence: S3, status: sourced}}
+- {id: i_water, concept: ing/water, label: 水, role: 液體, qty: {value: 1500, unit: ml, raw_text: '水 1500㏄', evidence: S3, status: sourced}}
+- {id: i_soy, concept: ing/soy_sauce, label: 醬油, role: 調料, qty: {value: 400, unit: ml, raw_text: '醬油 400㏄', evidence: S3, status: sourced}}
+- {id: i_sugar, concept: ing/white_sugar, label: 細砂糖, role: 調料, qty: {value: 120, unit: g, raw_text: '細砂糖 120公克', evidence: S3, status: sourced}}
+- {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料, qty: {value: 50, unit: ml, raw_text: '米酒 50㏄', evidence: S3, status: sourced}}
+states:
+- {id: s_prepped, label: 擦乾劃刀的棒棒腿, role: intermediate}
+- {id: s_bag, label: 包好的滷包, role: intermediate}
+- {id: s_cut, label: 切好的蔥薑辣椒, role: intermediate}
+- {id: s_sauteed, label: 爆香後的蔥薑辣椒, role: intermediate}
+- {id: s_water, label: 已滾的滷汁高湯, role: intermediate}
+- {id: s_seasoned, label: 加了醬油糖與滷包的滷汁, role: intermediate}
+- {id: s_sauce, label: 煮好的萬用滷汁, role: intermediate}
+- {id: s_seared, label: 煎上色的棒棒腿, role: intermediate}
+- {id: s_boiling, label: 煮滾的滷汁與雞腿, role: intermediate}
+- {id: s_simmered, label: 小火微滾過的雞腿, role: intermediate}
+- {id: s_braised, label: 燜入味的雞腿, role: intermediate}
+- {id: s_final, label: 台式滷雞腿, role: final}
+actions:
+- id: a1
+  technique: tech/cut
+  term: '用廚房紙巾把雞腿徹底擦乾，在肉厚處劃一刀幫助入味。下鍋前表面要乾，熱油才比較不會噴濺。'
+  inputs: [i_a]
+  outputs: [s_prepped]
+  tool: tool/knife
+  completion: [{observe: 雞腿表面, target: '擦乾無水、肉厚處有一道淺刀', method: 目測}]
+  note: '補寫依據：備料約 3 分鐘。不沖洗生雞肉（美國農業部建議不要沖洗，以免水珠濺開）；擦乾也可減少下鍋時熱油噴濺。來源 S1、S2 寫洗淨瀝乾，本步驟改為用紙擦乾。'
+- id: a2
+  technique: tech/combine
+  term: '把草果、小茴、花椒、甘草、八角、肉桂放進棉袋，做成滷包。'
+  inputs: [i_caoguo, i_fennel, i_pepper, i_licorice, i_anise, i_cassia]
+  outputs: [s_bag]
+  completion: [{observe: 棉袋, target: '香料都在袋內、袋口紮緊', method: 目測}]
+  note: '作法依 S3「所有滷包材料放入棉袋中，備用」。也可用市售滷包 1 包（S2）代替這一袋自製滷包。'
+- id: a3
+  technique: tech/cut
+  term: '蔥切段、薑切片，紅辣椒剖半後拍鬆。'
+  inputs: [i_scallion, i_ginger, i_chili]
+  outputs: [s_cut]
+  tool: tool/knife
+  completion: [{observe: 蔥薑辣椒, target: '蔥已切段、薑已切片、辣椒剖半拍鬆', method: 目測}]
+  note: '作法依 S3「蔥切段、薑切片、紅辣椒剖半，拍鬆，備用」。'
+- id: a4
+  technique: tech/aromatics
+  term: '鍋中加少許沙拉油，放入切好的蔥段、薑片和紅辣椒爆香。'
+  inputs: [i_oil_sauce, s_cut]
+  outputs: [s_sauteed]
+  tool: tool/wok
+  params:
+    heat: {level: heat/medium}
+    duration: {min_s: 30, max_s: 120, is_guide: true, status: inferred}
+  completion: [{observe: 鍋中香氣, target: '聞到蔥薑香、辣椒微皺', method: 目測}]
+  note: '補寫依據：來源寫爆香，未寫火力與時間；依常識表「爆香」常見火候為中小火至中火、時間 30–120 秒。'
+- id: a5
+  technique: tech/boil
+  term: '倒入 1500 毫升水，煮到整鍋滾沸。'
+  inputs: [s_sauteed, i_water]
+  outputs: [s_water]
+  tool: tool/wok
+  params:
+    heat: {level: heat/medium_high}
+    duration: {min_s: 180, max_s: 900, is_guide: true, status: inferred}
+  completion: [{observe: 水面, target: '整鍋大滾冒泡', method: 目測}]
+  note: '補寫依據：來源寫倒入水煮至滾沸，未寫火力與時間；依常識表「煮」的常見火候為中火至中大火、時間 180–900 秒，以煮滾為準。'
+- id: a6
+  technique: tech/boil
+  term: '加入醬油、細砂糖和滷包，再煮到整鍋滾沸。'
+  inputs: [s_water, i_soy, i_sugar, s_bag]
+  outputs: [s_seasoned]
+  tool: tool/wok
+  params:
+    heat: {level: heat/medium_high}
+    duration: {min_s: 180, max_s: 600, is_guide: true, status: inferred}
+  completion: [{observe: 滷汁表面, target: '再次大滾、糖已化開', method: 目測}]
+  note: '補寫依據：來源寫加入醬油、細砂糖以及滷包，煮至再次滾沸，未寫火力與時間；依常識表「煮」的常見火候與時間，以再次煮滾為準。'
+- id: a7
+  technique: tech/lu
+  term: '改轉小火煮約 5 分鐘，等到香味散發出來，再倒入米酒。煮好的滷汁先盛到大碗裡備用。也可用市售滷汁。'
+  inputs: [s_seasoned, i_wine]
+  outputs: [s_sauce]
+  tool: tool/wok
+  params:
+    heat: {level: heat/low, raw: '改小火煮約5分鐘', evidence: S3}
+    duration: {min_s: 300, max_s: 300, raw: '改小火煮約5分鐘', evidence: S3, status: sourced, is_guide: true}
+  completion: [{observe: 滷汁香氣, target: '香味散發出來', method: 聞香}]
+  note: '時間與火力依 S3「改小火煮約5分鐘至香味散發出來，再倒入米酒」。這鍋約可得近 2 公升滷汁；後面滷雞腿取 600 毫升，剩餘放涼後冷藏。也可用市售滷汁 600 毫升代替自製滷汁。'
+- id: a8
+  technique: tech/pan_fry
+  term: '原鍋燒熱後倒入 2 大匙沙拉油，雞腿雞皮朝下放入，煎到表面金黃上色再翻面，兩面都煎到微焦。下鍋時表面要乾，減少熱油噴濺。'
+  inputs: [s_prepped, i_oil_sear]
+  outputs: [s_seared]
+  tool: tool/wok
+  params:
+    heat: {level: heat/medium}
+    duration: {min_s: 120, max_s: 300, is_guide: true, status: inferred}
+  completion: [{observe: 雞腿表皮, target: '金黃微焦、雞皮收緊', method: 目測}]
+  note: '補寫依據：來源只寫熱鍋加入 2 大匙油，炒至上色，未寫火力與時間；依常識表「煎」的常見火候為中火或中小火、每面 120–300 秒，本步驟兩面上色以表皮金黃為準，合計約 2–5 分鐘。'
+- id: a9
+  technique: tech/boil
+  term: '倒入 600 毫升滷汁，煮到整鍋沸騰。'
+  inputs: [s_seared, s_sauce]
+  outputs: [s_boiling]
+  tool: tool/wok
+  params:
+    heat: {level: heat/medium_high}
+    duration: {min_s: 180, max_s: 900, is_guide: true, status: inferred}
+  completion: [{observe: 滷汁表面, target: '大滾冒泡、鍋邊不斷起泡', method: 目測}]
+  note: '補寫依據：主來源寫加入台式滷汁 600 ㏄煮至沸騰，未寫火力與時間；依常識表「煮」的常見火候為中火至中大火、時間 180–900 秒，以煮滾為準。取自製滷汁 600 毫升，剩餘留用。'
+- id: a10
+  technique: tech/lu
+  term: '改轉小火至微滾，開蓋微滾約 5 分鐘。'
+  inputs: [s_boiling]
+  outputs: [s_simmered]
+  tool: tool/wok
+  params:
+    heat: {level: heat/low, raw: '改轉小火', evidence: S1}
+    duration: {min_s: 300, max_s: 300, raw: '開蓋微滾約5分鐘', evidence: S2, status: sourced, is_guide: true}
+  completion: [{observe: 滷汁表面, target: '保持微微滾動', method: 目測}]
+  note: '火力依 S1「改轉小火」；時間依 S2「開蓋微滾約5分鐘」。'
+- id: a11
+  technique: tech/rest
+  term: '蓋上鍋蓋，關火燜 20 分鐘。'
+  inputs: [s_simmered]
+  outputs: [s_braised]
+  tool: tool/wok
+  params:
+    duration: {min_s: 1200, max_s: 1200, raw: '關火燜20分鐘', evidence: S2, status: sourced}
+  completion:
+  - {observe: 雞腿表面, target: '均勻醬色、表皮油亮', method: 目測}
+  - {observe: 雞腿骨邊, target: '筷子從骨邊插得進、流出清澈肉汁', method: 筷子戳測}
+  note: '時間依 S2「蓋上鍋蓋，關火燜20分鐘後取出即可」。此步關火，不標火候。食安參考（只寫在後台、不出現在對外文字）：禽肉中心 74°C；家中以筷子從骨邊插進去、流出清澈肉汁判斷，不使用溫度計。'
+- id: a12
+  technique: tech/combine
+  term: '先試一口滷汁的鹹淡，把雞腿夾出盛盤，淋上少許滷汁。'
+  inputs: [s_braised]
+  outputs: [s_final]
+  tool: tool/bowl
+  completion: [{observe: 整體味道, target: '鹹香帶甜、肉嫩入味', method: 試吃}]
+  note: '補寫依據：先試滷汁鹹淡再盛盤，為一般家庭做法。'
+serving:
+  completion: [{observe: 上桌溫度與時限, target: '趁熱盛盤上桌，當餐吃完，剩餘放涼後冷藏', method: null, evidence: null, note: '補寫依據：滷味趁熱風味最佳，熱食上桌、剩菜冷藏為一般家庭做法。'}]
+  sensory_target: {color: '深琥珀醬色、表面油亮', taste: '鹹香帶甜、醬香明顯', texture: '雞皮微彈、肉嫩，筷子從骨邊一插就進'}
+notes:
+  total_min: '55'
+  time_basis: '補寫依據：備料約 8 分鐘（擦乾劃刀約 3 分鐘，包滷包與切蔥薑辣椒約 5 分鐘，依常識表肉類與蔬菜備料時間）；開火：爆香 30–120 秒、加水煮滾 3–15 分鐘、加調味再煮滾約 3–10 分鐘、小火煮滷汁 5 分鐘（S3）、煎雞腿 2–5 分鐘（常識表煎）、倒入滷汁煮滾 3–15 分鐘（常識表煮）、小火微滾 5 分鐘（S2）、關火燜 20 分鐘（S2）。以常見值合計約 55 分鐘。若改用市售滷汁 600 毫升，可省略煮滷汁各步，時間較短。'
