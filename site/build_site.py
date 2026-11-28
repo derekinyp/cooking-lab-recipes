@@ -46,7 +46,8 @@ VALT, VBROADER = {}, {}
 VZH, VFACET = load_vocab()
 
 UNIT = {'g': '公克', 'kg': '公斤', 'ml': '毫升', 'l': '公升', 'piece': '個', 'clove': '瓣', 'slice': '片', 'stalk': '根',
-        'bicchiere': '杯', 'cucchiaio': '匙', 'tbsp': '大匙', 'tsp': '小匙', 'cup': '杯', 'pack': '包', 'mm': '毫米', 'cm': '公分'}
+        'bicchiere': '杯', 'cucchiaio': '匙', 'tbsp': '大匙', 'tsp': '小匙', 'cup': '杯', 'pack': '包', 'mm': '毫米', 'cm': '公分',
+        'whole_bird_piece': '隻'}
 SPOONISH = {'piece', 'clove', 'slice', 'stalk', 'bicchiere', 'cucchiaio', 'tbsp', 'tsp', 'cup', 'pack'}
 PIECE_WORD = [('蛋', '顆'), ('洋蔥', '顆'), ('番茄', '顆'), ('甜椒', '顆'), ('青椒', '顆'), ('紅蔥頭', '顆'), ('檸檬', '顆'),
               ('魚', '尾'), ('瑪芬', '個'), ('牛', '塊'), ('蔥', '根'), ('胡椒粒', '粒'), ('香菇', '朵')]

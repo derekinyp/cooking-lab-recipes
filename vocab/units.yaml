@@ -26,3 +26,4 @@ units:
   - {id: can, zh: 罐, dim: count, conv: null, note: "罐頭包裝單位；每罐容量若原文沒寫則不換算。W49 玉米蛋花湯"}
   - {id: mid_spoon, zh: 中匙, dim: volume, conv: null, note: "來源寫『中匙』，容量原文沒寫，不換算。W49 豆干肉絲"}
   - {id: whole_bird, zh: 隻, dim: count, conv: null, note: "整隻禽類的量詞，照原文保留不換算重量。W48 香菇雞湯"}
+  - {id: whole_bird_piece, zh: 隻, dim: count, conv: null, note: "禽類分件（雞腿、雞翅等）的量詞，不是整隻；照原文保留不換算重量。滷雞腿"}
