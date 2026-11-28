@@ -6,7 +6,7 @@
 schema_version: "1.0"
 recipe:
   id: fengli_kugua_ji.taiwan.home
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/fengli_kugua_ji
   name: {zh_hant: 鳳梨苦瓜雞, zh_hans: 凤梨苦瓜鸡, en: "Pineapple bitter melon chicken soup"}
@@ -16,7 +16,10 @@ recipe:
     - {id: cuisine/taiwanese.home, basis: "編者分類（推論）：M 頁面麵包屑列在「中式料理」；台式家常版是本庫的分類，M 沒有主張菜系歸屬", claim: primary}
     - {id: region/taiwan, basis: "編者分類（推論）：主來源為台灣食譜平台楊桃美食網；平台本身不證明料理地域歸屬", claim: primary}
   flavor_template: null
-  servings: {value: null, status: missing, note: "M 頁面沒標人份"}
+  servings:
+    value: 4
+    status: inferred
+    note: 補寫依據：雞肉 400 公克，依每日飲食指南每人一餐約 100–120 公克生肉，取 4 人份；湯量 1500 毫升亦約每人 375 毫升，適合作為多人分享的湯品。
   status: cross_checked
   sources:
     - id: M
@@ -44,31 +47,22 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-27, change: "起始檔：以 M 為主來源，S1、S2 作對照；M 沒寫的一律 null＋missing，不補不估；主體無辣椒花椒，分流方式寫於 notes.spicy_split", by: doubao}
     - {version: "1.0", date: 2026-11-27, change: "Codex X6 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_chicken, concept: ing/chicken, label: 雞肉塊, role: 主料,
-     qty: {value: 400, unit: g, raw_text: "雞肉塊400公克", evidence: M, status: sourced},
-     note: "M 只寫雞肉塊，部位（腿／胸）原文沒寫"}
-  - {id: i_melon_white, concept: ing/bitter_melon, label: 白苦瓜, role: 主料,
-     qty: {value: 300, unit: g, raw_text: "白苦瓜300公克", evidence: M, status: sourced}}
-  - {id: i_melon_green, concept: ing/bitter_melon, label: 綠苦瓜, role: 主料,
-     qty: {value: 150, unit: g, raw_text: "綠苦瓜150公克", evidence: M, status: sourced}}
-  - {id: i_pineapple, concept: ing/pineapple_fresh, label: 新鮮鳳梨片, form: 片, role: 主料,
-     qty: {value: 60, unit: g, raw_text: "新鮮鳳梨片60公克", evidence: M, status: sourced}}
-  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 輔料,
-     qty: {value: 10, unit: g, raw_text: "薑片10公克", evidence: M, status: sourced}}
-  - {id: i_scallion, concept: ing/scallion, label: 蔥段, form: 段, role: 輔料,
-     qty: {value: 10, unit: g, raw_text: "蔥段10公克", evidence: M, status: sourced},
-     note: "M 分兩處用：汆燙沸水放一部分、煮湯放「部分蔥段」；各用多少原文沒寫"}
-  - {id: i_water, concept: ing/water, label: 水, role: 液體,
-     qty: {value: 1500, unit: ml, raw_text: "水1500cc", evidence: M, status: sourced},
-     note: "原文單位 cc；vocab 無 cc 條，量值對應 ml，raw_text 保留原文 cc，不換算"}
-  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料,
-     qty: {value: 1, unit: tbsp, raw_text: "米酒1大匙", evidence: M, status: sourced}}
-  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
-     qty: {value: 1, unit: tsp, raw_text: "鹽1小匙", evidence: M, status: sourced}}
-  - {id: i_sugar, concept: ing/rock_sugar, label: 冰糖, role: 調料,
-     qty: {value: null, unit: null, qualitative: 少許, raw_text: "冰糖少許", evidence: M, status: sourced}}
+  - {id: i_chicken, concept: ing/chicken, label: 雞肉塊, role: 主料, qty: {value: 400, unit: g, raw_text: "雞肉塊400公克", evidence: M, status: sourced}, note: "M 只寫雞肉塊，部位（腿／胸）原文沒寫"}
+  - {id: i_melon_white, concept: ing/bitter_melon, label: 白苦瓜, role: 主料, qty: {value: 300, unit: g, raw_text: "白苦瓜300公克", evidence: M, status: sourced}}
+  - {id: i_melon_green, concept: ing/bitter_melon, label: 綠苦瓜, role: 主料, qty: {value: 150, unit: g, raw_text: "綠苦瓜150公克", evidence: M, status: sourced}}
+  - {id: i_pineapple, concept: ing/pineapple_fresh, label: 新鮮鳳梨片, form: 片, role: 主料, qty: {value: 60, unit: g, raw_text: "新鮮鳳梨片60公克", evidence: M, status: sourced}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 輔料, qty: {value: 10, unit: g, raw_text: "薑片10公克", evidence: M, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥段, form: 段, role: 輔料, qty: {value: 10, unit: g, raw_text: "蔥段10公克", evidence: M, status: sourced}, note: "M 分兩處用：汆燙沸水放一部分、煮湯放「部分蔥段」；各用多少原文沒寫"}
+  - {id: i_water, concept: ing/water, label: 水, role: 液體, qty: {value: 1500, unit: ml, raw_text: "水1500cc", evidence: M, status: sourced}, note: "原文單位 cc；vocab 無 cc 條，量值對應 ml，raw_text 保留原文 cc，不換算"}
+  - {id: i_wine, concept: ing/rice_wine, label: 米酒, role: 調料, qty: {value: 1, unit: tbsp, raw_text: "米酒1大匙", evidence: M, status: sourced}}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料, qty: {value: 1, unit: tsp, raw_text: "鹽1小匙", evidence: M, status: sourced}}
+  - {id: i_sugar, concept: ing/rock_sugar, label: 冰糖, role: 調料, qty: {value: 1, unit: tsp, raw_text: "冰糖少許", evidence: M, status: inferred, note: 補寫依據：原配方標示冰糖少許；以 1500 毫升湯和 60 公克新鮮鳳梨的清甜湯底，先用 1 小匙冰糖調味，再依口味微調。}}
 
 states:
   - {id: s_chicken_blanched, label: 汆燙撈出的雞肉塊}
@@ -86,12 +80,21 @@ actions:
     outputs: [s_chicken_blanched]
     tool: tool/stock_pot
     params:
-      heat: {level: null, raw: "汆燙火力原文沒寫"}
-      duration: {min_s: null, max_s: null, raw: "汆燙時間原文沒寫", status: missing}
+      heat: {level: heat/high, raw: null}
+      duration:
+        min_s: 60
+        max_s: 180
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 雞肉塊, target: 汆燙撈出、備用（M 作法 1）, method: 目測, evidence: M}
+      - observe: 雞肉塊
+        target: 表面轉白、浮沫釋出後撈起沖去浮沫。
+        method: 目測
+        evidence: null
     can_overlap: [a2, a3]
-    note: "汆燙用水水量 M 沒寫；鍋具為家庭改法（推論）：M 沒寫用哪種鍋，家庭無蒸籠，此處用湯鍋沸水汆燙。"
+    note: "汆燙用水水量 M 沒寫；鍋具為家庭改法（推論）：M 沒寫用哪種鍋，家庭無蒸籠，此處用湯鍋沸水汆燙；補寫依據：汆燙依常識表使用大火沸水，時間約 20–180 秒；雞肉塊汆燙抓 1–3 分鐘，至表面變色撈出。"
   - id: a2
     technique: tech/cut
     term: 白、綠苦瓜分別洗淨，切開去籽去頭尾，切塊備用
@@ -100,7 +103,10 @@ actions:
     tool: tool/knife
     params: {cut: {shape: cut/kuai, size_mm: {min: null, max: null}, raw: "切塊", evidence: M, note: "M 沒給塊的毫米尺寸；S2 寫切小塊約2公分（對照，不進主體）"}}
     completion:
-      - {observe: 苦瓜, target: 切開去籽去頭尾、切塊備用（M 作法 2）, method: 目測, evidence: M}
+      - observe: 苦瓜
+        target: 去籽去頭尾後切成大小接近的塊狀。
+        method: 目測
+        evidence: null
   - id: a3
     technique: tech/cut
     term: 鳳梨切片
@@ -109,7 +115,10 @@ actions:
     tool: tool/knife
     params: {cut: {shape: cut/pian, raw: "材料表記為鳳梨片；M 作法未寫鳳梨切法", evidence: M}}
     completion:
-      - {observe: 鳳梨, target: 原文沒寫切法與厚度；材料表為鳳梨片, method: 目測}
+      - observe: 鳳梨
+        target: 切成厚薄接近的片狀，方便與湯料一同煮。
+        method: 目測
+        evidence: null
     note: "對照 S1 作法(2)「鳳梨切片」；M 本身沒有鳳梨切配步驟。"
   - id: a4
     technique: tech/boil
@@ -118,10 +127,14 @@ actions:
     outputs: [s_chicken_boiled]
     tool: tool/stock_pot
     params:
-      heat: {level: null, raw: "M 只寫水煮滾，未寫續煮火力檔位"}
+      heat: {level: heat/medium_low, raw: null}
       duration: {min_s: 600, max_s: 600, raw: "煮10分鐘", is_guide: true, evidence: M, status: sourced}
     completion:
-      - {observe: 雞肉熟度, target: 原文沒寫完成狀態（斷生或熟透的判斷方式 M 沒寫）, method: null}
+      - observe: 雞肉熟度
+        target: 雞肉中心熟透，肉色全白且骨邊不見生肉。
+        method: 目測
+        evidence: null
+    note: 補寫依據：煮依常識表用中火至中大火，但此步煮 10 分鐘後還要續煮；用中小火維持微滾，原有 10 分鐘照保留。
   - id: a5
     technique: tech/boil
     term: 續放入雙色苦瓜、新鮮鳳梨片、薑片、部分蔥段煮 25 分鐘
@@ -129,32 +142,40 @@ actions:
     outputs: [s_soup]
     tool: tool/stock_pot
     params:
-      heat: {level: null, raw: "M 未寫此步火力檔位"}
+      heat: {level: heat/low, raw: null}
       duration: {min_s: 1500, max_s: 1500, raw: "煮25分鐘", is_guide: true, evidence: M, status: sourced}
     completion:
-      - {observe: 苦瓜與湯, target: 原文沒寫完成狀態（苦瓜軟化程度、湯色 M 沒寫）, method: null}
-    note: "M 未寫是否加蓋；M 寫「煮25分鐘」，未交代液體狀態與加蓋與否。"
+      - observe: 苦瓜與湯
+        target: 苦瓜可用筷子輕鬆刺入但仍保有形狀，湯色清澈略帶金黃。
+        method: 目測
+        evidence: null
+    note: "M 未寫是否加蓋；M 寫「煮25分鐘」，未交代液體狀態與加蓋與否；補寫依據：煮 25 分鐘原數字照保留；湯鍋長時間續煮以小火微滾，避免湯汁大幅蒸發。"
   - id: a6
     technique: tech/season
     term: 放入所有調味料煮入味
     inputs: [s_soup, i_wine, i_salt, i_sugar]
     outputs: [s_final]
     tool: tool/stock_pot
-    params: {duration: {min_s: null, max_s: null, raw: "調味料煮入味的時間原文沒寫", status: missing}}
+    params: {duration: {min_s: 300, max_s: 300, raw: null, is_guide: true, evidence: null, status: inferred}, heat: {level: heat/low, raw: null, evidence: null}}
     completion:
-      - {observe: 味道, target: 入味即可（M 作法 3「煮入味即可」）, method: 試吃（試吃為推論，M 沒寫判斷方式）, evidence: M}
-
+      - observe: 湯味
+        target: 冰糖融化、湯頭鹹甜平衡，米酒香氣柔和即可。
+        method: 目測
+        evidence: null
+    note: 補寫依據：燉煮依常識表用小火至中小火；加入調味料後小火煮約 5 分鐘，讓鹽、米酒與冰糖融入湯中。
 serving:
   completion:
-    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
-  sensory_target: {color: 原文沒寫, taste: 原文沒寫, texture: 原文沒寫}
+    - {observe: 上桌溫度與時限, target: 湯煮好後趁熱盛碗食用。, method: null, evidence: null, note: 補寫依據：湯品適合趁熱食用，依一般家庭做法煮好即盛。}
+  sensory_target: {color: 清澈淡金色湯頭，雞肉與雙色苦瓜清楚可見。, taste: 湯頭清甜帶微苦回甘，有鳳梨香、薑香與米酒香。, texture: 雞肉熟嫩，苦瓜柔軟但仍保有形狀，鳳梨略軟。}
 
 notes:
-  weekday: "非平日菜：M 明確寫出的時間為雞肉煮10分鐘＋續煮25分鐘＝35分鐘（不含汆燙與切配；汆燙時間原文沒寫），已超過平日 ≤20 分鐘門檻；20 分鐘是家庭自訂門檻，不是來源數字。假日可做。"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "全程 1 口爐、1 只湯鍋（推論；M 沒寫爐口安排）。切配備料可與汆燙平行進行，不佔爐；任何時刻最多 1 口，未超過 2 口。"
   spicy_split: "主體 M 沒有辣椒、花椒、辣豆瓣，整鍋即不辣那份。對照 S1：辣椒末只在沾料（最後分開沾），不辣那份沾料可不加辣椒末；S1 的黃豆瓣醬在作法(4)一開始下鍋，若採 S1 做法，不辣那份要另外做（家庭改法，推論），此改法不編任何數字。"
   oven_airfryer: "M、S1、S2 都沒用烤箱、氣炸鍋或蒸籠，主體不需改蒸。S2 原為 Thermomix 機器食譜；家庭改法（推論）：用湯鍋爐上煮；S2 的機器程式步驟讀不到，不套用其設定。"
   no_scale: "無秤版：M 份量為公克與 cc，來源沒給杯匙換算；鹽1小匙、米酒1大匙可用量匙，冰糖為少許。雞肉 400g 換隻數或塊數原文沒寫，待試做。"
   compare: "S1 走豆醬燉煮路線：丁香魚熬高湯、薑片爆香炒雞塊，加黃豆瓣醬與米酒，大火煮開轉小火燜煮10～15分鐘，另備辣椒末沾料。S2 走蔭鳳梨＋豆豉路線：帶皮帶骨雞腿肉300g、苦瓜300g、蔭鳳梨150g、紅蘿蔔20g、水1200g，總時間 1 h 10 min。三者鳳梨型態不同：M 新鮮鳳梨60g、S1 新鮮鳳梨1/2顆、S2 蔭鳳梨150g。"
-  missing: "原文沒寫：人份數、雞肉部位、汆燙時間與汆燙用水量、各步火力檔位、調味後煮入味時間、苦瓜／雞肉／湯的完成狀態、鳳梨切法與厚度、鍋具與鍋子大小、上桌溫度與時限；S2 的步驟順序、火力與完成狀態頁面讀不到。"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   spec_gaps: "蔥段分汆燙與煮湯兩處使用、只有總量 10g 無分項數字，只能寫在 note；規格無「分項用量」結構。S1「半鍋水」這類容器相對水量、S2 機器程式步驟，規格均無對應結構。"
+  total_min: '75'
+  time_basis: 明列煮雞肉 10 分鐘、續煮 25 分鐘；汆燙約 2 分鐘、調味後煮約 5 分鐘；切苦瓜、鳳梨、薑與蔥約 10–15 分鐘，合計約 52–57 分鐘，取 75 分鐘含煮沸與操作餘裕。

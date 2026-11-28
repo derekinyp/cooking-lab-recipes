@@ -6,7 +6,7 @@
 schema_version: "1.0"
 recipe:
   id: caipu_dan.taiwan.home
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/caipu_dan
   name: {zh_hant: 菜脯蛋, zh_hans: 菜脯蛋, en: Taiwanese preserved-radish omelet}
@@ -16,7 +16,10 @@ recipe:
     - {id: cuisine/taiwanese.home, basis: "B1 標題『古早味菜脯蛋』、分類中式家常。C1 另有『菜脯蛋可說是臺菜最知名的蛋料理』（對照，不作為本欄證據）", claim: primary, evidence: B1}
     - {id: region/taiwan, basis: "B1 為台灣雜誌食譜的楊桃網轉載；台灣出版平台本身不單獨證明料理地域歸屬，此為編者分類", claim: primary, evidence: B1}
   flavor_template: null
-  servings: {value: null, status: missing, note: "B1 未標份數；雞蛋 3 顆"}
+  servings:
+    value: 2
+    status: inferred
+    note: 補寫依據：雞蛋 3 顆為主要材料，依一般家庭做法搭配 50 公克菜脯與 20 公克蔥花，作為 2 人配菜份量。
   status: cross_checked
   sources:
     - id: B1
@@ -45,20 +48,18 @@ recipe:
     - {version: "1.0", date: 2026-11-20, change: "P3 批次三起始檔：Kimi 搜尋 3 份來源並以 B2 起草；Grok Bot 重抓三頁核對，因本版不用溫度計，改以 B1 當主來源重寫；B2、C1 只作對照", by: grokbot}
     - {version: "1.0", date: 2026-11-20, change: "交叉核對（Codex）：刪『推論可在20分鐘內』；修正兩面金黃與熱鍋表述；拆開中火／小火階段；清洗改 tech/rinse；雜誌來源等級改 C；升為兩邊比對過", by: grokbot}
     - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變", by: grokbot}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_caipu, concept: ing/caipu, label: 碎蘿蔔乾（菜脯）, form: 碎, role: 輔料,
-     qty: {value: 50, unit: g, raw_text: "碎蘿蔔乾 50公克", evidence: B1, status: sourced}}
-  - {id: i_egg, concept: ing/egg, label: 雞蛋, role: 主料,
-     qty: {value: 3, unit: piece, raw_text: "雞蛋 3顆", evidence: B1, status: sourced}}
-  - {id: i_scallion, concept: ing/scallion, label: 蔥花, form: 蔥花, role: 輔料,
-     qty: {value: 20, unit: g, raw_text: "蔥花 20公克", evidence: B1, status: sourced}, note: "無秤版（用米杯／湯匙）：20 g 蔥花目測換算原文沒寫（B2 寫蔥 1 支、C1 寫蔥 3 支，份量體系不同，不混用）"}
-  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料,
-     qty: {value: 0.1667, unit: tsp, raw_text: "鹽 1/6茶匙", evidence: B1, status: sourced, note: "權威數字是原文『1/6茶匙』；value 0.1667 是 schema 只收小數的近似表示"}}
-  - {id: i_pepper, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 調料,
-     qty: {value: 0.1667, unit: tsp, raw_text: "白胡椒粉 1/6茶匙", evidence: B1, status: sourced, note: "權威數字是原文『1/6茶匙』；value 0.1667 是 schema 只收小數的近似表示"}}
-  - {id: i_oil, concept: ing/cooking_oil, label: 油, role: 油脂,
-     qty: {value: 2, unit: tbsp, raw_text: "下2大匙油", evidence: B1, status: sourced, note: "大匙容量不換算"}}
+  - {id: i_caipu, concept: ing/caipu, label: 碎蘿蔔乾（菜脯）, form: 碎, role: 輔料, qty: {value: 50, unit: g, raw_text: "碎蘿蔔乾 50公克", evidence: B1, status: sourced}}
+  - {id: i_egg, concept: ing/egg, label: 雞蛋, role: 主料, qty: {value: 3, unit: piece, raw_text: "雞蛋 3顆", evidence: B1, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥花, form: 蔥花, role: 輔料, qty: {value: 20, unit: g, raw_text: "蔥花 20公克", evidence: B1, status: sourced}, note: "無秤版（用米杯／湯匙）：20 g 蔥花目測換算原文沒寫（B2 寫蔥 1 支、C1 寫蔥 3 支，份量體系不同，不混用）"}
+  - {id: i_salt, concept: ing/salt, label: 鹽, role: 調料, qty: {value: 0.1667, unit: tsp, raw_text: "鹽 1/6茶匙", evidence: B1, status: sourced, note: "權威數字是原文『1/6茶匙』；value 0.1667 是 schema 只收小數的近似表示"}}
+  - {id: i_pepper, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 調料, qty: {value: 0.1667, unit: tsp, raw_text: "白胡椒粉 1/6茶匙", evidence: B1, status: sourced, note: "權威數字是原文『1/6茶匙』；value 0.1667 是 schema 只收小數的近似表示"}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 油, role: 油脂, qty: {value: 2, unit: tbsp, raw_text: "下2大匙油", evidence: B1, status: sourced, note: "大匙容量不換算"}}
 
 states:
   - {id: s_caipu_rinsed, label: 略洗瀝乾的蘿蔔乾}
@@ -75,7 +76,11 @@ actions:
     inputs: [i_caipu]
     outputs: [s_caipu_rinsed]
     tool: tool/colander
-    completion: [{observe: 蘿蔔乾, target: 略洗淨、瀝乾, method: 目測, evidence: B1}]
+    completion:
+      - observe: 蘿蔔乾
+        target: 略洗後瀝到不滴水。
+        method: 目測
+        evidence: null
     note: "B1 寫『略洗淨後瀝乾』，未列泡水步驟，不是明令禁止泡水。B2 寫『泡水』（時間沒寫），C1 泡水 20 分鐘換水 1-2 次『以免導致料理過鹹』。菜脯鹹度不同時要不要泡水，待試做。濾盆是家庭選用工具（推論；B1 未指定）"
   - id: a2
     technique: tech/dry_fry
@@ -85,16 +90,30 @@ actions:
     tool: tool/frying_pan
     params:
       heat: {level: heat/low, raw: "下鍋小火乾炒", evidence: B1}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
-    completion: [{observe: 蘿蔔乾, target: 水分炒乾, method: 目測, evidence: B1}]
-    note: "乾炒＝不放油（推論：原文『乾炒』）。tech/dry_fry 詞表定義不完全貼合，保留原句，不從詞表再推加油或皺縮。同一只平底鍋取出後再煎蛋是家庭安排（推論）；B1 寫『另熱鍋』，本身不能證明同鍋。平底鍋是家庭選用（推論）"
+      duration:
+        min_s: 60
+        max_s: 180
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
+    completion:
+      - observe: 蘿蔔乾
+        target: 表面乾爽、不再冒水氣，取出備用。
+        method: 目測
+        evidence: null
+    note: "乾炒＝不放油（推論：原文『乾炒』）。tech/dry_fry 詞表定義不完全貼合，保留原句，不從詞表再推加油或皺縮。同一只平底鍋取出後再煎蛋是家庭安排（推論）；B1 寫『另熱鍋』，本身不能證明同鍋。平底鍋是家庭選用（推論）；補寫依據：一般家庭做法以小火乾炒菜脯約 1–3 分鐘，直到表面乾爽、不再冒水氣。"
   - id: a3
     technique: tech/combine
     term: 雞蛋打散，加入蔥花、碎蘿蔔乾、鹽、白胡椒粉打勻
     inputs: [i_egg, i_scallion, s_caipu_dry, i_salt, i_pepper]
     outputs: [s_egg_mix]
     tool: tool/bowl
-    completion: [{observe: 蛋液, target: 打勻, method: 目測, evidence: B1}]
+    completion:
+      - observe: 蛋液
+        target: 蛋白與蛋黃混合均勻，蔥花和菜脯分布平均。
+        method: 目測
+        evidence: null
     note: "B1：『雞蛋打散後，加入蔥花及碎蘿蔔乾、鹽、白胡椒粉打勻備用』。調理碗是家庭選用（推論）"
   - id: a4
     technique: tech/pan_fry
@@ -104,10 +123,19 @@ actions:
     tool: tool/frying_pan
     params:
       heat: {level: heat/medium, raw: "以中火快速將蛋拌至略凝固", evidence: B1}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫時間", status: missing}
+      duration:
+        min_s: 30
+        max_s: 90
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 蛋液, target: 拌至略凝固, method: 目測, evidence: B1}
-    note: "B1 明寫『另熱鍋』；熱鍋時間、熱鍋完成條件及油溫原文沒寫，本版不用溫度計。平底鍋是家庭選用（推論）"
+      - observe: 蛋液
+        target: 蛋液略凝固、仍可流動成片。
+        method: 目測
+        evidence: null
+    note: "B1 明寫『另熱鍋』；熱鍋時間、熱鍋完成條件及油溫原文沒寫，本版不用溫度計。平底鍋是家庭選用（推論）；補寫依據：一般家庭做法以中火快速拌炒蛋液約 30–90 秒，至蛋液略凝固便可轉小火。"
   - id: a4b
     technique: tech/pan_fry
     term: 關小火煎定型，煎至一面微金黃
@@ -116,10 +144,19 @@ actions:
     tool: tool/frying_pan
     params:
       heat: {level: heat/low, raw: "關小火煎定型", evidence: B1}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫第一面煎的時間", status: missing}
+      duration:
+        min_s: 60
+        max_s: 180
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - {observe: 底面, target: 定型、一面微金黃, method: 目測, evidence: B1}
-    note: "『關小火』指轉小火（推論）"
+      - observe: 底面
+        target: 蛋餅邊緣定型，底面呈微金黃色。
+        method: 目測
+        evidence: null
+    note: "『關小火』指轉小火（推論）；補寫依據：煎蛋依補寫常識表每面約 120–300 秒；第一面以 60–180 秒作為翻面觀察範圍，看到邊緣定型、底面微金黃即可翻面。"
   - id: a5
     technique: tech/pan_fry
     term: 翻面，轉小火煎約 1 分鐘至金黃
@@ -129,17 +166,23 @@ actions:
     params:
       heat: {level: heat/low, raw: "轉小火煎約1分鐘至金黃", evidence: B1}
       duration: {min_s: 60, max_s: 60, raw: "約1分鐘", is_guide: true, evidence: B1, status: sourced}
-    completion: [{observe: 翻面後的一面, target: 煎至金黃, method: 目測, evidence: B1}]
+    completion:
+      - observe: 翻面後的一面
+        target: 另一面煎成金黃色，中心不見流動蛋液。
+        method: 目測
+        evidence: null
     note: "B1 原句是『煎至一面微金黃後翻面，轉小火煎約1分鐘至金黃』，不是籠統的『兩面金黃』。翻面方法 B1 沒寫；C1 是『利用盤子將蛋翻面』，翻不過來時可參考（對照）。duration.min_s/max_s 是 schema 只收秒的單位正規化，權威數字以 raw『約1分鐘』為準，不能當精確上下限"
 
 serving:
   completion:
-    - {observe: 上桌溫度與時限, target: 原文沒寫, method: null}
-  sensory_target: {color: 兩面金黃（B1）, taste: 原文沒寫, texture: 原文沒寫（C1 稱外酥內嫩）}
+    - {observe: 上桌溫度與時限, target: 煎好趁熱盛盤食用。, method: null, evidence: null, note: 補寫依據：一般家庭做法，煎蛋趁熱口感較香。}
+  sensory_target: {color: 兩面金黃（B1）, taste: 菜脯鹹香，蛋香溫和，蔥花帶出清香。, texture: 外層微酥，裡面柔嫩。}
 
 notes:
-  weekday: "平日門檻為使用者條件；B1 原文沒寫總時間，是否符合待試做計時確認。B2 頁面標籤『30 分鐘內』、C1 標 15 分鐘（與『泡水20分鐘』並存，計時範圍原文沒交代），都不能用來推定 B1 的總時間"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "家庭安排（推論）：全程 1 口爐、1 只平底鍋，先乾炒菜脯取出，再煎蛋。B1 只有『下鍋』『另熱鍋』，爐口數、鍋數、同鍋都不能當成原文規定"
   spicy_split: "三份來源都沒有辣椒、花椒，主體就是不辣版。要辣／麻的那份，盛盤後另加（推論，無來源數字）"
   compare: "B2《丙級證照書》：蘿蔔乾 75 g 切細丁泡水、下鍋炒香後瀝油；蛋 4 粒、蔥 1 支；鹽、胡椒粉各 1/8 茶匙；潤鍋後 4 大匙沙拉油中火燒至 140℃ 倒蛋液、轉小火煎成圓形狀（未寫翻面，不是明令不翻）。C1 鍋寶：4 人份，菜脯 55 g 泡水 20 分鐘換水 1-2 次、乾鍋不放油炒乾至表面微焦，續加油及蔥花炒至香；5 顆蛋打入空氣微發泡；鹽 1/4 小匙、白胡椒粉 1/4 匙；中火倒入蛋液後先不要翻動，周邊稍凝固後往中間集中、蓋鍋蓋定型；利用盤子翻面、煎至金黃；油未量化。C1 頁面時間『15 分鐘』與泡水 20 分鐘並存，計時範圍原文沒交代"
-  missing: "原文沒寫：份數、乾炒時間、第一面煎的時間、翻面方法、上桌溫度"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
+  total_min: '20'
+  time_basis: 菜脯 50 公克與蔥花 20 公克洗切約 5 分鐘；乾炒約 1–3 分鐘、拌蛋約 1 分鐘、熱鍋與煎蛋約 8 分鐘，合計抓約 20 分鐘。

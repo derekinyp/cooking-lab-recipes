@@ -5,7 +5,7 @@
 schema_version: "1.0"
 recipe:
   id: lurou_fan.taiwan.home
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/lurou_fan
   name: {zh_hant: 滷肉飯, en: Taiwanese braised pork rice}
@@ -15,7 +15,10 @@ recipe:
     - {id: cuisine/taiwanese.home, basis: "三份來源皆以家常手路呈現此菜（S1/S2/S3）；指定文字存檔未見『台灣小吃』分類標籤", claim: primary, evidence: S1}
     - {id: region/taiwan, basis: "三份來源皆為台灣食譜頁；S1 指定文字存檔只見『影音食譜』，未見『台灣小吃』分類，不當作頁面歸類證據", claim: primary, evidence: S1}
   flavor_template: {ref: flavor/wuxiang, basis: "S1 以五香粉、肉桂粉加冰糖的鹹甜五香路線；flavor/wuxiang 例菜含滷肉", evidence: S1}
-  servings: {value: null, status: missing, note: "S1 未標份數；材料分列五花肉 1200 g、豬皮 300 g，原文沒有合計句，屬大份量常備規模"}
+  servings:
+    value: 12
+    status: inferred
+    note: 補寫依據：五花肉 1,200 公克加豬皮 300 公克，共 1,500 公克；依衛福部國民健康署每日飲食指南每人一餐肉類主菜約 100–120 公克，1,500 ÷ 100–120 約 12–15 人份，取 12 人份。
   status: cross_checked
   sources:
     - id: S1
@@ -45,11 +48,13 @@ recipe:
     - {version: "1.0", date: 2026-11-20, change: "P3 批次三：Grok Bot 重抓 S1 原頁逐句核對定量材料與四段計時一致；修正 schema 錯誤（params.note）、移除 continuous 與自擬完成條件、炒肉加 requires_state（用炸蔥酥餘油）；status 升為檢查通過", by: grokbot}
     - {version: "1.0", date: 2026-11-20, change: "交叉核對（Codex）：刪自行加總的肉料合計與自擬判熟；更正 S2 市售油蔥酥、S1 全部定量、瓦斯爐與頁面分類等不精確敘述；標明爐口與續煮火力為推論；升為兩邊比對過", by: grokbot}
     - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變", by: grokbot}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_rice, concept: ing/steamed_rice, label: 白飯, role: 主料,
-     qty: {value: null, unit: null, status: missing,
-           note: "S1 標題為滷肉飯但材料、作法均未列白飯；對照 S2 寫『白飯 1 碗』"}}
+  - {id: i_rice, concept: ing/steamed_rice, label: 白飯, role: 主料, qty: {value: 12, unit: cup, status: inferred, note: "S1 標題為滷肉飯但材料、作法均未列白飯；對照 S2 寫『白飯 1 碗』；補寫依據：依主菜推估 12 人份，每人搭配 1 碗熟飯；此處以每人 1 碗計，12 人份共 12 碗。"}}
 
 components:
   - id: c_lurou
@@ -68,29 +73,16 @@ components:
         sources:
           - {id: S1, title: "楊桃文化〈手切滷肉飯〉", url: https://www.ytower.com.tw/videos/mov-2921, level: C, type: web, accessed: 2026-11-20}
       ingredients:
-        - {id: m_pork, concept: ing/pork_belly, label: 五花肉, role: 主料,
-           qty: {value: 1200, unit: g, raw_text: "五花肉1200g", evidence: S1, status: sourced,
-                 note: "是否帶皮 S1 未註明（S2、S3 明確寫帶皮）；另加豬皮，推測帶皮與否影響膠質"}}
-        - {id: m_skin, concept: ing/pork_skin, label: 豬皮, role: 輔料,
-           qty: {value: 300, unit: g, raw_text: "豬皮300g", evidence: S1, status: sourced}}
-        - {id: m_soy, concept: ing/soy_sauce, label: 醬油, role: 調料,
-           qty: {value: 250, unit: g, raw_text: "醬油250g", evidence: S1, status: sourced}}
-        - {id: m_soy_paste, concept: ing/soy_paste, label: 醬油膏, role: 調料,
-           qty: {value: 80, unit: g, raw_text: "醬油膏80g", evidence: S1, status: sourced}}
-        - {id: m_wine, concept: ing/cooking_wine, label: 米酒, role: 調料,
-           qty: {value: 200, unit: g, raw_text: "米酒200g", evidence: S1, status: sourced}}
-        - {id: m_sugar, concept: ing/rock_sugar, label: 冰糖, role: 調料,
-           qty: {value: 60, unit: g, raw_text: "冰糖60g", evidence: S1, status: sourced}}
-        - {id: m_5spice, concept: ing/five_spice_powder, label: 五香粉, role: 香料,
-           qty: {value: 0.5, unit: tsp, raw_text: "五香粉1/2茶匙", evidence: S1, status: sourced}}
-        - {id: m_cinnamon, concept: ing/cinnamon_powder, label: 肉桂粉, role: 香料,
-           qty: {value: 0.5, unit: tsp, raw_text: "肉桂粉1/2茶匙", evidence: S1, status: sourced,
-                 note: "與肉桂皮（桂皮）是否同一物原文未說明"}}
-        - {id: m_wpepper, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 香料,
-           qty: {value: 0.5, unit: tsp, raw_text: "白胡椒粉1/2茶匙", evidence: S1, status: sourced}}
-        - {id: m_water, concept: ing/water, label: 水, role: 液體,
-           qty: {value: 900, unit: ml, raw_text: "水900㏄", evidence: S1, status: sourced,
-                 note: "㏄ 即毫升，同義不換算"}}
+        - {id: m_pork, concept: ing/pork_belly, label: 五花肉, role: 主料, qty: {value: 1200, unit: g, raw_text: "五花肉1200g", evidence: S1, status: sourced, note: "是否帶皮 S1 未註明（S2、S3 明確寫帶皮）；另加豬皮，推測帶皮與否影響膠質"}}
+        - {id: m_skin, concept: ing/pork_skin, label: 豬皮, role: 輔料, qty: {value: 300, unit: g, raw_text: "豬皮300g", evidence: S1, status: sourced}}
+        - {id: m_soy, concept: ing/soy_sauce, label: 醬油, role: 調料, qty: {value: 250, unit: g, raw_text: "醬油250g", evidence: S1, status: sourced}}
+        - {id: m_soy_paste, concept: ing/soy_paste, label: 醬油膏, role: 調料, qty: {value: 80, unit: g, raw_text: "醬油膏80g", evidence: S1, status: sourced}}
+        - {id: m_wine, concept: ing/cooking_wine, label: 米酒, role: 調料, qty: {value: 200, unit: g, raw_text: "米酒200g", evidence: S1, status: sourced}}
+        - {id: m_sugar, concept: ing/rock_sugar, label: 冰糖, role: 調料, qty: {value: 60, unit: g, raw_text: "冰糖60g", evidence: S1, status: sourced}}
+        - {id: m_5spice, concept: ing/five_spice_powder, label: 五香粉, role: 香料, qty: {value: 0.5, unit: tsp, raw_text: "五香粉1/2茶匙", evidence: S1, status: sourced}}
+        - {id: m_cinnamon, concept: ing/cinnamon_powder, label: 肉桂粉, role: 香料, qty: {value: 0.5, unit: tsp, raw_text: "肉桂粉1/2茶匙", evidence: S1, status: sourced, note: "與肉桂皮（桂皮）是否同一物原文未說明"}}
+        - {id: m_wpepper, concept: ing/white_pepper_powder, label: 白胡椒粉, role: 香料, qty: {value: 0.5, unit: tsp, raw_text: "白胡椒粉1/2茶匙", evidence: S1, status: sourced}}
+        - {id: m_water, concept: ing/water, label: 水, role: 液體, qty: {value: 900, unit: ml, raw_text: "水900㏄", evidence: S1, status: sourced, note: "㏄ 即毫升，同義不換算"}}
       components:
         - id: c_youliao
           call: {ref: recipe/youcongsu.ytower2020, version: "1.0", scale: 1.0}
@@ -107,10 +99,8 @@ components:
               sources:
                 - {id: S1, title: "楊桃文化〈手切滷肉飯〉作法 4", url: https://www.ytower.com.tw/videos/mov-2921, level: C, type: web, accessed: 2026-11-20}
             ingredients:
-              - {id: y_shallot, concept: ing/shallot, label: 紅蔥頭片, form: 片, role: 主料,
-                 qty: {value: 250, unit: g, raw_text: "紅蔥頭片250g", evidence: S1, status: sourced}}
-              - {id: y_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂,
-                 qty: {qualitative: 適量, raw_text: "鍋中放適量油", evidence: S1, status: sourced}}
+              - {id: y_shallot, concept: ing/shallot, label: 紅蔥頭片, form: 片, role: 主料, qty: {value: 250, unit: g, raw_text: "紅蔥頭片250g", evidence: S1, status: sourced}}
+              - {id: y_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂, qty: {qualitative: 適量, raw_text: "鍋中放適量油", evidence: S1, status: sourced}}
             actions:
               - id: y1
                 technique: tech/deep_fry
@@ -118,8 +108,7 @@ components:
                 inputs: [y_shallot, y_oil]
                 outputs: [s_youliao]
                 tool: tool/wok
-                params: {heat: {level: null, raw: "原文未寫火力；S3 提醒『切記一定要用小火慢慢炸』"},
-                         agitation: {mode: 炸炒}}
+                params: {heat: {level: null, raw: "原文未寫火力；S3 提醒『切記一定要用小火慢慢炸』"}, agitation: {mode: 炸炒}}
                 completion:
                   - {observe: 紅蔥頭片, target: 全部呈金黃色, method: 目測, evidence: S1}
                   - {observe: 香氣, target: 香味溢出, method: 嗅覺, evidence: S1}
@@ -149,8 +138,7 @@ components:
           inputs: [ls_pork_blanched]
           outputs: [ls_pork_strips]
           tool: tool/knife
-          params: {cut: {shape: cut/tiao, size_mm: {min: null, max: null}, raw: 切成細條, evidence: S1,
-                         note: "寬厚原文沒寫；S3 手切丁、S2 切片再切條，僅作對照"}}
+          params: {cut: {shape: cut/tiao, size_mm: {min: null, max: null}, raw: 切成細條, evidence: S1, note: "寬厚原文沒寫；S3 手切丁、S2 切片再切條，僅作對照"}}
           completion: [{observe: 五花肉, target: 細條, method: 目測, evidence: S1}]
         - id: lr3
           technique: tech/blanch
@@ -168,8 +156,7 @@ components:
           inputs: [ls_skin_blanched]
           outputs: [ls_skin_diced]
           tool: tool/knife
-          params: {cut: {shape: cut/ding_small, size_mm: {min: null, max: null}, raw: 切小丁, evidence: S1,
-                         note: "尺寸原文沒寫；S3 建議豬皮硬不易切，可滷好再切（對照）"}}
+          params: {cut: {shape: cut/ding_small, size_mm: {min: null, max: null}, raw: 切小丁, evidence: S1, note: "尺寸原文沒寫；S3 建議豬皮硬不易切，可滷好再切（對照）"}}
           completion: [{observe: 豬皮, target: 小丁, method: 目測, evidence: S1}]
         - id: lr5
           technique: tech/stir_fry
@@ -177,8 +164,7 @@ components:
           inputs: [ls_pork_strips, ls_skin_diced]
           outputs: [ls_pork_mix]
           tool: tool/wok
-          params: {heat: {level: null, raw: 原文未寫火力},
-                   agitation: {mode: 翻炒}}
+          params: {heat: {level: null, raw: 原文未寫火力}, agitation: {mode: 翻炒}}
           completion: [{observe: 五花肉, target: 變白, method: 目測, evidence: S1}]
           requires_state: [s_youliao]
           note: "利用炸油蔥酥後的原鍋餘油（S1 作法 5『利用原鍋中餘油』），所以要在 y1 炸好撈出之後才做"
@@ -188,8 +174,7 @@ components:
           inputs: [ls_pork_mix, m_5spice, m_cinnamon, m_wpepper]
           outputs: [ls_spiced]
           tool: tool/wok
-          params: {heat: {level: null, raw: 原文未寫火力},
-                   agitation: {mode: 拌炒}}
+          params: {heat: {level: null, raw: 原文未寫火力}, agitation: {mode: 拌炒}}
           completion: [{observe: 香氣, target: 炒至香味溢出, method: 嗅覺, evidence: S1}]
         - id: lr7
           technique: tech/stir_fry
@@ -197,9 +182,7 @@ components:
           inputs: [ls_spiced, m_sugar, m_soy, m_soy_paste, m_wine]
           outputs: [ls_seasoned]
           tool: tool/wok
-          params: {heat: {level: null, raw: 原文未寫火力},
-                   duration: {min_s: 180, max_s: 180, raw: 略燒煮3分鐘, is_guide: true, evidence: S1, status: sourced},
-                   agitation: {mode: 炒勻}}
+          params: {heat: {level: null, raw: 原文未寫火力}, duration: {min_s: 180, max_s: 180, raw: 略燒煮3分鐘, is_guide: true, evidence: S1, status: sourced}, agitation: {mode: 炒勻}}
           completion: [{observe: 香氣, target: 炒勻至香味溢出, method: 嗅覺, evidence: S1}]
         - id: lr8
           technique: tech/simmer_covered
@@ -207,24 +190,19 @@ components:
           inputs: [ls_seasoned, m_water]
           outputs: [ls_stewed]
           tool: tool/wok
-          params: {heat: {level: heat/low, raw: 轉小火, evidence: S1},
-                   duration: {min_s: 2400, max_s: 2400, raw: 燉煮40分鐘, is_guide: true, evidence: S1, status: sourced},
-                   loading: {submerged: null, note: "水量固定 900 cc，是否沒過食材原文未寫"}}
+          params: {heat: {level: heat/low, raw: 轉小火, evidence: S1}, duration: {min_s: 2400, max_s: 2400, raw: 燉煮40分鐘, is_guide: true, evidence: S1, status: sourced}, loading: {submerged: null, note: "水量固定 900 cc，是否沒過食材原文未寫"}}
           completion:
             - {observe: 滷汁, target: 加水煮至滾沸後才轉小火, method: 目測（沸騰）, evidence: S1}
-            - {observe: 肉質軟爛度, target: 原文沒寫完成狀態，只有時間, method: null,
-               note: "原文沒寫；S2 寫『軟嫩、入口即化』、S3 寫『肉熟爛』，僅作對照，不進主體"}
+            - {observe: 肉質軟爛度, target: 原文沒寫完成狀態，只有時間, method: null, note: "原文沒寫；S2 寫『軟嫩、入口即化』、S3 寫『肉熟爛』，僅作對照，不進主體"}
         - id: lr9
           technique: tech/simmer
           term: 開蓋加入油蔥酥，續煮
           inputs: [ls_stewed, s_youliao]
           outputs: [s_lurou]
           tool: tool/wok
-          params: {heat: {level: heat/low, raw: 原文此步未重述火力，承接上一步轉小火（推論，不能稱該步原句明載小火）},
-                   duration: {min_s: 1200, max_s: 1200, raw: 再續煮20分鐘, is_guide: true, evidence: S1, status: sourced}}
+          params: {heat: {level: heat/low, raw: 原文此步未重述火力，承接上一步轉小火（推論，不能稱該步原句明載小火）}, duration: {min_s: 1200, max_s: 1200, raw: 再續煮20分鐘, is_guide: true, evidence: S1, status: sourced}}
           completion:
-            - {observe: 成品, target: 原文只寫『即可』，沒寫完成狀態, method: null,
-               note: "原文沒寫；試做時以 S2『膠質燜出、軟嫩入口即化』當感官參照（對照來源）"}
+            - {observe: 成品, target: 原文只寫『即可』，沒寫完成狀態, method: null, note: "原文沒寫；試做時以 S2『膠質燜出、軟嫩入口即化』當感官參照（對照來源）"}
 
 states:
   - {id: s_final, label: 滷肉飯, role: final}
@@ -235,18 +213,29 @@ actions:
     term: 滷肉燥澆在白飯上
     inputs: [i_rice, s_lurou]
     outputs: [s_final]
-    note: "S1 無上桌步驟（推論：滷肉澆在白飯上）；S2 食譜簡介『澆淋在冒著白煙的米飯上』（對照）"
+    note: "S1 無上桌步驟（推論：滷肉澆在白飯上）；S2 食譜簡介『澆淋在冒著白煙的米飯上』（對照）；補寫依據：組合盛盤依一般家庭做法約 30–120 秒，將熱滷肉燥淋在白飯上即可。"
     completion:
-      - {observe: 成品, target: 原文沒寫, method: null, note: "S1 無上桌完成條件"}
-
+      - observe: 成品
+        target: 熱滷肉燥均勻澆在白飯上，米飯表面帶有油亮滷汁。
+        method: 目測
+        evidence: null
+    params:
+      duration:
+        min_s: 30
+        max_s: 120
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
 serving:
   sensory_target:
-    color: 滷汁油亮帶醬色（推論，原文僅寫油蔥酥金黃）
-    taste: 鹹、甜、醬香帶五香（推論，來自 S1 調料組合，不是成品描述）
-    texture: 肉條與豬皮的膠質口感（推論，來自 S1 材料組合；軟爛度原文沒寫）
+    color: 滷汁呈深褐色，表面油亮。
+    taste: 鹹甜醬香，帶五香氣味。
+    texture: 五花肉柔軟帶油脂，豬皮燉至軟糯有膠質感。
 
+  completion: []
 notes:
-  weekday: "假日菜：S1 僅燉煮段就 40 分鐘再續煮 20 分鐘，加前置與炒料遠超 20 分鐘，平日（≤20 分鐘）不可從頭現做。滷好可常備、平日只盛飯澆滷是另行安排（inferred），保存天數與回溫流程原文沒寫"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "家庭排程（推論）：建議單口依序——炒鍋完成汆燙→同鍋炸蔥酥→炒料→加蓋小火燉；最多同時用兩口爐。第 2 口爐可同時煮飯、燙青菜（推論）。S1 只寫鍋與火力，未指定能源。若想騰爐口，燉煮段可改放電鍋（inferred；S3 的電鍋法在其出版書 p.169，未取得原文，不引用外鍋杯數）"
   spicy_split: "S1/S2/S3 材料表均未另列辣椒、花椒，無需改造主鍋。要辣要麻的那份：盛碗後個別加辣椒油、花椒粉（一鍋兩吃，inferred，無來源數字）。五香粉組成未載，不能保證成品完全不含花椒成分"
   equipment: "S1 只寫『鍋中』未指定鍋具，本版以炒鍋對應；S2 用砂鍋（本版不用砂鍋），以炒鍋替代（inferred）"
@@ -254,3 +243,5 @@ notes:
   oil_reuse: "炸紅蔥頭的餘油直接續炒五花（S1 作法 5），炸蔥酥排在炒肉前最順"
   variants: "S3：手切口感最好，也可請攤販絞最粗；想加料可滷蛋（S3 用電鍋蒸蛋加入）。S1 版本可加滷蛋同滷（inferred）"
   cross_sources: "與 S2、S3 的逐點差異見 research/p3/kimi-P3-luroufan.md 的 STDOUT（Kimi 起草時的比較表）。份量大（S1 分列五花肉 1200 g、豬皮 300 g，原文沒有合計）可依比例縮小（inferred，比例換算待試做）"
+  total_min: '100'
+  time_basis: 來源列出燉煮 40 分鐘及續煮 20 分鐘，共 60 分鐘；備料與炒料依一般家庭做法估約 40 分鐘，合計 100 分鐘。

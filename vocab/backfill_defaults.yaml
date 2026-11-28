@@ -1,0 +1,52 @@
+# 補寫常識表 v1.0（2026-11-28）
+# 用途：補寫食譜缺的份量、時間、火候、用量時，給外部模型當依據，也給 tools/backfill_apply.py 驗證用。
+# 原則：補的值要合理、要寫依據；來源有寫的數字一律不動。依據只能引用這張表、來源給的數字、或「一般家庭做法」。
+portions:
+  # 衛福部國民健康署「每日飲食指南」：蔬菜 1 份＝可食部分生重約 100 公克；蛋白質 1 份約 20–25 公克蛋白質，
+  # 生肉類約 30–35 公克生重為一「份」，一餐一個大人約 2–3 份（約 100–120 公克生重）；湯一人約 250–300 毫升。
+  basis: "衛福部國民健康署每日飲食指南"
+  per_adult_meal:
+    蔬菜: {min_g: 100, max_g: 150, note: "一餐一人約 1–1.5 份蔬菜（生重）"}
+    肉類或蛋白質主菜: {min_g: 100, max_g: 120, note: "一餐一人約 100–120 公克生重"}
+    湯: {min_ml: 250, max_ml: 300}
+    主食: {note: "全穀雜糧一餐一人約 1–1.5 碗（約 160–240 公克熟飯）"}
+  rule: "有主料重量時：份數＝主料總重 ÷ 每人份重；整數、取 2–6 之間最合理的值；多道主料以主要蛋白質或蔬菜為準。"
+food_safety:
+  # 美國農業部（USDA）食品安全：安全內部溫度。台灣食藥署未找到逐項數字，故引用 USDA。
+  basis: "美國農業部（USDA）食品安全與檢驗局『Safe Minimum Internal Temperature Chart』"
+  celsius:
+    禽肉（雞鴨鵝、含絞肉）: 74
+    絞肉（牛豬羊）: 71
+    整塊牛豬羊肉、魚貝類: 63
+    蛋料理: 71
+    剩菜復熱: 74
+  整塊肉靜置分鐘: 3
+  室溫存放上限小時: 2
+  冷藏天數: "3–4 天"
+  note: "只有『肉類熟度、剩菜保存』才可以寫這類數字；一般火候時間不要用食安數字。"
+heat_by_technique:
+  # 家用瓦斯爐的一般做法（不是溫度）。level 只能用 vocab/heat.yaml 的 id。
+  爆香: {levels: [heat/low, heat/medium_low, heat/medium], seconds: [30, 120]}
+  炒: {levels: [heat/medium_high, heat/high], seconds: [60, 300]}
+  煎: {levels: [heat/medium, heat/medium_low], seconds: [120, 300], per_side: true}
+  煸: {levels: [heat/medium, heat/medium_low], seconds: [300, 900]}
+  汆燙: {levels: [heat/high], seconds: [20, 180], note: "沸水"}
+  煮: {levels: [heat/medium, heat/medium_high], seconds: [180, 900]}
+  燉滷: {levels: [heat/low, heat/medium_low], seconds: [900, 5400]}
+  燜: {levels: [heat/low, heat/medium_low], seconds: [300, 1200]}
+  蒸: {levels: [heat/high, heat/medium_high], seconds: [180, 1200], note: "水滾後計時"}
+  炸: {levels: [heat/medium_high], seconds: [60, 360]}
+  收汁: {levels: [heat/medium, heat/medium_high], seconds: [60, 240]}
+  燒開水煮麵: {levels: [heat/high], seconds: [420, 720]}
+prep_time_rules:
+  # 備料時間（洗、切、醃、秤量）：家庭廚房、一個人做
+  蔬菜洗切: "每 300 公克約 3–5 分鐘"
+  肉類切片切絲: "每 200 公克約 5 分鐘"
+  醃肉: "醃 10–20 分鐘；可以和備其他料同時做"
+  乾香菇泡發: "冷水泡 2 小時以上，或熱水約 20–30 分鐘；需要『先準備』"
+  乾貨泡發: "木耳、金針、蝦米等 15–30 分鐘"
+  total_min: "備料時間（不含需提前泡發的等待）＋開火做的時間；總時間不含提前泡發或隔夜的等待，那一項寫在 prep_ahead。"
+weekday_threshold_min: 30
+storage:
+  剩菜: "放涼後 2 小時內冷藏，冷藏可放 3–4 天；復熱到中心熱透（74°C）。"
+  湯品: "同上；冷藏 3–4 天。"

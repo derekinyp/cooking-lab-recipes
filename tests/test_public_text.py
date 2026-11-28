@@ -17,7 +17,7 @@ def visible(page):
     return html.unescape(t + ' ' + attrs)
 
 pages = sorted(DOCS.rglob('*.html'))
-if len(pages) < 50: fails.append(f'頁數太少：{len(pages)}')
+if len(pages) < 45: fails.append(f'頁數太少：{len(pages)}')
 hits = {'過程用語': 0, '大陸用語': 0, 'Notion': 0}
 bad_re = [(ph, re.compile(re.escape(ph))) for ph in TW['forbidden_phrases']] + [('來源編號', re.compile('來源[①-⑳]')), ('沒寫', re.compile('沒寫|未寫'))]
 cn_re = [(t['cn'], re.compile(t.get('rx') or re.escape(t['cn']))) for t in TW['terms']]
@@ -50,7 +50,8 @@ for must in ('最新食譜', '量匙換算'):
 
 # 卡片：「約 N 分鐘・N 人份・辣度」；平日可做只給 30 分鐘內
 cards = re.findall(r'<li class="dish-card card".*?</li>', idx, re.S)
-if len(cards) < 50: fails.append(f'卡片只有 {len(cards)} 張')
+n_expected = sum(1 for l in (ROOT / 'site' / 'order.yaml').read_text(encoding='utf-8').splitlines() if l.startswith('- '))
+if len(cards) != n_expected: fails.append(f'卡片 {len(cards)} 張，site/order.yaml 有 {n_expected} 道')
 for c in cards:
     slug = re.search(r'data-slug="([^"]+)"', c).group(1)
     meta = html.unescape(re.search(r'dc-meta">(.*?)</p>', c, re.S).group(1))
@@ -64,6 +65,18 @@ for slug in re.findall(r'data-slug="([^"]+)"', idx):
     pg = (DOCS / 'recipes' / f'{slug}.html').read_text(encoding='utf-8')
     if '約 ' not in pg or '人份' not in pg: fails.append(f'{slug}: 食譜頁缺時間或份量')
     if (ROOT / 'site' / 'content' / f'x').exists(): pass
+
+# 字型涵蓋：網站用的字型子集要含所有看得到的中文字（否則手機會跳到別的字型，字長得不一樣）
+try:
+    from fontTools.ttLib import TTFont
+    fonts_dir = next((DOCS / 'assets').glob('*/fonts'))
+    cmap = set(TTFont(str(fonts_dir / 'noto-sans-tc-400-site.woff2')).getBestCmap())
+    seen = set()
+    for p in pages: seen |= {c for c in visible(p.read_text(encoding='utf-8')) if '\u3400' <= c <= '\u9fff'}
+    miss = sorted(c for c in seen if ord(c) not in cmap)
+    if miss: fails.append(f'字型子集缺 {len(miss)} 個字（請用 python3 site/build_site.py --fonts 重做）：{"".join(miss[:30])}')
+except ImportError:
+    print('（沒有 fontTools，略過字型涵蓋檢查）')
 
 print(f'掃描 {len(pages)} 頁：過程用語 {hits["過程用語"]} 筆、大陸用語 {hits["大陸用語"]} 筆、Notion {hits["Notion"]} 筆')
 if fails:

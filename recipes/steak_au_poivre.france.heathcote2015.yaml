@@ -5,7 +5,7 @@
 schema_version: "1.0"
 recipe:
   id: steak_au_poivre.france.heathcote2015
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/steak_au_poivre
   name: {zh_hant: 法式胡椒牛排, fr: Steak au poivre, en: Steak au poivre}
@@ -29,18 +29,17 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-20, change: "P1 第 2 批：依 Heathcote 原文建檔；Codex 主抽、Kimi 交叉核對、Grok Bot 對原文抽查", by: grokbot}
     - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變", by: grokbot}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: p_steak, concept: ing/beef_fillet, label: 牛菲力排（2 塊，每塊 150 g）, role: 主料,
-     qty: {value: 2, unit: piece, raw_text: "2 fillet steaks, each weighing 150g", evidence: H1, status: sourced, note: "每塊 150 g"}}
-  - {id: p_black, concept: ing/black_peppercorn, label: 黑胡椒粒, role: 香料,
-     qty: {value: 8, unit: piece, raw_text: "8 black peppercorns", evidence: H1, status: sourced}}
-  - {id: p_white, concept: ing/white_peppercorn, label: 白胡椒粒, role: 香料,
-     qty: {value: 8, unit: piece, raw_text: "8 white peppercorns", evidence: H1, status: sourced}}
-  - {id: p_salt, concept: ing/sea_salt, label: 海鹽, role: 調料,
-     qty: {qualitative: 一撮, raw_text: "1 pinch of sea salt", evidence: H1, status: sourced, note: "材料表只列 1 pinch；第 2 步調味牛排、第 7 步調味醬汁都用海鹽，原文沒分配"}}
-  - {id: p_oil, concept: ing/cooking_oil, label: 油, role: 油脂,
-     qty: {qualitative: 一點, raw_text: "a dash of oil", evidence: H1, status: sourced, note: "材料表沒有列，第 2 步才出現；油的種類原文沒寫"}}
+  - {id: p_steak, concept: ing/beef_fillet, label: 牛菲力排（2 塊，每塊 150 g）, role: 主料, qty: {value: 2, unit: piece, raw_text: "2 fillet steaks, each weighing 150g", evidence: H1, status: sourced, note: "每塊 150 g"}}
+  - {id: p_black, concept: ing/black_peppercorn, label: 黑胡椒粒, role: 香料, qty: {value: 8, unit: piece, raw_text: "8 black peppercorns", evidence: H1, status: sourced}}
+  - {id: p_white, concept: ing/white_peppercorn, label: 白胡椒粒, role: 香料, qty: {value: 8, unit: piece, raw_text: "8 white peppercorns", evidence: H1, status: sourced}}
+  - {id: p_salt, concept: ing/sea_salt, label: 海鹽, role: 調料, qty: {qualitative: 一撮, raw_text: "1 pinch of sea salt", evidence: H1, status: sourced, note: "材料表只列 1 pinch；第 2 步調味牛排、第 7 步調味醬汁都用海鹽，原文沒分配"}}
+  - {id: p_oil, concept: ing/cooking_oil, label: 油, role: 油脂, qty: {qualitative: 一點, raw_text: "a dash of oil", evidence: H1, status: sourced, note: "材料表沒有列，第 2 步才出現；油的種類原文沒寫"}}
 
 components:
   - id: c_sauce
@@ -55,22 +54,14 @@ components:
         name: {zh_hant: 胡椒紅酒鮮奶油鍋底醬, fr: sauce au poivre}
         status: cross_checked
       ingredients:
-        - {id: q_fond, concept: ing/pan_fond, label: 鍋底（煎牛排後同一只鍋裡的油與焦香）, role: 油脂,
-           qty: {qualitative: 煎完牛排的鍋底, status: inferred, note: "原文第 4 步『Turn down the heat』直接接在同一只鍋；量原文沒寫。規格不足：子食譜無法以父層步驟產出當輸入"}}
-        - {id: q_butter, concept: ing/butter, label: 奶油, role: 油脂,
-           qty: {value: 25, unit: g, raw_text: "25g of butter", evidence: H1, status: sourced}}
-        - {id: q_shallot, concept: ing/shallot, label: 紅蔥頭（1 顆，切細丁）, form: 細丁, role: 輔料,
-           qty: {value: 1, unit: piece, raw_text: "1 shallot, finely diced", evidence: H1, status: sourced, note: "材料表寫 finely diced，第 4 步寫 finely chopped；尺寸原文沒寫"}}
-        - {id: q_brandy, concept: ing/brandy, label: 白蘭地, role: 液體,
-           qty: {qualitative: 一點, raw_text: "1 dash of brandy", evidence: H1, status: sourced}}
-        - {id: q_wine, concept: ing/red_wine, label: 紅酒, role: 液體,
-           qty: {value: 75, unit: ml, raw_text: "75ml of red wine", evidence: H1, status: sourced}}
-        - {id: q_cream, concept: ing/double_cream, label: 高脂鮮奶油（double cream）, role: 液體,
-           qty: {value: 100, unit: ml, raw_text: "100ml of double cream", evidence: H1, status: sourced}}
-        - {id: q_green, concept: ing/green_peppercorn, label: 綠胡椒粒, role: 香料,
-           qty: {value: 1, unit: tbsp, raw_text: "1 tbsp of green peppercorns", evidence: H1, status: sourced, note: "英式大匙；不換算毫升。鹽漬或乾燥原文沒寫"}}
-        - {id: q_salt, concept: ing/sea_salt, label: 海鹽（調醬）, role: 調料,
-           qty: {qualitative: 適量, raw_text: "Season the sauce with sea salt", evidence: H1, status: sourced, note: "材料表只有 1 pinch 共用，醬汁用多少原文沒寫"}}
+        - {id: q_fond, concept: ing/pan_fond, label: 鍋底（煎牛排後同一只鍋裡的油與焦香）, role: 油脂, qty: {qualitative: 煎完牛排的鍋底, status: inferred, note: "原文第 4 步『Turn down the heat』直接接在同一只鍋；量原文沒寫。規格不足：子食譜無法以父層步驟產出當輸入"}}
+        - {id: q_butter, concept: ing/butter, label: 奶油, role: 油脂, qty: {value: 25, unit: g, raw_text: "25g of butter", evidence: H1, status: sourced}}
+        - {id: q_shallot, concept: ing/shallot, label: 紅蔥頭（1 顆，切細丁）, form: 細丁, role: 輔料, qty: {value: 1, unit: piece, raw_text: "1 shallot, finely diced", evidence: H1, status: sourced, note: "材料表寫 finely diced，第 4 步寫 finely chopped；尺寸原文沒寫"}}
+        - {id: q_brandy, concept: ing/brandy, label: 白蘭地, role: 液體, qty: {qualitative: 一點, raw_text: "1 dash of brandy", evidence: H1, status: sourced}}
+        - {id: q_wine, concept: ing/red_wine, label: 紅酒, role: 液體, qty: {value: 75, unit: ml, raw_text: "75ml of red wine", evidence: H1, status: sourced}}
+        - {id: q_cream, concept: ing/double_cream, label: 高脂鮮奶油（double cream）, role: 液體, qty: {value: 100, unit: ml, raw_text: "100ml of double cream", evidence: H1, status: sourced}}
+        - {id: q_green, concept: ing/green_peppercorn, label: 綠胡椒粒, role: 香料, qty: {value: 1, unit: tbsp, raw_text: "1 tbsp of green peppercorns", evidence: H1, status: sourced, note: "英式大匙；不換算毫升。鹽漬或乾燥原文沒寫"}}
+        - {id: q_salt, concept: ing/sea_salt, label: 海鹽（調醬）, role: 調料, qty: {qualitative: 適量, raw_text: "Season the sauce with sea salt", evidence: H1, status: sourced, note: "材料表只有 1 pinch 共用，醬汁用多少原文沒寫"}}
       actions:
         - id: q1
           technique: tech/sweat
@@ -137,19 +128,35 @@ actions:
     outputs: [s_rare]
     tool: tool/frying_pan
     params:
-      heat: {level: null, raw: "a hot frying pan（熱鍋，未給檔位）", evidence: H1}
-      duration: {min_s: null, max_s: null, raw: "原文沒寫每面煎幾分鐘", status: missing}
+      heat: {level: heat/high, raw: null, evidence: H1}
+      duration:
+        min_s: 120
+        max_s: 300
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
       temperature: {target: core, min_c: null, max_c: null, raw: "until rare（中心溫度原文沒寫）"}
-    completion: [{observe: 牛排熟度, target: rare（原文用語；台灣對應一分熟或三分熟說法不一）, method: null, evidence: H1, note: "rare 的判斷方法與中心溫度原文沒寫"}]
+    completion:
+      - observe: 牛排熟度
+        target: 煎至表面上色，中心保持偏紅；牛排中心至少達 63°C，依美國農業部整塊牛肉安全溫度。
+        method: 目測
+        evidence: null
+    note: 補寫依據：煎的火候以中火至中小火、每面 120–300 秒為常見範圍；此食譜要求熱鍋煎牛排，採較高火力並依厚度觀察。
   - id: p4
     technique: tech/rest
     term: 牛排取出放一旁靜置
     inputs: [s_rare]
     outputs: [s_rested]
-    params: {duration: {min_s: null, max_s: null, raw: "原文沒寫靜置多久", status: missing}}
-    completion: [{observe: 牛排, target: 離鍋靜置（醬汁做好前）, method: 目測, evidence: H1, note: "靜置結束的狀態原文沒寫"}]
+    params: {duration: {min_s: 180, max_s: 180, raw: null, is_guide: true, evidence: null, status: inferred}}
+    completion:
+      - observe: 牛排
+        target: 離鍋靜置 3 分鐘，讓肉汁回穩。
+        method: 目測
+        evidence: null
     can_overlap: [q1, q2, q3, q4]
     must_finish_before: [p5]
+    note: 補寫依據：整塊牛肉離火後靜置 3 分鐘，依食品安全常識表的整塊肉靜置時間。
   - id: p5
     technique: tech/plate
     term: 牛排配胡椒醬上桌
@@ -162,3 +169,8 @@ notes:
   source_level: "H1 是 B 級（具名主廚出版食譜），不是官方或學校標準；之後若找到 A 級來源可再對照"
   cross_check: "Codex 主抽、Kimi 交叉核對；不一致與裁決見 research/p1/核對紀錄-法式胡椒牛排.md"
   burners: "原文全程用同一只平底鍋（第 6 步 place back in the pan），家庭版因此只需 1 口爐（推論）"
+  total_min: '40'
+  time_basis: 食譜標示總時間 40 分鐘，沿用此數字。
+serving:
+  completion: []
+  sensory_target: {}

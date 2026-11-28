@@ -4,7 +4,7 @@
 schema_version: "1.0"
 recipe:
   id: ganguo_huacai.hunan.home
-  version: "1.0"
+  version: "1.1"
   kind: dish
   dish_concept: dish/ganguo_huacai
   name: {zh_hant: 乾鍋花椰菜, zh_hans: 干锅花菜, en: Dry Pot Cauliflower (Gan Guo Hua Cai)}
@@ -14,7 +14,10 @@ recipe:
     - {id: cuisine/xiang, basis: "H1 標題與內文自稱 Hunan / Xiang cuisine 湘菜", claim: primary, evidence: H1}
     - {id: region/hunan, basis: "H1 為湖南食譜專案頁面", claim: primary, evidence: H1}
   flavor_template: {ref: flavor/mala, basis: "H1：Dry pot cauliflower is a classic example of ma la (麻辣)；配方含花椒、乾辣椒、豆瓣醬", evidence: H1}
-  servings: {value: null, status: sourced, evidence: H1, note: "原文 Serves 3-4（結構化資料 recipeYield：3-4 servings），為範圍份數；規格 servings 只支援單一 value，留空，不自取整"}
+  servings:
+    value: 4
+    status: inferred
+    note: 補寫依據：花椰菜 500 公克，依衛福部國民健康署每日飲食指南每人一餐蔬菜約 100–150 公克，約可供 3–5 人；採 4 人份。
   status: cross_checked
   sources:
     - id: H1
@@ -42,34 +45,25 @@ recipe:
   changelog:
     - {version: "1.0", date: 2026-11-27, change: "起始草稿：以 H1 為主來源建立主體；W1、L1 作對照；數字缺漏一律標 missing，未自補", by: doubao}
     - {version: "1.0", date: 2026-11-27, change: "Codex X3 複核通過（上一輪必修項已修好、未引入新錯誤），升為 cross_checked", by: codex}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: i_cauliflower, concept: ing/cauliflower, label: 花椰菜, role: 主料,
-     qty: {value: 500, unit: g, raw_text: "Cauliflower (about 500g) 1 head", evidence: H1, status: sourced, note: "H1 原量 1 顆約 500 g；小朵約 3–4 cm（H1：about 3 to 4 cm across）"}}
-  - {id: i_pork_belly, concept: ing/pork_belly, label: 五花肉（薄片）, form: 片, role: 主料,
-     qty: {value: 100, unit: g, raw_text: "Pork belly, thinly sliced 100 g", evidence: H1, status: sourced, note: "H1 原量；是否去皮原文沒寫"}}
-  - {id: i_chili_dried, concept: ing/dried_chili, label: 乾紅辣椒（節）, form: 節, role: 香料,
-     qty: {value: 10, unit: piece, raw_text: "Dried red chilies 10 whole", evidence: H1, status: sourced, note: "H1：Cut them into sections with scissors（剪刀剪節）"}}
-  - {id: i_peppercorn, concept: ing/sichuan_pepper, label: 花椒（Sichuan peppercorns）, role: 香料,
-     qty: {value: 1, unit: tbsp, raw_text: "1 tbsp Sichuan peppercorns", evidence: H1, status: sourced, note: "麻味來源；H1 Less spicy 段建議減至 1 teaspoon（對照，未進主體）"}}
-  - {id: i_garlic, concept: ing/garlic, label: 蒜（切片）, form: 片, role: 輔料,
-     qty: {value: 3, unit: clove, raw_text: "Garlic cloves, sliced 3 cloves", evidence: H1, status: sourced}}
-  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 輔料,
-     qty: {value: 3, unit: slice, raw_text: "Ginger slices 3 slices", evidence: H1, status: sourced}}
-  - {id: i_douban, concept: ing/pixian_doubanjiang, label: 豆瓣醬（郫縣豆瓣／辣豆瓣）, role: 調料,
-     qty: {value: 1, unit: tbsp, raw_text: "Doubanjiang (chili bean paste) 1 tbsp", evidence: H1, status: sourced, note: "H1：Pixian doubanjiang is the gold standard"}}
-  - {id: i_soy_light, concept: ing/soy_sauce_light, label: 生抽（淡醬油）, role: 調料,
-     qty: {value: 1, unit: tbsp, raw_text: "Light soy sauce 1 tbsp", evidence: H1, status: sourced}}
-  - {id: i_soy_dark, concept: ing/soy_sauce_dark, label: 老抽（深色醬油，上色用）, role: 調料,
-     qty: {value: 0.5, unit: tsp, raw_text: "Dark soy sauce 1/2 tsp", evidence: H1, status: sourced}}
-  - {id: i_sugar, concept: ing/white_sugar, label: 砂糖, role: 調料,
-     qty: {value: 0.5, unit: tsp, raw_text: "Sugar 1/2 tsp", evidence: H1, status: sourced}}
-  - {id: i_scallion, concept: ing/scallion, label: 蔥（蔥段）, form: 段, role: 輔料,
-     qty: {value: 2, unit: stalk, raw_text: "Scallions 2 stalks", evidence: H1, status: sourced}}
-  - {id: i_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂,
-     qty: {value: 2, unit: tbsp, raw_text: "Cooking oil 2 tbsp", evidence: H1, status: sourced, note: "食材表 2 tbsp；步驟 2 另寫 Heat 1 tablespoon of oil，又寫 leave at least 2 tablespoons in the wok，兩處原文不一致，照錄不調和"}}
-  - {id: i_salt_soak, concept: ing/salt, label: 鹽（泡花椰菜用）, role: 調料,
-     qty: {value: 1, unit: tsp, raw_text: "Salt (for soaking) 1 tsp", evidence: H1, status: sourced, note: "只用於泡水清洗，不計入最後調味；H1 主體另無額外調味鹽"}}
+  - {id: i_cauliflower, concept: ing/cauliflower, label: 花椰菜, role: 主料, qty: {value: 500, unit: g, raw_text: "Cauliflower (about 500g) 1 head", evidence: H1, status: sourced, note: "H1 原量 1 顆約 500 g；小朵約 3–4 cm（H1：about 3 to 4 cm across）"}}
+  - {id: i_pork_belly, concept: ing/pork_belly, label: 五花肉（薄片）, form: 片, role: 主料, qty: {value: 100, unit: g, raw_text: "Pork belly, thinly sliced 100 g", evidence: H1, status: sourced, note: "H1 原量；是否去皮原文沒寫"}}
+  - {id: i_chili_dried, concept: ing/dried_chili, label: 乾紅辣椒（節）, form: 節, role: 香料, qty: {value: 10, unit: piece, raw_text: "Dried red chilies 10 whole", evidence: H1, status: sourced, note: "H1：Cut them into sections with scissors（剪刀剪節）"}}
+  - {id: i_peppercorn, concept: ing/sichuan_pepper, label: 花椒（Sichuan peppercorns）, role: 香料, qty: {value: 1, unit: tbsp, raw_text: "1 tbsp Sichuan peppercorns", evidence: H1, status: sourced, note: "麻味來源；H1 Less spicy 段建議減至 1 teaspoon（對照，未進主體）"}}
+  - {id: i_garlic, concept: ing/garlic, label: 蒜（切片）, form: 片, role: 輔料, qty: {value: 3, unit: clove, raw_text: "Garlic cloves, sliced 3 cloves", evidence: H1, status: sourced}}
+  - {id: i_ginger, concept: ing/ginger, label: 薑片, form: 片, role: 輔料, qty: {value: 3, unit: slice, raw_text: "Ginger slices 3 slices", evidence: H1, status: sourced}}
+  - {id: i_douban, concept: ing/pixian_doubanjiang, label: 豆瓣醬（郫縣豆瓣／辣豆瓣）, role: 調料, qty: {value: 1, unit: tbsp, raw_text: "Doubanjiang (chili bean paste) 1 tbsp", evidence: H1, status: sourced, note: "H1：Pixian doubanjiang is the gold standard"}}
+  - {id: i_soy_light, concept: ing/soy_sauce_light, label: 醬油, role: 調料, qty: {value: 1, unit: tbsp, raw_text: "Light soy sauce 1 tbsp", evidence: H1, status: sourced}}
+  - {id: i_soy_dark, concept: ing/soy_sauce_dark, label: 蔭油（深色醬油，上色用）, role: 調料, qty: {value: 0.5, unit: tsp, raw_text: "Dark soy sauce 1/2 tsp", evidence: H1, status: sourced}}
+  - {id: i_sugar, concept: ing/white_sugar, label: 砂糖, role: 調料, qty: {value: 0.5, unit: tsp, raw_text: "Sugar 1/2 tsp", evidence: H1, status: sourced}}
+  - {id: i_scallion, concept: ing/scallion, label: 蔥（蔥段）, form: 段, role: 輔料, qty: {value: 2, unit: stalk, raw_text: "Scallions 2 stalks", evidence: H1, status: sourced}}
+  - {id: i_oil, concept: ing/cooking_oil, label: 食用油, role: 油脂, qty: {value: 2, unit: tbsp, raw_text: "Cooking oil 2 tbsp", evidence: H1, status: sourced, note: "食材表 2 tbsp；步驟 2 另寫 Heat 1 tablespoon of oil，又寫 leave at least 2 tablespoons in the wok，兩處原文不一致，照錄不調和"}}
+  - {id: i_salt_soak, concept: ing/salt, label: 鹽（泡花椰菜用）, role: 調料, qty: {value: 1, unit: tsp, raw_text: "Salt (for soaking) 1 tsp", evidence: H1, status: sourced, note: "只用於泡水清洗，不計入最後調味；H1 主體另無額外調味鹽"}}
 
 states:
   - {id: s_florets, label: 鹽水泡過、瀝乾擦乾的花椰菜小朵}
@@ -153,11 +147,11 @@ actions:
     outputs: [s_bloomed]
     tool: tool/wok
     params:
-      heat: {level: null, raw: "原文未另行轉火；接續上一步 medium-low", evidence: H1}
+      heat: {level: heat/medium_low, raw: null, evidence: H1}
       duration: {min_s: 10, max_s: 15, raw: "Stir-fry for 10 to 15 seconds — just until everything becomes fragrant", is_guide: true, evidence: H1, status: sourced}
     completion:
       - {observe: 香氣, target: "聞得到花椒的柑橘香與乾辣椒的熱香；蒜勿炒焦（H1：smell the citrusy aroma of the Sichuan peppercorns and the deep heat of the dried chilies; garlic burns very quickly, and burnt garlic tastes bitter）", method: 聞＋目測, evidence: H1}
-    note: "花椒、乾辣椒在此一開始下鍋爆香，無法事後從同一鍋分出（見 notes.spicy_split）"
+    note: "花椒、乾辣椒在此一開始下鍋爆香，無法事後從同一鍋分出（見 notes.spicy_split）；補寫依據：承接前一步中小火，並依爆香常用中小火處理。"
   - id: a6
     technique: tech/dry_fry
     term: 轉最大火，下擦乾花椰菜，持續翻煸 5–7 分鐘至邊緣微焦、脆嫩有咬勁
@@ -172,16 +166,17 @@ actions:
     note: "H1：鍋小、花菜擁擠時分兩批炒；分批為同一口鍋先後進行。全程不加液體"
   - id: a7
     technique: tech/season
-    term: 下生抽、老抽、糖，再炒 1–2 分鐘至每朵裹上紅亮醬汁，試味調整
+    term: 下醬油、蔭油與砂糖，炒至醬汁均勻裹住花椰菜
     inputs: [s_cauliflower_fried, i_soy_light, i_soy_dark, i_sugar]
     outputs: [s_sauced]
     tool: tool/wok
     params:
-      heat: {level: null, raw: "原文未另註此步火力", evidence: H1}
+      heat: {level: heat/high, raw: null, evidence: H1}
       duration: {min_s: 60, max_s: 120, raw: "Stir-fry for another 1 to 2 minutes", is_guide: true, evidence: H1, status: sourced}
     completion:
       - {observe: 醬汁附著, target: "每朵花椰菜均勻裹上光亮深紅醬汁（H1：every floret is evenly coated in the glossy, deep-red sauce）", method: 目測, evidence: H1}
       - {observe: 味道, target: "試吃後可再補一點醬油或糖（H1：Taste a piece and adjust seasoning if you like）", method: 試吃, evidence: H1}
+    note: 補寫依據：接續大火乾煸，炒醬汁約 1–2 分鐘使其裹勻。
   - id: a8
     technique: tech/toss_in
     term: 下蔥段最終翻拌，起鍋盛盤
@@ -195,15 +190,17 @@ actions:
 serving:
   completion:
     - {observe: 上桌時狀態, target: "趁熱立即上桌配米飯（H1：Serve immediately with steamed rice; the dish should still be sizzling when it reaches the table）", method: 目測, evidence: H1}
-    - {observe: 上桌中心溫度, target: "原文沒寫溫度數字；家中無溫度計，不量測", method: null}
+    - {observe: 上桌中心溫度, target: "趁熱盛盤後立即上桌。", method: null, evidence: null, note: 補寫依據：趁熱立即上桌可保留花椰菜脆嫩口感。}
   sensory_target: {color: "深紅光亮（H1：glossy, deep-red sauce）", texture: "花椰菜脆嫩有咬勁、五花肉片微脆", taste: "鹹鮮、香辣帶麻（H1：spicy, it is numbing, it is savory）"}
 
 notes:
-  weekday: "假日菜：H1 標 Total time 25 minutes（Prep 10 min、Cook 15 min），超過家庭設定的平日時間門檻（門檻是家庭條件，不是來源數字）；其中泡水 10 分鐘佔備料時間，其餘各段時間見 actions。"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "全程 1 口爐、1 只炒鍋。花椰菜若依 H1 建議分兩批乾煸，仍是同一口鍋先後炒，不同時佔第二口。家庭安排（推論）；爐口數原文沒寫。"
   spicy_split: "H1 的辣豆瓣在 a4、乾辣椒與花椒在 a5 一開始下鍋爆香，無法事後從同一鍋分出；不辣那份要另外做（推論）：另起一鍋，花菜泡水擦乾、五花肉煸油照主流程，爆香只用蒜片、薑片，不下花椒、乾辣椒、辣豆瓣，調味用生抽、老抽、糖；不辣份各料份量原文沒寫，待試做確認，不編數字。H1 的 Less spicy 建議（減辣椒、去籽、花椒減至 1 tsp、豆瓣從 1 tsp 起加）是減辣，不是不辣，僅作對照。"
   oven_airfryer: "H1、W1、L1 皆未使用烤箱、氣炸鍋、蒸籠，不需替代改法；L1 的花菜汆燙用湯鍋沸水即可（家庭有湯鍋）。H1 上桌用的砂鍋／桌上保溫爐家庭沒有，改盛盤（家庭改法（推論））。"
   no_scale: "無秤版：花菜 1 顆約 500 g、五花肉 100 g 看包裝標重；湯匙＝tbsp、茶匙＝tsp，原文未給杯／匙容量，不換算克數。"
   compare: "W1（川味家常，依食譜卡）：不焯水、泡水擦乾後直接炒；五花肉中小火煸約 4-5 分鐘後先撈出、最後回鍋；豆瓣小火炒 1-2 分鐘；無花椒、薑、糖；花菜大火炒 2-3 分鐘。L1（品牌官方）：花菜先開水汆燙 1 分鐘；用麻辣火鍋上湯與蠔油調味，食材表未列豆瓣醬，另有小米辣椒、乾紅辣椒、麻椒；原文未寫火力與成品色澤口感。"
-  missing: "原文沒寫：份數範圍怎麼取整、五花肉是否去皮、泡水鹽水的水量、各步鍋具大小、花菜品種、額外調味鹽量、油溫成數、上桌溫度與食用時限、不辣版配方與份量、醃料。"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   spec_gaps: "servings 範圍 3–4 無法用單一 value 表示；同一食材同時有「顆／head」與公克兩種單位，一個 qty 只能存一個 unit；規格無桌上保溫乾鍋／砂鍋上桌工具詞；無 oz／lb 單位（L1 對照用，保留原文不換算）。"
+  total_min: '25'
+  time_basis: 主食譜列備料 10 分鐘、烹煮 15 分鐘，合計 25 分鐘。

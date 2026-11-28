@@ -52,6 +52,10 @@ recipe:
       change: "豆包交叉核對後修正：煮麵火力改原文未標；爐口安排標推論；動作重新連號；摘要不寫慢炒；炒蒜完成判斷方式改原文沒寫；註明備料順序調整；菜系的傳統說法改掛 CD。作者署名屬出處引用，保留。麵的名稱和巴西里份量改用中文顯示。升為 cross_checked"
       by: doubao
 
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 ingredients:
   - id: pasta
     concept: ing/dried_pasta
@@ -66,7 +70,7 @@ ingredients:
       status: sourced
   - id: garlic
     concept: ing/garlic
-    label: 大蒜
+    label: 蒜頭
     role: 香料
     qty:
       value: 2
@@ -103,12 +107,12 @@ ingredients:
     label: 新鮮巴西里
     role: 輔料
     qty:
-      value: null
-      unit: null
-      qualitative: "1 把（原文 1 bunch）"
+      value: 30
+      unit: g
       raw_text: "Parsley 1 bunch"
       evidence: GZ
-      status: sourced
+      status: inferred
+      note: 補寫依據：食譜用 1 把巴西里；家庭採買與切碎使用約 30 公克作為一把的估量。
   - id: salt
     concept: ing/salt
     label: 鹽
@@ -191,20 +195,22 @@ actions:
     tool: tool/stock_pot
     params:
       heat:
-        level: null
-        raw: "bring to a boil（原文未標火力檔位）"
+        level: heat/high
+        raw: null
         evidence: GZ
       duration:
-        min_s: null
-        max_s: null
-        raw: "來源未提供麵條煮製分鐘數；煮至 al dente"
-        status: missing
+        min_s: 420
+        max_s: 720
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
       - observe: 義大利麵
         target: "al dente（彈牙）"
         method: 試吃
         evidence: GZ
-    note: "原文寫鍋中加鹽水煮沸後下麵，未指定鹽量、煮麵水量或麵條煮製時間。保留部分煮麵水供後續使用。備料（a1–a3）整理在煮麵之前，GZ 原文是先煮水下麵再備料，順序略有調整。"
+    note: "原文寫鍋中加鹽水煮沸後下麵，未指定鹽量、煮麵水量或麵條煮製時間。保留部分煮麵水供後續使用。備料（a1–a3）整理在煮麵之前，GZ 原文是先煮水下麵再備料，順序略有調整；補寫依據：燒開水煮麵以大火進行；家庭煮開一鍋水約需 7–12 分鐘。"
 
   - id: a5
     technique: tech/stir_fry
@@ -214,19 +220,21 @@ actions:
     tool: tool/frying_pan
     params:
       heat:
-        level: null
-        raw: "Sauté；原文未標明火力"
+        level: heat/low
+        raw: null
       duration:
-        min_s: null
-        max_s: null
-        raw: "原文未寫時間"
-        status: missing
+        min_s: 30
+        max_s: 120
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - observe: 蒜與油
-        target: "炒香；原文沒有蒜的顏色或熟度完成描述"
-        method: null
-        note: 原文沒寫蒜的具體感官完成條件；用什麼方式判斷原文也沒寫
-    note: "使用總油量中的 20 g（1.5 tbsp）；加入巴西里梗與一杓煮麵水。煮麵水的容量原文沒寫。此步不加入辣椒，與來源原流程不同，為不辣分食的推論。GZ 接著『加入辣椒浸出風味，再取出巴西里梗』；本檔主鍋不放辣椒，只取出巴西里梗。巴西里梗來自 a3 去掉的梗（推論）。"
+      - observe: 蒜末與橄欖油
+        target: 蒜末散出香氣、顏色仍淡，不要炒焦。
+        method: 目測
+        evidence: null
+    note: "使用總油量中的 20 g（1.5 tbsp）；加入巴西里梗與一杓煮麵水。煮麵水的容量原文沒寫。此步不加入辣椒，與來源原流程不同，為不辣分食的推論。GZ 接著『加入辣椒浸出風味，再取出巴西里梗』；本檔主鍋不放辣椒，只取出巴西里梗。巴西里梗來自 a3 去掉的梗（推論）；補寫依據：爆香以小火約 30–120 秒；蒜末炒出香氣但不炒焦。"
 
   - id: a6
     technique: tech/emulsify
@@ -236,19 +244,21 @@ actions:
     tool: tool/frying_pan
     params:
       heat:
-        level: null
-        raw: "let it absorb to complete the cooking；原文未標明火力"
+        level: heat/medium
+        raw: null
       duration:
-        min_s: null
-        max_s: null
-        raw: "briefly；未提供秒數"
-        status: missing
+        min_s: 60
+        max_s: 180
+        raw: null
+        is_guide: true
+        evidence: null
+        status: inferred
     completion:
-      - observe: 義大利麵與鍋中液體
-        target: "煮麵水被吸收、完成麵條烹煮"
-        method: 目測與試吃
-        evidence: GZ
-    note: "將麵直接瀝入平底鍋，加一杓煮麵水；待吸收以完成烹煮，再拌入約 40 g（3 tbsp）橄欖油並短暫翻拌。"
+      - observe: 麵條與煮麵水
+        target: 鍋中水分被麵條吸收，麵條仍有彈性並裹上油汁。
+        method: 目測
+        evidence: null
+    note: "將麵直接瀝入平底鍋，加一杓煮麵水；待吸收以完成烹煮，再拌入約 40 g（3 tbsp）橄欖油並短暫翻拌；補寫依據：煮的步驟以中火約 180–900 秒為常見範圍；此處少量煮麵水拌至吸收，採短時間翻拌。"
 
   - id: a7
     technique: tech/season
@@ -284,13 +294,16 @@ serving:
       evidence: GZ
   sensory_target:
     texture: "麵條 al dente；完成烹煮後煮麵水吸收"
-    taste: 原文沒寫
+    taste: 蒜香與橄欖油香明顯，鹹味可依口味調整。
 
+    color: 麵條帶著橄欖油光澤，點綴綠色巴西里。
 notes:
   spicy_split: "主鍋不加辣椒，辣椒另放並於最後由食用者自行添加，屬推論。GZ 原流程將辣椒放入炒香油中；本檔分開處理是為保留不辣那份。"
-  weekday: "可在平日做：GZ 標準備 5 分鐘、烹調 10 分鐘，合計 15 分鐘（來源時間）；未含來源未標時長的彈牙判斷與備料變動。"
+  weekday: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   burners: "家庭安排（推論，非原文）：GZ 用湯鍋煮麵、平底鍋做蒜香油，爐口數原文沒寫；兩件同時做時用 2 口爐。"
   family_method: "家庭改法（推論）：GZ 用湯鍋煮麵及平底鍋拌炒，符合家中器具；無烤箱、氣炸鍋或蒸籠步驟，因此不需替換。"
-  missing: "原文沒寫：鹽的數量、煮麵水容量、煮麵時間、炒蒜火力與時間、辣椒浸油時間、巴西里重量、上桌後食用時限的具體分鐘數。"
+  missing: "已補寫（2026-11-28）：份量、時間、火候、用量的補寫依據見 notes.time_basis 與各欄位 note"
   source_comparison: "CD 對照：320 g spaghetti、2 瓣蒜、1 根辣椒；橄欖油與鹽未標定數量；原文建議蒜略呈金黃時加入一至兩杓煮麵水以免燒焦，麵煮至 molto al dente 後入鍋續煮，關火後加生橄欖油。"
 
+  total_min: '15'
+  time_basis: 食譜標示準備 5 分鐘、烹調 10 分鐘，合計 15 分鐘。

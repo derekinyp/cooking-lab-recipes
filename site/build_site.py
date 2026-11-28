@@ -1045,7 +1045,7 @@ def main():
     vend = SITE / 'assets' / ASSET_VER
     if '--fonts' in sys.argv:
         (vend / 'fonts').mkdir(parents=True, exist_ok=True)
-        allt = ''.join(html.unescape(re.sub(r'<[^>]+>', ' ', p)) for p in pages.values()) + (SITE / 'static/site.js').read_text(encoding='utf-8') + (SITE / 'static/find.js').read_text(encoding='utf-8')
+        allt = ''.join(html.unescape(re.sub(r'<[^>]+>', ' ', p) + ' '.join(re.findall(r'(?:placeholder|aria-label|title|alt)="([^"]*)"', p))) for p in pages.values()) + (SITE / 'static/site.js').read_text(encoding='utf-8') + (SITE / 'static/find.js').read_text(encoding='utf-8')
         build_fonts(allt, vend / 'fonts')
     shutil.copytree(vend, OUT / 'assets' / ASSET_VER)
     shutil.copy(SITE / 'static/site.css', OUT / 'assets/site.css')

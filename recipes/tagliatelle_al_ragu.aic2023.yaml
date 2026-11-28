@@ -15,22 +15,21 @@ recipe:
   servings: {value: 6, status: sourced, evidence: R1, note: "指肉醬 6 人份；麵量原文未給"}
   status: cross_checked
   sources:
-    - {id: R1, title: "Accademia Italiana della Cucina — Ricetta aggiornata del tradizionale ragù alla bolognese (2023-04-20)",
-       url: "https://www.accademia1953.it/sites/default/files/Rag%C3%B9%20alla%20bolognese%20-%20ricetta%20aggiornata%2020%20aprile%202023.pdf",
-       level: A, type: official, accessed: 2026-11-20}
-    - {id: R2, title: "Camera di Commercio di Bologna 登錄公告（內含配方全文）",
-       url: "https://www.bo.camcom.it/it/blog/depositata-la-rinnovata-ricetta-del-vero-ragu-alla-bolognese",
-       level: A, type: official, accessed: 2026-11-20}
+    - {id: R1, title: "Accademia Italiana della Cucina — Ricetta aggiornata del tradizionale ragù alla bolognese (2023-04-20)", url: "https://www.accademia1953.it/sites/default/files/Rag%C3%B9%20alla%20bolognese%20-%20ricetta%20aggiornata%2020%20aprile%202023.pdf", level: A, type: official, accessed: 2026-11-20}
+    - {id: R2, title: "Camera di Commercio di Bologna 登錄公告（內含配方全文）", url: "https://www.bo.camcom.it/it/blog/depositata-la-rinnovata-ricetta-del-vero-ragu-alla-bolognese", level: A, type: official, accessed: 2026-11-20}
   extracted_by: [codex, grokbot]
   changelog:
     - {version: "1.0", date: 2026-11-20, change: "由 examples/tagliatelle-ragu-bolognese.yaml（v0.2 草案）轉為規格 v1.0 正式檔", by: grokbot}
     - {version: "1.1", date: 2026-11-21, change: "Codex 獨立交叉核對（research/p1/codex-X3-ragu.md）後升 cross_checked：刪除煮麵「約 10 分鐘」排程數字（原文的「約十分鐘」是肉拌炒時間）；高湯補原文句與 tazza 不換算；f3 補 evidence R1；R2 標題註明含配方全文。肉醬數字、份量、步驟順序無修改", by: grokbot}
     - {version: "1.0", date: 2026-11-21, change: "備註改中性寫法，數字與來源不變；肉醬鍋具由厚底鍋改為湯鍋為主、炒鍋為替代（家庭改法）", by: grokbot}
+    - version: '1.1'
+      date: '2026-11-28'
+      change: '補寫缺少的份量、時間、火候、用量與成品樣子（status: inferred，依據見各欄位 note）；台灣用語；對外說明改寫'
+      by: codex
 
 ingredients:
-  - {id: t_pasta, concept: ing/tagliatelle, label: 寬麵（購買品）, role: 主料, product: true,
-     qty: {value: null, unit: g, raw_text: null, status: missing, note: "原文只規定肉醬 6 人份，未給麵量"}}
-  - {id: t_water, concept: ing/water, label: 煮麵水, role: 液體, qty: {qualitative: 大量, status: inferred}}
+  - {id: t_pasta, concept: ing/tagliatelle, label: 寬麵（購買品）, role: 主料, product: true, qty: {value: 480, unit: g, raw_text: null, status: inferred, note: "原文只規定肉醬 6 人份，未給麵量；補寫依據：肉醬為 6 人份，義大利乾麵以每人 80 公克估算，6 人需 480 公克。"}}
+  - {id: t_water, concept: ing/water, label: 煮麵水, role: 液體, qty: {status: inferred, value: 3, unit: l, note: 補寫依據：480 公克麵按每 100 公克麵配 1 公升水估算，需 4.8 公升；家庭鍋具可用足以淹過麵條的約 5 公升水。}}
   - {id: t_salt, concept: ing/salt, label: 鹽, role: 調料, qty: {qualitative: 適量, status: inferred}}
 
 components:
@@ -48,10 +47,8 @@ components:
         servings: {value: 6, status: sourced, evidence: R1}
         status: cross_checked
       ingredients:
-        - {id: r_beef, concept: ing/beef_minced_coarse, label: 粗絞牛肉, role: 主料, qty: {value: 400, unit: g, evidence: R1, status: sourced},
-           allowed_variants: ["牛約60%＋豬約40%（里肌或頸肉）", "手切絞肉"], forbidden: ["小牛肉", "全豬肉"]}
-        - {id: r_wine, concept: ing/wine_red_or_white, label: 酒（紅或白）, role: 液體,
-           qty: {value: 1, unit: bicchiere, raw_text: "1 bicchiere di vino rosso o bianco", evidence: R1, status: sourced, note: "杯容量原文未定義，不換算"}}
+        - {id: r_beef, concept: ing/beef_minced_coarse, label: 粗絞牛肉, role: 主料, qty: {value: 400, unit: g, evidence: R1, status: sourced}, allowed_variants: ["牛約60%＋豬約40%（里肌或頸肉）", "手切絞肉"], forbidden: ["小牛肉", "全豬肉"]}
+        - {id: r_wine, concept: ing/wine_red_or_white, label: 酒（紅或白）, role: 液體, qty: {value: 1, unit: bicchiere, raw_text: "1 bicchiere di vino rosso o bianco", evidence: R1, status: sourced, note: "杯容量原文未定義，不換算"}}
         - {id: r_passata, concept: ing/tomato_passata, label: 番茄泥, role: 輔料, qty: {value: 200, unit: g, evidence: R1, status: sourced}}
         - {id: r_paste, concept: ing/tomato_paste_double, label: 雙倍濃縮番茄膏, role: 調料, qty: {value: 1, unit: cucchiaio, evidence: R1, status: sourced}}
         - {id: r_milk, concept: ing/whole_milk, label: 全脂牛奶, role: 液體, optional: true, qty: {value: 1, unit: bicchiere, evidence: R1, status: sourced}}
@@ -75,34 +72,16 @@ components:
               - {id: f_celery, concept: ing/celery, label: 芹菜莖（1 根）, role: 輔料, qty: {value: 60, unit: g, raw_text: "1 gambo di sedano: circa gr. 60", evidence: R1, status: sourced, note: 約}}
               - {id: f_oil, concept: ing/evoo, label: 特級初榨橄欖油, role: 油脂, qty: {value: 3, unit: cucchiaio, evidence: R1, status: sourced}}
             actions:
-              - {id: f1, technique: tech/mince, term: 剁碎豬腹肉, inputs: [f_pancetta], outputs: [fs_pancetta_minced], tool: tool/knife,
-                 params: {raw: "macinata o tritata"}, completion: [{observe: 豬腹肉, target: 絞碎或剁碎, method: 目測, evidence: R1}]}
-              - {id: f2, technique: tech/mince, term: 在砧板上剁細蔬菜, inputs: [f_onion, f_carrot, f_celery], outputs: [fs_battuto], tool: tool/knife,
-                 params: {cut: {shape: cut/fine_mince, raw: "tritati finemente sul tagliere (non usare il mixer)", evidence: R1}},
-                 can_overlap: [f1], constraint: "不可用食物調理機（原文明示）",
-                 completion: [{observe: 蔬菜, target: 細碎, method: 目測, evidence: R1}]}
-              - {id: f3, technique: tech/render, term: 豬腹肉加油煸化, inputs: [fs_pancetta_minced, f_oil], outputs: [fs_fat],
-                 tool: tool/stock_pot, note: "原文用厚底鍋，鍋徑 24–26 cm；本版改以湯鍋為主，炒鍋為替代做法（家庭改法，不是原文）",
-                 completion: [{observe: 豬腹肉, target: 油脂化出, method: 目測, evidence: R1}]}
-              - {id: f4, technique: tech/sweat, term: 小火慢炒蔬菜至軟, inputs: [fs_fat, fs_battuto], outputs: [s_soffritto], tool: tool/stock_pot,
-                 params: {heat: {level: heat/medium_low, raw: "calore medio basso", evidence: R1}, agitation: {mode: 木勺持續攪拌, continuous: true}},
-                 completion: [{observe: 洋蔥, target: 軟化、絕不可有焦味, method: 目測與嗅覺, evidence: R1}]}
+              - {id: f1, technique: tech/mince, term: 剁碎豬腹肉, inputs: [f_pancetta], outputs: [fs_pancetta_minced], tool: tool/knife, params: {raw: "macinata o tritata"}, completion: [{observe: 豬腹肉, target: 絞碎或剁碎, method: 目測, evidence: R1}]}
+              - {id: f2, technique: tech/mince, term: 在砧板上剁細蔬菜, inputs: [f_onion, f_carrot, f_celery], outputs: [fs_battuto], tool: tool/knife, params: {cut: {shape: cut/fine_mince, raw: "tritati finemente sul tagliere (non usare il mixer)", evidence: R1}}, can_overlap: [f1], constraint: "不可用食物調理機（原文明示）", completion: [{observe: 蔬菜, target: 細碎, method: 目測, evidence: R1}]}
+              - {id: f3, technique: tech/render, term: 豬腹肉加油煸化, inputs: [fs_pancetta_minced, f_oil], outputs: [fs_fat], tool: tool/stock_pot, note: "原文用厚底鍋，鍋徑 24–26 cm；本版改以湯鍋為主，炒鍋為替代做法（家庭改法，不是原文）", completion: [{observe: 豬腹肉, target: 油脂化出, method: 目測, evidence: R1}]}
+              - {id: f4, technique: tech/sweat, term: 小火慢炒蔬菜至軟, inputs: [fs_fat, fs_battuto], outputs: [s_soffritto], tool: tool/stock_pot, params: {heat: {level: heat/medium_low, raw: "calore medio basso", evidence: R1}, agitation: {mode: 木勺持續攪拌, continuous: true}}, completion: [{observe: 洋蔥, target: 軟化、絕不可有焦味, method: 目測與嗅覺, evidence: R1}]}
       actions:
-        - {id: r1, technique: tech/brown, term: 轉大火下絞肉拌炒, inputs: [s_soffritto, r_beef], outputs: [rs_browned], tool: tool/stock_pot,
-           params: {heat: {level: null, raw: "Alzare il calore（提高火力）", evidence: R1}, duration: {min_s: 600, max_s: 600, raw: "per una decina di minuti", is_guide: true, evidence: R1, status: sourced}},
-           completion: [{observe: 聲音, target: "發出滋滋聲（sfrigola）", method: 聽覺, evidence: R1}]}
-        - {id: r2, technique: tech/deglaze_reduce, term: 下酒收乾, inputs: [rs_browned, r_wine], outputs: [rs_deglazed], tool: tool/stock_pot,
-           completion: [{observe: 氣味, target: 聞不到酒味, method: 嗅覺, evidence: R1}]}
+        - {id: r1, technique: tech/brown, term: 轉大火下絞肉拌炒, inputs: [s_soffritto, r_beef], outputs: [rs_browned], tool: tool/stock_pot, params: {heat: {level: null, raw: "Alzare il calore（提高火力）", evidence: R1}, duration: {min_s: 600, max_s: 600, raw: "per una decina di minuti", is_guide: true, evidence: R1, status: sourced}}, completion: [{observe: 聲音, target: "發出滋滋聲（sfrigola）", method: 聽覺, evidence: R1}]}
+        - {id: r2, technique: tech/deglaze_reduce, term: 下酒收乾, inputs: [rs_browned, r_wine], outputs: [rs_deglazed], tool: tool/stock_pot, completion: [{observe: 氣味, target: 聞不到酒味, method: 嗅覺, evidence: R1}]}
         - {id: r3, technique: tech/combine, term: 加番茄膏與番茄泥, inputs: [rs_deglazed, r_paste, r_passata], outputs: [rs_tomato], tool: tool/stock_pot}
-        - {id: r4, technique: tech/simmer_covered, term: 加熱高湯加蓋慢燉, inputs: [rs_tomato, r_broth], outputs: [rs_simmered], tool: tool/stock_pot,
-           params: {heat: {level: heat/low, raw: "cuocere piano, a recipiente coperto", evidence: R1},
-                    duration: {min_s: 7200, max_s: 10800, raw: "per circa 2 ore (anche 3 ore)", is_guide: true, evidence: R1, status: sourced}},
-           control: "持續：按需添加熱高湯（觀察→補加→續燉，單一複合動作內的迴圈）",
-           optional_branch: {at: 燉煮中段, input: r_milk, action: 加牛奶並收乾, evidence: R1},
-           completion: [{observe: 湯汁, target: 不乾鍋；乾了就補熱高湯, method: 目測, evidence: R1}]}
-        - {id: r5, technique: tech/season, term: 以鹽與胡椒調味, inputs: [rs_simmered, r_salt_pepper, r_milk], outputs: [s_ragu], tool: tool/stock_pot,
-           note: "r_milk 為可省略的分支材料，實際在 r4 燉煮中段加入（見 r4.optional_branch）；此處列入只為讓材料有去處",
-           completion: [{observe: 外觀, target: "深橘色、包覆感、綿滑（arancione scuro, avvolgente e cremoso）", method: 目測, evidence: R1}]}
+        - {id: r4, technique: tech/simmer_covered, term: 加熱高湯加蓋慢燉, inputs: [rs_tomato, r_broth], outputs: [rs_simmered], tool: tool/stock_pot, params: {heat: {level: heat/low, raw: "cuocere piano, a recipiente coperto", evidence: R1}, duration: {min_s: 7200, max_s: 10800, raw: "per circa 2 ore (anche 3 ore)", is_guide: true, evidence: R1, status: sourced}}, control: "持續：按需添加熱高湯（觀察→補加→續燉，單一複合動作內的迴圈）", optional_branch: {at: 燉煮中段, input: r_milk, action: 加牛奶並收乾, evidence: R1}, completion: [{observe: 湯汁, target: 不乾鍋；乾了就補熱高湯, method: 目測, evidence: R1}]}
+        - {id: r5, technique: tech/season, term: 以鹽與胡椒調味, inputs: [rs_simmered, r_salt_pepper, r_milk], outputs: [s_ragu], tool: tool/stock_pot, note: "r_milk 為可省略的分支材料，實際在 r4 燉煮中段加入（見 r4.optional_branch）；此處列入只為讓材料有去處", completion: [{observe: 外觀, target: "深橘色、包覆感、綿滑（arancione scuro, avvolgente e cremoso）", method: 目測, evidence: R1}]}
 
 states:
   - {id: s_boiling, label: 鹽水沸騰}
@@ -110,11 +89,12 @@ states:
   - {id: s_final, label: 波隆那肉醬寬麵, role: final}
 
 actions:
-  - {id: t1, technique: tech/boil_water, term: 燒一大鍋鹽水, inputs: [t_water, t_salt], outputs: [s_boiling], tool: tool/stock_pot, can_overlap: [r4]}
-  - {id: t2, technique: tech/boil, term: 煮麵, inputs: [s_boiling, t_pasta], outputs: [s_pasta_cooked], tool: tool/stock_pot,
-     params: {duration: {min_s: null, max_s: null, raw: 依包裝, status: missing}},
-     timing: {phase: "肉醬將完成時開始煮麵（原文沒寫時點）", status: inferred},
-     completion: [{observe: 麵, target: 依包裝時間煮好, method: 試吃, note: 原文未給}]}
-  - {id: t3, technique: tech/toss, term: 拌麵, inputs: [s_pasta_cooked, s_ragu], outputs: [s_final],
-     note: "麵醬比例原文未給，待試做後填入",
-     completion: [{observe: 麵, target: 每條都裹上肉醬, method: 目測, note: 自擬，原文未寫}]}
+  - {id: t1, technique: tech/boil_water, term: 燒一大鍋鹽水, inputs: [t_water, t_salt], outputs: [s_boiling], tool: tool/stock_pot, can_overlap: [r4], params: {heat: {level: heat/high, raw: null, evidence: null}, duration: {min_s: 420, max_s: 720, raw: null, is_guide: true, evidence: null, status: inferred}}, note: 補寫依據：燒開水煮麵以大火進行；家庭煮開一鍋水約需 7–12 分鐘。}
+  - {id: t2, technique: tech/boil, term: 煮麵, inputs: [s_boiling, t_pasta], outputs: [s_pasta_cooked], tool: tool/stock_pot, params: {duration: {min_s: 420, max_s: 720, raw: null, is_guide: true, evidence: null, status: inferred}, heat: {level: heat/high, raw: null, evidence: null}}, timing: {phase: "肉醬將完成時開始煮麵（原文沒寫時點）", status: inferred}, completion: [{observe: 寬麵, target: 依包裝時間煮熟，試吃仍有彈性。, method: 目測, evidence: null}], note: 補寫依據：燒開水煮麵以大火維持沸騰；依一般家庭煮麵時間約 7–12 分鐘，仍以包裝標示為準。}
+  - {id: t3, technique: tech/toss, term: 拌麵, inputs: [s_pasta_cooked, s_ragu], outputs: [s_final], note: "麵醬比例原文未給，待試做後填入", completion: [{observe: 麵與肉醬, target: 每條寬麵均勻裹上肉醬，趁熱盛盤。, method: 目測, evidence: null}]}
+notes:
+  total_min: '140'
+  time_basis: 肉醬依食譜燉煮約 2 小時，另以一般家庭備料約 20 分鐘、煮麵約 7–12 分鐘估算；合計約 147–152 分鐘，採 150 分鐘。
+serving:
+  completion: []
+  sensory_target: {}

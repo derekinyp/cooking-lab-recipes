@@ -1,23 +1,61 @@
-tag: pending
-tag_note: 原文沒寫總時間，要試做計時。
-card: 豬肚先和米酒、蔥、薑片煮軟，切片後與酸菜、薑絲和水煮成湯，最後加鹽調味。湯裡有酸菜和薑絲，豬肚切成斜片。
+intro: 豬肚先與米酒、蔥、薑片煮軟，再切片和酸菜、薑絲煮成湯，酸香開胃，適合熱熱上桌。
+card: 豬肚先煮軟切斜片，再與酸菜、薑絲煮湯；最後加鹽調味，喝得到酸菜清香。
 variant: 台式家常版
-intro: 做法照原食譜，豬肚先煮軟，再切片回鍋煮湯。
-burners: 兩段煮製依步驟先後進行（推論）；湯鍋數量原文沒寫。
-missing:
-  - 豬肚清洗方式
-  - 煮豬肚的火力、是否加蓋及用水量
-  - 酸菜是否先泡水去鹹
-  - 酸菜、豬肚和薑絲切多大
-  - 酸菜和薑絲煮到水滾要多久
-  - 成品色澤、湯味和上桌方式
+burners: 使用一口爐和湯鍋，先煮豬肚，接著煮酸菜薑絲湯，再放入肚片。
+spice:
+  mode: addon
+  text: 湯底不辣；想吃辣可在碗裡另外加辣椒。
+  mild:
+  - 依食譜煮好，不另外加辣。
+  hot:
+  - 盛碗後再加辣椒，依喜好調整。
+notes:
+- 豬肚先洗淨再放入沸水。
+- 酸菜若較鹹，可先沖洗後再切片。
 steps:
+  a1:
+    title: 清洗豬肚
+    done:
+    - 以流水洗淨豬肚。
   a2:
-    heat: 放入沸水後煮，火力原文沒寫
-    time: 約 40 分鐘，煮到豬肚軟化
+    title: 煮軟豬肚
+    heat: 沸水下鍋後以中小火維持微滾
+    time: 約 40 分鐘
+    done:
+    - 豬肚煮至柔軟，筷子可戳入。
+  a3:
+    title: 切豬肚
+    done:
+    - 撈起後切成斜片。
+  a4:
+    title: 處理酸菜
+    done:
+    - 洗淨後切斜片。
   a5:
-    heat: 煮到湯水沸騰，火力原文沒寫
-    time: 原文沒寫
+    title: 煮酸菜湯底
+    heat: 中大火
+    done:
+    - 水煮滾，酸菜與薑絲散出香氣。
   a6:
-    heat: 原文沒寫
-    time: 約 10 分鐘，再加鹽調味
+    title: 加入肚片
+    heat: 中火
+    time: 約 10 分鐘
+    done:
+    - 加入肚片煮熱，加鹽調味。
+ing:
+  i_tripe:
+    suggest: 半個
+  i_suancai:
+    suggest: 2 片
+  i_ginger_shred:
+    suggest: 50 公克
+  i_wine:
+    suggest: 1 大匙
+  i_scallion:
+    suggest: 1 支
+  i_ginger_slice:
+    suggest: 2 片
+  i_salt:
+    suggest: 約 1 茶匙
+  i_water:
+    suggest: 2,000 毫升
