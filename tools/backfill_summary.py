@@ -38,6 +38,7 @@ for p in sorted((ROOT / 'recipes').glob('*.yaml')):
     if ch: f.append(('成品色香味', '、'.join(ch), '依各步驟的做法與食材'))
     th = [c for c in (new.get('serving') or {}).get('completion') or [] if basis(c.get('note'))]
     if th: f.append(('上桌溫度與時限', th[0]['target'], basis(th[0]['note'])))
+    if not f: parked.append(rid); continue
     rows.append((rid, name, f))
 out = ['# 補寫摘要表（2026-11-28）', '', f'共補寫 {len(rows)} 道。所有補的值在食譜檔標 `status: inferred`，依據寫在各欄位 `note`（總時間依據在 `notes.time_basis`）；來源有寫的數字沒有動。', '']
 for rid, name, f in rows:
@@ -49,6 +50,7 @@ for _, _, f in rows:
     for a, b, c in f:
         k = '材料' if a.startswith('材料') else '步驟（火候或時間）' if a.startswith('步驟') else a
         if k in tot: tot[k] += 1
+out += ['## 停放（資料不足，補寫會變成憑空編造，暫不上站）', ''] + [f'- {r}' for r in parked] + ['']
 out += ['## 合計', '', '| 項目 | 筆數 |', '|---|---|'] + [f'| {k} | {v} |' for k, v in tot.items()]
 Path(sys.argv[2] if len(sys.argv) > 2 else '/dev/stdout').write_text('\n'.join(out) + '\n', encoding='utf-8')
 print(json.dumps({'dishes_filled': len(rows), 'not_changed': parked, **tot}, ensure_ascii=False))

@@ -243,7 +243,7 @@ actions:
     inputs: [s_vinegar]
     outputs: [s_rested]
     tool: tool/wok
-    params: {duration: {min_s: 60, max_s: 60, raw: "上蓋燜1分鐘", is_guide: true, evidence: M, status: sourced}, heat: {level: heat/very_low, raw: null, evidence: null}}
+    params: {duration: {min_s: 60, max_s: 60, raw: "上蓋燜1分鐘", is_guide: true, evidence: M, status: sourced}, heat: {level: null, raw: null, evidence: null}}
     completion:
       - observe: 計時
         target: 蓋鍋燜 1 分鐘。

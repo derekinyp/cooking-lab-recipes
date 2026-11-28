@@ -201,8 +201,8 @@ notes:
   burners: "家庭安排（推論，非原文）：a2、a3 可用同一口爐分批做；全程 1 口爐就夠。"
   spicy_split: "本食譜沒有辣椒、花椒或辣豆瓣；無須分辣。"
   source_method: "無烤箱、氣炸鍋或蒸籠步驟；使用現有平底鍋。"
-  total_min: '75'
-  time_basis: 800 公克馬鈴薯與洋蔥切洗約 10–15 分鐘；油煨馬鈴薯約 35 分鐘、炒洋蔥約 5–10 分鐘、蛋餅兩面煎約 10–15 分鐘，合計約 60–75 分鐘，採 75 分鐘。
+  total_min: '60'
+  time_basis: 來源 HOGARMANIA 標示 4 份、總時間 60 分鐘，照來源數字（自行估算的備料與煎煮約 60–75 分鐘，與來源相符）。
 serving:
   completion: []
   sensory_target: {}

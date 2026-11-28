@@ -54,7 +54,7 @@ recipe:
       by: codex
 
 ingredients:
-  - {id: i_rice, concept: ing/steamed_rice, label: 白飯, role: 主料, qty: {value: 12, unit: cup, status: inferred, note: "S1 標題為滷肉飯但材料、作法均未列白飯；對照 S2 寫『白飯 1 碗』；補寫依據：依主菜推估 12 人份，每人搭配 1 碗熟飯；此處以每人 1 碗計，12 人份共 12 碗。"}}
+  - {id: i_rice, concept: ing/steamed_rice, label: 白飯, role: 主料, qty: {value: null, unit: null, qualitative: 每人 1 碗, status: inferred, note: "S1 標題為滷肉飯但材料、作法均未列白飯；對照 S2 寫『白飯 1 碗』；補寫依據：依主菜推估 12 人份，每人搭配 1 碗熟飯；此處以每人 1 碗計，12 人份共 12 碗。"}}
 
 components:
   - id: c_lurou
