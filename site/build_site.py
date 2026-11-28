@@ -928,7 +928,7 @@ def conversions_page():
     return head('湯匙與目測換算表｜振達的廚房', '') + body
 
 
-# ------------------------------------------------------------------ 每週新增、收錄進度
+# ------------------------------------------------------------------ 最新食譜
 def load_weekly():
     d = SITE / 'weekly'
     return [(p.stem, yaml.safe_load(p.read_text(encoding='utf-8'))) for p in sorted(d.glob('*.yaml'))] if d.exists() else []
@@ -945,16 +945,23 @@ def weekly_rows(items, by_slug):
         rows.append(f'<tr><td><a href="recipes/{m["slug"]}.html">{E(m["name"])}</a></td><td>{E("約 " + fmt_min(t) if t else "")}</td><td>{tag_badge(m["tag"])}</td></tr>')
     return ''.join(rows), len(rows)
 
-def weekly_page(stem, wk, by_slug):
-    rows, done = weekly_rows(list(wk['dishes']) + list(wk.get('west') or []), by_slug)
+def new_page(weeklies, by_slug):
+    """最新食譜：單一頁面，新菜在最上面；不放每週名額、主題、日期區間。"""
+    groups, total = [], 0
+    for i, (stem, wk) in enumerate(reversed(weeklies)):
+        rows, n = weekly_rows(list(wk['dishes']) + list(wk.get('west') or []), by_slug)
+        if not n: continue
+        total += n
+        label = '最新加入' if not groups else '先前加入'
+        groups.append(f'<section class="block"><h2 class="h2">{label}・{n} 道</h2><div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>菜名</th><th>總時間</th><th>適合什麼時候做</th></tr></thead><tbody>{rows}</tbody></table></div></section>')
     body = f'''{topbar('')}
 <main class="wrap">
-<header class="hero card"><p class="zd-kicker">最新食譜・{E(wk["week"])}（{E(wk["range"])}）</p><h1 class="dish-name">這週新增 {done} 道家常菜</h1></header>
-<section class="block"><div class="zd-table-wrap card"><table class="zd-table"><thead><tr><th>菜名</th><th>總時間</th><th>適合什麼時候做</th></tr></thead><tbody>{rows}</tbody></table></div></section>
+<header class="hero card"><p class="zd-kicker">最新食譜</p><h1 class="dish-name">最近新增的菜</h1><p class="zd-small">新菜上架後會出現在最上面，目前網站收錄 {len(by_slug)} 道食譜。想找其他菜，回到<a href="index.html">全部菜色</a>用搜尋或分類。</p></header>
+{''.join(groups)}
 </main>
 {FOOT}
 </body></html>'''
-    return head(f'最新食譜 {wk["week"]}｜振達的廚房', '') + body
+    return head('最新食譜｜振達的廚房', '') + body
 
 def redirect_page(target, title):
     return f'''<!doctype html>
@@ -1036,12 +1043,13 @@ def main():
     global WEEKLY_HREF
     weeklies = load_weekly()
     by_slug = {m['slug']: m for m in models}
-    if weeklies: WEEKLY_HREF = f'weekly-{weeklies[-1][0]}.html'
+    if weeklies: WEEKLY_HREF = 'new.html'
     plan = yaml.safe_load((SITE / 'plan.yaml').read_text(encoding='utf-8'))
     pages = {'index.html': index_page(models, plan), 'conversions.html': conversions_page(), 'progress.html': redirect_page('index.html', '振達的廚房・食譜')}
-    for stem, wk in weeklies: pages[f'weekly-{stem}.html'] = weekly_page(stem, wk, by_slug)
-    # 舊網址：撤下的「本週菜單」頁改成轉到每週新增
-    pages['menu-2026-W48.html'] = redirect_page('weekly-2026-W48.html', '最新食譜：2026 第 48 週')
+    pages['new.html'] = new_page(weeklies, by_slug)
+    # 舊網址（每週頁、本週菜單頁）一律轉到最新食譜
+    for stem, wk in weeklies: pages[f'weekly-{stem}.html'] = redirect_page('new.html', '最新食譜')
+    pages['menu-2026-W48.html'] = redirect_page('new.html', '最新食譜')
     for m in models: pages[f'recipes/{m["slug"]}.html'] = recipe_page(m)
     if OUT.exists(): shutil.rmtree(OUT)
     (OUT / 'recipes').mkdir(parents=True)

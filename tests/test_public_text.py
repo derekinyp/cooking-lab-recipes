@@ -48,6 +48,16 @@ for must_not in ('收錄進度', '每週新增', '換算表'):
 for must in ('最新食譜', '量匙換算'):
     if must not in visible(idx): fails.append(f'首頁缺少導覽「{must}」')
 
+
+# 最新食譜頁：單一頁面；不放每週名額、主題、週次日期；舊的每週頁一律轉址
+nw = visible((DOCS / 'new.html').read_text(encoding='utf-8'))
+for must_not in ('每週', '本週', '這週', '主題', '第 48 週', '第 49 週', '第 50 週', '第 51 週', '收錄進度'):
+    if must_not in nw: fails.append(f'最新食譜頁還有「{must_not}」')
+if '最近新增的菜' not in nw: fails.append('最新食譜頁缺標題')
+for wk in sorted(DOCS.glob('weekly-*.html')):
+    if 'url=new.html' not in wk.read_text(encoding='utf-8'): fails.append(f'{wk.name} 沒有轉到 new.html')
+if 'href="new.html"' not in (DOCS / 'index.html').read_text(encoding='utf-8'): fails.append('首頁導覽沒有連到最新食譜頁')
+
 # 卡片：「約 N 分鐘・N 人份・辣度」；平日可做只給 30 分鐘內
 cards = re.findall(r'<li class="dish-card card".*?</li>', idx, re.S)
 n_expected = sum(1 for l in (ROOT / 'site' / 'order.yaml').read_text(encoding='utf-8').splitlines() if l.startswith('- '))
